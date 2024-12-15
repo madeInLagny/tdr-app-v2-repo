@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{noIndex.description}}$",
+	"title": "${{noIndex.title}}$",
+	"path": "${{noIndex.path}}$",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id=" wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+		<!-- Hero Section
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+					<div id="blog-gallery" class="row justify-content-center gutter-50 col-mb-50">
+
+
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		<!-- place holder for include('src/blocks/head/cookieConsent/cookieConsentScript.html') -->
+
+		<!-- Tawk Chatbox -->
+		<!-- place holder for include('src/blocks/tawk.html') -->
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+		<script>
+
+			document.addEventListener("DOMContentLoaded", function () { fetchBlogPosts() })
+
+
+			async function fetchBlogPosts() {
+
+				const feedUrl = 'https://blog.tradedutyrefund.com/feed.xml'; // Replace with the actual feed URL
+				const response = await fetch(feedUrl);
+				const text = await response.text();
+
+				// Parse the XML
+				const parser = new DOMParser();
+				const xml = parser.parseFromString(text, "application/xml");
+
+				// Extract items
+				const items = xml.querySelectorAll("item"); // Adjust selector if feed uses <item> instead of <entry>
+				const blogGallery = document.getElementById('blog-gallery');
+				blogGallery.innerHTML = ''; // Clear the gallery
+
+				// Loop through the latest 4 posts
+				for (let i = 0; i < Math.min(4, items.length); i++) {
+					const item = items[i];
+					const title = item.querySelector("title").textContent;
+					const link = item.querySelector("link").textContent;
+					const pubDate = item.querySelector("pubDate").textContent;
+					const image = item.querySelector("image").textContent;; // Adjust selector based on Atom namespace
+
+					// Create the HTML structure for each entry
+					const entryHtml = `
+
+					<div class="col-md-4">
+							<div class="card">
+								<img src="${image}" class="card-img-top" alt="${title}">
+								<div class="card-body">
+									<h4 class="card-title">${title}</h4>
+									<p class="card-text">${description}</p>
+									<a href="${link}" class="btn btn-primary">Read More</a>
+								</div>
+							</div>
+						</div>
+
+
+                <div class="entry col-md-6">
+                    <div class="grid-inner row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="entry-image">
+                                <a href="${link}"><img src="${image}" alt="${title}"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mt-3 mt-lg-0">
+                            <span class="before-heading fst-normal">${new Date(pubDate).toLocaleDateString()}</span>
+                            <div class="entry-title text-transform-none">
+                                <h3 class="fw-normal"><a href="${link}">${title}</a></h3>
+                            </div>
+                            <div class="entry-content">
+                                <a href="${link}" class="more-link">Read more <i class="uil uil-angle-right-b"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+					console.log("there")
+					// Append the entry to the gallery
+					blogGallery.innerHTML += entryHtml;
+				}
+			}
+
+
+		</script>
+
+</body>
+
+</html>

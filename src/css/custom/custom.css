@@ -1,0 +1,43 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+:root {
+  --cnvs-themecolor: #358f9c;
+  --cnvs-themecolor-rgb: 53, 143, 156;
+  --cnvs-themecolor-dark: #1f555d;
+  --cnvs-themecolor-dark-rgb: 31, 85, 93;
+  --cnvs-themecolor-light: #8cd6e2;
+  --cnvs-page-title-color: white;
+  --cnvs-heading-color: white;
+  --cnvs-body-font: "Roboto", sans-serif;
+  --cnvs-primary-font: "Signika Negative", sans-serif;
+  --cnvs-secondary-font: "Signika Negative", sans-serif;
+  --bs-primary: #358f9c;
+  --bs-body-font-family: "Roboto", "Signika Negative", sans-serif;
+  --bs-dark: var(--cnvs-themecolor-dark);
+  --bs-dark-rgb: var(--cnvs-themecolor-dark-rgb);
+  --cnvs-page-title-subtitle-size: 1.5rem;
+  --cnvs-body-bg: transparent;
+  /* Light Cookie Consent overlay. Dark mode is further down in this file */
+  --cc-overlay-bg: rgba(219, 232, 255, 0.85) !important;
+}
+
+.page-title-content span {
+  color: white;
+}
+
+.slider-caption .h2 {
+  font-size: 3.5rem;
+}
+
+.dark {
+  --cnvs-contrast-bg: var(--cnvs-themecolor-dark);
+}
+
+.parallax-bg {
+  filter: blur(1px);
+}

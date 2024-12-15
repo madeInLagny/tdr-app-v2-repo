@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{noIndex.description}}$",
+	"title": "${{noIndex.title}}$",
+	"path": "${{noIndex.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<meta name="robots" content="noindex" />
+
+	<!-- Only Required if Icons are shown on page -->
+	@@include('src/blocks/head/cssFontIcons.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id=" wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+		<!-- Hero Section
+		============================================= -->
+		<section id="slider" class="slider-element block-hero-19">
+
+			<div class="container mt-6">
+				<div class="lightSamaritan-panel-bg rounded-3">
+					<div class="row align-items-center">
+						<div class="col-lg-6 p-5 p-md-6">
+							<div class="mb-lg-6">
+								<h1 class="display-6 fw-semibold text-darkSamaritan">${{message-sent-success.heading}}$</h1>
+								<h2 class="display-7 text-darkSamaritan">${{message-sent-success.subheading}}$</h2>
+								<a class="btn btn-primary" type="button" href="/">${{message-sent-success.label}}$</a>
+
+							</div>
+						</div>
+						<div class="col-lg-6 p-5 p-md-6">
+							<img src="./images/svg/undraw_opened_re_i38e.svg" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		<!-- place holder for include('src/blocks/head/cookieConsent/cookieConsentScript.html') -->
+
+		<!-- Tawk Chatbox -->
+		<!-- place holder for include('src/blocks/tawk.html') -->
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+</body>
+
+</html>

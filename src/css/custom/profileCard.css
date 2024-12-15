@@ -1,0 +1,143 @@
+/* ----------------------------------------------------------------
+	ProfileCard CSS
+-----------------------------------------------------------------*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --lightColor: #8aced7;
+  --darkColor: #0c6774;
+  --linearGradient: linear-gradient(
+    to bottom,
+    #8aced7,
+    #83c8dc,
+    #7fc2df,
+    #81bbe2,
+    #88b3e2,
+    #7faad9,
+    #77a2d0,
+    #6e99c7,
+    #538db4,
+    #39819f,
+    #22748a,
+    #0c6774
+  );
+
+  background-image: var(--linearGradient);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Roboto", sans-serif;
+  color: #b3afbf;
+}
+
+.card {
+  padding: 15px;
+  width: 350px;
+  background: var(--darkColor);
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.cover-photo {
+  position: relative;
+  background-size: cover;
+  height: 180px;
+  border-radius: 5px 5px 0 0;
+}
+
+.profile {
+  position: absolute;
+  width: 120px;
+  bottom: -60px;
+  left: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--lightColor);
+  background: var(--linearGradient);
+  padding: 5px;
+}
+
+.profile-name {
+  font-size: 20px;
+  margin: 25px 0 0 120px;
+}
+
+.profile-name h3 {
+  margin: 0;
+  color: #fff;
+}
+
+.about {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--lightColor);
+  margin-bottom: 0px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.contactItem {
+  display: flex;
+  gap: 1rem;
+  color: var(--lightColor);
+  text-align: left;
+}
+
+.contactItem svg {
+  height: 1.3rem;
+  fill: var(--lightColor);
+}
+
+.contactItem a {
+  color: var(--lightColor);
+  text-decoration: none;
+}
+
+.downloadVCard {
+  cursor: pointer;
+}
+
+.button-63 {
+  align-items: center;
+  background: var(--lightColor);
+  color: var(--darkColor);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 6vw;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.button-63:active,
+.button-63:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-63 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}

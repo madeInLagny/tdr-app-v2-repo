@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{e-book-a-practical-guide-to-customs-duties-on-returns.description}}$",
+	"title": "${{e-book-a-practical-guide-to-customs-duties-on-returns.title}}$",
+	"path": "${{e-book-a-practical-guide-to-customs-duties-on-returns.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<style>
+		.vh-70 {
+			height: 70vh;
+		}
+	</style>
+
+</head>
+
+<body class="stretched samaritan-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		})
+		<!-- end of header
+		============================================= -->
+		<div class="section bg-transparent my-0 my-lg-5 pb-0 pb-lg-5">
+			<div class="container mw-md py-3">
+					<div class="row gy-5">
+							<div class="col-sm-9">
+									<div class="fs-6 op-07 mb-3 text-lightSamaritan">${{e-book-a-practical-guide-to-customs-duties-on-returns.subtitle}}$</div>
+									<h3 class="display-3 mb-0 fw-normal">
+											${{e-book-a-practical-guide-to-customs-duties-on-returns.title-part1}}$<span class="font-secondary fw-bold fst-italic text-lightSamaritan"> ${{e-book-a-practical-guide-to-customs-duties-on-returns.title-part2}}$</span>
+									</h3>
+							</div>
+
+							<div class="col-md-4">
+									<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">${{e-book-a-practical-guide-to-customs-duties-on-returns.about-title}}$</h2>
+									<p class="text-lightSamaritan">${{e-book-a-practical-guide-to-customs-duties-on-returns.about-description}}$</p>
+									<h4 class="mb-3 fw-normal font-body">
+											<i class="bi-check-circle-fill me-1 color"></i> ${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet1}}$
+									</h4>
+									<h4 class="mb-3 fw-normal font-body">
+											<i class="bi-check-circle-fill me-1 color"></i> ${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet2}}$
+									</h4>
+									<h4 class="mb-3 fw-normal font-body">
+											<i class="bi-check-circle-fill me-1 color"></i> ${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet3}}$
+									</h4>
+									<h4 class="mb-3 fw-normal font-body">
+											<i class="bi-check-circle-fill me-1 color"></i> ${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet4}}$
+									</h4>
+									<h4 class="mb-3 fw-normal font-body">
+											<i class="bi-check-circle-fill me-1 color"></i> ${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet5}}$
+									</h4>
+							</div>
+
+							<div class="col-md-8 text-center">
+									<img src="./images/eBook/a-practical-guide-to-customs-duties-on-returns.webp" class="rounded-6 vh-70" alt="${{e-book-a-practical-guide-to-customs-duties-on-returns.image-alt}}$">
+							</div>
+					</div>
+			</div>
+	</div>
+
+	<section id="content">
+			<div class="container">
+					<div class="row">
+							<!-- Contact Form Overlay -->
+							<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
+									<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-title}}$</h2>
+									<p class="text-lightSamaritan">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-description}}$</p>
+									<div class="">
+											<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit" method="post" onSubmit="addSpinner()">
+													<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+													<input id="redirectTo" type="hidden" name="redirectTo" value="">
+													<input type="hidden" name="subject" value="Autom-Ebook1-Request">
+													<input type="text" name="honeypot" style="display:none">
+
+													<div class="col-md-6 form-group">
+															<label for="firstName">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-firstname-label}}$</label>
+															<input type="text" id="firstName" name="$firstName" class="form-control required" required>
+													</div>
+
+													<div class="col-md-6 form-group">
+															<label for="name">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-name-label}}$</label>
+															<input type="text" id="name" name="name" class="form-control required" required>
+													</div>
+
+													<div class="w-100"></div>
+
+													<div class="col-md-6 form-group">
+															<label for="email">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-email-label}}$</label>
+															<input type="email" id="email" name="email" class="form-control" required>
+													</div>
+
+													<div class="col-md-6 form-group">
+															<label for="company">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-company-label}}$</label>
+															<input type="text" id="company" name="$company" class="form-control" required>
+													</div>
+
+													<div class="w-100"></div>
+
+													<div class="col-md-6 form-group">
+															<label for="title">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-title-label}}$</label>
+															<input type="text" id="title" name="$title" class="form-control" required>
+													</div>
+
+													<div class="col-md-6 form-group d-flex flex-column justify-content-center mb-0">
+															<div>
+																	<input id="radio-4" class="radio-style" name="$subscribeNewsletter" type="radio" required>
+																	<label for="radio-4" class="radio-style-1-label">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-subscribe-label}}$</label>
+															</div>
+															<div>
+																	<input id="radio-5" class="radio-style" name="radio-group-1" type="radio">
+																	<label for="radio-5" class="radio-style-1-label">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-notsubscribe-label}}$</label>
+															</div>
+													</div>
+
+													<div class="w-100"></div>
+
+													<div class="col-md-12 form-group">
+															<button class="btn btn-light" type="submit" value="Submit">
+																	<span id="btn-spinner" aria-hidden="true"></span>
+																	<span class="visually-hidden" role="status">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-loading}}$</span>
+																	${{e-book-a-practical-guide-to-customs-duties-on-returns.form-submit}}$
+															</button>
+													</div>
+											</form>
+									</div>
+							</div>
+					</div>
+			</div>
+	</section>
+
+	</div>
+	@@include('src/blocks/footer.html',{
+	"bg-color":"var(--samaritan)"
+	})
+	<!-- Javascripts
+		============================================= -->
+	<!-- place holder for include('src/blocks/head/cookieConsent/cookieConsentScript.html') -->
+
+	<!-- Tawk Chatbox -->
+	<!-- place holder for include('src/blocks/tawk.html') -->
+
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
+
+	<!-- Update of the redirect address -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Get the current domain
+			const currentDomain = window.location.origin;
+
+			// Construct the new URL path
+			const newPath = "/ebook-download-page.html";
+
+			// Combine the domain and the new path
+			const newURL = currentDomain + newPath;
+
+			// Update the value of the input field
+			const redirectToInput = document.getElementById("redirectTo");
+			if (redirectToInput) {
+				redirectToInput.value = newURL;
+			}
+		});
+
+		function addSpinner() {
+			const spinnerElement = document.getElementById("btn-spinner");
+			spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+		}
+
+	</script>
+
+
+</body>
+
+</html>

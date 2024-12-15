@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{index.description}}$",
+	"title": "${{index.title}}$",
+	"url": "${{index.domain}}$",
+	"urlFR":"${{index.domainFR}}$",
+	"urlIT":"${{index.domainIT}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- CSS for index -->
+	<link rel="stylesheet" href="./css/custom/index.css">
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+
+</head>
+
+<body class="stretched dynamic-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)"
+		})
+		<!-- end of header -->
+
+		<section id="slider" class="slider-element min-vh-100 dark include-header">
+			<div class="slider-inner">
+
+				<div class="container">
+					<div class="slider-caption slider-caption-center gap-3">
+						<h1 class="h2" data-animate="fadeInUp">${{index.header}}$</h1>
+						<div class="subtitle" data-animate="fadeIn" data-delay="1000">
+							${{index.subtitle}}$<br>${{index.checkValue}}$<br>
+							<a href="${{solutions-for-us-shippers.path}}$" class="button-circle">US</a>
+							<a href="${{solutions-for-eu-shippers.path}}$" class="button-circle">EU</a>
+							<a href="${{solutions-for-uk-shippers.path}}$" class="button-circle">UK</a>
+							<a href="${{solutions-for-all-shippers.path}}$" class="button-circle">${{index.all}}$</a><br>
+							<span>${{index.shippers}}$</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+		<!-- World Map SVG Overlay -->
+		@@include('src/blocks/homePageOverlay.html')
+		<!-- end World Map Overlay -->
+
+		<!-- Footer -->
+		@@include('src/blocks/footer.html',{
+		"bg-color":"#677EC4"
+		})
+		<!-- end Footer -->
+
+	</div><!-- #wrapper end -->
+
+
+	<!-- Javascripts
+	============================================= -->
+	<!-- place holder for include('src/blocks/head/cookieConsent/cookieConsentScript.html') -->
+	<!-- Tawk Chatbox -->
+	<!-- place holder for include('src/blocks/tawk.html') -->
+
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>

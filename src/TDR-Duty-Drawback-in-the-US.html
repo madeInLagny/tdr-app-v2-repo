@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{index.language}}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+  <!-- Google Tag Manager modified to comply with cookie consent-->
+  @@include('src/blocks/head/cookieConsent/headScript.html')
+  <!-- End Google Tag Manager -->
+
+  <!-- Metatags Import -->
+  @@include('src/blocks/head/metatags.html', {
+  "description": "${{TDR-Duty-Drawback-in-the-US.description}}$",
+  "title": "${{TDR-Duty-Drawback-in-the-US.title}}$",
+  "path": "${{TDR-Duty-Drawback-in-the-US.path}}$",
+  })
+
+
+  <!-- CSS imports -->
+  @@include('src/blocks/head/cssImports.html')
+
+  <!-- Only Required if Icons are shown on page -->
+  @@include('src/blocks/head/cssFontIcons.html')
+
+  <!-- Only Required if darkBlue color is required -->
+  <link rel="stylesheet" href="./css/custom/darkBlue.css">
+
+  <!-- Flip Cards -->
+  @@include('src/css/custom/flipCards.html',{
+  "front-text-color":"white",
+  "back-bg-color":"var(--darkerBlue)",
+  "back-text-color":"#fafafa",
+  "link-color":"var(--lightBlue)",
+  "bg-image-url":"url(./images/darkBlueCardBg.webp)"
+  })
+
+</head>
+
+<body class="stretched darkBlue-background page-transition" data-loader="2" data-animation-in="fadeIn"
+  data-speed-in="1500" data-animation-out="fadeOut" data-speed-out="800">
+  <div id="wrapper">
+    @@include('src/blocks/header.html',{
+    "header-bg":"var(--darkBlue)",
+    "submenu-bg":"var(--darkerBlue)",
+    "menu-text-hover":"var(--lightBlue)"
+    })
+
+    <!-- Page Title
+		============================================= -->
+    <section class="page-title page-title-parallax parallax dark">
+      <img src="./images/TDR-Duty-Drawback-in-the-US.webp" class="parallax-bg">
+      <div class="container">
+        <div class="page-title-row">
+
+          <div class="page-title-content" data-animate="fadeInUp">
+            <h1 class="text-darkBlue">${{TDR-Duty-Drawback-in-the-US.name}}$</h1>
+            <span class="text-darkBlue">${{TDR-Duty-Drawback-in-the-US.subtitle}}$</span>
+          </div>
+        </div>
+      </div>
+    </section><!-- .page-title end -->
+
+    <!-- Content
+		============================================= -->
+    <section id="content" class="darkBlue-background">
+      <div class="content-wrap">
+        <div class="container">
+
+          <div class="block-hero-25">
+
+            <div class="row align-items-lg-center gutter-50 flex-wrap">
+              <div class="col-lg-6">
+
+                @@include('src/blocks/SVGAnimations/SVG-Duty-Drawback-in-the-US.html')
+              </div>
+
+              <div class="col-lg-6 align-self-center">
+                <p class="h2 fw-semibold lh-X mb-5">${{TDR-Duty-Drawback-in-the-US.reclaim_duties}}$</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Feature boxes start -->
+
+        <div class="container">
+          <div class="css-grid">
+            <!-- Card 1-->
+            <div class="flip-card-2">
+              <div class="flip-card-2-inner">
+                <div class="front">
+                  <div class="text-wrapper">
+                    <i class="bi-question-circle h1 mb-2"></i>
+                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.what_is_duty_drawback}}$</h3>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>${{TDR-Duty-Drawback-in-the-US.drawback_refund_description}}$</p>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2-->
+            <div class="flip-card-2">
+              <div class="flip-card-2-inner">
+                <div class="front">
+                  <div class="text-wrapper">
+                    <i class="bi-bag-fill h1 mb-2"></i>
+                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.what_qualifies_for_duty_drawback}}$</h3>
+                  </div>
+                </div>
+                <div class="back">
+                  <span class="lead text-left">${{TDR-Duty-Drawback-in-the-US.eligible_merchandise}}$</span>
+                  <ul class="card-ul">
+                    <li>${{TDR-Duty-Drawback-in-the-US.imported_for_manufacturing}}$</li>
+                    <li>${{TDR-Duty-Drawback-in-the-US.imported_but_unused}}$</li>
+                    <li>${{TDR-Duty-Drawback-in-the-US.substituted_merchandise}}$</li>
+                    <li>${{TDR-Duty-Drawback-in-the-US.rejected_merchandise}}$</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Card 3-->
+            <div class="flip-card-2">
+              <div class="flip-card-2-inner">
+                <div class="front">
+                  <div class="text-wrapper">
+                    <i class="bi-people-fill h1 mb-2"></i>
+                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.who_qualifies_for_duty_drawback}}$</h3>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>${{TDR-Duty-Drawback-in-the-US.eligibility_requirements}}$</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4-->
+            <div class="flip-card-2">
+              <div class="flip-card-2-inner">
+                <div class="front">
+                  <div class="text-wrapper">
+                    <i class="bi-cash-coin h1 mb-2"></i>
+                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.how_much_is_duty_drawback}}$</h3>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>${{TDR-Duty-Drawback-in-the-US.refund_percentage}}$</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5-->
+            <div class="flip-card-2">
+              <div class="flip-card-2-inner">
+                <div class="front">
+                  <div class="text-wrapper">
+                    <i class="bi-arrow-left-right h1 mb-2"></i>
+                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.import_ecom_orders}}$</h3>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>${{TDR-Duty-Drawback-in-the-US.reclaim_import_duties}}$</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6-->
+            <div class="flip-card-2">
+              <div class="flip-card-2-inner">
+                <div class="front">
+                  <div class="text-wrapper">
+                    <i class="bi-search h1 mb-2"></i>
+                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.identify_unused_goods}}$</h3>
+                  </div>
+                </div>
+                <div class="back">
+                  <span class="lead text-left">${{TDR-Duty-Drawback-in-the-US.duties_on_unused_goods}}$</span>
+                  <ul class="card-ul">
+                    <li>
+                      <strong>${{TDR-Duty-Drawback-in-the-US.direct_identification_title}}$</strong>:<br>
+                      ${{TDR-Duty-Drawback-in-the-US.direct_identification}}$
+                    </li>
+                    <li>
+                      <strong>${{TDR-Duty-Drawback-in-the-US.substitution_title}}$</strong>:<br>
+                      ${{TDR-Duty-Drawback-in-the-US.substitution_method}}$
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 7-->
+            <div class="flip-card-2">
+              <div class="flip-card-2-inner">
+                <div class="front">
+                  <div class="text-wrapper">
+                    <i><img class="logo-default" srcset="./images/logo.png, ./images/logo@2x.png 2x"
+                        src="./images/logo@2x.png" alt="TDR Logo"></i>
+                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.tdr_value}}$</h3>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>${{TDR-Duty-Drawback-in-the-US.tdr_broker_services}}$ <a class="text-decoration-underline"
+                      href="${{ index.domain }}$">${{TDR-Duty-Drawback-in-the-US.discover_more}}$</a> ${{TDR-Duty-Drawback-in-the-US.benefit_organization}}$
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @@include('src/blocks/seamlessDutyRefund.html',{
+        "text-color":"text-darkBlue"
+        })
+
+    </section>
+    <!-- #content end -->
+    @@include('src/blocks/contactUsCallOut.html')
+
+    @@include('src/blocks/footer.html',{
+    "bg-color":"var(--darkBlue)"})
+  </div>
+  <!-- Javascripts
+	============================================= -->
+  <!-- place holder for include('src/blocks/head/cookieConsent/cookieConsentScript.html') -->
+
+  <!-- Tawk Chatbox -->
+  <!-- place holder for include('src/blocks/tawk.html') -->
+
+  <!-- Canvas Scripts -->
+  <script src="js/functions.js"></script>
+
+
+</body>
+
+</html>

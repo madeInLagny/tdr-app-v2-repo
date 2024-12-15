@@ -1,0 +1,19 @@
+:root {
+  --darkBlue: #1e3c72;
+  --lightBlue: #b9c1d8;
+  --darkerBlue: #19315e;
+}
+
+.text-darkBlue {
+  color: var(--darkBlue) !important;
+}
+
+.darkBlue-background {
+  background-image: url('data:image/svg+xml,<svg id="visual" viewBox="0 0 960 540" width="960" height="540" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs><filter id="blur1" x="-10%" y="-10%" width="120%" height="120%"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="163" result="effect1_foregroundBlur"></feGaussianBlur></filter></defs><rect width="960" height="540" fill="%231e3c72"></rect><g filter="url(%23blur1)"><circle cx="240" cy="142" fill="%236C7FA5" r="363"></circle><circle cx="776" cy="331" fill="%231e3c72" r="363"></circle><circle cx="58" cy="52" fill="%236C7FA5" r="363"></circle><circle cx="365" cy="434" fill="%236C7FA5" r="363"></circle><circle cx="24" cy="408" fill="%231e3c72" r="363"></circle><circle cx="921" cy="460" fill="%236C7FA5" r="363"></circle></g></svg>');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  --cnvs-heading-color: white;
+  fill: white;
+  --cnvs-link-color: var(--darkBlue);
+}

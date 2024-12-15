@@ -1,0 +1,60 @@
+.dynamic-background {
+  background: linear-gradient(-45deg,
+      #15393e,
+      #358f9c,
+      #829ca0,
+      #677ec4,
+      #183280,
+      #0e1e4c);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.button-circle {
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cnvs-themecolor);
+  border: none;
+  border-radius: 20%;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button-circle:hover {
+  background-color: var(--cnvs-themecolor-dark);
+}
+
+.subtitle {
+  align-items: center;
+  gap: 5px;
+  font-size: 1.7rem;
+}
+
+@media (max-width: 576px) {
+  #slider .slider-inner {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-start;
+    top: 50px;
+  }
+}

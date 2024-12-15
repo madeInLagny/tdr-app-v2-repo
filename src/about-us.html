@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{about-us.description}}$",
+	"title": "${{about-us.title}}$",
+	"path": "${{about-us.path}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+	<style>
+		.parallax-bg {
+			filter: brightness(0.8);
+		}
+
+		:root {
+			--cnvs-themecolor: var(--lightSamaritan);
+			--bs-body-color: var(--lightSamaritan);
+		}
+	</style>
+</head>
+
+<body class="stretched samaritan-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+		<!-- Page Title
+		============================================= -->
+		<section class="page-title page-title-parallax parallax dark include-header" style="padding: 250px 0;">
+
+			<img src="./images/Lagny.webp" class="parallax-bg figure-img" alt="${{about-us.bgImgCaption}}$">
+
+			<div class="container">
+				<div class="page-title-row">
+					<div class="page-title-content">
+						<h1>${{about-us.about-us}}$</h1>
+						<span>${{about-us.subtitle}}$</span>
+					</div>
+				</div>
+			</div>
+
+		</section><!-- .page-title end -->
+		<div class="container d-flex justify-content-center">
+			<figcaption class="figure-caption
+			text-lightSamaritan">${{about-us.bgImgCaption}}$
+			</figcaption>
+		</div>
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="row col-mb-50 mb-0">
+
+						<div class="col-lg-4">
+
+							<div class="heading-block fancy-title border-bottom-0 title-bottom-border">
+								<h4>${{about-us.why-choose-title-part1}}$ <span>${{about-us.why-choose-title-part2}}$</span>.</h4>
+							</div>
+
+							${{about-us.why-choose-description}}$
+							<ul class="px-4 px-md-0">
+								<li>
+									<strong>${{about-us.expertise-title}}$</strong>: ${{about-us.expertise-description}}$
+								</li>
+								<li>
+									<strong>${{about-us.comprehensive-title}}$</strong>: ${{about-us.comprehensive-description}}$
+								</li>
+								<li>
+									<strong>${{about-us.global-reach-title}}$</strong>: ${{about-us.global-reach-description}}$
+								</li>
+								<li>
+									<strong>${{about-us.protecting-margins-title}}$</strong>:
+									${{about-us.protecting-margins-description}}$
+								</li>
+							</ul>
+						</div>
+
+						<div class="col-lg-4">
+
+							<div class="heading-block fancy-title border-bottom-0 title-bottom-border">
+								<h4>${{about-us.mission-title-part1}}$ <span>${{about-us.mission-title-part2}}$</span>.</h4>
+							</div>
+							<p>
+								${{about-us.mission-paragraph1}}$
+							</p>
+							<p>
+								${{about-us.mission-paragraph2}}$
+							</p>
+						</div>
+						<div class="col-lg-4">
+							<div class="heading-block fancy-title border-bottom-0 title-bottom-border">
+								<h4>${{about-us.what-we-do-title-part1}}$ <span>${{about-us.what-we-do-title-part2}}$</span>.</h4>
+							</div>
+							${{about-us.what-we-do-description}}$
+							<ul class="px-4 px-md-0">
+								<li>
+									<strong>${{about-us.seamless-returns-title}}$</strong>: ${{about-us.seamless-returns-description}}$
+								</li>
+								<li>
+									<strong>${{about-us.customs-brokerage-title}}$</strong>: ${{about-us.customs-brokerage-description}}$
+								</li>
+								<li>
+									<strong>${{about-us.duty-recovery-title}}$</strong>: ${{about-us.duty-recovery-description}}$
+								</li>
+								<li>
+									<strong>${{about-us.comprehensive-support-title}}$</strong>:
+									${{about-us.comprehensive-support-description}}$
+								</li>
+							</ul>
+							<p>
+								${{about-us.final-paragraph}}$
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		<!-- place holder for include('src/blocks/head/cookieConsent/cookieConsentScript.html') -->
+
+		<!-- Tawk Chatbox -->
+		<!-- place holder for include('src/blocks/tawk.html') -->
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+</body>
+
+</html>

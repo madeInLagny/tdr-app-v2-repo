@@ -1,0 +1,31 @@
+:root {
+  --teal: #1e6672;
+  --lightTeal: #2e9caf;
+  --lighterTeal: #d5eff4;
+  --darkTeal: #13424a;
+}
+
+.text-teal {
+  color: var(--teal) !important;
+}
+
+.teal-background {
+  background-image: url('data:image/svg+xml,<svg id="visual" viewBox="0 0 960 540" width="960" height="540" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><defs><filter id="blur1" x="-10%" y="-10%" width="120%" height="120%"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend><feGaussianBlur stdDeviation="163" result="effect1_foregroundBlur"></feGaussianBlur></filter></defs><rect width="960" height="540" fill="%232e9caf"></rect><g filter="url(%23blur1)"><circle cx="432" cy="509" fill="%231e6672" r="363"></circle><circle cx="613" cy="25" fill="%232e9caf" r="363"></circle><circle cx="132" cy="296" fill="%231e6672" r="363"></circle><circle cx="341" cy="333" fill="%231e6672" r="363"></circle><circle cx="79" cy="522" fill="%232e9caf" r="363"></circle><circle cx="358" cy="69" fill="%231e6672" r="363"></circle></g></svg>');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  --cnvs-heading-color: white;
+  fill: white;
+  --cnvs-link-color: var(--teal);
+}
+
+.teal-background .feature-box h3,
+.teal-background .feature-text h3,
+.teal-background .feature-text .fbox-text,
+.teal-background .heading-block h2 {
+  color: var(--teal) !important;
+}
+
+.teal-background .fbox-content li {
+  color: var(--cnvs-contrast-600) !important;
+}

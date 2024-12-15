@@ -1,0 +1,45 @@
+<style>
+  #footer {
+    --cnvs-socialicon-color: @@text-color;
+    --cnvs-footer-bg: @@bg-color;
+    z-index: 10;
+  }
+
+  .dark #copyrights,
+  #copyrights.dark {
+    color: @@text-color;
+  }
+</style>
+
+<!-- Footer
+		============================================= -->
+<footer id="footer" class="dark">
+
+  <!-- Copyrights
+			============================================= -->
+  <div id="copyrights">
+    <div class="container">
+
+      <div class="row col-mb-30">
+
+        <div class="col-md-6 text-center text-md-start">
+          ${{footer.copyrights}}$ Trade Duty Refund.<br>
+        </div>
+
+        <div class="col-md-6 text-center text-md-end">
+          <div class="d-flex justify-content-center justify-content-md-end mb-2">
+
+            <a href="https://linkedin.com/company/tradedutyrefund"
+              class="social-icon border-transparent si-small me-0 h-bg-linkedin">
+              <i class="fa-brands fa-linkedin"></i>
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</footer>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{noIndex.description}}$",
+	"title": "${{noIndex.title}}$",
+	"path": "${{noIndex.path}}$",
+	})
+
+	<meta name="robots" content="noindex" />
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<style>
+		.heading-block h4 {
+			color: #645439
+		}
+
+		.btn-outline-primary {
+			--bs-btn-color: #645439;
+			--bs-btn-border-color: #645439;
+			--bs-btn-hover-color: #fff;
+			--bs-btn-hover-bg: #645439;
+			--bs-btn-hover-border-color: #645439;
+			--bs-btn-focus-shadow-rgb: 13, 110, 253;
+			--bs-btn-active-color: #fff;
+			--bs-btn-active-bg: #645439;
+			--bs-btn-active-border-color: #645439;
+			--bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+			--bs-btn-disabled-color: #645439;
+			--bs-btn-disabled-bg: transparent;
+			--bs-btn-disabled-border-color: #645439;
+			--bs-gradient: none;
+		}
+	</style>
+
+</head>
+
+<body class="stretched">
+
+<!-- Document Wrapper
+	============================================= -->
+<div id="wrapper">
+
+	<!-- Header
+		============================================= -->
+	<!-- header -->
+	@@include('src/blocks/header.html',{
+	"header-bg":"#fdedd2",
+	"submenu-bg":"#fdedd2",
+	"text-color":"#645439",
+	"text-color-hover":"#322a1c"
+	})
+	<!-- end of header -->
+
+	<section id="slider" class="slider-element min-vh-100 dark error404-wrap include-header"
+		style="background: url(images/404.jpg) left / cover no-repeat;">
+		<div class="slider-inner">
+
+			<div class="vertical-middle">
+				<div class="container text-center py-5 py-md-0">
+
+					<div class="error404">404</div>
+
+					<div class="heading-block border-bottom-0">
+						<h4>${{404.header}}$</h4>
+					</div>
+					<a type="button" class="btn btn-outline-primary" href="${{noIndex.path}}$">${{404.buttonLabel}}$</a>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- Footer -->
+	@@include('src/blocks/footer.html',{
+	"text-color":"#645439",
+	"bg-color":"#fdedd2"
+	})
+	<!-- end Footer -->
+
+</div><!-- #wrapper end -->
+
+
+<!-- Javascripts
+	============================================= -->
+<!-- place holder for include('src/blocks/head/cookieConsent/cookieConsentScript.html') -->
+<!-- Tawk Chatbox -->
+<!-- place holder for include('src/blocks/tawk.html') -->
+
+<!-- Canvas Scripts -->
+<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>
