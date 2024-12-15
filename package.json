@@ -5,7 +5,8 @@
     "gh-pages": "^6.0.0",
     "gulp": "^5.0.0",
     "gulp-file-include": "^2.3.0",
-    "gulp-i18n-localize": "^1.4.0"
+    "gulp-i18n-localize": "^1.4.0",
+    "gulp-sitemap": "^8.0.0"
   },
   "name": "tdr",
   "version": "1",

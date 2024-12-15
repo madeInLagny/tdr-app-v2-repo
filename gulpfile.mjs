@@ -4,6 +4,7 @@ import i18n from "gulp-i18n-localize";
 import path from "path";
 import { readdirSync, statSync } from "fs";
 import { deleteAsync } from "del";
+import sitemap from "gulp-sitemap";
 
 const paths = {
   specificHtml: [
@@ -37,7 +38,6 @@ const cleandist = () => {
     "dist/en/js",
     "dist/en/images",
     "dist/en/eBook",
-    /* "dist/report.csv", */
     // here we use a globbing pattern to match everything inside the `mobile` folder
     // we don't want to clean this file though so we negate the pattern
     /* "!dist/mobile/deploy.json", */
@@ -103,9 +103,24 @@ export const watchSpecificFiles = () => {
   gulp.watch(paths.assets.images, copyImages);
 };
 
+// Task to create a site map from every html file in the src directory
+export const createSiteMap = () => {
+  return gulp
+    .src(paths.specificHtml, {
+      read: false,
+    })
+    .pipe(
+      sitemap({
+        siteUrl: "https://tradedutyrefund.com",
+      })
+    )
+    .pipe(gulp.dest(paths.dist));
+};
+
 // Default task to build and watch all assets and files
 export default gulp.series(
   cleandist,
   gulp.parallel(buildSpecificHtml, copyCss, copyJs, copyImages, copyEBook),
+  createSiteMap,
   watchSpecificFiles
 );
