@@ -3,6 +3,7 @@
   --darkSamaritan: #243b4e;
   --lightSamaritan: #b1c0cd;
   --bs-body-color: white;
+  --cnvs-section-bg: var(--samaritan);
 }
 
 ul {

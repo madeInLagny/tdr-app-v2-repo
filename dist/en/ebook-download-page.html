@@ -295,16 +295,14 @@
 		<!-- Hero Section
 		============================================= -->
 		<section id="slider" class="slider-element block-hero-19">
-
 			<div class="container mt-6">
 				<div class="lightSamaritan-panel-bg rounded-3">
 					<div class="row align-items-center">
 						<div class="col-lg-6 p-5 p-md-6">
-
 							<div class="mb-lg-6">
 								<h1 class="display-6 fw-semibold text-darkSamaritan">Thank you!</h1>
 								<h2 class="display-7 text-darkSamaritan">You can start reading now...</h2>
-								<p>Depending on your browser settings, the file will either open or download.</p>
+								<p class="text-darkSamaritan">Depending on your browser settings, the file will either open or download.</p>
 								<div class="btn-group" role="group" aria-label="Button Group">
 									<a class="btn btn-primary" type="button"
 										href="./eBook/TDR eBook_A Practical Guide to Customs Duties on Returns.pdf"
@@ -319,8 +317,75 @@
 					</div>
 				</div>
 			</div>
-
 		</section>
+
+		<div class="section dark bg-transparent">
+			<!-- Title
+		============================================= -->
+<div class="container">
+  <div class="heading-block text-center m-0 border-0 pb-4">
+    <h2 class="h2">
+      Latest from the blog</h2>
+  </div>
+</div>
+
+
+<!-- Gallery
+		============================================= -->
+<div class="container">
+  <div id="blog-gallery" class="row posts-md col-mb-30">
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () { fetchBlogPosts() })
+  async function fetchBlogPosts() {
+
+    const feedUrl = 'https://blog.tradedutyrefund.com/feed.xml'; // Replace with the actual feed URL
+    const response = await fetch(feedUrl);
+    const text = await response.text();
+
+    // Parse the XML
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, "application/xml");
+
+    // Extract items
+    const items = xml.querySelectorAll("item"); // Adjust selector if feed uses <item> instead of <entry>
+    const blogGallery = document.getElementById('blog-gallery');
+    blogGallery.innerHTML = ''; // Clear the gallery
+
+    // Loop through the latest 4 posts
+    for (let i = 0; i < Math.min(4, items.length); i++) {
+      const item = items[i];
+      const title = item.querySelector("title").textContent;
+      const link = item.querySelector("link").textContent;
+      const pubDate = item.querySelector("pubDate").textContent;
+      const image = item.querySelector("image").textContent;
+
+      // Create the HTML structure for each entry
+      const entryHtml = `
+        <div class="col-lg-3 col-md-6">
+          <div class="entry">
+            <div class="entry-image">
+              <a href="${link}"><img src="${image}" alt="${title}" class="rounded"></a>
+            </div>
+            <div class="entry-title title-xs text-transform-none px-2">
+              <h3><a href="${link}">${title}</a></h3>
+            </div>
+            <div class="entry-meta px-2">
+              <ul class="ps-0">
+                <li><i class="uil uil-schedule"></i>${new Date(pubDate).toLocaleDateString()}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        `;
+      // Append the entry to the gallery
+      blogGallery.innerHTML += entryHtml;
+    }
+  }
+</script>
+		</div>
 
 		<style>
   #footer {

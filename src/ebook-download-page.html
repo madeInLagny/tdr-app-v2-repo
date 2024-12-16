@@ -46,16 +46,14 @@
 		<!-- Hero Section
 		============================================= -->
 		<section id="slider" class="slider-element block-hero-19">
-
 			<div class="container mt-6">
 				<div class="lightSamaritan-panel-bg rounded-3">
 					<div class="row align-items-center">
 						<div class="col-lg-6 p-5 p-md-6">
-
 							<div class="mb-lg-6">
 								<h1 class="display-6 fw-semibold text-darkSamaritan">${{ebook-download-page.title}}$</h1>
 								<h2 class="display-7 text-darkSamaritan">${{ebook-download-page.subtitle}}$</h2>
-								<p>${{ebook-download-page.description}}$</p>
+								<p class="text-darkSamaritan">${{ebook-download-page.description}}$</p>
 								<div class="btn-group" role="group" aria-label="Button Group">
 									<a class="btn btn-primary" type="button"
 										href="./eBook/TDR eBook_A Practical Guide to Customs Duties on Returns.pdf"
@@ -70,8 +68,11 @@
 					</div>
 				</div>
 			</div>
-
 		</section>
+
+		<div class="section dark bg-transparent">
+			@@include('src/blocks/blog-gallery.html')
+		</div>
 
 		@@include('src/blocks/footer.html',{
 		"bg-color":"var(--samaritan)"
