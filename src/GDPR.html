@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{noIndex.description}}$",
+	"title": "${{noIndex.title}}$",
+	"path": "${{noIndex.path}}$",
+	})
+
+	<meta name="robots" content="noindex" />
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+		<!-- Page Title
+		============================================= -->
+		<section class="page-title bg-transparent border-0">
+			<div class="container">
+				<div class="page-title-row pt-5 pb-3">
+					<div class="page-title-content">
+						<span class="color fw-medium my-0">We are GPR compliant</span>
+						<h1>
+							<div class="fw-bold display-5">Our Privacy Policy</div>
+						</h1>
+					</div>
+				</div>
+			</div>
+		</section><!-- .page-title end -->
+
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<h1>General Data Protection Regulation (GDPR) Compliance</h1>
+
+					<p>We are committed to protecting and respecting your privacy in accordance with the EU General Data
+						Protection Regulation (GDPR). This page outlines how we collect, use, and protect your personal data, as
+						well as your rights concerning your data.</p>
+
+					<h2>What Data We Collect</h2>
+					<p>We collect the following personal data when you use our website:</p>
+					<ul>
+						<li>First Name</li>
+						<li>Last Name</li>
+						<li>Email Address</li>
+						<li>Company Name</li>
+						<li>Title</li>
+						<li>Message content (on our contact-us page)</li>
+						<li>Your preference regarding subscription to our newsletter (selected on our eBook download page)</li>
+					</ul>
+
+					<h2>How We Use Your Data</h2>
+					<p>The personal data we collect is used solely for the following purposes:</p>
+					<ul>
+						<li>To respond to your inquiries submitted via the contact-us page.</li>
+						<li>To send you the requested eBook.</li>
+						<li>To provide you with updates about new products, services, and other relevant information if you have
+							opted in to receive our newsletter.</li>
+						<li>For internal marketing and business development purposes.</li>
+					</ul>
+					<p>We do not sell, share, or disclose your personal data to third parties.</p>
+
+					<h2>Data Retention</h2>
+					<p>We retain your personal data for as long as it is necessary to fulfill the purposes described above or as
+						required by law. You may request that we delete your data at any time (see "Your Rights" below).</p>
+
+					<h2>Your Rights</h2>
+					<p>Under the GDPR, you have the following rights concerning your personal data:</p>
+					<ul>
+						<li><strong>Access:</strong> You can request a copy of the personal data we hold about you.</li>
+						<li><strong>Rectification:</strong> You can request that we correct any inaccuracies in your personal data.
+						</li>
+						<li><strong>Erasure:</strong> You can request that we delete your personal data.</li>
+						<li><strong>Restriction:</strong> You can request that we restrict processing of your personal data.</li>
+						<li><strong>Objection:</strong> You can object to the processing of your personal data for certain purposes,
+							such as marketing.</li>
+						<li><strong>Data Portability:</strong> You can request that we transfer your personal data to another
+							organization or to you.</li>
+					</ul>
+					<p>To exercise any of these rights, please <a href="${{send-us-a-message.path}}$"
+							class="text-decoration-underline">leave us a message</a>.
+
+					<h2>Consent</h2>
+					<p>When submitting your information through our website, you are required to actively consent to the
+						processing of your personal data. This includes confirming your agreement to receive our newsletter if you
+						have opted in.</p>
+
+					<h2>Security</h2>
+					<p>We take the security of your personal data seriously and use appropriate technical and organizational
+						measures to protect it against unauthorized access, alteration, disclosure, or destruction.</p>
+
+					<h2>Contact Us</h2>
+					<p>If you have any questions or concerns about this GDPR compliance statement or how your personal data is
+						handled, please <a href="${{send-us-a-message.path}}$" class="text-decoration-underline">leave us a
+							message</a></p>
+
+					<p>For more information about your rights under GDPR, you can visit the European Commission's website: <a
+							href="https://ec.europa.eu/info/law/law-topic/data-protection_en"
+							target="_blank">https://ec.europa.eu/info/law/law-topic/data-protection_en</a>.</p>
+
+				</div>
+			</div>
+		</section>
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+</body>
+
+</html>

@@ -2,6 +2,11 @@
   --samaritan: #3c6382;
   --darkSamaritan: #243b4e;
   --lightSamaritan: #b1c0cd;
+  --bs-body-color: white;
+}
+
+ul {
+  padding-left: 2em;
 }
 
 .text-darkSamaritan {
