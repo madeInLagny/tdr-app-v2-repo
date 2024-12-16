@@ -1,16 +1,16 @@
 {
   "path": "solutions-for-all-shippers.html",
   "title": "TDR | End-to-End Duty Refund Solutions for eCommerce Shippers",
-  "description": "Simplify global eCommerce with Trade Duty Refund's comprehensive duty and tax recovery services. Reclaim import duties on US and European returns, optimize your supply chain, and boost profitability effortlessly.",
+  "description": "Simplify global cross-border sales with Trade Duty Refund's comprehensive duty and tax recovery services. Reclaim import duties on US and European returns, optimize your supply chain, and boost profitability effortlessly.",
   "alert-text": "We have dedicated solutions for",
   "us-link-text": "US",
   "eu-link-text": "EU",
   "uk-link-text": "UK",
   "shippers": "shippers",
   "alert-ending": "Check them out!",
-  "subtitle": "TDR for eCom Shippers",
-  "header": "End-to-End Duty Refund Solution for eCom Shippers",
-  "sub-header": "Unlock hidden savings in your eCommerce supply chain with our specialized duty and tax recovery services.",
+  "subtitle": "TDR for Cross-border Shippers",
+  "header": "End-to-End Duty Refund Solution for Cross-border Shippers",
+  "sub-header": "Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.",
   "integration-title": "We Integrate and Add Value to Your Supply Chain",
   "step1-title": "Order Shipped",
   "step1-description": "The order has left the warehouse to its international buyer.",
@@ -21,5 +21,5 @@
   "step2-cta-suffix": "services.",
   "step3-title": "Order re-imported",
   "step3-description": "The order is now back, ready to be processed at the returns warehouse.",
-  "discovery-title": "Discover What's In It For eCom Shippers"
+  "discovery-title": "Discover What's In It For Cross-border Shippers"
 }
