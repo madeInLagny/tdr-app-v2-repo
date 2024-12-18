@@ -9,12 +9,10 @@
 
 	<!-- Metatags Import -->
 	@@include('src/blocks/head/metatags.html', {
-	"description": "${{noIndex.description}}$",
-	"title": "${{noIndex.title}}$",
-	"path": "${{noIndex.path}}$",
+	"description": "${{privacy.description}}$",
+	"title": "${{privacy.title}}$",
+	"path": "${{privacy.path}}$",
 	})
-
-	<meta name="robots" content="noindex" />
 
 	<!-- CSS imports -->
 	@@include('src/blocks/head/cssImports.html')
@@ -100,7 +98,7 @@
 						<li><strong>${{privacy.rights-objection-title}}$:</strong> ${{privacy.rights-objection}}$</li>
 						<li><strong>${{privacy.rights-portability-title}}$:</strong> ${{privacy.rights-portability}}$</li>
 					</ul>
-					<p>${{privacy.rights-exercise}}$ <a href="${{send-us-a-message.path}}$"
+					<p>${{privacy.rights-exercise}}$ <a href="${{contact-us.path}}$"
 							class="text-decoration-underline">${{privacy.leave-message}}$</a></p>
 
 					<h2>${{privacy.consent-title}}$</h2>
@@ -110,7 +108,7 @@
 					<p>${{privacy.security-description}}$</p>
 
 					<h2>${{privacy.contact-title}}$</h2>
-					<p>${{privacy.contact-description}}$ <a href="${{send-us-a-message.path}}$"
+					<p>${{privacy.contact-description}}$ <a href="${{contact-us.path}}$"
 							class="text-decoration-underline">${{privacy.leave-message}}$</a></p>
 
 					<p>${{privacy.more-info}}$ <a href="https://ec.europa.eu/info/law/law-topic/data-protection_en"

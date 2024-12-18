@@ -20,14 +20,14 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="IE=edge" />
 
-<title>Send us a message | Trade Duty Refund</title>
-<meta name="description" content="Get in touch with us easily. Use our simple contact form to send us your name, email, and message. We're here to help and respond within 24 business hours." xmlns:og="http://opengraphprotocol.org/schema/" />
+<title>Contact TDR | Your Global Trade Partner</title>
+<meta name="description" content="" xmlns:og="http://opengraphprotocol.org/schema/" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Send us a message | Trade Duty Refund" xmlns:og="http://opengraphprotocol.org/schema/" />
-<meta property="og:description" content="Get in touch with us easily. Use our simple contact form to send us your name, email, and message. We're here to help and respond within 24 business hours." xmlns:og="http://opengraphprotocol.org/schema/" />
-<meta property="og:url" content="https://tradedutyrefund.com/send-us-a-message.html" xmlns:og="http://opengraphprotocol.org/schema/" />
+<meta property="og:title" content="Contact TDR | Your Global Trade Partner" xmlns:og="http://opengraphprotocol.org/schema/" />
+<meta property="og:description" content="" xmlns:og="http://opengraphprotocol.org/schema/" />
+<meta property="og:url" content="https://tradedutyrefund.com/contact-us.html" xmlns:og="http://opengraphprotocol.org/schema/" />
 <meta property="og:site_name" content="TradeDutyRefund.com" />
 <meta property="og:image" content="https://tradedutyrefund.com/images/OGImage.jpg"
   xmlns:og="http://opengraphprotocol.org/schema/" />
@@ -35,16 +35,16 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://tradedutyrefund.com/images/OGImage.jpg" />
 <meta property="twitter:domain" content="tradedutyrefund.com" />
-<meta property="twitter:url" content="https://tradedutyrefund.com/send-us-a-message.html" />
-<meta name="twitter:title" content="Send us a message | Trade Duty Refund" />
-<meta name="twitter:description" content="Get in touch with us easily. Use our simple contact form to send us your name, email, and message. We're here to help and respond within 24 business hours." />
+<meta property="twitter:url" content="https://tradedutyrefund.com/contact-us.html" />
+<meta name="twitter:title" content="Contact TDR | Your Global Trade Partner" />
+<meta name="twitter:description" content="" />
 <meta name="twitter:image" content="https://tradedutyrefund.com/images/OGImage.jpg" />
 
 <!-- HREF -->
-<!-- <link rel="alternate" hreflang="en" href="https://tradedutyrefund.com/send-us-a-message.html" />
-<link rel="alternate" hreflang="fr" href="https://fr.tradedutyrefund.com/send-us-a-message.html" />
-<link rel="alternate" hreflang="it" href="https://it.tradedutyrefund.com/send-us-a-message.html" />
-<link rel="alternate" hreflang="x-default" href="https://tradedutyrefund.com/send-us-a-message.html" />
+<!-- <link rel="alternate" hreflang="en" href="https://tradedutyrefund.com/contact-us.html" />
+<link rel="alternate" hreflang="fr" href="https://fr.tradedutyrefund.com/contact-us.html" />
+<link rel="alternate" hreflang="it" href="https://it.tradedutyrefund.com/contact-us.html" />
+<link rel="alternate" hreflang="x-default" href="https://tradedutyrefund.com/contact-us.html" />
  -->
 
 <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
@@ -291,7 +291,7 @@
 							<div class="fw-bold display-5">Contact Us</div>
 						</h1>
 						<span class="fw-light" style="max-width: 40rem;">
-							Need assistance? You’re in the right place! Drop us a message, and our team will get back to you within 24 business hours. We’re here to help with any questions or concerns you have.
+							Need assistance? You’re in the right place! Drop us a message, talk to us or ping us on social media. Whatever is best for you.
 						</span>
 					</div>
 				</div>
@@ -308,7 +308,7 @@
 					<div class="col-lg-4 col-padding py-lg-0">
 						<i class="fa-solid fs-2 fa-envelope mb-3"></i>
 						<h3 class="mb-1 fw-semibold">Send Us A Message</h3>
-						<p class="mb-5">Click on the icon at the bottom right of your screen to send us a message</p>
+						<p class="mb-5">Click on the icon at the bottom right of your screen to send us a message. We will reply within 24 business hours.</p>
 					</div>
 
 					<div class="col-lg-4 col-padding py-lg-0">
@@ -379,10 +379,56 @@
 </footer>
 		<!-- Javascripts
 		============================================= -->
-		include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js"></script>
+
+<script>
+  // Function to load the CDN script
+  function loadCDN(GDPR) {
+    var script = document.createElement('script');
+    script.src = GDPR ? "./js/cookieConsent/gdpr-config.js" : "./js/cookieConsent/row-config.js";
+    script.async = true;
+    document.body.appendChild(script);
+    script.onerror = function () {
+      console.error('Error loading CDN script.');
+    };
+  }
+
+  // Function to check if the user is in the EU
+  function checkEULocation() {
+    fetch('https://ipinfo.io/json')
+      .then(response => response.json())
+      .then(data => {
+        // Check if the country is in the EU
+        var euCountries = ['GB', 'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'];
+        if (euCountries.includes(data.country)) {
+          loadCDN(true);
+        } else {
+          loadCDN()
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching IP information:', error);
+      });
+  }
+
+  // Check the user's location on page load
+  checkEULocation();
+</script>
 
 		<!-- Tawk Chatbox -->
-		include('src/blocks/tawk.html')
+		<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/6527b233eb150b3fb9a0a8a6/1hchh06rt';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
 
 		<!-- Canvas Scripts -->
 		<script src="js/functions.js"></script>
