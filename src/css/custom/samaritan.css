@@ -93,6 +93,10 @@ form label {
   --bs-btn-disabled-border-color: var(--samaritan);
 }
 
+.color-white {
+  color: white !important;
+}
+
 .form-control,
 .form-control:focus {
   --cnvs-input-btn-input-color: var(--darkSamaritan);

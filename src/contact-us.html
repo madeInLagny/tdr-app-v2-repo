@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{send-us-a-message.description}}$",
+	"title": "${{send-us-a-message.title}}$",
+	"path": "${{send-us-a-message.path}}$",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Icons are shown on page -->
+	@@include('src/blocks/head/cssFontIcons.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<style>
+
+
+	</style>
+</head>
+
+<body class="stretched samaritan-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+		<!-- Page Title -->
+		<section class="page-title bg-transparent border-0">
+			<div class="container">
+				<div class="page-title-row pt-5 pb-3">
+					<div class="page-title-content">
+						<span class="text-lightSamaritan fw-medium my-0">${{send-us-a-message.subtitle}}$</span>
+						<h1>
+							<div class="fw-bold display-5">${{send-us-a-message.header}}$</div>
+						</h1>
+						<span class="fw-light" style="max-width: 40rem;">
+							${{send-us-a-message.subHeader}}$
+						</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- .page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="container mw-lg pb-5">
+				<div class="row grid-border justify-content-center mt-3">
+
+					<div class="col-lg-4 col-padding py-lg-0">
+						<i class="fa-solid fs-2 fa-envelope mb-3"></i>
+						<h3 class="mb-1 fw-semibold">${{contact-us.send-message}}$</h3>
+						<p class="mb-5">${{contact-us.click-icon}}$</p>
+					</div>
+
+					<div class="col-lg-4 col-padding py-lg-0">
+						<i class="fa-solid fs-2 fa-video mb-3"></i>
+						<h3 class="mb-1 fw-semibold">${{contact-us.talk-experts}}$</h3>
+						<p class="mb-5">${{make-an-appointment.description}}$</p>
+						<a class="btn btn-primary color-white" type="button" href="${{make-an-appointment.path}}$"
+							download>${{contact-us.check-calendar}}$</a>
+					</div>
+
+					<div class="col-lg-4 col-padding py-lg-0">
+						<i class="fa-brands fs-2 fa-linkedin mb-3"></i>
+						<h3 class="mb-1 fw-semibold">${{contact-us.li-dm}}$</h3>
+						<p class="mb-5">${{contact-us.li-dm-desc}}$</p>
+						<a class="btn btn-primary color-white" type="button" href="${{socials.li-path}}$"
+							download>${{contact-us.open-li-page}}$</a>
+
+					</div>
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Get the current domain
+				const currentDomain = window.location.origin;
+
+				// Construct the new URL path
+				const newPath = "/message-sent-success.html";
+
+				// Combine the domain and the new path
+				const newURL = currentDomain + newPath;
+
+				// Update the value of the input field
+				const redirectToInput = document.getElementById("redirectTo");
+				if (redirectToInput) {
+					redirectToInput.value = newURL;
+				}
+			});
+
+			function addSpinner() {
+				const spinnerElement = document.getElementById("btn-spinner");
+				spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+			}
+		</script>
+
+		<!-- reCaptcha -->
+		<script src="./js/custom/recaptcha.js"></script>
+</body>
+
+</html>

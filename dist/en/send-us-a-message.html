@@ -248,21 +248,9 @@
               </a>
             </li>
             <li class="menu-item">
-              <a class="menu-link" href="#">
+              <a class="menu-link" href="contact-us.html">
                 <div>Get in touch!</div>
               </a>
-              <ul class="sub-menu-container">
-                <li class="menu-item">
-                  <a class="menu-link" href="make-an-appointment.html">
-                    <div>Make an appointment for a free consultation</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a class="menu-link" href="send-us-a-message.html">
-                    <div>Contact us</div>
-                  </a>
-                </li>
-              </ul>
             </li>
             <!-- <li class="menu-item">
               <a class="menu-link" href="#">
@@ -322,49 +310,53 @@
 						<div>
 							<!-- Contact Form -->
 							<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit" method="post">
-								<fieldset>
-									<!-- required by staticForms.xyz -->
-									<input type="hidden" name="accessKey" value="a946fec7-7261-44c0-9c93-74c04dc58639">
-									<!-- If you want form to redirect to a specific url after submission -->
-									<input id="redirectTo" type="hidden" name="redirectTo" value="">
-									<!-- Customize Subject to help Google AppScript identify emails -->
-									<input type="hidden" name="subject" value="Website-Message-Received">
-									<!-- Required to avoid spams -->
-									<input type="text" name="honeypot" style="display:none">
 
-									<div class="col-md-6 form-group">
-										<label for="firstName">First Name</label>
-										<input type="text" id="firstName" name="$firstName" class="form-control" required>
-									</div>
+								<!-- required by staticForms.xyz -->
+								<input type="hidden" name="accessKey" value="a946fec7-7261-44c0-9c93-74c04dc58639">
+								<!-- If you want form to redirect to a specific url after submission -->
+								<input id="redirectTo" type="hidden" name="redirectTo" value="">
+								<!-- Customize Subject to help Google AppScript identify emails -->
+								<input type="hidden" name="subject" value="Website-Message-Received">
+								<!-- Required to avoid spams -->
+								<input type="text" name="honeypot" style="display:none">
 
-									<div class="col-md-6 form-group">
-										<label for="name">Name</label>
-										<input type="text" id="name" name="name" class="form-control" required>
-									</div>
+								<div class="col-md-6 form-group">
+									<label for="firstName">First Name</label>
+									<input type="text" id="firstName" name="$firstName" class="form-control" required>
+								</div>
 
-									<div class="col-md-6 form-group">
-										<label for="email">Email</label>
-										<input type="email" id="email" name="email" class="form-control" required>
-									</div>
+								<div class="col-md-6 form-group">
+									<label for="name">Name</label>
+									<input type="text" id="name" name="name" class="form-control" required>
+								</div>
 
-									<div class="w-100"></div>
+								<div class="col-md-6 form-group">
+									<label for="email">Email</label>
+									<input type="email" id="email" name="email" class="form-control" required>
+								</div>
 
-									<div class="col-12 form-group">
-										<label for="message">Message</label>
-										<textarea class="form-control" id="message" name="message" rows="6" cols="30" required></textarea>
-									</div>
+								<div class="w-100"></div>
 
-									<div class="col-12 form-group">
-										<input class="btn btn-light" type="submit" value="Submit">
-										<div class="pt-2">
-											<div>
+								<div class="col-12 form-group">
+									<label for="message">Message</label>
+									<textarea class="form-control" id="message" name="message" rows="6" cols="30" required></textarea>
+								</div>
+
+								<div class="col-md-12 form-group">
+									<button class="btn btn-light" type="submit" value="Submit">
+										<span id="btn-spinner" aria-hidden="true"></span>
+										<span class="visually-hidden"
+											role="status">Loading...</span>
+										Submit
+									</button>
+									<div class="pt-2">
+										<div>
   <label for="privacyCB" class="checkbox-style-1-label checkbox-small">
     <input id="privacyCB" class="checkbox-style" type="checkbox" required> By submitting this form, you agree to our processing of your personal data as outlined in <a
-      href="GDPR.html" class="text-decoration-underline">our Privacy Policy</a>. </label>
+      href="privacy.html" class="text-decoration-underline">our Privacy Policy</a>. </label>
 </div>
-										</div>
 									</div>
-								</fieldset>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -506,6 +498,11 @@
 					redirectToInput.value = newURL;
 				}
 			});
+
+			function addSpinner() {
+				const spinnerElement = document.getElementById("btn-spinner");
+				spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+			}
 		</script>
 
 		<!-- reCaptcha -->
