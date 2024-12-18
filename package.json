@@ -17,12 +17,10 @@
   "license": "ISC",
   "dependencies": {
     "@parvineyvazov/json-translator": "^1.7.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-cssmin": "^0.2.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-terser": "^2.1.0",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-watch": "^4.2.4",
     "klaro": "^0.7.18",
+    "recaptcha-v3": "^1.11.3",
     "vcf": "^2.1.1"
   }
 }
