@@ -73,45 +73,49 @@
 						<div>
 							<!-- Contact Form -->
 							<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit" method="post">
-								<fieldset>
-									<!-- required by staticForms.xyz -->
-									<input type="hidden" name="accessKey" value="a946fec7-7261-44c0-9c93-74c04dc58639">
-									<!-- If you want form to redirect to a specific url after submission -->
-									<input id="redirectTo" type="hidden" name="redirectTo" value="">
-									<!-- Customize Subject to help Google AppScript identify emails -->
-									<input type="hidden" name="subject" value="Website-Message-Received">
-									<!-- Required to avoid spams -->
-									<input type="text" name="honeypot" style="display:none">
 
-									<div class="col-md-6 form-group">
-										<label for="firstName">${{send-us-a-message.form-firstname-label}}$</label>
-										<input type="text" id="firstName" name="$firstName" class="form-control" required>
+								<!-- required by staticForms.xyz -->
+								<input type="hidden" name="accessKey" value="a946fec7-7261-44c0-9c93-74c04dc58639">
+								<!-- If you want form to redirect to a specific url after submission -->
+								<input id="redirectTo" type="hidden" name="redirectTo" value="">
+								<!-- Customize Subject to help Google AppScript identify emails -->
+								<input type="hidden" name="subject" value="Website-Message-Received">
+								<!-- Required to avoid spams -->
+								<input type="text" name="honeypot" style="display:none">
+
+								<div class="col-md-6 form-group">
+									<label for="firstName">${{send-us-a-message.form-firstname-label}}$</label>
+									<input type="text" id="firstName" name="$firstName" class="form-control" required>
+								</div>
+
+								<div class="col-md-6 form-group">
+									<label for="name">${{send-us-a-message.form-name-label}}$</label>
+									<input type="text" id="name" name="name" class="form-control" required>
+								</div>
+
+								<div class="col-md-6 form-group">
+									<label for="email">${{send-us-a-message.form-email-label}}$</label>
+									<input type="email" id="email" name="email" class="form-control" required>
+								</div>
+
+								<div class="w-100"></div>
+
+								<div class="col-12 form-group">
+									<label for="message">${{send-us-a-message.form-message-label}}$</label>
+									<textarea class="form-control" id="message" name="message" rows="6" cols="30" required></textarea>
+								</div>
+
+								<div class="col-md-12 form-group">
+									<button class="btn btn-light" type="submit" value="Submit">
+										<span id="btn-spinner" aria-hidden="true"></span>
+										<span class="visually-hidden"
+											role="status">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-loading}}$</span>
+										${{e-book-a-practical-guide-to-customs-duties-on-returns.form-submit}}$
+									</button>
+									<div class="pt-2">
+										@@include('src/blocks/privacyConsent.html')
 									</div>
-
-									<div class="col-md-6 form-group">
-										<label for="name">${{send-us-a-message.form-name-label}}$</label>
-										<input type="text" id="name" name="name" class="form-control" required>
-									</div>
-
-									<div class="col-md-6 form-group">
-										<label for="email">${{send-us-a-message.form-email-label}}$</label>
-										<input type="email" id="email" name="email" class="form-control" required>
-									</div>
-
-									<div class="w-100"></div>
-
-									<div class="col-12 form-group">
-										<label for="message">${{send-us-a-message.form-message-label}}$</label>
-										<textarea class="form-control" id="message" name="message" rows="6" cols="30" required></textarea>
-									</div>
-
-									<div class="col-12 form-group">
-										<input class="btn btn-light" type="submit" value="${{send-us-a-message.form-submit}}$">
-										<div class="pt-2">
-											@@include('src/blocks/privacyConsent.html')
-										</div>
-									</div>
-								</fieldset>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -165,6 +169,11 @@
 					redirectToInput.value = newURL;
 				}
 			});
+
+			function addSpinner() {
+				const spinnerElement = document.getElementById("btn-spinner");
+				spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+			}
 		</script>
 
 		<!-- reCaptcha -->
