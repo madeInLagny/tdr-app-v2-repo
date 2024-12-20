@@ -82,13 +82,6 @@ https://github.com/mololab/json-translator
 CLI has been installed globally
 Type: jsontt src/lang/en/jocelyn-montpert.json --module google --from en --to ar fr zh-CN
 
-## Process Contact Page
-
-- Contact page uses StaticForms.xyz.
-- the email used to create the ID is staticformscontact@tradedutyrefund.com
-- once the form is filled, an email is sent to that email address
-- an appScript file handles incoming mails
-
 ## eBook Page
 
 - The form uses StaticForms.xyz.
@@ -102,4 +95,4 @@ Type: jsontt src/lang/en/jocelyn-montpert.json --module google --from en --to ar
   url: https://console.cloud.google.com/security/recaptcha/6LfK0JYqAAAAACn4qq-1KudtU3Yx77odbPPA76z7/integration?hl=fr&inv=1&invt=Abjrlg&project=tdr-recaptcha-1733759401379
 - Profil: jocelyn.montpert@tradedutyrefund.com
 - key details: https://www.google.com/recaptcha/admin/site/714526922
-- We use the "recaptcha-v3" npm pacjage for implementation
+- We use the "recaptcha-v3" npm package for implementation
