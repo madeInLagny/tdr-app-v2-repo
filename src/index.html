@@ -25,9 +25,48 @@
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
+	<style>
+		.notification {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			max-width: 700px;
+			z-index: 1050;
+			opacity: 0;
+			transition: opacity 0.5s ease-in-out;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+			border-radius: 0;
+		}
+
+		.notification.show {
+			opacity: 1;
+		}
+
+		.notification .content {
+			flex-grow: 1;
+		}
+
+		.notification .content h2 {
+			margin-top: 0;
+		}
+
+		.notification .actions {
+			display: flex;
+			align-items: center;
+		}
+
+		.btn-close.lightSamaritan {
+			background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+		}
+	</style>
 </head>
 
 <body class="stretched dynamic-background">
+	<div id="notification-container"></div>
 
 	<!-- Document Wrapper
 	============================================= -->
@@ -62,25 +101,6 @@
 			</div>
 
 		</section>
-
-		<section class="cta-section bg-primary text-white py-5">
-			<div class="container position-relative" style="z-index:100;">
-				<div class="row align-items-center">
-					<div class="col-lg-8 mb-4 mb-lg-0">
-						<h2 class="fw-bold mb-3">Get your TDR eBook!</h2>
-						<p class="lead mb-0">Download our free copy: Practical Guide to Customs Duties</p>
-					</div>
-					<div class="col-lg-4 text-lg-end">
-						<a href="${{e-book-a-practical-guide-to-customs-duties-on-returns.path}}$"
-							class="btn btn-lightSamaritan btn-lg px-4 py-2 rounded-pill">
-							Download
-							<i class="bi bi-arrow-right ms-2"></i>
-						</a>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<!-- World Map SVG Overlay -->
 		@@include('src/blocks/homePageOverlay.html')
 		<!-- end World Map Overlay -->
@@ -102,7 +122,47 @@
 
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
+	<script>
+		function showNotification() {
+			const notification = document.createElement('div');
+			notification.className = 'notification alert alert-primary alert-dismissible';
+			notification.setAttribute('role', 'alert');
+			notification.innerHTML = `@@include('src/blocks/eBookNotification.html')`;
 
+			const container = document.getElementById('notification-container');
+			container.appendChild(notification);
+
+			// Trigger the fade-in effect by adding the 'show' class
+			setTimeout(() => {
+				notification.classList.add('show');
+			}, 10); // Small delay to ensure the transition is applied
+
+			// Remove notification after 10 seconds
+			setTimeout(() => {
+				if (notification) {
+					notification.classList.remove('show');
+					notification.classList.add('fade');
+					notification.addEventListener('transitionend', () => {
+						notification.remove();
+					});
+				}
+			}, 10000);
+
+			// Add click event to close button
+			notification.querySelector('.close').addEventListener('click', () => {
+				notification.classList.remove('show');
+				notification.classList.add('fade');
+				notification.addEventListener('transitionend', () => {
+					notification.remove();
+				});
+			});
+		}
+
+		// Show notification 3 seconds after page load
+		window.onload = () => {
+			setTimeout(showNotification, 3000);
+		};
+	</script>
 
 </body>
 

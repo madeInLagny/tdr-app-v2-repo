@@ -8,11 +8,10 @@
   <!-- End Google Tag Manager -->
 
   <!-- Metatags Import -->
-  @@include('src/blocks/head/metatags.html', {
-  "description": "${{solutions-for-all-shippers.description}}$",
-  "title": "${{solutions-for-all-shippers.title}}$",
-  "path": "${{solutions-for-all-shippers.path}}$",
-  })
+  @@include('src/blocks/head/metatags.html', { "description":
+  "${{solutions-for-all-shippers.description}}$", "title":
+  "${{solutions-for-all-shippers.title}}$", "path":
+  "${{solutions-for-all-shippers.path}}$", })
 
   <!-- CSS imports -->
   @@include('src/blocks/head/cssImports.html')
@@ -21,74 +20,69 @@
   @@include('src/blocks/head/cssFontIcons.html')
 
   <!-- Only Required when there are cards on the page -->
-  <link rel="stylesheet" href="./css/custom/cards.css">
+  <link rel="stylesheet" href="./css/custom/cards.css" />
 
   <!-- Only Required if Samaritan color is required -->
-  <link rel="stylesheet" href="./css/custom/samaritan.css">
+  <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
   <!-- Style for vertical steps -->
-  <link rel="stylesheet" href="./css/custom/verticalSteps.css">
+  <link rel="stylesheet" href="./css/custom/verticalSteps.css" />
 
+  <style>
+    .notification {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      max-width: 700px;
+      z-index: 1050;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      padding: 20px;
+      border-radius: 0;
+    }
+
+    .notification.show {
+      opacity: 1;
+    }
+
+    .btn-close.lightSamaritan {
+      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    }
+  </style>
 </head>
-<div class="modal-on-load" data-target="#myModal1"></div>
-
-<!-- Modal -->
-<div class="modal1 mfp-hide" id="myModal1" data-animation-in="bounceInUp" data-animation-out="bounceOutUp"
-  data-bg-click>
-  <div class="block mx-auto samaritan-background" style="max-width: 500px;">
-    <div class="promo shadow-sm text-center p-4 border rounded-5 mb-5">
-      <h2 class="mb-1 h2">${{solutions-for-all-shippers.alert-text}}$
-        <a href="${{solutions-for-us-shippers.path}}$" class="button-circle">
-          <strong>${{solutions-for-all-shippers.us-link-text}}$</strong>
-        </a>
-        <a href="${{solutions-for-eu-shippers.path}}$" class="button-circle">
-          <strong>${{solutions-for-all-shippers.eu-link-text}}$</strong>
-        </a>
-        <a href="${{solutions-for-uk-shippers.path}}$" class="button-circle">
-          <strong>${{solutions-for-all-shippers.uk-link-text}}$</strong>
-        </a>
-        ${{solutions-for-all-shippers.shippers}}$
-      </h2>
-      <h2 class="mb-4 h2">${{solutions-for-all-shippers.alert-ending}}$</h2>
-
-    </div>
-  </div>
-</div>
-
+<div id="notification-container"></div>
 
 <body class="stretched samaritan-background">
   <div id="wrapper">
-    @@include('src/blocks/header.html',{
-    "header-bg":"var(--samaritan)",
-    "submenu-bg":"var(--darkSamaritan)"
-    })
-    <div class="container">
-
-    </div>
-
+    @@include('src/blocks/header.html',{ "header-bg":"var(--samaritan)",
+    "submenu-bg":"var(--darkSamaritan)" })
+    <div class="container"></div>
 
     <section id="content">
-
       <div class="container">
         <div class="page-title-row pt-5 pb-3">
           <div class="page-title-content">
             <span class="fw-medium my-0"
-              style="color:var(--lightSamaritan)">${{solutions-for-all-shippers.subtitle}}$</span>
+              style="color: var(--lightSamaritan)">${{solutions-for-all-shippers.subtitle}}$</span>
             <h1>
-              <div class="fw-bold display-5">${{solutions-for-all-shippers.header}}$</div>
+              <div class="fw-bold display-5">
+                ${{solutions-for-all-shippers.header}}$
+              </div>
             </h1>
-            <span class="fw-light" style="max-width: 40em;">
+            <span class="fw-light" style="max-width: 40em">
               ${{solutions-for-all-shippers.sub-header}}$
             </span>
           </div>
         </div>
       </div>
 
-
       <div class="content-wrap pb-1">
         <div class="container">
           <h2>
-            <div class="fw-bold display-6">${{solutions-for-all-shippers.integration-title}}$</div>
+            <div class="fw-bold display-6">
+              ${{solutions-for-all-shippers.integration-title}}$
+            </div>
           </h2>
           <div class="row feature-box-border-vertical col-mb-50 justify-content-center align-items-center my-5">
             <div class="col-md-6 feature-box fbox-active fbox-dark fbox-sm">
@@ -96,7 +90,9 @@
                 <i class="fa-solid fa-check"></i>
               </div>
               <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">${{solutions-for-all-shippers.step1-title}}$</h3>
+                <h3 class="text-transform-none mb-2">
+                  ${{solutions-for-all-shippers.step1-title}}$
+                </h3>
                 <p>${{solutions-for-all-shippers.step1-description}}$</p>
               </div>
             </div>
@@ -108,7 +104,9 @@
                 <i class="fa-solid fa-check border"></i>
               </div>
               <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">${{solutions-for-all-shippers.step2-title}}$</h3>
+                <h3 class="text-transform-none mb-2">
+                  ${{solutions-for-all-shippers.step2-title}}$
+                </h3>
                 <p>${{solutions-for-all-shippers.step2-description}}$</p>
                 <p>
                   ${{solutions-for-all-shippers.step2-cta-prefix}}$
@@ -129,7 +127,9 @@
                 <i class="fa-solid fa-check border"></i>
               </div>
               <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">${{solutions-for-all-shippers.step3-title}}$</h3>
+                <h3 class="text-transform-none mb-2">
+                  ${{solutions-for-all-shippers.step3-title}}$
+                </h3>
                 <p>${{solutions-for-all-shippers.step3-description}}$</p>
               </div>
             </div>
@@ -139,7 +139,9 @@
 
       <div class="container">
         <h2>
-          <div class="fw-bold display-6">${{solutions-for-all-shippers.discovery-title}}$</div>
+          <div class="fw-bold display-6">
+            ${{solutions-for-all-shippers.discovery-title}}$
+          </div>
         </h2>
       </div>
 
@@ -158,21 +160,60 @@
     </section>
 
     @@include('src/blocks/contactUsCallOut.html')
-
-    @@include('src/blocks/footer.html',{
-    "bg-color":"var(--samaritan)"
-    })
+    @@include('src/blocks/footer.html',{ "bg-color":"var(--samaritan)" })
   </div>
   <!-- Javascripts
 	============================================= -->
-  @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
-
+  <!-- @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+ -->
   <!-- Tawk Chatbox -->
-  @@include('src/blocks/tawk.html')
+  <!-- @@include('src/blocks/tawk.html') -->
 
   <!-- Canvas Scripts -->
   <script src="js/functions.js"></script>
 
+  <script>
+    function showNotification() {
+      const notification = document.createElement("div");
+      notification.className =
+        "notification alert alert-primary alert-dismissible";
+      notification.setAttribute("role", "alert");
+      notification.innerHTML = `@@include('src/blocks/promoDedicatedSolutions.html')`;
+
+      const container = document.getElementById("notification-container");
+      container.appendChild(notification);
+
+      // Trigger the fade-in effect by adding the 'show' class
+      setTimeout(() => {
+        notification.classList.add("show");
+      }, 10); // Small delay to ensure the transition is applied
+
+      // Remove notification after 10 seconds
+      setTimeout(() => {
+        if (notification) {
+          notification.classList.remove("show");
+          notification.classList.add("fade");
+          notification.addEventListener("transitionend", () => {
+            notification.remove();
+          });
+        }
+      }, 10000);
+
+      // Add click event to close button
+      notification.querySelector(".close").addEventListener("click", () => {
+        notification.classList.remove("show");
+        notification.classList.add("fade");
+        notification.addEventListener("transitionend", () => {
+          notification.remove();
+        });
+      });
+    }
+
+    // Show notification 3 seconds after page load
+    window.onload = () => {
+      setTimeout(showNotification, 3000);
+    };
+  </script>
 </body>
 
 </html>

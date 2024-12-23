@@ -90,40 +90,38 @@
 
 
   <!-- Only Required when there are cards on the page -->
-  <link rel="stylesheet" href="./css/custom/cards.css">
+  <link rel="stylesheet" href="./css/custom/cards.css" />
 
   <!-- Only Required if Samaritan color is required -->
-  <link rel="stylesheet" href="./css/custom/samaritan.css">
+  <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
   <!-- Style for vertical steps -->
-  <link rel="stylesheet" href="./css/custom/verticalSteps.css">
+  <link rel="stylesheet" href="./css/custom/verticalSteps.css" />
 
+  <style>
+    .notification {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      max-width: 700px;
+      z-index: 1050;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      padding: 20px;
+      border-radius: 0;
+    }
+
+    .notification.show {
+      opacity: 1;
+    }
+
+    .btn-close.lightSamaritan {
+      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    }
+  </style>
 </head>
-<div class="modal-on-load" data-target="#myModal1"></div>
-
-<!-- Modal -->
-<div class="modal1 mfp-hide" id="myModal1" data-animation-in="bounceInUp" data-animation-out="bounceOutUp"
-  data-bg-click>
-  <div class="block mx-auto samaritan-background" style="max-width: 500px;">
-    <div class="promo shadow-sm text-center p-4 border rounded-5 mb-5">
-      <h2 class="mb-1 h2">We have dedicated solutions for
-        <a href="solutions-for-us-shippers.html" class="button-circle">
-          <strong>US</strong>
-        </a>
-        <a href="solutions-for-eu-shippers.html" class="button-circle">
-          <strong>EU</strong>
-        </a>
-        <a href="solutions-for-uk-shippers.html" class="button-circle">
-          <strong>UK</strong>
-        </a>
-        shippers
-      </h2>
-      <h2 class="mb-4 h2">Check them out!</h2>
-
-    </div>
-  </div>
-</div>
-
+<div id="notification-container"></div>
 
 <body class="stretched samaritan-background">
   <div id="wrapper">
@@ -300,33 +298,32 @@
   </div>
   <div class="header-wrap-clone"></div>
 </header>
-    <div class="container">
-
-    </div>
-
+    <div class="container"></div>
 
     <section id="content">
-
       <div class="container">
         <div class="page-title-row pt-5 pb-3">
           <div class="page-title-content">
             <span class="fw-medium my-0"
-              style="color:var(--lightSamaritan)">TDR for Cross-border Shippers</span>
+              style="color: var(--lightSamaritan)">TDR for Cross-border Shippers</span>
             <h1>
-              <div class="fw-bold display-5">End-to-End Duty Refund Solution for Cross-border Shippers</div>
+              <div class="fw-bold display-5">
+                End-to-End Duty Refund Solution for Cross-border Shippers
+              </div>
             </h1>
-            <span class="fw-light" style="max-width: 40em;">
+            <span class="fw-light" style="max-width: 40em">
               Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.
             </span>
           </div>
         </div>
       </div>
 
-
       <div class="content-wrap pb-1">
         <div class="container">
           <h2>
-            <div class="fw-bold display-6">We Integrate and Add Value to Your Supply Chain</div>
+            <div class="fw-bold display-6">
+              We Integrate and Add Value to Your Supply Chain
+            </div>
           </h2>
           <div class="row feature-box-border-vertical col-mb-50 justify-content-center align-items-center my-5">
             <div class="col-md-6 feature-box fbox-active fbox-dark fbox-sm">
@@ -334,7 +331,9 @@
                 <i class="fa-solid fa-check"></i>
               </div>
               <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">Order Shipped</h3>
+                <h3 class="text-transform-none mb-2">
+                  Order Shipped
+                </h3>
                 <p>The order has left the warehouse to its international buyer.</p>
               </div>
             </div>
@@ -346,7 +345,9 @@
                 <i class="fa-solid fa-check border"></i>
               </div>
               <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">Order Returned</h3>
+                <h3 class="text-transform-none mb-2">
+                  Order Returned
+                </h3>
                 <p>The order was delivered to its US or European buyer. One or more items are returned.</p>
                 <p>
                   Claim back US or Europe duties with our innovative
@@ -367,7 +368,9 @@
                 <i class="fa-solid fa-check border"></i>
               </div>
               <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">Order re-imported</h3>
+                <h3 class="text-transform-none mb-2">
+                  Order re-imported
+                </h3>
                 <p>The order is now back, ready to be processed at the returns warehouse.</p>
               </div>
             </div>
@@ -377,7 +380,9 @@
 
       <div class="container">
         <h2>
-          <div class="fw-bold display-6">Discover What's In It For Cross-border Shippers</div>
+          <div class="fw-bold display-6">
+            Discover What's In It For Cross-border Shippers
+          </div>
         </h2>
       </div>
 
@@ -447,7 +452,6 @@
     </div>
   </div>
 </div>
-
     <style>
   #footer {
     --cnvs-socialicon-color: @@text-color;
@@ -496,60 +500,68 @@
   </div>
   <!-- Javascripts
 	============================================= -->
-  <script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js"></script>
-
-<script>
-  // Function to load the CDN script
-  function loadCDN(GDPR) {
-    var script = document.createElement('script');
-    script.src = GDPR ? "./js/cookieConsent/gdpr-config.js" : "./js/cookieConsent/row-config.js";
-    script.async = true;
-    document.body.appendChild(script);
-    script.onerror = function () {
-      console.error('Error loading CDN script.');
-    };
-  }
-
-  // Function to check if the user is in the EU
-  function checkEULocation() {
-    fetch('https://ipinfo.io/json')
-      .then(response => response.json())
-      .then(data => {
-        // Check if the country is in the EU
-        var euCountries = ['GB', 'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'];
-        if (euCountries.includes(data.country)) {
-          loadCDN(true);
-        } else {
-          loadCDN()
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching IP information:', error);
-      });
-  }
-
-  // Check the user's location on page load
-  checkEULocation();
-</script>
-
+  
   <!-- Tawk Chatbox -->
-  <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-  (function () {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/6527b233eb150b3fb9a0a8a6/1hchh06rt';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
-  })();
-</script>
-<!--End of Tawk.to Script-->
+  
 
   <!-- Canvas Scripts -->
   <script src="js/functions.js"></script>
 
+  <script>
+    function showNotification() {
+      const notification = document.createElement("div");
+      notification.className =
+        "notification alert alert-primary alert-dismissible";
+      notification.setAttribute("role", "alert");
+      notification.innerHTML = `<h2 class="mb-1 h2">We have dedicated solutions for
+  <a href="solutions-for-us-shippers.html">
+    <strong>US</strong>
+  </a>,
+  <a href="solutions-for-eu-shippers.html">
+    <strong>EU</strong>
+  </a> and
+  <a href="solutions-for-uk-shippers.html">
+    <strong>UK</strong>
+  </a>
+  shippers
+</h2>
+<h2 class="mb-4 h2">Check them out!</h2>
+<button type="button" class="btn-close lightSamaritan ms-2" data-bs-dismiss="alert" aria-label="Close"></button>`;
+
+      const container = document.getElementById("notification-container");
+      container.appendChild(notification);
+
+      // Trigger the fade-in effect by adding the 'show' class
+      setTimeout(() => {
+        notification.classList.add("show");
+      }, 10); // Small delay to ensure the transition is applied
+
+      // Remove notification after 10 seconds
+      setTimeout(() => {
+        if (notification) {
+          notification.classList.remove("show");
+          notification.classList.add("fade");
+          notification.addEventListener("transitionend", () => {
+            notification.remove();
+          });
+        }
+      }, 10000000);
+
+      // Add click event to close button
+      notification.querySelector(".close").addEventListener("click", () => {
+        notification.classList.remove("show");
+        notification.classList.add("fade");
+        notification.addEventListener("transitionend", () => {
+          notification.remove();
+        });
+      });
+    }
+
+    // Show notification 3 seconds after page load
+    window.onload = () => {
+      setTimeout(showNotification, 3000);
+    };
+  </script>
 </body>
 
 </html>

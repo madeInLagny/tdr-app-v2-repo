@@ -121,3 +121,10 @@ form label {
   --cnvs-input-focus-color: var(--darkSamaritan);
   --cnvs-input-focus-bg: white;
 }
+
+.alert-primary {
+  --bs-alert-color: white;
+  --bs-alert-bg: var(--samaritan);
+  --bs-alert-border-color: var(--darkSamaritan);
+  --bs-alert-link-color: var(--darkSamaritan);
+}
