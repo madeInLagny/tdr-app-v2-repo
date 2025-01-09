@@ -133,7 +133,7 @@
                             <div class="fbox-content">
                                 <h3 class="text-transform-none mb-2">
                                     ${{solutions-for-uk-shippers.step3-title}}$ <img class="flags"
-                                    src="./images/flags/uk-flag.png" alt="UK Flag" />
+                                        src="./images/flags/uk-flag.png" alt="UK Flag" />
                                 </h3>
                                 <p>${{solutions-for-uk-shippers.step3-text}}$</p>
                                 <p> <img class="flags" src="./images/flags/warning.png" alt="warning Flag" /> Import
@@ -185,10 +185,10 @@
     </div>
     <!-- Javascripts
 	============================================= -->
-    include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+    @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
 
     <!-- Tawk Chatbox -->
-    include('src/blocks/tawk.html')
+    @@include('src/blocks/tawk.html')
 
     <!-- Canvas Scripts -->
     <script src="js/functions.js"></script>
