@@ -266,15 +266,15 @@
     </div>
   </div>
   <div class="header-wrap-clone"></div>
-</header>v
+</header>
 		<!-- end of header
 		============================================= -->
 
-		<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+		<div style="position: relative; padding-top: 56.2500%;
 		padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
 		border-radius: 8px; will-change: transform;">
 			<iframe loading="lazy"
-				style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+				style="height:100%; max-height: 80vh; position: absolute; top: 0; left: 0; border: none; padding: 0;margin: 0;"
 				src="https://www.canva.com/design/DAGJOYKBGPU/q6omixpT3x1uthRiAvJGzQ/view?embed"
 				allowfullscreen="allowfullscreen" allow="fullscreen">
 			</iframe>
@@ -327,56 +327,10 @@
 </footer>
 	<!-- Javascripts
 		============================================= -->
-	<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js"></script>
-
-<script>
-  // Function to load the CDN script
-  function loadCDN(GDPR) {
-    var script = document.createElement('script');
-    script.src = GDPR ? "./js/cookieConsent/gdpr-config.js" : "./js/cookieConsent/row-config.js";
-    script.async = true;
-    document.body.appendChild(script);
-    script.onerror = function () {
-      console.error('Error loading CDN script.');
-    };
-  }
-
-  // Function to check if the user is in the EU
-  function checkEULocation() {
-    fetch('https://ipinfo.io/json')
-      .then(response => response.json())
-      .then(data => {
-        // Check if the country is in the EU
-        var euCountries = ['GB', 'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'];
-        if (euCountries.includes(data.country)) {
-          loadCDN(true);
-        } else {
-          loadCDN()
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching IP information:', error);
-      });
-  }
-
-  // Check the user's location on page load
-  checkEULocation();
-</script>
+	_@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
 
 	<!-- Tawk Chatbox -->
-	<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-  (function () {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/6527b233eb150b3fb9a0a8a6/1hchh06rt';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
-  })();
-</script>
-<!--End of Tawk.to Script-->
+	_@include('src/blocks/tawk.html')
 
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
