@@ -87,7 +87,7 @@ Type: jsontt src/lang/en/jocelyn-montpert.json --module google --from en --to ar
 - The form uses StaticForms.xyz.
 - the email used to create the ID is staticFormsEbook@tradedutyrefund.com
 - once the form is filled, an email is sent to that email address
-- an appScript file handles incoming mails
+- an appScript file (Ebook Email Automation) handles incoming mails
 
 ## recaptcha
 

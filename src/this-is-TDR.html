@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{this-is-TDR.description}}$",
+	"title": "${{this-is-TDR.title}}$",
+	"path": "${{this-is-TDR.path}}$",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-background">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		})v
+		<!-- end of header
+		============================================= -->
+
+		<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+		padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+		border-radius: 8px; will-change: transform;">
+			<iframe loading="lazy"
+				style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+				src="https://www.canva.com/design/DAGJOYKBGPU/q6omixpT3x1uthRiAvJGzQ/view?embed"
+				allowfullscreen="allowfullscreen" allow="fullscreen">
+			</iframe>
+		</div>
+	</div>
+	@@include('src/blocks/footer.html',{
+	"bg-color":"var(--samaritan)"
+	})
+	<!-- Javascripts
+		============================================= -->
+	_@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+
+	<!-- Tawk Chatbox -->
+	_@include('src/blocks/tawk.html')
+
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
+</body>
+
+</html>
