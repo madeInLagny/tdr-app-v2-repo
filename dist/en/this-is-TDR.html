@@ -228,16 +228,28 @@
               </a>
             </li>
             <li class="menu-item">
-              <a class="menu-link" href="about-us.html">
+              <a class="menu-link" href="#">
                 <div>Who we are</div>
               </a>
+              <ul class="sub-menu-container">
+                <li class="menu-item">
+                  <a class="menu-link" href="about-us.html">
+                    <div>About Us</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="this-is-TDR.html"">
+                    <div>This is TDR</div>
+                  </a>
+                </li>
+              </ul>
             </li>
-            <li class="menu-item">
-              <a class="menu-link" href="contact-us.html">
-                <div>Get in touch!</div>
-              </a>
-            </li>
-            <!-- <li class="menu-item">
+            <li class=" menu-item">
+                    <a class="menu-link" href="contact-us.html">
+                      <div>Get in touch!</div>
+                    </a>
+                </li>
+                <!-- <li class="menu-item">
               <a class="menu-link" href="#">
                 <div><i class="bi bi-globe2"></i></div>
               </a>
@@ -259,7 +271,7 @@
                 </li>
               </ul>
             </li> -->
-          </ul>
+              </ul>
 
         </nav><!-- #primary-menu end -->
       </div>
@@ -327,10 +339,56 @@
 </footer>
 	<!-- Javascripts
 		============================================= -->
-	_@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js"></script>
+
+<script>
+  // Function to load the CDN script
+  function loadCDN(GDPR) {
+    var script = document.createElement('script');
+    script.src = GDPR ? "./js/cookieConsent/gdpr-config.js" : "./js/cookieConsent/row-config.js";
+    script.async = true;
+    document.body.appendChild(script);
+    script.onerror = function () {
+      console.error('Error loading CDN script.');
+    };
+  }
+
+  // Function to check if the user is in the EU
+  function checkEULocation() {
+    fetch('https://ipinfo.io/json')
+      .then(response => response.json())
+      .then(data => {
+        // Check if the country is in the EU
+        var euCountries = ['GB', 'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'];
+        if (euCountries.includes(data.country)) {
+          loadCDN(true);
+        } else {
+          loadCDN()
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching IP information:', error);
+      });
+  }
+
+  // Check the user's location on page load
+  checkEULocation();
+</script>
 
 	<!-- Tawk Chatbox -->
-	_@include('src/blocks/tawk.html')
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/6527b233eb150b3fb9a0a8a6/1hchh06rt';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
 
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
