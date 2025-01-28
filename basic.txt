@@ -96,3 +96,7 @@ Type: jsontt src/lang/en/jocelyn-montpert.json --module google --from en --to ar
 - Profil: jocelyn.montpert@tradedutyrefund.com
 - key details: https://www.google.com/recaptcha/admin/site/714526922
 - We use the "recaptcha-v3" npm package for implementation
+
+## URL Campaign Catcher
+This method sends a POST to a Google Sheet "Campaign URL" that has a webapp associated to it in AppScript.
+The WebApp collects url campaign data from this site and logs them in a google sheet.
