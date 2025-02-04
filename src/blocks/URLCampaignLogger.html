@@ -9,19 +9,20 @@
       page_url: window.location.href
     };
 
-    // Google Sheets Web App URL
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzibloC0sza3aQAGRBnP1NmTwPxKI1zZxShIDaRPIaH6gJ8Fn51PDJ1SneNzyq04jv2mg/exec';
+    // Google Sheets Web App URL - V10
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbz4BQva_FEhtQoZsGwWO5ItIWC_h0brpO1UDKouADGgVSpNcCN1RkaQdTe8avj-XmAFUA/exec';
 
     // Send data to Google Sheets
     fetch(webAppUrl, {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' }
     }).then(response => response.text())
       .then(result => console.log('Success:', result))
       .catch(error => console.error('Error:', error));
   }
 
   // Run on page load
-  window.onload = captureUTMParams;
+  window.addEventListener('load', function () {
+    captureUTMParams();
+  });
 </script>

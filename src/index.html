@@ -120,7 +120,7 @@
 	<!-- Tawk Chatbox -->
 	@@include('src/blocks/tawk.html')
 	<!-- URL Campaign Logger -->
-@@include('src/blocks/URLCampaignLogger.html')
+	@@include('src/blocks/URLCampaignLogger.html')
 
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
@@ -161,9 +161,9 @@
 		}
 
 		// Show notification 3 seconds after page load
-		window.onload = () => {
+		window.addEventListener('load', function () {
 			setTimeout(showNotification, 3000);
-		};
+		});
 	</script>
 
 </body>
