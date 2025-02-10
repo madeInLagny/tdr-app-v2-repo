@@ -46,60 +46,62 @@
 
 <body class="stretched">
 
-<!-- Document Wrapper
+	<!-- Document Wrapper
 	============================================= -->
-<div id="wrapper">
+	<div id="wrapper">
 
-	<!-- Header
+		<!-- Header
 		============================================= -->
-	<!-- header -->
-	@@include('src/blocks/header.html',{
-	"header-bg":"#fdedd2",
-	"submenu-bg":"#fdedd2",
-	"text-color":"#645439",
-	"text-color-hover":"#322a1c"
-	})
-	<!-- end of header -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"#fdedd2",
+		"submenu-bg":"#fdedd2",
+		"text-color":"#645439",
+		"text-color-hover":"#322a1c"
+		})
+		<!-- end of header -->
 
-	<section id="slider" class="slider-element min-vh-100 dark error404-wrap include-header"
-		style="background: url(images/404.jpg) left / cover no-repeat;">
-		<div class="slider-inner">
+		<section id="slider" class="slider-element min-vh-100 dark error404-wrap include-header"
+			style="background: url(images/404.jpg) left / cover no-repeat;">
+			<div class="slider-inner">
 
-			<div class="vertical-middle">
-				<div class="container text-center py-5 py-md-0">
+				<div class="vertical-middle">
+					<div class="container text-center py-5 py-md-0">
 
-					<div class="error404">404</div>
+						<div class="error404">404</div>
 
-					<div class="heading-block border-bottom-0">
-						<h4>${{404.header}}$</h4>
+						<div class="heading-block border-bottom-0">
+							<h4>${{404.header}}$</h4>
+						</div>
+						<a type="button" class="btn btn-outline-primary" href="${{noIndex.path}}$">${{404.buttonLabel}}$</a>
 					</div>
-					<a type="button" class="btn btn-outline-primary" href="${{noIndex.path}}$">${{404.buttonLabel}}$</a>
 				</div>
+
 			</div>
+		</section>
 
-		</div>
-	</section>
+		<!-- Footer -->
+		@@include('src/blocks/footer.html',{
+		"text-color":"#645439",
+		"bg-color":"#fdedd2"
+		})
+		<!-- end Footer -->
 
-	<!-- Footer -->
-	@@include('src/blocks/footer.html',{
-	"text-color":"#645439",
-	"bg-color":"#fdedd2"
-	})
-	<!-- end Footer -->
-
-</div><!-- #wrapper end -->
+	</div><!-- #wrapper end -->
 
 
-<!-- Javascripts
+	<!-- Javascripts
 	============================================= -->
-@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
-<!-- Tawk Chatbox -->
-@@include('src/blocks/tawk.html')
-<!-- URL Campaign Logger -->
-@@include('src/blocks/URLCampaignLogger.html')
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/linkedInInsideTag.html')
 
-<!-- Canvas Scripts -->
-<script src="js/functions.js"></script>
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
 
 
 </body>
