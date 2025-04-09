@@ -100,3 +100,17 @@ Type: jsontt src/lang/en/jocelyn-montpert.json --module google --from en --to ar
 ## URL Campaign Catcher
 This method sends a POST to a Google Sheet "Campaign URL" that has a webapp associated to it in AppScript.
 The WebApp collects url campaign data from this site and logs them in a google sheet.
+
+## Install Node.js and NPM on Windows.
+1. Download and run the latest version of nodist (https://github.com/nodists/nodist)
+2. Run "unblock-file -path "C:\Program Files (x86)\Nodist\bin\nodist.ps1" in PowerShell as administrator
+3. run nodist global 22.X (or whatever the latest node version is)
+4. If nodist is still blocked by windows, change windows script policies before and after running nodist.
+-> Before: run in PowerShell as administrator Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+-> After: run in PowerShell as administrator Set-ExecutionPolicy -ExecutionPolicy Restricted 
+
+## Running Scripts Safely
+In order to allow gulp and other ps1 files to run without downgrading the Windows 
+Script Policy, run "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
+in the VS terminal first. This allows ps1 files (like gulp) to be run. But the exception
+is only allowed for the session and is removed when the VS terminal is closed

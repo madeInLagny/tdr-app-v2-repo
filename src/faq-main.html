@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{index.language}}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+  <!-- Google Tag Manager modified to comply with cookie consent-->
+  @@include('src/blocks/head/cookieConsent/headScript.html')
+  <!-- End Google Tag Manager -->
+
+  <!-- Metatags Import -->
+  @@include('src/blocks/head/metatags.html', { "description":
+  "${{solutions-for-all-shippers.description}}$", "title":
+  "${{solutions-for-all-shippers.title}}$", "path":
+  "${{solutions-for-all-shippers.path}}$", })
+
+  <!-- CSS imports -->
+  @@include('src/blocks/head/cssImports.html')
+
+  <!-- Only Required if Icons are shown on page -->
+  @@include('src/blocks/head/cssFontIcons.html')
+
+  <!-- Only Required if Samaritan color is required -->
+  <link rel="stylesheet" href="./css/custom/samaritan.css" />
+
+
+<body class="stretched samaritan-background">
+  <div id="wrapper">
+    @@include('src/blocks/header.html',{ "header-bg":"var(--samaritan)",
+    "submenu-bg":"var(--darkSamaritan)" })
+    
+    <section id="content">
+			<main class="content-wrap">
+				<div class="container">
+
+					<div class="row justify-content-center">
+						<div class="col-xl-6 col-lg-8 text-center mb-6">
+							<p class="text-lightSamaritan fw-medium my-0">How can we help you?</p>
+							<h1 class="fw-bold display-5">Frequently Asked Questions</h1>
+						</div>
+
+						<div class="clear"></div>
+
+						<!-- Post Content
+						============================================= -->
+						<div class="col-lg-8">
+
+							<div class="grid-filter-wrap">
+								<ul class="grid-filter style-3 customjs">
+
+									<li class="activeFilter"><a href="#" class="fw-light" data-filter="all">All</a></li>
+									<li><a href="#" class="fw-semibold" data-filter=".faq-USDD">US Duty Drawback</a></li>
+									<li><a href="#" class="fw-semibold" data-filter=".faq-EUDD">EU Duty Reclaim</a></li>
+
+								</ul>
+							</div>
+
+							<div class="clear"></div>
+
+							<div id="faqs" class="faqs">
+
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q2}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A2}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q3}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A3}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q4}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A4}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q5}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A5}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q6}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A6}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q7}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A7}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q8}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A8}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q9}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A9}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q10}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A10}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q11}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A11}}$
+									</div>
+								</div>
+								
+								<div class="toggle faq pb-3 mb-3 faq-USDD">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{faq-main.Q12}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+											<i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+										</div>
+									</div>
+									<div class="toggle-content text-white-50 ps-4">
+										${{faq-main.A12}}$
+									</div>
+								</div>
+								
+								
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</main>
+		</section><!-- #content end -->
+
+    @@include('src/blocks/contactUsCallOut.html')
+    @@include('src/blocks/footer.html',{ "bg-color":"var(--samaritan)" })
+  </div>
+  <!-- Javascripts
+	============================================= -->
+  @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+  <!-- Tawk Chatbox -->
+  @@include('src/blocks/tawk.html')
+  <!-- URL Campaign Logger -->
+  @@include('src/blocks/URLCampaignLogger.html')
+  <!-- URL Campaign Logger -->
+  @@include('src/blocks/linkedInInsideTag.html')
+
+
+  <!-- Canvas Scripts -->
+  <script src="js/functions.js"></script>
+  <script src="js/jquery.js"></script>
+
+  <script>
+		jQuery(document).ready(function(){
+			var $faqItems = jQuery('#faqs .faq');
+			if( window.location.hash != '' ) {
+				var getFaqFilterHash = window.location.hash;
+				var hashFaqFilter = getFaqFilterHash.split('#');
+				if( $faqItems.hasClass( hashFaqFilter[1] ) ) {
+					jQuery('.grid-filter li').removeClass('activeFilter');
+					jQuery( '[data-filter=".'+ hashFaqFilter[1] +'"]' ).parent('li').addClass('activeFilter');
+					var hashFaqSelector = '.' + hashFaqFilter[1];
+					$faqItems.css('display', 'none');
+					if( hashFaqSelector != 'all' ) {
+						jQuery( hashFaqSelector ).fadeIn(500);
+					} else {
+						$faqItems.fadeIn(500);
+					}
+				}
+			}
+
+			jQuery('.grid-filter a').on( 'click', function(){
+				jQuery('.grid-filter li').removeClass('activeFilter');
+				jQuery(this).parent('li').addClass('activeFilter');
+				var faqSelector = jQuery(this).attr('data-filter');
+				$faqItems.css('display', 'none');
+				if( faqSelector != 'all' ) {
+					jQuery( faqSelector ).fadeIn(500);
+				} else {
+					$faqItems.fadeIn(500);
+				}
+				return false;
+		   });
+		});
+	</script>
+
+<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "FAQPage",
+	  "mainEntity": [{
+		"@type": "Question",
+		"name": "${{faq-main.Q2}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A2}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q3}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A3}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q4}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A4}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q5}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A5}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q6}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A6}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q7}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A7}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q8}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A8}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q9}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A9}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q10}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A10}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q11}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A11}}$"
+		}
+	  }, {
+		"@type": "Question",
+		"name": "${{faq-main.Q12}}$",
+		"acceptedAnswer": {
+		  "@type": "Answer",
+		  "text": "${{faq-main.A12}}$"
+		}
+	  }]
+	}
+	</script>
+	
+	
+</body>
+
+</html>
