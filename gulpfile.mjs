@@ -5,6 +5,7 @@ import path from "path";
 import { readdirSync, statSync } from "fs";
 import { deleteAsync } from "del";
 import sitemap from "gulp-sitemap";
+import fs from "fs"
 
 const paths = {
   specificHtml: [
@@ -12,7 +13,7 @@ const paths = {
     "src/*.html",
   ],
   i18n: "src/i18n/en/**/",
-  dist: "dist/en",
+  dist: "dist/tdr-app-v2-en",
   assets: {
     css: "src/css/**/*",
     js: "src/js/**/*",
@@ -33,11 +34,11 @@ const getLocales = () => {
 
 const cleandist = () => {
   return deleteAsync([
-    "dist/en/*.html",
-    "dist/en/css",
-    "dist/en/js",
-    "dist/en/images",
-    "dist/en/eBook",
+    "dist/tdr-app-v2-en/*.html",
+    "dist/tdr-app-v2-en/css",
+    "dist/tdr-app-v2-en/js",
+    "dist/tdr-app-v2-en/images",
+    "dist/tdr-app-v2-en/eBook",
     // here we use a globbing pattern to match everything inside the `mobile` folder
     // we don't want to clean this file though so we negate the pattern
     /* "!dist/mobile/deploy.json", */
