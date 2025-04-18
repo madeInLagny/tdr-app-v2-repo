@@ -45,7 +45,13 @@
   "what-is-duty-reclaim": "What is duty reclaim and how does it benefit my business?",
   "what-is-duty-reclaim-answer": "Duty reclaim is the process of recovering customs duties and taxes paid on imported goods that are subsequently re-exported. It benefits your business by maximizing refunds, simplifying processes, enhancing cash flow, and promoting sustainable operations.",
   "import-from-China-to-UK-and-reexport": "We import goods from China into the UK and subsequently re-export them. Are we eligible for a duty refund?",
-  "import-from-China-to-UK-and-reexport-answer":"Yes, there are a few options for this type of movement and depening on IOR in the UK, the goods and frequency of shiments. One condition is that the goods must not have been processed or changed in any ways during their stay in the UK",
-  "what-is-an-ETSF":" What is an ETSF?",
-  "what-is-an-ETSF-answer":"An ETSF (External Temporary Storage Facility) is a customs-approved location where goods can be stored temporarily before being re-exported or cleared for import. It allows for the deferral of customs duties and taxes until the goods are either re-exported or cleared for import into the EU."
+  "import-from-China-to-UK-and-reexport-answer": "Yes, there are a few options for this type of movement and depening on IOR in the UK, the goods and frequency of shiments. One condition is that the goods must not have been processed or changed in any ways during their stay in the UK",
+  "what-is-an-ETSF": " What is an ETSF?",
+  "what-is-an-ETSF-answer": "An ETSF (External Temporary Storage Facility) is a customs-approved location where goods can be stored temporarily before being re-exported or cleared for import. It allows for the deferral of customs duties and taxes until the goods are either re-exported or cleared for import into the EU.",
+  "NRI": "What is a Non-Resident Importer (NRI)?",
+  "NRI-answer": "A Non-Resident Importer (NRI) is a business or individual that imports goods into a country without having a physical presence in that country. NRIs are responsible for ensuring compliance with local customs regulations and may be required to appoint a customs broker or agent to handle the import process on their behalf.",
+  "NRI-Duty-Drawback": "Can a Non-Resident Importer (NRI) claim duty drawback?",
+  "NRI-Duty-Drawback-answer": "Yes, a Non-Resident Importer (NRI) can claim duty drawback, provided they meet the necessary requirements and comply with local customs regulations.",
+  "US-eCom-DDP":"I sell goods online from EU to the US and ship them DDP directly to the end-user. Can I benefit from Duty Drawback if the seller returns the items",
+  "US-eCom-DDP-answer":"Yes, you can benefit from Duty Drawback using this model. Some conditions apply, in particular with regards to the logistics model that you use. Contact our Trade Experts for more information by clicking here"
 }
