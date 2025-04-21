@@ -4,6 +4,8 @@
   dir="ltr"
   lang="${{index.language}}$"
   xmlns:og="http://opengraphprotocol.org/schema/"
+  itemscope
+  itemtype="https://schema.org/FAQPage"
 >
   <head>
     <!-- Google Tag Manager modified to comply with cookie consent-->
@@ -25,12 +27,11 @@
     <!-- Only Required if Samaritan color is required -->
     <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
-<style>
-  .toggle-content a{
-    font-weight: bolder;
-  }
-</style>
-
+    <style>
+      .toggle-content a {
+        font-weight: bolder;
+      }
+    </style>
   </head>
   <body class="stretched samaritan-background">
     <div id="wrapper">
@@ -100,13 +101,24 @@
 
                 <div id="faqs" class="faqs">
                   <div id="USDD">
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q2}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q2}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -116,18 +128,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
-                        ${{faq-main.A2}}$
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
+                        <span itemprop="text">${{faq-main.A2}}$</span>
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q3}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q3}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -137,18 +165,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A3}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q4}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q4}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -158,18 +202,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A4}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q5}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q5}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -179,18 +239,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A5}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q6}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q6}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -200,18 +276,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A6}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q7}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q7}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -221,18 +313,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A7}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q8}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q8}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -242,18 +350,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A8}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q9}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q9}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -263,18 +387,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A9}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q10}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q10}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -284,18 +424,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A10}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q11}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q11}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -305,18 +461,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A11}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.Q12}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.Q12}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -326,17 +498,33 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.A12}}$
                       </div>
                     </div>
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.NRI}}$</div>
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name">${{faq-main.NRI}}$</span>
+                        </div>
                         <div class="toggle-icon">
                           <i
                             class="toggle-closed fa-solid fa-chevron-down text-white-50"
@@ -346,19 +534,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.NRI-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.NRI-Duty-Drawback}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.NRI-Duty-Drawback}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -369,18 +573,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.NRI-Duty-Drawback-answer}}$
                       </div>
                     </div>
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.US-eCom-DDP}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.US-eCom-DDP}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -391,18 +611,34 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.US-eCom-DDP-answer}}$
                       </div>
                     </div>
-                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.More-Info-US-DD}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.More-Info-US-DD}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -413,21 +649,37 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.More-Info-US-DD-answer}}$
                       </div>
                     </div>
                   </div>
 
                   <div id="UKDD">
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.who-can-apply-for-repayment}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.who-can-apply-for-repayment}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -438,19 +690,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.who-can-apply-for-repayment-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.how-to-apply-for-repayment}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.how-to-apply-for-repayment}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -461,19 +729,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.how-to-apply-for-repayment-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.time-limit-for-claim}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.time-limit-for-claim}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -484,19 +768,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.time-limit-for-claim-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.documents-needed-for-claim}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.documents-needed-for-claim}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -507,19 +807,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.documents-needed-for-claim-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.apply-for-repayment-if-vat-registered}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.apply-for-repayment-if-vat-registered}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -530,19 +846,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.apply-for-repayment-if-vat-registered-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.what-is-ddp-shipment}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.what-is-ddp-shipment}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -553,19 +885,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.what-is-ddp-shipment-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.reclaim-import-vat-if-goods-not-sold}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.reclaim-import-vat-if-goods-not-sold}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -576,19 +924,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.reclaim-import-vat-if-goods-not-sold-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.requirements-for-import-vat-refund}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.requirements-for-import-vat-refund}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -599,19 +963,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.requirements-for-import-vat-refund-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.time-to-receive-vat-refund}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.time-to-receive-vat-refund}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -622,19 +1002,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.time-to-receive-vat-refund-answer}}$
                       </div>
                     </div>
 
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD faq-USDD">
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD faq-USDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.what-is-duty-reclaim}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.what-is-duty-reclaim}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -645,18 +1041,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.what-is-duty-reclaim-answer}}$
                       </div>
                     </div>
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.import-from-China-to-UK-and-reexport}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.import-from-China-to-UK-and-reexport}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -667,18 +1080,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.import-from-China-to-UK-and-reexport-answer}}$
                       </div>
                     </div>
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.what-is-an-ETSF}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.what-is-an-ETSF}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -689,18 +1119,35 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.what-is-an-ETSF-answer}}$
                       </div>
                     </div>
-                    <div class="toggle faq pb-3 mb-3 faq-UKDD">
+
+                    <div
+                      class="toggle faq pb-3 mb-3 faq-UKDD"
+                      itemscope
+                      itemtype="https://schema.org/FAQPage"
+                    >
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">
-                          ${{faq-main.More-Info-UK-DD}}$
+                        <div
+                          class="toggle-title ps-1"
+                          itemprop="mainEntity"
+                          itemscope
+                          itemtype="https://schema.org/Question"
+                        >
+                          <span itemprop="name"
+                            >${{faq-main.More-Info-UK-DD}}$</span
+                          >
                         </div>
                         <div class="toggle-icon">
                           <i
@@ -711,7 +1158,12 @@
                           ></i>
                         </div>
                       </div>
-                      <div class="toggle-content text-white-50 ps-4">
+                      <div
+                        class="toggle-content text-white-50 ps-4"
+                        itemprop="acceptedAnswer"
+                        itemscope
+                        itemtype="https://schema.org/Answer"
+                      >
                         ${{faq-main.More-Info-UK-DD-answer}}$
                       </div>
                     </div>
@@ -957,7 +1409,8 @@
               "@type": "Answer",
               "text": "${{faq-main.import-from-China-to-UK-and-reexport-answer}}$"
             }
-          },{
+          },
+          {
             "@type": "Question",
             "name": "${{faq-main.what-is-an-ETSF}}$",
             "acceptedAnswer": {
@@ -1012,7 +1465,7 @@
               "@type": "Answer",
               "text": "${{faq-main.More-Info-UK-DD-answer}}$"
             }
-          }       
+          }
         ]
       }
     </script>
