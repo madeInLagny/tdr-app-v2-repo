@@ -114,3 +114,8 @@ In order to allow gulp and other ps1 files to run without downgrading the Window
 Script Policy, run "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"
 in the VS terminal first. This allows ps1 files (like gulp) to be run. But the exception
 is only allowed for the session and is removed when the VS terminal is closed
+
+
+## HTML in json files!
+New since April 2025, encoded html (like a tags) can be included in json i18 files. They must be encoded using this site:
+https://emn178.github.io/online-tools/html_encode.html. They will be decoded by the gulp process.

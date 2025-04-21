@@ -24,6 +24,13 @@
 
     <!-- Only Required if Samaritan color is required -->
     <link rel="stylesheet" href="./css/custom/samaritan.css" />
+
+<style>
+  .toggle-content a{
+    font-weight: bolder;
+  }
+</style>
+
   </head>
   <body class="stretched samaritan-background">
     <div id="wrapper">
@@ -61,7 +68,7 @@
                         >UK Duty Repayment</a
                       >
                     </li>
-                    <li>
+                    <!-- <li>
                       <a href="#" class="fw-semibold" data-filter=".faq-EUDD"
                         >EU Duty Reclaim</a
                       >
@@ -85,7 +92,7 @@
                       <a href="#" class="fw-semibold" data-filter=".faq-TDR"
                         >Why TDR</a
                       >
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
 
@@ -331,25 +338,35 @@
                         </div>
                         <div class="toggle-title ps-1">${{faq-main.NRI}}$</div>
                         <div class="toggle-icon">
-                          <i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
-                          <i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+                          <i
+                            class="toggle-closed fa-solid fa-chevron-down text-white-50"
+                          ></i>
+                          <i
+                            class="toggle-open fa-solid fa-chevron-up text-white-50"
+                          ></i>
                         </div>
                       </div>
                       <div class="toggle-content text-white-50 ps-4">
                         ${{faq-main.NRI-answer}}$
                       </div>
                     </div>
-                    
+
                     <div class="toggle faq pb-3 mb-3 faq-USDD">
                       <div class="toggle-header">
                         <div class="toggle-icon">
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.NRI-Duty-Drawback}}$</div>
+                        <div class="toggle-title ps-1">
+                          ${{faq-main.NRI-Duty-Drawback}}$
+                        </div>
                         <div class="toggle-icon">
-                          <i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
-                          <i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+                          <i
+                            class="toggle-closed fa-solid fa-chevron-down text-white-50"
+                          ></i>
+                          <i
+                            class="toggle-open fa-solid fa-chevron-up text-white-50"
+                          ></i>
                         </div>
                       </div>
                       <div class="toggle-content text-white-50 ps-4">
@@ -362,14 +379,42 @@
                           <i class="toggle-closed bi-question-circle"></i>
                           <i class="toggle-open bi-question-circle"></i>
                         </div>
-                        <div class="toggle-title ps-1">${{faq-main.US-eCom-DDP}}$</div>
+                        <div class="toggle-title ps-1">
+                          ${{faq-main.US-eCom-DDP}}$
+                        </div>
                         <div class="toggle-icon">
-                          <i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
-                          <i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+                          <i
+                            class="toggle-closed fa-solid fa-chevron-down text-white-50"
+                          ></i>
+                          <i
+                            class="toggle-open fa-solid fa-chevron-up text-white-50"
+                          ></i>
                         </div>
                       </div>
                       <div class="toggle-content text-white-50 ps-4">
                         ${{faq-main.US-eCom-DDP-answer}}$
+                      </div>
+                    </div>
+                    <div class="toggle faq pb-3 mb-3 faq-USDD">
+                      <div class="toggle-header">
+                        <div class="toggle-icon">
+                          <i class="toggle-closed bi-question-circle"></i>
+                          <i class="toggle-open bi-question-circle"></i>
+                        </div>
+                        <div class="toggle-title ps-1">
+                          ${{faq-main.More-Info-US-DD}}$
+                        </div>
+                        <div class="toggle-icon">
+                          <i
+                            class="toggle-closed fa-solid fa-chevron-down text-white-50"
+                          ></i>
+                          <i
+                            class="toggle-open fa-solid fa-chevron-up text-white-50"
+                          ></i>
+                        </div>
+                      </div>
+                      <div class="toggle-content text-white-50 ps-4">
+                        ${{faq-main.More-Info-US-DD-answer}}$
                       </div>
                     </div>
                   </div>
@@ -649,7 +694,6 @@
                       </div>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -882,6 +926,102 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "${{faq-main.what-is-duty-reclaim-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.NRI}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.NRI-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.NRI-Duty-Drawback}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.NRI-Duty-Drawback-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.US-eCom-DDP}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.US-eCom-DDP-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.UK-DD-Cost}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.UK-DD-Cost-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.import-from-China-to-UK-and-reexport}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.import-from-China-to-UK-and-reexport-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.what-is-an-ETSF}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.what-is-an-ETSF-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.what-is-ddp-shipment}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.what-is-ddp-shipment-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.reclaim-import-vat-if-goods-not-sold}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.reclaim-import-vat-if-goods-not-sold-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.requirements-for-import-vat-refund}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.requirements-for-import-vat-refund-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.time-to-receive-vat-refund}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.time-to-receive-vat-refund-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.what-is-duty-reclaim}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.what-is-duty-reclaim-answer}}$"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "${{faq-main.import-from-China-to-UK-and-reexport}}$",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "${{faq-main.import-from-China-to-UK-and-reexport-answer}}$"
             }
           }
         ]

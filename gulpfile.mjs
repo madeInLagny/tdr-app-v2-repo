@@ -5,12 +5,12 @@ import path from "path";
 import { readdirSync, statSync } from "fs";
 import { deleteAsync } from "del";
 import sitemap from "gulp-sitemap";
-import fs from "fs"
+import entities from "gulp-html-entities";
 
 const paths = {
   specificHtml: [
     /* 'src/TDR-Duty-Drawback-in-the-US.html', */
-    "src/*.html",
+    "src/*.html"
   ],
   i18n: "src/i18n/en/**/",
   dist: "dist/tdr-app-v2-en",
@@ -35,6 +35,7 @@ const getLocales = () => {
 const cleandist = () => {
   return deleteAsync([
     "dist/tdr-app-v2-en/*.html",
+    "dist/tdr-app-v2-en/*.md",
     "dist/tdr-app-v2-en/css",
     "dist/tdr-app-v2-en/js",
     "dist/tdr-app-v2-en/images",
@@ -63,7 +64,8 @@ export const buildSpecificHtml = () => {
         schema: "",
       })
     )
-    .pipe(gulp.dest("dist/"));
+    .pipe(entities('decode'))
+    .pipe(gulp.dest("dist/"))
 };
 
 // Task to copy
