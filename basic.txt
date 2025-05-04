@@ -119,3 +119,6 @@ is only allowed for the session and is removed when the VS terminal is closed
 ## HTML in json files!
 New since April 2025, encoded html (like a tags) can be included in json i18 files. They must be encoded using this site:
 https://emn178.github.io/online-tools/html_encode.html. They will be decoded by the gulp process.
+
+Exemple d'un bouton:
+&lt;a href=&quot;contact-us.html?utm_source=Website&amp;utm_medium=FAQ&amp;utm_campaign=US-eCom-DDP&quot; class=&quot;text-decoration-underline&quot;&gt;clicking here&lt;/a&gt;

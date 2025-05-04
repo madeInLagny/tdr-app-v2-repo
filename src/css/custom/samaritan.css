@@ -33,7 +33,7 @@ ul {
   --cnvs-link-color: var(--samaritan);
 }
 
-a:not(.btn-link):not(.btn-lightSamaritan) {
+a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
   color: var(--lightSamaritan)
 }
 
@@ -127,4 +127,9 @@ form label {
   --bs-alert-bg: var(--samaritan);
   --bs-alert-border-color: var(--darkSamaritan);
   --bs-alert-link-color: var(--darkSamaritan);
+}
+
+.grid-filter.style-3 li.activeFilter a {
+  color: white !important;
+  border-color: white;
 }
