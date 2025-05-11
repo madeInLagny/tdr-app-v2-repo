@@ -1,0 +1,28 @@
+<div
+  class="toggle faq pb-3 mb-3 faq-USDD"
+  itemprop="mainEntity"
+  itemscope
+  itemtype="https://schema.org/Question"
+>
+  <div class="toggle-header">
+    <div class="toggle-icon">
+      <i class="toggle-closed bi-question-circle"></i>
+      <i class="toggle-open bi-question-circle"></i>
+    </div>
+    <div class="toggle-title ps-1">
+      <span itemprop="name">${{faq-main.key}}$</span>
+    </div>
+    <div class="toggle-icon">
+      <i class="toggle-closed fa-solid fa-chevron-down text-white-50"></i>
+      <i class="toggle-open fa-solid fa-chevron-up text-white-50"></i>
+    </div>
+  </div>
+  <div
+    class="toggle-content text-white-50 ps-4"
+    itemprop="acceptedAnswer"
+    itemscope
+    itemtype="https://schema.org/Answer"
+  >
+    <div itemprop="text">${{faq-main.value}}$</div>
+  </div>
+</div>
