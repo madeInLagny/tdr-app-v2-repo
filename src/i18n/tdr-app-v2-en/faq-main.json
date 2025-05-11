@@ -63,9 +63,41 @@
   "question_ftz_bonded_warehouse": "If I use a FTZ or a bonded warehouse, can I use duty drawback?",
   "answer_ftz_bonded_warehouse": "Yes you can. Duties are paid when goods leave the bonded facility or the FTZ. But the same duty drawback rule applies.",
   "question_bonded_vs_ftz": "Is there a difference in using a bonded warehouse vs a FTZ from a duty standpoint?",
-  "answer_bonded_vs_ftz": "The big distinction when goods get into FTZ, the applicable duty rate is the one in application when goods entered the US Bonded Warehouse, the duty rate is the one in effect when you exit the bonded warehouse.", 
+  "answer_bonded_vs_ftz": "The big distinction when goods get into FTZ, the applicable duty rate is the one in application when goods entered the US Bonded Warehouse, the duty rate is the one in effect when you exit the bonded warehouse.",
   "question_mitigate_section_301": "How did most importers try to mitigate section 301 in 2018?",
   "answer_mitigate_section_301": "A combination of 4 actions: Take a “hair cut”: talk to suppliers and ask for a price decrease Reduce non essential expenses (travel, advertisement, events…) Pass the cost on to the end customer (Longer Term) Find alternate sourcing opportunities (from China to India, Vietnam and Mexico)",
   "question_first_sale_rule": "What are the conditions to benefit from First Sale rule?",
-  "answer_first_sale_rule": "You as an importer must deal with at least one third party in the transaction. You must get access to the first sale price (for instance the price sold by the factory in the country of origin to the middle person) There needs to be an indication on the 7501 customs form You could be asked to provide proofs that a commercial agreement was in place (copy of commercial invoice, PO…)"
+  "answer_first_sale_rule": "You as an importer must deal with at least one third party in the transaction. You must get access to the first sale price (for instance the price sold by the factory in the country of origin to the middle person) There needs to be an indication on the 7501 customs form You could be asked to provide proofs that a commercial agreement was in place (copy of commercial invoice, PO…)",
+  "nearshoring": {
+    "question": "What is nearshoring to Free Trade Agreement Countries?",
+    "answer": "Nearshoring to Free Trade Agreement (FTA) countries involves relocating business processes or manufacturing operations to countries that have a free trade agreement with the company's home country. This strategy is often adopted to take advantage of the benefits offered by FTAs, such as reduced tariffs, simplified customs procedures, and improved market access. Companies in the U.S. might nearshore to Mexico or Canada to take advantage of the USMCA."
+  },
+  "section_301": {
+    "question": "What is section 301 (aka Trump Tariffs)?",
+    "answer": "Section 301 of the Trade Act of 1974 is a provision of U.S. trade law that authorizes the President to take action, including the imposition of tariffs, to enforce U.S. rights under trade agreements and to respond to certain unfair trade practices by foreign countries. The term \"Trump Tariffs\" refers to the tariffs imposed by the Trump administration under this authority. During his mandates, Donald Trump used Section 301 to impose tariffs on a wide range of goods, particularly targeting China. These tariffs were intended to address issues such as intellectual property theft and forced technology transfer. The tariffs affected billions of dollars worth of goods, including steel, aluminum, and a variety of consumer products."
+  },
+  "ftz": {
+    "question": "What is a Free Trade Zone (FTZ)?",
+    "answer": "A Free Trade Zone (FTZ) is a designated area within a country where goods can be imported, handled, manufactured, reconfigured, and re-exported without the intervention of CBP, the US customs authorities."
+  },
+  "bonded_warehouse": {
+    "question": "What is a bonded warehouse?",
+    "answer": "A bonded warehouse is a secure facility where imported goods can be stored, manipulated, or undergo manufacturing operations without payment of duty. It is authorized by customs authorities and allows for the deferral of duty payments until the goods are released into the market. This setup is particularly useful for businesses that need to store goods for extended periods before selling or distributing them, as it helps in managing cash flow and reducing upfront costs."
+  },
+  "first_sale_rule": {
+    "question": "What is the First Sale Rule?",
+    "answer": "This rule allows importers to use the price paid for the goods in an earlier sale (often the first sale from the manufacturer to a middleman) rather than the price paid in the last sale (from the middleman to the importer) for the purpose of calculating customs duties. <a href=\"contact-us.html?utm_source=Website&amp;utm_medium=FAQ&amp;utm_campaign=What-is-first-sale-rule\" class=\"text-decoration-underline\">Contact us</a> for more detail on applicability, requirements and documentation."
+  },
+  "shipment_value": {
+    "question": "What is the standard method for determining shipment value for imported goods?",
+    "answer": "The standard method is based on \"the price actually paid or payable for imported goods when sold for export to the United States.”"
+  },
+  "ecommerce_value": {
+    "question": "What value should E-Commerce sellers use when declaring the value of goods sold to end consumers?",
+    "answer": "E-Commerce sellers must use the final retail price as the declared value when making a sale to an end consumer."
+  },
+  "ecommerce_exceptions": {
+    "question": "Are there any exceptions where E-Commerce sellers can use the cost price instead of the retail price for customs declaration?",
+    "answer": "Yes, one exception is if the seller has implemented a fully-fledged \"First Sale\" program. This requires proper documentation and procedures for bona-fide, arms-length transactions occurring prior to the final sale to the end consumer."
+  }
 }
