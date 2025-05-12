@@ -1,5 +1,5 @@
 En utilisant les questions et réponses du fichier Q&A.md, créez un fichier JSON
-(faq-main.json) où chaque question et chaque réponse est associée à une clé unique.
+(faq-main.json) où chaque question et chaque réponse est associée à une clé unique. Pour éviter les conflits avec les clés existantes, utilisez des clés descriptives basées sur le contenu des questions
 Ensuite, mettez à jour le fichier HTML (faq-main.html). Les clés et les valeurs doivent être entourées par ${{ }}
 pour inclure les questions et réponses en utilisant les clés du fichier JSON
 comme valeurs de remplacement. epéter les blocs pour toutes les occurences. Include le nom du fichier faq-main en prefix de chaque référence aux entrées du fichier json
