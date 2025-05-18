@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{make-an-appointment.description}}$",
+	"title": "${{make-an-appointment.title}}$",
+	"path": "${{make-an-appointment.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+	<link rel="stylesheet" href="./include/rs-plugin/css/settings.css" media="screen">
+	<link rel="stylesheet" href="./include/include/rs-plugin/css/layers.css">
+	<!-- <link rel="stylesheet" href="include/rs-plugin/css/navigation.css"> -->
+
+</head>
+
+<body class="stretched samaritan-background">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+		<!-- Content -->
+
+		<!-- Slider
+		============================================= -->
+		<section id="slider" class="slider-element revslider-wrap slider-parallax min-vh-100 include-header">
+			<div class="slider-inner">
+				<div id="rev_slider_579_1_wrapper" class="rev_slider_wrapper fullscreen-container"
+					data-alias="default-slider" style="padding:0px;">
+					<!-- START REVOLUTION SLIDER 5.1.4 fullscreen mode -->
+					<div id="rev_slider_579_1" class="rev_slider fullscreenbanner" style="display:none;"
+						data-version="5.1.4">
+						<ul> <!-- SLIDE  -->
+
+							<li data-transition="fade" data-slotamount="1" data-masterspeed="1500"
+								data-thumb="images/slider/rev/main/s3-thumb.jpg" data-delay="10000"
+								data-saveperformance="off" data-title="Responsive &amp; Retina">
+								<!-- MAIN IMAGE -->
+								<img src="./images/slider/rev/main/s3.jpg" alt="kenburns6" data-bgposition="left top"
+									data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone"
+									data-scalestart="130" data-scaleend="100" data-bgpositionend="right bottom">
+								<!-- LAYERS -->
+
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text text-uppercase"
+									data-x="['left','left','left','left']" data-hoffset="['40','40','40','40']"
+									data-y="['top','top','top','top']" data-voffset="['150','150','130','100']"
+									data-transform_in="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+									data-speed="800" data-start="1500" data-easing="easeOutQuad" data-splitin="none"
+									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
+									data-endspeed="1000" data-endeasing="Power4.easeIn"
+									style="z-index: 3; white-space: nowrap; color: #222;">Text 1</div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0"
+									data-x="['left','left','left','left']" data-hoffset="37"
+									data-y="['top','top','top','top']" data-voffset="['180','180','150','120']"
+									data-transform_in="x:10;y:0;z:0;rotationY:120;rotationZ:0;scaleX:0.8;scaleY:0.8;skewX:0;s:600;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 50%;"
+									data-speed="600" data-start="1700" data-easing="easeOutCubic" data-splitin="chars"
+									data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
+									data-endspeed="1000" data-endeasing="Power4.easeIn"
+									style="z-index: 3; white-space: nowrap; color: #222; line-height: 1.2; max-width: 450px; width: 450px; white-space: normal;">
+									Subtitle 1</div>
+							</li>
+							<li data-transition="fade" data-slotamount="1" data-masterspeed="1500"
+								data-thumb="images/slider/rev/main/s3-thumb.jpg" data-delay="10000"
+								data-saveperformance="off" data-title="Responsive &amp; Retina">
+								<!-- MAIN IMAGE -->
+								<img src="./images/Lagny.webp" alt="kenburns6" data-bgposition="left top"
+									data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone"
+									data-scalestart="130" data-scaleend="100" data-bgpositionend="right bottom">
+								<!-- LAYERS -->
+
+								<!-- LAYER NR. 2 -->
+								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text text-uppercase"
+									data-x="['left','left','left','left']" data-hoffset="['40','40','40','40']"
+									data-y="['top','top','top','top']" data-voffset="['150','150','130','100']"
+									data-transform_in="x:-200;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+									data-speed="800" data-start="1500" data-easing="easeOutQuad" data-splitin="none"
+									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
+									data-endspeed="1000" data-endeasing="Power4.easeIn"
+									style="z-index: 3; white-space: nowrap; color: #222;">Text 1</div>
+
+								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0"
+									data-x="['left','left','left','left']" data-hoffset="37"
+									data-y="['top','top','top','top']" data-voffset="['180','180','150','120']"
+									data-transform_in="x:10;y:0;z:0;rotationY:120;rotationZ:0;scaleX:0.8;scaleY:0.8;skewX:0;s:600;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 50%;"
+									data-speed="600" data-start="1700" data-easing="easeOutCubic" data-splitin="chars"
+									data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
+									data-endspeed="1000" data-endeasing="Power4.easeIn"
+									style="z-index: 3; white-space: nowrap; color: #222; line-height: 1.2; max-width: 450px; width: 450px; white-space: normal;">
+									Subtitle 1</div>
+							</li>
+						</ul>
+					</div>
+				</div><!-- END REVOLUTION SLIDER -->
+			</div>
+		</section>
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+		<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+		<script src="./include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+		<script src="./include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+		<script src="./include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
+		<script src="./include/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
+		<script src="./include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
+		<script src="./include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
+		<!-- <script src="./include/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script> -->
+		<script src="./include/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
+		<script src="./include/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
+
+		<script>
+			var tpj = jQuery,
+				sliderHeight = 0;
+
+			var revapi202;
+			tpj(document).ready(function () {
+				if (tpj("#rev_slider_579_1").revolution == undefined) {
+					revslider_showDoubleJqueryError("#rev_slider_579_1");
+				} else {
+					revapi202 = tpj("#rev_slider_579_1").show().revolution({
+						sliderType: "standard",
+						jsFileLocation: "src/include/rs-plugin/js/",
+						sliderLayout: "fullscreen",
+						dottedOverlay: "none",
+						delay: 9000,
+						responsiveLevels: [1140, 1024, 778, 480],
+						visibilityLevels: [1140, 1024, 778, 480],
+						gridwidth: [1140, 1024, 778, 480],
+						gridheight: [728, 768, 960, 720],
+						lazyType: "none",
+						shadow: 0,
+						spinner: "off",
+						stopLoop: "on",
+						stopAfterLoops: 0,
+						stopAtSlide: 1,
+						shuffle: "off",
+						autoHeight: "off",
+						fullScreenAutoWidth: "off",
+						fullScreenAlignForce: "off",
+						fullScreenOffsetContainer: "",
+						fullScreenOffset: "",
+						disableProgressBar: "on",
+						hideThumbsOnMobile: "off",
+						hideSliderAtLimit: 0,
+						hideCaptionAtLimit: 0,
+						hideAllCaptionAtLilmit: 0,
+						debugMode: false,
+						fallbacks: {
+							simplifyAll: "off",
+							disableFocusListener: false,
+						},
+						parallax: {
+							type: "mouse",
+							origo: "slidercenter",
+							speed: 300,
+							levels: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 49, 50, 51, 55],
+						}
+					});
+
+					revapi202.on("revolution.slide.onloaded", function (e) {
+						setTimeout(function () {
+							SEMICOLON.Base.sliderDimensions();
+							sliderHeight = jQuery('#slider').outerHeight();
+						}, 200);
+					});
+
+					revapi202.on("revolution.slide.onchange", function (e, data) {
+						SEMICOLON.Base.sliderMenuClass();
+					});
+				}
+			}); /*ready*/
+		</script>
+
+
+</body>
+
+</html>
