@@ -31,7 +31,7 @@
 			font-size: 64px;
 			font-weight: 700;
 			letter-spacing: -1px;
-			font-family: 'Poppins', sans-serif;
+			font-family: 'Signika Negative', sans-serif;
 			padding: 15px 20px;
 			border-top: 2px solid #FFF;
 			border-bottom: 2px solid #FFF;
@@ -39,7 +39,7 @@
 
 		.revo-slider-desc-text {
 			font-size: 20px;
-			font-family: 'Lato', sans-serif;
+			font-family: 'Roboto', sans-serif;
 			width: 650px;
 			text-align: center;
 			line-height: 1.5;
@@ -49,15 +49,200 @@
 			font-size: 16px;
 			font-weight: 400;
 			letter-spacing: 3px;
-			font-family: 'Poppins', sans-serif;
-		}
-
-		.tp-video-play-button {
-			display: none !important;
+			font-family: 'Signika Negative', sans-serif;
 		}
 
 		.tp-caption {
 			white-space: nowrap;
+		}
+
+		/* Swiper Tabs */
+		.swiper-pagination-progress {
+			--cnvs-swiper-bar-size: 2px;
+			--cnvs-swiper-bar-color: var(--cnvs-contrast-200);
+			--cnvs-swiper-bar-active-color: var(--cnvs-contrast-1000);
+			position: absolute;
+			left: 0;
+			bottom: 0px;
+			width: 100%;
+			height: auto;
+			border-radius: 0;
+			opacity: 1;
+			margin: 0px;
+			background-color: transparent;
+		}
+
+		.swiper-pagination-progress .swiper-pagination-bar,
+		.swiper-pagination-progress .swiper-pagination-bar-active {
+			position: absolute;
+			bottom: 0;
+			border-radius: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+			height: var(--cnvs-swiper-bar-size);
+			margin: 0px;
+			background-color: var(--cnvs-swiper-bar-color);
+		}
+
+		.swiper-pagination-progress .swiper-pagination-bar-active {
+			z-index: 2;
+			width: 0%;
+			background-color: var(--cnvs-swiper-bar-active-color);
+		}
+
+		.active .swiper-pagination-progress .swiper-pagination-bar-active {
+			animation-name: swiperbarAnim;
+			animation-duration: 5s;
+			animation-timing-function: ease-in;
+			animation-iteration-count: 1;
+			animation-direction: alternate;
+			animation-fill-mode: forwards;
+		}
+
+		@keyframes swiperbarAnim {
+			0% {
+				width: 0;
+			}
+
+			100% {
+				width: 100%;
+			}
+		}
+
+		.swiper-tab-link {
+			--swiper-tab-title: #AAA;
+			--swiper-tab-content: ;
+			counter-increment: step-counter;
+			position: relative;
+			overflow: hidden;
+			margin-bottom: 5px;
+			padding: 20px 0;
+			cursor: pointer;
+		}
+
+		.swiper-tab-link::before {
+			content: "0" counter(step-counter)'.';
+			position: relative;
+			display: inline-block;
+			font-size: 26px;
+			font-weight: 600;
+			min-width: 50px;
+			margin-right: 5px;
+			color: var(--swiper-tab-title);
+			font-family: monospace;
+			line-height: 1;
+		}
+
+		.swiper-tab-link .swiper-tab-title {
+			display: inline-block;
+			color: var(--swiper-tab-title);
+			margin-bottom: 0;
+			font-size: calc(1.275rem + 0.3vw);
+		}
+
+		.swiper-tab-link .swiper-tab-content {
+			margin-bottom: 0;
+			padding-top: 10px;
+			margin-left: 5px;
+			line-height: 0;
+			opacity: 0;
+			vertical-align: middle;
+			font-size: 1rem;
+			transition: line-height 0.6s cubic-bezier(.4, 0, .2, 1), opacity .1s .1s cubic-bezier(.4, 0, .2, 1);
+		}
+
+		@media (min-width: 768px) {
+			.swiper-tab-link .swiper-tab-content {
+				margin-left: 60px;
+			}
+		}
+
+		.swiper-tab-link.active .swiper-tab-content {
+			opacity: .8;
+			line-height: var(--cnvs-line-height-content);
+			transition: line-height 0.5s cubic-bezier(.4, 0, .2, 1), opacity .15s .15s cubic-bezier(.4, 0, .2, 1);
+		}
+
+		.swiper-tab-link.active {
+			--swiper-tab-title: #000;
+		}
+
+		.back-shadow {
+			---cnvs-back-shadow-size: 5px;
+			---cnvs-back-shadow-bg: var(--cnvs-contrast-1000);
+			---cnvs-back-shadow-color: var(--cnvs-contrast-0);
+			position: relative;
+			background-color: var(---cnvs-back-shadow-color);
+			border: 1px solid var(---cnvs-back-shadow-bg);
+			margin-left: var(---cnvs-back-shadow-size);
+			margin-bottom: var(---cnvs-back-shadow-size);
+			box-shadow: calc(-1 * var(---cnvs-back-shadow-size)) var(---cnvs-back-shadow-size) 0 var(---cnvs-back-shadow-bg);
+		}
+
+
+		.pricing-bg {
+			position: absolute;
+			left: 0;
+			top: 0;
+			transform: scale(120%);
+			z-index: -1;
+			opacity: 0.4;
+			object-fit: cover;
+			width: 100%;
+		}
+
+		.pts-left,
+		.pts-right {
+			font-weight: 600 !important;
+		}
+
+
+		.toggle {
+			--cnvs-toggle-base-color: var(--cnvs-heading-color);
+			--cnvs-toggle-font-size: 1.125rem;
+			--cnvs-toggle-title-color: var(--cnvs-heading-color);
+			--cnvs-toggle-content-padding: 1.5rem 1.75rem;
+			margin: 0 0 30px 0;
+		}
+
+		.toggle-header {
+			border-radius: var(--cnvs-card-rounded);
+			font-weight: 600;
+		}
+
+		.toggle-content {
+			padding: 1.5rem 0;
+			padding-bottom: .75rem;
+			opacity: .8;
+			margin-bottom: 0;
+		}
+
+		.toggle-closed {
+			transition: .2s;
+			opacity: .2;
+		}
+
+		.toggle-active .toggle-closed {
+			display: block;
+			transform: rotate(45deg);
+			opacity: 1;
+		}
+
+		/* Cards */
+		.section-yogas .card {
+			padding: 35px;
+			background-image: url("./images/consultancy/card-wave-2.svg");
+			background-repeat: repeat-x;
+			background-position: 0% 101%;
+			background-size: cover;
+			-webkit-background-size: auto;
+			-moz-background-size: auto;
+			-o-background-size: auto;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			border: 0;
+			border-top: 6px solid var(--cnvs-themecolor);
 		}
 	</style>
 
@@ -93,36 +278,30 @@
 								data-saveperformance="off">
 								<!-- MAIN IMAGE -->
 								<img src="./images/slider/consultancy/slider-1.webp" alt="" data-bgposition="left top"
-									data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone"
+									data-kenburns="on" data-duration="5000" data-ease="Linear.easeNone"
 									data-scalestart="110" data-scaleend="100" data-bgpositionend="right bottom">
 								<!-- LAYERS -->
 
 								<!-- LAYER NR. 1 -->
-								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text" data-x="left"
-									data-hoffset="40" data-y="top" data-voffset="120"
-									data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1200" data-easing="easeOutQuad" data-splitin="none"
-									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
-									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; white-space: nowrap;">Speaking of Customization?</div>
 
 								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0 text-uppercase"
 									data-x="left" data-hoffset="37" data-y="top" data-voffset="140"
 									data-transform_in="x:5;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:5;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1400" data-easing="easeOutQuad" data-splitin="chars"
+									data-speed="300" data-start="1400" data-easing="easeOutQuad" data-splitin="none"
 									data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
 									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; font-size: 56px;white-space: nowrap;">25+ Homepages</div>
+									style="z-index: 11; font-size: 56px;white-space: nowrap;">
+									${{consulting.slide1.title}}$</div>
 
 								<div class="tp-caption ltl tp-resizeme revo-slider-desc-text text-start" data-x="left"
-									data-hoffset="40" data-y="top" data-voffset="240"
+									data-hoffset="40" data-y="top" data-voffset="340"
 									data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1600" data-lineheight="30"
+									data-speed="400" data-start="1800" data-lineheight="30"
 									data-width="['550','550','480','360']" data-easing="easeOutQuad" data-splitin="none"
 									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
 									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; max-width: 550px; white-space: normal;">Amazing Homepages Custom
-									Designed &amp; Ready to use at your Disposal. And we'll always add more..</div>
+									style="z-index: 11; max-width: 550px; white-space: normal;">
+									${{consulting.slide1.description}}$</div>
 
 							</li>
 							<li class="fade" data-transition="slideup" data-slotamount="1" data-masterspeed="1000"
@@ -136,32 +315,25 @@
 									data-bgpositionend="right bottom">
 								<!-- LAYERS -->
 								<!-- LAYER NR. 2 -->
-								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text" data-x="left"
-									data-hoffset="40" data-y="top" data-voffset="120"
-									data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1200" data-easing="easeOutQuad" data-splitin="none"
-									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
-									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; white-space: nowrap;">Speaking of Customization?</div>
 
 								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0 text-uppercase"
 									data-x="left" data-hoffset="37" data-y="top" data-voffset="140"
 									data-transform_in="x:5;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:5;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1400" data-easing="easeOutQuad" data-splitin="chars"
+									data-speed="300" data-start="1400" data-easing="easeOutQuad" data-splitin="none"
 									data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
 									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; font-size: 56px;white-space: nowrap;">25+ Homepages</div>
+									style="z-index: 11; font-size: 56px;white-space: nowrap;">
+									${{consulting.slide2.title}}$</div>
 
 								<div class="tp-caption ltl tp-resizeme revo-slider-desc-text text-start" data-x="left"
-									data-hoffset="40" data-y="top" data-voffset="240"
+									data-hoffset="40" data-y="top" data-voffset="340"
 									data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1600" data-lineheight="30"
+									data-speed="400" data-start="1800" data-lineheight="30"
 									data-width="['550','550','480','360']" data-easing="easeOutQuad" data-splitin="none"
 									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
 									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; max-width: 550px; white-space: normal;">Amazing Homepages Custom
-									Designed &amp; Ready to use at your Disposal. And we'll always add more..</div>
-
+									style="z-index: 11; max-width: 550px; white-space: normal;">
+									${{consulting.slide2.description}}$</div>
 							</li>
 							<li class="fade" data-transition="slideup" data-slotamount="1" data-masterspeed="1000"
 								data-fstransition="fade" data-fsmasterspeed="1000" data-fsslotamount="7"
@@ -172,32 +344,24 @@
 									data-scalestart="110" data-scaleend="100" data-bgpositionend="right bottom">
 								<!-- LAYERS -->
 								<!-- LAYER NR. 2 -->
-								<div class="tp-caption ltl tp-resizeme revo-slider-caps-text" data-x="left"
-									data-hoffset="40" data-y="top" data-voffset="120"
-									data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;s:800;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1200" data-easing="easeOutQuad" data-splitin="none"
-									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
-									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; white-space: nowrap;">Speaking of Customization?</div>
-
 								<div class="tp-caption ltl tp-resizeme revo-slider-emphasis-text p-0 border-0 text-uppercase"
 									data-x="left" data-hoffset="37" data-y="top" data-voffset="140"
 									data-transform_in="x:5;y:0;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:5;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1400" data-easing="easeOutQuad" data-splitin="chars"
+									data-speed="300" data-start="1400" data-easing="easeOutQuad" data-splitin="none"
 									data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
 									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; font-size: 56px;white-space: nowrap;">25+ Homepages</div>
+									style="z-index: 11; font-size: 56px;white-space: nowrap;">
+									${{consulting.slide3.title}}$</div>
 
 								<div class="tp-caption ltl tp-resizeme revo-slider-desc-text text-start" data-x="left"
-									data-hoffset="40" data-y="top" data-voffset="240"
+									data-hoffset="40" data-y="top" data-voffset="340"
 									data-transform_in="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;s:800;transformPerspective:200;transformOrigin:50% 0%;"
-									data-speed="800" data-start="1600" data-lineheight="30"
+									data-speed="400" data-start="1800" data-lineheight="30"
 									data-width="['550','550','480','360']" data-easing="easeOutQuad" data-splitin="none"
 									data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.1"
 									data-endspeed="1000" data-endeasing="Power4.easeIn"
-									style="z-index: 11; max-width: 550px; white-space: normal;">Amazing Homepages Custom
-									Designed &amp; Ready to use at your Disposal. And we'll always add more..</div>
-
+									style="z-index: 11; max-width: 550px; white-space: normal;">
+									${{consulting.slide3.description}}$</div>
 							</li>
 						</ul>
 					</div>
@@ -210,129 +374,196 @@
 		<section id="content">
 			<div class="content-wrap samaritan-background">
 
-				<div class="promo promo-full promo-border p-5 header-stick mb-6">
+				<!-- Highlights of our 3 main competitive advantages and benefits for the customer -->
+				<div class="container mw-md mt-lg-6">
+
+					<div class="row gx-5">
+						<div class="col-md-4 text-center">
+							<img src="demos/shop-2/images/icons/1.svg" alt=".." height="70">
+							<h3 class="my-3">Quality</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit hdanon magnam</p>
+						</div>
+
+						<div class="col-md-4 text-center">
+							<img src="demos/shop-2/images/icons/2.svg" alt=".." height="70">
+							<h3 class="my-3">Solid</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit hdanon magnam</p>
+						</div>
+
+						<div class="col-md-4 text-center">
+							<img src="demos/shop-2/images/icons/3.svg" alt=".." height="70">
+							<h3 class="my-3">Premium</h3>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit hdanon magnam</p>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Start Service -->
+				<div id="section-services" class="page-section py-5 py-lg-6 lightSamaritan-panel-bg">
+
 					<div class="container">
-						<div class="row align-items-center">
-							<div class="col-12 col-lg">
-								<h3>Try Premium Free for <span>30 Days</span> and you'll never regret it!</h3>
-								<span>Starts at just <em>$0/month</em> afterwards. No Ads, No Gimmicks and No SPAM. Just
-									Real Content.</span>
+						What's in it for you.
+						<div class="row justify-content-between align-items-center">
+							<div class="col-md-5">
+								<ul class="swiper-links-container list-unstyled">
+									<li class="swiper-tab-link active">
+										<h3 class="swiper-tab-title">Connect Your Apps</h3>
+										<p class="swiper-tab-content">Bridging the gap between apps, simplifying tasks
+											and maximizing productivity by fostering seamless communication and
+											efficient synergy.</p>
+										<div class="swiper-pagination-progress">
+											<span class="swiper-pagination-bar"></span><span
+												class="swiper-pagination-bar-active"></span>
+										</div>
+									</li>
+									<li class="swiper-tab-link">
+										<h3 class="swiper-tab-title">Get More Features</h3>
+										<p class="swiper-tab-content">Unleash your creativity with an expansive website
+											builder toolkit, providing advanced features for unparalleled design and
+											functionality.</p>
+										<div class="swiper-pagination-progress">
+											<span class="swiper-pagination-bar"></span><span
+												class="swiper-pagination-bar-active"></span>
+										</div>
+									</li>
+									<li class="swiper-tab-link">
+										<h3 class="swiper-tab-title">Automations to the Max</h3>
+										<p class="swiper-tab-content">Empower your website with advanced automation
+											tools, enhancing user experience through intelligent, streamlined processes
+											and personalized interactions.</p>
+										<div class="swiper-pagination-progress">
+											<span class="swiper-pagination-bar"></span><span
+												class="swiper-pagination-bar-active"></span>
+										</div>
+									</li>
+								</ul>
+								<!-- <div class="swiper-pagination swiper-tab-pagination"></div> -->
 							</div>
-							<div class="col-12 col-lg-auto mt-4 mt-lg-0">
-								<a href="#" class="button button-reveal button-large button-circle text-end m-0"><i
-										class="uil uil-angle-right-b"></i><span>Browse Now</span></a>
+							<div class="col-md-6">
+								<div id="swiper-tab" class="swiper_wrapper h-auto">
+									<div class="swiper swiper-tab-container">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide">
+												<img src="demos/saas-2/images/new/tabs/app.svg" alt=".."
+													class="w-100 rounded-xxl">
+											</div>
+											<div class="swiper-slide">
+												<img src="demos/saas-2/images/new/tabs/features.svg" alt=".."
+													class="w-100 rounded-xxl bg-success bg-opacity-10">
+											</div>
+											<div class="swiper-slide">
+												<img src="demos/saas-2/images/new/tabs/pay.jpg" alt=".."
+													class="w-100 rounded-xxl">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="clear"></div>
+
+					</div>
+
+				</div>
+				<!-- End Service -->
+
+				<!-- Section cards -->
+				<div class="section section-yogas mb-0"
+					style="background-color: rgba(126, 150, 128,0.2); padding: 100px 0">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-lg-4">
+								<div class="card" style="border-top-color: #9DC3E2;">
+									<div class="card-body">
+										<img src="demos/yoga/images/yoga-icons/color/svg/asana_lotus_col.svg"
+											alt="Yoga Icon" class="mb-3" width="60">
+										<h3>Yoga For Beginners.</h3>
+										<p class="text-black-50">Synergistically fashion high-payoff infrastructures for
+											client-centric interfaces. Distinctively e-enable market positioning.</p>
+									</div>
+								</div>
+								<div class="card mt-5" style="border-top-color: #FFB5CC;">
+									<div class="card-body">
+										<img src="demos/yoga/images/yoga-icons/color/svg/asana_cobra.svg"
+											alt="Yoga Icon" class="mb-3" width="60">
+										<h3>30+ Yoga Poses.</h3>
+										<p class="text-black-50">Synergistically fashion high-payoff infrastructures for
+											client-centric interfaces. Distinctively e-enable market positioning.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-lg-4" style="margin-top: 30px">
+								<div class="card" style="border-top-color: #F4ABEF;">
+									<div class="card-body">
+										<img src="demos/yoga/images/yoga-icons/color/svg/man_well.svg" alt="Yoga Icon"
+											class="mb-3" width="60">
+										<h3>Well Trained Teachers</h3>
+										<p class="text-black-50">Energistically incentivize intuitive channels for team
+											building mindshare. Compellingly benchmark functionalized.</p>
+									</div>
+								</div>
+								<div class="card mt-5" style="border-top-color: #F2A490;">
+									<div class="card-body">
+										<img src="demos/yoga/images/yoga-icons/color/svg/kundalini_col.svg"
+											alt="Yoga Icon" class="mb-3" width="60">
+										<h3>Filtered Juices Per Day.</h3>
+										<p class="text-black-50">Energistically incentivize intuitive channels for team
+											building mindshare. Compellingly benchmark functionalized.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-lg-4" style="margin-top: 60px">
+								<div class="card" style="border-top-color: #9DD2D8;">
+									<div class="card-body">
+										<img src="demos/yoga/images/yoga-icons/color/svg/lotus_col.svg" alt="Yoga Icon"
+											class="mb-3" width="60">
+										<h3>Classes in Natures</h3>
+										<p class="text-black-50">Synergistically fashion high-payoff infrastructures for
+											client-centric interfaces. Distinctively e-enable market positioning.</p>
+									</div>
+								</div>
+								<div class="card mt-5" style="border-top-color: #D0E6A5;">
+									<div class="card-body">
+										<img src="demos/yoga/images/yoga-icons/color/svg/om_col.svg" alt="Yoga Icon"
+											class="mb-3" width="60">
+										<h3>1 Free Trial Class.</h3>
+										<p class="text-black-50">Synergistically fashion high-payoff infrastructures for
+											client-centric interfaces. Distinctively e-enable market positioning.</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="container">
+				<!-- end section cards -->
 
-					<div class="row col-mb-50">
+				<!-- CallOut Panel Start -->
 
-						<div class="col-sm-6 col-lg-4">
-							<div class="feature-box fbox-effect">
-								<div class="fbox-icon">
-									<a href="#"><i class="bi-display i-alt"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3>Responsive Layout</h3>
-									<p>Powerful Layout with Responsive functionality that can be adapted to any screen
-										size. Resize browser to view.</p>
-								</div>
+				<div class="section text-center text-white" style="background: #0a3883;">
+					<div class="container py-5">
+						<div class="row justify-content-center">
+							<div class="col-md-10">
+								<p class="text-uppercase fw-bold mb-4">Get 20% off on first order</p>
+								<h1 class="text-white fw-bold display-3" style="letter-spacing: -1px;">Start Creating
+									Beautiful Websites Purchase Canvas for $<span
+										class="nocolor text-decoration-underline"
+										style="text-underline-offset: 5px;">16</span> only!</h1>
+								<p class="op-07 mw-xs mx-auto px-5 mb-5">Starts at just $9.99/month afterwards. No Ads,
+									No Gimmicks and No SPAM. Just Real Content.</p>
+								<a href="#" class="button button-xlarge rounded-pill button-light m-0 mt-2">Get
+									Started</a>
 							</div>
 						</div>
-
-						<div class="col-sm-6 col-lg-4">
-							<div class="feature-box fbox-effect">
-								<div class="fbox-icon">
-									<a href="#"><i class="bi-eye i-alt"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3>Retina Ready Graphics</h3>
-									<p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts
-										&amp; all others graphics are optimized.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-lg-4">
-							<div class="feature-box fbox-effect">
-								<div class="fbox-icon">
-									<a href="#"><i class="bi-box i-alt"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3>Powerful Performance</h3>
-									<p>Canvas includes tons of optimized code that are completely customizable and
-										deliver unmatched fast performance.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-lg-4">
-							<div class="feature-box fbox-effect">
-								<div class="fbox-icon">
-									<a href="#"><i class="bi-layers-half i-alt"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3>Premium Sliders Included</h3>
-									<p>Canvas included 20+ custom designed Slider Pages with Premium Sliders like Layer,
-										Revolution, Swiper &amp; others.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-lg-4">
-							<div class="feature-box fbox-effect">
-								<div class="fbox-icon">
-									<a href="#"><i class="bi-droplet-half i-alt"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3>Unlimited Color Options</h3>
-									<p>Change the color scheme of the Theme in a flash just by changing the 6-digit HEX
-										code in the colors.php file.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-lg-4">
-							<div class="feature-box fbox-effect">
-								<div class="fbox-icon">
-									<a href="#"><i class="bi-textarea-t i-alt"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3>Customizable Fonts</h3>
-									<p>Use any Font you like from Google Web Fonts, Typekit or other Web Fonts. They
-										will blend in perfectly.</p>
-								</div>
-							</div>
-						</div>
-
 					</div>
-
-					<div class="clear"></div>
-					<div class="line"></div>
-
-					<div id="oc-clients-full" class="owl-carousel image-carousel carousel-widget" data-margin="30"
-						data-nav="false" data-loop="true" data-autoplay="5000" data-pagi="false" data-items-xs="2"
-						data-items-sm="3" data-items-md="4" data-items-lg="5" data-items-xl="6">
-
-						<a href="#"><img src="images/clients/1.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/2.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/3.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/4.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/5.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/6.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/7.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/8.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/9.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/10.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/11.png" alt="Clients"></a>
-						<a href="#"><img src="images/clients/12.png" alt="Clients"></a>
-
-					</div>
-
 				</div>
+
+				<!-- CallOut Panel end -->
+
 			</div>
 		</section><!-- #content end -->
 
@@ -377,7 +608,7 @@
 						jsFileLocation: "include/rs-plugin/js/",
 						sliderLayout: "fullscreen",
 						dottedOverlay: "none",
-						delay: 4000,
+						delay: 6000,
 						responsiveLevels: [1140, 1024, 778, 480],
 						visibilityLevels: [1140, 1024, 778, 480],
 						gridwidth: [1140, 1024, 778, 480],
@@ -420,6 +651,68 @@
 					});
 				}
 			}); /*ready*/
+		</script>
+		<!-- JS Animated Tabs -->
+		<script>
+			window.addEventListener('load', function () {
+				var swiperParent = new Swiper('.swiper-testimonial', {
+					slidesPerView: 3,
+					spaceBetween: 30,
+					navigation: {
+						prevEl: '.slider-arrow-left',
+						nextEl: '.slider-arrow-right'
+					},
+					pagination: {
+						el: ".swiper-pagination",
+						clickable: true,
+					},
+					breakpoints: {
+						1: {
+							slidesPerView: 1
+						},
+						576: {
+							slidesPerView: 1
+						},
+						768: {
+							slidesPerView: 2
+						},
+						1200: {
+							slidesPerView: 3
+						}
+					}
+				});
+
+				var SwiperTabsContainer = new Swiper('.swiper-tab-container', {
+					loop: true,
+					slidesPerView: 1,
+					autoHeight: true,
+					autoplay: {
+						delay: 5000,
+						disableOnInteraction: false,
+						autoplayDisableOnInteraction: false
+					},
+					effect: 'fade',
+					fadeEffect: {
+						crossFade: true
+					},
+					longSwipes: true,
+					autoplayDisableOnInteraction: true,
+					on: {
+						activeIndexChange: function (swiper) {
+							var index = swiper.realIndex;
+							jQuery('.swiper-tab-link').removeClass('active');
+							jQuery('.swiper-tab-link').eq(index).addClass('active');
+						}
+					}
+				});
+
+				jQuery('.swiper-tab-link').on('click', function () {
+					var index = jQuery(this).index();
+					SwiperTabsContainer.slideToLoop(index);
+					jQuery('.swiper-tab-link').removeClass('active');
+					jQuery(this).addClass('active');
+				});
+			});
 		</script>
 
 </body>
