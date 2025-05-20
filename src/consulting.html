@@ -21,6 +21,9 @@
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
+	<!-- Plugins/Components CSS -->
+	<link rel="stylesheet" href="./css/swiper.css">
+
 	<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
 	<link rel="stylesheet" href="./include/rs-plugin/css/settings.css" media="screen">
 	<link rel="stylesheet" href="./include/rs-plugin/css/layers.css">
@@ -408,37 +411,58 @@
 							<div class="col-md-5">
 								<ul class="swiper-links-container list-unstyled">
 									<li class="swiper-tab-link active">
-										<h3 class="swiper-tab-title">Connect Your Apps</h3>
-										<p class="swiper-tab-content">Bridging the gap between apps, simplifying tasks
-											and maximizing productivity by fostering seamless communication and
-											efficient synergy.</p>
+										<h3 class="swiper-tab-title">Smart Customs Strategy for E-Commerce</h3>
+										<p class="swiper-tab-content">Unlock frictionless cross-border trade. We design
+											and optimize customs operations so your brand delivers faster, smoother, and
+											fully compliant shipments—whether to Paris, New York, or Tokyo.</p>
 										<div class="swiper-pagination-progress">
 											<span class="swiper-pagination-bar"></span><span
 												class="swiper-pagination-bar-active"></span>
 										</div>
 									</li>
 									<li class="swiper-tab-link">
-										<h3 class="swiper-tab-title">Get More Features</h3>
-										<p class="swiper-tab-content">Unleash your creativity with an expansive website
-											builder toolkit, providing advanced features for unparalleled design and
-											functionality.</p>
+										<h3 class="swiper-tab-title">Automated Compliance. Global Confidence.</h3>
+										<p class="swiper-tab-content">Simplify customs with the right tech. From
+											software setup to data analytics, we help automate your customs
+											processes—reducing manual errors, ensuring compliance, and boosting
+											efficiency at scale.</p>
 										<div class="swiper-pagination-progress">
 											<span class="swiper-pagination-bar"></span><span
 												class="swiper-pagination-bar-active"></span>
 										</div>
 									</li>
 									<li class="swiper-tab-link">
-										<h3 class="swiper-tab-title">Automations to the Max</h3>
-										<p class="swiper-tab-content">Empower your website with advanced automation
-											tools, enhancing user experience through intelligent, streamlined processes
-											and personalized interactions.</p>
+										<h3 class="swiper-tab-title">Lower Duties, Higher Margins.</h3>
+										<p class="swiper-tab-content">Optimize your costs without compromise. We uncover
+											hidden savings in tariffs, duties, and third-party negotiations—helping you
+											reinvest in growth while staying fully compliant across jurisdictions.</p>
+										<div class="swiper-pagination-progress">
+											<span class="swiper-pagination-bar"></span><span
+												class="swiper-pagination-bar-active"></span>
+										</div>
+									</li>
+									<li class="swiper-tab-link">
+										<h3 class="swiper-tab-title">End-to-End Logistics Optimization.</h3>
+										<p class="swiper-tab-content">Seamless delivery, satisfied customers. From
+											vendor selection to shipping strategies and returns management, we fine-tune
+											your logistics to match premium customer expectations globally.</p>
+										<div class="swiper-pagination-progress">
+											<span class="swiper-pagination-bar"></span><span
+												class="swiper-pagination-bar-active"></span>
+										</div>
+									</li>
+									<li class="swiper-tab-link">
+										<h3 class="swiper-tab-title">Compliance Without Surprises.</h3>
+										<p class="swiper-tab-content">Stay ahead of customs regulations. We manage audit
+											risks, guide you through trade agreements, and ensure your goods clear
+											borders without delay—so you stay focused on scaling your brand.</p>
 										<div class="swiper-pagination-progress">
 											<span class="swiper-pagination-bar"></span><span
 												class="swiper-pagination-bar-active"></span>
 										</div>
 									</li>
 								</ul>
-								<!-- <div class="swiper-pagination swiper-tab-pagination"></div> -->
+								<div class="swiper-pagination swiper-tab-pagination"></div>
 							</div>
 							<div class="col-md-6">
 								<div id="swiper-tab" class="swiper_wrapper h-auto">
@@ -451,6 +475,14 @@
 											<div class="swiper-slide">
 												<img src="demos/saas-2/images/new/tabs/features.svg" alt=".."
 													class="w-100 rounded-xxl bg-success bg-opacity-10">
+											</div>
+											<div class="swiper-slide">
+												<img src="demos/saas-2/images/new/tabs/pay.jpg" alt=".."
+													class="w-100 rounded-xxl">
+											</div>
+											<div class="swiper-slide">
+												<img src="demos/saas-2/images/new/tabs/pay.jpg" alt=".."
+													class="w-100 rounded-xxl">
 											</div>
 											<div class="swiper-slide">
 												<img src="demos/saas-2/images/new/tabs/pay.jpg" alt=".."
@@ -539,11 +571,9 @@
 						</div>
 					</div>
 				</div>
-
 				<!-- end section cards -->
 
 				<!-- CallOut Panel Start -->
-
 				<div class="section text-center text-white" style="background: #0a3883;">
 					<div class="container py-5">
 						<div class="row justify-content-center">
@@ -561,14 +591,10 @@
 						</div>
 					</div>
 				</div>
-
 				<!-- CallOut Panel end -->
 
 			</div>
 		</section><!-- #content end -->
-
-
-
 
 		@@include('src/blocks/footer.html',{
 		"bg-color":"var(--samaritan)"
@@ -655,32 +681,6 @@
 		<!-- JS Animated Tabs -->
 		<script>
 			window.addEventListener('load', function () {
-				var swiperParent = new Swiper('.swiper-testimonial', {
-					slidesPerView: 3,
-					spaceBetween: 30,
-					navigation: {
-						prevEl: '.slider-arrow-left',
-						nextEl: '.slider-arrow-right'
-					},
-					pagination: {
-						el: ".swiper-pagination",
-						clickable: true,
-					},
-					breakpoints: {
-						1: {
-							slidesPerView: 1
-						},
-						576: {
-							slidesPerView: 1
-						},
-						768: {
-							slidesPerView: 2
-						},
-						1200: {
-							slidesPerView: 3
-						}
-					}
-				});
 
 				var SwiperTabsContainer = new Swiper('.swiper-tab-container', {
 					loop: true,
