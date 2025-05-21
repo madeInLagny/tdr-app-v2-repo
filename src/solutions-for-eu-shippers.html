@@ -18,10 +18,7 @@
   <!-- CSS imports -->
   @@include('src/blocks/head/cssImports.html')
 
-  <!-- Only Required if Icons are shown on page -->
-  @@include('src/blocks/head/cssFontIcons.html')
-
-  <!-- Only Required when there are cards on the page -->
+   <!-- Only Required when there are cards on the page -->
   <link rel="stylesheet" href="./css/custom/cards.css">
 
   <!-- Only Required if Samaritan color is required -->
@@ -33,7 +30,7 @@
 
 </head>
 
-<body class="stretched samaritan-background">
+<body class="stretched samaritan-bg">
   <div id="wrapper">
     @@include('src/blocks/header.html',{
     "header-bg":"var(--samaritan)",
