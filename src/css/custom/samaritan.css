@@ -12,7 +12,7 @@ ul {
   padding-left: 2em;
 }
 
-.text-darkSamaritan {
+.text-samaritan {
   color: var(--samaritan) !important;
 }
 
@@ -22,6 +22,16 @@ ul {
 
 .lightSamaritan-panel-bg {
   background-color: var(--lightSamaritan);
+}
+
+.samaritanToLightSamaritanGradientBg {
+  background: #3b6281;
+  background: linear-gradient(
+    180deg,
+    rgba(59, 98, 129, 1) 0%,
+    rgba(177, 192, 205, 1) 2%,
+    rgba(177, 192, 205, 1) 100%
+  );
 }
 
 .samaritan-background {
@@ -35,11 +45,7 @@ ul {
 }
 
 a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
-  color: var(--lightSamaritan)
-}
-
-.alert.samaritan {
-  background-color: var(--lightSamaritan);
+  color: var(--lightSamaritan);
 }
 
 .button-circle {
@@ -64,6 +70,7 @@ a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
 }
 
 .alert-samaritan {
+  background-color: var(--lightSamaritan);
   --bs-alert-color: var(--darkSamaritan);
   --bs-alert-bg: var(--samaritan);
   --bs-alert-border-color: var(--lightSamaritan);
@@ -75,7 +82,7 @@ a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
 }
 
 form label {
-  color: white
+  color: white;
 }
 
 .btn-primary {

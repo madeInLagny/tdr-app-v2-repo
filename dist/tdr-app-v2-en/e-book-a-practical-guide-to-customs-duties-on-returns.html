@@ -103,12 +103,15 @@
 		<!-- header -->
 		<!-- Only Required if Icons are shown on page -->
 <!-- Font Icons Start -->
-<link rel="preload" href="./css/font-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<!-- <link rel="preload" href="./css/font-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
   <link rel="stylesheet" href="./css/font-icons.css">
-</noscript>
-<!-- Font Icons End -->
+</noscript> -->
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+  integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
+<!-- Font Icons End -->
 
 
 <style>
@@ -147,7 +150,7 @@
 <!-- Call Out Header -->
 <header class="dark">
   <div class="container p-2">
-    Want to leverage our team expertise to support your Customs and E-Commerce Logistics projects? We are here to help!
+    Need support with Customs and E-Commerce Supply Chain projects? Leverage our team's expertise.
     <a href="consulting.html">Check out the new TDR Consulting offering</a>
   </div>
 </header>
@@ -496,41 +499,7 @@
 </footer>
 	<!-- Javascripts
 		============================================= -->
-	<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js"></script>
-
-<script>
-  // Function to load the CDN script
-  function loadCDN(GDPR) {
-    var script = document.createElement('script');
-    script.src = GDPR ? "./js/cookieConsent/gdpr-config.js" : "./js/cookieConsent/row-config.js";
-    script.async = true;
-    document.body.appendChild(script);
-    script.onerror = function () {
-      console.error('Error loading CDN script.');
-    };
-  }
-
-  // Function to check if the user is in the EU
-  function checkEULocation() {
-    fetch('https://ipinfo.io/json')
-      .then(response => response.json())
-      .then(data => {
-        // Check if the country is in the EU
-        var euCountries = ['GB', 'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'];
-        if (euCountries.includes(data.country)) {
-          loadCDN(true);
-        } else {
-          loadCDN()
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching IP information:', error);
-      });
-  }
-
-  // Check the user's location on page load
-  checkEULocation();
-</script>
+	
 	<!-- Tawk Chatbox -->
 	<!--Start of Tawk.to Script-->
 
