@@ -3,9 +3,9 @@
 
 
 <style>
-  .dark {
+  #header-wrap {
     --cnvs-contrast-bg: @@header-bg;
-
+    --cnvs-header-sticky-bg: @@header-bg;
   }
 
   .is-expanded-menu .sub-menu-container,
@@ -33,18 +33,26 @@
   .menu-item:hover>.menu-link {
     --cnvs-primary-menu-hover-color: @@text-color-hover;
   }
+
+  .callOutBackgroundColor {
+    background-color: lightgray;
+  }
+
+  .callOutColor {
+    color: darkslategray !important;
+
+  }
 </style>
 
 <!-- Call Out Header -->
-<header class="lightSamaritan-bg">
-  <div class="container p-2 text-center text-darkSamaritan fw-bold">
-    <i class="bi-info-circle"></i> Need support with Customs and E-Commerce Supply Chain projects? <a
-      href="${{consulting.path}}$" class="text-darkSamaritan fw-bold">Check out our new TDR Consulting
+<header id="callOutHeader" class="callOutBackgroundColor">
+  <div class="container p-2 text-center fw-bold callOutColor">
+    Need support with Customs and E-Commerce Supply Chain projects? <a href="${{consulting.path}}$"
+      class="fw-bold callOutColor">Check out our new TDR Consulting
       solution <i class="bi-arrow-right-square"></i></a>
   </div>
 </header>
 <!-- Head of Call Out Header -->
-
 
 <header id="header" class="full-header transparent-header dark">
   <div id="header-wrap">
