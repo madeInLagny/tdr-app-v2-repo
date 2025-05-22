@@ -10,7 +10,7 @@ import entities from "gulp-html-entities";
 const paths = {
   specificHtml: [
     /* 'src/TDR-Duty-Drawback-in-the-US.html', */
-    "src/*.html"
+    "src/*.html",
   ],
   i18n: "src/i18n/en/**/",
   dist: "dist/tdr-app-v2-en",
@@ -19,6 +19,7 @@ const paths = {
     js: "src/js/**/*",
     images: "src/images/**/*",
     eBook: "src/eBook/**/*",
+    include: "src/include/**/*",
   },
 };
 
@@ -64,8 +65,8 @@ export const buildSpecificHtml = () => {
         schema: "",
       })
     )
-    .pipe(entities('decode'))
-    .pipe(gulp.dest("dist/"))
+    .pipe(entities("decode"))
+    .pipe(gulp.dest("dist/"));
 };
 
 // Task to copy
@@ -89,6 +90,12 @@ export const copyEBook = () => {
   return gulp
     .src(paths.assets.eBook, { encoding: false })
     .pipe(gulp.dest(path.join(paths.dist, "eBook")));
+};
+
+export const copyInclude = () => {
+  return gulp
+    .src(paths.assets.include, { encoding: false })
+    .pipe(gulp.dest(path.join(paths.dist, "include")));
 };
 
 // Task to watch changes for the specific files, blocks, and localization files
@@ -123,7 +130,14 @@ export const createSiteMap = () => {
 // Default task to build and watch all assets and files
 export default gulp.series(
   cleandist,
-  gulp.parallel(buildSpecificHtml, copyCss, copyJs, copyImages, copyEBook),
+  gulp.parallel(
+    buildSpecificHtml,
+    copyCss,
+    copyJs,
+    copyImages,
+    copyEBook,
+    copyInclude
+  ),
   createSiteMap,
   watchSpecificFiles
 );

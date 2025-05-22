@@ -57,17 +57,9 @@ https://fluid.style/type?min=1.2&max=2&min-bp=20&max-bp=77.5&unit=%22rem%22
 
 ## Add icons to a page
 
-If icons must be added to the page, add this css import in the page head:
+(link to Bootstrap Icons CDN already in the head block)
 
-<!-- Only required with icons on the page -->
-  <!-- Font Icons Start -->
-  <link rel="preload" href="css/font-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="css/font-icons.css">
-  </noscript>
-  <!-- Font Icons End -->
-
-Then use icons using this pattern: <i class="bi-question-circle-fill"></i>
+Use this pattern: <i class="bi-question-circle-fill"></i>
 
 The list of available icons is here: https://icons.getbootstrap.com/
 
