@@ -1,0 +1,207 @@
+<!-- Only Required if Icons are shown on page -->
+@@include('src/blocks/head/cssFontIcons.html')
+
+
+<style>
+  #header-wrap {
+    --cnvs-contrast-bg: @@header-bg;
+    --cnvs-header-sticky-bg: @@header-bg;
+  }
+
+  .is-expanded-menu .sub-menu-container,
+  .is-expanded-menu .mega-menu-content {
+    --cnvs-primary-menu-submenu-bg: @@submenu-bg;
+  }
+
+  a.menu-link {
+    color: @@text-color;
+  }
+
+  .menu-item.current>.menu-link {
+    --cnvs-primary-menu-active-color: @@text-color;
+  }
+
+  .sub-menu-container .menu-item>.menu-link {
+    --cnvs-primary-menu-submenu-color: @@text-color;
+  }
+
+  .is-expanded-menu .sub-menu-container .menu-item:hover>.menu-link,
+  .is-expanded-menu .sub-menu-container .menu-item.current>.menu-link {
+    --cnvs-primary-menu-submenu-hover-color: @@text-color-hover;
+  }
+
+  .menu-item:hover>.menu-link {
+    --cnvs-primary-menu-hover-color: @@text-color-hover;
+  }
+
+  .callOutBackgroundColor {
+    background-color: lightgray;
+  }
+
+  .callOutColor {
+    color: darkslategray !important;
+
+  }
+</style>
+
+<!-- Call Out Header -->
+<header id="callOutHeader" class="callOutBackgroundColor">
+  <div class="container p-2 text-center fw-bold callOutColor">
+    Are you an expert in Customs or E-Commerce Supply Chains? <a href="${{contact-us.path}}$"
+      class="fw-bold callOutColor">Connect with us <i class="bi-arrow-right-square"></i></a>
+    and join us! <i class="bi-arrow-right-square"></i></a>
+  </div>
+</header>
+<!-- Head of Call Out Header -->
+
+<header id="header" class="full-header transparent-header dark">
+  <div id="header-wrap">
+    <div class="container">
+      <div class="header-row">
+
+        <!-- Logo
+        ============================================= -->
+        <div id="logo">
+          <a href="index.html">
+            <img class="logo-default" srcset="./images/logo.png, ./images/logo@2x.png 2x" src="./images/logo@2x.png"
+              alt="TDR Logo">
+          </a>
+        </div><!-- #logo end -->
+
+        <div class="primary-menu-trigger">
+          <button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
+            <span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
+          </button>
+        </div>
+
+        <!-- Primary Navigation
+        ============================================= -->
+        <nav class="primary-menu">
+
+          <ul class="menu-container">
+            <li class="menu-item">
+              <a class="menu-link" href="#">
+                <div>${{header.our-value-proposal}}$</div>
+              </a>
+              <ul class="sub-menu-container">
+                <li class="menu-item">
+                  <a class="menu-link" href="${{solutions-for-us-shippers.path}}$">
+                    <div>${{header.to-us-shippers}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{solutions-for-uk-shippers.path}}$">
+                    <div>${{header.to-uk-shippers}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{solutions-for-eu-shippers.path}}$">
+                    <div>${{header.to-eu-shippers}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{solutions-for-all-shippers.path}}$">
+                    <div>${{header.to-all-shippers}}$</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="#">
+                <div>${{header.our-solutions}}$</div>
+              </a>
+              <ul class="sub-menu-container">
+                <li class="menu-item">
+                  <a class="menu-link" href="${{TDR-Duty-Drawback-in-the-US.path}}$">
+                    <div>${{TDR-Duty-Drawback-in-the-US.name}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{TDR-Duty-Drawback-in-Europe.path}}$">
+                    <div>${{TDR-Duty-Drawback-in-Europe.name}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{TDR-Duty-Free-Returns-to-the-US.path}}$">
+                    <div>${{TDR-Duty-Free-Returns-to-the-US.name}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{TDR-Duty-Free-Returns-to-Europe.path}}$">
+                    <div>${{TDR-Duty-Free-Returns-to-Europe.name}}$</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="${{consulting.path}}$">
+                <div>${{consulting.name}}$</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="${{index.blogUrl}}$">
+                <div>${{header.blog}}$</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="${{faq-main.path}}$">
+                <div>FAQ</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="${{e-book-a-practical-guide-to-customs-duties-on-returns.path}}$">
+                <div>${{header.e-book}}$</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link" href="#">
+                <div>${{header.who-we-are}}$</div>
+              </a>
+              <ul class="sub-menu-container">
+                <li class="menu-item">
+                  <a class="menu-link" href="${{about-us.path}}$">
+                    <div>${{about-us.name}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{this-is-TDR.path}}$"">
+                    <div>${{this-is-TDR.name}}$</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class=" menu-item">
+                    <a class="menu-link" href="${{contact-us.path}}$">
+                      <div>${{header.get-in-touch}}$</div>
+                    </a>
+                </li>
+                <!-- <li class="menu-item">
+              <a class="menu-link" href="#">
+                <div><i class="bi bi-globe2"></i></div>
+              </a>
+              <ul class="sub-menu-container">
+                <li class="menu-item">
+                  <a class="menu-link" href="${{index.domainEN}}$">
+                    <div>English</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{index.domainFR}}$">
+                    <div>Français</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href=${{index.domainIT}}$>
+                    <div>Italiano</div>
+                  </a>
+                </li>
+              </ul>
+            </li> -->
+              </ul>
+
+        </nav><!-- #primary-menu end -->
+      </div>
+    </div>
+  </div>
+  <div class="header-wrap-clone"></div>
+</header>
