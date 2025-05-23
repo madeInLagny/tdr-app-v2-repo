@@ -78,3 +78,29 @@
         </div>
     </div>
 </section>
+
+<!-- Update of the redirect address -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the current domain
+        const currentDomain = window.location.origin;
+
+        // Construct the new URL path
+        const newPath = "/ebook-download-page.html";
+
+        // Combine the domain and the new path
+        const newURL = currentDomain + newPath;
+
+        // Update the value of the input field
+        const redirectToInput = document.getElementById("redirectTo");
+        if (redirectToInput) {
+            redirectToInput.value = newURL;
+        }
+    });
+
+    function addSpinner() {
+        const spinnerElement = document.getElementById("btn-spinner");
+        spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+    }
+
+</script>
