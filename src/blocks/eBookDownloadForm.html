@@ -84,9 +84,10 @@
     document.addEventListener("DOMContentLoaded", function () {
         // Get the current domain
         const currentDomain = window.location.origin;
+        const pdfEncodedName = encodeURIComponent("@@pdfName");
 
         // Construct the new URL path
-        const newPath = "/ebook-download-page.html";
+        const newPath = "/ebook-download-page.html?pdfName=" + pdfEncodedName;
 
         // Combine the domain and the new path
         const newURL = currentDomain + newPath;

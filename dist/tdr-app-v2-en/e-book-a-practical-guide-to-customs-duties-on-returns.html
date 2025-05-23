@@ -481,7 +481,7 @@
                 <li class="menu-item">
                   <a class="menu-link" href="e-book-a-practical-guide-to-customs-duties-on-returns.html">
                     <div>Master Customs Strategies for eCommerce</div>
-                  </a>>
+                  </a>
                 </li>
               </ul>
             </li>
@@ -676,6 +676,33 @@
     </div>
 </section>
 
+<!-- Update of the redirect address -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the current domain
+        const currentDomain = window.location.origin;
+        const pdfEncodedName = encodeURIComponent("TDR eBook_A Practical Guide to Customs Duties on Returns.pdf");
+
+        // Construct the new URL path
+        const newPath = "/ebook-download-page.html?pdfName=" + pdfEncodedName;
+
+        // Combine the domain and the new path
+        const newURL = currentDomain + newPath;
+
+        // Update the value of the input field
+        const redirectToInput = document.getElementById("redirectTo");
+        if (redirectToInput) {
+            redirectToInput.value = newURL;
+        }
+    });
+
+    function addSpinner() {
+        const spinnerElement = document.getElementById("btn-spinner");
+        spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+    }
+
+</script>
+
 		<!-- eBook Download Form Ends -->
 
 
@@ -866,35 +893,6 @@
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
 
-	<!-- Update of the redirect address -->
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Get the current domain
-			const currentDomain = window.location.origin;
-
-			// Construct the new URL path
-			const newPath = "/ebook-download-page.html";
-
-			// Combine the domain and the new path
-			const newURL = currentDomain + newPath;
-
-			// Update the value of the input field
-			const redirectToInput = document.getElementById("redirectTo");
-			if (redirectToInput) {
-				redirectToInput.value = newURL;
-			}
-		});
-
-		function addSpinner() {
-			const spinnerElement = document.getElementById("btn-spinner");
-			spinnerElement.classList.add("spinner-border", "spinner-border-sm")
-		}
-
-	</script>
-
-	<!-- reCaptcha -->
-	<!-- <script src="./js/custom/recaptcha.js"></script>
- -->
 
 </body>
 
