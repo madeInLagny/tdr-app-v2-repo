@@ -1,0 +1,80 @@
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form Overlay -->
+            <div class="contact-form-overlay col-md-8 offset-md-2 p-5">
+                <h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
+                    ${{e-book-download-form.form-title}}$</h2>
+                <p class="text-lightSamaritan">${{e-book-download-form.form-description}}$
+                </p>
+                <div class="">
+                    <form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit" method="post"
+                        onSubmit="addSpinner()">
+                        <input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+                        <input id="redirectTo" type="hidden" name="redirectTo" value="">
+                        <input type="hidden" name="subject" value="@@subject">
+                        <input type="text" name="honeypot" style="display:none">
+
+                        <div class="col-md-6 form-group">
+                            <label for="firstName">${{e-book-download-form.form-firstname-label}}$</label>
+                            <input type="text" id="firstName" name="$firstName" class="form-control required" required>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="name">${{e-book-download-form.form-name-label}}$</label>
+                            <input type="text" id="name" name="name" class="form-control required" required>
+                        </div>
+
+                        <div class="w-100"></div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="email">${{e-book-download-form.form-email-label}}$</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="company">${{e-book-download-form.form-company-label}}$</label>
+                            <input type="text" id="company" name="$company" class="form-control" required>
+                        </div>
+
+                        <div class="w-100"></div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="title">${{e-book-download-form.form-title-label}}$</label>
+                            <input type="text" id="title" name="$title" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6 form-group d-flex flex-column justify-content-center mb-0">
+                            <div>
+                                <label for="radio-4" class="radio-style-1-label">
+                                    <input id="radio-4" class="radio-style" name="$subscribeNewsletter" type="radio"
+                                        value="Yes" required>
+                                    ${{e-book-download-form.form-subscribe-label}}$</label>
+                            </div>
+                            <div>
+                                <label for="radio-5" class="radio-style-1-label">
+                                    <input id="radio-5" class="radio-style" name="$subscribeNewsletter" type="radio"
+                                        value="No" required>
+                                    ${{e-book-download-form.form-notsubscribe-label}}$</label>
+                            </div>
+                        </div>
+
+                        <div class="w-100"></div>
+
+                        <div class="col-md-12 form-group">
+                            <button class="btn btn-light" type="submit" value="Submit">
+                                <span id="btn-spinner" aria-hidden="true"></span>
+                                <span class="visually-hidden"
+                                    role="status">${{e-book-download-form.form-loading}}$</span>
+                                ${{e-book-download-form.form-submit}}$
+                            </button>
+                            <div class="pt-2">
+                                @@include('src/blocks/privacyConsent.html')
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

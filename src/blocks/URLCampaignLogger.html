@@ -1,28 +1,33 @@
 <script>
+  if (
+    window.location.protocol !== 'file:' &&
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1'
+  ) {
+    function captureUTMParams() {
+      const params = new URLSearchParams(window.location.search);
+      const data = {
+        utm_source: params.get('utm_source'),
+        utm_medium: params.get('utm_medium'),
+        utm_campaign: params.get('utm_campaign'),
+        page_url: window.location.href
+      };
 
-  function captureUTMParams() {
-    const params = new URLSearchParams(window.location.search);
-    const data = {
-      utm_source: params.get('utm_source'),
-      utm_medium: params.get('utm_medium'),
-      utm_campaign: params.get('utm_campaign'),
-      page_url: window.location.href
-    };
+      // Google Sheets Web App URL - V10
+      const webAppUrl = 'https://script.google.com/macros/s/AKfycbz4BQva_FEhtQoZsGwWO5ItIWC_h0brpO1UDKouADGgVSpNcCN1RkaQdTe8avj-XmAFUA/exec';
 
-    // Google Sheets Web App URL - V10
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbz4BQva_FEhtQoZsGwWO5ItIWC_h0brpO1UDKouADGgVSpNcCN1RkaQdTe8avj-XmAFUA/exec';
+      // Send data to Google Sheets
+      fetch(webAppUrl, {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }).then(response => response.text())
+        .then(result => console.log('Success:', result))
+        .catch(error => console.error('Error:', error));
+    }
 
-    // Send data to Google Sheets
-    fetch(webAppUrl, {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }).then(response => response.text())
-      .then(result => console.log('Success:', result))
-      .catch(error => console.error('Error:', error));
+    // Run on page load
+    window.addEventListener('load', function () {
+      captureUTMParams();
+    });
   }
-
-  // Run on page load
-  window.addEventListener('load', function () {
-    captureUTMParams();
-  });
 </script>

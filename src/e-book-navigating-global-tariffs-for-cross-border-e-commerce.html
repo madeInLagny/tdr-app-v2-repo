@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {
+	"description": "${{e-book-a-practical-guide-to-customs-duties-on-returns.description}}$",
+	"title": "${{e-book-a-practical-guide-to-customs-duties-on-returns.title}}$",
+	"path": "${{e-book-a-practical-guide-to-customs-duties-on-returns.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<style>
+		.vh-70 {
+			height: 70vh;
+		}
+	</style>
+
+</head>
+
+<body class="stretched samaritan-bg">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		})
+		<!-- end of header
+		============================================= -->
+		<div class="section bg-transparent my-0 my-lg-5 pb-0 pb-lg-5">
+			<div class="container mw-md py-3">
+				<div class="row gy-5">
+					<div class="col-sm-9">
+						<div class="fs-6 op-07 mb-3 text-lightSamaritan">
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.subtitle}}$</div>
+						<h3 class="display-3 mb-0 fw-normal">
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.title-part1}}$<span
+								class="font-secondary fw-bold fst-italic text-lightSamaritan">
+								${{e-book-a-practical-guide-to-customs-duties-on-returns.title-part2}}$</span>
+						</h3>
+					</div>
+
+					<div class="col-md-4">
+						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.about-title}}$</h2>
+						<p class="text-lightSamaritan">
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.about-description}}$
+						</p>
+						<h4 class="mb-3 fw-normal font-body">
+							<i class="bi-check-circle-fill me-1 color"></i>
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet1}}$
+						</h4>
+						<h4 class="mb-3 fw-normal font-body">
+							<i class="bi-check-circle-fill me-1 color"></i>
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet2}}$
+						</h4>
+						<h4 class="mb-3 fw-normal font-body">
+							<i class="bi-check-circle-fill me-1 color"></i>
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet3}}$
+						</h4>
+						<h4 class="mb-3 fw-normal font-body">
+							<i class="bi-check-circle-fill me-1 color"></i>
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet4}}$
+						</h4>
+						<h4 class="mb-3 fw-normal font-body">
+							<i class="bi-check-circle-fill me-1 color"></i>
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.bullet5}}$
+						</h4>
+					</div>
+
+					<div class="col-md-8 text-center">
+						<img src="./images/eBook/a-practical-guide-to-customs-duties-on-returns.webp"
+							class="rounded-6 vh-70"
+							alt="${{e-book-a-practical-guide-to-customs-duties-on-returns.image-alt}}$">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- eBook Download Form Starts -->
+
+		@@include('src/blocks/eBookDownloadForm.html',{
+		"subject":"Autom-Ebook2-Request" })
+
+		<!-- eBook Download Form Ends -->
+
+
+	</div>
+	@@include('src/blocks/footer.html',{
+	"bg-color":"var(--samaritan)"
+	})
+	<!-- Javascripts
+		============================================= -->
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/linkedInInsideTag.html')
+
+
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
+
+	<!-- Update of the redirect address -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Get the current domain
+			const currentDomain = window.location.origin;
+
+			// Construct the new URL path
+			const newPath = "/ebook-download-page.html";
+
+			// Combine the domain and the new path
+			const newURL = currentDomain + newPath;
+
+			// Update the value of the input field
+			const redirectToInput = document.getElementById("redirectTo");
+			if (redirectToInput) {
+				redirectToInput.value = newURL;
+			}
+		});
+
+		function addSpinner() {
+			const spinnerElement = document.getElementById("btn-spinner");
+			spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+		}
+
+	</script>
+
+	<!-- reCaptcha -->
+	<!-- <script src="./js/custom/recaptcha.js"></script>
+ -->
+
+</body>
+
+</html>
