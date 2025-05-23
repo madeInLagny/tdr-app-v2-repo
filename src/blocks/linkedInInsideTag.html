@@ -1,7 +1,10 @@
 <script type="text/javascript">
-  (function() {
-    var isLocal = location.hostname === "localhost" || location.protocol === "file:";
-    if (!isLocal) {
+  (function () {
+    if (
+      location.protocol !== "file:" &&
+      location.hostname !== "localhost" &&
+      location.hostname !== "127.0.0.1"
+    ) {
       _linkedin_partner_id = "6972340";
       window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
       window._linkedin_data_partner_ids.push(_linkedin_partner_id);

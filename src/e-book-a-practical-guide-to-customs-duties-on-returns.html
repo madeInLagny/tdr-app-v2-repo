@@ -61,7 +61,8 @@
 					<div class="col-md-4">
 						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
 							${{e-book-a-practical-guide-to-customs-duties-on-returns.about-title}}$</h2>
-						<p class="text-lightSamaritan">${{e-book-a-practical-guide-to-customs-duties-on-returns.about-description}}$
+						<p class="text-lightSamaritan">
+							${{e-book-a-practical-guide-to-customs-duties-on-returns.about-description}}$
 						</p>
 						<h4 class="mb-3 fw-normal font-body">
 							<i class="bi-check-circle-fill me-1 color"></i>
@@ -86,101 +87,21 @@
 					</div>
 
 					<div class="col-md-8 text-center">
-						<img src="./images/eBook/a-practical-guide-to-customs-duties-on-returns.webp" class="rounded-6 vh-70"
+						<img src="./images/eBook/a-practical-guide-to-customs-duties-on-returns.webp"
+							class="rounded-6 vh-70"
 							alt="${{e-book-a-practical-guide-to-customs-duties-on-returns.image-alt}}$">
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<section id="content">
-			<div class="container">
-				<div class="row">
-					<!-- Contact Form Overlay -->
-					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
-						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
-							${{e-book-a-practical-guide-to-customs-duties-on-returns.form-title}}$</h2>
-						<p class="text-lightSamaritan">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-description}}$
-						</p>
-						<div class="">
-							<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit" method="post"
-								onSubmit="addSpinner()">
-								<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
-								<input id="redirectTo" type="hidden" name="redirectTo" value="">
-								<input type="hidden" name="subject" value="Autom-Ebook1-Request">
-								<input type="text" name="honeypot" style="display:none">
+		<!-- eBook Download Form Starts -->
 
-								<div class="col-md-6 form-group">
-									<label
-										for="firstName">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-firstname-label}}$</label>
-									<input type="text" id="firstName" name="$firstName" class="form-control required" required>
-								</div>
+		@@include('src/blocks/eBookDownloadForm.html',{
+		"subject":"Autom-Ebook1-Request" })
 
-								<div class="col-md-6 form-group">
-									<label for="name">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-name-label}}$</label>
-									<input type="text" id="name" name="name" class="form-control required" required>
-								</div>
+		<!-- eBook Download Form Ends -->
 
-								<div class="w-100"></div>
-
-								<div class="col-md-6 form-group">
-									<label
-										for="email">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-email-label}}$</label>
-									<input type="email" id="email" name="email" class="form-control" required>
-								</div>
-
-								<div class="col-md-6 form-group">
-									<label
-										for="company">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-company-label}}$</label>
-									<input type="text" id="company" name="$company" class="form-control" required>
-								</div>
-
-								<div class="w-100"></div>
-
-								<div class="col-md-6 form-group">
-									<label
-										for="title">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-title-label}}$</label>
-									<input type="text" id="title" name="$title" class="form-control" required>
-								</div>
-
-								<div class="col-md-6 form-group d-flex flex-column justify-content-center mb-0">
-									<div>
-										<label for="radio-4" class="radio-style-1-label">
-											<input id="radio-4" class="radio-style" name="$subscribeNewsletter" type="radio" value="Yes"
-												required>
-											${{e-book-a-practical-guide-to-customs-duties-on-returns.form-subscribe-label}}$</label>
-									</div>
-									<div>
-										<label for="radio-5" class="radio-style-1-label">
-											<input id="radio-5" class="radio-style" name="$subscribeNewsletter" type="radio" value="No"
-												required>
-											${{e-book-a-practical-guide-to-customs-duties-on-returns.form-notsubscribe-label}}$</label>
-									</div>
-								</div>
-
-								<div class="w-100"></div>
-
-								<div class="col-md-12 form-group">
-									<button class="btn btn-light" type="submit" value="Submit">
-										<span id="btn-spinner" aria-hidden="true"></span>
-										<span class="visually-hidden"
-											role="status">${{e-book-a-practical-guide-to-customs-duties-on-returns.form-loading}}$</span>
-										${{e-book-a-practical-guide-to-customs-duties-on-returns.form-submit}}$
-									</button>
-									<div class="pt-2">
-										@@include('src/blocks/privacyConsent.html')
-										<!-- 										This site is protected by reCAPTCHA and the Google
-										<a href="https://policies.google.com/privacy">Privacy Policy</a> and
-										<a href="https://policies.google.com/terms">Terms of Service</a> apply.
- -->
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 	</div>
 	@@include('src/blocks/footer.html',{
