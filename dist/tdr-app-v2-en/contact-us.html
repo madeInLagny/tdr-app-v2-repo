@@ -80,7 +80,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.css">
 </noscript>
 
-	
+
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
@@ -724,32 +724,6 @@
 		<!-- Canvas Scripts -->
 		<script src="js/functions.js"></script>
 
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				// Get the current domain
-				const currentDomain = window.location.origin;
-
-				// Construct the new URL path
-				const newPath = "/message-sent-success.html";
-
-				// Combine the domain and the new path
-				const newURL = currentDomain + newPath;
-
-				// Update the value of the input field
-				const redirectToInput = document.getElementById("redirectTo");
-				if (redirectToInput) {
-					redirectToInput.value = newURL;
-				}
-			});
-
-			function addSpinner() {
-				const spinnerElement = document.getElementById("btn-spinner");
-				spinnerElement.classList.add("spinner-border", "spinner-border-sm")
-			}
-		</script>
-
-		<!-- reCaptcha -->
-		<script src="./js/custom/recaptcha.js"></script>
 </body>
 
 </html>
