@@ -5,6 +5,7 @@
   --bs-body-color: white;
   --cnvs-section-bg: var(--samaritan);
   --bs-primary-rgb: 60, 99, 130;
+  --cnvs-themecolor-dark: var(--darkSamaritan);
 }
 
 ul {
