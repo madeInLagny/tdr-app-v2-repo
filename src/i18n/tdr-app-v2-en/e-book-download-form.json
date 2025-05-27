@@ -1,0 +1,13 @@
+{
+  "form-title": "Download Your Free Copy!",
+  "form-description": "Fill in the form below to launch the file download.",
+  "form-firstname-label": "First Name",
+  "form-name-label": "Name",
+  "form-email-label": "Work Email",
+  "form-company-label": "Company",
+  "form-title-label": "Title",
+  "form-subscribe-label": "Subscribe to our monthly newsletter",
+  "form-notsubscribe-label": "Do not subscribe",
+  "form-loading": "Loading...",
+  "form-submit": "Submit"
+}

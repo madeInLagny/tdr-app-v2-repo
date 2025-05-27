@@ -20,7 +20,7 @@
 
 	<meta name="robots" content="noindex" />
 
-		<!-- Only Required if Samaritan color is required -->
+	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
 </head>
@@ -52,10 +52,10 @@
 								<h2 class="display-7 text-samaritan">${{ebook-download-page.subtitle}}$</h2>
 								<p class="text-samaritan">${{ebook-download-page.description}}$</p>
 								<div class="d-flex gap-3 flex-wrap">
-									<a class="btn btn-primary" type="button"
-										href="./eBook/TDR eBook_A Practical Guide to Customs Duties on Returns.pdf"
+									<a id="download-btn" class="btn btn-primary" type="button" href=""
 										download>${{ebook-download-page.downloadButtonText}}$</a>
-									<a class="btn btn-primary" type="button" href="/">${{ebook-download-page.homeButtonText}}$</a>
+									<a class="btn btn-primary" type="button"
+										href="/">${{ebook-download-page.homeButtonText}}$</a>
 								</div>
 							</div>
 						</div>
@@ -86,6 +86,14 @@
 
 		<!-- Canvas Scripts -->
 		<script src="js/functions.js"></script>
+		<script>
+			// Met à jour le href du bouton selon le paramètre pdfPath de l’URL
+			const params = new URLSearchParams(window.location.search);
+			const pdfName = params.get('pdfName');
+			if (pdfName) {
+				document.getElementById('download-btn').href = "./eBook/" + decodeURIComponent(pdfName);
+			}
+		</script>
 
 </body>
 

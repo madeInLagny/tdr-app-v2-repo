@@ -1,3 +1,2 @@
 node_modules
-dist/**.*
-dist/tdr-app-v2-en/**.*
+dist

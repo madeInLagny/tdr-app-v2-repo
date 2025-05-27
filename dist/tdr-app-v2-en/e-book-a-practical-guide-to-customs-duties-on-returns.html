@@ -4,13 +4,20 @@
 
 <head>
 	<!-- Google Tag Manager modified to comply with cookie consent-->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGJMGN0WP7" type="text/plain"
-  data-category="analytics"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-EGJMGN0WP7');
+	<script>
+  if (!['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-EGJMGN0WP7';
+    s.type = 'text/plain';
+    s.setAttribute('data-category', 'analytics');
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EGJMGN0WP7');
+  }
 </script>
 	<!-- End Google Tag Manager -->
 
@@ -462,9 +469,21 @@
               </a>
             </li>
             <li class="menu-item">
-              <a class="menu-link" href="e-book-a-practical-guide-to-customs-duties-on-returns.html">
+              <a class="menu-link" href="#">
                 <div>E-Book</div>
               </a>
+              <ul class="sub-menu-container">
+                <li class="menu-item">
+                  <a class="menu-link" href="e-book-navigating-global-tariffs-for-cross-border-e-commerce.html">
+                    <div>Navigating Global Tariffs For Cross Border eCommerce</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="e-book-a-practical-guide-to-customs-duties-on-returns.html">
+                    <div>Master Customs Strategies for eCommerce</div>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item">
               <a class="menu-link" href="#">
@@ -536,7 +555,8 @@
 					<div class="col-md-4">
 						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
 							About this Book</h2>
-						<p class="text-lightSamaritan">Unlock actionable strategies for e-commerce returns, customs duties, and the latest regulation updates with this comprehensive guide. Get expert insights and market data about:
+						<p class="text-lightSamaritan">
+							Unlock actionable strategies for e-commerce returns, customs duties, and the latest regulation updates with this comprehensive guide. Get expert insights and market data about:
 						</p>
 						<h4 class="mb-3 fw-normal font-body">
 							<i class="bi-check-circle-fill me-1 color"></i>
@@ -561,105 +581,130 @@
 					</div>
 
 					<div class="col-md-8 text-center">
-						<img src="./images/eBook/a-practical-guide-to-customs-duties-on-returns.webp" class="rounded-6 vh-70"
+						<img src="./images/eBook/a-practical-guide-to-customs-duties-on-returns.webp"
+							class="rounded-6 vh-70"
 							alt="Cover of the eBook on customs duties and returns">
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- eBook Download Form Starts -->
+
 		<section id="content">
-			<div class="container">
-				<div class="row">
-					<!-- Contact Form Overlay -->
-					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
-						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
-							Download Your Free Copy!</h2>
-						<p class="text-lightSamaritan">Fill in the form below to launch the file download.
-						</p>
-						<div class="">
-							<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit" method="post"
-								onSubmit="addSpinner()">
-								<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
-								<input id="redirectTo" type="hidden" name="redirectTo" value="">
-								<input type="hidden" name="subject" value="Autom-Ebook1-Request">
-								<input type="text" name="honeypot" style="display:none">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form Overlay -->
+            <div class="contact-form-overlay col-md-8 offset-md-2 p-5">
+                <h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
+                    Download Your Free Copy!</h2>
+                <p class="text-lightSamaritan">Fill in the form below to launch the file download.
+                </p>
+                <div class="">
+                    <form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit" method="post"
+                        onSubmit="addSpinner()">
+                        <input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+                        <input id="redirectTo" type="hidden" name="redirectTo" value="">
+                        <input type="hidden" name="subject" value="Autom-Ebook1-Request">
+                        <input type="text" name="honeypot" style="display:none">
 
-								<div class="col-md-6 form-group">
-									<label
-										for="firstName">First Name</label>
-									<input type="text" id="firstName" name="$firstName" class="form-control required" required>
-								</div>
+                        <div class="col-md-6 form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="$firstName" class="form-control required" required>
+                        </div>
 
-								<div class="col-md-6 form-group">
-									<label for="name">Name</label>
-									<input type="text" id="name" name="name" class="form-control required" required>
-								</div>
+                        <div class="col-md-6 form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control required" required>
+                        </div>
 
-								<div class="w-100"></div>
+                        <div class="w-100"></div>
 
-								<div class="col-md-6 form-group">
-									<label
-										for="email">Work Email</label>
-									<input type="email" id="email" name="email" class="form-control" required>
-								</div>
+                        <div class="col-md-6 form-group">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
 
-								<div class="col-md-6 form-group">
-									<label
-										for="company">Company</label>
-									<input type="text" id="company" name="$company" class="form-control" required>
-								</div>
+                        <div class="col-md-6 form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="$company" class="form-control" required>
+                        </div>
 
-								<div class="w-100"></div>
+                        <div class="w-100"></div>
 
-								<div class="col-md-6 form-group">
-									<label
-										for="title">Title</label>
-									<input type="text" id="title" name="$title" class="form-control" required>
-								</div>
+                        <div class="col-md-6 form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="$title" class="form-control" required>
+                        </div>
 
-								<div class="col-md-6 form-group d-flex flex-column justify-content-center mb-0">
-									<div>
-										<label for="radio-4" class="radio-style-1-label">
-											<input id="radio-4" class="radio-style" name="$subscribeNewsletter" type="radio" value="Yes"
-												required>
-											Subscribe to our monthly newsletter</label>
-									</div>
-									<div>
-										<label for="radio-5" class="radio-style-1-label">
-											<input id="radio-5" class="radio-style" name="$subscribeNewsletter" type="radio" value="No"
-												required>
-											Do not subscribe</label>
-									</div>
-								</div>
+                        <div class="col-md-6 form-group d-flex flex-column justify-content-center mb-0">
+                            <div>
+                                <label for="radio-4" class="radio-style-1-label">
+                                    <input id="radio-4" class="radio-style" name="$subscribeNewsletter" type="radio"
+                                        value="Yes" required>
+                                    Subscribe to our monthly newsletter</label>
+                            </div>
+                            <div>
+                                <label for="radio-5" class="radio-style-1-label">
+                                    <input id="radio-5" class="radio-style" name="$subscribeNewsletter" type="radio"
+                                        value="No" required>
+                                    Do not subscribe</label>
+                            </div>
+                        </div>
 
-								<div class="w-100"></div>
+                        <div class="w-100"></div>
 
-								<div class="col-md-12 form-group">
-									<button class="btn btn-light" type="submit" value="Submit">
-										<span id="btn-spinner" aria-hidden="true"></span>
-										<span class="visually-hidden"
-											role="status">Loading...</span>
-										Submit
-									</button>
-									<div class="pt-2">
-										<div>
+                        <div class="col-md-12 form-group">
+                            <button class="btn btn-light" type="submit" value="Submit">
+                                <span id="btn-spinner" aria-hidden="true"></span>
+                                <span class="visually-hidden"
+                                    role="status">Loading...</span>
+                                Submit
+                            </button>
+                            <div class="pt-2">
+                                <div>
   <label for="privacyCB" class="checkbox-style-1-label checkbox-small">
     <input id="privacyCB" class="checkbox-style" type="checkbox" required> By submitting this form, you agree to our processing of your personal data as outlined in <a
       href="privacy.html" class="text-decoration-underline">our Privacy Policy</a>. </label>
 </div>
-										<!-- 										This site is protected by reCAPTCHA and the Google
-										<a href="https://policies.google.com/privacy">Privacy Policy</a> and
-										<a href="https://policies.google.com/terms">Terms of Service</a> apply.
- -->
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Update of the redirect address -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the current domain
+        const currentDomain = window.location.origin;
+        const pdfEncodedName = encodeURIComponent("TDR eBook_A Practical Guide to Customs Duties on Returns.pdf");
+
+        // Construct the new URL path
+        const newPath = "/ebook-download-page.html?pdfName=" + pdfEncodedName;
+
+        // Combine the domain and the new path
+        const newURL = currentDomain + newPath;
+
+        // Update the value of the input field
+        const redirectToInput = document.getElementById("redirectTo");
+        if (redirectToInput) {
+            redirectToInput.value = newURL;
+        }
+    });
+
+    function addSpinner() {
+        const spinnerElement = document.getElementById("btn-spinner");
+        spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+    }
+
+</script>
+
+		<!-- eBook Download Form Ends -->
+
 
 	</div>
 	<style>
@@ -709,7 +754,19 @@
 </footer>
 	<!-- Javascripts
 		============================================= -->
-	<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js"></script>
+	<script>
+  // Only load the CDN script if not running on localhost or file protocol
+  if (
+    location.hostname !== "localhost" &&
+    location.hostname !== "127.0.0.1" &&
+    location.protocol !== "file:"
+  ) {
+    var ccScript = document.createElement('script');
+    ccScript.defer = true;
+    ccScript.src = "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.umd.js";
+    document.head.appendChild(ccScript);
+  }
+</script>
 
 <script>
   // Function to load the CDN script
@@ -747,67 +804,85 @@
 	<!-- Tawk Chatbox -->
 	<!--Start of Tawk.to Script-->
 <script type="text/javascript">
-  var Tawk_API = Tawk_API || {},
-    Tawk_LoadStart = new Date();
-  (function () {
-    var s1 = document.createElement("script"),
-      s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = "https://embed.tawk.to/6527b233eb150b3fb9a0a8a6/1hchh06rt";
-    s1.charset = "UTF-8";
-    s1.setAttribute("crossorigin", "*");
-    s0.parentNode.insertBefore(s1, s0);
-  })();
+  if (
+    location.protocol !== "file:" &&
+    location.hostname !== "localhost" &&
+    location.hostname !== "127.0.0.1"
+  ) {
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/6527b233eb150b3fb9a0a8a6/1hchh06rt";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  }
 </script>
 <!--End of Tawk.to Script-->
 
 	<!-- URL Campaign Logger -->
 	<script>
+  if (
+    window.location.protocol !== 'file:' &&
+    window.location.hostname !== 'localhost' &&
+    window.location.hostname !== '127.0.0.1'
+  ) {
+    function captureUTMParams() {
+      const params = new URLSearchParams(window.location.search);
+      const data = {
+        utm_source: params.get('utm_source'),
+        utm_medium: params.get('utm_medium'),
+        utm_campaign: params.get('utm_campaign'),
+        page_url: window.location.href
+      };
 
-  function captureUTMParams() {
-    const params = new URLSearchParams(window.location.search);
-    const data = {
-      utm_source: params.get('utm_source'),
-      utm_medium: params.get('utm_medium'),
-      utm_campaign: params.get('utm_campaign'),
-      page_url: window.location.href
-    };
+      // Google Sheets Web App URL - V10
+      const webAppUrl = 'https://script.google.com/macros/s/AKfycbz4BQva_FEhtQoZsGwWO5ItIWC_h0brpO1UDKouADGgVSpNcCN1RkaQdTe8avj-XmAFUA/exec';
 
-    // Google Sheets Web App URL - V10
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbz4BQva_FEhtQoZsGwWO5ItIWC_h0brpO1UDKouADGgVSpNcCN1RkaQdTe8avj-XmAFUA/exec';
+      // Send data to Google Sheets
+      fetch(webAppUrl, {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }).then(response => response.text())
+        .then(result => console.log('Success:', result))
+        .catch(error => console.error('Error:', error));
+    }
 
-    // Send data to Google Sheets
-    fetch(webAppUrl, {
-      method: 'POST',
-      body: JSON.stringify(data),
-    }).then(response => response.text())
-      .then(result => console.log('Success:', result))
-      .catch(error => console.error('Error:', error));
+    // Run on page load
+    window.addEventListener('load', function () {
+      captureUTMParams();
+    });
   }
-
-  // Run on page load
-  window.addEventListener('load', function () {
-    captureUTMParams();
-  });
 </script>
 	<!-- URL Campaign Logger -->
 	<script type="text/javascript">
-  _linkedin_partner_id = "6972340";
-  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-</script>
-<script type="text/javascript">
-  (function (l) {
-    if (!l) {
-      window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
-      window.lintrk.q = []
+  (function () {
+    if (
+      location.protocol !== "file:" &&
+      location.hostname !== "localhost" &&
+      location.hostname !== "127.0.0.1"
+    ) {
+      _linkedin_partner_id = "6972340";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+
+      (function (l) {
+        if (!l) {
+          window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+          window.lintrk.q = []
+        }
+        var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/javascript"; b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);
+      })(window.lintrk);
     }
-    var s = document.getElementsByTagName("script")[0];
-    var b = document.createElement("script");
-    b.type = "text/javascript"; b.async = true;
-    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-    s.parentNode.insertBefore(b, s);
-  })(window.lintrk);
+  })();
 </script>
 <noscript>
   <img height="1" width="1" style="display:none;" alt=""
@@ -818,35 +893,6 @@
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
 
-	<!-- Update of the redirect address -->
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			// Get the current domain
-			const currentDomain = window.location.origin;
-
-			// Construct the new URL path
-			const newPath = "/ebook-download-page.html";
-
-			// Combine the domain and the new path
-			const newURL = currentDomain + newPath;
-
-			// Update the value of the input field
-			const redirectToInput = document.getElementById("redirectTo");
-			if (redirectToInput) {
-				redirectToInput.value = newURL;
-			}
-		});
-
-		function addSpinner() {
-			const spinnerElement = document.getElementById("btn-spinner");
-			spinnerElement.classList.add("spinner-border", "spinner-border-sm")
-		}
-
-	</script>
-
-	<!-- reCaptcha -->
-	<!-- <script src="./js/custom/recaptcha.js"></script>
- -->
 
 </body>
 
