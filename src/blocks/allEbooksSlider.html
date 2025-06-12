@@ -1,0 +1,250 @@
+<style>
+    .swiper-pagination {
+	bottom: -50px !important;
+}
+
+.swiper-pagination span {
+	position: relative;
+	width: auto;
+	height: auto;
+	margin: 0;
+	opacity: 1;
+	border: 0;
+	color: var(--bs-gray-500);
+	transition: all .3s ease;
+}
+
+.swiper-pagination span::after {
+	content: "";
+	display: inline-block;
+	position: relative;
+	width: 0px;
+	height: 2px;
+	vertical-align: 4px;
+	margin: 0 7px;
+	background-color: var(--bs-gray-900);
+	transition: all .3s ease;
+}
+
+.swiper-pagination span.swiper-pagination-bullet-active,
+.swiper-pagination span:hover {
+	color: #111;
+}
+
+.swiper-pagination span.swiper-pagination-bullet-active::after {
+	width: 25px;
+	margin: 0 15px;
+}
+
+</style>
+
+
+
+<div class="section py-lg-6" style="background: linear-gradient(to bottom, var(--cnvs-themecolor) 60%, #FFF 60%);">
+    <div class="container dark pt-lg-5">
+        <div class="row align-items-end mb-lg-6 justify-content-between">
+            <div class="col-sm-9">
+                <div class="fs-6 op-07 mb-3">Weekly Top Podcasts</div>
+                <h2 class="mb-0 display-4 fw-bold">All Podcasts from<br> <span
+                        class="font-secondary fw-light fst-italic text-white display-4">Health</span><small
+                        class="mx-3 op-03">&middot;</small><span
+                        class="font-secondary fw-light fst-italic text-white display-4">Fashion</span><small
+                        class="mx-3 op-03">&middot;</small><span
+                        class="font-secondary fw-light fst-italic text-white display-4">Diet</span></h2>
+            </div>
+
+            <div class="col-auto">
+                <a href="#" class="button button-large button-light bg-white rounded-pill color ms-2">Browse all
+                    Episodes</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="slider-element section-podcasts overflow-visible pt-4">
+
+        <div class="container-fluid">
+            <div class="swiper_wrapper customjs overflow-visible h-auto">
+
+                <div class="swiper swiper-parent overflow-visible">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="position-relative d-flex flex-column vh-50">
+                                <div class="bg-overlay dark">
+                                    <div
+                                        class="bg-overlay-content justify-content-end align-items-start flex-column p-4">
+                                        <h3 class="mb-2 display-3"><a href="#" class="text-white">ep:1</a></h3>
+                                        <div class="small op-09 mb-3"><span>05:35 Mins</span> <span
+                                                class="op-05 mx-2">&middot;</span> <span>Oct 2nd, 2022</span></div>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <i class="bi-play-fill small text-dark"></i>
+                                            </a>
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/apple-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/google-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/spotify.png" alt="..">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide-bg rounded-6"
+                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url('demos/podcasts/images/carousel/1.jpg');">
+                                </div>
+                            </div>
+                            <h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">10 good minutes daily
+                                    Self-Improvement Podcasts</a></h3>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="position-relative d-flex flex-column vh-50">
+                                <div class="bg-overlay dark">
+                                    <div
+                                        class="bg-overlay-content justify-content-end align-items-start flex-column p-4">
+                                        <h3 class="mb-2 display-3"><a href="#" class="text-white">ep:4</a></h3>
+                                        <div class="text-smaller op-08 mb-3"><span>07:35Min</span> <span
+                                                class="op-05 mx-2">&middot;</span> <span>Sep 13th, 2022</span></div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <i class="bi-play-fill small text-dark"></i>
+                                            </a>
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/apple-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/google-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/spotify.png" alt="..">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide-bg rounded-6"
+                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url('demos/podcasts/images/carousel/2.jpg');">
+                                </div>
+                            </div>
+                            <h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">All the Smoke we have</a></h3>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="position-relative d-flex flex-column vh-50">
+                                <div class="bg-overlay dark">
+                                    <div
+                                        class="bg-overlay-content justify-content-end align-items-start flex-column p-4">
+                                        <h3 class="mb-2 display-3"><a href="#" class="text-white">ep:3</a></h3>
+                                        <div class="text-smaller op-08 mb-3"><span>07:35Min</span> <span
+                                                class="op-05 mx-2">&middot;</span> <span>Sep 11th, 2022</span></div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <i class="bi-play-fill small text-dark"></i>
+                                            </a>
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/apple-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/google-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/spotify.png" alt="..">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide-bg rounded-6"
+                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url('demos/podcasts/images/carousel/3.jpg');">
+                                </div>
+                            </div>
+                            <h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">Pride and Prejudice</a></h3>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="position-relative d-flex flex-column vh-50">
+                                <div class="bg-overlay dark">
+                                    <div
+                                        class="bg-overlay-content justify-content-end align-items-start flex-column p-4">
+                                        <h3 class="mb-2 display-3"><a href="#" class="text-white">ep:6</a></h3>
+                                        <div class="text-smaller op-08 mb-3"><span>07:35Min</span> <span
+                                                class="op-05 mx-2">&middot;</span> <span>Dec 31st, 2022</span></div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <i class="bi-play-fill small text-dark"></i>
+                                            </a>
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/apple-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/google-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/spotify.png" alt="..">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide-bg rounded-6"
+                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url('demos/podcasts/images/carousel/4.jpg');">
+                                </div>
+                            </div>
+                            <h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">Developing the Personal Strength
+                                    to Accomplish your Goals</a></h3>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="position-relative d-flex flex-column vh-50">
+                                <div class="bg-overlay dark">
+                                    <div
+                                        class="bg-overlay-content justify-content-end align-items-start flex-column p-4">
+                                        <h3 class="mb-2 display-3"><a href="#" class="text-white">ep:2</a></h3>
+                                        <div class="text-smaller op-08 mb-3"><span>07:35Min</span> <span
+                                                class="op-05 mx-2">&middot;</span> <span>Jul 9th, 2022</span></div>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <i class="bi-play-fill small text-dark"></i>
+                                            </a>
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/apple-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/google-podcast.png" alt="..">
+                                            </a>
+
+                                            <a href="#" class="me-2 audio-logos" style="--icon-size: 28px;">
+                                                <img src="demos/podcasts/images/icons/spotify.png" alt="..">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide-bg rounded-6"
+                                    style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 100%), url('demos/podcasts/images/carousel/5.jpg');">
+                                </div>
+                            </div>
+                            <h3 class="mb-0 lh-base p-3"><a href="#" class="text-dark">Use this One Trick to control
+                                    your Brain</a></h3>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
