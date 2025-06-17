@@ -8,11 +8,10 @@
 	<!-- End Google Tag Manager -->
 
 	<!-- Metatags Import -->
-	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
-	"description": "${{noIndex.description}}$",
-	"title": "${{noIndex.title}}$",
-	"path": "${{noIndex.path}}$",
-	})
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImage.png", "description":
+	"${{noIndex.description}}$", "title": "${{noIndex.title}}$", "path":
+	"${{noIndex.path}}$", })
 
 	<meta name="robots" content="noindex" />
 
@@ -21,7 +20,7 @@
 
 	<style>
 		.heading-block h4 {
-			color: #645439
+			color: #645439;
 		}
 
 		.btn-outline-primary {
@@ -41,54 +40,42 @@
 			--bs-gradient: none;
 		}
 	</style>
-
 </head>
 
 <body class="stretched">
-
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper">
-
 		<!-- Header
 		============================================= -->
 		<!-- header -->
-		@@include('src/blocks/header.html',{
-		"header-bg":"#fdedd2",
-		"submenu-bg":"#fdedd2",
-		"text-color":"#645439",
-		"text-color-hover":"#322a1c"
-		})
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)", "submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white" })
 		<!-- end of header -->
 
 		<section id="slider" class="slider-element min-vh-100 dark error404-wrap include-header"
-			style="background: url(images/404.jpg) left / cover no-repeat;">
+			style="background: url(images/404.jpg) left / cover no-repeat">
 			<div class="slider-inner">
-
 				<div class="vertical-middle">
 					<div class="container text-center py-5 py-md-0">
-
 						<div class="error404">404</div>
 
 						<div class="heading-block border-bottom-0">
 							<h4>${{404.header}}$</h4>
 						</div>
-						<a type="button" class="btn btn-outline-primary" href="${{noIndex.path}}$">${{404.buttonLabel}}$</a>
+						<a type="button" class="btn btn-outline-primary" href="index.html">${{404.buttonLabel}}$</a>
 					</div>
 				</div>
-
 			</div>
 		</section>
 
 		<!-- Footer -->
-		@@include('src/blocks/footer.html',{
-		"text-color":"#645439",
-		"bg-color":"#fdedd2"
-		})
+		@@include('src/blocks/footer.html',{ "text-color":"#645439",
+		"bg-color":"#fdedd2" })
 		<!-- end Footer -->
-
-	</div><!-- #wrapper end -->
-
+	</div>
+	<!-- #wrapper end -->
 
 	<!-- Javascripts
 	============================================= -->
@@ -102,8 +89,6 @@
 
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
-
-
 </body>
 
 </html>

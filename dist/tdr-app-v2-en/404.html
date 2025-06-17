@@ -91,7 +91,7 @@
 
 	<style>
 		.heading-block h4 {
-			color: #645439
+			color: #645439;
 		}
 
 		.btn-outline-primary {
@@ -111,15 +111,12 @@
 			--bs-gradient: none;
 		}
 	</style>
-
 </head>
 
 <body class="stretched">
-
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper">
-
 		<!-- Header
 		============================================= -->
 		<!-- header -->
@@ -339,34 +336,34 @@
 
 <style>
   #header-wrap {
-    --cnvs-contrast-bg: #fdedd2;
-    --cnvs-header-sticky-bg: #fdedd2;
+    --cnvs-contrast-bg: var(--samaritan);
+    --cnvs-header-sticky-bg: var(--samaritan);
   }
 
   .is-expanded-menu .sub-menu-container,
   .is-expanded-menu .mega-menu-content {
-    --cnvs-primary-menu-submenu-bg: #fdedd2;
+    --cnvs-primary-menu-submenu-bg: var(--darkSamaritan);
   }
 
   a.menu-link {
-    color: #645439;
+    color: white;
   }
 
   .menu-item.current>.menu-link {
-    --cnvs-primary-menu-active-color: #645439;
+    --cnvs-primary-menu-active-color: white;
   }
 
   .sub-menu-container .menu-item>.menu-link {
-    --cnvs-primary-menu-submenu-color: #645439;
+    --cnvs-primary-menu-submenu-color: white;
   }
 
   .is-expanded-menu .sub-menu-container .menu-item:hover>.menu-link,
   .is-expanded-menu .sub-menu-container .menu-item.current>.menu-link {
-    --cnvs-primary-menu-submenu-hover-color: #322a1c;
+    --cnvs-primary-menu-submenu-hover-color: white-hover;
   }
 
   .menu-item:hover>.menu-link {
-    --cnvs-primary-menu-hover-color: #322a1c;
+    --cnvs-primary-menu-hover-color: white-hover;
   }
 
   .callOutBackgroundColor {
@@ -568,21 +565,18 @@
 		<!-- end of header -->
 
 		<section id="slider" class="slider-element min-vh-100 dark error404-wrap include-header"
-			style="background: url(images/404.jpg) left / cover no-repeat;">
+			style="background: url(images/404.jpg) left / cover no-repeat">
 			<div class="slider-inner">
-
 				<div class="vertical-middle">
 					<div class="container text-center py-5 py-md-0">
-
 						<div class="error404">404</div>
 
 						<div class="heading-block border-bottom-0">
 							<h4>Ooopps! The page you were looking for couldn't be found.</h4>
 						</div>
-						<a type="button" class="btn btn-outline-primary" href="">Back to home page</a>
+						<a type="button" class="btn btn-outline-primary" href="index.html">Back to home page</a>
 					</div>
 				</div>
-
 			</div>
 		</section>
 
@@ -633,9 +627,8 @@
   </div>
 </footer>
 		<!-- end Footer -->
-
-	</div><!-- #wrapper end -->
-
+	</div>
+	<!-- #wrapper end -->
 
 	<!-- Javascripts
 	============================================= -->
@@ -776,8 +769,6 @@
 
 	<!-- Canvas Scripts -->
 	<script src="js/functions.js"></script>
-
-
 </body>
 
 </html>
