@@ -1,16 +1,19 @@
 {
-  "title": "TDR - Trade Duty Refund | Ian Crauwels' Profile",
+  "title": "TDR - Trade Duty Refund | Ian Crauwel's Profile",
   "description": "Check Ian's details and schedule a chat to find out how much TDR can make you save on your reverse logistics budget.",
-  "path": "jocelyn-montpert.html",
-  "bannerPic": "ProfileCardBannerEN.webp",
-  "jobTitle": "CEO #TradeDutyRefund",
-  "emailMe": "Email me",
-  "whatsappMe": "Connect on Whatsapp",
-  "scheduleCall": "Schedule a chat about your needs",
-  "followMe": "Follow me",
-  "watch": "Watch TDR educational videos",
-  "checkWebsite": "Check our website for duty reclaim solutions",
-  "checkWebsiteUrl": "/",
-  "vcard": "Save my card",
-  "callout": "Find Out How Much TDR Can Make You Save"
+  "path": "ian-crauwels.html",
+  "firstName": "Ian",
+  "lastName": "Crauwels",
+  "bio": "With a robust background in logistics management, customs processes, and e-commerce, Ian brings a wealth of experience and expertise to the table.",
+  "linkedin": "https://www.linkedin.com/in/ian-crauwels/",
+  "whatsapp": "https://wa.me/32498815749",
+  "email": "ian.crauwels@tradedutyrefund.com",
+  "phone": "+32498815749",
+  "gender": "M",
+  "jobTitle": "Consultant",
+  "vcard": "Save Ian's card",
+  "skills": "&lt;ul class=&quot;interline&quot;&gt;&lt;li&gt;&lt;strong&gt;Customs and Trade Compliance&lt;/strong&gt;: Ian has a deep understanding of global customs processes and trade compliance, which is essential for navigating the complexities of cross-border e-commerce.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Cross-Border eCommerce&lt;/strong&gt;: With experience in building and managing cross-border e-commerce solutions, Ian is well-equipped to handle the unique challenges of international online retail.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Technical Processes&lt;/strong&gt;: His technical acumen allows him to integrate and optimize customs processes within e-commerce platforms effectively.&lt;/li&gt;&lt;/ul&gt;",
+  "geo": "Ian’s expertise lies mainly in the EU and the UK. Ian is located in Belgium and speaks 3 languages fluently: English, German and Dutch.",
+  "languages": "Ian speaks 3 languages fluently: English, German and Dutch."
+  
 }

@@ -9,9 +9,9 @@
 
 	<!-- Metatags Import -->
 	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
-	"description": "Page of Jocelyn Montpert, CEO of Trade Duty Refund. Contact details and professional information.",
-	"title": "Jocelyn's Page",
-	"path": "jocelyn-montpert.html",
+	"description": "${{ ian-crauwels.description }}$",
+	"title": "${{ ian-crauwels.title }}$",
+	"path": "${{ ian-crauwels.path }}$",
 	})
 
 
@@ -20,6 +20,13 @@
 
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<style>
+		.interline {
+			margin-top:0,25rem;
+			margin-bottom:1rem;
+		}
+	</style>
 
 </head>
 
@@ -40,44 +47,51 @@
 
 		<div class="d-flex justify-content-center">
 			<div class="col-lg-8">
-				<div class="row team align-items-center">
-					<div class="col-md-4">
-						<img src="./images/JM-Image_Profil-SansBg.webp" alt="John Doe" class="rounded-4">
+				<div class="row team">
+					<div class="col-4 ps-4 ps-md-0 ">
+						<img src="./images/profil/${{ian-crauwels.firstName}}$-${{ian-crauwels.lastName}}$.webp"
+							alt="${{ian-crauwels.firstName}}$ ${{ian-crauwels.lastName}}$'s picture" class="rounded-4">
 					</div>
 					<div class="col-md-8 p-4">
 						<div class="team-desc text-start">
 							<div class="team-title pt-0 mb-3">
-								<h4>Jocelyn Montpert</h4><span class="fst-normal text-lightSamaritan">CEO</span>
+								<h4>${{ ian-crauwels.firstName }}$ ${{ ian-crauwels.lastName }}$</h4><span
+									class="fst-normal text-lightSamaritan">${{ian-crauwels.jobTitle }}$</span>
 							</div>
 							<p class="mb-3">
-								Jocelyn is the <strong>founder of Trade Duty Refund (TDR)</strong> and a
-								<strong>consultant in e-commerce supply chain</strong>
+								${{ ian-crauwels.bio }}$
 							</p>
 
-							<a href="www.linkedin.com/in/jocelynmontpert" target="_blank"
+							<strong>Key Skills and Expertise</strong>
+							
+								${{ian-crauwels.skills}}$
+							
+							<strong>Geo Focus</strong>
+							<p class="interline">${{ian-crauwels.geo}}$</p>
+
+							<strong>Languages</strong>
+							<p class="interline">${{ian-crauwels.languages}}$</p>
+
+							<a href="${{ ian-crauwels.linkedin }}$" target="_blank"
 								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
 								<i class="fa-brands fa-linkedin"></i>
 								<i class="fa-brands fa-linkedin"></i>
 							</a>
 
-							<a href="https://wa.me/33617767097" target="_blank"
+							<a href="${{ ian-crauwels.whatsapp }}$" target="_blank"
 								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
 								<i class="fa-brands fa-whatsapp "></i>
 								<i class="fa-brands fa-whatsapp "></i>
 							</a>
 						</div>
 						<button class="btn btn-accent mt-2" type="button" onclick="makeVCard()">
-							${{ jocelyn-montpert.vcard }}$
+							${{ ian-crauwels.vcard }}$
 						</button>
 
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-
-
 
 		@@include('src/blocks/footer.html',{
 		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
@@ -102,30 +116,28 @@
 					"\n" +
 					"VERSION:3.0" +
 					"\n" +
-					"FN;CHARSET=UTF-8:Jocelyn Montpert" +
+					"FN;CHARSET=UTF-8:${{ ian-crauwels.firstName }}$ ${{ ian-crauwels.lastName }}$" +
 					"\n" +
-					"N;CHARSET=UTF-8:Montpert;Jocelyn;;;" +
+					"N;CHARSET=UTF-8:${{ ian-crauwels.lastName }}$;${{ ian-crauwels.firstName }}$;;;" +
 					"\n" +
-					"GENDER:M" +
+					"GENDER:${{ ian-crauwels.gender }}$" +
 					"\n" +
-					"EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:jocelyn.montpert@tradedutyrefund.com" +
+					"EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:${{ ian-crauwels.email }}$" +
 					"\n" +
-					"TEL;TYPE=CELL:+33617767097" +
+					"TEL;TYPE=CELL:${{ ian-crauwels.phone }}$" +
 					"\n" +
-					"TITLE;CHARSET=UTF-8:${{ jocelyn-montpert.jobTitle }}$" +
+					"TITLE;CHARSET=UTF-8:${{ ian-crauwels.jobTitle }}$" +
 					"\n" +
-					"ORG;CHARSET=UTF-8:#TradeDutyRefund" +
+					"ORG;CHARSET=UTF-8:Trade Duty Refund" +
 					"\n" +
 					"URL;type=WORK;CHARSET=UTF-8:tradedutyrefund.com" +
 					"\n" +
-					"X-SOCIALPROFILE;TYPE=linkedin:www.linkedin.com/in/jocelynmontpert" +
-					"\n" +
-					"X-SOCIALPROFILE;TYPE=youtube:https://www.youtube.com/@TradeDutyRefund" +
+					"X-SOCIALPROFILE;TYPE=linkedin:${{ ian-crauwels.linkedin }}$" +
 					"\n" +
 					"REV:2023-08-31T11:52:02.501Z" +
 					"\n" +
 					"END:VCARD";
-				downloadToFile(vcard, "jocelynMontpert.vcf", "text/vcard");
+				downloadToFile(vcard, "${{ ian-crauwels.firstName }}$-${{ ian-crauwels.lastName }}$.vcf", "text/vcard");
 			}
 
 			function downloadToFile(content, filename, contentType) {
