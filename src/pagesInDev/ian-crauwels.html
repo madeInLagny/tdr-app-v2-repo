@@ -9,9 +9,9 @@
 
 	<!-- Metatags Import -->
 	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
-	"description": "${{ jocelyn-montpert.description }}$",
-	"title": "${{ jocelyn-montpert.title }}$",
-	"path": "${{ jocelyn-montpert.path }}$",
+	"description": "Page of Jocelyn Montpert, CEO of Trade Duty Refund. Contact details and professional information.",
+	"title": "Jocelyn's Page",
+	"path": "jocelyn-montpert.html",
 	})
 
 
@@ -41,28 +41,26 @@
 		<div class="d-flex justify-content-center">
 			<div class="col-lg-8">
 				<div class="row team align-items-center">
-					<div class="col-4 ps-4 ps-md-0 ">
-						<img src="./images/profil/${{jocelyn-montpert.firstName}}$-${{jocelyn-montpert.lastName}}$.webp"
-							alt="${{jocelyn-montpert.firstName}}$ ${{jocelyn-montpert.lastName}}$'s picture"
-							class="rounded-4">
+					<div class="col-md-4">
+						<img src="./images/JM-Image_Profil-SansBg.webp" alt="John Doe" class="rounded-4">
 					</div>
 					<div class="col-md-8 p-4">
 						<div class="team-desc text-start">
 							<div class="team-title pt-0 mb-3">
-								<h4>${{ jocelyn-montpert.firstName }}$ ${{ jocelyn-montpert.lastName }}$</h4><span
-									class="fst-normal text-lightSamaritan">${{jocelyn-montpert.jobTitle }}$</span>
+								<h4>Jocelyn Montpert</h4><span class="fst-normal text-lightSamaritan">CEO</span>
 							</div>
 							<p class="mb-3">
-								${{ jocelyn-montpert.bio }}$
+								Jocelyn is the <strong>founder of Trade Duty Refund (TDR)</strong> and a
+								<strong>consultant in e-commerce supply chain</strong>
 							</p>
 
-							<a href="${{ jocelyn-montpert.linkedin }}$" target="_blank"
+							<a href="www.linkedin.com/in/jocelynmontpert" target="_blank"
 								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
 								<i class="fa-brands fa-linkedin"></i>
 								<i class="fa-brands fa-linkedin"></i>
 							</a>
 
-							<a href="${{ jocelyn-montpert.whatsapp }}$" target="_blank"
+							<a href="https://wa.me/33617767097" target="_blank"
 								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
 								<i class="fa-brands fa-whatsapp "></i>
 								<i class="fa-brands fa-whatsapp "></i>
@@ -76,6 +74,10 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
 
 		@@include('src/blocks/footer.html',{
 		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
@@ -100,28 +102,30 @@
 					"\n" +
 					"VERSION:3.0" +
 					"\n" +
-					"FN;CHARSET=UTF-8:${{ jocelyn-montpert.firstName }}$ ${{ jocelyn-montpert.lastName }}$" +
+					"FN;CHARSET=UTF-8:Jocelyn Montpert" +
 					"\n" +
-					"N;CHARSET=UTF-8:${{ jocelyn-montpert.lastName }}$;${{ jocelyn-montpert.firstName }}$;;;" +
+					"N;CHARSET=UTF-8:Montpert;Jocelyn;;;" +
 					"\n" +
-					"GENDER:${{ jocelyn-montpert.gender }}$" +
+					"GENDER:M" +
 					"\n" +
-					"EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:${{ jocelyn-montpert.email }}$" +
+					"EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:jocelyn.montpert@tradedutyrefund.com" +
 					"\n" +
-					"TEL;TYPE=CELL:${{ jocelyn-montpert.phone }}$" +
+					"TEL;TYPE=CELL:+33617767097" +
 					"\n" +
 					"TITLE;CHARSET=UTF-8:${{ jocelyn-montpert.jobTitle }}$" +
 					"\n" +
-					"ORG;CHARSET=UTF-8:Trade Duty Refund" +
+					"ORG;CHARSET=UTF-8:#TradeDutyRefund" +
 					"\n" +
 					"URL;type=WORK;CHARSET=UTF-8:tradedutyrefund.com" +
 					"\n" +
-					"X-SOCIALPROFILE;TYPE=linkedin:${{ jocelyn-montpert.linkedin }}$" +
+					"X-SOCIALPROFILE;TYPE=linkedin:www.linkedin.com/in/jocelynmontpert" +
+					"\n" +
+					"X-SOCIALPROFILE;TYPE=youtube:https://www.youtube.com/@TradeDutyRefund" +
 					"\n" +
 					"REV:2023-08-31T11:52:02.501Z" +
 					"\n" +
 					"END:VCARD";
-				downloadToFile(vcard, "${{ jocelyn-montpert.firstName }}$-${{ jocelyn-montpert.lastName }}$.vcf", "text/vcard");
+				downloadToFile(vcard, "jocelynMontpert.vcf", "text/vcard");
 			}
 
 			function downloadToFile(content, filename, contentType) {

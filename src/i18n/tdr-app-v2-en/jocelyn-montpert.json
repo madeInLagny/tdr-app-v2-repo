@@ -1,16 +1,15 @@
 {
-  "title": "TDR - Trade Duty Refund | Jocelyn Montpert Profile",
+  "title": "TDR - Trade Duty Refund | Jocelyn Montpert's Profile",
   "description": "Check Jocelyn's details and schedule a chat to find out how much TDR can make you save on your reverse logistics budget.",
   "path": "jocelyn-montpert.html",
-  "bannerPic": "ProfileCardBannerEN.webp",
-  "jobTitle": "CEO #TradeDutyRefund",
-  "emailMe": "Email me",
-  "whatsappMe": "Connect on Whatsapp",
-  "scheduleCall": "Schedule a chat about your needs",
-  "followMe": "Follow me",
-  "watch": "Watch TDR educational videos",
-  "checkWebsite": "Check our website for duty reclaim solutions",
-  "checkWebsiteUrl": "/",
-  "vcard": "Save my card",
-  "callout": "Find Out How Much TDR Can Make You Save"
+  "firstName": "Jocelyn",
+  "lastName": "Montpert",
+  "bio": "Jocelyn is the &lt;strong&gt;founder of Trade Duty Refund (TDR)&lt;/strong&gt; and a &lt;strong&gt;consultant in e-commerce supply chain&lt;/strong&gt;",
+  "linkedin": "https://www.linkedin.com/in/jocelynmontpert",
+  "whatsapp": "https://wa.me/33617767097",
+  "email": "jocelyn.montpert@tradedutyrefund.com",
+  "phone": "+33617767097",
+  "gender": "M",
+  "jobTitle": "CEO",
+  "vcard": "Save my card"
 }
