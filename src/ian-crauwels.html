@@ -23,8 +23,8 @@
 
 	<style>
 		.interline {
-			margin-top:0,25rem;
-			margin-bottom:1rem;
+			margin-top: 0, 25rem;
+			margin-bottom: 1rem;
 		}
 	</style>
 
@@ -43,55 +43,68 @@
 		"submenu-bg":"var(--darkSamaritan)",
 		"menu-text-hover":"white"
 		}) <!-- end of header -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
 
 
-		<div class="d-flex justify-content-center">
-			<div class="col-lg-8">
-				<div class="row team">
-					<div class="col-4 ps-4 ps-md-0 ">
-						<img src="./images/profil/${{ian-crauwels.firstName}}$-${{ian-crauwels.lastName}}$.webp"
-							alt="${{ian-crauwels.firstName}}$ ${{ian-crauwels.lastName}}$'s picture" class="rounded-4">
-					</div>
-					<div class="col-md-8 p-4">
-						<div class="team-desc text-start">
-							<div class="team-title pt-0 mb-3">
-								<h4>${{ ian-crauwels.firstName }}$ ${{ ian-crauwels.lastName }}$</h4><span
-									class="fst-normal text-lightSamaritan">${{ian-crauwels.jobTitle }}$</span>
+					<div class="d-flex justify-content-center">
+						<div class="col-lg-10">
+							<div class="row team">
+								<div class="col-md-4 ps-4 ps-md-0 ">
+									<img src="./images/profil/${{ian-crauwels.firstName}}$-${{ian-crauwels.lastName}}$.webp"
+										alt="${{ian-crauwels.firstName}}$ ${{ian-crauwels.lastName}}$'s picture"
+										class="rounded-4">
+									<div class="mt-3 d-flex gap-3">
+										<a href="${{ ian-crauwels.linkedin }}$" target="_blank"
+											class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
+											<i class="fa-brands fa-linkedin"></i>
+											<i class="fa-brands fa-linkedin"></i>
+										</a>
+
+										<a href="${{ ian-crauwels.whatsapp }}$" target="_blank"
+											class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
+											<i class="fa-brands fa-whatsapp "></i>
+											<i class="fa-brands fa-whatsapp "></i>
+										</a>
+										<button class="btn btn-accent mt-0" type="button" onclick="makeVCard()">
+											${{ ian-crauwels.vcard }}$
+										</button>
+									</div>
+								</div>
+
+
+								<div class="col-md-8 p-4">
+									<div class="team-desc text-start">
+										<div class="team-title pt-0 mb-3">
+											<h4>${{ ian-crauwels.firstName }}$ ${{ ian-crauwels.lastName }}$</h4><span
+												class="fst-normal text-lightSamaritan">${{ian-crauwels.jobTitle}}$</span>
+										</div>
+
+										<p class="mb-3">
+											${{ ian-crauwels.bio }}$
+										</p>
+
+										<strong>Key Skills and Expertise</strong>
+
+										${{ian-crauwels.skills}}$
+
+										<strong>Geo Focus</strong>
+										<p class="interline">${{ian-crauwels.geo}}$</p>
+
+										<strong>Languages</strong>
+										<p class="interline">${{ian-crauwels.languages}}$</p>
+
+
+
+									</div>
+								</div>
 							</div>
-							<p class="mb-3">
-								${{ ian-crauwels.bio }}$
-							</p>
-
-							<strong>Key Skills and Expertise</strong>
-							
-								${{ian-crauwels.skills}}$
-							
-							<strong>Geo Focus</strong>
-							<p class="interline">${{ian-crauwels.geo}}$</p>
-
-							<strong>Languages</strong>
-							<p class="interline">${{ian-crauwels.languages}}$</p>
-
-							<a href="${{ ian-crauwels.linkedin }}$" target="_blank"
-								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
-								<i class="fa-brands fa-linkedin"></i>
-								<i class="fa-brands fa-linkedin"></i>
-							</a>
-
-							<a href="${{ ian-crauwels.whatsapp }}$" target="_blank"
-								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
-								<i class="fa-brands fa-whatsapp "></i>
-								<i class="fa-brands fa-whatsapp "></i>
-							</a>
 						</div>
-						<button class="btn btn-accent mt-2" type="button" onclick="makeVCard()">
-							${{ ian-crauwels.vcard }}$
-						</button>
-
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		@@include('src/blocks/footer.html',{
 		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"

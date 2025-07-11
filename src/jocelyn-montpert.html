@@ -21,6 +21,13 @@
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
+	<style>
+		.interline {
+			margin-top: 0, 25rem;
+			margin-bottom: 1rem;
+		}
+	</style>
+
 </head>
 
 <body class="stretched samaritan-bg">
@@ -36,46 +43,68 @@
 		"submenu-bg":"var(--darkSamaritan)",
 		"menu-text-hover":"white"
 		}) <!-- end of header -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
 
 
-		<div class="d-flex justify-content-center">
-			<div class="col-lg-8">
-				<div class="row team align-items-center">
-					<div class="col-4 ps-4 ps-md-0 ">
-						<img src="./images/profil/${{jocelyn-montpert.firstName}}$-${{jocelyn-montpert.lastName}}$.webp"
-							alt="${{jocelyn-montpert.firstName}}$ ${{jocelyn-montpert.lastName}}$'s picture"
-							class="rounded-4">
-					</div>
-					<div class="col-md-8 p-4">
-						<div class="team-desc text-start">
-							<div class="team-title pt-0 mb-3">
-								<h4>${{ jocelyn-montpert.firstName }}$ ${{ jocelyn-montpert.lastName }}$</h4><span
-									class="fst-normal text-lightSamaritan">${{jocelyn-montpert.jobTitle }}$</span>
+					<div class="d-flex justify-content-center">
+						<div class="col-lg-10">
+							<div class="row team">
+								<div class="col-md-4 ps-4 ps-md-0 ">
+									<img src="./images/profil/${{jocelyn-montpert.firstName}}$-${{jocelyn-montpert.lastName}}$.webp"
+										alt="${{jocelyn-montpert.firstName}}$ ${{jocelyn-montpert.lastName}}$'s picture"
+										class="rounded-4">
+									<div class="mt-3 d-flex gap-3">
+										<a href="${{ jocelyn-montpert.linkedin }}$" target="_blank"
+											class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
+											<i class="fa-brands fa-linkedin"></i>
+											<i class="fa-brands fa-linkedin"></i>
+										</a>
+
+										<a href="${{ jocelyn-montpert.whatsapp }}$" target="_blank"
+											class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
+											<i class="fa-brands fa-whatsapp "></i>
+											<i class="fa-brands fa-whatsapp "></i>
+										</a>
+										<button class="btn btn-accent mt-0" type="button" onclick="makeVCard()">
+											${{ jocelyn-montpert.vcard }}$
+										</button>
+									</div>
+								</div>
+
+
+								<div class="col-md-8 p-4">
+									<div class="team-desc text-start">
+										<div class="team-title pt-0 mb-3">
+											<h4>${{ jocelyn-montpert.firstName }}$ ${{ jocelyn-montpert.lastName }}$</h4><span
+												class="fst-normal text-lightSamaritan">${{jocelyn-montpert.jobTitle}}$</span>
+										</div>
+
+										<p class="mb-3">
+											${{ jocelyn-montpert.bio }}$
+										</p>
+
+										<strong>Key Skills and Expertise</strong>
+
+										${{jocelyn-montpert.skills}}$
+
+										<strong>Geo Focus</strong>
+										<p class="interline">${{jocelyn-montpert.geo}}$</p>
+
+										<strong>Languages</strong>
+										<p class="interline">${{jocelyn-montpert.languages}}$</p>
+
+
+
+									</div>
+								</div>
 							</div>
-							<p class="mb-3">
-								${{ jocelyn-montpert.bio }}$
-							</p>
-
-							<a href="${{ jocelyn-montpert.linkedin }}$" target="_blank"
-								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
-								<i class="fa-brands fa-linkedin"></i>
-								<i class="fa-brands fa-linkedin"></i>
-							</a>
-
-							<a href="${{ jocelyn-montpert.whatsapp }}$" target="_blank"
-								class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
-								<i class="fa-brands fa-whatsapp "></i>
-								<i class="fa-brands fa-whatsapp "></i>
-							</a>
 						</div>
-						<button class="btn btn-accent mt-2" type="button" onclick="makeVCard()">
-							${{ jocelyn-montpert.vcard }}$
-						</button>
-
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		@@include('src/blocks/footer.html',{
 		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
