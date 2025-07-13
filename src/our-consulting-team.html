@@ -11,7 +11,7 @@
 	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
 	"description": "${{make-an-appointment.description}}$",
 	"title": "${{make-an-appointment.title}}$",
-	"path": "${{make-an-appointment.path}}$",
+	"path": "${{make-an-appointment.path}}$"
 	})
 
 
@@ -79,7 +79,21 @@
 					============================================= -->
 					<div id="portfolio" class="portfolio row grid-container gutter-20" data-layout="fitRows">
 
-						@@include('src/blocks/teamCard.html')
+						@@include('src/blocks/teamCard.html',{"path":"${{jocelyn-montpert.path}}$",
+						"firstName":"${{jocelyn-montpert.firstName}}$",
+						"lastName":"${{jocelyn-montpert.lastName}}$",
+						"practice":"pf-supply pf-management",
+						"jobTitle":"${{jocelyn-montpert.jobTitle}}$",
+						"country":"${{jocelyn-montpert.country}}$"
+						})
+
+						@@include('src/blocks/teamCard.html',{"path":"${{ian-crauwels.path}}$",
+						"firstName":"${{ian-crauwels.firstName}}$",
+						"lastName":"${{ian-crauwels.lastName}}$",
+						"practice":"pf-customs",
+						"jobTitle":"${{ian-crauwels.jobTitle}}$",
+						"country":"${{ian-crauwels.country}}$"
+						})
 
 
 					</div><!-- #portfolio end -->

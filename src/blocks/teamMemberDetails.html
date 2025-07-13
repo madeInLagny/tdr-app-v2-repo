@@ -1,0 +1,101 @@
+<style>
+    .interline {
+        margin-top: 0.25rem;
+        margin-bottom: 1rem;
+    }
+</style>
+
+
+<div class="d-flex justify-content-center">
+    <div class="col-lg-10">
+        <div class="row team">
+            <div class="col-md-4 ps-4 ps-md-0 ">
+                <img src="./images/profil/@@firstName-@@lastName.webp" alt="@@firstName @@lastName's picture"
+                    class="rounded-4">
+                <div class="mt-3 d-flex gap-3">
+                    <a href="@@linkedIn" target="_blank"
+                        class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+
+                    <a href="@@whatsApp" target="_blank"
+                        class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
+                        <i class="fa-brands fa-whatsapp "></i>
+                        <i class="fa-brands fa-whatsapp "></i>
+                    </a>
+                    <button class="btn btn-accent mt-0" type="button" onclick="makeVCard()">
+                        @@vcard
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="col-md-8 p-4">
+                <div class="team-desc text-start">
+                    <div class="team-title pt-0 mb-3">
+                        <h4>@@firstName @@lastName</h4><span class="fst-normal text-lightSamaritan">@@jobTitle</span>
+                    </div>
+
+                    <p class="mb-3">
+                        @@bio
+                    </p>
+
+                    <strong>Key Skills and Expertise</strong>
+
+                    @@skills
+
+                    <strong>Geo Focus</strong>
+                    <p class="interline">@@geo</p>
+
+                    <strong>Languages</strong>
+                    <p class="interline">@@languages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function makeVCard() {
+        let vcard =
+            "BEGIN:VCARD" +
+            "\n" +
+            "VERSION:3.0" +
+            "\n" +
+            "FN;CHARSET=UTF-8:@@firstName @@lastName" +
+            "\n" +
+            "N;CHARSET=UTF-8:@@lastName;@@firstName;;;" +
+            "\n" +
+            "GENDER:@@gender" +
+            "\n" +
+            "EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:@@email" +
+            "\n" +
+            "TEL;TYPE=CELL:@@phone" +
+            "\n" +
+            "TITLE;CHARSET=UTF-8:@@jobTitle" +
+            "\n" +
+            "ORG;CHARSET=UTF-8:Trade Duty Refund" +
+            "\n" +
+            "URL;type=WORK;CHARSET=UTF-8:tradedutyrefund.com" +
+            "\n" +
+            "X-SOCIALPROFILE;TYPE=linkedin:@@linkedIn" +
+            "\n" +
+            "REV:2023-08-31T11:52:02.501Z" +
+            "\n" +
+            "END:VCARD";
+        downloadToFile(vcard, "@@firstName-@@lastName.vcf", "text/vcard");
+    }
+
+    function downloadToFile(content, filename, contentType) {
+        const a = document.createElement("a");
+        const file = new Blob([content], { type: contentType });
+
+        a.href = URL.createObjectURL(file);
+        a.download = filename;
+        a.click();
+
+        URL.revokeObjectURL(a.href);
+    }
+</script>

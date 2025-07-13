@@ -21,13 +21,6 @@
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
-	<style>
-		.interline {
-			margin-top: 0, 25rem;
-			margin-bottom: 1rem;
-		}
-	</style>
-
 </head>
 
 <body class="stretched samaritan-bg">
@@ -47,61 +40,20 @@
 			<div class="content-wrap">
 				<div class="container">
 
-
-					<div class="d-flex justify-content-center">
-						<div class="col-lg-10">
-							<div class="row team">
-								<div class="col-md-4 ps-4 ps-md-0 ">
-									<img src="./images/profil/${{jocelyn-montpert.firstName}}$-${{jocelyn-montpert.lastName}}$.webp"
-										alt="${{jocelyn-montpert.firstName}}$ ${{jocelyn-montpert.lastName}}$'s picture"
-										class="rounded-4">
-									<div class="mt-3 d-flex gap-3">
-										<a href="${{ jocelyn-montpert.linkedin }}$" target="_blank"
-											class="social-icon inline-block si-small rounded-circle text-light border-0 bg-linkedin">
-											<i class="fa-brands fa-linkedin"></i>
-											<i class="fa-brands fa-linkedin"></i>
-										</a>
-
-										<a href="${{ jocelyn-montpert.whatsapp }}$" target="_blank"
-											class="social-icon inline-block si-small rounded-circle text-light border-0 bg-whatsapp ">
-											<i class="fa-brands fa-whatsapp "></i>
-											<i class="fa-brands fa-whatsapp "></i>
-										</a>
-										<button class="btn btn-accent mt-0" type="button" onclick="makeVCard()">
-											${{ jocelyn-montpert.vcard }}$
-										</button>
-									</div>
-								</div>
-
-
-								<div class="col-md-8 p-4">
-									<div class="team-desc text-start">
-										<div class="team-title pt-0 mb-3">
-											<h4>${{ jocelyn-montpert.firstName }}$ ${{ jocelyn-montpert.lastName }}$</h4><span
-												class="fst-normal text-lightSamaritan">${{jocelyn-montpert.jobTitle}}$</span>
-										</div>
-
-										<p class="mb-3">
-											${{ jocelyn-montpert.bio }}$
-										</p>
-
-										<strong>Key Skills and Expertise</strong>
-
-										${{jocelyn-montpert.skills}}$
-
-										<strong>Geo Focus</strong>
-										<p class="interline">${{jocelyn-montpert.geo}}$</p>
-
-										<strong>Languages</strong>
-										<p class="interline">${{jocelyn-montpert.languages}}$</p>
-
-
-
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					@@include('src/blocks/teamMemberDetails.html', {
+					"firstName": "${{ jocelyn-montpert.firstName }}$",
+					"lastName": "${{ jocelyn-montpert.lastName }}$",
+					"jobTitle": "${{ jocelyn-montpert.jobTitle }}$",
+					"bio": "${{ jocelyn-montpert.bio }}$",
+					"skills": "${{ jocelyn-montpert.skills }}$",
+					"geo": "${{ jocelyn-montpert.geo }}$",
+					"languages": "${{ jocelyn-montpert.languages }}$",
+					"linkedIn": "${{ jocelyn-montpert.linkedin }}$",
+					"whatsApp": "${{ jocelyn-montpert.whatsapp }}$",
+					"vcard": "${{ jocelyn-montpert.vcard }}$" ,
+					"gender": "${{ jocelyn-montpert.gender}}$",
+					"email": "${{ jocelyn-montpert.email }}$",
+					"phone": "${{ jocelyn-montpert.phone }}$"})
 				</div>
 			</div>
 		</section>
@@ -122,49 +74,6 @@
 
 		<!-- Canvas Scripts -->
 		<script src="js/functions.js"></script>
-		<script>
-			function makeVCard() {
-				let vcard =
-					"BEGIN:VCARD" +
-					"\n" +
-					"VERSION:3.0" +
-					"\n" +
-					"FN;CHARSET=UTF-8:${{ jocelyn-montpert.firstName }}$ ${{ jocelyn-montpert.lastName }}$" +
-					"\n" +
-					"N;CHARSET=UTF-8:${{ jocelyn-montpert.lastName }}$;${{ jocelyn-montpert.firstName }}$;;;" +
-					"\n" +
-					"GENDER:${{ jocelyn-montpert.gender }}$" +
-					"\n" +
-					"EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:${{ jocelyn-montpert.email }}$" +
-					"\n" +
-					"TEL;TYPE=CELL:${{ jocelyn-montpert.phone }}$" +
-					"\n" +
-					"TITLE;CHARSET=UTF-8:${{ jocelyn-montpert.jobTitle }}$" +
-					"\n" +
-					"ORG;CHARSET=UTF-8:Trade Duty Refund" +
-					"\n" +
-					"URL;type=WORK;CHARSET=UTF-8:tradedutyrefund.com" +
-					"\n" +
-					"X-SOCIALPROFILE;TYPE=linkedin:${{ jocelyn-montpert.linkedin }}$" +
-					"\n" +
-					"REV:2023-08-31T11:52:02.501Z" +
-					"\n" +
-					"END:VCARD";
-				downloadToFile(vcard, "${{ jocelyn-montpert.firstName }}$-${{ jocelyn-montpert.lastName }}$.vcf", "text/vcard");
-			}
-
-			function downloadToFile(content, filename, contentType) {
-				const a = document.createElement("a");
-				const file = new Blob([content], { type: contentType });
-
-				a.href = URL.createObjectURL(file);
-				a.download = filename;
-				a.click();
-
-				URL.revokeObjectURL(a.href);
-			}
-		</script>
-
 
 </body>
 
