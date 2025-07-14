@@ -10,9 +10,10 @@
             <!-- Overlay: Start -->
             <div class="bg-overlay">
                 <div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-                    <a href="" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall"
-                        data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="bi-three-dots"></i></a>
-                    <a href="@@path" class="overlay-trigger-icon bg-light text-dark"
+                    <a href="@@path" class="overlay-trigger-icon bg-light text-dark" title="More about @@firstName"
+                        data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall"
+                        data-hover-speed="350"><i class="bi-three-dots"></i></a>
+                    <a href="" class="overlay-trigger-icon bg-light text-dark" title="Contact @@firstName"
                         data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall"
                         data-hover-speed="350"><i class="bi-envelope-arrow-up"></i></a>
                 </div>
@@ -23,11 +24,11 @@
         <!-- Image: End -->
         <!-- Decription: Start -->
         <div class="portfolio-desc">
-            <h3><a href="@@path">@@firstName @@lastName</a></h3>
-            <span>@@jobTitle, @@country</span>
+            <h3><a href="@@path" class="text-white">@@firstName @@lastName</a></h3>
+            <span class="text-lightSamaritan">@@jobTitle, @@country</span>
         </div>
         <!-- Description: End -->
     </div>
-    <!-- Grid Inner: End -->
+<!-- Grid Inner: End -->
 </article>
 <!-- Portfolio Item: End -->
