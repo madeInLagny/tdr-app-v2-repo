@@ -56,7 +56,13 @@
 						${{our-consulting-team.header}}$
 					</h3>
 
-					Select the practice you need and let us know
+					<p class="lead pt-5">
+						Reclaim duties worldwide through our<strong> unique Customs-approved process in the EU, UK, and
+							US</strong><a href="${{solutions-for-all-shippers.path}}$" class="px-2"><i class="bi-arrow-right-circle-fill"></i></a>.<br>
+						Leverage our decentralized team of customs and supply chain consultants to <strong>validate and
+							optimize your current work flow</strong>.<a href="${{consulting.path}}$" class="px-2"><i
+								class="bi-arrow-right-circle-fill"></i></a>
+					</p>
 
 					<div class="grid-filter-wrap">
 
@@ -100,7 +106,7 @@
 						@@include('src/blocks/teamCard.html',{"path":"${{jason-cooper.path}}$",
 						"firstName":"${{jason-cooper.firstName}}$",
 						"lastName":"${{jason-cooper.lastName}}$",
-						"practice":"pf-customs",
+						"practice":"pf-supply",
 						"jobTitle":"${{jason-cooper.jobTitle}}$",
 						"country":"${{jason-cooper.country}}$",
 						"path":"${{jason-cooper.path}}$"
@@ -108,6 +114,10 @@
 
 
 					</div><!-- #portfolio end -->
+
+					<!-- CallOut Panel Start -->
+					@@include('src/blocks/contactUsConsultancyCallOut.html')
+					<!-- CallOut Panel end -->
 
 				</div>
 			</div>
@@ -128,7 +138,8 @@
 
 
 		<!-- Canvas Scripts -->
-		<script src="js/functions.js"></script>
+		<script src="js/plugins.min.js"></script>
+		<script src="js/functions.bundle.js"></script>
 
 
 </body>
