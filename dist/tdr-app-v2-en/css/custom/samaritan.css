@@ -95,7 +95,6 @@ form label {
   --cnvs-btn-color-dark: #25646d;
 }
 
-/* former .btn-accent */
 .button-brown {
   --cnvs-btn-color: #9c4235;
   --cnvs-btn-color-dark: #703026;
@@ -104,6 +103,11 @@ form label {
 .button-blue {
   --cnvs-btn-color: #355b9c;
   --cnvs-btn-color-dark: #264170;
+}
+
+.button-green {
+  --cnvs-btn-color: #2e501b;
+  --cnvs-btn-color-dark: #25646d;
 }
 
 .color-white {

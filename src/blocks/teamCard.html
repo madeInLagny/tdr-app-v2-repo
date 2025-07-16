@@ -8,15 +8,12 @@
                 <img src="images/profil/@@firstName-@@lastName.webp" alt="@@firstName @@lastName profile picture">
             </a>
             <!-- Overlay: Start -->
-            <div class="bg-overlay">
-                <div class="bg-overlay-content dark" data-hover-animate="fadeIn">
-                    <a href="@@path" class="overlay-trigger-icon bg-light text-dark" title="More about @@firstName"
-                        data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall"
-                        data-hover-speed="350"><i class="bi-three-dots"></i></a>
-                
+            <a href="@@path">
+                <div class="bg-overlay">
+                    <div class="bg-overlay-content dark" data-hover-animate="fadeIn"></div>
+                    <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
                 </div>
-                <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
-            </div>
+            </a>
             <!-- Overlay: End -->
         </div>
         <!-- Image: End -->
@@ -27,6 +24,6 @@
         </div>
         <!-- Description: End -->
     </div>
-<!-- Grid Inner: End -->
+    <!-- Grid Inner: End -->
 </article>
 <!-- Portfolio Item: End -->

@@ -41,3 +41,7 @@
 .parallax-bg {
   filter: blur(1px);
 }
+
+a:not(.button) {
+  color: white;
+}

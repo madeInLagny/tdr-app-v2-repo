@@ -212,10 +212,10 @@
             notification.classList.remove("show");
             notification.classList.add("fade");
             notification.addEventListener("transitionend", () => {
-              notification.remove();
+              notification.remove(); 
             });
           }
-        }, 10000);
+        }, 1000);
 
         // Add click event to close button
         notification.querySelector(".close").addEventListener("click", () => {

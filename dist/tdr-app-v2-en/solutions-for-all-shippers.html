@@ -758,10 +758,11 @@
     <h2 class="mb-1 h2">Eager to start saving big?</h2>
     <h3 class="mb-4 fw-medium">You're just one click away.</h3>
     <div class="d-flex gap-3 flex-wrap justify-content-center">
-      <a class="button button-rounded" href="javascript:void(Tawk_API.toggle())" role="button">Chat with us</a>
-      <a class="button button-rounded button-brown" href="#" role="button">Book a call with us</a>
-      <a class="button button-rounded button-blue" href="#" role="button">DM us on LinkedIn</a>
-    </div>
+  <a class="button button-rounded" href="javascript:void(Tawk_API.toggle())" role="button">Chat with us</a>
+  <a class="button button-rounded button-brown" href="${{make-an-appointment.path}}" role="button">Book a call with
+    us</a>
+  <a class="button button-rounded button-blue" href="https://www.linkedin.com/company/trade-duty-refund" role="button">DM us on LinkedIn</a>
+</div>
   </div>
       <style>
   #footer {
@@ -956,13 +957,13 @@
           "notification alert alert-primary alert-dismissible";
         notification.setAttribute("role", "alert");
         notification.innerHTML = `<h2 class="my-1 h2">We have dedicated solutions for
-  <a href="solutions-for-us-shippers.html">
+  <a href="solutions-for-us-shippers.html" type="button" class="button button-rounded fs-4">
     <strong>US</strong>
   </a>,
-  <a href="solutions-for-eu-shippers.html">
+  <a href="solutions-for-eu-shippers.html" type="button" class="button button-rounded fs-4">
     <strong>EU</strong>
   </a> and
-  <a href="solutions-for-uk-shippers.html">
+  <a href="solutions-for-uk-shippers.html" type="button" class="button button-rounded fs-4">
     <strong>UK</strong>
   </a>
   shippers. Check them out!
@@ -983,10 +984,10 @@
             notification.classList.remove("show");
             notification.classList.add("fade");
             notification.addEventListener("transitionend", () => {
-              notification.remove();
+              notification.remove(); 
             });
           }
-        }, 10000);
+        }, 1000);
 
         // Add click event to close button
         notification.querySelector(".close").addEventListener("click", () => {
