@@ -48,9 +48,9 @@ ul {
   --cnvs-link-color: var(--samaritan);
 }
 
-a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
+/* a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
   color: var(--lightSamaritan);
-}
+} */
 
 .button-circle {
   color: white;
@@ -89,55 +89,21 @@ form label {
   color: white;
 }
 
-.btn-primary {
-  --bs-btn-color: var(--lightSamaritan);
-  --bs-btn-bg: var(--samaritan);
-  --bs-btn-border-color: var(--samaritan);
-  --bs-btn-hover-color: var(--samaritan);
-  --bs-btn-hover-bg: var(--darkSamaritan);
-  --bs-btn-hover-border-color: var(--samaritan);
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: var(--lightSamaritan);
-  --bs-btn-active-border-color: var(--lightSamaritan);
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: var(--samaritan);
-  --bs-btn-disabled-border-color: var(--samaritan);
+/* former btn-primary */
+.button {
+  --cnvs-btn-color: #358f9c;
+  --cnvs-btn-color-dark: #25646d;
 }
 
-.btn-lightSamaritan {
-  --bs-btn-color: var(--darkSamaritan);
-  --bs-btn-bg: var(--lightSamaritan);
-  --bs-btn-border-color: var(--darkSamaritan);
-  --bs-btn-hover-color: var(--samaritan);
-  --bs-btn-hover-bg: var(--darkSamaritan);
-  --bs-btn-hover-border-color: var(--lightSamaritan);
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: var(--samaritan);
-  --bs-btn-active-border-color: var(--samaritan);
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: var(--lightSamaritan);
-  --bs-btn-disabled-border-color: var(--lightSamaritan);
+/* former .btn-accent */
+.button-brown {
+  --cnvs-btn-color: #9c4235;
+  --cnvs-btn-color-dark: #703026;
 }
 
-.btn-accent {
-  --bs-btn-color: var(--darkSamaritan);
-  --bs-btn-bg: #c07fc4;
-  --bs-btn-border-color: var(--darkSamaritan);
-  --bs-btn-hover-color: white;
-  --bs-btn-hover-bg: var(--darkSamaritan);
-  --bs-btn-hover-border-color: var(--lightSamaritan);
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: var(--samaritan);
-  --bs-btn-active-border-color: var(--samaritan);
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: var(--lightSamaritan);
-  --bs-btn-disabled-border-color: var(--lightSamaritan);
+.button-blue {
+  --cnvs-btn-color: #355b9c;
+  --cnvs-btn-color-dark: #264170;
 }
 
 .color-white {
