@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "${{make-an-appointment.description}}$",
+	"title": "${{make-an-appointment.title}}$",
+	"path": "${{make-an-appointment.path}}$"
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="promo shadow-sm text-center p-4 border rounded-5 mb-5">
+						<h2 class="mb-1 h2">We're there for you</h2>
+						<h3 class="mb-4 fw-medium">Contact us to discover how our trade experts can help you reduce
+							import duties in the EU, US, and UK, and boost your cross-border sales.</h3>
+						@@include("src/blocks/contactOptions.html")
+					</div>
+				</div>
+				<div class="section dark bg-transparent">
+					@@include('src/blocks/blog-gallery.html')
+				</div>
+
+			</div>
+	</div>
+	</section><!-- #content end -->
+
+	@@include('src/blocks/footer.html',{
+	"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+	})
+	<!-- Javascripts
+		============================================= -->
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/linkedInInsideTag.html')
+
+
+	<!-- Canvas Scripts -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+
+</body>
+
+</html>
