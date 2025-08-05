@@ -6,12 +6,10 @@ import { readdirSync, statSync } from "fs";
 import { deleteAsync } from "del";
 import sitemap from "gulp-sitemap";
 import entities from "gulp-html-entities";
+import flatten from "gulp-flatten";
 
 const paths = {
-  specificHtml: [
-    /* 'src/TDR-Duty-Drawback-in-the-US.html', */
-    "src/*.html",
-  ],
+  specificHtml: ["src/pages/**/*.html", "!src/pages/pagesInDev/*.html"],
   i18n: "src/i18n/en/**/",
   dist: "dist/tdr-app-v2-en",
   assets: {
@@ -55,18 +53,19 @@ export const buildSpecificHtml = () => {
     .pipe(
       fileInclude({
         prefix: "@@",
-        basepath: "@root", //@@include are relative to the path where gulp is running = rootpath
+        basepath: "@root",
       })
     )
     .pipe(
       i18n({
         locales: locales,
-        localeDir: path.join("src", "i18n"),
+        localeDir: path.resolve("src", "i18n"),
         schema: "",
       })
     )
     .pipe(entities("decode"))
-    .pipe(gulp.dest("dist/"));
+    .pipe(flatten())
+    .pipe(gulp.dest("dist/tdr-app-v2-en"));
 };
 
 // Task to copy
