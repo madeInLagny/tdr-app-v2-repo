@@ -114,3 +114,12 @@ https://emn178.github.io/online-tools/html_encode.html. They will be decoded by 
 
 Exemple d'un bouton:
 &lt;a href=&quot;contact-us.html?utm_source=Website&amp;utm_medium=FAQ&amp;utm_campaign=US-eCom-DDP&quot; class=&quot;text-decoration-underline&quot;&gt;clicking here&lt;/a&gt;
+
+
+## Q&A pages
+When new pages or updates to existing pages are needed, modify the QAs.json file first for content. If changes are required to the structure, use the QAPageTemplate.
+Once changes are made, type "node generateQAPages.js" in the terminal to generate the new pages.
+
+
+## Word to HTML
+This tool convert plain text to HTML syntax: https://text-html.com/

@@ -1,0 +1,90 @@
+[
+  {
+    "question": "What is US duty drawback and how does it benefit ecommerce merchants?",
+    "answer": "Duty drawback enables merchants to reclaim up to 99% of customs duties paid on imported goods, provided those goods are subsequently exported or destroyed. This process can significantly improve cash flow and profitability for global ecommerce businesses by reducing the total landed cost of goods."
+  },
+  {
+    "question": "Who qualifies for duty drawback in the US?",
+    "answer": "Any business importing goods into the US and later exporting them—such as for customer returns—may qualify for duty drawback, as long as proper documentation and compliance with US Customs regulations are maintained."
+  },
+  {
+    "question": "How can cross-border ecommerce businesses streamline duty drawback claims?",
+    "answer": "Ecommerce businesses can streamline duty drawback claims by partnering with experienced providers who can help reconstruct required documentation, manage compliance issues, and submit claims efficiently, even if some records are missing or imperfect."
+  },
+  {
+    "question": "Can I reclaim import duties on goods returned by EU customers?",
+    "answer": "Yes, it is possible to reclaim duties paid on items returned by EU customers under certain circumstances, such as defects, non-conformance, or when consumer withdrawal rights are exercised. Strict documentation and timely applications are required."
+  },
+  {
+    "question": "What documents do I need to submit for an EU duty reclaim?",
+    "answer": "Key documents include commercial invoices, original export evidence, proof of return, and relevant customs forms. Ensure you apply within the required timeframe after returns are processed."
+  },
+  {
+    "question": "How do EU return policies like the 14-day cooling-off period affect duty reclaims?",
+    "answer": "EU rules allow consumers to return goods within a 14-day period. If items are returned during this window and in resellable condition, merchants may be eligible to reclaim customs duties, provided all requirements and documentation are met."
+  },
+  {
+    "question": "Are duties reclaimable on customer returns in the UK?",
+    "answer": "Yes, merchants can reclaim duties on goods returned within 90 days of importation, provided the return can be linked to the original customs entry. This process helps reduce costs for merchants with high rates of customer returns."
+  },
+  {
+    "question": "What is the process for reclaiming duties on UK returns?",
+    "answer": "Submit the required claim forms (such as C285) through the UK Customs Declaration Service, ensuring you maintain clear records connecting returned goods to their original import declaration."
+  },
+  {
+    "question": "How does Returned Goods Relief work in the UK and EU?",
+    "answer": "Returned Goods Relief (RGR) allows for duty- and tax-free re-importation of previously exported goods, provided they’re unaltered, returned within set timeframes, and accompanied by adequate documentation showing original export and return."
+  },
+  {
+    "question": "What are the key benefits of Returned Goods Relief for my ecommerce business?",
+    "answer": "RGR helps avoid double taxation, streamlines the re-import process, and reduces costs associated with international returns, making global returns management much more efficient and customer-friendly."
+  },
+  {
+    "question": "How do I qualify for Returned Goods Relief?",
+    "answer": "To qualify, goods must be re-imported in substantially the same condition within the prescribed time limits, with evidence of the initial export and return. The requirements and forms may vary by region and authority."
+  },
+  {
+    "question": "How can optimizing duty refunds impact profit margins for ecommerce brands?",
+    "answer": "Optimizing duty refunds reduces overall import costs, directly increasing profit margins and freeing up capital that can be reinvested into business growth or used to lower retail prices."
+  },
+  {
+    "question": "What common mistakes do merchants make when managing cross-border returns?",
+    "answer": "Common mistakes include lacking proper documentation, missing claim deadlines, misunderstanding eligibility rules, or failing to link returns to original import entries—all of which can lead to missed duty recovery opportunities."
+  },
+  {
+    "question": "How can technology improve documentation for duty reclaims and returns?",
+    "answer": "Digital solutions automate records management, ensure proper documentation is collected, and make it easier to trace goods across supply chains—reducing errors and expediting duty reclaim processes."
+  },
+  {
+    "question": "Are there exemptions, deadlines, or thresholds I should be aware of for duty reclaim in the US, EU, or UK?",
+    "answer": "Yes. Each region has its own deadlines (e.g., 90 days for UK returns), claim windows, and minimum value thresholds. Exemptions may apply, and it’s vital to stay updated with regional rules to maximize your reclaim potential."
+  },
+  {
+    "question": "What recent changes have been made to US import tariffs in 2025?",
+    "answer": "In 2025, the US significantly raised tariffs on most imports. The average US tariff rate increased from 2.5% in January to about 18.4% by July, with some sectors like apparel and shoes facing sharp increases. Additional country-specific reciprocal tariffs are expected to resume, affecting costs for merchants and consumers."
+  },
+  {
+    "question": "What does the suspension of the US de minimis exemption mean?",
+    "answer": "Effective August 29, 2025, the US suspended the $800 de minimis exemption, meaning all shipments entering the US, regardless of value, must pay applicable duties, taxes, and fees. This removes the previous duty-free treatment for low-value imports widely used in ecommerce."
+  },
+  {
+    "question": "How do these US tariff changes impact cross-border ecommerce merchants?",
+    "answer": "Merchants face higher costs due to increased tariffs and the loss of duty-free treatment for small shipments. This challenges DTC brands and marketplace sellers who relied on the de minimis exemption, causing price increases, added supply chain complexity, and prompting revised pricing and inventory strategies."
+  },
+  {
+    "question": "What challenges does the end of de minimis pose for global ecommerce brands?",
+    "answer": "Without de minimis, all shipments require full customs entries, duties, and compliance documentation. Brands must ensure accurate HS codes, origin, and duty declarations. Strategies like fragmented shipments to reduce duties are no longer effective, pushing brands to consolidate shipments or hold inventory in US warehouses."
+  },
+  {
+    "question": "Are there specific industries most affected by these changes?",
+    "answer": "Industries like footwear, textiles, consumer electronics, and fast fashion are most affected, as they depended heavily on high volumes of low-value shipments previously exempt from duties, now facing higher compliance and tariff costs."
+  },
+  {
+    "question": "How can merchants adapt to the new US tariff rules and de minimis suspension?",
+    "answer": "Merchants can adapt by reevaluating supply chains, considering sourcing shifts or US warehousing, adjusting pricing strategies, digitizing compliance processes for tariff calculation and customs paperwork, and consolidating shipments to manage costs effectively."
+  },
+  {
+    "question": "Will these changes affect shipping times and customer experience?",
+    "answer": "Yes, customs processing times for previously exempt small shipments are expected to increase, potentially causing inventory delays and higher costs, which may impact shipping speeds and customer satisfaction."
+  }
+]
