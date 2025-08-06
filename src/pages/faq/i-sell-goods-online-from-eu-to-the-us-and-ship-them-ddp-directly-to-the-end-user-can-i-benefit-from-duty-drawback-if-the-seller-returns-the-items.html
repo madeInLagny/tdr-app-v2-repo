@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "See how e-commerce sellers using DDP shipping from the EU to the US can qualify for duty drawback on returned goods and which conditions apply.",
+	"title": "Duty Drawback for EU to US DDP E-Commerce Returns",
+	"path": "duty-drawback-for-eu-to-us-ddp-e-commerce-returns.html",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="page-title-row pb-3">
+						<div class="page-title-content">
+							<h1>
+								<div class="fw-bold display-5">I sell goods online from EU to the US and ship them DDP directly to the end-user. Can I benefit from Duty Drawback if the seller returns the items</div>
+							</h1>
+						</div>
+					</div>
+					<p>Yes, you can benefit from Duty Drawback using this model. Some conditions apply, in particular with regards to the logistics model that you use. Contact our Trade Experts for more information by <a href='contact-us.html?utm_source=Website&utm_medium=FAQ&utm_campaign=US-eCom-DDP' class='text-decoration-underline'>clicking here</a></p>
+
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>

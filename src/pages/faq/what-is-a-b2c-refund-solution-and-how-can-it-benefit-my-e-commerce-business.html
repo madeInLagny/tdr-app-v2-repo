@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "Learn how a B2C refund solution works, benefits e-commerce businesses, and improves cross-border returns, cash flow, and customer satisfaction.",
+	"title": "What Is a B2C Refund Solution for E-Commerce?",
+	"path": "what-is-a-b2c-refund-solution-for-e-commerce.html",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="page-title-row pb-3">
+						<div class="page-title-content">
+							<h1>
+								<div class="fw-bold display-5">What is a B2C refund solution and how can it benefit my e-commerce business?</div>
+							</h1>
+						</div>
+					</div>
+					<p>A B2C refund solution streamlines the process of refunding customers for returned goods, especially in cross-border transactions. It can enhance customer satisfaction, reduce operational costs, and improve cash flow by automating and simplifying the refund process.</p>
+
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>

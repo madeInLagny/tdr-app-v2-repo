@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "Learn about ETSFs in the UK and how these customs-approved storage sites help defer duties and taxes on imported goods.",
+	"title": "What Is an ETSF in the UK? External Temporary Storage Facility Explained",
+	"path": "what-is-an-etsf-in-the-uk-external-temporary-storage-facility-explained.html",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="page-title-row pb-3">
+						<div class="page-title-content">
+							<h1>
+								<div class="fw-bold display-5">What is an ETSF in the UK?</div>
+							</h1>
+						</div>
+					</div>
+					<p>An ETSF (External Temporary Storage Facility) is a customs-approved location where goods can be stored temporarily before being re-exported or cleared for import. It allows for the deferral of customs duties and taxes until the goods are either re-exported or cleared for import into the EU.</p>
+
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>
