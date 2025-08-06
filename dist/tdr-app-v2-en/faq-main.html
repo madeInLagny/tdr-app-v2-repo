@@ -92,6 +92,10 @@
   <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
   <style>
+    .form-control {
+      --cnvs-input-btn-input-bg: var(--lightSamaritan);
+    }
+
     .bord {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -595,212 +599,474 @@
                   <li>
                     <a href="#" class="fw-light text-white" data-filter=".faq-UKDD">UK Duty Repayment</a>
                   </li>
+                  <li class="mb-4 position-relative" style="max-width:400px;">
+
+                    <input type="text" id="faq-search" class="form-control pr-5" placeholder="Search FAQs...">
+                    <button type="button" id="faq-clear" aria-label="Clear search"
+                      style="position:absolute;top:50%;right:10px;transform:translateY(-50%);border:none;background:transparent;font-size:1.2em;cursor:pointer;display:none;">
+                      ×
+                    </button>
+
+
+                  </li>
                 </ul>
               </div>
 
               <div class="clear"></div>
 
+
+
               <div id="faqs" class="faqs">
-                <div class="faq p-3 mb-3 bord faq-USDD">
+                <div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-us-duty-drawback-meaning-and-benefits-explained.html">
-        What is U.S. duty drawback?
+        <span itemprop="name">What is U.S. duty drawback?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            U.S. duty drawback is a program that refunds exporters and importers up to 99 percent of the duties they paid when importing goods into the U.S. It aims to promote U.S. commerce and manufacturing by allowing U.S. products to compete internationally without the burden of import duties.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="main-types-of-us-duty-drawback-a-complete-guide.html">
-        What are the main types of U.S. duty drawback?
+        <span itemprop="name">What are the main types of U.S. duty drawback?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            The three main types of U.S. duty drawback are: Manufacturing (for goods manufactured or produced in the U.S. using imported, duty-paid merchandise), Unused (for merchandise not used in the U.S. prior to exportation), and Rejected (for duty-paid merchandise that does not meet specifications or is defective).
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="required-documents-for-a-us-duty-drawback-claim.html">
-        What documents are required for a U.S. duty drawback claim?
+        <span itemprop="name">What documents are required for a U.S. duty drawback claim?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            For importing, required documents include Entry Summary (CF 7501), Commercial Invoice, and Certificate of Delivery (CF 7552). For exporting, required documents include Commercial Invoice, Bill of Lading, and Export Waiver.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="where-to-file-a-us-duty-drawback-claim.html">
-        Where can I file a U.S. duty drawback claim?
+        <span itemprop="name">Where can I file a U.S. duty drawback claim?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            U.S. duty drawback claims can be filed at designated centers in Chicago, Houston, New York/Newark, and San Francisco.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-to-speed-up-the-us-duty-drawback-process.html">
-        How can I speed up the U.S. duty drawback process?
+        <span itemprop="name">How can I speed up the U.S. duty drawback process?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Submitting duty drawback bonds and using electronic submissions via the Automated Broker Interface (ABI) can expedite the process. Accelerated payment options are also available to receive refunds faster.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="are-section-301-duties-eligible-for-us-duty-drawback.html">
-        Are Section 301 duties eligible for drawback in the US?
+        <span itemprop="name">Are Section 301 duties eligible for drawback in the US?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes, Section 301 duties are eligible for drawback, along with other duties such as Merchandise Processing Fees (MPF) and Harbor Maintenance Taxes (HMF).
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="can-you-claim-us-duty-drawback-on-past-transactions.html">
-        Can I file for drawback on past transactions in the US?
+        <span itemprop="name">Can I file for drawback on past transactions in the US?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes, you can file for drawback on import and export transactions that occurred over the past five years, provided the qualifying export date is after the import date.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-much-does-us-duty-drawback-service-cost.html">
-        How much does a duty drawback service cost in the US?
+        <span itemprop="name">How much does a duty drawback service cost in the US?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            In the US, the cost is typically a competitive percentage of the duty recovered, depending on factors such as the duty recovery levels, statutory filing provision, and administrative resources required.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-percentage-of-us-duties-does-cbp-refund.html">
-        What percentage of duties does CBP (US Customs) refund?
+        <span itemprop="name">What percentage of duties does CBP (US Customs) refund?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            U.S. Customs and Border Protection refunds 99% of the duties, fees, and taxes paid.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="us-duty-drawback-refund-timeline-how-long-does-it-take.html">
-        How long does it take to receive a drawback refund in the US?
+        <span itemprop="name">How long does it take to receive a drawback refund in the US?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            With accelerated payment, refunds can be received within 30 days from the date of filing. Without accelerated payment, it could take one year or longer.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="why-use-trade-duty-refund-for-duty-drawback-claims.html">
-        If I can claim duty drawback myself, what does Trade Duty Refund bring to the process?
+        <span itemprop="name">If I can claim duty drawback myself, what does Trade Duty Refund bring to the process?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            While it is possible to claim duty drawback yourself, the process is complex and can be very lengthy for non-specialists. Trade Duty Refund and its partners have decades of experience in this field and will help optimize the process both in financial value and in time. Additionally, Trade Duty Refund provides duty reclaim solutions in different regions around the world, making it a one-stop shop for cross-border e-commerce merchants looking to benefit from higher cash flow and returned goods logistics cost savings. For more insights on duty refunds, duty-free returns, and international trade, contact <a href='contact-us.html?utm_source=Website&utm_medium=FAQ&utm_campaign=More-Info-US-DD' class='text-decoration-underline'>Trade Duty Refund</a>.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-nearshoring-to-free-trade-agreement-countries.html">
-        What is nearshoring to Free Trade Agreement Countries?
+        <span itemprop="name">What is nearshoring to Free Trade Agreement Countries?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Nearshoring to Free Trade Agreement (FTA) countries involves relocating business processes or manufacturing operations to countries that have a free trade agreement with the company's home country. This strategy is often adopted to take advantage of the benefits offered by FTAs, such as reduced tariffs, simplified customs procedures, and improved market access. Companies in the U.S. might nearshore to Mexico or Canada to take advantage of the USMCA.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-section-301-trump-tariffs-history-and-explanation.html">
-        What is section 301 (aka Trump Tariffs)?
+        <span itemprop="name">What is section 301 (aka Trump Tariffs)?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Section 301 of the Trade Act of 1974 is a provision of U.S. trade law that authorizes the President to take action, including the imposition of tariffs, to enforce U.S. rights under trade agreements and to respond to certain unfair trade practices by foreign countries. The term 'Trump Tariffs' refers to the tariffs imposed by the Trump administration under this authority. During his mandates, Donald Trump used Section 301 to impose tariffs on a wide range of goods, particularly targeting China. These tariffs were intended to address issues such as intellectual property theft and forced technology transfer. The tariffs affected billions of dollars worth of goods, including steel, aluminum, and a variety of consumer products.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-a-free-trade-zone-ftz-definition-and-benefits.html">
-        What is a Free Trade Zone (FTZ)?
+        <span itemprop="name">What is a Free Trade Zone (FTZ)?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            A Free Trade Zone (FTZ) is a designated area within a country where goods can be imported, handled, manufactured, reconfigured, and re-exported without the intervention of CBP, the US customs authorities.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-a-bonded-warehouse-definition-and-business-benefits.html">
-        What is a bonded warehouse?
+        <span itemprop="name">What is a bonded warehouse?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            A bonded warehouse is a secure facility where imported goods can be stored, manipulated, or undergo manufacturing operations without payment of duty. It is authorized by customs authorities and allows for the deferral of duty payments until the goods are released into the market. This setup is particularly useful for businesses that need to store goods for extended periods before selling or distributing them, as it helps in managing cash flow and reducing upfront costs.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-the-first-sale-rule-in-us-customs.html">
-        What is the First Sale Rule?
+        <span itemprop="name">What is the First Sale Rule?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            This rule allows importers to use the price paid for the goods in an earlier sale (often the first sale from the manufacturer to a middleman) rather than the price paid in the last sale (from the middleman to the importer) for the purpose of calculating customs duties. <a href='contact-us.html?utm_source=Website&utm_medium=FAQ&utm_campaign=What-is-first-sale-rule' class='text-decoration-underline'>Contact us</a> for more detail on applicability, requirements and documentation.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-is-shipment-value-determined-for-us-imports.html">
-        What is the standard method for determining shipment value for imported goods?
+        <span itemprop="name">What is the standard method for determining shipment value for imported goods?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            The standard method is based on the price actually paid or payable for imported goods when sold for export to the United States.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-value-should-e-commerce-sellers-declare-for-end-consumer-goods.html">
-        What value should E-Commerce sellers use when declaring the value of goods sold to end consumers?
+        <span itemprop="name">What value should E-Commerce sellers use when declaring the value of goods sold to end consumers?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            In a B2C model, eCommerce sellers must use the final retail price as the declared value when making a sale to an end consumer.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="exceptions-allowing-e-commerce-sellers-to-use-cost-price-for-customs.html">
-        Are there any exceptions where E-Commerce sellers can use the cost price instead of the retail price for customs declaration?
+        <span itemprop="name">Are there any exceptions where E-Commerce sellers can use the cost price instead of the retail price for customs declaration?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes, one exception is if the seller has implemented a fully-fledged 'First Sale' program. This requires proper documentation and procedures for bona-fide, arms-length transactions occurring prior to the final sale to the end consumer.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-a-b2c-refund-solution-for-e-commerce.html">
-        What is a B2C refund solution and how can it benefit my e-commerce business?
+        <span itemprop="name">What is a B2C refund solution and how can it benefit my e-commerce business?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            A B2C refund solution streamlines the process of refunding customers for returned goods, especially in cross-border transactions. It can enhance customer satisfaction, reduce operational costs, and improve cash flow by automating and simplifying the refund process.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="efficient-duty-refund-management-for-cross-border-retailers.html">
-        How can cross-border retailers efficiently manage duty refunds?
+        <span itemprop="name">How can cross-border retailers efficiently manage duty refunds?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Cross-border retailers can manage duty refunds efficiently by partnering with specialized service providers who offer automated solutions for tracking, claiming, and processing duty refunds. This ensures compliance with international regulations and maximizes recovery of duties paid.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-to-reclaim-duties-for-e-commerce-in-europe.html">
-        How can I reclaim duties for my e-commerce business operating in Europe?
+        <span itemprop="name">How can I reclaim duties for my e-commerce business operating in Europe?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            To reclaim duties in Europe, you need to follow the specific procedures outlined by the customs authorities in the countries where you operate. This typically involves submitting detailed documentation and proof of export or destruction of goods.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="international-duty-reclaim-definition-and-benefits.html">
-        What is international duty reclaim, and how can my business benefit from it?
+        <span itemprop="name">What is international duty reclaim, and how can my business benefit from it?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            International duty reclaim is the process of recovering duties paid on goods that are re-exported or destroyed. By reclaiming these duties, your business can reduce costs and improve profitability, especially in high-volume cross-border transactions.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-duty-free-returns-work-for-e-commerce.html">
-        How do duty-free returns work for e-commerce businesses?
+        <span itemprop="name">How do duty-free returns work for e-commerce businesses?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Duty-free returns allow customers to return goods without incurring additional duties or taxes. This can be a significant selling point for cross-border e-commerce businesses, as it simplifies the return process and enhances customer satisfaction.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="why-consult-e-commerce-experts-for-duty-refunds.html">
-        Why should I consult with e-commerce experts for duty-related issues?
+        <span itemprop="name">Why should I consult with e-commerce experts for duty-related issues?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            E-commerce experts specialize in navigating the complexities of international trade, including duty refunds, drawback, and compliance. Their expertise can help you optimize your operations, reduce costs, and avoid potential pitfalls.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="steps-for-reclaiming-duties-in-your-business.html">
-        What steps are involved in reclaiming duties for my business?
+        <span itemprop="name">What steps are involved in reclaiming duties for my business?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Reclaiming duties typically involves identifying eligible goods, gathering necessary documentation, submitting claims to the relevant customs authorities, and following up to ensure timely processing and approval.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-to-calculate-duty-drawback-for-e-commerce.html">
-        How can I calculate duty drawback for my e-commerce business?
+        <span itemprop="name">How can I calculate duty drawback for my e-commerce business?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Calculating duty drawback involves determining the duties paid on imported goods, tracking the export or destruction of those goods, and applying the relevant drawback rates. Specialized software or service providers can automate and simplify this process.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="duty-refund-management-for-apparel-sporting-goods.html">
-        What are the key considerations for managing duty refunds in the apparel and sporting goods sectors?
+        <span itemprop="name">What are the key considerations for managing duty refunds in the apparel and sporting goods sectors?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Key considerations include understanding the specific duty rates and regulations for apparel and sporting goods, maintaining accurate records of imports and exports, and leveraging technology to streamline the refund process.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="who-is-eligible-for-import-duty-repayment-in-the-uk.html">
-        Who can apply for a repayment of import duties in the UK?
+        <span itemprop="name">Who can apply for a repayment of import duties in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            You can apply if you are an importer or their representative, an agent, a freight forwarder, or a private individual.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-to-apply-for-import-duty-repayment-in-the-uk.html">
-        How do I apply for a repayment of import duties in the UK?
+        <span itemprop="name">How do I apply for a repayment of import duties in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            You can apply using the Customs Declaration Service or Customs Handling of Import and Export Freight (CHIEF) online service, or by using form C285, depending on where you made your declaration.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="import-duty-repayment-claim-time-limits-in-the-uk.html">
-        What is the time limit for submitting a claim for repayment in the UK?
+        <span itemprop="name">What is the time limit for submitting a claim for repayment in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            The time limit for submitting a claim is 3 years for overpayments, 1 year for rejected imports, and 3 months for invalidation of a customs entry.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="required-documents-for-uk-duty-repayment-claims.html">
-        What documents do I need to claim a duty repayment in the UK?
+        <span itemprop="name">What documents do I need to claim a duty repayment in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            You need documents such as the movement reference number (MRN), EORI number, commercial invoice, packing list, transport documents, and bank details.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="duty-repayment-for-vat-registered-businesses-in-the-uk.html">
-        Can I apply for a repayment if I am VAT registered in the UK?
+        <span itemprop="name">Can I apply for a repayment if I am VAT registered in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            If you are VAT registered, you must make an adjustment through your VAT return instead of using the C285 form or the online service.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-a-ddp-shipment-delivered-duty-paid-explained.html">
-        What is a DDP shipment?
+        <span itemprop="name">What is a DDP shipment?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            DDP (Delivered Duty Paid) refers to shipments where the shipper delivers goods already cleared for importation, bearing all landed costs including import duty and VAT.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-EUDD faq-UKDD faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="can-you-reclaim-import-vat-on-unsold-goods.html">
-        Can I reclaim import VAT if the goods are not sold?
+        <span itemprop="name">Can I reclaim import VAT if the goods are not sold?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes, you can reclaim import VAT even if the goods are not sold, provided certain legal conditions are fulfilled, such as shipping goods for storage or clinical trials.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="requirements-for-import-vat-refund-in-the-uk.html">
-        What are the requirements for import VAT refund in the UK?
+        <span itemprop="name">What are the requirements for import VAT refund in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Requirements include having a GB EORI number, being a taxable person in your home country, and submitting the VAT refund application within the prescribed timeframe.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="vat-refund-processing-times-in-the-uk.html">
-        How long does it take to receive a VAT refund in the UK?
+        <span itemprop="name">How long does it take to receive a VAT refund in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            The UK tax authorities typically process VAT refund applications within 4 to 6 months, but this can vary depending on the complexity of the claim.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-duty-reclaim-and-its-business-benefits.html">
-        What is duty reclaim and how does it benefit my business?
+        <span itemprop="name">What is duty reclaim and how does it benefit my business?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Duty reclaim is the process of recovering customs duties and taxes paid on imported goods that are subsequently re-exported. It benefits your business by maximizing refunds, simplifying processes, enhancing cash flow, and promoting sustainable operations.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="duty-refund-eligibility-for-re-exported-goods-in-the-uk.html">
-        We import goods from China into the UK and subsequently re-export them. Are we eligible for a duty refund?
+        <span itemprop="name">We import goods from China into the UK and subsequently re-export them. Are we eligible for a duty refund?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes, there are a few options for this type of movement and depening on IOR in the UK, the goods and frequency of shiments. One condition is that the goods must not have been processed or changed in any ways during their stay in the UK
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-an-etsf-in-the-uk-external-temporary-storage-facility-explained.html">
-        What is an ETSF in the UK?
+        <span itemprop="name">What is an ETSF in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            An ETSF (External Temporary Storage Facility) is a customs-approved location where goods can be stored temporarily before being re-exported or cleared for import. It allows for the deferral of customs duties and taxes until the goods are either re-exported or cleared for import into the EU.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-a-non-resident-importer-nri-in-the-us.html">
-        What is a Non-Resident Importer (NRI) in the US?
+        <span itemprop="name">What is a Non-Resident Importer (NRI) in the US?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            A Non-Resident Importer (NRI) is a business or individual that imports goods into a country without having a physical presence in that country. NRIs are responsible for ensuring compliance with local customs regulations and may be required to appoint a customs broker or agent to handle the import process on their behalf.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="can-nris-claim-duty-drawback-in-the-us.html">
-        Can a Non-Resident Importer (NRI) claim duty drawback in the US?
+        <span itemprop="name">Can a Non-Resident Importer (NRI) claim duty drawback in the US?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes, a Non-Resident Importer (NRI) can claim duty drawback, provided they meet the necessary requirements and comply with local customs regulations.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="duty-drawback-for-eu-to-us-ddp-e-commerce-returns.html">
-        I sell goods online from EU to the US and ship them DDP directly to the end-user. Can I benefit from Duty Drawback if the seller returns the items
+        <span itemprop="name">I sell goods online from EU to the US and ship them DDP directly to the end-user. Can I benefit from Duty Drawback if the seller returns the items</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes, you can benefit from Duty Drawback using this model. Some conditions apply, in particular with regards to the logistics model that you use. Contact our Trade Experts for more information by <a href='contact-us.html?utm_source=Website&utm_medium=FAQ&utm_campaign=US-eCom-DDP' class='text-decoration-underline'>clicking here</a>
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="duty-drawback-service-costs-in-the-uk.html">
-        How much does a duty drawback service cost in the UK?
+        <span itemprop="name">How much does a duty drawback service cost in the UK?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            In the UK,the cost is typically a competitive percentage of the duty recovered, depending on factors such as the duty recovery levels, statutory filing provision, and administrative resources required.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="where-to-get-more-information-about-us-duty-drawback.html">
-        Where can I find more information about US Duty Drawback?
+        <span itemprop="name">Where can I find more information about US Duty Drawback?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-UKDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            You can find more information about US Duty Drawback on the US Customs and Border Protection (CBP) website, or by consulting with Trade Duty Refund experts. They can provide detailed guidance on the process, eligibility, and documentation required for filing and optimizing a claim. Make an appointment with us by <a href='make-an-appointment.html?utm_source=Website&utm_medium=FAQ&utm_campaign=More-Info-US-DD' class='text-decoration-underline'>clicking here</a>.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-UKDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="where-to-get-more-information-about-uk-duty-drawback.html">
-        Where can I find more information about UK Duty Drawback?
+        <span itemprop="name">Where can I find more information about UK Duty Drawback?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            You can find more information about UK Duty Drawback on the UK government website, or by consulting with Trade Duty Refund experts. They can provide detailed guidance on the process, eligibility, and documentation required for filing and optimizing a claim. Make an appointment with us by <a href='make-an-appointment.html?utm_source=Website&utm_medium=FAQ&utm_campaign=More-Info-UK-DD' class='text-decoration-underline'>clicking here</a>.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="using-duty-drawback-with-ftzs-and-bonded-warehouses.html">
-        If I use a FTZ or a bonded warehouse, can I use duty drawback?
+        <span itemprop="name">If I use a FTZ or a bonded warehouse, can I use duty drawback?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            Yes you can. Duties are paid when goods leave the bonded facility or the FTZ. But the same duty drawback rule applies.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="bonded-warehouse-vs-ftz-duty-implications-explained.html">
-        Is there a difference in using a bonded warehouse vs a FTZ from a duty standpoint?
+        <span itemprop="name">Is there a difference in using a bonded warehouse vs a FTZ from a duty standpoint?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            The big distinction when goods get into FTZ, the applicable duty rate is the one in application when goods entered the US Bonded Warehouse, the duty rate is the one in effect when you exit the bonded warehouse.
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="how-importers-mitigated-section-301-tariffs-in-2018.html">
-        How did most importers try to mitigate section 301 in 2018?
+        <span itemprop="name">How did most importers try to mitigate section 301 in 2018?</span>
     </a>
-</div><div class="faq p-3 mb-3 bord faq-USDD">
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            A combination of 4 actions: Take a hair cut: talk to suppliers and ask for a price decrease Reduce non essential expenses (travel, advertisement, events) Pass the cost on to the end customer (Longer Term) Find alternate sourcing opportunities (from China to India, Vietnam and Mexico)
+        </div>
+    </div>
+</div><div class="faq p-3 mb-3 bord faq-USDD" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
     <a href="what-is-the-first-sale-rule-for-us-imports.html">
-        What is the First Sale Rule?
+        <span itemprop="name">What is the First Sale Rule?</span>
     </a>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: none;">
+        <div itemprop="text">
+            This rule allows importers to use the price paid for the goods in an earlier sale (often the first sale from the manufacturer to a middleman) rather than the price paid in the last sale (from the middleman to the importer) for the purpose of calculating customs duties. <a href='contact-us.html?utm_source=Website&utm_medium=FAQ&utm_campaign=What-is-first-sale-rule' class='text-decoration-underline'>Contact us</a> for more detail on applicability, requirements and documentation.
+        </div>
+    </div>
 </div>
               </div>
             </div>
@@ -1110,6 +1376,32 @@
           $faqItems.fadeIn(500);
         }
         return false;
+      });
+    });
+  </script>
+
+  <!-- Search boxw script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchInput = document.getElementById('faq-search');
+      const clearBtn = document.getElementById('faq-clear');
+      const faqItems = document.querySelectorAll('#faqs .faq');
+
+      function filterFaqs() {
+        const query = searchInput.value.trim().toLowerCase();
+        faqItems.forEach(function (faq) {
+          const text = faq.textContent.toLowerCase();
+          faq.style.display = text.includes(query) ? '' : 'none';
+        });
+        clearBtn.style.display = query ? 'block' : 'none';
+      }
+
+      searchInput.addEventListener('input', filterFaqs);
+
+      clearBtn.addEventListener('click', function () {
+        searchInput.value = '';
+        filterFaqs();
+        searchInput.focus();
       });
     });
   </script>

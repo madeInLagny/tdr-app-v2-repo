@@ -21,6 +21,10 @@
   <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
   <style>
+    .form-control {
+      --cnvs-input-btn-input-bg: var(--lightSamaritan);
+    }
+
     .bord {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -60,10 +64,22 @@
                   <li>
                     <a href="#" class="fw-light text-white" data-filter=".faq-UKDD">UK Duty Repayment</a>
                   </li>
+                  <li class="mb-4 position-relative" style="max-width:400px;">
+
+                    <input type="text" id="faq-search" class="form-control pr-5" placeholder="Search FAQs...">
+                    <button type="button" id="faq-clear" aria-label="Clear search"
+                      style="position:absolute;top:50%;right:10px;transform:translateY(-50%);border:none;background:transparent;font-size:1.2em;cursor:pointer;display:none;">
+                      &times;
+                    </button>
+
+
+                  </li>
                 </ul>
               </div>
 
               <div class="clear"></div>
+
+
 
               <div id="faqs" class="faqs">
                 @@loop("src/QARepo/question-template.html", "../QARepo/QAs.json")
@@ -127,6 +143,32 @@
           $faqItems.fadeIn(500);
         }
         return false;
+      });
+    });
+  </script>
+
+  <!-- Search boxw script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchInput = document.getElementById('faq-search');
+      const clearBtn = document.getElementById('faq-clear');
+      const faqItems = document.querySelectorAll('#faqs .faq');
+
+      function filterFaqs() {
+        const query = searchInput.value.trim().toLowerCase();
+        faqItems.forEach(function (faq) {
+          const text = faq.textContent.toLowerCase();
+          faq.style.display = text.includes(query) ? '' : 'none';
+        });
+        clearBtn.style.display = query ? 'block' : 'none';
+      }
+
+      searchInput.addEventListener('input', filterFaqs);
+
+      clearBtn.addEventListener('click', function () {
+        searchInput.value = '';
+        filterFaqs();
+        searchInput.focus();
       });
     });
   </script>
