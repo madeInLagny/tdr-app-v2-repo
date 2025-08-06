@@ -66,12 +66,7 @@
               <div class="clear"></div>
 
               <div id="faqs" class="faqs">
-                <div class="faq p-3 mb-3 faq-USDD bord">
-                  <a href="#">${{faq-main.b2c-refund-benefits.question}}$</a>
-                </div>
-                <div class="faq p-3 mb-3 faq-UKDD bord">
-                  <a href="#">${{faq-main.Q2}}$</a>
-                </div>
+                @@loop("src/QARepo/question-template.html", "../QARepo/QAs.json")
               </div>
             </div>
           </div>

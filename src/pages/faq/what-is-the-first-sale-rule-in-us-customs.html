@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "Understand the First Sale Rule, how it allows use of an earlier transaction value for duty calculation, and the requirements for importers to use this cost-saving method.",
+	"title": "What Is the First Sale Rule in U.S. Customs?",
+	"path": "what-is-the-first-sale-rule-in-us-customs.html",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="page-title-row pb-3">
+						<div class="page-title-content">
+							<h1>
+								<div class="fw-bold display-5">What is the First Sale Rule?</div>
+							</h1>
+						</div>
+					</div>
+					<p>This rule allows importers to use the price paid for the goods in an earlier sale (often the first sale from the manufacturer to a middleman) rather than the price paid in the last sale (from the middleman to the importer) for the purpose of calculating customs duties. <a href='contact-us.html?utm_source=Website&utm_medium=FAQ&utm_campaign=What-is-first-sale-rule' class='text-decoration-underline'>Contact us</a> for more detail on applicability, requirements and documentation.</p>
+
+				</div>
+			</div>
+		</section>
+
+
+
+		@@include('src/blocks/moreQAs.html')
+
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>

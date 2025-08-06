@@ -34,7 +34,7 @@ const slugify = (text) =>
 
 // Generate each HTML file
 data.forEach((item, index) => {
-  const slug = slugify(item.question);
+  const slug = slugify(item.title);
   const html = template
     .replace(/{{QUESTION}}/g, item.question)
     .replace(/{{ANSWER}}/g, item.answer)
