@@ -115,7 +115,7 @@ export const watchSpecificFiles = () => {
 // Task to create a site map from every html file in the src directory
 export const createSiteMap = () => {
   return gulp
-    .src(paths.specificHtml, {
+    .src("dist/tdr-app-v2-en/*.html", {
       read: false,
     })
     .pipe(
