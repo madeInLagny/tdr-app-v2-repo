@@ -4,9 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Load the JSON data
-const data = JSON.parse(
-  fs.readFileSync("./src/QARepo/QAs.json", "utf8")
-);
+const data = JSON.parse(fs.readFileSync("./src/QARepo/QAs.json", "utf8"));
 
 // Load the HTML template
 const template = fs.readFileSync("./src/QARepo/QAPageTemplate.html", "utf8");
@@ -16,6 +14,13 @@ const outputDir = path.join(__dirname, "src", "pages", "faq");
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir);
 }
+
+// Clean output folder except faq-main.html
+fs.readdirSync(outputDir).forEach((file) => {
+  if (file !== "faq-main.html") {
+    fs.unlinkSync(path.join(outputDir, file));
+  }
+});
 
 // Slugify function
 const slugify = (text) =>
