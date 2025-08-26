@@ -5,15 +5,18 @@
 
 <title>@@title</title>
 <meta name="description" content="@@description" xmlns:og="http://opengraphprotocol.org/schema/" />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+@@if (!context.noindex) {
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
+@@if (context.noindex) {
+<meta name="robots" content="noindex" />}
+
 <meta property="og:locale" content="${{index.language}}$" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="@@title" xmlns:og="http://opengraphprotocol.org/schema/" />
 <meta property="og:description" content="@@description" xmlns:og="http://opengraphprotocol.org/schema/" />
 <meta property="og:url" content="${{index.domain}}$@@path" xmlns:og="http://opengraphprotocol.org/schema/" />
 <meta property="og:site_name" content="TradeDutyRefund.com" />
-<meta property="og:image" content="@@OGImage"
-  xmlns:og="http://opengraphprotocol.org/schema/" />
+<meta property="og:image" content="@@OGImage" xmlns:og="http://opengraphprotocol.org/schema/" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="@@OGImage" />
