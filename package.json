@@ -17,13 +17,14 @@
   "author": "madeInLagny",
   "license": "ISC",
   "dependencies": {
-    "@parvineyvazov/json-translator": "^1.7.0",
+    "@parvineyvazov/json-translator": "^0.6.2",
     "gulp-flatten": "^0.4.0",
     "gulp-rename": "^2.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-watch": "^4.2.4",
     "klaro": "^0.7.18",
     "recaptcha-v3": "^1.11.3",
+    "reveal.js": "^5.2.1",
     "vcf": "^2.1.1"
   }
 }
