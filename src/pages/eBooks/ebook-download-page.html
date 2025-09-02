@@ -12,13 +12,12 @@
 	"description": "${{noIndex.description}}$",
 	"title": "${{noIndex.title}}$",
 	"path": "${{noIndex.path}}$",
+	"noindex":"true"
 	})
 
 
 	<!-- CSS imports -->
 	@@include('src/blocks/head/cssImports.html')
-
-	<meta name="robots" content="noindex" />
 
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
@@ -48,14 +47,16 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6 p-5 p-md-6">
 							<div class="mb-lg-6">
-								<h1 class="display-6 fw-semibold text-samaritan">${{ebook-download-page.title}}$</h1>
-								<h2 class="display-7 text-samaritan">${{ebook-download-page.subtitle}}$</h2>
-								<p class="text-samaritan">${{ebook-download-page.description}}$</p>
+								<h1 class="display-6 fw-semibold text-samaritan">Thank You!</h1>
+								<p class="text-samaritan">We will come back to you shortly.</p>
+								<h2 class="display-7 text-samaritan">Would you like to explore opportunities in another
+									country?</h2>
+
 								<div class="d-flex gap-3 flex-wrap">
-									<a id="download-btn" class="button button-rounded" type="button" href=""
-										download>${{ebook-download-page.downloadButtonText}}$</a>
 									<a class="button button-rounded" type="button"
-										href="/">${{ebook-download-page.homeButtonText}}$</a>
+										href="/duty-refund-questionnaire-main-page.html">More Opportunities</a>
+									<a class="button button-rounded" type="button" href="/">No thanks</a>
+
 								</div>
 							</div>
 						</div>

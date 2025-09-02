@@ -9,15 +9,14 @@
 
 	<!-- Metatags Import -->
 	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
-	"description": "${{make-an-appointment.description}}$",
-	"title": "${{make-an-appointment.title}}$",
-	"path": "${{make-an-appointment.path}}$",
+	"description": "${{noIndex.description}}$",
+	"title": "${{noIndex.title}}$",
+	"path": "${{noIndex.path}}$",
+	"noindex":"true"
 	})
-
 
 	<!-- CSS imports -->
 	@@include('src/blocks/head/cssImports.html')
-
 	<style>
 		.input-group-text {
 			background-color: var(--lightSamaritan);
@@ -56,36 +55,38 @@
 					<!-- Contact Form Overlay -->
 					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
 						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
-							Optimizing Your Business Cashflow - US Duty Mitigation </h2>
-						<p class="text-lightSamaritan">Find out how much TDR will make you save in US duty drawback.</p>
+							US Duty Drawback Quick Check </h2>
+						<p class="text-lightSamaritan">Find out with a few clicks how much TDR can make you save in US
+							tariffs recovery.</p>
 
 						<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
 							method="post" onSubmit="addSpinner()">
 							<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
-							<input id="redirectTo" type="hidden" name="redirectTo"
-								value="/duty-refund-questionnaire-completed.html">
+							<input id="redirectTo" type="hidden" name="redirectTo" value="">
 							<input type="hidden" name="subject" value="US-Duty-Reclaim-Questionnaire">
 							<input type="text" name="honeypot" style="display:none">
 
 							<!-- IOR -->
-							<div class="form-group">
-								<label>Are you the importer of record for goods into the
-									United States?</label><br>
-								<div class="btn-group">
-									<input type="radio" class="btn-check required" name="$self_ior" id="ior-yes"
-										autocomplete="off" value="Yes" oninput="setIORnumberBlockToNonRequired()"
-										required>
-									<label for="ior-yes"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-									<input type="radio" class="btn-check required" name="$self_ior" id="ior-no"
-										autocomplete="off" value="No" oninput="setIORnumberBlockToRequired()" required>
-									<label for="ior-no"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+							<div class="form-group mb-4">
+								<div class="mb-3">
+									<label class="mb-3">Are you the importer of record for goods into the
+										United States?</label><br>
+									<div class="btn-group">
+										<input type="radio" class="btn-check required" name="$self_ior" id="ior-yes"
+											autocomplete="off" value="Yes" oninput="setIORnumberBlockToNonRequired()"
+											required>
+										<label for="ior-yes"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+										<input type="radio" class="btn-check required" name="$self_ior" id="ior-no"
+											autocomplete="off" value="No" oninput="setIORnumberBlockToRequired()"
+											required>
+										<label for="ior-no"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+									</div>
 								</div>
 							</div>
-							<div class="w-100"></div>
-							<div class="form-group" id="number-of-iors-block" style="display: none;">
-								<label>If no, approximately how many importers of record do you work
+							<div class="form-group mb-4" id="number-of-iors-block" style="display: none;">
+								<label class="mb-3">If no, approximately how many importers of record do you work
 									with?</label><br>
 								<div class="btn-group">
 									<!-- Required attributes for this block are added programmatically in the previous block -->
@@ -105,10 +106,9 @@
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">26+</label>
 								</div>
 							</div>
-							<div class="w-100"></div>
 							<!-- EOR -->
-							<div class="form-group">
-								<label>Are you the exporter of record for goods leaving the
+							<div class="form-group mb-4">
+								<label class="mb-3">Are you the exporter of record for goods leaving the
 									United States?</label><br>
 								<div class="btn-group">
 									<input type="radio" class="btn-check required" name="$self_eor" id="eor-yes"
@@ -122,9 +122,8 @@
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
 								</div>
 							</div>
-							<div class="w-100"></div>
-							<div class="form-group" id="number-of-eors-block" style="display: none;">
-								<label>If no, approximately how many exporters of record do you work
+							<div class="form-group mb-4" id="number-of-eors-block" style="display: none;">
+								<label class="mb-3">If no, approximately how many exporters of record do you work
 									with?</label><br>
 								<div class="btn-group">
 									<!-- Required attributes for this block are added programmatically in the previous block -->
@@ -144,10 +143,9 @@
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">26+</label>
 								</div>
 							</div>
-							<div class="w-100"></div>
 							<!-- Duty Spend -->
-							<div class="form-group">
-								<label>What are your total duties paid over the past 3 or 5
+							<div class="form-group mb-4">
+								<label class="mb-3">What are your total duties paid over the past 3 or 5
 									years?</label><br>
 								<div class="input-group w-50 mb-3">
 									<span class="input-group-text">USD</span>
@@ -159,21 +157,20 @@
 								</div>
 
 							</div>
-							<div class="w-100"></div>
 							<!-- % Return -->
-							<div class="form-group">
-								<label>What percentage of those imported goods are subsequently
+							<div class="form-group mb-4">
+								<label class="mb-3">What percentage of those imported goods are subsequently
 									exported?</label><br>
 								<div class="input-group mb-3 w-15">
 									<input type="number" class="form-control" min="0" man="100" name="$%ofGoodsExported"
 										required>
 									<span class="input-group-text">%</span>
 								</div>
+
 							</div>
-							<div class="w-100"></div>
 							<!-- Express Carriers -->
-							<div class="form-group">
-								<label>What percentage of your goods are shipped via express
+							<div class="form-group mb-4">
+								<label class="mb-3">What percentage of your goods are shipped via express
 									carrier?</label><br>
 								<div class="input-group w-50 mb-3">
 									<input type="number" class="form-control" min="0" max="100"
@@ -183,10 +180,9 @@
 									<span class="input-group-text">%</span>
 								</div>
 							</div>
-							<div class="w-100"></div>
 							<!-- eCommerce -->
-							<div class="form-group">
-								<div>
+							<div class="form-group mb-4">
+								<div class="mb-3">
 									<label class="mb-3">Are the imported goods sold B2C?</label><br>
 									<div class="btn-group">
 										<input type="radio" class="btn-check required" name="$b2c" id="b2c-yes"
@@ -202,42 +198,39 @@
 									</div>
 								</div>
 							</div>
-							<div class="w-100"></div>
 							<!-- eCommerce Returns-->
-							<div class="form-group" id="b2c-returns" style="display: none;">
-								<label>Do you export returned goods?</label><br>
-								<div class="btn-group">
-									<input type="radio" class="btn-check required" name="$b2c-returns"
-										id="b2c-returns-yes" autocomplete="off" value="Yes">
-									<label for="b2c-returns-yes"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-									<input type="radio" class="btn-check required" name="$b2c-returns"
-										id="b2c-returns-no" autocomplete="off" value="No">
-									<label for="b2c-returns-no"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+							<div class="form-group mb-4" id="b2c-returns" style="display: none;">
+								<div class="mb-3">
+									<label class="mb-3">Do you export returned goods?</label><br>
+									<div class="btn-group">
+										<input type="radio" class="btn-check required" name="$b2c-returns"
+											id="b2c-returns-yes" autocomplete="off" value="Yes">
+										<label for="b2c-returns-yes"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+										<input type="radio" class="btn-check required" name="$b2c-returns"
+											id="b2c-returns-no" autocomplete="off" value="No">
+										<label for="b2c-returns-no"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+									</div>
 								</div>
 							</div>
-							<div class="w-100"></div>
 							<!-- eCommerce Returns Warehouse-->
-							<div class="form-group" id="b2c-returns-warehouse" style="display: none;">
-								<label>Do you consolidated returned goods in the US?</label><br>
-								<div class="btn-group">
-									<input type="radio" class="btn-check required" name="$b2c-returns-warehouse"
-										id="b2c-returns-warehouse-yes" autocomplete="off" value="Yes">
-									<label for="b2c-returns-warehouse-yes"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-									<input type="radio" class="btn-check required" name="$b2c-returns-warehouse"
-										id="b2c-returns-warehouse-no" autocomplete="off" value="No">
-									<label for="b2c-returns-warehouse-no"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+							<div class="form-group mb-4" id="b2c-returns-warehouse" style="display: none;">
+								<div class="mb-3">
+									<label class="mb-3">Do you consolidated returned goods in the US?</label><br>
+									<div class="btn-group">
+										<input type="radio" class="btn-check required" name="$b2c-returns-warehouse"
+											id="b2c-returns-warehouse-yes" autocomplete="off" value="Yes">
+										<label for="b2c-returns-warehouse-yes"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+										<input type="radio" class="btn-check required" name="$b2c-returns-warehouse"
+											id="b2c-returns-warehouse-no" autocomplete="off" value="No">
+										<label for="b2c-returns-warehouse-no"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+									</div>
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- email -->
-							<div class="form-group">
-								<label>What email should we send our recommendations to?</label><br>
-								<input type="email" id="email" name="email" class="form-control w-50" required>
-							</div>
 
 							<div class="col-md-12 form-group">
 								<button class="btn btn-light" type="submit" value="Submit">
