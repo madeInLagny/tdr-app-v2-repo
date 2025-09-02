@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "${{make-an-appointment.description}}$",
+	"title": "${{make-an-appointment.title}}$",
+	"path": "${{make-an-appointment.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<!-- Contact Form Overlay -->
+					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
+						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
+							Unlock Cash Flow </h2>
+						<p class="text-lightSamaritan">Answer these easy questions and find how much you could claim
+							back
+							from overpaid import duties and taxes. An email is required for further communication.
+						</p>
+						<h3>Select a location you import to</h3>
+						<div class="col-md-12 form-group d-flex gap-4 align-items-center">
+							<a href="#" role="button"><i><svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-us"
+										viewBox="0 0 640 480" height="2.5rem">
+										<path fill="#bd3d44" d="M0 0h640v480H0" />
+										<path stroke="#fff" stroke-width="37"
+											d="M0 55.3h640M0 129h640M0 203h640M0 277h640M0 351h640M0 425h640" />
+										<path fill="#192f5d" d="M0 0h364.8v258.5H0" />
+										<marker id="us-a" markerHeight="30" markerWidth="30">
+											<path fill="#fff" d="m14 0 9 27L0 10h28L5 27z" />
+										</marker>
+										<path fill="none" marker-mid="url(#us-a)"
+											d="m0 0 16 11h61 61 61 61 60L47 37h61 61 60 61L16 63h61 61 61 61 60L47 89h61 61 60 61L16 115h61 61 61 61 60L47 141h61 61 60 61L16 166h61 61 61 61 60L47 192h61 61 60 61L16 218h61 61 61 61 60z" />
+									</svg>
+								</i></a>
+							<a href="#" role="button"><i><svg xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-eu"
+										viewBox="0 0 640 480" height="2.5rem">
+										<defs>
+											<g id="eu-d">
+												<g id="eu-b">
+													<path id="eu-a" d="m0-1-.3 1 .5.1z" />
+													<use xlink:href="#eu-a" transform="scale(-1 1)" />
+												</g>
+												<g id="eu-c">
+													<use xlink:href="#eu-b" transform="rotate(72)" />
+													<use xlink:href="#eu-b" transform="rotate(144)" />
+												</g>
+												<use xlink:href="#eu-c" transform="scale(-1 1)" />
+											</g>
+										</defs>
+										<path fill="#039" d="M0 0h640v480H0z" />
+										<g fill="#fc0" transform="translate(320 242.3)scale(23.7037)">
+											<use xlink:href="#eu-d" width="100%" height="100%" y="-6" />
+											<use xlink:href="#eu-d" width="100%" height="100%" y="6" />
+											<g id="eu-e">
+												<use xlink:href="#eu-d" width="100%" height="100%" x="-6" />
+												<use xlink:href="#eu-d" width="100%" height="100%"
+													transform="rotate(-144 -2.3 -2.1)" />
+												<use xlink:href="#eu-d" width="100%" height="100%"
+													transform="rotate(144 -2.1 -2.3)" />
+												<use xlink:href="#eu-d" width="100%" height="100%"
+													transform="rotate(72 -4.7 -2)" />
+												<use xlink:href="#eu-d" width="100%" height="100%"
+													transform="rotate(72 -5 .5)" />
+											</g>
+											<use xlink:href="#eu-e" width="100%" height="100%"
+												transform="scale(-1 1)" />
+										</g>
+									</svg></i></a>
+							<a href="#" role="button"><i><svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-gb"
+										viewBox="0 0 640 480" height="2.5rem">
+										<path fill="#012169" d="M0 0h640v480H0z" />
+										<path fill="#FFF"
+											d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z" />
+										<path fill="#C8102E"
+											d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z" />
+										<path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z" />
+										<path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z" />
+									</svg></i></a>
+
+						</div>
+
+
+						<!-- <div class="">
+							<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
+								method="post" onSubmit="addSpinner()">
+								<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+								<input id="redirectTo" type="hidden" name="redirectTo" value="">
+								<input type="hidden" name="subject" value="@@subject">
+								<input type="text" name="honeypot" style="display:none">
+
+								<div class="col-md-6 form-group">
+									<label for="firstName">${{e-book-download-form.form-firstname-label}}$</label>
+									<input type="text" id="firstName" name="$firstName" class="form-control required"
+										required>
+								</div>
+
+								<div class="col-md-6 form-group">
+									<label for="name">${{e-book-download-form.form-name-label}}$</label>
+									<input type="text" id="name" name="name" class="form-control required" required>
+								</div>
+
+								<div class="w-100"></div>
+
+								<div class="col-md-6 form-group">
+									<label for="email">${{e-book-download-form.form-email-label}}$</label>
+									<input type="email" id="email" name="email" class="form-control" required>
+								</div>
+
+								<div class="col-md-6 form-group">
+									<label for="company">${{e-book-download-form.form-company-label}}$</label>
+									<input type="text" id="company" name="$company" class="form-control" required>
+								</div>
+
+								<div class="w-100"></div>
+
+								<div class="col-md-6 form-group">
+									<label for="title">${{e-book-download-form.form-title-label}}$</label>
+									<input type="text" id="title" name="$title" class="form-control" required>
+								</div>
+
+								<div class="col-md-6 form-group d-flex flex-column justify-content-center mb-0">
+									<div>
+										<label for="radio-4" class="radio-style-1-label">
+											<input id="radio-4" class="radio-style" name="$subscribeNewsletter"
+												type="radio" value="Yes" required>
+											${{e-book-download-form.form-subscribe-label}}$</label>
+									</div>
+									<div>
+										<label for="radio-5" class="radio-style-1-label">
+											<input id="radio-5" class="radio-style" name="$subscribeNewsletter"
+												type="radio" value="No" required>
+											${{e-book-download-form.form-notsubscribe-label}}$</label>
+									</div>
+								</div>
+
+								<div class="w-100"></div>
+
+								<div class="col-md-12 form-group">
+									<button class="btn btn-light" type="submit" value="Submit">
+										<span id="btn-spinner" aria-hidden="true"></span>
+										<span class="visually-hidden"
+											role="status">${{e-book-download-form.form-loading}}$</span>
+										${{e-book-download-form.form-submit}}$
+									</button>
+									<div class="pt-2">
+										@@include('src/blocks/privacyConsent.html')
+									</div>
+								</div>
+							</form>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>

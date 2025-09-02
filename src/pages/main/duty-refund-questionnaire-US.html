@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "${{make-an-appointment.description}}$",
+	"title": "${{make-an-appointment.title}}$",
+	"path": "${{make-an-appointment.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<!-- Contact Form Overlay -->
+					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
+						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
+							US Duty Drawback Quick Check </h2>
+						<p class="text-lightSamaritan">Find out with a few clicks how much TDR can make you save in US
+							tariffs recovery.</p>
+
+						<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
+							method="post" onSubmit="addSpinner()">
+							<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+							<input id="redirectTo" type="hidden" name="redirectTo" value="">
+							<input type="hidden" name="subject" value="@@subject">
+							<input type="text" name="honeypot" style="display:none">
+
+							<div class="col-md-6 form-group mb-4">
+								<div class="mb-3">
+									<label class="mb-3">Are you the importer of record for goods into the
+										United States?</label><br>
+									<div class="btn-group">
+										<input type="radio" class="btn-check required" name="$ior" id="ior-yes"
+											autocomplete="off" value="Yes" oninput="setIORnumberBlockToRequired()"
+											required>
+										<label for="ior-yes"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+										<input type="radio" class="btn-check required" name="$ior" id="ior-no"
+											autocomplete="off" value="No" oninput="setIORnumberBlockToNonRequired()"
+											required>
+										<label for="ior-no"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+									</div>
+								</div>
+								<div class="mb-3" id="number-of-iors-block" style="display: none;">
+									<label class="mb-3">If no, approximately how many importers of record do you work
+										with?</label><br>
+									<div class="btn-group">
+										<!-- Required attributes for this block are added programmatically in the previous block -->
+										<input type="radio" class="btn-check required" name="$number_of_iors"
+											id="ior-1-10" autocomplete="off" value="1-10">
+										<label for="ior-1-10"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">1-10</label>
+
+										<input type="radio" class="btn-check required" name="$number_of_iors"
+											id="ior-11-25" autocomplete="off" value="11-25">
+										<label for="ior-11-25"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">11-25</label>
+
+										<input type="radio" class="btn-check required" name="$number_of_iors"
+											id="ior-26" autocomplete="off" value="26+">
+										<label for="ior-26"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">26+</label>
+									</div>
+								</div>
+								<div class="mb-3">
+									<label class="mb-3">Are you the exporter of record for goods leaving the
+										United States?</label><br>
+									<div class="btn-group">
+										<input type="radio" class="btn-check required" name="$eor" id="eor-yes"
+											autocomplete="off" value="Yes" oninput="setEORnumberBlockToRequired()" required>
+										<label for="eor-yes"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+										<input type="radio" class="btn-check required" name="$eor" id="eor-no"
+											autocomplete="off" value="No" oninput="setEORnumberBlockToNonRequired()" required>
+										<label for="eor-no"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+									</div>
+								</div>
+								<div class="mb-3" id="number-of-eors-block" style="display: none;">
+									<label class="mb-3">If no, approximately how many exporters of record do you work
+										with?</label><br>
+									<div class="btn-group">
+										<!-- Required attributes for this block are added programmatically in the previous block -->
+										<input type="radio" class="btn-check required" name="$number_of_eors"
+											id="eor-1-10" autocomplete="off" value="1-10">
+										<label for="eor-1-10"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">1-10</label>
+
+										<input type="radio" class="btn-check required" name="$number_of_eors"
+											id="eor-11-25" autocomplete="off" value="11-25">
+										<label for="eor-11-25"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">11-25</label>
+
+										<input type="radio" class="btn-check required" name="$number_of_eors"
+											id="eor-26" autocomplete="off" value="26+">
+										<label for="eor-26"
+											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">26+</label>
+									</div>
+								</div>
+							</div>
+					</div>
+
+					<!-- 								<div class="col-md-6 form-group">
+									<label for="firstName">${{e-book-download-form.form-firstname-label}}$</label>
+									<input type="text" id="firstName" name="$firstName" class="form-control required"
+										required>
+								</div>
+
+								<div class="col-md-6 form-group">
+									<label for="name">${{e-book-download-form.form-name-label}}$</label>
+									<input type="text" id="name" name="name" class="form-control required" required>
+								</div>
+
+								<div class="w-100"></div>
+
+								<div class="col-md-6 form-group">
+									<label for="email">${{e-book-download-form.form-email-label}}$</label>
+									<input type="email" id="email" name="email" class="form-control" required>
+								</div>
+
+								<div class="col-md-6 form-group">
+									<label for="company">${{e-book-download-form.form-company-label}}$</label>
+									<input type="text" id="company" name="$company" class="form-control" required>
+								</div>
+
+								<div class="w-100"></div>
+
+								<div class="col-md-6 form-group">
+									<label for="title">${{e-book-download-form.form-title-label}}$</label>
+									<input type="text" id="title" name="$title" class="form-control" required>
+								</div>
+
+								<div class="col-md-6 form-group d-flex flex-column justify-content-center mb-0">
+									<div>
+										<label for="radio-4" class="radio-style-1-label">
+											<input id="radio-4" class="radio-style" name="$subscribeNewsletter"
+												type="radio" value="Yes" required>
+											${{e-book-download-form.form-subscribe-label}}$</label>
+									</div>
+									<div>
+										<label for="radio-5" class="radio-style-1-label">
+											<input id="radio-5" class="radio-style" name="$subscribeNewsletter"
+												type="radio" value="No" required>
+											${{e-book-download-form.form-notsubscribe-label}}$</label>
+									</div>
+								</div>
+
+								<div class="w-100"></div>
+
+								<div class="col-md-12 form-group">
+									<button class="btn btn-light" type="submit" value="Submit">
+										<span id="btn-spinner" aria-hidden="true"></span>
+										<span class="visually-hidden"
+											role="status">${{e-book-download-form.form-loading}}$</span>
+										${{e-book-download-form.form-submit}}$
+									</button>
+									<div class="pt-2">
+										@@include('src/blocks/privacyConsent.html')
+									</div>
+								</div> -->
+					</form>
+
+				</div>
+			</div>
+	</div>
+	</section>
+
+
+
+
+
+	@@include('src/blocks/footer.html',{
+	"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+	})
+	<!-- Javascripts
+		============================================= -->
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/linkedInInsideTag.html')
+
+
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
+
+
+	<script>
+		function setIORnumberBlockToRequired() {
+			/* If the user is its own IOR, no need to answer the following blog of questions */
+			document.getElementById('ior-1-10').required = false;
+			document.getElementById('ior-11-25').required = false;
+			document.getElementById('ior-26').required = false;
+			document.getElementById('number-of-iors-block').style.display = 'none';
+		}
+
+		function setIORnumberBlockToNonRequired() {
+			/* If the user is not its own IOR, the following blog of questions is required */
+			document.getElementById('ior-1-10').required = true;
+			document.getElementById('ior-11-25').required = true;
+			document.getElementById('ior-26').required = true;
+			document.getElementById('number-of-iors-block').style.display = 'block';
+		}
+
+		function setEORnumberBlockToRequired() {
+			/* If the user is its own EOR, no need to answer the following blog of questions */
+			document.getElementById('eor-1-10').required = false;
+			document.getElementById('eor-11-25').required = false;
+			document.getElementById('eor-26').required = false;
+			document.getElementById('number-of-eors-block').style.display = 'none';
+		}
+
+		function setEORnumberBlockToNonRequired() {
+			/* If the user is not its own EOR, the following blog of questions is required */
+			document.getElementById('eor-1-10').required = true;
+			document.getElementById('eor-11-25').required = true;
+			document.getElementById('eor-26').required = true;
+			document.getElementById('number-of-eors-block').style.display = 'block';
+		}
+	</script>
+
+
+</body>
+
+</html>

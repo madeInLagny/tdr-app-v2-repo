@@ -133,3 +133,7 @@ To remove a page from bot indexes add a noindex entry to the header block like t
 	"path": "${{noIndex.path}}$",
 	"noindex":"true"
 	})
+
+
+## Flags/Drapeaux
+Les flags du questionnaire proviennent de cette addresse: https://flagicons.lipis.dev/
