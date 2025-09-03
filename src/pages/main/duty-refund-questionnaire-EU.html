@@ -87,8 +87,7 @@
 						<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
 							method="post" onSubmit="addSpinner()">
 							<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
-							<input id="redirectTo" type="hidden" name="redirectTo"
-								value="/duty-refund-questionnaire-completed.html">
+							<input id="redirectTo" type="hidden" name="redirectTo" value="">
 							<input type="hidden" name="subject" value="EU-Duty-Reclaim-Questionnaire">
 							<input type="text" name="honeypot" style="display:none">
 
@@ -359,6 +358,25 @@
 				width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
 				placeholder: $(this).data('placeholder'),
 				closeOnSelect: false,
+			});
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Get the current domain
+				const currentDomain = window.location.origin;
+				
+				// Construct the new URL path
+				const newPath = "/duty-refund-questionnaire-completed.html";
+
+				// Combine the domain and the new path
+				const newURL = currentDomain + newPath;
+
+				// Update the value of the input field
+				const redirectToInput = document.getElementById("redirectTo");
+				if (redirectToInput) {
+					redirectToInput.value = newURL;
+				}
 			});
 		</script>
 
