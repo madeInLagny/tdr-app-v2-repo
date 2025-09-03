@@ -167,6 +167,10 @@
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">26+</label>
 								</div>
 							</div>
+							<div class="form-group" id="iors-names" style="display: none;">
+								<label>List main IOR names</label><br>
+								<input type="text" id="IORNames" name="$IORNames" class="form-control">
+							</div>
 							<div class="w-100"></div>
 							<!-- Country of export -->
 							<div class="form-group">
@@ -213,6 +217,15 @@
 								<div class="input-group w-md-50 mb-3">
 									<span class="input-group-text">EUR</span>
 									<input type="number" class="form-control" min="0" name="$dutySpentPerYear" required>
+								</div>
+							</div>
+							<div class="w-100"></div>
+							<!-- Avg Order Value -->
+							<div class="form-group">
+								<label>What is the average order value?</label><br>
+								<div class="input-group w-md-50 mb-3">
+									<span class="input-group-text">EUR</span>
+									<input type="number" class="form-control" min="0" name="$avgOrderValue" required>
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -308,7 +321,9 @@
 				document.getElementById('ior-1-10').required = true;
 				document.getElementById('ior-11-25').required = true;
 				document.getElementById('ior-26').required = true;
-				document.getElementById('number-of-iors-block').style.display = 'block'
+				document.getElementById('number-of-iors-block').style.display = 'block';
+				document.getElementById('iors-names').style.display = 'block';
+
 			}
 
 			function setIORnumberBlockToNonRequired() {
@@ -317,6 +332,7 @@
 				document.getElementById('ior-11-25').required = false;
 				document.getElementById('ior-26').required = false;
 				document.getElementById('number-of-iors-block').style.display = 'none';
+				document.getElementById('iors-names').style.display = 'none';
 			}
 
 		</script>
