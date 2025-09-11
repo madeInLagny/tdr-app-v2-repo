@@ -63,9 +63,6 @@ Use this pattern: <i class="bi-question-circle-fill"></i>
 
 The list of available icons is here: https://icons.getbootstrap.com/
 
-## Updates to do
-
-Search for MAJ
 
 ## Traduction des fichiers langues
 
