@@ -94,8 +94,22 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+							<div class="form-group" id="US-employees-block" style="display: none;">
+								<label>Do you have employees in the US?</label><br>
+								<div class="btn-group">
+									<input type="radio" class="btn-check required" name="$US_employees" id="USEmp-yes"
+										autocomplete="off" value="Yes" required>
+									<label for="USEmp-yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$US_employees" id="USEmp-no"
+										autocomplete="off" value="No" required>
+									<label for="USEmp-no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
 							<div class="form-group" id="number-of-iors-block" style="display: none;">
-								<label>If no, approximately how many importers of record do you work
+								<label>Approximately how many importers of record do you work
 									with?</label><br>
 								<div class="btn-group">
 									<!-- Required attributes for this block are added programmatically in the previous block -->
@@ -138,7 +152,7 @@
 							</div>
 							<div class="w-100"></div>
 							<div class="form-group" id="number-of-eors-block" style="display: none;">
-								<label>If no, approximately how many exporters of record do you work
+								<label>Approximately how many exporters of record do you work
 									with?</label><br>
 								<div class="btn-group">
 									<!-- Required attributes for this block are added programmatically in the previous block -->
@@ -308,6 +322,9 @@
 				document.getElementById('ior-26').required = true;
 				document.getElementById('number-of-iors-block').style.display = 'block'
 				document.getElementById('iors-names').style.display = 'block'
+				document.getElementById('USEmp-yes').required = false;
+				document.getElementById('USEmp-no').required = false;
+				document.getElementById('US-employees-block').style.display = 'none';
 			}
 
 			function setIORnumberBlockToNonRequired() {
@@ -316,7 +333,10 @@
 				document.getElementById('ior-11-25').required = false;
 				document.getElementById('ior-26').required = false;
 				document.getElementById('number-of-iors-block').style.display = 'none';
-				document.getElementById('iors-names').style.display = 'none'
+				document.getElementById('iors-names').style.display = 'none';
+				document.getElementById('USEmp-yes').required = true;
+				document.getElementById('USEmp-no').required = true;
+				document.getElementById('US-employees-block').style.display = 'block';
 			}
 
 			function setEORnumberBlockToRequired() {
