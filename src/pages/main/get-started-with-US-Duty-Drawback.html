@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png",
+	"description": "${{noIndex.description}}$",
+	"title": "${{noIndex.title}}$",
+	"path": "${{noIndex.path}}$",
+	"noindex":"true"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		})
+		<!-- end of header
+		============================================= -->
+
+		<div style="position: relative; padding-top: 56.2500%;
+		padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+		border-radius: 8px; will-change: transform;">
+			<iframe loading="lazy"
+				style="height:100%; max-height: 80vh; position: absolute; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+				src="https://www.canva.com/design/DAG0pRGjyaI/Onsk-u_R1yO9EhiE-1lH_Q/view?embed"
+				allowfullscreen="allowfullscreen" allow="fullscreen">
+			</iframe>
+		</div>
+
+	</div>
+	@@include('src/blocks/footer.html',{
+	"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+	})
+	<!-- Javascripts
+		============================================= -->
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
+</body>
+
+</html>
