@@ -134,3 +134,7 @@ To remove a page from bot indexes add a noindex entry to the header block like t
 
 ## Flags/Drapeaux
 Les flags du questionnaire proviennent de cette addresse: https://flagicons.lipis.dev/
+
+## Pages sans lien dans le site
+tradedutyrefund.com/get-started-with-US-Duty-Drawback.html
+tradedutyrefund.com/contact-us
