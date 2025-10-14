@@ -131,15 +131,14 @@
 							<div class="w-100"></div>
 							<!-- IOR -->
 							<div class="form-group">
-								<label>Are you the importer of record for goods into the
-									EU?</label><br>
+								<label>Do you pay duties directly to Customs?</label><br>
 								<div class="btn-group">
-									<input type="radio" class="btn-check required" name="$self_ior" id="ior-yes"
+									<input type="radio" class="btn-check required" name="$self_duty_payor" id="ior-yes"
 										autocomplete="off" value="Yes" oninput="setIORnumberBlockToNonRequired()"
 										required>
 									<label for="ior-yes"
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-									<input type="radio" class="btn-check required" name="$self_ior" id="ior-no"
+									<input type="radio" class="btn-check required" name="$self_duty_payor" id="ior-no"
 										autocomplete="off" value="No" oninput="setIORnumberBlockToRequired()" required>
 									<label for="ior-no"
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
@@ -147,8 +146,7 @@
 							</div>
 							<div class="w-100"></div>
 							<div class="form-group" id="number-of-iors-block" style="display: none;">
-								<label>If no, approximately how many importers of record do you work
-									with?</label><br>
+								<label>If no, approximately how many companies do it on your behalf?</label><br>
 								<div class="btn-group">
 									<!-- Required attributes for this block are added programmatically in the previous block -->
 									<input type="radio" class="btn-check required" name="$number_of_iors" id="ior-1-10"
@@ -168,7 +166,7 @@
 								</div>
 							</div>
 							<div class="form-group" id="iors-names" style="display: none;">
-								<label>List main IOR names</label><br>
+								<label>List main company names</label><br>
 								<input type="text" id="IORNames" name="$IORNames" class="form-control">
 							</div>
 							<div class="w-100"></div>
@@ -215,26 +213,28 @@
 							<div class="form-group">
 								<label>How many items (ie sold units) do you import into the EU per year?</label><br>
 								<div class="input-group w-md-50 mb-3">
-									<input type="number" class="form-control" min="0" name="$ItemsImportedPerYear" required>
+									<input type="number" class="form-control" min="0" name="$ItemsImportedPerYear"
+										required>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Avg Order Value -->
+							<div class="form-group">
+								<label>What is the share of orders that are above 150€?</label><br>
+								<div class="input-group w-md-50 mb-3">
+									<span class="input-group-text">%</span>
+									<input type="number" class="form-control" min="0" name="$avgOrderValue" required>
 								</div>
 							</div>
 							<div class="w-100"></div>
 
 							<!-- Duty Spend -->
 							<div class="form-group">
-								<label>What are your total duties paid per year?</label><br>
+								<label>What is the total amount of duties paid per year?</label><br>
 								<div class="input-group w-md-50 mb-3">
 									<span class="input-group-text">EUR</span>
 									<input type="number" class="form-control" min="0" name="$dutySpentPerYear" required>
-								</div>
-							</div>
-							<div class="w-100"></div>
-							<!-- Avg Order Value -->
-							<div class="form-group">
-								<label>What is the average order value?</label><br>
-								<div class="input-group w-md-50 mb-3">
-									<span class="input-group-text">EUR</span>
-									<input type="number" class="form-control" min="0" name="$avgOrderValue" required>
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -374,7 +374,7 @@
 			document.addEventListener("DOMContentLoaded", function () {
 				// Get the current domain
 				const currentDomain = window.location.origin;
-				
+
 				// Construct the new URL path
 				const newPath = "/duty-refund-questionnaire-completed.html";
 
