@@ -17,6 +17,7 @@ const paths = {
     js: "src/js/**/*",
     images: "src/images/**/*",
     eBook: "src/eBook/**/*",
+    eBook: "src/downloads/**/*",
     include: "src/include/**/*",
   },
 };
@@ -39,6 +40,7 @@ const cleandist = () => {
     "dist/tdr-app-v2-en/js",
     "dist/tdr-app-v2-en/images",
     "dist/tdr-app-v2-en/eBook",
+    "dist/tdr-app-v2-en/downloads",
     // here we use a globbing pattern to match everything inside the `mobile` folder
     // we don't want to clean this file though so we negate the pattern
     /* "!dist/mobile/deploy.json", */
@@ -91,6 +93,12 @@ export const copyEBook = () => {
     .pipe(gulp.dest(path.join(paths.dist, "eBook")));
 };
 
+export const copyDownloads = () => {
+  return gulp
+    .src(paths.assets.eBook, { encoding: false })
+    .pipe(gulp.dest(path.join(paths.dist, "downloads")));
+};
+
 export const copyInclude = () => {
   return gulp
     .src(paths.assets.include, { encoding: false })
@@ -135,6 +143,7 @@ export default gulp.series(
     copyJs,
     copyImages,
     copyEBook,
+    copyDownloads,
     copyInclude
   ),
   createSiteMap,
