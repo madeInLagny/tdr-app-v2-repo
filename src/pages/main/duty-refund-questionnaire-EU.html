@@ -96,7 +96,8 @@
 								<label for="country-select">Where are your shipments cleared for import?</label><br>
 								<select class="form-select" id="multiple-select-field-import"
 									data-placeholder="Select one or several countries"
-									aria-label="Import countries selection" name="$country_of_importation" multiple>
+									aria-label="Import countries selection" name="$country_of_importation" multiple
+									required>
 									<option value="Austria">Austria</option>
 									<option value="Belgium">Belgium</option>
 									<option value="Bulgaria">Bulgaria</option>
@@ -125,7 +126,6 @@
 									<option value="Spain">Spain</option>
 									<option value="Sweden">Sweden</option>
 								</select>
-
 
 							</div>
 							<div class="w-100"></div>
@@ -175,7 +175,8 @@
 								<label for="country-select">Where are your shipments cleared for export?</label><br>
 								<select class="form-select" id="multiple-select-field-export"
 									data-placeholder="Select one or several countries"
-									aria-label="export countries selection" name="$country_of_exportation" multiple>
+									aria-label="export countries selection" name="$country_of_exportation" multiple
+									required>
 									<option value="Austria">Austria</option>
 									<option value="Belgium">Belgium</option>
 									<option value="Bulgaria">Bulgaria</option>
@@ -209,22 +210,24 @@
 							</div>
 							<div class="w-100"></div>
 
-							<!-- Import Items -->
+							<!-- Import Orders -->
 							<div class="form-group">
-								<label>How many items (ie sold units) do you import into the EU per year?</label><br>
+								<label>How many orders to you import per year?</label><br>
 								<div class="input-group w-md-50 mb-3">
-									<input type="number" class="form-control" min="0" name="$ItemsImportedPerYear"
-										required>
+									<input type="number" class="form-control" name="$ImportOrders"
+										placeholder="Import Orders" required>
+									<input type="number" class="form-control" name="$ExportOrders"
+										placeholder="Export Orders" required>
 								</div>
 							</div>
 							<div class="w-100"></div>
 
-							<!-- Avg Order Value -->
+							<!-- Items per Order -->
 							<div class="form-group">
-								<label>What is the share of orders that are above 150€?</label><br>
-								<div class="input-group mb-3 w-md-15">
-									<input type="number" class="form-control" min="0" name="$avgOrderValue" required>
-									<span class="input-group-text">%</span>
+								<label>On average, how many items do you sell per order?</label><br>
+								<div class="input-group w-md-50 mb-3">
+									<input type="number" class="form-control" min="0" name="$ItemsPerOrder"
+										required>
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -238,6 +241,7 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+							
 							<!-- % Return -->
 							<div class="form-group">
 								<label>What percentage of those imported goods are subsequently
@@ -249,6 +253,7 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+
 							<!-- Express Carriers -->
 							<div class="form-group">
 								<label>What percentage of your goods are shipped via express
@@ -262,6 +267,7 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+
 							<!-- eCommerce -->
 							<div class="form-group">
 								<div>
@@ -279,6 +285,7 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+
 							<!-- email -->
 							<div class="form-group">
 								<label>What email should we send our recommendations to?</label><br>
