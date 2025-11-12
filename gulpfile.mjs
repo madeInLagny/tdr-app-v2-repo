@@ -8,6 +8,8 @@ import sitemap from "gulp-sitemap";
 import entities from "gulp-html-entities";
 import flatten from "gulp-flatten";
 
+
+/* eBooks and downloads removed from delete/copy methods as these assets are static */
 const paths = {
   specificHtml: ["src/pages/**/*.html", "!src/pages/pagesInDev/*.html"],
   i18n: "src/i18n/en/**/",
@@ -16,8 +18,6 @@ const paths = {
     css: "src/css/**/*",
     js: "src/js/**/*",
     images: "src/images/**/*",
-    eBook: "src/eBook/**/*",
-    eBook: "src/downloads/**/*",
     include: "src/include/**/*",
   },
 };
@@ -38,9 +38,7 @@ const cleandist = () => {
     "dist/tdr-app-v2-en/*.md",
     "dist/tdr-app-v2-en/css",
     "dist/tdr-app-v2-en/js",
-    "dist/tdr-app-v2-en/images",
-    "dist/tdr-app-v2-en/eBook",
-    "dist/tdr-app-v2-en/downloads",
+    "dist/tdr-app-v2-en/images"
     // here we use a globbing pattern to match everything inside the `mobile` folder
     // we don't want to clean this file though so we negate the pattern
     /* "!dist/mobile/deploy.json", */
@@ -87,7 +85,7 @@ export const copyImages = () => {
     .pipe(gulp.dest(path.join(paths.dist, "images")));
 };
 
-export const copyEBook = () => {
+/* export const copyEBook = () => {
   return gulp
     .src(paths.assets.eBook, { encoding: false })
     .pipe(gulp.dest(path.join(paths.dist, "eBook")));
@@ -98,7 +96,7 @@ export const copyDownloads = () => {
     .src(paths.assets.eBook, { encoding: false })
     .pipe(gulp.dest(path.join(paths.dist, "downloads")));
 };
-
+ */
 export const copyInclude = () => {
   return gulp
     .src(paths.assets.include, { encoding: false })
@@ -142,8 +140,6 @@ export default gulp.series(
     copyCss,
     copyJs,
     copyImages,
-    copyEBook,
-    copyDownloads,
     copyInclude
   ),
   createSiteMap,
