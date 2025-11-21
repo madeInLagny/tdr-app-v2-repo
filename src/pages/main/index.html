@@ -1,187 +1,267 @@
 <!DOCTYPE html>
 <!-- Lang is required by Cookie Consent -->
-<html
-  dir="ltr"
-  lang="${{ index.language }}$"
-  xmlns:og="http://opengraphprotocol.org/schema/"
->
-  <head>
-    <!-- Google Tag Manager modified to comply with cookie consent-->
-    @@include('src/blocks/head/cookieConsent/headScript.html')
-    <!-- End Google Tag Manager -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
 
-    <!-- Metatags Import -->
-    @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png", "description":
-    "${{index.description}}$", "title": "${{index.title}}$", "url":
-    "${{index.domain}}$", "urlFR":"${{index.domainFR}}$",
-    "urlIT":"${{index.domainIT}}$" })
+<head>
+  <!-- Google Tag Manager modified to comply with cookie consent-->
+  @@include('src/blocks/head/cookieConsent/headScript.html')
+  <!-- End Google Tag Manager -->
 
-    <!-- CSS imports -->
-    @@include('src/blocks/head/cssImports.html')
+  <!-- Metatags Import -->
+  @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImage.png", "description":
+  "${{index.description}}$", "title": "${{index.title}}$", "url":
+  "${{index.domain}}$", "urlFR":"${{index.domainFR}}$",
+  "urlIT":"${{index.domainIT}}$" })
 
-    <!-- CSS for index -->
-    <link rel="stylesheet" href="./css/custom/index.css" />
+  <!-- CSS imports -->
+  @@include('src/blocks/head/cssImports.html')
 
-    <!-- Only Required if Samaritan color is required -->
-    <link rel="stylesheet" href="./css/custom/samaritan.css" />
+  <!-- CSS for index -->
+  <link rel="stylesheet" href="./css/custom/index.css" />
 
-    <style>
-      .notification {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        max-width: 700px;
-        z-index: 1050;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        border-radius: 0;
-      }
+  <!-- Only Required if Samaritan color is required -->
+  <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
-      .notification.show {
-        opacity: 1;
-      }
+  <style>
+    .notification {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      max-width: 700px;
+      z-index: 1050;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-radius: 0;
+    }
 
-      .notification .content {
-        flex-grow: 1;
-      }
+    .notification.show {
+      opacity: 1;
+    }
 
-      .notification .content h2 {
-        margin-top: 0;
-      }
+    .notification .content {
+      flex-grow: 1;
+    }
 
-      .notification .actions {
-        display: flex;
-        align-items: center;
-      }
+    .notification .content h2 {
+      margin-top: 0;
+    }
 
-      .btn-close.lightSamaritan {
-        background: transparent
-          url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
-          center/1em auto no-repeat;
-      }
-    </style>
-  </head>
+    .notification .actions {
+      display: flex;
+      align-items: center;
+    }
 
-  <body class="stretched dynamic-background">
-    <div id="notification-container"></div>
+    .btn-close.lightSamaritan {
+      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    }
+  </style>
+</head>
 
-    <!-- Document Wrapper
+<body class="stretched dynamic-background">
+  <div id="notification-container"></div>
+
+  <!-- Document Wrapper
 	============================================= -->
-    <div id="wrapper">
-      <!-- Header
+  <div id="wrapper">
+    <!-- Header
 		============================================= -->
-      <!-- header -->
+    <!-- header -->
 
-      @@include('src/blocks/header.html',{"text-color":"white", "header-bg":"var(--samaritan)",
-      "submenu-bg":"var(--darkSamaritan)" })
-      <!-- end of header -->
+    @@include('src/blocks/header.html',{"text-color":"white", "header-bg":"var(--samaritan)",
+    "submenu-bg":"var(--darkSamaritan)" })
+    <!-- end of header -->
 
-      <section
-        id="slider"
-        class="slider-element min-vh-100 dark include-header"
-      >
-        <div class="slider-inner">
-          <div class="container">
-            <div class="slider-caption slider-caption-center gap-3">
-              <h1 class="h2" data-animate="fadeInUp">${{index.header}}$</h1>
-              <div class="subtitle" data-animate="fadeIn" data-delay="1000">
-                ${{index.subtitle}}$<br />${{index.checkValue}}$<br />
-                <a
-                  href="${{solutions-for-us-shippers.path}}$"
-                  class="button-circle"
-                  >US</a
-                >
-                <a
-                  href="${{solutions-for-eu-shippers.path}}$"
-                  class="button-circle"
-                  >EU</a
-                >
-                <a
-                  href="${{solutions-for-uk-shippers.path}}$"
-                  class="button-circle"
-                  >UK</a
-                >
-                <a
-                  href="${{solutions-for-all-shippers.path}}$"
-                  class="button-circle"
-                  >${{index.all}}$</a
-                ><br />
-                <span>${{index.shippers}}$</span>
-              </div>
+    <section id="slider" class="slider-element min-vh-100 dark include-header">
+      <div class="slider-inner">
+        <div class="container">
+          <div class="slider-caption slider-caption-center gap-3">
+            <h1 class="h2" data-animate="fadeInUp">${{index.header}}$</h1>
+            <div class="subtitle" data-animate="fadeIn" data-delay="1000">
+              ${{index.subtitle}}$<br />${{index.checkValue}}$<br />
+              <a href="${{solutions-for-us-shippers.path}}$" class="button-circle">US</a>
+              <a href="${{solutions-for-eu-shippers.path}}$" class="button-circle">EU</a>
+              <a href="${{solutions-for-uk-shippers.path}}$" class="button-circle">UK</a>
+              <a href="${{solutions-for-all-shippers.path}}$" class="button-circle">${{index.all}}$</a><br />
+              <span>${{index.shippers}}$</span>
             </div>
           </div>
         </div>
-      </section>
-      <!-- World Map SVG Overlay -->
-      @@include('src/blocks/homePageOverlay.html')
-      <!-- end World Map Overlay -->
+      </div>
+    </section>
+    <!-- World Map SVG Overlay -->
+    @@include('src/blocks/homePageOverlay.html')
+    <!-- end World Map Overlay -->
 
-      <!-- Footer -->
-      @@include('src/blocks/footer.html',{ "bg-color":"#677EC4" })
-      <!-- end Footer -->
-    </div>
-    <!-- #wrapper end -->
+    <!-- Footer -->
+    @@include('src/blocks/footer.html',{ "bg-color":"#677EC4" })
+    <!-- end Footer -->
+  </div>
+  <!-- #wrapper end -->
 
-    <!-- Javascripts
+  <!-- Javascripts
 	============================================= -->
-    @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
-    <!-- Tawk Chatbox -->
-    @@include('src/blocks/tawk.html')
-    <!-- URL Campaign Logger -->
-    @@include('src/blocks/URLCampaignLogger.html')
-    <!-- URL Campaign Logger -->
-    @@include('src/blocks/linkedInInsideTag.html')
+  @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+  <!-- Tawk Chatbox -->
+  @@include('src/blocks/tawk.html')
+  <!-- URL Campaign Logger -->
+  @@include('src/blocks/URLCampaignLogger.html')
+  <!-- URL Campaign Logger -->
+  @@include('src/blocks/linkedInInsideTag.html')
 
-    <!-- Canvas Scripts -->
-    <script src="js/functions.js"></script>
-    <script>
-      function showNotification() {
-        const notification = document.createElement("div");
-        notification.className =
-          "notification alert alert-primary alert-dismissible";
-        notification.setAttribute("role", "alert");
-        notification.innerHTML = `@@include('src/blocks/eBookNotification.html')`;
+  <!-- Canvas Scripts -->
+  <script src="js/functions.js"></script>
+  <script>
+    function showNotification() {
+      const notification = document.createElement("div");
+      notification.className =
+        "notification alert alert-primary alert-dismissible";
+      notification.setAttribute("role", "alert");
+      notification.innerHTML = `@@include('src/blocks/eBookNotification.html')`;
 
-        const container = document.getElementById("notification-container");
-        container.appendChild(notification);
+      const container = document.getElementById("notification-container");
+      container.appendChild(notification);
 
-        // Trigger the fade-in effect by adding the 'show' class
-        setTimeout(() => {
-          notification.classList.add("show");
-        }, 10); // Small delay to ensure the transition is applied
+      // Trigger the fade-in effect by adding the 'show' class
+      setTimeout(() => {
+        notification.classList.add("show");
+      }, 10); // Small delay to ensure the transition is applied
 
-        // Remove notification after 10 seconds
-        setTimeout(() => {
-          if (notification) {
-            notification.classList.remove("show");
-            notification.classList.add("fade");
-            notification.addEventListener("transitionend", () => {
-              notification.remove();
-            });
-          }
-        }, 10000);
-
-        // Add click event to close button
-        notification.querySelector(".close").addEventListener("click", () => {
+      // Remove notification after 10 seconds
+      setTimeout(() => {
+        if (notification) {
           notification.classList.remove("show");
           notification.classList.add("fade");
           notification.addEventListener("transitionend", () => {
             notification.remove();
           });
+        }
+      }, 10000);
+
+      // Add click event to close button
+      notification.querySelector(".close").addEventListener("click", () => {
+        notification.classList.remove("show");
+        notification.classList.add("fade");
+        notification.addEventListener("transitionend", () => {
+          notification.remove();
         });
+      });
+    }
+
+    // If the notification is reactivated, make sure the showNotification method is also updated with the proper notification panel
+
+    // Show notification 3 seconds after page load
+    /* window.addEventListener('load', function () {
+    setTimeout(showNotification, 3000);
+  }); */
+  </script>
+  <!-- Floating geo flag button -->
+  <script>
+    (function () {
+      // EU country list (excludes France for separate logic)
+      var euCountries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DE', 'DK', 'EE', 'FI', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'];
+
+      // Inject styles for the clickable image
+      var style = document.createElement('style');
+      style.textContent = `
+        #geo-flag-link {
+          position: fixed;
+          left: 20px;
+          bottom: 20px;
+          width: auto;
+          height: 30px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          border: none;
+          cursor: pointer;
+          z-index: 99999;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+          transition: transform .15s ease, opacity .2s ease;
+          background: transparent;
+        }
+        #geo-flag-link img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          -webkit-user-drag: none;
+          user-select: none;
+          pointer-events: none;
+        }
+        #geo-flag-link:active { transform: scale(.95); }
+        @media (max-width:480px) {
+          #geo-flag-link { width:48px; height:48px; left:12px; bottom:12px; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      function addImage(src, alt, title, url) {
+        // Remove existing if any
+        var existing = document.getElementById('geo-flag-link');
+        if (existing) existing.remove();
+
+        var link = document.createElement('a');
+        link.id = 'geo-flag-link';
+        link.href = url || 'javascript:void(0)';
+        link.setAttribute('role', 'button');
+        link.setAttribute('aria-label', title || alt || 'Geo flag');
+        link.title = title || alt || '';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+        // Fallback to world image on error (log the error so it appears in the console)
+        img.addEventListener('error', function (e) {
+          console.error('Geo image: failed to load', e, 'current src:', img && img.src);
+          try {
+            if (img && typeof img.src === 'string' && img.src.indexOf('flag-world') === -1) {
+              img.src = '/images/flag-world.png';
+            }
+          } catch (err) {
+            console.error('Geo image: error while setting fallback src', err);
+          }
+        });
+
+        link.appendChild(img);
+
+        // Small visual feedback on click
+        link.addEventListener('click', function (e) {
+          link.style.opacity = '0.9';
+          setTimeout(function () { link.style.opacity = '1'; }, 150);
+        });
+
+        document.body.appendChild(link);
       }
 
-      // If the notification is reactivated, make sure the showNotification method is also updated with the proper notification panel
+      // Fetch geo location and choose image
+      fetch('https://ipinfo.io/json')
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          var country = /* (data && data.country) ? data.country.toUpperCase() : '' */"ES"; // For testing, replace with actual data.country
+          if (country === 'FR') {
+            // France -> French flag image
+            addImage('images/MadeInFrance.webp', 'French flag', 'French IP detected','${{about-us.path}}$');
+          } else if (euCountries.includes(country)) {
+            // Other EU -> EU flag image
+            addImage('./images/MadeInEU.webp', 'European Union flag', 'European Union IP detected','${{about-us.path}}$');
+          } else if (country === 'CA') {
+            // Other CA -> CA flag image
+            addImage('./images/CIFFAMember.webp', 'CIFFA Logo', 'CIFFA Logo');
+          }
+        })
+        .catch(function (err) {
+          console.error('Geo image: unable to determine location', err);
+          addImage('/images/flag-world.png', 'World / Unknown', 'Location unknown');
+        });
+    })();
+  </script>
 
-      // Show notification 3 seconds after page load
-      /* window.addEventListener('load', function () {
-			setTimeout(showNotification, 3000);
-		}); */
-    </script>
-  </body>
+</body>
+
 </html>

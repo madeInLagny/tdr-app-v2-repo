@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <!-- Lang is required by Cookie Consent -->
-<html
-  dir="ltr"
-  lang="en"
-  xmlns:og="http://opengraphprotocol.org/schema/"
->
-  <head>
-    <!-- Google Tag Manager modified to comply with cookie consent-->
-    <script>
+<html dir="ltr" lang="en" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+  <!-- Google Tag Manager modified to comply with cookie consent-->
+  <script>
   if (!['localhost', '127.0.0.1'].includes(window.location.hostname)) {
     var s = document.createElement('script');
     s.async = true;
@@ -22,10 +19,10 @@
     gtag('config', 'G-EGJMGN0WP7');
   }
 </script>
-    <!-- End Google Tag Manager -->
+  <!-- End Google Tag Manager -->
 
-    <!-- Metatags Import -->
-    <!-- SEO Metatags -->
+  <!-- Metatags Import -->
+  <!-- SEO Metatags -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="IE=edge" />
@@ -66,8 +63,8 @@
 <meta name="apple-mobile-web-app-title" content="Duty Ref" />
 <link rel="manifest" href="/images/favicon/site.webmanifest" />
 
-    <!-- CSS imports -->
-    <!-- Font Imports -->
+  <!-- CSS imports -->
+  <!-- Font Imports -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Signika+Negative:wght@500&display=swap"
@@ -92,65 +89,63 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0-rc.16/dist/cookieconsent.css">
 </noscript>
 
-    <!-- CSS for index -->
-    <link rel="stylesheet" href="./css/custom/index.css" />
+  <!-- CSS for index -->
+  <link rel="stylesheet" href="./css/custom/index.css" />
 
-    <!-- Only Required if Samaritan color is required -->
-    <link rel="stylesheet" href="./css/custom/samaritan.css" />
+  <!-- Only Required if Samaritan color is required -->
+  <link rel="stylesheet" href="./css/custom/samaritan.css" />
+
+  <style>
+    .notification {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      max-width: 700px;
+      z-index: 1050;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-radius: 0;
+    }
+
+    .notification.show {
+      opacity: 1;
+    }
+
+    .notification .content {
+      flex-grow: 1;
+    }
+
+    .notification .content h2 {
+      margin-top: 0;
+    }
+
+    .notification .actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-close.lightSamaritan {
+      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    }
+  </style>
+</head>
+
+<body class="stretched dynamic-background">
+  <div id="notification-container"></div>
+
+  <!-- Document Wrapper
+	============================================= -->
+  <div id="wrapper">
+    <!-- Header
+		============================================= -->
+    <!-- header -->
 
     <style>
-      .notification {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        max-width: 700px;
-        z-index: 1050;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        border-radius: 0;
-      }
-
-      .notification.show {
-        opacity: 1;
-      }
-
-      .notification .content {
-        flex-grow: 1;
-      }
-
-      .notification .content h2 {
-        margin-top: 0;
-      }
-
-      .notification .actions {
-        display: flex;
-        align-items: center;
-      }
-
-      .btn-close.lightSamaritan {
-        background: transparent
-          url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
-          center/1em auto no-repeat;
-      }
-    </style>
-  </head>
-
-  <body class="stretched dynamic-background">
-    <div id="notification-container"></div>
-
-    <!-- Document Wrapper
-	============================================= -->
-    <div id="wrapper">
-      <!-- Header
-		============================================= -->
-      <!-- header -->
-
-      <style>
   @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
   /* Ref: https://icons.getbootstrap.com/#icons */
 
@@ -583,46 +578,27 @@
   </div>
   <div class="header-wrap-clone"></div>
 </header>
-      <!-- end of header -->
+    <!-- end of header -->
 
-      <section
-        id="slider"
-        class="slider-element min-vh-100 dark include-header"
-      >
-        <div class="slider-inner">
-          <div class="container">
-            <div class="slider-caption slider-caption-center gap-3">
-              <h1 class="h2" data-animate="fadeInUp">Single Duty & VAT Refund Platform Across 29 Countries</h1>
-              <div class="subtitle" data-animate="fadeIn" data-delay="1000">
-                We've made global duty drawback easy for you.<br />Check the value we bring to<br />
-                <a
-                  href="solutions-for-us-shippers.html"
-                  class="button-circle"
-                  >US</a
-                >
-                <a
-                  href="solutions-for-eu-shippers.html"
-                  class="button-circle"
-                  >EU</a
-                >
-                <a
-                  href="solutions-for-uk-shippers.html"
-                  class="button-circle"
-                  >UK</a
-                >
-                <a
-                  href="solutions-for-all-shippers.html"
-                  class="button-circle"
-                  >All</a
-                ><br />
-                <span>shippers</span>
-              </div>
+    <section id="slider" class="slider-element min-vh-100 dark include-header">
+      <div class="slider-inner">
+        <div class="container">
+          <div class="slider-caption slider-caption-center gap-3">
+            <h1 class="h2" data-animate="fadeInUp">Single Duty & VAT Refund Platform Across 29 Countries</h1>
+            <div class="subtitle" data-animate="fadeIn" data-delay="1000">
+              We've made global duty drawback easy for you.<br />Check the value we bring to<br />
+              <a href="solutions-for-us-shippers.html" class="button-circle">US</a>
+              <a href="solutions-for-eu-shippers.html" class="button-circle">EU</a>
+              <a href="solutions-for-uk-shippers.html" class="button-circle">UK</a>
+              <a href="solutions-for-all-shippers.html" class="button-circle">All</a><br />
+              <span>shippers</span>
             </div>
           </div>
         </div>
-      </section>
-      <!-- World Map SVG Overlay -->
-      <style>
+      </div>
+    </section>
+    <!-- World Map SVG Overlay -->
+    <style>
   .svg-overlay {
     position: fixed;
     /* Covers the entire viewport */
@@ -962,10 +938,10 @@
     </metadata>
   </svg>
 </div>
-      <!-- end World Map Overlay -->
+    <!-- end World Map Overlay -->
 
-      <!-- Footer -->
-      <style>
+    <!-- Footer -->
+    <style>
   #footer {
     --cnvs-socialicon-color: @@text-color;
     --cnvs-footer-bg: #677EC4;
@@ -1023,13 +999,13 @@
   </div>
   </div><!-- #copyrights end -->
 </footer><!-- #footer end -->
-      <!-- end Footer -->
-    </div>
-    <!-- #wrapper end -->
+    <!-- end Footer -->
+  </div>
+  <!-- #wrapper end -->
 
-    <!-- Javascripts
+  <!-- Javascripts
 	============================================= -->
-    <script>
+  <script>
   // Only load the CDN script if not running on localhost or file protocol
   if (
     location.hostname !== "localhost" &&
@@ -1076,8 +1052,8 @@
   // Check the user's location on page load
   checkEULocation();
 </script>
-    <!-- Tawk Chatbox -->
-    <!--Start of Tawk.to Script-->
+  <!-- Tawk Chatbox -->
+  <!--Start of Tawk.to Script-->
 <script type="text/javascript">
   if (
     location.protocol !== "file:" &&
@@ -1099,8 +1075,8 @@
 </script>
 <!--End of Tawk.to Script-->
 
-    <!-- URL Campaign Logger -->
-    <script>
+  <!-- URL Campaign Logger -->
+  <script>
   if (
     window.location.protocol !== 'file:' &&
     window.location.hostname !== 'localhost' &&
@@ -1133,8 +1109,8 @@
     });
   }
 </script>
-    <!-- URL Campaign Logger -->
-    <script type="text/javascript">
+  <!-- URL Campaign Logger -->
+  <script type="text/javascript">
   (function () {
     if (
       location.protocol !== "file:" &&
@@ -1164,15 +1140,15 @@
     src="https://px.ads.linkedin.com/collect/?pid=6972340&fmt=gif" />
 </noscript>
 
-    <!-- Canvas Scripts -->
-    <script src="js/functions.js"></script>
-    <script>
-      function showNotification() {
-        const notification = document.createElement("div");
-        notification.className =
-          "notification alert alert-primary alert-dismissible";
-        notification.setAttribute("role", "alert");
-        notification.innerHTML = `
+  <!-- Canvas Scripts -->
+  <script src="js/functions.js"></script>
+  <script>
+    function showNotification() {
+      const notification = document.createElement("div");
+      notification.className =
+        "notification alert alert-primary alert-dismissible";
+      notification.setAttribute("role", "alert");
+      notification.innerHTML = `
   <div class="content">
     <h2 class="fw-bold mb-3">Get your TDR eBook!</h2>
     <p class="lead mb-0">Download our free copy: Practical Guide to Customs Duties</p>
@@ -1185,41 +1161,145 @@
     <button type="button" class="btn-close lightSamaritan ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>`;
 
-        const container = document.getElementById("notification-container");
-        container.appendChild(notification);
+      const container = document.getElementById("notification-container");
+      container.appendChild(notification);
 
-        // Trigger the fade-in effect by adding the 'show' class
-        setTimeout(() => {
-          notification.classList.add("show");
-        }, 10); // Small delay to ensure the transition is applied
+      // Trigger the fade-in effect by adding the 'show' class
+      setTimeout(() => {
+        notification.classList.add("show");
+      }, 10); // Small delay to ensure the transition is applied
 
-        // Remove notification after 10 seconds
-        setTimeout(() => {
-          if (notification) {
-            notification.classList.remove("show");
-            notification.classList.add("fade");
-            notification.addEventListener("transitionend", () => {
-              notification.remove();
-            });
-          }
-        }, 10000);
-
-        // Add click event to close button
-        notification.querySelector(".close").addEventListener("click", () => {
+      // Remove notification after 10 seconds
+      setTimeout(() => {
+        if (notification) {
           notification.classList.remove("show");
           notification.classList.add("fade");
           notification.addEventListener("transitionend", () => {
             notification.remove();
           });
+        }
+      }, 10000);
+
+      // Add click event to close button
+      notification.querySelector(".close").addEventListener("click", () => {
+        notification.classList.remove("show");
+        notification.classList.add("fade");
+        notification.addEventListener("transitionend", () => {
+          notification.remove();
         });
+      });
+    }
+
+    // If the notification is reactivated, make sure the showNotification method is also updated with the proper notification panel
+
+    // Show notification 3 seconds after page load
+    /* window.addEventListener('load', function () {
+    setTimeout(showNotification, 3000);
+  }); */
+  </script>
+  <!-- Floating geo flag button -->
+  <script>
+    (function () {
+      // EU country list (excludes France for separate logic)
+      var euCountries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DE', 'DK', 'EE', 'FI', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'];
+
+      // Inject styles for the clickable image
+      var style = document.createElement('style');
+      style.textContent = `
+        #geo-flag-link {
+          position: fixed;
+          left: 20px;
+          bottom: 20px;
+          width: auto;
+          height: 30px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          border: none;
+          cursor: pointer;
+          z-index: 99999;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+          transition: transform .15s ease, opacity .2s ease;
+          background: transparent;
+        }
+        #geo-flag-link img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          -webkit-user-drag: none;
+          user-select: none;
+          pointer-events: none;
+        }
+        #geo-flag-link:active { transform: scale(.95); }
+        @media (max-width:480px) {
+          #geo-flag-link { width:48px; height:48px; left:12px; bottom:12px; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      function addImage(src, alt, title, url) {
+        // Remove existing if any
+        var existing = document.getElementById('geo-flag-link');
+        if (existing) existing.remove();
+
+        var link = document.createElement('a');
+        link.id = 'geo-flag-link';
+        link.href = url || 'javascript:void(0)';
+        link.setAttribute('role', 'button');
+        link.setAttribute('aria-label', title || alt || 'Geo flag');
+        link.title = title || alt || '';
+
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = alt || '';
+        // Fallback to world image on error (log the error so it appears in the console)
+        img.addEventListener('error', function (e) {
+          console.error('Geo image: failed to load', e, 'current src:', img && img.src);
+          try {
+            if (img && typeof img.src === 'string' && img.src.indexOf('flag-world') === -1) {
+              img.src = '/images/flag-world.png';
+            }
+          } catch (err) {
+            console.error('Geo image: error while setting fallback src', err);
+          }
+        });
+
+        link.appendChild(img);
+
+        // Small visual feedback on click
+        link.addEventListener('click', function (e) {
+          link.style.opacity = '0.9';
+          setTimeout(function () { link.style.opacity = '1'; }, 150);
+        });
+
+        document.body.appendChild(link);
       }
 
-      // If the notification is reactivated, make sure the showNotification method is also updated with the proper notification panel
+      // Fetch geo location and choose image
+      fetch('https://ipinfo.io/json')
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          var country = /* (data && data.country) ? data.country.toUpperCase() : '' */"ES"; // For testing, replace with actual data.country
+          if (country === 'FR') {
+            // France -> French flag image
+            addImage('images/MadeInFrance.webp', 'French flag', 'French IP detected','about-us.html');
+          } else if (euCountries.includes(country)) {
+            // Other EU -> EU flag image
+            addImage('./images/MadeInEU.webp', 'European Union flag', 'European Union IP detected','about-us.html');
+          } else if (country === 'CA') {
+            // Other CA -> CA flag image
+            addImage('./images/CIFFAMember.webp', 'CIFFA Logo', 'CIFFA Logo');
+          }
+        })
+        .catch(function (err) {
+          console.error('Geo image: unable to determine location', err);
+          addImage('/images/flag-world.png', 'World / Unknown', 'Location unknown');
+        });
+    })();
+  </script>
 
-      // Show notification 3 seconds after page load
-      /* window.addEventListener('load', function () {
-			setTimeout(showNotification, 3000);
-		}); */
-    </script>
-  </body>
+</body>
+
 </html>
