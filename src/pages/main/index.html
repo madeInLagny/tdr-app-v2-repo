@@ -179,8 +179,6 @@
           position: fixed;
           left: 20px;
           bottom: 20px;
-          width: auto;
-          height: 30px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -193,8 +191,7 @@
           background: transparent;
         }
         #geo-flag-link img {
-          width: 100%;
-          height: 100%;
+          height: 3vh;
           object-fit: cover;
           display: block;
           -webkit-user-drag: none;
@@ -203,7 +200,7 @@
         }
         #geo-flag-link:active { transform: scale(.95); }
         @media (max-width:480px) {
-          #geo-flag-link { width:48px; height:48px; left:12px; bottom:12px; }
+          #geo-flag-link { left:12px; bottom:12px; }
         }
       `;
       document.head.appendChild(style);
@@ -250,7 +247,7 @@
       fetch('https://ipinfo.io/json')
         .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
         .then(function (data) {
-          var country = /* (data && data.country) ? data.country.toUpperCase() : '' */"ES"; // For testing, replace with actual data.country
+          var country =  (data && data.country) ? data.country.toUpperCase() : ''
           if (country === 'FR') {
             // France -> French flag image
             addImage('images/MadeInFrance.webp', 'French flag', 'French IP detected', '${{about-us.path}}$');
