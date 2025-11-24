@@ -132,6 +132,12 @@
     .btn-close.lightSamaritan {
       background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
     }
+
+    /* .button-circle {
+      background-image: url("/src/images/flags/cn.svg");
+      background-repeat: no-repeat;
+      background-position: 8px center;
+    } */
   </style>
 </head>
 
@@ -587,9 +593,10 @@
             <h1 class="h2" data-animate="fadeInUp">Single Duty & VAT Refund Platform Across 29 Countries</h1>
             <div class="subtitle" data-animate="fadeIn" data-delay="1000">
               We've made global duty drawback easy for you.<br />Check the value we bring to<br />
-              <a href="solutions-for-us-shippers.html" class="button-circle">US</a>
-              <a href="solutions-for-eu-shippers.html" class="button-circle">EU</a>
-              <a href="solutions-for-uk-shippers.html" class="button-circle">UK</a>
+              <a href="solutions-for-us-shippers.html" class="button-circle"><img src="./images/flags/us.svg" alt="US flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" />US</a>
+              <a href="solutions-for-all-shippers.html" class="button-circle"><img src="./images/flags/cn.svg" alt="China flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" /> CN</a>
+              <a href="solutions-for-eu-shippers.html" class="button-circle"><img src="./images/flags/eu.svg" alt="EU flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" />EU</a>
+              <a href="solutions-for-uk-shippers.html" class="button-circle"><img src="./images/flags/gb.svg" alt="UK flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" />UK</a>
               <a href="solutions-for-all-shippers.html" class="button-circle">All</a><br />
               <span>shippers</span>
             </div>
@@ -1284,10 +1291,10 @@
           var country = /* (data && data.country) ? data.country.toUpperCase() : '' */"ES"; // For testing, replace with actual data.country
           if (country === 'FR') {
             // France -> French flag image
-            addImage('images/MadeInFrance.webp', 'French flag', 'French IP detected','about-us.html');
+            addImage('images/MadeInFrance.webp', 'French flag', 'French IP detected', 'about-us.html');
           } else if (euCountries.includes(country)) {
             // Other EU -> EU flag image
-            addImage('./images/MadeInEU.webp', 'European Union flag', 'European Union IP detected','about-us.html');
+            addImage('./images/MadeInEU.webp', 'European Union flag', 'European Union IP detected', 'about-us.html');
           } else if (country === 'CA') {
             // Other CA -> CA flag image
             addImage('./images/CIFFAMember.webp', 'CIFFA Logo', 'CIFFA Logo');
