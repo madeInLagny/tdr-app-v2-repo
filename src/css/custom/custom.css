@@ -45,3 +45,27 @@
 a:not(.button) {
   color: white;
 }
+
+/* Fancy Title - Top Short Border
+-----------------------------------------------------------------*/
+.title-top-border::before,
+.title-top-border::after {
+  display: none;
+}
+.title-top-border h1,
+.title-top-border .h1,
+.title-top-border h2,
+.title-top-border .h2,
+.title-top-border h3,
+.title-top-border .h3,
+.title-top-border h4,
+.title-top-border .h4,
+.title-top-border h5,
+.title-top-border .h5,
+.title-top-border h6,
+.title-top-border .h6 {
+  width: 100%;
+  padding-top: 10px;
+  border-top: calc(var(--cnvs-fancy-title-border-size) * 2) solid
+    var(--cnvs-themecolor);
+}
