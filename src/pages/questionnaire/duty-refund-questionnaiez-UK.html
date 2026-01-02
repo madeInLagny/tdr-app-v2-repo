@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImages/duty-refund-questionnaire-UK.jpg",
+	"description": "${{duty-refund-questionnaire-UK.description}}$",
+	"title": "${{duty-refund-questionnaire-UK.title}}$",
+	"path": "${{duty-refund-questionnaire-UK.path}}$",
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Include the Multi Select stylesheet https://codeshack.io/multi-select-dropdown-js/-->
+	<link href="https://codeshack.io/web/demos/MultiSelect.css" rel="stylesheet" type="text/css">
+
+	<style>
+		.input-group-text {
+			background-color: var(--lightSamaritan);
+			color: var(--darkSamaritan);
+			border: none;
+		}
+
+		@media (min-width: 768px) {
+
+			.w-md-15 {
+				width: 15% !important;
+			}
+
+			.w-md-50 {
+				width: 50% !important
+			}
+
+		}
+
+
+		.multi-select .multi-select-header .multi-select-header-placeholder,
+		.form-select {
+			color: var(--darkSamaritan);
+
+		}
+
+		.multi-select-header {
+			background-color: white;
+		}
+	</style>
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<!-- Contact Form Overlay -->
+					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
+						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
+							Optimizing Your Business Cashflow <br><em>UK Duty Mitigation</em>
+						</h2>
+
+						<p class="text-lightSamaritan mb-0">Find out how much TDR will make you save in UK duty
+							refund.</p>
+						<div class="alert alert-samaritan my-4" role="alert">
+							<i class="bi-cloud-arrow-down-fill"
+								style="font-size: 1.5rem;padding-right: 2rem; color:var(--samaritan)"></i> Prefer to
+							take your time? Use our <a href="./downloads/TDR_UK_Questionnaire.pdf" download
+								class="alert-link text-samaritan"><u>offline
+									form</u></a> to fill it out at your own pace.
+						</div>
+
+						<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
+							method="post" onSubmit="addSpinner()">
+							<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+							<input id="redirectTo" type="hidden" name="redirectTo" value="">
+							<input type="hidden" name="subject" value="UK-Duty-Reclaim-Questionnaire">
+							<input type="text" name="honeypot" style="display:none">
+
+
+							<!-- Document Retention Period (Simple number input 10ch) -->
+							<div class="form-group">
+								<label for="$DocumentRetentionPeriod">Over what period of time have you or your customs
+									broker retained documentation? <em>ie: dates (and ideally the MRN numbers) of goods
+										import and export</em></label><br>
+								<input id="$DocumentRetentionPeriod" type="number" class="form-control"
+									name="$DocumentRetentionPeriod" min="1" style="width:10ch;" required>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- How much import duties did you pay during the past 12 months? (3 number inputs)-->
+							<div class="form-group">
+								<label for="$DutiesPaidIn12Months">How much import duties did you pay during the past 12
+									months?</label><br>
+								<div id="$DutiesPaidIn12Months" class="input-group mb-3 w-md-50">
+									<span class="input-group-text">£</span>
+									<input id="$DutiesPaidIn12Months" type="number" class="form-control"
+										name="$DutiesPaidIn12Months" min="1" required>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- EORI -->
+							<div class="form-group">
+								<label for="$EORI">What is your UK EORI? <em>leave blank if you don't have one</em>
+								</label><br>
+								<input type="text" id="$EORI" name="$EORI" class="form-control w-md-50">
+							</div>
+							<div class="w-100"></div>
+
+
+							<!-- VAT -->
+							<div class="form-group">
+								<label for="$VAT">What is your VAT number? <em>leave blank if you don't have one</em>
+								</label><br>
+								<input type="text" id="$VAT" name="$VAT" class="form-control w-md-50">
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Gov Gateway -->
+							<div class="form-group">
+								<label for="$RegisteredToUKGateway?">Is your company registered to the Goverment
+									Gateway?</label><br>
+								<div id="$RegisteredToUKGateway?" class="btn-group">
+									<input type="radio" class="btn-check required" name="$RegisteredToUKGateway?"
+										id="UK_registered_yes" autocomplete="off" value="Yes" required>
+									<label for="UK_registered_yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$RegisteredToUKGateway?"
+										id="UK_registered_no" autocomplete="off" value="No" required>
+									<label for="UK_registered_no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- AccessToCDS -->
+							<div class="form-group">
+								<label for="$accessToCDS">Do you have access to your CDS reports for imports
+									and exports?</label><br>
+								<div id="$accessToCDS" class="btn-group">
+									<input type="radio" class="btn-check required" name="$accessToCDS"
+										id="access_to_cds_yes" autocomplete="off" value="Yes" required>
+									<label for="access_to_cds_yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$accessToCDS"
+										id="access_to_cds_no" autocomplete="off" value="No" required>
+									<label for="access_to_cds_no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+
+							<!-- name -->
+							<div class="form-group">
+								<label for="name">Your name</label><br>
+								<input type="text" id="name" name="name" class="form-control w-md-50" required>
+							</div>
+
+							<!-- Company -->
+							<div class="form-group">
+								<label for="$company">Your company name</label><br>
+								<input type="text" id="$company" name="$company" class="form-control w-md-50" required>
+							</div>
+
+							<!-- email -->
+							<div class="form-group">
+								<label for="email">Your email <em> our analysis and offers will be sent to that
+										address</em></label><br>
+								<input type="email" id="email" name="email" class="form-control w-md-50" required>
+							</div>
+
+							<div class="col-md-12 form-group">
+								<button class="btn btn-light" type="submit" value="Submit">
+									<span id="btn-spinner" aria-hidden="true"></span>
+									<span class="visually-hidden" role="status">Loading...</span>
+									Submit
+								</button>
+								<div class="pt-2">
+									@@include('src/blocks/privacyConsent.html')
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/plugins.min.js"></script>
+		<script src="js/functions.bundle.js"></script>
+
+		<script>
+
+			function addSpinner() {
+				const spinnerElement = document.getElementById("btn-spinner");
+				spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+			}
+
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Get the current domain
+				const currentDomain = window.location.origin;
+
+				// Construct the new URL path
+				const newPath = "/duty-refund-questionnaire-completed.html";
+
+				// Combine the domain and the new path
+				const newURL = currentDomain + newPath;
+
+				// Update the value of the input field
+				const redirectToInput = document.getElementById("redirectTo");
+				if (redirectToInput) {
+					redirectToInput.value = newURL;
+				}
+			});
+		</script>
+
+		<!-- Include the Multi Select JS class https://codeshack.io/multi-select-dropdown-js/-->
+		<script src="https://codeshack.io/web/demos/MultiSelect.js"></script>
+
+</body>
+
+</html>

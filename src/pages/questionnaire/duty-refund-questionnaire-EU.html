@@ -263,9 +263,10 @@
 
 							<!-- How much import duties did you pay during the past 12 months? (3 number inputs)-->
 							<div class="form-group">
-								<label for="$DutiesPaidPerYear">How much import charges did you pay during the past 12
+								<label for="$importChargesPerYear">How much import charges did you pay during the past
+									12
 									months? <em>in Euros</em></label><br>
-								<div id="$avgOrderValue" class="input-group mb-3">
+								<div id="$importChargesPerYear" class="input-group mb-3">
 									<span class="input-group-text">€</span>
 									<input id="$DutiesPaidPerYear" type="number" class="form-control"
 										name="$DutiesPaidPerYear" min="1" placeholder="Duties" required>
@@ -345,19 +346,19 @@
 
 							<!-- name -->
 							<div class="form-group">
-								<label>Your name</label><br>
+								<label for="name">Your name</label><br>
 								<input type="text" id="name" name="name" class="form-control w-md-50" required>
 							</div>
 
 							<!-- Company -->
 							<div class="form-group">
-								<label>Your Company</label><br>
+								<label for="$company">Your company name</label><br>
 								<input type="text" id="$company" name="$company" class="form-control w-md-50" required>
 							</div>
 
 							<!-- email -->
 							<div class="form-group">
-								<label>Your email <em> our analysis and offers will be sent to that
+								<label for="email">Your email <em> our analysis and offers will be sent to that
 										address</em></label><br>
 								<input type="email" id="email" name="email" class="form-control w-md-50" required>
 							</div>
