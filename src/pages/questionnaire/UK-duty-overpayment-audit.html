@@ -8,7 +8,8 @@
 	<!-- End Google Tag Manager -->
 
 	<!-- Metatags Import -->
-	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/UK-duty-overpayment-audit.jpg",
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImages/UK-duty-overpayment-audit.jpg",
 	"description": "${{duty-refund-questionnaire-UK.description}}$",
 	"title": "${{duty-refund-questionnaire-UK.title}}$",
 	"path": "${{duty-refund-questionnaire-UK.path}}$",
@@ -19,25 +20,6 @@
 	<!-- CSS imports -->
 	@@include('src/blocks/head/cssImports.html')
 
-	<style>
-		.input-group-text {
-			background-color: var(--lightSamaritan);
-			color: var(--darkSamaritan);
-			border: none;
-		}
-
-		@media (min-width: 768px) {
-
-			.w-md-15 {
-				width: 15% !important;
-			}
-
-			.w-md-50 {
-				width: 50% !important
-			}
-
-		}
-	</style>
 
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
@@ -62,98 +44,22 @@
 		<section id="content">
 			<div class="container">
 				<div class="row">
-					<!-- Contact Form Overlay -->
-					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
-						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
-							Optimizing Your Business Cashflow <br><em>
-								UK Duty Overpayment Audit</em>
-						</h2>
-						<p class="text-lightSamaritan">Find out how much TDR will make you save in UK duty refund.</p>
 
-						<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
-							method="post" onSubmit="addSpinner()">
-							<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
-							<input id="redirectTo" type="hidden" name="redirectTo" value="">
-							<input type="hidden" name="subject" value="EU-Duty-Reclaim-Questionnaire">
-							<input type="text" name="honeypot" style="display:none">
-
-							<!-- EORI -->
-							<div class="form-group">
-								<label>What is your UK EORI number?</label><br>
-								<div class="input-group w-md-50 mb-3">
-									<input type="text" class="form-control" name="$UKEORI" required>
-								</div>
+					<div class="px-4 py-5 my-5 text-center">
+						<!-- <img class="d-block mx-auto mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt=""
+							width="72" height="57"> -->
+						<h1 class="display-5 fw-bold">Get to the Audit Output Faster! </h1>
+						<div class="col-lg-6 mx-auto">
+							<p class="lead mb-4">We’ve Made It Even Better!</p>
+							<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+								<a type="button" href="/duty-refund-questionnaire-UK.html"
+									class="btn button btn-lg px-4 gap-3">Come With Us to Our New
+									Page <i class="bi bi-arrow-right-circle-fill"></i></a>
 							</div>
-							<div class="w-100"></div>
-							<!-- Years of Import -->
-							<div class="form-group">
-								<label>Have you been importing to the UK for at least 3 years?</label><br>
-								<div class="btn-group">
-									<input type="radio" class="btn-check required" name="$3yearimport_ior"
-										id="years-yes" autocomplete="off" value="Yes"
-										oninput="set3YearsImportBlockToNonRequired()" required>
-									<label for="years-yes"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-									<input type="radio" class="btn-check required" name="$3yearimport_ior" id="years-no"
-										autocomplete="off" value="No" oninput="set3YearsImportBlockToRequired()"
-										required>
-									<label for="years-no"
-										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
-								</div>
-							</div>
-							<div class="w-100"></div>
-							<div class="form-group" id="years-started-importing" style="display: none;">
-								<label>If no, when did you start importing?</label><br>
-								<div class="input-group w-md-50 mb-3">
-									<input type="number" class="form-control" min="2020" name="$YearsStartedImporting">
-								</div>
-							</div>
-							<div class="w-100"></div>
-							<div class="form-group" id="years-started-importing"">
-								<label>How much import duties do you pay per year on average?</label><br>
-								<div class="input-group w-md-50 mb-3">
-									<input type="number" class="form-control" min="1" name="$dutypaymentperyear" required>
-									<span class="input-group-text">GBP</span>
-								</div>
-							</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-							<!-- email -->
-							<div class="form-group">
-								<label>Your email</label><br>
-								<input type="email" id="email" name="email" class="form-control w-md-50" required>
-							</div>
-
-							<div class="col-md-12 form-group">
-								<button class="btn btn-light" type="submit" value="Submit">
-									<span id="btn-spinner" aria-hidden="true"></span>
-									<span class="visually-hidden" role="status">Loading...</span>
-									Submit
-								</button>
-								<div class="pt-2">
-									@@include('src/blocks/privacyConsent.html')
-								</div>
-							</div>
-						</form>
+						</div>
 					</div>
+
+
 				</div>
 			</div>
 		</section>
