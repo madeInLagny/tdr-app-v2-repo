@@ -101,11 +101,14 @@
 
 							<!-- Document Retention Period (Simple number input 10ch) -->
 							<div class="form-group">
-								<label for="$DocumentRetentionPeriod">Over what period of time have you or your customs
-									broker retained documentation? <em>ie: dates (and ideally the MRN numbers) of goods
-										import and export</em></label><br>
-								<input id="$DocumentRetentionPeriod" type="number" class="form-control"
-									name="$DocumentRetentionPeriod" min="1" style="width:10ch;" required>
+								<label for="$DocumentRetentionPeriod">Over how many years have you or your customs
+									broker retained your import and export documents? <em>for example, records showing
+										the dates and preferably the MRN numbers of your shipments</em></label><br>
+								<div id="RetentionPeriodTop" class="input-group mb-3 w-md-15">
+									<input id="$DocumentRetentionPeriod" type="number" class="form-control"
+										name="$DocumentRetentionPeriod" min="1" required><span
+										class="input-group-text">years</span>
+								</div>
 							</div>
 							<div class="w-100"></div>
 
