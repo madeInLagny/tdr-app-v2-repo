@@ -8,16 +8,19 @@
 	<!-- End Google Tag Manager -->
 
 	<!-- Metatags Import -->
-	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/duty-refund-questionnaire-US.jpg",
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImages/duty-refund-questionnaire-US.jpg",
 	"description": "${{duty-refund-questionnaire-US.description}}$",
 	"title": "${{duty-refund-questionnaire-US.title}}$",
 	"path": "${{duty-refund-questionnaire-US.path}}$",
 	})
 
-
-
 	<!-- CSS imports -->
 	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Include the Multi Select stylesheet https://codeshack.io/multi-select-dropdown-js/-->
+	<link href="https://codeshack.io/web/demos/MultiSelect.css" rel="stylesheet" type="text/css">
+
 
 	<style>
 		.input-group-text {
@@ -36,6 +39,17 @@
 				width: 50% !important
 			}
 
+		}
+
+
+		.multi-select .multi-select-header .multi-select-header-placeholder,
+		.form-select {
+			color: var(--darkSamaritan);
+
+		}
+
+		.multi-select-header {
+			background-color: white;
 		}
 	</style>
 
@@ -68,7 +82,16 @@
 							Optimizing Your Business Cashflow <br><em>
 								US Duty Mitigation</em>
 						</h2>
-						<p class="text-lightSamaritan">Find out how much TDR will make you save in US duty drawback.</p>
+
+						<p class="text-lightSamaritan mb-0">Find out how much TDR will make you save in US duty
+							drawback.</p>
+						<div class="alert alert-samaritan my-4" role="alert">
+							<i class="bi-cloud-arrow-down-fill"
+								style="font-size: 1.5rem;padding-right: 2rem; color:var(--samaritan)"></i> Prefer to
+							take your time? Use our <a href="./downloads/TDR_US_Questionnaire.pdf" download
+								class="alert-link text-samaritan"><u>offline form</u></a> to fill it out at your own
+							pace.
+						</div>
 
 						<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
 							method="post" onSubmit="addSpinner()">
@@ -77,11 +100,28 @@
 							<input type="hidden" name="subject" value="US-Duty-Reclaim-Questionnaire">
 							<input type="text" name="honeypot" style="display:none">
 
-							<!-- IOR -->
+							<!-- ************* Supply Chain Overview ************** -->
+							<div class="heading-block fancy-title border-bottom-0 ">
+								<h4>1. Supply Chain Overview.</h4>
+							</div>
+
+							<!-- Countries where inventory is held (Multi Select)-->
 							<div class="form-group">
-								<label>Are you the importer of record for goods into the
+								<label for="$country_where_inventory_is_held">Select countries where you
+									hold inventory</label><br>
+								<select class="form-select" id="$country_where_inventory_is_held"
+									data-placeholder="Select one or several countries"
+									aria-label="Select countries where you hold inventory"
+									name="$country_where_inventory_is_held" multiple data-multi-select required>
+									@@include('src/blocks/allCountriesOptions.html')
+								</select>
+							</div>
+
+							<!-- Are you the importer of record for goods into the	United States? (Yes/No with javascript)-->
+							<div class="form-group">
+								<label for="IOR">Are you the importer of record for goods into the
 									United States?</label><br>
-								<div class="btn-group">
+								<div id="IOR" class="btn-group">
 									<input type="radio" class="btn-check required" name="$self_ior" id="ior-yes"
 										autocomplete="off" value="Yes" oninput="setIORnumberBlockToNonRequired()"
 										required>
@@ -94,9 +134,11 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+
+							<!-- Do you have employees in the US? (Yes/No with visibility set by previous question) -->
 							<div class="form-group" id="US-employees-block" style="display: none;">
-								<label>Do you have employees in the US?</label><br>
-								<div class="btn-group">
+								<label for="employees">Do you have employees in the US?</label><br>
+								<div id="employees" class="btn-group">
 									<input type="radio" class="btn-check required" name="$US_employees" id="USEmp-yes"
 										autocomplete="off" value="Yes" required>
 									<label for="USEmp-yes"
@@ -108,10 +150,13 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+
+
+							<!-- Approximately how many importers of record do you work with? (3 radio input with visibility set by first question) -->
 							<div class="form-group" id="number-of-iors-block" style="display: none;">
-								<label>Approximately how many importers of record do you work
+								<label for="IORNumber">Approximately how many importers of record do you work
 									with?</label><br>
-								<div class="btn-group">
+								<div id="IORNumber" class="btn-group">
 									<!-- Required attributes for this block are added programmatically in the previous block -->
 									<input type="radio" class="btn-check required" name="$number_of_iors" id="ior-1-10"
 										autocomplete="off" value="1-10">
@@ -129,16 +174,21 @@
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">26+</label>
 								</div>
 							</div>
+
+
+							<!-- List main IOR names (Text Input with visibility set by first question) -->
 							<div class="form-group" id="iors-names" style="display: none;">
 								<label>List main IOR names</label><br>
 								<input type="text" id="IORNames" name="$IORNames" class="form-control">
 							</div>
 							<div class="w-100"></div>
-							<!-- EOR -->
+
+
+							<!-- Are you the exporter of record for goods into the United States? (Yes/No with javascript)-->
 							<div class="form-group">
-								<label>Are you the exporter of record for goods leaving the
+								<label for="EOR">Are you the exporter of record for goods leaving the
 									United States?</label><br>
-								<div class="btn-group">
+								<div id="EOR" class="btn-group">
 									<input type="radio" class="btn-check required" name="$self_eor" id="eor-yes"
 										autocomplete="off" value="Yes" oninput="setEORnumberBlockToNonRequired()"
 										required>
@@ -151,6 +201,9 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
+
+
+							<!-- Approximately how many exporter of record do you work with? (3 Radio Input with visibility set by first question) -->
 							<div class="form-group" id="number-of-eors-block" style="display: none;">
 								<label>Approximately how many exporters of record do you work
 									with?</label><br>
@@ -173,108 +226,309 @@
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- Duty Spend -->
-							<div class="form-group">
-								<label>What are your total duties paid over the past 3 or 5
-									years?</label><br>
-								<div class="input-group w-md-50 mb-3">
-									<span class="input-group-text">USD</span>
-									<input type="number" class="form-control" min="0" name="$dutySpent3years"
-										placeholder="3 years..." required>
-									<input type="number" class="form-control" name="$dutySpent5years"
-										placeholder="5 years..." min="0" required>
 
-								</div>
 
+							<!-- ************* Company SetUp ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>2. Company SetUp.</h4>
 							</div>
 							<div class="w-100"></div>
-							<!-- Avg Order Value -->
+
+							<!-- Do you have an ACE account? (Yes-No)-->
 							<div class="form-group">
-								<label>What is the average order value?</label><br>
-								<div class="input-group w-md-50 mb-3">
-									<span class="input-group-text">USD</span>
-									<input type="number" class="form-control" min="0" name="$avgOrderValue" required>
+								<label for="$do_you_have_an_ACE_account?">Is your company currently registered as a
+									legal entity
+									within the EU?</label><br>
+								<div id="$do_you_have_an_ACE_account?" class="btn-group">
+									<input type="radio" class="btn-check required" name="$do_you_have_an_ACE_account?"
+										id="Do_you_have_an_ACE_account_yes" autocomplete="off" value="Yes" required>
+									<label for="Do_you_have_an_ACE_account_yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$do_you_have_an_ACE_account?"
+										id="Do_you_have_an_ACE_account_no" autocomplete="off" value="No" required>
+									<label for="Do_you_have_an_ACE_account_no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- % Return -->
+
+
+
+							<!-- How do you keep track of your exports? (3 dropdowns with inside label)-->
 							<div class="form-group">
-								<label>What percentage of those imported goods are subsequently
-									exported?</label><br>
-								<div class="input-group mb-3 w-md-15">
-									<input type="number" class="form-control" min="0" man="100" name="$%ofGoodsExported"
-										required>
+								<label for="$Export_tracking">How do you keep track of
+									your
+									exports?</label><br>
+								<div class="form-floating mb-3" id="$Export_tracking">
+									<input type="text" class="form-control" id="$track_record_all_canada"
+										name="$track_record_all_canada" required>
+									<label for="$track_record_all_canada" class="text-samaritan">Canada <em>B3, Other
+											(explain)</em></label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="$track_record_all_mexico"
+										name="$track_record_all_mexico" required>
+									<label for="$track_record_all_mexico" class="text-samaritan">Mexico <em>Pedimento,
+											Other
+											(explain)</em></label>
+								</div>
+								<div class="form-floating">
+									<input type="text" class="form-control" id="$track_record_all_dest"
+										name="$track_record_all_dest" required>
+									<label for="$track_record_all_dest" class="text-samaritan">All destinations <em>BOL,
+											AWB
+											or Other (explain)</em></label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- ************* Import and Export Data ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>3. Import and Export Data.</h4>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Do you have an ACE account? (Yes-No)-->
+							<div class="form-group">
+								<label for="$Do_you_import_goods_to_inventory">Do you import goods into your US
+									inventory before
+									delivering them to the buyer?</label><br>
+								<div id="$Do_you_import_goods_to_inventory" class="btn-group">
+									<input type="radio" class="btn-check required"
+										name="$Do_you_import_goods_to_inventory" id="Import_to_inventory_yes"
+										autocomplete="off" value="Yes" required>
+									<label for="Import_to_inventory_yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required"
+										name="$Do_you_import_goods_to_inventory" id="Import_to_inventory_no"
+										autocomplete="off" value="No" required>
+									<label for="Import_to_inventory_no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- What percentage of your goods are shipped via express carrier? (Percent number input 13ch) -->
+							<div class="form-group">
+								<label for="$%via_express_carriers">What percentage of your goods are imported via
+									express carriers?</label><br>
+								<div class="input-group mb-3" style="width:13ch;">
+									<input id="$%via_express_carriers" type="number" class="form-control"
+										name="$%via_express_carriers" step="1" min="0" max="100" required>
 									<span class="input-group-text">%</span>
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- Express Carriers -->
+
+							<!-- Total annual number of imports into the U.S and exports from the U.S. (2 number inputs with inside labels)-->
 							<div class="form-group">
-								<label>What percentage of your goods are shipped via express
-									carrier?</label><br>
-								<div class="input-group w-md-50 mb-3">
-									<input type="number" class="form-control" min="0" max="100"
-										name="$%inExpressCarrierImports" placeholder="Imports" required>
-									<input type="number" class="form-control" name="$%inExpressCarrierEmports"
-										placeholder="Exports" min="0" max="100" required>
-									<span class="input-group-text">%</span>
-								</div>
-							</div>
-							<div class="w-100"></div>
-							<!-- eCommerce -->
-							<div class="form-group">
-								<div>
-									<label class="mb-3">Are the imported goods sold B2C?</label><br>
-									<div class="btn-group">
-										<input type="radio" class="btn-check required" name="$b2c" id="b2c-yes"
-											autocomplete="off" value="Yes" oninput="setB2CReturnsBlockToRequired()"
-											required>
-										<label for="b2c-yes"
-											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-										<input type="radio" class="btn-check required" name="$b2c" id="b2c-no"
-											autocomplete="off" value="No" oninput="setB2CReturnsBlockToNonRequired()"
-											required>
-										<label for="b2c-no"
-											class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								<label for="$annual_import_export">Total annual number of imports into the U.S and
+									exports from the U.S?</label><br>
+								<div id="$annual_import_export" class="input-group w-md-50 mb-3">
+									<div class="form-floating">
+										<input type="number" class="form-control" id="$import_numbers"
+											name="$import_numbers" placeholder required>
+										<label for="$import_numbers" class="text-samaritan">Import</label>
+									</div>
+									<div class="form-floating">
+										<input type="number" class="form-control" id="$export_numbers"
+											name="$export_numbers" placeholder required>
+										<label for="$export_numbers" class="text-samaritan">Export</label>
 									</div>
 								</div>
 							</div>
+
+							<!-- total duties paid over the past 3 or 5 years? (2 number inputs $ label)-->
+							<div class="form-group">
+								<label for="$duties_paid">Total amount of import duties paid over the past 3 or 5
+									years?</label><br>
+								<div id="$duties_paid" class="input-group w-md-50 mb-3">
+									<span class="input-group-text">$</span>
+									<div class="form-floating">
+										<input type="number" class="form-control" id="$duties_paid_3_years"
+											name="$duties_paid_3_years" placeholder required>
+										<label for="$duties_paid_3_years" class="text-samaritan">3 years</label>
+									</div>
+									<div class="form-floating">
+										<input type="number" class="form-control" id="$duties_paid_5_years"
+											name="$duties_paid_5_years" placeholder required>
+										<label for="$duties_paid_5_years" class="text-samaritan">5 years</label>
+									</div>
+								</div>
+							</div>
+
+							<!-- What percentage of those imported goods are subsequently exported? (single inputs with % label)-->
+							<div class="form-group">
+								<label for="$%percent_reexported">What percentage of those imported goods are
+									subsequently
+									exported?</label><br>
+								<div class="input-group mb-3" style="width:13ch;">
+									<input id="$%percent_reexported" type="number" class="form-control"
+										name="$%percent_reexported" step="1" min="0" max="100" required>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
 							<div class="w-100"></div>
-							<!-- eCommerce Returns-->
-							<div class="form-group" id="b2c-returns" style="display: none;">
-								<label>Do you export returned goods?</label><br>
-								<div class="btn-group">
-									<input type="radio" class="btn-check required" name="$b2c-returns"
-										id="b2c-returns-yes" autocomplete="off" value="Yes">
-									<label for="b2c-returns-yes"
+
+							<!-- ************* Previous drawback experience ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>4. Previous drawback experience.</h4>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Have you ever applied for drawback privileges with U.S. Customs? (Yes/No with javascript)-->
+							<div class="form-group">
+								<label for="appliedDrawback">Have you ever applied for drawback privileges with U.S.
+									Customs?</label><br>
+								<div id="appliedDrawback" class="btn-group">
+									<input type="radio" class="btn-check required" name="$already_applied_to_drawback"
+										id="applied-yes" autocomplete="off" value="Yes"
+										oninput="setDrawbackFeedbackBlockToRequired()" required>
+									<label for="applied-yes"
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-									<input type="radio" class="btn-check required" name="$b2c-returns"
-										id="b2c-returns-no" autocomplete="off" value="No">
-									<label for="b2c-returns-no"
+									<input type="radio" class="btn-check required" name="$already_applied_to_drawback"
+										id="applied-no" autocomplete="off" value="No"
+										oninput="setDrawbackFeedbackBlockToNonRequired()" required>
+									<label for="applied-no"
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
 								</div>
 							</div>
 							<div class="w-100"></div>
-							<!-- eCommerce Returns Warehouse-->
-							<div class="form-group" id="b2c-returns-warehouse" style="display: none;">
-								<label>Do you consolidated returned goods in the US?</label><br>
-								<div class="btn-group">
-									<input type="radio" class="btn-check required" name="$b2c-returns-warehouse"
-										id="b2c-returns-warehouse-yes" autocomplete="off" value="Yes">
-									<label for="b2c-returns-warehouse-yes"
+
+
+							<!-- What was the outcome? (single dropdown with visibility triggered by previous question)-->
+							<div id="outcome" class="form-group" style="display: none;">
+								<label for="$drawbackOutcome">What was the outcome?</label><br>
+								<select class="form-select" id="$drawbackOutcome" data-placeholder="Select Outcome"
+									aria-label="What was the outcome?" name="$drawbackOutcome">
+									<option value="">Select Outcome</option>
+									<option value="Approved">Approved</option>
+									<option value="Rejected">Rejected</option>
+									<option value="Withdrawn">Withdrawn</option>
+								</select>
+							</div>
+							<div class="w-100"></div>
+
+
+							<!-- ************* Specific to Retail Drawbacks ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>5. Specific to Retail Drawbacks.</h4>
+							</div>
+							<div class="w-100"></div>
+
+
+							<!-- Do you sell goods to an end user/retailer that are later returned to you? (Yes/No with javascript)-->
+							<div class="form-group">
+								<label for="RetailReturn">Do you sell goods to an end user/retailer that are later
+									returned to you?</label><br>
+								<div id="RetailReturn" class="btn-group">
+									<input type="radio" class="btn-check required" name="$do_user_return_goods?"
+										id="userReturns-yes" autocomplete="off" value="Yes"
+										oninput="goodsAreReturnedFromBuyer()" required>
+									<label for="userReturns-yes"
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
-									<input type="radio" class="btn-check required" name="$b2c-returns-warehouse"
-										id="b2c-returns-warehouse-no" autocomplete="off" value="No">
-									<label for="b2c-returns-warehouse-no"
+									<input type="radio" class="btn-check required" name="$do_user_return_goods?"
+										id="userReturns-no" autocomplete="off" value="No"
+										oninput="noGoodsAreReturnedFromBuyer()" required>
+									<label for="userReturns-no"
 										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
 								</div>
 							</div>
 							<div class="w-100"></div>
+
+
+							<!-- If yes, are the returned goods co-mingled back into inventory and subsequently sold? (Yes/No with javascript)-->
+							<div id="coMingled" class="form-group" style="display: none;">
+								<label for="AreReturnedCoMingled">Are the returned goods co-mingled back into inventory
+									and
+									subsequently sold?</label><br>
+								<div id="AreReturnedCoMingled" class="btn-group">
+									<input type="radio" class="btn-check required" name="$are_returns_comingled?"
+										id="returnsCoMingled-yes" autocomplete="off" value="Yes"
+										oninput="returnedGoodsAreCoMingled()">
+									<label for="returnsCoMingled-yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$are_returns_comingled?"
+										id="returnsCoMingled-no" autocomplete="off" value="No"
+										oninput="returnedGoodsAreNotCoMingled()">
+									<label for="returnsCoMingled-no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- will the returned merchandise be claimed for drawback? (Yes/No)-->
+							<div id="returnsClaimedTopDiv" class="form-group" style="display: none;">
+								<label for="retursClaimed">Will the returned merchandise be claimed for drawback?
+								</label><br>
+								<div id="retursClaimed" class="btn-group">
+									<input type="radio" class="btn-check required" name="$will_returns_be_claimed?"
+										id="returnsClaimed-yes" autocomplete="off" value="Yes">
+									<label for="returnsClaimed-yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$will_returns_be_claimed?"
+										id="returnsClaimed-no" autocomplete="off" value="No">
+									<label for="returnsClaimed-no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+
+							<!-- How are goods segregated (Text Input with visibility set by first question) -->
+							<div class="form-group" id="segregationExplanation" style="display: none;">
+								<label for="$HowAreGoodsSegregated">How is the returned merchandise kept separate in
+									inventory from unused
+									merchandise?</label><br>
+								<input type="text" id="$HowAreGoodsSegregated" name="$HowAreGoodsSegregated"
+									class="form-control">
+							</div>
+							<div class="w-100"></div>
+
+
+							<!-- Described outbound examination (Text Input with visibility set by first question) -->
+							<div class="form-group" id="outboundExaminationTop" style="display: none;">
+								<label for="$OutboundExaminationProcess">Describe how outbound examination is performed
+									<em>leave blank if none is
+										done</em> </label><br>
+								<input type="text" id="$OutboundExaminationProcess" name="$OutboundExaminationProcess"
+									class="form-control">
+							</div>
+							<div class="w-100"></div>
+
+
+							<!-- What inventory software/ERP do you use? (Text Input with visibility set by first question) -->
+							<div class="form-group" id="InventorySoftware" style="display: none;">
+								<label for="$inventorySoftware">What inventory software/ERP do you use?</label><br>
+								<input type="text" id="$inventorySoftware" name="$inventorySoftware"
+									class="form-control">
+							</div>
+							<div class="w-100"></div>
+
+							<!-- ************* Returns from the EU ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>5. Contact.</h4>
+							</div>
+
+							<!-- name -->
+							<div class="form-group">
+								<label for="name">Your name</label><br>
+								<input type="text" id="name" name="name" class="form-control w-md-50" required>
+							</div>
+
+							<!-- Company -->
+							<div class="form-group">
+								<label for="$company">Your company name</label><br>
+								<input type="text" id="$company" name="$company" class="form-control w-md-50" required>
+							</div>
+
 							<!-- email -->
 							<div class="form-group">
-								<label>What email should we send our recommendations to?</label><br>
+								<label for="email">Your email <em> our analysis and offers will be sent to that
+										address</em></label><br>
 								<input type="email" id="email" name="email" class="form-control w-md-50" required>
 							</div>
+
 
 							<div class="col-md-12 form-group">
 								<button class="btn btn-light" type="submit" value="Submit">
@@ -345,7 +599,6 @@
 				document.getElementById('eor-11-25').required = true;
 				document.getElementById('eor-26').required = true;
 				document.getElementById('number-of-eors-block').style.display = 'block';
-
 			}
 
 			function setEORnumberBlockToNonRequired() {
@@ -365,7 +618,6 @@
 				document.getElementById('b2c-returns-warehouse-no').required = true;
 				document.getElementById('b2c-returns-warehouse-yes').required = true;
 				document.getElementById('b2c-returns-warehouse').style.display = 'block';
-
 			}
 
 			function setB2CReturnsBlockToNonRequired() {
@@ -378,6 +630,58 @@
 				document.getElementById('b2c-returns-warehouse-yes').required = false;
 				document.getElementById('b2c-returns-warehouse').style.display = 'none';
 			}
+
+
+			function setDrawbackFeedbackBlockToRequired() {
+				document.getElementById('$drawbackOutcome').required = true;
+				document.getElementById('outcome').style.display = 'block';
+			}
+
+			function setDrawbackFeedbackBlockToNonRequired() {
+
+				document.getElementById('$drawbackOutcome').required = false;
+				document.getElementById('outcome').style.display = 'none';
+			}
+
+			function goodsAreReturnedFromBuyer() {
+				document.getElementById('returnsCoMingled-yes').required = true;
+				document.getElementById('returnsCoMingled-no').required = true;
+				document.getElementById('coMingled').style.display = 'block';
+
+				document.getElementById('outboundExaminationTop').style.display = 'block';
+				document.getElementById('InventorySoftware').style.display = 'block';
+			}
+
+			function noGoodsAreReturnedFromBuyer() {
+				document.getElementById('returnsCoMingled-yes').required = false;
+				document.getElementById('returnsCoMingled-no').required = false;
+				document.getElementById('coMingled').style.display = 'none';
+
+				document.getElementById('outboundExaminationTop').style.display = 'none';
+				document.getElementById('InventorySoftware').style.display = 'none';
+				document.getElementById('returnsClaimedTopDiv').style.display = 'none';
+			}
+
+			function returnedGoodsAreCoMingled() {
+				document.getElementById('returnsClaimed-yes').required = true;
+				document.getElementById('returnsClaimed-no').required = true;
+				document.getElementById('returnsClaimedTopDiv').style.display = 'block';
+
+				document.getElementById('segregationExplanation').style.display = 'none';
+				document.getElementById('$HowAreGoodsSegregated').required = false;
+			}
+
+			function returnedGoodsAreNotCoMingled() {
+				document.getElementById('returnsClaimed-yes').required = false;
+				document.getElementById('returnsClaimed-no').required = false;
+				document.getElementById('returnsClaimedTopDiv').style.display = 'none';
+
+				document.getElementById('segregationExplanation').style.display = 'block';
+				document.getElementById('$HowAreGoodsSegregated').required = true;
+			}
+
+
+
 		</script>
 
 		<script>
@@ -407,6 +711,10 @@
 				}
 			});
 		</script>
+
+		<!-- Include the Multi Select JS class https://codeshack.io/multi-select-dropdown-js/-->
+		<script src="https://codeshack.io/web/demos/MultiSelect.js"></script>
+
 
 
 </body>
