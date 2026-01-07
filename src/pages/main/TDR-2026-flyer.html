@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+	"description": "${{ACE-secure-data-portal-account-application-form.description}}$",
+	"title": "${{ACE-secure-data-portal-account-application-form.title}}$",
+	"path": "${{ACE-secure-data-portal-account-application-form.path}}$",
+	})
+
+
+	
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<style>
+		.vh-70 {
+			height: 70vh;
+		}
+	</style>
+
+</head>
+
+<body class="stretched samaritan-bg">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		})
+		<!-- end of header
+		============================================= -->
+		<div class="section bg-transparent my-0 my-lg-5 pb-0 pb-lg-5">
+			<div class="container mw-md py-3">
+				<div class="row gy-5">
+					<div class="col-sm-9">
+						<div class="fs-6 op-07 mb-3 text-lightSamaritan">
+							TDR Resources</div>
+						<h3 class="display-3 mb-0 fw-normal">
+							Apply for an ACE Account<span class="font-secondary fw-bold fst-italic text-lightSamaritan">
+								for faster and more accurate US duty drawback claims</span>
+						</h3>
+					</div>
+
+					<div class="col-md-4">
+						<p class="text-lightSamaritan">
+							With an ACE portal account, you can directly retrieve detailed import and export transaction
+							records, such as entry summaries and cargo release data, which are refreshed regularly.
+							These reports provide the documented proof needed to establish the link between duties paid
+							on imports and goods exported or destroyed—a fundamental requirement for any duty drawback
+							claim.
+						</p>
+						<h4 class="mb-3 fw-normal font-body">
+							<i class="bi-check-circle-fill me-1 color"></i>
+							Apply for a ACE portal access if you are a US IOR and whether you need agent filing or
+							self-filing duty drawback.
+						</h4>
+
+						<a class="button button-rounded" type="button"
+							href="./downloads/ACE+Secure+Data+Portal+Account+Application+Form.pdf" download>
+							View/Download Form
+						</a>
+
+					</div>
+
+					<div class="col-md-8 text-center">
+						<img src="./images/ACE-FRONT-PAGE.jpg" class="rounded-6 vh-70"
+							alt="ACE registration form front page">
+					</div>
+				</div>
+				<div class="section dark bg-transparent">
+					@@include('src/blocks/blog-gallery.html')
+				</div>
+			</div>
+		</div>
+
+	</div>
+	@@include('src/blocks/footer.html',{
+	"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+	})
+	<!-- Javascripts
+		============================================= -->
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/linkedInInsideTag.html')
+
+
+	<!-- Canvas Scripts -->
+	<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>
