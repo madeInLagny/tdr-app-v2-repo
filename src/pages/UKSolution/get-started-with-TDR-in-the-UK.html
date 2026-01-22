@@ -1,0 +1,102 @@
+<!-- This is the landing page of the 2026 TDR EU flyer qrcode -->
+
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImages/get-started-with-TDR-in-the-UK.jpg",
+	"description": "${{get-started-with-TDR-in-the-UK.description}}$",
+	"title": "${{get-started-with-TDR-in-the-UK.title}}$",
+	"path": "${{get-started-with-TDR-in-the-UK.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<!-- Panel Overlay -->
+					<div class="contact-form-overlay col-md-8 offset-md-2 p-5"
+						style="background-image: linear-gradient( rgba(59, 98, 129, 0.9), rgba(59, 98, 129, 0.7) ), url('./images/flags/ukWavingFlag.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1 text-center">
+							Stop Leaving Money At The Border.<br> Claim Back 100% of Your Eligible Customs Duties.<br>
+							<strong>Ready to begin?</strong>
+						</h2>
+						<p>See how much TDR can boost your cash flow. <br>
+							Book a free, no-obligation consultation for a personalised estimate, or complete our quick
+							questionnaire to check UK duty drawback eligibility now.
+						</p>
+
+						<div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+							<a class="button button-rounded w-100 w-md-auto text-center"
+								href="https://zcal.co/i/_k_94WvF" role="button">
+								<i class="bi bi-chat-fill"></i> Let's talk
+							</a>
+
+							<a class="button button-rounded w-100 w-md-auto text-center"
+								href="/duty-refund-questionnaire-UK.html?utm_source=Website&utm_medium=GetStartedWithUKDutyDrawback"
+								role="button">
+								<i class="bi bi-card-checklist"></i> Check eligibility
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>
+
+
+<!-- TODO: Update Metatags -->
+<!-- TODO: Create EU/UK page -->
