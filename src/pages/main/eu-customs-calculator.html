@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/eu-customs-calculator.jpg",
+	"description": "${{euCustomsCalculator.metaDescription}}$",
+	"title": "${{euCustomsCalculator.metaTitle}}$",
+	"path": "${{euCustomsCalculator.path}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Calculator Custom Styles -->
+	<link rel="stylesheet" href="./css/custom/euCustomsCalculator.css">
+</head>
+
+<body class="stretched">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--primary)",
+		"submenu-bg":"var(--darkPrimary)",
+		"menu-text-hover":"white"
+		})
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<!-- Page Title -->
+					<div class="page-title-wrap">
+						<h1 class="page-title mb-2">${{euCustomsCalculator.pageTitle}}$</h1>
+						<p class="lead text-muted">${{euCustomsCalculator.pageSubtitle}}$</p>
+					</div>
+
+					<!-- Calculator Section -->
+					<div class="row align-items-start">
+						<!-- Form Column -->
+						<div class="col-lg-6 mb-5">
+							<div class="card border-0 shadow-sm">
+								<div class="card-body p-4">
+									<form id="euCustomsForm" class="eu-customs-form">
+
+										<!-- Shipping Country -->
+										<div class="form-group mb-4">
+											<label for="shippingCountry" class="form-label fw-semibold">
+												${{euCustomsCalculator.shippingCountry}}$ <span class="text-danger">*</span>
+											</label>
+											<select class="form-select form-control" id="shippingCountry" required>
+												<option value="">${{euCustomsCalculator.selectCountry}}$</option>
+											</select>
+											<small class="form-text text-muted">${{euCustomsCalculator.shippingCountryHint}}$</small>
+										</div>
+
+										<!-- Import Country -->
+										<div class="form-group mb-4">
+											<label for="importCountry" class="form-label fw-semibold">
+												${{euCustomsCalculator.importCountry}}$ <span class="text-danger">*</span>
+											</label>
+											<select class="form-select form-control" id="importCountry" required>
+												<option value="">${{euCustomsCalculator.selectCountry}}$</option>
+											</select>
+											<small class="form-text text-muted">${{euCustomsCalculator.importCountryHint}}$</small>
+										</div>
+
+										<!-- Average Order Value -->
+										<div class="form-group mb-4">
+											<label for="orderValue" class="form-label fw-semibold">
+												${{euCustomsCalculator.orderValue}}$ <span class="text-danger">*</span>
+											</label>
+											<div class="input-group">
+												<input type="number" class="form-control" id="orderValue" placeholder="1000" min="0" step="0.01" required>
+												<span class="input-group-text">EUR</span>
+											</div>
+											<small class="form-text text-muted">${{euCustomsCalculator.orderValueHint}}$</small>
+										</div>
+
+										<!-- Number of Packages -->
+										<div class="form-group mb-4">
+											<label for="packageCount" class="form-label fw-semibold">
+												${{euCustomsCalculator.packageCount}}$ <span class="text-danger">*</span>
+											</label>
+											<input type="number" class="form-control" id="packageCount" placeholder="1" min="1" step="1" required>
+											<small class="form-text text-muted">${{euCustomsCalculator.packageCountHint}}$</small>
+										</div>
+
+										<!-- Number of HS Codes -->
+										<div class="form-group mb-4">
+											<label for="hsCodeCount" class="form-label fw-semibold">
+												${{euCustomsCalculator.hsCodeCount}}$ <span class="text-danger">*</span>
+											</label>
+											<input type="number" class="form-control" id="hsCodeCount" placeholder="1" min="1" step="1" required>
+											<small class="form-text text-muted">${{euCustomsCalculator.hsCodeCountHint}}$</small>
+										</div>
+
+										<!-- B2C eCommerce Transaction -->
+										<div class="form-group mb-4">
+											<label class="form-label fw-semibold">
+												${{euCustomsCalculator.b2cEcommerce}}$ <span class="text-danger">*</span>
+											</label>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" id="b2cYes" name="b2cEcommerce" value="yes" required>
+												<label class="form-check-label" for="b2cYes">
+													${{euCustomsCalculator.yes}}$
+												</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" id="b2cNo" name="b2cEcommerce" value="no">
+												<label class="form-check-label" for="b2cNo">
+													${{euCustomsCalculator.no}}$
+												</label>
+											</div>
+											<small class="form-text text-muted">${{euCustomsCalculator.b2cHint}}$</small>
+										</div>
+
+										<!-- Submit Button -->
+										<button type="submit" class="btn btn-primary btn-lg w-100">
+											${{euCustomsCalculator.calculate}}$
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<!-- Results Column -->
+						<div class="col-lg-6">
+							<div id="resultsSection" class="results-section" style="display: none;">
+								<div class="card border-0 shadow-sm bg-light">
+									<div class="card-body p-4">
+										<h3 class="card-title mb-4">${{euCustomsCalculator.results}}$</h3>
+
+										<!-- Impact Summary (restyled as result-box) -->
+										<div class="result-box mb-4 p-3 bg-white rounded border-start border-4 border-info" id="impactSummary" style="display: none;">
+											<div class="result-header">
+												<h5 class="mb-2">${{euCustomsCalculator.impact}}$</h5>
+												<small class="text-muted">${{euCustomsCalculator.validFromJuly}}$</small>
+											</div>
+											<div class="result-content mt-3">
+												<p id="impactText" class="mb-0"></p>
+											</div>
+										</div>
+
+										<!-- Additional Info -->
+										<div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+											<small class="text-muted">
+												<strong>${{euCustomsCalculator.disclaimer}}$</strong>
+												${{euCustomsCalculator.disclaimerText}}$
+											</small>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Empty State -->
+							<div id="emptyState" class="text-center">
+								<div class="card border-0 bg-light">
+									<div class="card-body p-5">
+										<i class="icon-calculator" style="font-size: 3rem; color: #ccc;"></i>
+										<p class="mt-3 text-muted">${{euCustomsCalculator.fillForm}}$</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Information Section -->
+					<div class="row mt-5 pt-5 border-top">
+						<div class="col-lg-8 offset-lg-2">
+							<h3 class="mb-4 text-center">${{euCustomsCalculator.moreInfo}}$</h3>
+							<div class="row">
+								<div class="col-md-6 mb-4">
+									<div class="card border-0 bg-light">
+										<div class="card-body">
+											<h5 class="card-title">${{euCustomsCalculator.dutyExplained}}$</h5>
+											<p class="card-text small">${{euCustomsCalculator.dutyExplanation}}$</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 mb-4">
+									<div class="card border-0 bg-light">
+										<div class="card-body">
+											<h5 class="card-title">${{euCustomsCalculator.vatExplained}}$</h5>
+											<p class="card-text small">${{euCustomsCalculator.vatExplanation}}$</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--primary)","text-color":"var(--lightPrimary)"
+		})
+
+	</div><!-- #wrapper end -->
+
+	<!-- Javascripts
+	============================================= -->
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/linkedInInsideTag.html')
+
+	<!-- Canvas Scripts -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- EU Customs Calculator Script -->
+	<script src="js/custom/euCustomsCalculator.js"></script>
+
+</body>
+
+</html>
