@@ -8,9 +8,7 @@
 
   "importCountry": "Country of Importation",
   "importCountryHint": "Select the EU member state where goods are cleared for Customs",
-  "orderValue": "Average Order Value",
-  "orderValueHint": "Enter the average value of your order in EUR",
-  "orderValuePlaceholder":"Enter a value",
+  "orderValue": "Is the order value below €150 ",
   "packageCount": "Number of Packages",
   "packageCountHint": "How many packages in this order?",
   "packageCountPlaceholder":"Enter a number",
@@ -36,6 +34,6 @@
   "handlingSurchargeCountriesNote": "Handling surcharge currently applies only when goods are cleared in Italy and Romania. France will implement a surcharge from March 1, 2026.",
   "vatMode": "VAT Declaration Mode",
   "impact": "Impact Summary",
-  "Updated": "Updated on February 4th 2026:",
+  "Updated": "Updated on February 4th 2026",
   "fillForm": "Fill in the form on the left to calculate the impact of EU 2026 customs regulations on your shipments"
  }

@@ -72,6 +72,13 @@
 						${{euCustomsCalculator.pageTitle}}$
 					</h3>
 
+					<div class="p-3 bg-info bg-opacity-10 rounded d-inline-block">
+						<small class="text-lightSamaritan">
+							<strong>${{euCustomsCalculator.Updated}}$</strong>
+						</small>
+					</div>
+
+
 					<p class="lead pt-5">
 						${{euCustomsCalculator.pageSubtitle}}$
 					</p>
@@ -99,18 +106,24 @@
 										</div>
 
 										<!-- Average Order Value -->
+										<label class="form-label fw-semibold">
+											${{euCustomsCalculator.orderValue}}$ <span class="text-danger">*</span>
+										</label>
 										<div class="form-group mb-4">
-											<label for="orderValue" class="form-label fw-semibold">
-												${{euCustomsCalculator.orderValue}}$ <span class="text-danger">*</span>
-											</label>
-											<div class="input-group">
-												<input type="number" class="form-control" id="orderValue"
-													placeholder="${{euCustomsCalculator.orderValuePlaceholder}}$"
-													min="0" step="0.01" required>
-												<span class="input-group-text">EUR</span>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" id="orderBelow150"
+													name="orderValue" value="orderBelow150" required>
+												<label class="form-check-label" for="orderBelow150">
+													${{euCustomsCalculator.yes}}$
+												</label>
 											</div>
-											<small
-												class="form-text text-lightSamaritan">${{euCustomsCalculator.orderValueHint}}$</small>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" id="orderAbove150"
+													name="orderValue" value="orderAbove150">
+												<label class="form-check-label" for="orderAbove150">
+													${{euCustomsCalculator.no}}$
+												</label>
+											</div>
 										</div>
 
 										<!-- Number of Packages -->
@@ -139,18 +152,18 @@
 										</div>
 
 										<!-- eCommerce Transaction -->
+										<label class="form-label fw-semibold">
+											${{euCustomsCalculator.eCommerce}}$ <span class="text-danger">*</span>
+										</label>
 										<div class="form-group mb-4">
-											<label class="form-label fw-semibold">
-												${{euCustomsCalculator.eCommerce}}$ <span class="text-danger">*</span>
-											</label>
-											<div class="form-check">
+											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio" id="b2cYes"
 													name="eCommerce" value="yes" required>
 												<label class="form-check-label" for="b2cYes">
 													${{euCustomsCalculator.yes}}$
 												</label>
 											</div>
-											<div class="form-check">
+											<div class="form-check form-check-inline">
 												<input class="form-check-input" type="radio" id="b2cNo" name="eCommerce"
 													value="no">
 												<label class="form-check-label" for="b2cNo">
@@ -160,7 +173,7 @@
 										</div>
 
 										<!-- Submit Button -->
-										<button type="submit" class="btn btn-primary btn-lg w-100">
+										<button type="submit" class="button button-rounded">
 											${{euCustomsCalculator.calculate}}$
 										</button>
 									</form>
@@ -187,14 +200,6 @@
 											<h4>Duties</h4>
 										</div>
 										<div id="dutyComment"></div>
-
-
-										<!-- Additional Info -->
-										<div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
-											<small class="text-lightSamaritan">
-												<strong>${{euCustomsCalculator.Updated}}$</strong>
-											</small>
-										</div>
 									</div>
 								</div>
 							</div>

@@ -9,7 +9,6 @@
   // ===== DOM Elements =====
   const form = document.getElementById("euCustomsForm");
   const importCountrySelect = document.getElementById("importCountry");
-  const orderValueInput = document.getElementById("orderValue");
   const packageCountInput = document.getElementById("packageCount");
   const hsCodeCountInput = document.getElementById("hsCodeCount");
   const resultsSection = document.getElementById("resultsSection");
@@ -28,7 +27,8 @@
 
     const formData = {
       importCountry: importCountrySelect.value,
-      orderValue: parseFloat(orderValueInput.value),
+      orderValueBelow150: document.querySelector('input[name="orderValue"]:checked').value ===
+        "orderBelow150",
       packageCount: parseInt(packageCountInput.value),
       hsCodeCount: parseInt(hsCodeCountInput.value),
       b2cEcommerce:
@@ -46,7 +46,7 @@
       const country = formData.importCountry || "This country";
       let comment = "";
 
-      if (!formData.b2cEcommerce || formData.orderValue >= 150) {
+      if (!formData.b2cEcommerce || !formData.orderValueBelow150) {
         comment =
           "Handling surcharges only apply to eCommerce orders of less than €150.";
       } else {
@@ -87,11 +87,11 @@
       let TDRCallOut =
         "<div class='mt-3'><b>Reduce the burden of import duties:</b> TDR helps you recover customs charges paid on EU imports.. <a href='/contact-us.html'>Talk to us...</a></div>";
 
-      if (formData.orderValue > 150) {
+      if (!formData.orderValueBelow150) {
         comment =
           "Orders over €150 are subject to standard EU customs duties. <br>There is no change expected in the duty treatment for these orders under the new regulations. <br>" +
           TDRCallOut;
-      }else if (formData.b2cEcommerce && formData.orderValue <= 150) {
+      }else if (formData.b2cEcommerce && formData.orderValueBelow150) {
         comment =
           "Orders of less than €150 are duty-free until June 30th 2026.<br>Starting July 1st 2026, a fixed duty of €3 per HS code will apply to these orders. <div class='mt-3'><b>Cost Impact:</b> €3*" +
             formData.hsCodeCount +
@@ -99,7 +99,7 @@
             formData.hsCodeCount * 3 +
             " for this order</div>" +
           TDRCallOut;
-      }else if (!formData.b2cEcommerce && formData.orderValue <= 150) {
+      }else if (!formData.b2cEcommerce && formData.orderValueBelow150) {
         comment =
           "Orders of less than €150 are duty-free until June 30th 2026.<br>Starting July 1st 2026, these orders will be subject to standard EU customs duties. <div class='mt-3'><b>Cost Impact:</b> Varies based on the products imported and their respective duty rates.</div>" + TDRCallOut
       }
