@@ -1,0 +1,56 @@
+{
+  "path": "eu-customs-calculator.html",
+  "title": "EU Customs Calculator 2026 - Duty & Handling Surcharge Impact Analysis",
+  "description": "",
+  "preHeader": "Free EU Customs Calculator 2026",
+  "pageTitle": "EU 2026 Import Regulations",
+  "pageSubtitle": "Cost Impact Tool",
+  "titleDesc": "Discover how the new EU customs regulations and handling surcharges impacts your import business.",
+
+  "importCountry": "Country of Importation",
+  "importCountryHint": "Select the EU member state where goods are cleared for Customs",
+  "orderValue": "Is the order value below €150?",
+  "packageCount": "Number of Packages",
+  "packageCountHint": "How many packages in this order?",
+  "packageCountPlaceholder": "Enter a number",
+  "hsCodeCount": "Number of HS Codes",
+  "hsCodeCountHint": "How many different product categories (HS codes) in this order?",
+  "hsCodeCountPlaceholder": "Enter a number",
+  "eCommerce": "Is this an eCommerce transaction?",
+
+  "selectCountry": "Select a country...",
+  "yes": "Yes",
+  "no": "No",
+  "calculate": "Calculate Impact",
+  "results": "Financial Impact Analysis",
+
+  "dutyRate": "Duty Rate",
+  "estimatedDuty": "Estimated Duty",
+  "handlingSurcharge": "Handling Surcharge",
+  "handlingSurchargeCountriesNote": "Handling surcharge currently applies only when goods are cleared in Italy and Romania. France will implement a surcharge from March 1, 2026.",
+  "vatMode": "VAT Declaration Mode",
+  "impact": "Impact Summary",
+  "Updated": "Updated on February 4th 2026",
+  "fillForm": "Fill in the form and the quantified impact will be displayed here.",
+
+  "handlingFeePromoTitle": "Avoid handling surcharge fees with TDR.",
+  "handlingFeePromoDescription": "TDR operates in countries not subject to handling surcharges.",
+  "handlingFeePromoButtonLabel": "Explore Our Duty Drawback and Handling Surcharge Free Solutions",
+
+  "promoTitle": "These import duties are refundable",
+  "promoDesc": "Let TDR get you the refund you're entitled to!",
+  "promoButtonLabel": "Find out how to get easily started",
+
+  "stayInTheKnow": " Stay In The Know ",
+  "form-description": " Subscribe to our newsletter and get the latest updates on EU customs changes ",
+  "firstname": "First Name",
+  "lastname": "Last Name",
+  "email": "Email",
+  "company": "Company",
+  "jobTitle": "Job Title",
+  "form-loading": "Loading...",
+  "submit": "Submit",
+
+  "newsletterSubscriptionSuccess": "Thank you for subscribing to our newsletter! You will receive the latest updates on EU customs changes directly in your inbox.",
+  "newsletterSubscriptionError": "An error occurred while submitting the form. Please try again later."
+}

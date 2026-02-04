@@ -27,7 +27,8 @@
 
     const formData = {
       importCountry: importCountrySelect.value,
-      orderValueBelow150: document.querySelector('input[name="orderValue"]:checked').value ===
+      orderValueBelow150:
+        document.querySelector('input[name="orderValue"]:checked').value ===
         "orderBelow150",
       packageCount: parseInt(packageCountInput.value),
       hsCodeCount: parseInt(hsCodeCountInput.value),
@@ -44,6 +45,8 @@
     // Build handling fee comment according to rules provided
     if (handlingFeeCommentEl) {
       const country = formData.importCountry || "This country";
+      const handlingFeePromo = document.getElementById("handlingSurchargePromo");
+      handlingFeePromo.style.display = "none";
       let comment = "";
 
       if (!formData.b2cEcommerce || !formData.orderValueBelow150) {
@@ -53,20 +56,22 @@
         // eCommerce = true
         if (country === "Italy") {
           comment =
-            "Italy has implemented handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> €2 per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
+            "Italy has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> €2 per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
             formData.packageCount +
             " packages = €" +
             formData.packageCount * 2 +
             " for this order</div>";
+            handlingFeePromo.style.display = "block";
         } else if (country === "Romania") {
           comment =
-            "Romania has implemented handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> RON 25 (approx €5) per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> RON 25*" +
+            "Romania has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> RON 25 (approx €5) per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> RON 25*" +
             formData.packageCount +
             " packages = RON " +
             formData.packageCount * 25 +
             " for this order (approx. €" +
             (formData.packageCount * 25) / 5 +
             ")</div>";
+            handlingFeePromo.style.display = "block";
         } else if (country === "France") {
           comment =
             "France has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> €2 per package.<br><b>Starting from:</b> March 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
@@ -74,6 +79,7 @@
             " packages = €" +
             formData.packageCount * 2 +
             " for this order</div>";
+            handlingFeePromo.style.display = "block";
         } else {
           comment = `To date, ${country} has not introduced any national handling surcharge on e-commerce. The European Union is expected to implement an EU-wide handling surcharge by the third quarter of 2026.`;
         }
@@ -84,27 +90,24 @@
     // Build duty comment according to rules provided
     if (dutyCommentEl) {
       let comment = "";
-      let TDRCallOut =
-        "<div class='mt-3'><b>Reduce the burden of import duties:</b> TDR helps you recover customs charges paid on EU imports.. <a href='/contact-us.html'>Talk to us...</a></div>";
 
       if (!formData.orderValueBelow150) {
         comment =
-          "Orders over €150 are subject to standard EU customs duties. <br>There is no change expected in the duty treatment for these orders under the new regulations. <br>" +
-          TDRCallOut;
-      }else if (formData.b2cEcommerce && formData.orderValueBelow150) {
+          "Orders over €150 are subject to standard EU customs duties. <br>There is no change expected in the duty treatment for these orders in 2026. <br>";
+      } else if (formData.b2cEcommerce && formData.orderValueBelow150) {
         comment =
           "Orders of less than €150 are duty-free until June 30th 2026.<br>Starting July 1st 2026, a fixed duty of €3 per HS code will apply to these orders. <div class='mt-3'><b>Cost Impact:</b> €3*" +
-            formData.hsCodeCount +
-            " HS code = €" +
-            formData.hsCodeCount * 3 +
-            " for this order</div>" +
-          TDRCallOut;
-      }else if (!formData.b2cEcommerce && formData.orderValueBelow150) {
+          formData.hsCodeCount +
+          " HS code = €" +
+          formData.hsCodeCount * 3 +
+          " for this order</div>";
+      } else if (!formData.b2cEcommerce && formData.orderValueBelow150) {
         comment =
-          "Orders of less than €150 are duty-free until June 30th 2026.<br>Starting July 1st 2026, these orders will be subject to standard EU customs duties. <div class='mt-3'><b>Cost Impact:</b> Varies based on the products imported and their respective duty rates.</div>" + TDRCallOut
+          "Orders of less than €150 are duty-free until June 30th 2026.<br>Starting July 1st 2026, these orders will be subject to standard EU customs duties. <div class='mt-3'><b>Cost Impact:</b> Varies based on the products imported and their respective duty rates.</div>" +
+          TDRCallOut;
       }
 
-	  dutyCommentEl.innerHTML = comment;
+      dutyCommentEl.innerHTML = comment;
     }
     // Show results, hide empty state
     resultsSection.style.display = "block";

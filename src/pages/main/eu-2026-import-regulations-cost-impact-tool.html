@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImages/eu-customs-calculator.jpg",
+	"description": "${{eu-2026-import-regulations-cost-impact-tool.description}}$",
+	"title": "${{eu-2026-import-regulations-cost-impact-tool.title}}$",
+	"path": "${{eu-2026-import-regulations-cost-impact-tool.path}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Calculator Custom Styles --><!-- 
+	<link rel="stylesheet" href="./css/custom/eu-2026-import-regulations-cost-impact-tool.css"> -->
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<style>
+		.input-group-text {
+			background-color: var(--lightSamaritan);
+			color: var(--darkSamaritan);
+			border: none;
+		}
+
+		@media (min-width: 768px) {
+
+			.w-md-15 {
+				width: 15% !important;
+			}
+
+			.w-md-50 {
+				width: 50% !important
+			}
+
+		}
+	</style>
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<!-- Page Title -->
+					<div class="fs-6 op-07 mb-3 text-lightSamaritan">
+						${{eu-2026-import-regulations-cost-impact-tool.preHeader}}$</div>
+					<h3 class="display-3 mb-3 fw-normal">
+						${{eu-2026-import-regulations-cost-impact-tool.pageTitle}}$ <br><span
+							class="font-secondary fw-bold fst-italic text-lightSamaritan">
+							${{eu-2026-import-regulations-cost-impact-tool.pageSubtitle}}$</span>
+					</h3>
+
+					<p class="lead pt-5">
+						${{eu-2026-import-regulations-cost-impact-tool.titleDesc}}$
+					</p>
+
+					<div class="p-3 bg-info bg-opacity-10 rounded d-inline-block mb-2">
+						<small class="text-lightSamaritan">
+							<strong>${{eu-2026-import-regulations-cost-impact-tool.Updated}}$</strong>
+						</small>
+					</div>
+
+
+					<!-- Calculator Section -->
+					<div class="row align-items-start">
+						<!-- Form Column -->
+						<div class="col-lg-6 mb-5">
+							<div class="card border-0 shadow-sm">
+								<div class="contact-form-overlay p-4">
+									<form id="euCustomsForm" class="eu-customs-form">
+
+										<!-- Import Country -->
+										<div class="form-group mb-4">
+											<label for="importCountry" class="form-label fw-semibold">
+												${{eu-2026-import-regulations-cost-impact-tool.importCountry}}$ <span
+													class="text-danger">*</span>
+											</label>
+											<select class="form-select form-control" id="importCountry" required>
+												<option value="">${{eu-2026-import-regulations-cost-impact-tool.selectCountry}}$</option>
+												@@include('src/blocks/euCountriesOptions.html')
+											</select>
+											<small
+												class="form-text text-lightSamaritan">${{eu-2026-import-regulations-cost-impact-tool.importCountryHint}}$</small>
+										</div>
+
+										<!-- Average Order Value -->
+										<label class="form-label fw-semibold">
+											${{eu-2026-import-regulations-cost-impact-tool.orderValue}}$ <span class="text-danger">*</span>
+										</label>
+										<div class="form-group mb-4">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" id="orderBelow150"
+													name="orderValue" value="orderBelow150" required>
+												<label class="form-check-label" for="orderBelow150">
+													${{eu-2026-import-regulations-cost-impact-tool.yes}}$
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" id="orderAbove150"
+													name="orderValue" value="orderAbove150">
+												<label class="form-check-label" for="orderAbove150">
+													${{eu-2026-import-regulations-cost-impact-tool.no}}$
+												</label>
+											</div>
+										</div>
+
+										<!-- Number of Packages -->
+										<div class="form-group mb-4">
+											<label for="packageCount" class="form-label fw-semibold">
+												${{eu-2026-import-regulations-cost-impact-tool.packageCount}}$ <span
+													class="text-danger">*</span>
+											</label>
+											<input type="number" class="form-control" id="packageCount"
+												placeholder="${{eu-2026-import-regulations-cost-impact-tool.packageCountPlaceholder}}$" min="1"
+												step="1" required>
+											<small
+												class="form-text text-lightSamaritan">${{eu-2026-import-regulations-cost-impact-tool.packageCountHint}}$</small>
+										</div>
+
+										<!-- Number of HS Codes -->
+										<div class="form-group mb-4">
+											<label for="hsCodeCount" class="form-label fw-semibold">
+												${{eu-2026-import-regulations-cost-impact-tool.hsCodeCount}}$ <span class="text-danger">*</span>
+											</label>
+											<input type="number" class="form-control" id="hsCodeCount"
+												placeholder="${{eu-2026-import-regulations-cost-impact-tool.hsCodeCountPlaceholder}}$" min="1"
+												step="1" required>
+											<small
+												class="form-text text-lightSamaritan">${{eu-2026-import-regulations-cost-impact-tool.hsCodeCountHint}}$</small>
+										</div>
+
+										<!-- eCommerce Transaction -->
+										<label class="form-label fw-semibold">
+											${{eu-2026-import-regulations-cost-impact-tool.eCommerce}}$ <span class="text-danger">*</span>
+										</label>
+										<div class="form-group mb-4">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" id="b2cYes"
+													name="eCommerce" value="yes" required>
+												<label class="form-check-label" for="b2cYes">
+													${{eu-2026-import-regulations-cost-impact-tool.yes}}$
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" id="b2cNo" name="eCommerce"
+													value="no">
+												<label class="form-check-label" for="b2cNo">
+													${{eu-2026-import-regulations-cost-impact-tool.no}}$
+												</label>
+											</div>
+										</div>
+
+										<!-- Submit Button -->
+										<button type="submit" class="button button-rounded">
+											${{eu-2026-import-regulations-cost-impact-tool.calculate}}$
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<!-- Results Column -->
+						<div class="col-lg-6">
+							<div id="resultsSection" style="display: none;">
+								<!-- <div id="resultsSection">-->
+								<div class="card border-0 shadow-sm">
+									<div class="contact-form-overlay p-4">
+										<h3 class="card-title mb-4">${{eu-2026-import-regulations-cost-impact-tool.results}}$</h3>
+
+										<!-- Handling Fee -->
+										<div class="heading-block fancy-title border-bottom-0 title-top-border">
+											<h4>Handling Fees</h4>
+										</div>
+										<div class="mb-4" id="handlingFeeComment"></div>
+
+										<div id="handlingSurchargePromo" class="container" style="display: none;">
+											<div
+												class="promo shadow-sm text-center lightSamaritan-bg p-2 border rounded-5 my-5">
+												<span class="text-darkSamaritan">
+													<h3 class="text-darkSamaritan"><i class="bi-lightbulb-fill"
+															style="color: #2e2af36b;"></i>
+														${{eu-2026-import-regulations-cost-impact-tool.handlingFeePromoTitle}}$
+													</h3>
+													<p>${{eu-2026-import-regulations-cost-impact-tool.handlingFeePromoDescription}}$</p>
+													<a class="button button-rounded"
+														href="${{get-started-with-TDR-in-the-EU.path}}$">${{eu-2026-import-regulations-cost-impact-tool.handlingFeePromoButtonLabel}}$</a>
+												</span>
+
+											</div>
+										</div>
+
+										<!-- Duties -->
+										<div class="heading-block fancy-title border-bottom-0 title-top-border">
+											<h4>Duties</h4>
+										</div>
+										<div id="dutyComment"></div>
+
+										<div class="container">
+											<div
+												class="promo shadow-sm text-center lightSamaritan-bg p-2 border rounded-5 my-5">
+												<span class="text-darkSamaritan">
+													<h3 class="text-darkSamaritan"><i class="bi-lightbulb-fill"
+															style="color: #2e2af36b;"></i>
+														${{eu-2026-import-regulations-cost-impact-tool.promoTitle}}$
+													</h3>
+													<p>${{eu-2026-import-regulations-cost-impact-tool.promoDesc}}$</p>
+													<a class="button button-rounded"
+														href="${{get-started-with-TDR-in-the-EU.path}}$">${{eu-2026-import-regulations-cost-impact-tool.promoButtonLabel}}$</a>
+												</span>
+
+											</div>
+										</div>
+
+										<div class="heading-block fancy-title border-bottom-0 title-top-border">
+											<h4>${{eu-2026-import-regulations-cost-impact-tool.stayInTheKnow}}$</h4>
+										</div>
+										<p class="text-lightSamaritan">
+											${{eu-2026-import-regulations-cost-impact-tool.form-description}}$
+										</p>
+										<div class="">
+											<form class="row mb-0" id="contactForm"
+												action="https://api.staticforms.xyz/submit" method="post"
+												onsubmit="handleSubmit(event)">
+												<input type="hidden" name="accessKey"
+													value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+												<input id="redirectTo" type="hidden" name="redirectTo" value="">
+												<input type="hidden" name="subject" value="EU Newsletter Subscription">
+												<input type="text" name="honeypot" style="display:none">
+
+												<div class="col-md-6 form-group">
+													<label for="firstName">${{eu-2026-import-regulations-cost-impact-tool.firstname}}$</label>
+													<input type="text" id="firstName" name="$firstName"
+														class="form-control required" required>
+												</div>
+
+												<div class="col-md-6 form-group">
+													<label for="name">${{eu-2026-import-regulations-cost-impact-tool.lastname}}$</label>
+													<input type="text" id="name" name="name"
+														class="form-control required" required>
+												</div>
+
+												<div class="w-100"></div>
+
+												<div class="col-md-6 form-group">
+													<label for="email">${{eu-2026-import-regulations-cost-impact-tool.email}}$</label>
+													<input type="email" id="email" name="email" class="form-control"
+														required>
+												</div>
+
+												<div class="col-md-6 form-group">
+													<label for="company">${{eu-2026-import-regulations-cost-impact-tool.company}}$</label>
+													<input type="text" id="company" name="$company" class="form-control"
+														required>
+												</div>
+
+												<div class="w-100"></div>
+
+												<div class="col-md-6 form-group">
+													<label for="title">${{eu-2026-import-regulations-cost-impact-tool.jobTitle}}$</label>
+													<input type="text" id="title" name="$title" class="form-control"
+														required>
+												</div>
+
+												<div class="w-100"></div>
+
+												<div class="col-md-12 form-group">
+													<button class="btn btn-light" type="submit" value="Submit">
+														<span id="btn-spinner" aria-hidden="true"></span>
+														<span class="visually-hidden"
+															role="status">${{eu-2026-import-regulations-cost-impact-tool.form-loading}}$</span>
+														${{eu-2026-import-regulations-cost-impact-tool.submit}}$
+													</button>
+													<div class="pt-2">
+														@@include('src/blocks/privacyConsent.html')
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Empty State -->
+							<div id="emptyState" class="text-center">
+								<!-- <div id="emptyState" style="display: none;"> -->
+								<div class="card border-0 bg-light">
+									<div class="contact-form-overlay p-5">
+										<i class="icon-calculator" style="font-size: 3rem; color: #ccc;"></i>
+										<p class="mt-3 text-lightSamaritan">${{eu-2026-import-regulations-cost-impact-tool.fillForm}}$</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			@@include('src/blocks/contactUsCallOut.html')
+			<div class="section dark bg-transparent">
+				@@include('src/blocks/blog-gallery.html')
+
+		</section><!-- #content end -->
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--primary)","text-color":"var(--lightPrimary)"
+		})
+
+	</div><!-- #wrapper end -->
+
+	<!-- Javascripts
+	============================================= -->
+	@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+	<!-- Tawk Chatbox -->
+	@@include('src/blocks/tawk.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/URLCampaignLogger.html')
+	<!-- URL Campaign Logger -->
+	@@include('src/blocks/linkedInInsideTag.html')
+
+	<!-- Canvas Scripts -->
+	<script src="js/plugins.min.js"></script>
+	<script src="js/functions.bundle.js"></script>
+
+	<!-- EU Customs Calculator Script -->
+	<script src="js/custom/eu-2026-import-regulations-cost-impact-tool.js"></script>
+
+
+	<!-- Newsletter Notifications -->
+
+	<div id="successNotification" data-notify-position="top-right" data-notify-type="success"
+		data-notify-msg="<i class='bi-check-circle-fill'></i> ${{eu-2026-import-regulations-cost-impact-tool.newsletterSubscriptionSuccess}}$">
+	</div>
+	<div id="errorNotification" data-notify-position="top-right" data-notify-type="error"
+		data-notify-msg="<i class='bi-exclamation-triangle-fill'></i> ${{eu-2026-import-regulations-cost-impact-tool.newsletterSubscriptionError}}$">
+	</div>
+
+
+	<!-- Newsletter form submit handler without redirect -->
+	<script>
+
+		function addSpinner() {
+			const spinnerElement = document.getElementById("btn-spinner");
+			spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+		}
+
+		function removeSpinner() {
+			const spinnerElement = document.getElementById("btn-spinner");
+			spinnerElement.classList.remove("spinner-border", "spinner-border-sm")
+		}
+
+
+		async function handleSubmit(event) {
+			event.preventDefault();
+
+			addSpinner();
+
+			const form = event.target;
+			const formData = new FormData(form);
+
+			try {
+				const response = await fetch('https://api.staticforms.dev/submit', {
+					method: 'POST',
+					body: formData
+				});
+
+				const result = await response.json();
+
+				if (result.success) {
+					/* Form was successfully submitted */
+					removeSpinner();
+					form.reset();
+				} else {
+					/* Form was not correctly submitted */
+					removeSpinner();
+					console.log('Failed to send message: ' + result.message);
+				}
+			} catch (error) {
+				/* Form was not correctly submitted */
+				removeSpinner();
+				console.log('Failed to send message: ' + error.message);
+			}
+		}
+
+
+	</script>
+
+
+</body>
+
+</html>

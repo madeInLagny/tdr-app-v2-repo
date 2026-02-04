@@ -85,7 +85,6 @@ ul {
   --cnvs-page-title-color: white;
 }
 
-
 /* former btn-primary */
 .button {
   --cnvs-btn-color: #358f9c;
@@ -116,6 +115,11 @@ ul {
   --cnvs-input-btn-input-color: var(--darkSamaritan);
   --cnvs-input-focus-color: var(--darkSamaritan);
   --cnvs-input-focus-bg: white;
+}
+
+.form-check-input:checked {
+  background-color: #358f9c;
+  border-color: #358f9c;
 }
 
 .alert-primary {
