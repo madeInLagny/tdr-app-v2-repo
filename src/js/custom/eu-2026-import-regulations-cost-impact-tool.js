@@ -124,22 +124,3 @@
     init();
   }
 })();
-
-/* Complete with Duty Calculation */
-/* 
-
-orders of more than 150 EUR:
-* Dutiable as per current rules (This duty amount is refundable. Contact TDR to learn more)
-
-ecom of less than 150 EUR:
-* duty free until June 30th 2026 
-* 3€ per HS code starting July 1st 2026 (This fixed duty amount is refundable. Contact TDR to learn more)
-not ecom orders: 
-* duty free until June 30th 2026
-* Dutiable starting July 1st 2026 (same as current rules for orders over 150 EUR) (This fixed duty amount is refundable. Contact TDR to learn more)
-
-*/
-
-/* TDR has developped solutions to mitigate duties impact on your business. Talk to us... */
-
-/* Stay in the know with EU Customs Regulations development: Subscribe to our EU 2026 Newsletter: */
