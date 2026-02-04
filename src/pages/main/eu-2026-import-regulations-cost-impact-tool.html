@@ -407,7 +407,9 @@
 					removeSpinner();
 					SEMICOLON.Modules.notifications(document.querySelector('#successNotification'));
 					form.reset();
-					/* Form was not correctly submitted */
+				}
+				/* Form was not correctly submitted */
+				else {
 					removeSpinner();
 					SEMICOLON.Modules.notifications(document.querySelector('#errorNotification'))
 					console.log('Failed to send message: ' + result);
