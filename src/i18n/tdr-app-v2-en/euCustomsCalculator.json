@@ -1,55 +1,41 @@
 {
+  "path": "eu-customs-calculator.html",
+  "title": "EU Customs Calculator 2026 - Duty & Handling Surcharge Impact Analysis",
+  "description": "",
+  "preHeader": "Free EU Customs Calculator 2026",
+  "pageTitle": "2026 EU Customs Changes:&lt;br&gt;Cost Impact Calculator",
+  "pageSubtitle": "Discover how the new EU customs regulations and handling surcharges impacts your import business.",
 
-    "path": "/eu-customs-calculator",
-    "metaTitle": "EU Customs Calculator 2026 - Duty & VAT Impact Analysis",
-    "metaDescription": "Calculate the impact of EU 2026 customs regulations on your imports. Get duty rates, handling surcharges, and VAT declaration modes before and after July 1st 2026.",
-    "pageTitle": "EU Customs Regulations Calculator 2026",
-    "pageSubtitle": "Discover how the new EU customs regulations effective July 1st, 2026 will impact your import business",
-    
-    "shippingCountry": "Country of Shipping",
-    "shippingCountryHint": "Select the origin country of your shipment (non-EU countries only)",
-    "importCountry": "Country of Importation",
-    "importCountryHint": "Select the EU member state where goods are imported",
-    "orderValue": "Average Order Value",
-    "orderValueHint": "Enter the average value of your order in EUR",
-    "packageCount": "Number of Packages",
-    "packageCountHint": "How many packages in this order?",
-    "hsCodeCount": "Number of HS Codes",
-    "hsCodeCountHint": "How many different product categories (HS codes)?",
-    "b2cEcommerce": "Is this a B2C eCommerce transaction?",
-    "b2cHint": "Business-to-Consumer eCommerce transactions may have different handling",
-    
-    "selectCountry": "Select a country...",
-    "yes": "Yes",
-    "no": "No",
-    "calculate": "Calculate Impact",
-    
-    "results": "Customs Impact Analysis",
-    "beforeJuly2026": "Current Rules (Until June 30, 2026)",
-    "validUntilJuly": "Valid until June 30, 2026",
-    "afterJuly2026": "New Rules (From July 1, 2026)",
-    "validFromJuly": "Effective from July 1, 2026",
-    
-    "dutyRate": "Duty Rate",
-    "estimatedDuty": "Estimated Duty",
-    "handlingSurcharge": "Handling Surcharge",
-    "handlingSurchargeCountriesNote": "Handling surcharge currently applies only when goods are cleared in Italy and Romania. France will implement a surcharge from March 1, 2026.",
-    "vatMode": "VAT Declaration Mode",
-    "impact": "Impact Summary",
-    "disclaimer": "Disclaimer:",
-    "disclaimerText": "This calculator provides estimates based on standard EU tariff rates. Actual duty rates may vary depending on product classification, origin country agreements, and preferential trade arrangements. Please consult with customs experts for accurate rates.",
-    
-    "fillForm": "Fill in the form on the left to calculate the impact of EU 2026 customs regulations on your shipments",
-    "moreInfo": "Understanding EU Customs Regulations",
-    
-    "dutyExplained": "What are Import Duties?",
-    "dutyExplanation": "Import duties are taxes levied on goods entering the EU. They are calculated as a percentage of the goods' value. As of July 1st 2026, duty rates increase for most non-EU countries due to new EU customs regulations.",
-    
-    "vatExplained": "VAT on Imports",
-    "vatExplanation": "Value Added Tax (VAT) is charged on imported goods. Current rules allow simplified procedures for low-value imports (under 150 EUR), where VAT is not declared. From July 1st 2026, VAT will be charged on all imports regardless of value."
-  ,
-    "deMinimisEcomText": "Abolition of de-minimis: a fixed cost of 3 EUR per HS code will apply to B2C/eCommerce imports from July 1st 2026.",
-    "deMinimisOtherText": "Abolition of de-minimis: standard customs duties will apply to all commercial orders regardless of value. For an exact duty estimate, please request a paid consultation.",
-    "consultationCTA": "Request a paid consultation for a full duty estimate and classification support: /main/contact-us.html"
-  }
+  "importCountry": "Country of Importation",
+  "importCountryHint": "Select the EU member state where goods are cleared for Customs",
+  "orderValue": "Average Order Value",
+  "orderValueHint": "Enter the average value of your order in EUR",
+  "orderValuePlaceholder":"Enter a value",
+  "packageCount": "Number of Packages",
+  "packageCountHint": "How many packages in this order?",
+  "packageCountPlaceholder":"Enter a number",
+  "hsCodeCount": "Number of HS Codes",
+  "hsCodeCountHint": "How many different product categories (HS codes) in this order?",
+  "hsCodeCountPlaceholder":"Enter a number",
+  "eCommerce": "Is this an eCommerce transaction?",
+  
+  "selectCountry": "Select a country...",
+  "yes": "Yes",
+  "no": "No",
+  "calculate": "Calculate Impact",
 
+  "results": "Customs Impact Analysis",
+  "beforeJuly2026": "Current Rules (Until June 30, 2026)",
+  "validUntilJuly": "Valid until June 30, 2026",
+  "afterJuly2026": "New Rules (From July 1, 2026)",
+  "validFromJuly": "Effective from July 1, 2026",
+
+  "dutyRate": "Duty Rate",
+  "estimatedDuty": "Estimated Duty",
+  "handlingSurcharge": "Handling Surcharge",
+  "handlingSurchargeCountriesNote": "Handling surcharge currently applies only when goods are cleared in Italy and Romania. France will implement a surcharge from March 1, 2026.",
+  "vatMode": "VAT Declaration Mode",
+  "impact": "Impact Summary",
+  "Updated": "Updated on February 4th 2026:",
+  "fillForm": "Fill in the form on the left to calculate the impact of EU 2026 customs regulations on your shipments"
+ }
