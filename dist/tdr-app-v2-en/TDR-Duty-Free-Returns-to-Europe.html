@@ -1079,7 +1079,11 @@
   var ccScript = null;
   var shouldLoadGDPR = null;
 
-  
+  if (
+    location.hostname !== "localhost" &&
+    location.hostname !== "127.0.0.1" &&
+    location.protocol !== "file:"
+  ) {
     ccScript = document.createElement('script');
     ccScript.defer = true;
     ccScript.src = "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js";
@@ -1092,7 +1096,7 @@
     };
     
     document.head.appendChild(ccScript);
-  
+  }
 </script>
 
 <script>

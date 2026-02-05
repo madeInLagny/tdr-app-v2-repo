@@ -24,22 +24,16 @@
   "calculate": "Calculate Impact",
   "results": "Financial Impact Analysis",
 
-  "dutyRate": "Duty Rate",
-  "estimatedDuty": "Estimated Duty",
-  "handlingSurcharge": "Handling Surcharge",
-  "handlingSurchargeCountriesNote": "Handling surcharge currently applies only when goods are cleared in Italy and Romania. France will implement a surcharge from March 1, 2026.",
-  "vatMode": "VAT Declaration Mode",
-  "impact": "Impact Summary",
   "Updated": "Updated on February 4th 2026",
   "fillForm": "Fill in the form and the quantified impact will be displayed here.",
 
   "handlingFeePromoTitle": "Avoid handling surcharge fees with TDR.",
   "handlingFeePromoDescription": "TDR operates in countries not subject to handling surcharges.",
-  "handlingFeePromoButtonLabel": "Explore Our Cost Mitigation Solutions",
+  "handlingFeePromoButtonLabel": "Explore EU Solutions",
 
   "promoTitle": "These import duties are refundable",
   "promoDesc": "Let TDR get you the refund you're entitled to!",
-  "promoButtonLabel": "Find out how to get easily started",
+  "promoButtonLabel": "Get Started",
 
   "stayInTheKnow": " Stay In The Know ",
   "form-description": " Subscribe to our newsletter and get the latest updates on EU customs changes ",
