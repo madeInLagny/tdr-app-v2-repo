@@ -74,10 +74,10 @@
             handlingFeePromo.style.display = "block";
         } else if (country === "France") {
           comment =
-            "France has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> €2 per package.<br><b>Starting from:</b> March 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
-            formData.packageCount +
-            " packages = €" +
-            formData.packageCount * 2 +
+            "France has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> €2 per HS code.<br><b>Starting from:</b> March 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
+            formData.hsCodeCount +
+            " HS codes = €" +
+            formData.hsCodeCount * 2 +
             " for this order</div>";
             handlingFeePromo.style.display = "block";
         } else {
