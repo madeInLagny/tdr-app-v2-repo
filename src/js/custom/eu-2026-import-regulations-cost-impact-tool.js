@@ -48,23 +48,24 @@
       const handlingFeePromo = document.getElementById("handlingSurchargePromo");
       handlingFeePromo.style.display = "none";
       let comment = "";
+      const romaniaDeliveryFee = "<br>Note: Romania applies a fee of 25Ron per package on all deliveries in Romania, even if the order was imported in another EU country.";
 
       if (!formData.b2cEcommerce || !formData.orderValueBelow150) {
         comment =
-          "Handling surcharges only apply to eCommerce orders of less than €150.";
+          "Handling surcharges only apply to eCommerce orders of less than €150."+romaniaDeliveryFee;
       } else {
         // eCommerce = true
         if (country === "Italy") {
           comment =
-            "Italy has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> €2 per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
+            "Italy has implemented a handling surcharge on eCommerce orders of less than €150 imported and delivered in Italy.<div class='mt-3'><b>Amount:</b> €2 per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
             formData.packageCount +
             " packages = €" +
             formData.packageCount * 2 +
-            " for this order</div>";
+            " for this order</div>"+romaniaDeliveryFee;
             handlingFeePromo.style.display = "block";
         } else if (country === "Romania") {
           comment =
-            "Romania has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> RON 25 (approx €5) per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> RON 25*" +
+            "Romania has implemented a handling surcharge on eCommerce orders of less than €150 delivered in Romania (regardless of the country of import).<div class='mt-3'><b>Amount:</b> RON 25 (approx €5) per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> RON 25*" +
             formData.packageCount +
             " packages = RON " +
             formData.packageCount * 25 +
@@ -74,11 +75,11 @@
             handlingFeePromo.style.display = "block";
         } else if (country === "France") {
           comment =
-            "France has implemented a handling surcharge on eCommerce orders of less than €150.<div class='mt-3'><b>Amount:</b> €2 per HS code.<br><b>Starting from:</b> March 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
+            "France has implemented a handling surcharge on eCommerce orders of less than €150 imported and delivered in France.<div class='mt-3'><b>Amount:</b> €2 per HS code.<br><b>Starting from:</b> March 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
             formData.hsCodeCount +
             " HS codes = €" +
             formData.hsCodeCount * 2 +
-            " for this order</div>";
+            " for this order</div>"+romaniaDeliveryFee;
             handlingFeePromo.style.display = "block";
         } else {
           comment = `To date, ${country} has not introduced any national handling surcharge on e-commerce. The European Union is expected to implement an EU-wide handling surcharge by the third quarter of 2026.`;
