@@ -24,7 +24,7 @@
   },
   "step5": {
     "title": "5. Return",
-    "summary": "End customer returns part or all of the order. TDR can handle any type of returns as long as they are processed within 3 months of the importation and are returned unused."
+    "summary": "The end customer may return part or all of the order. TDR can process any type of return, provided it is completed within three months of importation and the goods are returned unused."
   },
   "step6": {
     "title": "6. Consolidation",
@@ -36,11 +36,11 @@
   },
   "step8": {
     "title": "8. Export declaration",
-    "summary": "TDR collects all the export MRN details, reconcile orders details with import data and submit duty refund claim for every eligible order."
+    "summary": "TDR collects all export MRN details, reconciles order details with import data, and submits duty refund claims for each eligible order."
   },
   "step9": {
     "title": "9. Validation and refund",
-    "summary": "EU Customs validate claims and refund the importer of all approved requests ."
+    "summary": "EU customs authorities review claims and refund the importer for all approved requests."
   },
 
   "callout": {
