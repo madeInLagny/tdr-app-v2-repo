@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EU eCommerce Flow: NL Import to Re-Export</title>
+
+  <!-- Fonts & core styles (reuse site assets) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Signika+Negative:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.min.css">
+  <link rel="stylesheet" href="./css/custom/custom.css">
+  <link rel="stylesheet" href="./css/custom/samaritan.css">
+  <link rel="stylesheet" href="./css/swiper.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    /* Flow specific styles using existing color variables */
+    .hero { padding: 4rem 1.5rem; text-align: left; }
+    .flow-wrapper { padding: 3rem 1.5rem; }
+
+    .flow-stepper { display: flex; gap: 1.5rem; align-items: center; flex-wrap: nowrap; overflow: auto; padding-bottom: 1rem; }
+    .flow-step { min-width: 220px; max-width: 260px; flex: 0 0 auto; text-align: center; padding: 1rem; border-radius: 12px; position: relative; }
+
+    .flow-step .icon { width:54px; height:54px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; margin-bottom:.5rem; font-size:22px; }
+
+    .flow-connector { height:6px; flex: 1 0 40px; border-radius:6px; background: linear-gradient(90deg,var(--samaritan),var(--lightSamaritan)); }
+
+    .flow-step.completed { background: var(--lightSamaritan); color: var(--darkSamaritan); }
+    .flow-step.completed .icon { background: var(--darkSamaritan); color: white; }
+
+    .flow-step.active { border: 2px solid var(--darkSamaritan); box-shadow: 0 6px 18px rgba(36,59,78,0.2); }
+    .flow-step.pending { background: rgba(255,255,255,0.03); color: var(--lightSamaritan); border: 1px dashed rgba(255,255,255,0.04); }
+
+    /* Responsive: stack on small screens and enable swiper fallback */
+    @media (max-width: 767px) {
+      .flow-stepper { display: block; }
+      .flow-step { margin-bottom: 1rem; max-width: none; }
+      .flow-connector { display:none; }
+    }
+
+    /* Simple KPI cards */
+    .kpi-grid { display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem; }
+    .kpi { flex:1 1 180px; padding:1rem; border-radius:10px; background:var(--lightSamaritan); color:var(--darkSamaritan); text-align:center; }
+
+    /* Drawer (side panel) */
+    .drawer-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.45); opacity:0; visibility:hidden; transition:opacity .25s ease; z-index:1200; }
+    .drawer-overlay.open { opacity:1; visibility:visible; }
+
+    #step-drawer { position:fixed; top:0; right:0; height:100vh; width:380px; max-width:95%; background:var(--bs-body-color); box-shadow:-20px 0 40px rgba(36,59,78,0.25); transform:translateX(100%); transition:transform .28s ease; z-index:1250; display:flex; flex-direction:column; }
+    #step-drawer.open { transform:translateX(0); }
+    #step-drawer .drawer-header { padding:1rem 1.25rem; border-bottom:1px solid rgba(0,0,0,0.06); display:flex; align-items:center; justify-content:space-between; }
+    #step-drawer .drawer-body { padding:1rem 1.25rem; overflow:auto; flex:1; }
+    .drawer-close { background:transparent; border:none; font-size:1.25rem; color:var(--darkSamaritan); }
+
+    @media (max-width:767px) { #step-drawer { width:100%; } }
+
+  </style>
+</head>
+<body class="stretched samaritan-bg">
+
+  <div id="wrapper">
+
+    <section class="page-section hero samaritan-to-lightSamaritan-gradient-bg">
+      <div class="container">
+        <h1 class="display-4 fw-bolder color-white">EU eCommerce Flow: NL Import to Re-Export</h1>
+        <p class="lead text-lightSamaritan">Visualisation des étapes clé du traitement douanier et logistique pour import depuis hors-UE, consolidation, réexport et remboursement.</p>
+        <a class="button button-circle mt-3" href="#contact">Request a Demo</a>
+      </div>
+    </section>
+
+    <section class="page-section flow-wrapper">
+      <div class="container">
+        <h3 class="mb-3 text-darkSamaritan">Transport & Customs Flow</h3>
+        <p class="text-muted">Cliquez sur une étape pour en voir les détails. Version mobile: faites glisser pour naviguer.</p>
+
+        <div class="flow-stepper" role="list" aria-label="EU eCommerce flow steps">
+
+          <div class="flow-step completed" role="listitem" tabindex="0" aria-label="1. Import">
+            <div class="icon bi-truck icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">1. Import</h4>
+            <p class="small">Collecte des données nécessaires au dédouanement.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step completed" role="listitem" tabindex="0" aria-label="2. Pre-clearance">
+            <div class="icon bg-white text-darkSamaritan bi-file-earmark-check icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">2. Pré-clearance</h4>
+            <p class="small">Préparation et libération par les Douanes sans délai.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step active" role="listitem" tabindex="0" aria-label="3. Arrival NL">
+            <div class="icon bi-geo-alt icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">3. Arrivée NL</h4>
+            <p class="small">Biens arrivés; inspections possibles au dépôt transporteur.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step pending" role="listitem" tabindex="0" aria-label="4. Delivery">
+            <div class="icon bi-box-seam icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">4. Livraison</h4>
+            <p class="small">Livraison au consignataire dans un des 27 États membres.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step pending" role="listitem" tabindex="0" aria-label="5. Return">
+            <div class="icon bi-arrow-counterclockwise icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">5. Retour</h4>
+            <p class="small">Retour partiel ou complet par le consignataire.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step pending" role="listitem" tabindex="0" aria-label="6. Consolidation">
+            <div class="icon bi-boxes icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">6. Consolidation</h4>
+            <p class="small">Consolidation des retours dans un État membre pour export.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step pending" role="listitem" tabindex="0" aria-label="7. Bulk export">
+            <div class="icon bi-send-fill icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">7. Export</h4>
+            <p class="small">Export en gros dans les 3 mois suivant l'importation.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step pending" role="listitem" tabindex="0" aria-label="8. Export declaration">
+            <div class="icon bi-journal-text icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">8. Déclaration export</h4>
+            <p class="small">TDR collecte les détails et soumet la déclaration d'export.</p>
+          </div>
+
+          <div class="flow-connector" aria-hidden="true"></div>
+
+          <div class="flow-step pending" role="listitem" tabindex="0" aria-label="9. Validation & refund">
+            <div class="icon bi-piggy-bank icon-lg" aria-hidden="true"></div>
+            <h4 class="mb-1">9. Validation & remboursement</h4>
+            <p class="small">Douanes valident la demande et remboursent l'importateur.</p>
+          </div>
+
+        </div>
+
+        <!-- Side drawer for step details -->
+        <div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+        <aside id="step-drawer" aria-hidden="true">
+          <div class="drawer-header">
+            <div>
+              <strong id="drawer-step-title">Step</strong>
+              <div class="small text-lightSamaritan" id="drawer-step-sub">Details</div>
+            </div>
+            <button class="drawer-close" id="drawer-close" aria-label="Close panel">&times;</button>
+          </div>
+          <div class="drawer-body" id="drawer-body">
+            <p id="drawer-step-content" class="mb-0 text-darkSamaritan">Select a step to view details.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="page-section samaritan-bg py-4">
+      <div class="container text-lightSamaritan">
+        <small>Trade Duty Refund — EU eCommerce Flow sample</small>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Optional: include SwiperJS for mobile interaction -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    // Enhanced stepper behavior: open side drawer with details
+    const steps = document.querySelectorAll('.flow-step');
+    const drawer = document.getElementById('step-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const closeBtn = document.getElementById('drawer-close');
+    const titleEl = document.getElementById('drawer-step-title');
+    const subEl = document.getElementById('drawer-step-sub');
+    const contentEl = document.getElementById('drawer-step-content');
+
+    function openDrawer(stepEl){
+      // set active state
+      steps.forEach(s=>s.classList.remove('active'));
+      stepEl.classList.add('active');
+
+      // extract info from the step element
+      const heading = stepEl.querySelector('h4')?.textContent || stepEl.getAttribute('aria-label') || 'Step';
+      const summary = stepEl.querySelector('p')?.textContent || '';
+
+      titleEl.textContent = heading;
+      subEl.textContent = stepEl.getAttribute('aria-label') || '';
+      contentEl.textContent = summary;
+
+      overlay.classList.add('open');
+      drawer.classList.add('open');
+      overlay.setAttribute('aria-hidden','false');
+      drawer.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer(){
+      overlay.classList.remove('open');
+      drawer.classList.remove('open');
+      overlay.setAttribute('aria-hidden','true');
+      drawer.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      steps.forEach(s=>s.classList.remove('active'));
+    }
+
+    steps.forEach((el)=>{
+      el.addEventListener('click', ()=> openDrawer(el));
+      el.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') openDrawer(el); });
+    });
+
+    overlay.addEventListener('click', closeDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeDrawer(); });
+  </script>
+</body>
+</html>

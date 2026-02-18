@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImages/TDR-package-flow-in-eu.jpg",
+	"description": "${{TDR-package-flow-in-eu.description}}$",
+	"title": "${{TDR-package-flow-in-eu.title}}$",
+	"path": "${{TDR-package-flow-in-eu.path}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<style>
+		.list-group {
+			--bs-list-group-bg: transparent;
+		}
+
+		/* Flow specific styles using existing color variables */
+		.hero {
+			padding: 4rem 1.5rem;
+			text-align: left;
+		}
+
+		.flow-wrapper {
+			padding: 3rem 1.5rem;
+		}
+
+		.flow-stepper {
+			display: flex;
+			gap: 1.5rem;
+			align-items: center;
+			flex-wrap: nowrap;
+			overflow: auto;
+			padding-bottom: 1rem;
+			scrollbar-width: none;
+		}
+
+		.flow-step {
+			min-width: 220px;
+			max-width: 260px;
+			flex: 0 0 auto;
+			text-align: center;
+			padding: 1rem;
+			border-radius: 12px;
+			position: relative;
+			min-height: 25vh;
+		}
+
+		.flow-step .icon {
+			width: 54px;
+			height: 54px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			margin-bottom: .5rem;
+			font-size: 22px;
+		}
+
+		.flow-connector {
+			height: 6px;
+			flex: 1 0 40px;
+			border-radius: 6px;
+			background: linear-gradient(90deg, var(--samaritan), var(--lightSamaritan));
+		}
+
+		.flow-step.completed {
+			background: var(--lightSamaritan);
+			color: var(--darkSamaritan);
+		}
+
+		.flow-step.completed .icon {
+			background: var(--cnvs-themecolor);
+			color: white;
+		}
+
+		.flow-step.active {
+			border: 2px solid var(--darkSamaritan);
+			box-shadow: 0 6px 18px rgba(36, 59, 78, 0.2);
+		}
+
+		.flow-step.pending {
+			background: rgba(255, 255, 255, 0.03);
+			color: var(--lightSamaritan);
+			border: 1px dashed rgba(255, 255, 255, 0.04);
+		}
+
+		/* Responsive: stack on small screens and enable swiper fallback */
+		@media (max-width: 767px) {
+			.flow-stepper {
+				display: block;
+			}
+
+			.flow-step {
+				margin-bottom: 1rem;
+				max-width: none;
+			}
+
+			.flow-connector {
+				display: none;
+			}
+		}
+
+		/* Drawer (side panel) */
+		.drawer-overlay {
+			position: fixed;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.45);
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity .25s ease;
+			z-index: 1200;
+		}
+
+		.drawer-overlay.open {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		#step-drawer {
+			position: fixed;
+			top: 0;
+			right: 0;
+			height: 100vh;
+			width: 380px;
+			max-width: 95%;
+			background: var(--lightSamaritan);
+			box-shadow: -20px 0 40px rgba(36, 59, 78, 0.25);
+			transform: translateX(100%);
+			transition: transform .28s ease;
+			z-index: 1250;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#step-drawer.open {
+			transform: translateX(0);
+		}
+
+		#step-drawer .drawer-header {
+			padding: 1rem 1.25rem;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		#step-drawer .drawer-body {
+			padding: 1rem 1.25rem;
+			overflow: auto;
+			flex: 1;
+		}
+
+		.drawer-close {
+			background: transparent;
+			border: none;
+			font-size: 1.25rem;
+			color: var(--darkSamaritan);
+		}
+
+		@media (max-width:767px) {
+			#step-drawer {
+				width: 100%;
+			}
+		}
+	</style>
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="fs-6 op-07 mb-3 text-lightSamaritan">
+						${{TDR-package-flow-in-eu.preHeader}}$</div>
+					<h3 class="display-3 mb-0 fw-normal">
+						${{TDR-package-flow-in-eu.header}}$
+					</h3>
+
+					<p class="lead pt-5">
+						${{TDR-package-flow-in-eu.leadText}}$
+					</p>
+
+
+					<section class="page-section flow-wrapper">
+						<div class="container">
+							<div class="flow-stepper" role="list" aria-label="EU eCommerce flow steps">
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step1.title}}$">
+									<div class="icon bi-truck icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step1.summary}}$">
+										${{TDR-package-flow-in-eu.step1.title}}$</h4>
+									<small>Click for more details</small>
+
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step2.title}}$">
+									<div class="icon bi-file-earmark-check icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step2.summary}}$">
+										${{TDR-package-flow-in-eu.step2.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step3.title}}$">
+									<div class="icon bi-geo-alt icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step3.summary}}$">
+										${{TDR-package-flow-in-eu.step3.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step4.title}}$">
+									<div class="icon bi-box-seam icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step4.summary}}$">
+										${{TDR-package-flow-in-eu.step4.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step5.title}}$">
+									<div class="icon bi-arrow-counterclockwise icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step5.summary}}$">
+										${{TDR-package-flow-in-eu.step5.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step6.title}}$">
+									<div class="icon bi-boxes icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step6.summary}}$">
+										${{TDR-package-flow-in-eu.step6.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step7.title}}$">
+									<div class="icon bi-send-fill icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step7.summary}}$">
+										${{TDR-package-flow-in-eu.step7.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step8.title}}$">
+									<div class="icon bi-journal-text icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step8.summary}}$">
+										${{TDR-package-flow-in-eu.step8.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+
+								<div class="flow-connector" aria-hidden="true"></div>
+
+								<div class="flow-step completed" role="listitem" tabindex="0"
+									aria-label="${{TDR-package-flow-in-eu.step9.title}}$">
+									<div class="icon bi-piggy-bank icon-lg" aria-hidden="true"></div>
+									<h4 class="mb-1 text-darkSamaritan"
+										data-comment="${{TDR-package-flow-in-eu.step9.summary}}$">
+										${{TDR-package-flow-in-eu.step9.title}}$</h4>
+									<small>Click for more details</small>
+								</div>
+							</div>
+
+							<!-- Side drawer for step details -->
+							<div class="drawer-overlay" id="drawer-overlay" aria-hidden="true"></div>
+							<aside id="step-drawer" aria-hidden="true">
+								<div class="drawer-header">
+									<div>
+										<strong id="drawer-step-title" class="text-darkSamaritan">Step</strong>
+										<div class="small text-lightSamaritan" id="drawer-step-sub">Details</div>
+									</div>
+									<button class="drawer-close" id="drawer-close"
+										aria-label="Close panel">&times;</button>
+								</div>
+								<div class="drawer-body" id="drawer-body">
+									<p id="drawer-step-content" class="mb-0 text-darkSamaritan">Select a step to
+										view details.</p>
+								</div>
+							</aside>
+
+						</div>
+					</section>
+				</div>
+			</div>
+		</section>
+
+		<!-- Start Service -->
+		<div id="section-services" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
+
+			<div class="container">
+
+				<h3 class="display-4 fw-bolder mb-3 ls-n-2 text-samaritan">${{TDR-package-flow-in-eu.callout.header}}$</h3>
+
+
+				<ul class="list-group list-group-flush fit-content">
+					<li class="list-group-item display-6 text-samaritan">${{TDR-package-flow-in-eu.callout.item1}}$</strong><a href="${{duty-refund-questionnaire-EU.path}}$" class="px-2 text-white"><i
+								class="bi-arrow-right-circle-fill text-samaritan"></i></a></li>
+					<li class="list-group-item display-6 text-samaritan">${{TDR-package-flow-in-eu.callout.item2}}$</strong><a href="${{eu-2026-import-regulations-cost-impact-tool.path}}$"
+							class="px-2 text-white"><i class="bi-arrow-right-circle-fill text-samaritan"></i></a></li>
+					<li class="list-group-item display-6 text-samaritan">${{TDR-package-flow-in-eu.callout.item3}}$</strong><a
+							href="https://zcal.co/i/t1j2F02b" class="px-2 text-white"><i
+								class="bi-arrow-right-circle-fill text-samaritan"></i></a></li>
+				</ul>
+
+				<div class="clear"></div>
+
+			</div>
+
+		</div>
+		<!-- End Service -->
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/plugins.min.js"></script>
+		<script src="js/functions.bundle.js"></script>
+
+		<!-- Optional: include SwiperJS for mobile interaction -->
+		<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+		<script>
+			// Enhanced stepper behavior: open side drawer with details
+			const steps = document.querySelectorAll('.flow-step');
+			const drawer = document.getElementById('step-drawer');
+			const overlay = document.getElementById('drawer-overlay');
+			const closeBtn = document.getElementById('drawer-close');
+			const titleEl = document.getElementById('drawer-step-title');
+			const subEl = document.getElementById('drawer-step-sub');
+			const contentEl = document.getElementById('drawer-step-content');
+
+			function openDrawer(stepEl) {
+				// set active state
+				steps.forEach(s => s.classList.remove('active'));
+				stepEl.classList.add('active');
+
+				// extract info from the step element
+				const heading = stepEl.querySelector('h4')?.textContent || stepEl.getAttribute('aria-label') || 'Step';
+				const summary = stepEl.querySelector('h4')?.getAttribute('data-comment') || '';
+
+				titleEl.textContent = heading;
+				subEl.textContent = stepEl.getAttribute('aria-label') || '';
+				contentEl.textContent = summary;
+
+				overlay.classList.add('open');
+				drawer.classList.add('open');
+				overlay.setAttribute('aria-hidden', 'false');
+				drawer.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeDrawer() {
+				overlay.classList.remove('open');
+				drawer.classList.remove('open');
+				overlay.setAttribute('aria-hidden', 'true');
+				drawer.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+				steps.forEach(s => s.classList.remove('active'));
+			}
+
+			steps.forEach((el) => {
+				el.addEventListener('click', () => openDrawer(el));
+				el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') openDrawer(el); });
+			});
+
+			overlay.addEventListener('click', closeDrawer);
+			closeBtn.addEventListener('click', closeDrawer);
+			document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+		</script>
+
+
+</body>
+
+</html>

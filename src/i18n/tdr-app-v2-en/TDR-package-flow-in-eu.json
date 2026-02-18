@@ -1,0 +1,52 @@
+{
+  "path": "TDR-package-flow-in-eu.html",
+  "name": "TDR Package Flow in EU",
+  "title": "",
+  "description": "",
+  "preHeader": "TDR EU Solution",
+  "header": "Streamlined EU Delivery: Zero Delays, Zero Extra Touches",
+  "leadText": "Our fully integrated processes in the EU ensures &lt;b&gt;streamlined customs clearance&lt;/b&gt; and &lt;b&gt;duty drawback off the shelf&lt;/b&gt; for your shipments without additional handling nor delay on your B2C orders.&lt;br&gt;Here is how it works:",
+  "step1": {
+    "title": "1. Export from non EU country ",
+    "summary": "TDR collects data related to invoice and shipments details. Our flexible data collection process allows for various data formats (including csv or xml file transfer and API endpoint) ensuring a smooth integration with your existing systems. "
+  },
+  "step2": {
+    "title": "2. Pre-clearance",
+    "summary": "TDR submits an initial declaration to customs prior to the orders arrival and obtains order status. This pre-clearance process allows for a faster customs clearance upon arrival and enables TDR to identify any potential issues early on."
+  },
+  "step3": {
+    "title": "3. Arrival in NL",
+    "summary": "Orders enter the EU through the Netherlands and are formally cleared by customs. TDR handles all customs formalities. Orders that require inspections are held at the carrier facility.Once cleared, the orders are ready for delivery to the consignee in one of the 27 EU member states."
+  },
+  "step4": {
+    "title": "4. Delivery",
+    "summary": "Delivery to the consignee in one of the 27 EU member states."
+  },
+  "step5": {
+    "title": "5. Return",
+    "summary": "End customer returns part or all of the order. TDR can handle any type of returns as long as they are processed within 3 months of the importation and are returned unused."
+  },
+  "step6": {
+    "title": "6. Consolidation",
+    "summary": "Returned orders are consolidated in a member state for export."
+  },
+  "step7": {
+    "title": "7. Export",
+    "summary": "Export of returned orders are done periodically and cleared out of the EU by TDR or another customs broker."
+  },
+  "step8": {
+    "title": "8. Export declaration",
+    "summary": "TDR collects all the export MRN details, reconcile orders details with import data and submit duty refund claim for every eligible order."
+  },
+  "step9": {
+    "title": "9. Validation and refund",
+    "summary": "EU Customs validate claims and refund the importer of all approved requests ."
+  },
+
+  "callout": {
+    "header": "What's Next",
+    "item1": "Check your eligibility for EU duty drawback.",
+    "item2": "Find out the impact of the 2026 customs fees on your business.",
+    "item3": "Let's talk and get started!"
+  }
+}
