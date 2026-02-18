@@ -16,7 +16,7 @@
   "hsCodeCount": "Number of HS Codes",
   "hsCodeCountHint": "How many different product categories (HS codes) in this order?",
   "hsCodeCountPlaceholder": "Enter a number",
-  "eCommerce": "Is this an eCommerce transaction?",
+  "IOSS": "Are you registered for IOSS for VAT payment?",
 
   "selectCountry": "Select a country...",
   "yes": "Yes",
