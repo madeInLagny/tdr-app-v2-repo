@@ -265,8 +265,7 @@
 		<!-- Header
 		============================================= -->
 		<!-- header -->
-		<!-- Only Required if Icons are shown on page -->
-<style>
+		<style>
   @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
   /* Ref: https://icons.getbootstrap.com/#icons */
 
@@ -472,7 +471,6 @@
 
 <!-- Font Icons End -->
 
-
 <style>
   #header-wrap {
     --cnvs-contrast-bg: var(--samaritan);
@@ -507,6 +505,8 @@
 
   .callOutBackgroundColor {
     background-color: lightgray;
+    position: relative;
+    z-index: var(--cc-z-index);
   }
 
   .callOutColor {
@@ -526,9 +526,12 @@
 <!-- Call Out Header -->
 <header id="callOutHeader" class="callOutBackgroundColor">
   <div class="container p-2 text-center fw-bold callOutColor">
-    <a href="https://tradedutyrefund.com/eu-2026-import-regulations-cost-impact-tool.html/?utm_source=Website&utm_medium=HeaderBanner"
+    <a href="https://tradedutyrefund.com/eu-2026-import-regulations-cost-impact-tool.html?utm_source=Website&utm_medium=HeaderBanner"
       class="fw-bold callOutColor" target="_blank">
-      <!-- <span style="color:darkgoldenrod;"><i class="bi-exclamation-circle-fill"></i></span> --> <img src="./images/flags/eu.svg" alt="EU flag" style="width:18px;height:18px;display:inline-block;" loading="lazy" /> EU 2026 Regulations: See Your Cost Hit <i class="bi-arrow-right-square"></i></a>
+      <!-- <span style="color:darkgoldenrod;"><i class="bi-exclamation-circle-fill"></i></span> -->
+      <img src="./images/flags/eu.svg" alt="EU flag" style="width:18px;height:18px;display:inline-block;"
+        loading="lazy" />
+      EU 2026 Regulations: See Your Cost Hit <i class="bi-arrow-right-square"></i></a>
   </div>
 </header>
 <!-- Head of Call Out Header -->
@@ -563,6 +566,11 @@
         <nav class="primary-menu">
 
           <ul class="menu-container">
+            <li class="menu-item">
+              <a class="menu-link" href="duty-refund-questionnaire-main-page.html">
+                <div style="color: #f3b32a;"><i class="bi-star-fill me-2"></i>Check Your Eligibility</div>
+              </a>
+            </li>
             <li class="menu-item">
               <a class="menu-link" href="#">
                 <div>Our Value Proposal</div>
@@ -623,99 +631,84 @@
               </a>
             </li>
             <li class="menu-item">
-              <a class="menu-link" href="https://blog.tradedutyrefund.com">
-                <div>Blog</div>
-              </a>
-            </li>
-            <li class="menu-item">
-              <a class="menu-link" href="faq-main.html">
-                <div>FAQ</div>
-              </a>
-            </li>
-            <li class="menu-item">
               <a class="menu-link" href="#">
-                <div>E-Book</div>
+                <div>Resources</div>
               </a>
               <ul class="sub-menu-container">
                 <li class="menu-item">
-                  <a class="menu-link" href="e-book-navigating-global-tariffs-for-cross-border-e-commerce.html">
-                    <div>Navigating Global Tariffs For Cross Border eCommerce</div>
+                  <a class="menu-link" href="https://blog.tradedutyrefund.com">
+                    <div>Blog</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a class="menu-link" href="e-book-a-practical-guide-to-customs-duties-on-returns.html">
-                    <div>Master Customs Strategies for eCommerce</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a class="menu-link" href="#">
-                <div>Who we are</div>
-              </a>
-              <ul class="sub-menu-container">
-                <li class="menu-item">
-                  <a class="menu-link" href="about-us.html">
-                    <div>About Us</div>
+                  <a class="menu-link" href="faq-main.html">
+                    <div>FAQ</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a class="menu-link" href="our-team-of-International-trade-experts.html">
-                    <div>Our Trade and Customs Experts</div>
+                  <a class="menu-link" href="#">
+                    <div>E-Book</div>
+                  </a>
+                  <ul class="sub-menu-container">
+                    <li class="menu-item">
+                      <a class="menu-link"
+                        href="e-book-navigating-global-tariffs-for-cross-border-e-commerce.html">
+                        <div>Navigating Global Tariffs For Cross Border eCommerce</div>
+                      </a>
+                    </li>
+                    <li class="menu-item">
+                      <a class="menu-link" href="e-book-a-practical-guide-to-customs-duties-on-returns.html">
+                        <div>Master Customs Strategies for eCommerce</div>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="ACE-secure-data-portal-account-application-form.html">
+                    <div>Apply for ACE access</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a class="menu-link" href="this-is-TDR.html"">
-                    <div>This is TDR</div>
+                  <a class="menu-link" href="TDR-2026-flyer.html">
+                    <div>TDR Flyer</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="TDR-package-flow-in-eu.html">
+                    <div>Streamlined EU Delivery</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="eu-2026-import-regulations-cost-impact-tool.html">
+                    <div style="color: #f3b32a;"><i class="bi-exclamation-circle-fill me-2"></i>New!</div> EU 2026
+                    Import Regulations Cost Impact Tool
                   </a>
                 </li>
               </ul>
             </li>
             <li class=" menu-item">
-                    <a class="menu-link" href="#">
-                      <div>Get in touch!</div>
-                    </a>
-                    <ul class="sub-menu-container">
-                      <li class="menu-item">
-                        <a class="menu-link" href="javascript:void(Tawk_API.toggle())">
-                          <div>Chat with us</div>
-                        </a>
-                      </li>
-                      <li class="menu-item">
-                        <a class="menu-link" href="make-an-appointment.html">
-                          <div>Book a call with us</div>
-                        </a>
-                      </li>
-                      <li class="menu-item">
-                        <a class="menu-link" href="https://www.linkedin.com/company/trade-duty-refund" target="_blank">
-                          <div>DM us on LinkedIn</div>
-                        </a>
-                      </li>
-                    </ul>
-                </li>
-                <!-- <li class="menu-item">
               <a class="menu-link" href="#">
-                <div><i class="bi bi-globe2"></i></div>
+                <div>Get in touch!</div>
               </a>
               <ul class="sub-menu-container">
                 <li class="menu-item">
-                  <a class="menu-link" href="https://tradedutyrefund.com/">
-                    <div>English</div>
+                  <a class="menu-link" href="javascript:void(Tawk_API.toggle())">
+                    <div>Chat with us</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a class="menu-link" href="https://fr.tradedutyrefund.com/">
-                    <div>Français</div>
+                  <a class="menu-link" href="make-an-appointment.html">
+                    <div>Book a call with us</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a class="menu-link" href=https://it.tradedutyrefund.com/>
-                    <div>Italiano</div>
+                  <a class="menu-link" href="https://www.linkedin.com/company/trade-duty-refund" target="_blank">
+                    <div>DM us on LinkedIn</div>
                   </a>
                 </li>
               </ul>
-            </li> -->
-              </ul>
+            </li>
+          </ul>
 
         </nav><!-- #primary-menu end -->
       </div>
