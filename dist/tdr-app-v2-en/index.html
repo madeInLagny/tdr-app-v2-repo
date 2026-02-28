@@ -1340,6 +1340,62 @@
     })();
   </script>
 
+  <!-- Interactive map: clickable regions for EU, UK and US -->
+  <style>
+    #interactive-map-container { max-width: 900px; margin: 24px auto; }
+    #interactive-map { width: 100%; height: auto; display: block; }
+    #interactive-map .map-region { cursor: pointer; transition: transform .12s ease, opacity .12s ease; }
+    #interactive-map .map-region:hover { transform: scale(1.08); opacity: 0.92; }
+  </style>
+
+  <div id="interactive-map-container" aria-label="Interactive map">
+    <svg id="interactive-map" viewBox="0 0 900 300" role="img" aria-labelledby="mapTitle mapDesc">
+      <title id="mapTitle">Interactive map</title>
+      <desc id="mapDesc">Click the highlighted region for the United States, the United Kingdom or the European Union to show the ISO alpha‑3 code.</desc>
+
+      <!-- Approximate, schematic regions (not geographically precise) -->
+      <!-- United States -->
+      <g id="usa" class="map-region" data-iso3="USA" tabindex="0" role="button" aria-label="United States">
+        <circle cx="140" cy="180" r="44" fill="#cfe8ff" stroke="#2b7cff" stroke-width="2" />
+        <text x="140" y="186" font-size="16" text-anchor="middle" fill="#063a7a" font-family="Arial, Helvetica, sans-serif">US</text>
+      </g>
+
+      <!-- European Union (group) -->
+      <g id="eu" class="map-region" data-iso3="EUR" tabindex="0" role="button" aria-label="European Union">
+        <circle cx="520" cy="120" r="52" fill="#e6ffe6" stroke="#2dbf28" stroke-width="2" />
+        <text x="520" y="126" font-size="16" text-anchor="middle" fill="#0a5a0a" font-family="Arial, Helvetica, sans-serif">EU</text>
+      </g>
+
+      <!-- United Kingdom -->
+      <g id="uk" class="map-region" data-iso3="GBR" tabindex="0" role="button" aria-label="United Kingdom">
+        <circle cx="470" cy="90" r="22" fill="#fff1c6" stroke="#f0a000" stroke-width="2" />
+        <text x="470" y="96" font-size="12" text-anchor="middle" fill="#7a4a00" font-family="Arial, Helvetica, sans-serif">UK</text>
+      </g>
+    </svg>
+  </div>
+
+  <script>
+    (function () {
+      // Attach click and keyboard handlers to map regions
+      var regions = document.querySelectorAll('#interactive-map .map-region');
+      regions.forEach(function (el) {
+        function activate() {
+          var code = el.getAttribute('data-iso3') || '';
+          // Show the ISO alpha-3 code in an alert
+          alert(code);
+        }
+
+        el.addEventListener('click', activate);
+        el.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Enter' || ev.key === ' ') {
+            ev.preventDefault();
+            activate();
+          }
+        });
+      });
+    })();
+  </script>
+
 </body>
 
 </html>

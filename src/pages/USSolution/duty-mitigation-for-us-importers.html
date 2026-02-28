@@ -8,12 +8,11 @@
 	<!-- End Google Tag Manager -->
 
 	<!-- Metatags Import -->
-	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/consulting.jpg",
-	"description": "${{our-team-of-international-trade-experts.description}}$",
-	"title": "${{our-team-of-international-trade-experts.title}}$",
-	"path": "${{our-team-of-international-trade-experts.path}}$"
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+	"description": "${{blank.description}}$",
+	"title": "${{blank.title}}$",
+	"path": "${{blank.path}}$"
 	})
-
 
 	<!-- CSS imports -->
 	@@include('src/blocks/head/cssImports.html')
@@ -45,27 +44,38 @@
 			<div class="content-wrap">
 				<div class="container">
 
+
+					<!-- Page title -->
 					<div class="fs-6 op-07 mb-3 text-lightSamaritan">
-						${{our-team-of-international-trade-experts.preHeader}}$</div>
+						${{blank.preHeader}}$</div>
 					<h1 class="display-3 mb-0 fw-normal">
-						${{our-team-of-international-trade-experts.header}}$
+						${{blank.header}}$
 					</h1>
 
-					<p class="lead pt-5">
-						Reclaim duties worldwide through our<strong> unique Customs-approved process in the EU, UK, and
-							US.</strong><a href="${{solutions-for-all-shippers.path}}$" class="px-2 text-white"><i
-								class="bi-arrow-right-circle-fill"></i></a><br>
-						Leverage our decentralized team of customs and supply chain consultants to <strong>validate and
-							optimize your current work flow.</strong><a href="${{consulting.path}}$" class="px-2"><i
-								class="bi-arrow-right-circle-fill"></i></a>
-					</p>
+					<!-- Lists Examples -->
+
+					<div>Lists
+						<p class="lead pt-5">
+							Reclaim duties worldwide through our<strong> unique Customs-approved process in the EU, UK,
+								and
+								US.</strong><a href="${{solutions-for-all-shippers.path}}$" class="px-2 text-white"><i
+									class="bi-arrow-right-circle-fill"></i></a><br>
+							Leverage our decentralized team of customs and supply chain consultants to <strong>validate
+								and
+								optimize your current work flow.</strong><a href="${{consulting.path}}$" class="px-2"><i
+									class="bi-arrow-right-circle-fill"></i></a>
+						</p>
+					</div>
 
 
-					<!-- Team Start -->
-					@@include('src/blocks/team.html')
-					<!-- Team end -->
+					<!-- Carousels Examples -->
+					<div>Carousels
 
+						<!-- Team Start -->
+						@@include('src/blocks/team.html')
+						<!-- Team end -->
 
+					</div>
 
 					<!-- CallOut Panel Start -->
 					@@include('src/blocks/contactUsConsultancyCallOut.html')

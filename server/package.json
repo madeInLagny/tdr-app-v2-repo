@@ -1,0 +1,15 @@
+{
+  "name": "taric-proxy",
+  "version": "0.1.0",
+  "description": "Simple proxy to call the EU TARIC SOAP WSDL for local development",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "soap": "^0.43.0"
+  }
+}

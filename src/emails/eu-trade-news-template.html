@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EU Trade News — Template</title>
+  <style>
+    /* Fonts from page: Signika Negative (headings) + Roboto (body) */
+    @media screen {
+      @font-face { font-family: 'Signika Negative'; src: local('Signika Negative'); }
+      @font-face { font-family: 'Roboto'; src: local('Roboto'); }
+    }
+
+    /* Color system derived from page */
+    :root{
+      --brand-accent: #f3b32a; /* highlighted on page */
+      --text-dark: #0b2540;
+      --muted: #6b7280;
+      --bg: #ffffff;
+      --panel-bg: #f7f7f7;
+      --cta-bg: #0b2540;
+      --cta-color: #ffffff;
+      --max-width: 600px;
+    }
+
+    /* Reset */
+    body,table,td{font-family: Roboto, Arial, sans-serif; font-size:16px; color:var(--text-dark);}
+    img{border:0; display:block; max-width:100%; height:auto}
+    a{color:var(--text-dark); text-decoration:none}
+
+    /* Container */
+    .email-wrap{width:100%; background-color:var(--bg); padding:20px 0}
+    .email-inner{max-width:var(--max-width); margin:0 auto; background-color:var(--panel-bg);}
+    .email-content{padding:24px; background-color:var(--bg)}
+
+    /* Header */
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand-logo{width:44px; height:44px; background:#fff; border-radius:6px; display:inline-block}
+    .brand-title{font-family:'Signika Negative', Arial, sans-serif; font-size:20px; color:var(--text-dark)}
+
+    /* Article */
+    .article-title{font-family:'Signika Negative', Arial, sans-serif; font-size:20px; color:var(--text-dark); margin:12px 0}
+    .article-excerpt{color:var(--muted); line-height:1.5; font-size:15px}
+
+    /* CTA */
+    .cta{display:inline-block; background:var(--cta-bg); color:var(--cta-color); padding:12px 18px; border-radius:6px; font-weight:600}
+
+    /* Footer */
+    .footer{font-size:13px; color:var(--muted); padding:18px 24px}
+
+    /* Responsive */
+    @media only screen and (max-width:480px){
+      .email-inner{margin:0 12px}
+      .brand-title{font-size:18px}
+      .article-title{font-size:18px}
+      .email-content{padding:16px}
+    }
+  </style>
+</head>
+<body>
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" class="email-wrap">
+    <tr>
+      <td align="center">
+        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" class="email-inner">
+          <tr>
+            <td style="padding:18px 24px; text-align:left; background:var(--panel-bg);">
+              <div class="brand">
+                <div class="brand-logo" style="background-image:url('https://tradedutyrefund.com/images/logo.svg'); background-size:contain; background-repeat:no-repeat; background-position:center"></div>
+                <div>
+                  <div class="brand-title">EU Trade News</div>
+                  <div style="font-size:13px; color:var(--muted)">Insights for customs & trade professionals</div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="email-content">
+              <!-- Hero / Article -->
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    <div class="article-title">EU 2026 Import Rules: How They Will Impact Your Margins</div>
+                    <div style="height:8px"></div>
+                    <div class="article-excerpt">New EU duties and handling surcharges for 2026 can materially affect landed cost. In our latest post we model typical scenarios for mid-sized importers and outline simple pricing adjustments to protect margins.</div>
+                    <div style="height:18px"></div>
+                    <a href="%%READ_MORE_URL%%" class="cta" target="_blank" rel="noopener">Read the full article</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="background:var(--panel-bg); padding:16px 24px; text-align:left">
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td style="vertical-align:top">
+                    <div style="font-weight:600; color:var(--text-dark);">Quick snapshot</div>
+                    <div style="color:var(--muted); font-size:14px; margin-top:8px">Estimated margin compression: <strong style="color:var(--brand-accent)">2–7%</strong> depending on product and logistics.</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="footer" align="center">
+              You are receiving this email because you subscribed to EU Trade News. <br>
+              <a href="%%PREFERENCES_URL%%" style="color:var(--text-dark)">Manage preferences</a> • <a href="%%UNSUBSCRIBE_URL%%" style="color:var(--text-dark)">Unsubscribe</a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
