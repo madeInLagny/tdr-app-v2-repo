@@ -58,16 +58,7 @@
           romaniaDeliveryFee;
       } else {
         // eCommerce = true
-        if (country === "Italy") {
-          comment =
-            "Italy has implemented a handling surcharge on eCommerce orders of less than €150 imported and delivered in Italy.<div class='mt-3'><b>Amount:</b> €2 per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> €2*" +
-            formData.packageCount +
-            " packages = €" +
-            formData.packageCount * 2 +
-            " for this order</div>" +
-            romaniaDeliveryFee;
-          handlingFeePromo.style.display = "block";
-        } else if (country === "Romania") {
+        if (country === "Romania") {
           comment =
             "Romania has implemented a handling surcharge on eCommerce orders of less than €150 delivered in Romania (regardless of the country of import).<div class='mt-3'><b>Amount:</b> RON 25 (approx €5) per package.<br><b>Starting from:</b> January 1st 2026.</div><div class='mt-3'><b>Cost Impact:</b> RON 25*" +
             formData.packageCount +
