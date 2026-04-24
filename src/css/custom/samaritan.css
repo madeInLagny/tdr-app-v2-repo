@@ -6,10 +6,10 @@
   --cnvs-section-bg: var(--samaritan);
   --bs-primary-rgb: 60, 99, 130;
   --cnvs-themecolor-dark: var(--darkSamaritan);
---samaritanGreen: #2e501b;
---samaritanDarkGreen: #2e501b;
---samaritanBrown: #9c4235;
---samaritanDarkBrown: #703026;
+  --samaritanGreen: #2e501b;
+  --samaritanDarkGreen: #2e501b;
+  --samaritanBrown: #9c4235;
+  --samaritanDarkBrown: #703026;
 }
 
 ul {
@@ -96,7 +96,7 @@ ul {
 }
 
 .button-brown {
-  --cnvs-btn-color: var(--samaritanBrown);  
+  --cnvs-btn-color: var(--samaritanBrown);
   --cnvs-btn-color-dark: var(--samaritanDarkBrown);
 }
 
