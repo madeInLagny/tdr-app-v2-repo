@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+	"description": "${{ieepa-refund-support.description}}$",
+	"title": "${{ieepa-refund-support.title}}$",
+	"path": "${{ieepa-refund-support.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+	<link rel="preload" href="https://static.zcal.co/embed/v1/embed.js" as="script">
+
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+		<!-- Page Title
+		============================================= -->
+
+		<div lc-helper="background" class="container-fluid py-5 d-flex justify-content-center" style="  background-image: url('./images/svg/hero-bg-concentric-circles.svg');
+    background-position: center;
+background-size:cover;
+background-repeat:no-repeat">
+			<div class="p-5 lc-block col-xxl-7 col-lg-8 col-12">
+				<div class="lc-block">
+					<div editable="rich">
+						<h2 class="fw-bolder display-3" data-animate="fadeInDown">${{ieepa-refund-support.pageTitle}}$</h2>
+					</div>
+				</div>
+				<div class="lc-block col-md-8">
+					<div editable="rich">
+						<p class="lead" data-animate="fadeInUp">${{ieepa-refund-support.pageDescription}}$</p>
+					</div>
+				</div>
+				<!-- <div class="lc-block">
+					<a class="button rounded-pill" href="#" role="button">Click me, I'm a button</a>
+				</div> -->
+			</div>
+		</div>
+		<!-- SCOTUS Decision Hero
+		============================================= -->
+		<section id="slider" class="slider-element block-hero-6">
+			<div class="bg-overlay z-1 d-md-block d-none"
+				style="background: linear-gradient(to right, var(--lightSamaritan) 0%, var(--lightSamaritan) 25%, transparent 25%, transparent 100%)">
+			</div>
+
+			<div class="container z-2">
+				<div class="row min-vh-100 align-items-center justify-content-sm-around py-5">
+					<div class="col-md-6 order-md-last text-center" data-animate="fadeInRight">
+						<i class="fa-solid fa-burger icon-5x"></i>
+						<h2 class="display-4 text-white">${{ieepa-refund-support.heroDescription1}}$</h2>
+						<h2 class="display-6 text-white">${{ieepa-refund-support.heroDescription2}}$</h2>
+						<div class="lc-block">
+							@@include('src/blocks/contactOptions.html')
+						</div>
+					</div>
+
+					<div class="col-md-4 mt-5 mt-md-0" data-animate="fadeInLeft" data-delay="3000">
+						<img src="./images/SCOTUS.webp" alt="image" class="hero-img">
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- How It Works Section
+		============================================= -->
+		<section class="py-5 lightSamaritan-bg">
+			<div class="container">
+				<!-- Heading -->
+				<div class="row text-center mb-4">
+					<div class="col-12 col-lg-10 col-xl-8 mx-auto text-center">
+						<!-- <p class="text-muted mb-0 fw-light">Steps</p> -->
+						<h2 class="display-4 text-darkSamaritan">${{ieepa-refund-support.stepTitle}}$</h2>
+						<!-- <p class="lead mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique nec sapien vel bibendum. Phasellus sagittis nisl vitae auctor sodales.</p> -->
+					</div>
+				</div><!-- Steps Wrap -->
+				<div class="row justify-content-center">
+					<div class="col-md-6">
+						<!-- Step -->
+						<div class="card rounded-0 text-center p-3 bg-light px-5 mb-5" data-animate="fadeIn">
+							<div class="d-flex rounded-circle mx-auto align-items-center justify-content-center text-white fs-3 fw-bold border border-white border-4"
+								style="background-color: var(--samaritanGreen); width: 4rem; height:4rem; margin-top: -3rem;">
+								1
+							</div>
+							<h3 class="mt-3 text-darkSamaritan ">${{ieepa-refund-support.step1Title}}$</h3>
+							<p class="text-muted">${{ieepa-refund-support.step1Description}}$</p>
+						</div>
+						<!-- Step -->
+						<div class="card rounded-0 text-center p-3 bg-light px-5 mb-5" data-animate="fadeIn">
+							<div class="d-flex rounded-circle mx-auto align-items-center justify-content-center text-white fs-3 fw-bold border border-white border-4"
+								style="background-color: var(--samaritanGreen); width: 4rem; height:4rem; margin-top: -3rem;">
+								2
+							</div>
+							<h3 class="mt-3 text-darkSamaritan ">${{ieepa-refund-support.step2Title}}$</h3>
+							<p class="text-muted">${{ieepa-refund-support.step2Description}}$</p>
+						</div>
+						<!-- Step -->
+						<div class="card rounded-0 text-center p-3 bg-light px-5 mb-5" data-animate="fadeIn">
+							<div class="d-flex rounded-circle mx-auto align-items-center justify-content-center text-white fs-3 fw-bold border border-white border-4"
+								style="background-color: var(--samaritanGreen); width: 4rem; height:4rem; margin-top: -3rem;">
+								3
+							</div>
+							<h3 class="mt-3 text-darkSamaritan ">${{ieepa-refund-support.step3Title}}$</h3>
+							<p class="text-muted">${{ieepa-refund-support.step3Description}}$</p>
+						</div>
+						<!-- Step -->
+						<div class="card rounded-0 text-center p-3 bg-light px-5 mb-5" data-animate="fadeIn">
+							<div class="d-flex rounded-circle mx-auto align-items-center justify-content-center text-white fs-3 fw-bold border border-white border-4"
+								style="background-color: var(--samaritanGreen); width: 4rem; height:4rem; margin-top: -3rem;">
+								4
+							</div>
+							<h3 class="mt-3 text-darkSamaritan ">${{ieepa-refund-support.step4Title}}$</h3>
+							<p class="text-muted">${{ieepa-refund-support.step4Description}}$</p>
+						</div>
+						<!-- Step -->
+						<div class="card rounded-0 text-center p-3 bg-light px-5 mb-5" data-animate="shakeX">
+							<div class="d-flex rounded-circle mx-auto align-items-center justify-content-center text-white fs-3 fw-bold border border-white border-4"
+								style="background-color: var(--samaritanBrown); width: 4rem; height:4rem; margin-top: -3rem;">
+								5
+							</div>
+							<h3 class="mt-3 text-darkSamaritan ">${{ieepa-refund-support.step5Title}}$</h3>
+							<p class="text-muted">${{ieepa-refund-support.step5Description}}$</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="py-5">
+			@@include('src/blocks/contactUsCallOut.html')
+			<div class="section dark bg-transparent">
+				@@include('src/blocks/blog-gallery.html')
+			</div>
+		</section>
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/functions.js"></script>
+
+
+</body>
+
+</html>

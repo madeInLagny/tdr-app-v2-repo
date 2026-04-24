@@ -6,6 +6,10 @@
   --cnvs-section-bg: var(--samaritan);
   --bs-primary-rgb: 60, 99, 130;
   --cnvs-themecolor-dark: var(--darkSamaritan);
+--samaritanGreen: #2e501b;
+--samaritanDarkGreen: #2e501b;
+--samaritanBrown: #9c4235;
+--samaritanDarkBrown: #703026;
 }
 
 ul {
@@ -92,8 +96,8 @@ ul {
 }
 
 .button-brown {
-  --cnvs-btn-color: #9c4235;
-  --cnvs-btn-color-dark: #703026;
+  --cnvs-btn-color: var(--samaritanBrown);  
+  --cnvs-btn-color-dark: var(--samaritanDarkBrown);
 }
 
 .button-blue {
@@ -102,8 +106,8 @@ ul {
 }
 
 .button-green {
-  --cnvs-btn-color: #2e501b;
-  --cnvs-btn-color-dark: #25646d;
+  --cnvs-btn-color: var(--samaritanGreen);
+  --cnvs-btn-color-dark: var(--samaritanDarkGreen);
 }
 
 .color-white {

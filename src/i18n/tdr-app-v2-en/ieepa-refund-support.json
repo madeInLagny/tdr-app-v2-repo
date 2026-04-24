@@ -1,0 +1,20 @@
+{
+  "path": "ieepa-refund-support",
+  "title": "IEEPA Refund Support | TDR",
+  "description": "Recover IEEPA tariff refunds without the manual hassle. We ensure you are all setup for refunds, identify eligible entries, and submit CAPE declarations. Turn a complex refund process into cash back, faster and with no effort.",
+  "pageTitle": "IEEPA Refund Support",
+  "pageDescription": "Recover IEEPA tariff refunds without the manual hassle.&lt;br&gt;We ensure you are all setup for refunds, identify eligible entries, and submit CAPE declarations.&lt;br&gt;Turn a complex refund process into cash back, faster and with no effort.",
+  "heroDescription1": "We Act On Your Behalf.",
+  "heroDescription2": "And Get Your Money Back Seamlessly.",
+  "stepTitle": "How It Works",
+  "step1Title": "We Get You Registered For ACE",
+  "step1Description": "An active ACE account is required to submit refund claims",
+  "step2Title": "We Set It Up For Refunds",
+  "step2Description": "Refunds will only be processed if your ACE account is properly configured.",
+  "step3Title": "We Estimate Your Refunds",
+  "step3Description": "We identify IEEPA refund opportunities based on your ACE account information.",
+  "step4Title": "We Prepare The Claim File",
+  "step4Description": "We make sure the claim file content and format matches CBP requirements.",
+  "step5Title": "You Get Your Money Back",
+  "step5Description": "Eligible refunds will be processed and returned to your bank account."
+}

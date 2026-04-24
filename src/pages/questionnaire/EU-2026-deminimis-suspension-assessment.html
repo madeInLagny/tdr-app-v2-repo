@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html',
+	{"OGImage":"https://tradedutyrefund.com/images/OGImages/duty-refund-questionnaire-EU.jpg",
+	"description": "${{duty-refund-questionnaire-EU.description}}$",
+	"title": "${{duty-refund-questionnaire-EU.title}}$",
+	"path": "${{duty-refund-questionnaire-EU.path}}$",
+	})
+
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Include the Multi Select stylesheet https://codeshack.io/multi-select-dropdown-js/-->
+	<link href="https://codeshack.io/web/demos/MultiSelect.css" rel="stylesheet" type="text/css">
+
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<!-- Contact Form Overlay -->
+					<div class="contact-form-overlay col-md-8 offset-md-2 p-5">
+						<h2 class="fw-normal ls-0 text-transform-none mb-4 font-primary h1">
+							European Union Import Duties in 2026 <br><em>
+								Assess Impact on Your Business</em>
+						</h2>
+
+						<h4 class="mb-3 fw-normal font-body">
+							<i class=""></i>
+							Global Tariff Landscape: Understand the current state of tariffs worldwide and how they
+							interconnect.
+						</h4>
+
+
+						<form class="row mb-0" id="contactForm" action="https://api.staticforms.xyz/submit"
+							method="post" onSubmit="addSpinner()">
+							<input type="hidden" name="accessKey" value="e86b9da0-06b6-4d49-a19d-0825c9b33446">
+							<input id="redirectTo" type="hidden" name="redirectTo" value="">
+							<input type="hidden" name="subject" value="EU-Duty-Reclaim-Questionnaire">
+							<input type="text" name="honeypot" style="display:none">
+
+							<!-- ************* Supply Chain Structure ************** -->
+							<div class="heading-block fancy-title border-bottom-0 ">
+								<h4>1. Supply Chain Structure.</h4>
+							</div>
+							<!-- Countries where inventory is held (Multi Select)-->
+							<div class="form-group">
+								<label for="$country_where_inventory_is_held">Select countries (EU or non EU) where you
+									hold inventory</label><br>
+								<select class="form-select" id="$country_where_inventory_is_held"
+									data-placeholder="Select one or several countries"
+									aria-label="Select countries (EU or non EU) where you hold"
+									name="$country_where_inventory_is_held" multiple data-multi-select required>
+									@@include('src/blocks/allCountriesOptions.html')
+								</select>
+							</div>
+
+							<!-- Legal Representation in the EU (Yes-No)-->
+							<div class="form-group">
+								<label for="$has_a_EU_Company">Is your company currently registered as a legal entity
+									within the EU?</label><br>
+								<div id="$has_a_EU_Company" class="btn-group">
+									<input type="radio" class="btn-check required" name="$has_a_EU_Company"
+										id="EU_Company_yes" autocomplete="off" value="Yes" required>
+									<label for="EU_Company_yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$has_a_EU_Company"
+										id="EU_Company_no" autocomplete="off" value="No" required>
+									<label for="EU_Company_no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Countries of Origin of the Goods (Multi Select)-->
+							<div class="form-group">
+								<label for="country_of_origin">What is the country of origin of the goods? (Top 5 if
+									multiple)</label><br>
+								<select class="form-select" id="country_of_origin"
+									data-placeholder="Select one or several countries"
+									aria-label="What is the country of origin of the goods (Top 5 if multiple)?"
+									name="$country_of_origin" multiple data-multi-select required>
+									@@include('src/blocks/allCountriesOptions.html')
+								</select>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- ************* Sales Transaction ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>2. Sales Transaction.</h4>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Number of Items per Order (Simple number input 10ch) -->
+							<div class="form-group">
+								<label for="$NumberOfItemsPerOrder">How many items do you sell per order?</label><br>
+								<input id="$NumberOfItemsPerOrder" type="number" class="form-control"
+									name="$NumberOfItemsPerOrder" step="0.1" min="1.0" style="width:10ch;" required>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Share of orders above 150€ (Percent number input 13ch) -->
+							<div class="form-group">
+								<label for="$%OrdersAbove150">What is the share of orders above 150€ or
+									equivalent?</label><br>
+								<div class="input-group mb-3" style="width:13ch;">
+									<input id="$%OrdersAbove150" type="number" class="form-control"
+										name="$%OrdersAbove150" step="1" min="0" max="100" required>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Average Value of orders above and below 150€ (€ double) -->
+							<div class="form-group">
+								<label for="$avgOrderValue">What is the average value for orders below and above
+									€150?</label><br>
+								<div id="$avgOrderValue" class="input-group w-md-50 mb-3">
+									<span class="input-group-text">€</span>
+									<input type="number" class="form-control" min="0" max="150"
+										name="$avg_val_orders_below_150" placeholder="Orders < €150" required>
+									<span class="input-group-text">€</span>
+									<input type="number" class="form-control" name="$avg_val_orders_above_150"
+										placeholder="Orders > €150" min="151" required>
+
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Are the imported goods sold B2C? (Yes-No)-->
+							<div class="form-group">
+								<label for="$are_Goods_Sold_B2C">Are the imported goods sold B2C?</label><br>
+								<div id="$are_Goods_Sold_B2C" class="btn-group">
+									<input type="radio" class="btn-check required" name="$are_Goods_Sold_B2C"
+										id="$are_Goods_Sold_B2C_yes" autocomplete="off" value="Yes" required>
+									<label for="$are_Goods_Sold_B2C_yes"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">Yes</label>
+									<input type="radio" class="btn-check required" name="$are_Goods_Sold_B2C"
+										id="$are_Goods_Sold_B2C_no" autocomplete="off" value="No" required>
+									<label for="$are_Goods_Sold_B2C_no"
+										class="btn btn-outline-light px-3 fw-semibold ls-0 text-transform-none">No</label>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- What Incoterm Do You Use? (Single Select)-->
+							<div class="form-group">
+								<label for="$Incoterm">What Incoterm Do You Use?</label><br>
+								<select class="form-select" id="$Incoterm" data-placeholder="Select Incoterm"
+									aria-label="What Incoterm Do You Use?" name="$Incoterm" required>
+									<option value="">Select Incoterm</option>
+									@@include('src/blocks/incotermOptions.html')
+								</select>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- ************* Import into the EU ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>3. Import Into the EU.</h4>
+							</div>
+
+							<!-- Where are shipments cleared for import? (Multi Select)-->
+							<div class="form-group">
+								<label for="$where_are_shipments_cleared_for_import">Where are shipments cleared for
+									import?</label><br>
+								<select class="form-select" id="$where_are_shipments_cleared_for_import"
+									data-placeholder="Select one or several countries"
+									aria-label="Where are shipments cleared for import?"
+									name="$where_are_shipments_cleared_for_import" multiple data-multi-select required>
+									@@include('src/blocks/euCountriesOptions.html')
+								</select>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Who pays for duties to Customs? (Single Select)-->
+							<div class="form-group">
+								<label for="$who_pays_for_duties_to_Customs">Do you pay the import duties to EU Customs
+									yourself, or does your broker handle them?</label><br>
+								<select class="form-select" id="$who_pays_for_duties_to_Customs"
+									data-placeholder="Select Incoterm" aria-label="Do you pay the import duties to EU Customs
+									yourself, or does your broker handle them?" name="$who_pays_for_duties_to_Customs" required>
+									<option value="">Select Payor</option>
+									<option value="You">You</option>
+									<option value="Broker">Your broker</option>
+								</select>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- How many items are imported into the EU per year? (Simple number input 15ch)-->
+							<div class="form-group">
+								<label for="$NumberOfItemsImportedPerYear">How many items are imported into the EU per
+									year? <em>Provide the number of items, not the number of
+										orders.</em></label><br>
+								<input id="$NumberOfItemsImportedPerYear" type="number" class="form-control"
+									name="$NumberOfItemsImportedPerYear" min="1" style="width:15ch;" required>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- How much import duties did you pay during the past 12 months? (3 number inputs)-->
+							<div class="form-group">
+								<label for="$importChargesPerYear">How much import charges did you pay during the past
+									12
+									months? <em>in Euros</em></label><br>
+								<div id="$importChargesPerYear" class="input-group mb-3">
+									<span class="input-group-text">€</span>
+									<input id="$DutiesPaidPerYear" type="number" class="form-control"
+										name="$DutiesPaidPerYear" min="1" placeholder="Duties" required>
+									<span class="input-group-text">€</span>
+									<input id="$VATPaidPerYear2" type="number" class="form-control"
+										name="$VATPaidPerYear" min="1" placeholder="VAT" required>
+									<span class="input-group-text">€</span>
+									<input id="$OtherBrokerageChargesPaidPerYear3" type="number" class="form-control"
+										name="$OtherBrokerageChargesPaidPerYear" min="1" placeholder="Other charges"
+										required>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- What percentage of your goods are shipped via express carrier? (Percent number input 13ch) -->
+							<div class="form-group">
+								<label for="$%ExpressCarrier">What percentage of your goods are shipped via express
+									carriers?</label><br>
+								<div class="input-group mb-3" style="width:13ch;">
+									<input id="$%ExpressCarrier" type="number" class="form-control"
+										name="$%ExpressCarrier" step="1" min="0" max="100" required>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- ************* Returns from the EU ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>4. Returns from the EU.</h4>
+							</div>
+
+							<!-- Share of orders above 150€ (Percent number input 13ch) -->
+							<div class="form-group">
+								<label for="$ShareOfImportedGoodsReturnedIn90days">What percentage of imported goods are
+									subsequently
+									exported unused within 3 months?</label><br>
+								<div class="input-group mb-3" style="width:13ch;">
+									<input id="$ShareOfImportedGoodsReturnedIn90days" type="number" class="form-control"
+										name="$ShareOfImportedGoodsReturnedIn90days" step="1" min="0" max="100"
+										required>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- Share of undelivered orders (Percent number input 13ch) -->
+							<div class="form-group">
+								<label for="$ShareOfUndeliverable">What is the percentage of orders returned because
+									they
+									could not be delivered?<em>Percent of imported orders</em></label><br>
+								<div class="input-group mb-3" style="width:13ch;">
+									<input id="$ShareOfUndeliverable" type="number" class="form-control"
+										name="$ShareOfUndeliverable" step="1" min="0" max="100" required>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- List countries where returned goods are consolidated for export  (Multi Select)-->
+							<div class="form-group">
+								<label for="$where_are_returns_cleared_for_export">List countries where returned goods
+									are consolidated for export <em>or choose 'no consolidation' if
+										applicable.</em></label><br>
+								<select class="form-select" id="$where_are_returns_cleared_for_export"
+									data-selectAll="false" data-placeholder="Select one or several countries"
+									aria-label="List countries where returned goods
+									are consolidated for export" name="$where_are_returns_cleared_for_export" multiple data-multi-select required>
+									@@include('src/blocks/euCountriesOptions.html')
+									<option value="No consolidation">No consolidation</option>
+								</select>
+							</div>
+							<div class="w-100"></div>
+
+							<!-- ************* Returns from the EU ************** -->
+							<div class="heading-block fancy-title border-bottom-0 title-top-border">
+								<h4>5. Contact.</h4>
+							</div>
+
+							<!-- name -->
+							<div class="form-group">
+								<label for="name">Your name</label><br>
+								<input type="text" id="name" name="name" class="form-control w-md-50" required>
+							</div>
+
+							<!-- Company -->
+							<div class="form-group">
+								<label for="$company">Your company name</label><br>
+								<input type="text" id="$company" name="$company" class="form-control w-md-50" required>
+							</div>
+
+							<!-- email -->
+							<div class="form-group">
+								<label for="email">Your email <em> our analysis and offers will be sent to that
+										address</em></label><br>
+								<input type="email" id="email" name="email" class="form-control w-md-50" required>
+							</div>
+
+							<div class="col-md-12 form-group">
+								<button class="btn btn-light" type="submit" value="Submit">
+									<span id="btn-spinner" aria-hidden="true"></span>
+									<span class="visually-hidden" role="status">Loading...</span>
+									Submit
+								</button>
+								<div class="pt-2">
+									@@include('src/blocks/privacyConsent.html')
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/plugins.min.js"></script>
+		<script src="js/functions.bundle.js"></script>
+
+		<script>
+
+			function addSpinner() {
+				const spinnerElement = document.getElementById("btn-spinner");
+				spinnerElement.classList.add("spinner-border", "spinner-border-sm")
+			}
+
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				// Get the current domain
+				const currentDomain = window.location.origin;
+
+				// Construct the new URL path
+				const newPath = "/duty-refund-questionnaire-completed.html";
+
+				// Combine the domain and the new path
+				const newURL = currentDomain + newPath;
+
+				// Update the value of the input field
+				const redirectToInput = document.getElementById("redirectTo");
+				if (redirectToInput) {
+					redirectToInput.value = newURL;
+				}
+			});
+		</script>
+
+		<!-- Include the Multi Select JS class. Original à https://codeshack.io/multi-select-dropdown-js/-->
+		<script src="js/custom/multiSelect.js"></script>
+
+</body>
+
+</html>
