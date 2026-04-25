@@ -50,7 +50,8 @@ background-repeat:no-repeat">
 			<div class="p-5 lc-block col-xxl-7 col-lg-8 col-12">
 				<div class="lc-block">
 					<div editable="rich">
-						<h2 class="fw-bolder display-3" data-animate="fadeInDown">${{ieepa-refund-support.pageTitle}}$</h2>
+						<h2 class="fw-bolder display-3" data-animate="fadeInDown">${{ieepa-refund-support.pageTitle}}$
+						</h2>
 					</div>
 				</div>
 				<div class="lc-block col-md-8">
@@ -150,8 +151,16 @@ background-repeat:no-repeat">
 				</div>
 			</div>
 		</section>
-		<section class="py-5">
-			@@include('src/blocks/contactUsCallOut.html')
+		<section>
+			<div lc-helper="background" class="container-fluid py-5 text-center bg-white" ;>
+				<h3 class="text-darkSamaritan display-4" data-animate="fadeInLeft">Ready to get started?</h3>
+				<div data-animate="fadeInRight">
+					@@include('src/blocks/contactOptions.html')
+				</div>
+			</div>
+
+		</section>
+		<section>
 			<div class="section dark bg-transparent">
 				@@include('src/blocks/blog-gallery.html')
 			</div>
