@@ -17,7 +17,7 @@
     <!-- CSS imports -->
     @@include('src/blocks/head/cssImports.html')
 
-        <!-- Only Required when there are cards on the page -->
+    <!-- Only Required when there are cards on the page -->
     <link rel="stylesheet" href="./css/custom/cards.css">
 
     <!-- Only Required if Samaritan color is required -->
@@ -157,6 +157,10 @@
                     </div>
                 </div>
             </div>
+
+            <!-- IEEPA CallOut -->
+                            @@include('src/blocks/ieepaCallOut.html')
+
             <div class="container">
                 <h2>
                     <div class="fw-bold display-6">
@@ -184,9 +188,9 @@
         </section>
         @@include('src/blocks/linkToFAQ.html')
         @@include('src/blocks/contactUsCallOut.html')
-        		<div class="section dark bg-transparent">
-			@@include('src/blocks/blog-gallery.html')
-		</div>
+        <div class="section dark bg-transparent">
+            @@include('src/blocks/blog-gallery.html')
+        </div>
 
         @@include('src/blocks/footer.html',{
         "bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
@@ -196,8 +200,8 @@
         @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
         <!-- Tawk Chatbox -->
         @@include('src/blocks/tawk.html')
-<!-- URL Campaign Logger -->
-@@include('src/blocks/URLCampaignLogger.html')
+        <!-- URL Campaign Logger -->
+        @@include('src/blocks/URLCampaignLogger.html')
 
         <!-- Canvas Scripts -->
         <script src="js/functions.js"></script>
