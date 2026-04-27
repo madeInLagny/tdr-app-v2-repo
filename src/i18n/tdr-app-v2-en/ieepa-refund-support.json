@@ -7,14 +7,14 @@
   "heroDescription1": "We Act On Your Behalf.",
   "heroDescription2": "And Get Your Money Back Seamlessly.",
   "stepTitle": "How It Works",
-  "step1Title": "We Get You Registered For ACE",
-  "step1Description": "An active ACE account is required to submit refund claims",
-  "step2Title": "We Set It Up For Refunds",
-  "step2Description": "Refunds will only be processed if your ACE account is properly configured.",
+  "step1Title": "We Get You Set Up on ACE",
+  "step1Description": "First, we help you create and activate your ACE account. It's a key step to getting your refund claim submitted.",
+  "step2Title": "We Ensure Everything’s Ready for Refunds",
+  "step2Description": "Next, we take care of setting up your ACE account properly so that everything is in place for your refund to be processed.",
   "step3Title": "We Estimate Your Refunds",
-  "step3Description": "We identify IEEPA refund opportunities based on your ACE account information.",
-  "step4Title": "We Prepare The Claim File",
-  "step4Description": "We make sure the claim file content and format matches CBP requirements.",
-  "step5Title": "You Get Your Money Back",
-  "step5Description": "Eligible refunds will be processed and returned to your bank account."
+  "step3Description": "Using the information from your ACE account, we identify any potential IEEPA refund opportunities and give you an estimate of what you can expect.",
+  "step4Title": "We Prepare Your Refund Claim",
+  "step4Description": "Our team ensures your claim is perfectly formatted and includes all the necessary details, so it meets CBP's requirements.",
+  "step5Title": "You Get Your Refund",
+  "step5Description": "Once your claim is approved, we make sure your refund is processed and sent directly to your bank account."
 }

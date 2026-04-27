@@ -21,7 +21,46 @@
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
-	<link rel="preload" href="https://static.zcal.co/embed/v1/embed.js" as="script">
+	<!-- FAQ Styles -->
+	<style>
+		.toggle {
+			--cnvs-toggle-title-color: var(--darkSamaritan);
+		}
+
+		.toggle-content {
+			color: var(--samaritan);
+		}
+
+		.list-group-item {
+			color: var(--samaritan) !important;
+		}
+
+		.list-group-item-action.active {
+			color: white !important;
+		}
+
+		.list-group-item.active {
+			background-color: var(--darkSamaritan) !important;
+			border-color: var(--darkSamaritan) !important;
+		}
+
+
+		.blocks-faqs-3 .faqs .toggle {
+			background-color: var(--cnvs-contrast-0);
+			border-radius: 3px;
+			box-shadow: 0 2px 3px rgba(0, 0, 0, 0.085);
+		}
+
+		.blocks-faqs-3 .faqs .toggle-header {
+			padding: 15px 20px;
+			margin: 0;
+		}
+
+		.blocks-faqs-3 .faqs .toggle-content {
+			border-top: 1px solid var(--cnvs-contrast-100);
+			padding: 20px 25px;
+		}
+	</style>
 
 
 </head>
@@ -152,14 +191,289 @@ background-repeat:no-repeat">
 			</div>
 		</section>
 		<section>
-			<div lc-helper="background" class="container-fluid py-5 text-center bg-white" ;>
-				<h3 class="text-darkSamaritan display-4" data-animate="fadeInLeft">Ready to get started?</h3>
+			<div lc-helper="background" class="container-fluid py-5 text-center" ;>
+				<h3 class="text-white display-4" data-animate="fadeInLeft">Ready to get started?</h3>
 				<div data-animate="fadeInRight">
 					@@include('src/blocks/contactOptions.html')
 				</div>
 			</div>
-
 		</section>
+
+
+		<!-- FAQ
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap overflow-visible bg-contrast-100">
+				<div class="container">
+
+					<div class="row justify-content-center gutter-50 blocks-faqs-3">
+						<div class="col-xl-6 col-lg-8 text-center mb-6">
+							<!-- <p class="mb-2 text-info text-uppercase ls-2 text-smaller">How can we help you?</p> -->
+							<h2 class="display-4 text-darkSamaritan">Frequently Asked Questions</h2>
+						</div>
+
+						<div class="clear"></div>
+
+						<!-- FAQs - Filter
+						============================================= -->
+						<div class="col-lg-4 d-flex flex-column sticky-section sticky-top h-100" style="top: 10vh">
+							<div class="list-group mt-5 one-page-menu" data-active-class="active"
+								data-parent=".list-group-item">
+								<a class="list-group-item list-group-item-action active" href="#"
+									data-href="#gettingStarted">Getting Started</a>
+								<a class="list-group-item list-group-item-action" href="#"
+									data-href="#fillingForRefund">Filling For Refund</a>
+								<a class="list-group-item list-group-item-action" href="#"
+									data-href="#issuanceOfRefunds">Issuance of Refunds</a>
+							</div>
+						</div>
+
+						<div class="col-lg-8">
+
+							<!-- FAQs - Filter Content
+							============================================= -->
+							<div id="faqs" class="faqs">
+
+								<div id="gettingStarted" class="page-section pt-5">
+									<h3 class="text-darkSamaritan">Getting Started</h3>
+
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												Is the system ready to receive refund requests?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">Yes, the system is ready to receive refund
+											requests. At the moment, only unliquidated entries or entries within the
+											90-day voluntary reliquidation period are eligible.</div>
+									</div>
+
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												How do I know if my entries are eligible for a refund?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">You can check the status of all your entries in
+											ACE. Report ES003 is particularly useful for this purpose.</div>
+									</div>
+
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												Do I need to file a case at the Court of International Trade to preserve
+												my IEEPA refund rights?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">For Phase 1 which is limited to unliquidated
+											entries or entries within the 90-day voluntary reliquidation period, you do
+											not need to file a case with the CIT to receive an IEEPA refund due to you.
+										</div>
+									</div>
+								</div>
+
+								<div id="fillingForRefund" class="page-section pt-5">
+									<h3 class="text-darkSamaritan">Filling For Refund</h3>
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												Who can file for an IEEPA refund?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">Only the IOR or the licensed customs broker who
+											filed the entries can file a CAPE Declaration. <br>
+											TDR can support the IOR in handling the whole process on their behalf.</div>
+									</div>
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												Can the declaration be amended after initial submission and acceptance
+												by CBP?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">No, the declaration cannot be amended after
+											initial submission and acceptance by CBP.</div>
+									</div>
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												May I include liquidated entries on my CAPE Declaration?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">During Phase 1, ACE will accept CAPE
+											Declarations containing entries liquidated within the preceding 80 days.
+											This will allow sufficient time for CBP to process and reliquidate entries
+											by the 90th day to meet the agency’s legal timeframe for voluntary
+											reliquidation pursuant to 19 U.S.C. § 1501.</div>
+									</div>
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												What do I need to include in the .CSV file other than the entry numbers?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">The CAPE Declaration consists of the list of
+											entries for which refunds of IEEPA duties are being requested. CBP does not
+											require any other information in the .CSV file.</div>
+									</div>
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												How can I track the status of the CAPE Declaration?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">ACE Portal users with Importer sub-account
+											access can monitor refund activity using ACE Reports. The REV-603 Trade
+											Refund report covers successful refunds. The REV-613 ACH Rejected Refunds
+											report highlights any refunds that have been rejected due to the recipient
+											not being enrolled in ACH Refunds. For help with refund reports, review the
+											<a class="text-samaritan text-decoration-underline"
+												href="/document/guidance/ace-reports-trade-refund-report-qrc"
+												class="survey-processed">ACE Refund Report training guide</a>. For more
+											information about rejected refunds, see <a
+												class="text-samaritan text-decoration-underline"
+												href="/trade/priority-issues/revenue/replacement-checks"
+												class="survey-processed">Replacement Refund Instructions</a>.
+										</div>
+									</div>
+
+								</div>
+
+								<div id="issuanceOfRefunds" class="page-section pt-5">
+									<h3 class="text-darkSamaritan">Issuance of Refunds</h3>
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												How will IEEPA refunds be issued?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">All refunds are required to be paid
+											electronically via Automated Clearing House (ACH) (Federal Register
+											Document <a class="text-samaritan text-decoration-underline"
+												href="https://www.federalregister.gov/documents/2026/01/02/2025-24171/electronic-refunds"
+												target="_blank" class="survey-processed">2025-24171</a>). To receive a
+											refund, CBP must have your bank information on file. If bank information
+											designated for refunds is not on file with CBP, the refund will not be paid
+											until that information is provided through the ACE Secure Data Portal (ACE
+											Portal). See more information at <a
+												class="text-samaritan text-decoration-underline"
+												href="/document/guidance/cbp-modernizes-electronic-refund-enrollment-process"
+												target="_blank" class="survey-processed">ACH Refund Enrollment
+												Overview</a>.</div>
+									</div>
+									<div class="toggle faq pb-0 mb-3">
+										<div class="toggle-header">
+											<div class="toggle-icon">
+												<i class="toggle-closed bi-question-circle"></i>
+												<i class="toggle-open bi-question-circle"></i>
+											</div>
+											<div class="toggle-title fw-medium ps-1">
+												Who will receive the refund(s) associated with the CAPE Declaration?
+											</div>
+											<div class="toggle-icon">
+												<i class="toggle-closed fa-solid fa-chevron-down"></i>
+												<i class="toggle-open fa-solid fa-chevron-up"></i>
+											</div>
+										</div>
+										<div class="toggle-content ps-4">The IOR or the party designated by the IOR (the
+											4811 notify party) on either the CBP Form 4811 (Special Address
+											Notification) or on the ACE Portal account, and on the entry summary will be
+											eligible to receive refunds.</div>
+									</div>
+								</div>
+<p>
+@@include('src/blocks/contactOptions.html')
+</p>
+								
+							</div>
+
+							<div class="vh-75"></div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+
+
+
+
+
 		<section>
 			<div class="section dark bg-transparent">
 				@@include('src/blocks/blog-gallery.html')
