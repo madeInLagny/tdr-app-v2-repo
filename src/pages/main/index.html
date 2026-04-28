@@ -8,7 +8,8 @@
   <!-- End Google Tag Manager -->
 
   <!-- Metatags Import -->
-  @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg", "description":
+  @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+  "description":
   "${{index.description}}$", "title": "${{index.title}}$", "url":
   "${{index.domain}}$", "urlFR":"${{index.domainFR}}$",
   "urlIT":"${{index.domainIT}}$" })
@@ -86,15 +87,18 @@
       <div class="slider-inner">
         <div class="container">
           <div class="slider-caption slider-caption-center gap-3">
-            <h1 class="h2" data-animate="fadeInUp">${{index.header}}$</h1>
-            <div class="subtitle" data-animate="fadeIn" data-delay="1000">
-              ${{index.subtitle}}$<br />${{index.checkValue}}$<br />
-              <a href="${{solutions-for-us-shippers.path}}$" class="button-circle"><img src="./images/flags/us.svg" alt="US flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" />US</a>
-              <a href="${{solutions-for-all-shippers.path}}$" class="button-circle"><img src="./images/flags/cn.svg" alt="China flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" /> CN</a>
-              <a href="${{solutions-for-eu-shippers.path}}$" class="button-circle"><img src="./images/flags/eu.svg" alt="EU flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" />EU</a>
-              <a href="${{solutions-for-uk-shippers.path}}$" class="button-circle"><img src="./images/flags/gb.svg" alt="UK flag" style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;" loading="lazy" />UK</a>
-              <a href="${{solutions-for-all-shippers.path}}$" class="button-circle">${{index.all}}$</a><br />
-              <span>${{index.shippers}}$</span>
+            <h1 class="h2" data-animate="fadeInUp"><span id="headerAll" class="text-white"
+                style="display: none;">${{index.header}}$</span><span id="headerUS" class="text-white"
+                style="display: none;">${{index.headerUS}}$</span></h1>
+            <div class="subtitle" data-animate="fadeIn" data-delay="1000"> <strong>${{index.subtitle}}$</strong>
+              <br /><br />
+
+              <div class="lc-block">
+                <a id="cta" class="button rounded-pill" href="#" role="button">${{index.checkValue}}$ <strong><span
+                      id="countryCode"></span></strong>
+                  ${{index.shippers}}$
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -243,11 +247,20 @@
         document.body.appendChild(link);
       }
 
+      function addCountryCode(countryCode) {
+        var countryCodeSpan = document.getElementById('countryCode');
+        countryCodeSpan.textContent = countryCode ? countryCode.toUpperCase() : '';
+      }
+
       // Fetch geo location and choose image
       fetch('https://ipinfo.io/json')
         .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
         .then(function (data) {
-          var country =  (data && data.country) ? data.country.toUpperCase() : ''
+          var country = (data && data.country) ? data.country.toUpperCase() : '';
+          var headerSpan = document.getElementById('headerAll');
+          var headerUSSpan = document.getElementById('headerUS');
+          var ctaButton = document.getElementById('cta');
+          console.log('Geo location detected:', country);
           if (country === 'FR') {
             // France -> French flag image
             addImage('images/MadeInFrance.webp', 'French flag', 'French IP detected', '${{about-us.path}}$');
@@ -257,6 +270,28 @@
           } else if (country === 'CA') {
             // Other CA -> CA flag image
             addImage('./images/CIFFAMember.webp', 'CIFFA Logo', 'CIFFA Logo');
+          }
+
+          if (country === 'US') {
+            addCountryCode('US');
+            headerUSSpan.style.display = 'inline';
+            headerSpan.style.display = 'none';
+            ctaButton.href = '${{solutions-for-us-shippers.path}}$';
+          } else if (country === 'GB' || country === 'UK') {
+            addCountryCode('UK');
+            headerUSSpan.style.display = 'none';
+            headerSpan.style.display = 'inline';
+            ctaButton.href = '${{solutions-for-uk-shippers.path}}$';
+          } else if (euCountries.includes(country) || country === 'FR') {
+            addCountryCode('EU');
+            headerUSSpan.style.display = 'none';
+            headerSpan.style.display = 'inline';
+            ctaButton.href = '${{solutions-for-eu-shippers.path}}$';
+          } else {
+            addCountryCode('All');
+            headerUSSpan.style.display = 'none';
+            headerSpan.style.display = 'inline';
+            ctaButton.href = '${{solutions-for-all-shippers.path}}$';
           }
         })
         .catch(function (err) {
