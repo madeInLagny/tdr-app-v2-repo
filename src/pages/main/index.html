@@ -24,6 +24,10 @@
   <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
   <style>
+    .modal-content {
+      color: var(--darkSamaritan);
+    }
+
     .notification {
       position: fixed;
       bottom: 0;
@@ -93,12 +97,22 @@
             <div class="subtitle" data-animate="fadeIn" data-delay="1000"> <strong>${{index.subtitle}}$</strong>
               <br /><br />
 
-              <div class="lc-block">
-                <a id="cta" class="button rounded-pill" href="#" role="button">${{index.checkValue}}$ <strong><span
-                      id="countryCode"></span></strong>
-                  ${{index.shippers}}$
-                </a>
+              <span>
+                ${{index.checkValue}}$
+                <strong><span id="countryCode"></span></strong>
+                ${{index.shippers}}$ <a id="cta" href="" class="px-2 text-white"><i
+                    class="bi-arrow-right-circle-fill"></i></a>
+              </span>
+              <br /><br />
+
+              <div>
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping
+                  from
+                  somewhere else?</button>
               </div>
+
+
+
             </div>
           </div>
         </div>
@@ -113,6 +127,50 @@
     <!-- end Footer -->
   </div>
   <!-- #wrapper end -->
+
+  <!-- Modal -->
+  <div class="modal fade text-start" id="shippingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h4 class="modal-title" id="myModalLabel">Modal Heading</h4> -->
+          <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-hidden="true"></button>
+        </div>
+        <div class="modal-body fs-4 text text-center">
+          We also provide value to shippers in
+          <div class="list-group">
+            <a href="${{solutions-for-us-shippers.path}}$"
+              class="text-darkSamaritan list-group-item list-group-item-action flex-column align-items-start"><img
+                src="./images/flags/us.svg" alt="US flag"
+                style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;"
+                loading="lazy" />US</a>
+            <a href="${{solutions-for-all-shippers.path}}$"
+              class="text-darkSamaritan list-group-item list-group-item-action flex-column align-items-start"><img
+                src="./images/flags/cn.svg" alt="China flag"
+                style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;"
+                loading="lazy" /> CN</a>
+            <a href="${{solutions-for-eu-shippers.path}}$"
+              class="text-darkSamaritan list-group-item list-group-item-action flex-column align-items-start"><img
+                src="./images/flags/eu.svg" alt="EU flag"
+                style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;"
+                loading="lazy" />EU</a>
+            <a href="${{solutions-for-uk-shippers.path}}$"
+              class="text-darkSamaritan list-group-item list-group-item-action flex-column align-items-start"><img
+                src="./images/flags/gb.svg" alt="UK flag"
+                style="width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block;"
+                loading="lazy" />UK</a>
+            <a href="${{solutions-for-all-shippers.path}}$"
+              class="text-darkSamaritan list-group-item list-group-item-action flex-column align-items-start">Global</a>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
 
   <!-- Javascripts
 	============================================= -->
