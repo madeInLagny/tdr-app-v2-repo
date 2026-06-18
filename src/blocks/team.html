@@ -14,6 +14,7 @@
         <li><a href="#" class="text-white" data-filter=".pf-management">TDR Management</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-dd">Duty Drawback</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-customs">Customs</a></li>
+        <li><a href="#" class="text-white" data-filter=".pf-vat">VAT</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-supply">Supply Chain</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-eu">EU based</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-uk">UK based</a></li>
@@ -93,6 +94,15 @@
     "path":"${{cristina-piangatello.path}}$"
     })
 
+    @@include('src/blocks/teamCard.html',{"path":"${{cyril-bray.path}}$",
+    "firstName":"${{cyril-bray.firstName}}$",
+    "lastName":"${{cyril-bray.lastName}}$",
+    "practice":"pf-vat pf-eu",
+    "jobTitle":"${{cyril-bray.jobTitle}}$",
+    "country":"${{cyril-bray.country}}$",
+    "path":"${{cyril-bray.path}}$"
+    })
+
 
     <!-- @@include('src/blocks/teamCard.html',{"path":"${{jason-cooper.path}}$",
     "firstName":"${{jason-cooper.firstName}}$",
@@ -106,7 +116,7 @@
     @@include('src/blocks/teamCard.html',{"path":"${{kevin-roger.path}}$",
     "firstName":"${{kevin-roger.firstName}}$",
     "lastName":"${{kevin-roger.lastName}}$",
-    "practice":"pf-supply pf-uk",
+    "practice":"pf-supply pf-uk pf-uk",
     "jobTitle":"${{kevin-roger.jobTitle}}$",
     "country":"${{kevin-roger.country}}$",
     "path":"${{kevin-roger.path}}$"
