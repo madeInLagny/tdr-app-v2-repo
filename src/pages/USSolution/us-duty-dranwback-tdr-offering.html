@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+	"description": "${{blank.description}}$",
+	"title": "${{blank.title}}$",
+	"path": "${{blank.path}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Plugins/Components CSS -->
+	<link rel="stylesheet" href="css/swiper.css">
+
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+
+</head>
+
+<body class="stretched sticky-responsive-pagemenu samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="slider" class="slider-element min-vh-60 min-vh-md-100 with-header swiper_wrapper page-section">
+			<div class="slider-inner">
+
+				<div class="swiper swiper-parent">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-animate="fadeInUp">TDR US Duty Drawback<br><br>AI Precision.<br> Human Expertise.</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">We combine
+										advanced automation with seasoned trade specialists and a selection of customs brokers to maximize your U.S. duty drawback.<br>Accurately, efficiently, and at
+										scale.</p>
+								</div>
+							</div>
+							<div class="swiper-slide-bg"
+								style="background-image: url('images/USSolution/usSolution-slider1.webp');filter: opacity(25%);">
+							</div>
+						</div>
+						<!-- <div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption slider-caption-center">
+									<h2 data-animate="fadeInUp">Beautifully Flexible</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Looks
+										beautiful &amp; ultra-sharp on Retina Screen Displays. Powerful Layout with
+										Responsive functionality that can be adapted to any screen size.</p>
+								</div>
+							</div>
+							<div class="video-wrap no-placeholder">
+								<video poster="images/videos/deskwork.jpg" preload="auto" loop autoplay muted
+									playsinline>
+									<source src='images/videos/deskwork.mp4' type='video/mp4'>
+									<source src='images/videos/deskwork.webm' type='video/webm'>
+								</video>
+								<div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="container">
+								<div class="slider-caption">
+									<h2 data-animate="fadeInUp">Great Performance</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">You'll be
+										surprised to see the Final Results of your Creation &amp; would crave for more.
+									</p>
+								</div>
+							</div>
+							<div class="swiper-slide-bg"
+								style="background-image: url('images/slider/swiper/3.jpg'); background-position: center top;">
+							</div>
+						</div> -->
+					</div>
+					<div class="slider-arrow-left"><i class="bi-chevron-left"></i></div>
+					<div class="slider-arrow-right"><i class="bi-chevron-right"></i></div>
+					<div class="slide-number">
+						<div class="slide-number-current"></div><span>/</span>
+						<div class="slide-number-total"></div>
+					</div>
+					<a href="#" data-scrollto="#section-about" class="one-page-arrow dark">
+						<i class="bi-chevron-down infinite animated fadeInDown"></i>
+					</a>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- Page Sub Menu
+		============================================= -->
+		<div id="page-menu">
+			<div id="page-menu-wrap">
+				<div class="container">
+					<div class="page-menu-row">
+
+						<div class="page-menu-title">Explore <span>CANVAS</span></div>
+
+						<nav class="page-menu-nav one-page-menu">
+							<ul class="page-menu-container">
+								<li class="page-menu-item"><a href="#" data-href="#header">
+										<div>Start</div>
+									</a></li>
+								<li class="page-menu-item"><a href="#" data-href="#section-about">
+										<div>About</div>
+									</a></li>
+								<li class="page-menu-item"><a href="#" data-href="#section-work">
+										<div>Work</div>
+									</a></li>
+								<li class="page-menu-item"><a href="#" data-href="#section-team">
+										<div>Team</div>
+									</a></li>
+								<li class="page-menu-item"><a href="#" data-href="#section-services">
+										<div>Services</div>
+									</a></li>
+								<li class="page-menu-item"><a href="#" data-href="#section-pricing">
+										<div>Pricing</div>
+									</a></li>
+								<li class="page-menu-item"><a href="blog.html">
+										<div>Blog</div>
+									</a></li>
+								<li class="page-menu-item"><a href="#" data-href="#section-testimonials"
+										class="no-offset">
+										<div>Testimonials</div>
+									</a></li>
+								<li class="page-menu-item"><a href="#" data-href="#section-contact">
+										<div>Contact</div>
+									</a></li>
+							</ul>
+						</nav>
+
+						<div id="page-menu-trigger"><i class="bi-list"></i></div>
+
+					</div>
+				</div>
+			</div>
+		</div><!-- #page-menu end -->
+
+
+
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+
+			</div>
+		</section><!-- #content end -->
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/plugins.min.js"></script>
+		<script src="js/functions.bundle.js"></script>
+
+
+</body>
+
+</html>

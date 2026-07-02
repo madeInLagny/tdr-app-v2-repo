@@ -6,10 +6,12 @@
   --cnvs-section-bg: var(--samaritan);
   --bs-primary-rgb: 60, 99, 130;
   --cnvs-themecolor-dark: var(--darkSamaritan);
-  --samaritanGreen: #2e501b;
+  --samaritanGreen: #acf085;
   --samaritanDarkGreen: #2e501b;
-  --samaritanBrown: #9c4235;
+  --samaritanBrown: #c96556de;
   --samaritanDarkBrown: #703026;
+  --samaritanBlue: #5086e2;
+  --samaritanDarkBlue: #264170  ;
 }
 
 ul {
@@ -51,6 +53,19 @@ ul {
   fill: white;
   --cnvs-link-color: var(--samaritan);
 }
+
+.samaritanGreen-bg {
+  background-color: var(--samaritanGreen);
+}
+
+.samaritanBlue-bg {
+  background-color: var(--samaritanBlue);
+}
+
+.samaritanBrown-bg {
+  background-color: var(--samaritanBrown);
+} 
+
 
 /* a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
   color: var(--lightSamaritan);

@@ -1,0 +1,70 @@
+<div class="entry event col-lg-5 col-md-6">
+    <div class="grid-inner row g-0 p-4 shadow-sm h-shadow all-ts h-translatey-sm card border">
+        <div class="entry-image">
+            <a href="@@eventUrl">
+                <img src="images/events/thumbs/@@thumb" alt="@@title">
+            </a>
+        </div>
+        <div class="entry-title title-sm">
+            <h2 class="text-samaritan">@@title</h2>
+        </div>
+        <div class="entry-meta">
+            <ul>
+                <li><span id="@@id-event-status-badge" class="badge text-dark py-1 px-2"></span></li>
+                <li><i class="bi-calendar text-samaritan"></i> <span id="@@id-event-date" class="text-samaritan"></span>
+                </li>
+                <li><i class="bi-geo-alt text-samaritan"></i> <span class="text-samaritan">@@location</span></li>
+            </ul>
+        </div>
+        <div class="entry-content">
+            <p class="text-samaritan">@@description</p>
+            <a href="@@eventUrl" class="button">@@buttonLabel</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var badge = document.getElementById('@@id-event-status-badge');
+
+        if (!badge) return;
+        var dateText = document.getElementById('@@id-event-date');
+        var startDateValue = "@@startDate";
+        var endDateValue = "@@endDate";
+        var startDate = startDateValue ? new Date(startDateValue) : null;
+        var endDate = endDateValue ? new Date(endDateValue) : null;
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        var locale = 'en-US';
+        var dateFormat = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' });
+
+        function formatDate(date) {
+            return date ? dateFormat.format(date) : '';
+        }
+
+        var dateLabel = '';
+        if (startDate && endDate) {
+            dateLabel = formatDate(startDate) + ' - ' + formatDate(endDate);
+        } else if (startDate) {
+            dateLabel = formatDate(startDate);
+        }
+
+        badge.classList.remove('samaritanGreen-bg', 'samaritanBlue-bg', 'samaritanBrown-bg');
+
+        if (startDate && today < startDate) {
+            badge.textContent = 'Open';
+            badge.classList.add('samaritanGreen-bg');
+        } else if (startDate && endDate && today >= startDate && today <= endDate) {
+            badge.textContent = 'Live';
+            badge.classList.add('samaritanBlue-bg');
+        } else {
+            badge.textContent = 'Past';
+            badge.classList.add('samaritanBrown-bg');
+        }
+
+        if (dateLabel) {
+            dateText.textContent += ' • ' + dateLabel;
+        }
+    });
+</script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+	"description": "${{our-events.description}}$",
+	"title": "${{our-events.title}}$",
+	"path": "${{our-events.path}}$",
+	})
+
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
+</head>
+
+<body class="stretched samaritan-bg">
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper">
+
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="row justify-content-center gutter-50 col-mb-50">
+
+						@@include('src/blocks/event-entry.html',
+						{"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+						"id": "${{our-events.gelf2026.id}}$",
+						"status": "${{our-events.gelf2026.status}}$",
+						"description": "${{our-events.gelf2026.description}}$",
+						"title": "${{our-events.gelf2026.title}}$",
+						"thumb": "${{our-events.gelf2026.thumb}}$",
+						"startDate": "${{our-events.gelf2026.startDate}}$",
+						"endDate": "${{our-events.gelf2026.endDate}}$",
+						"location": "${{our-events.gelf2026.location}}$",
+						"eventUrl": "${{our-events.gelf2026.eventUrl}}$",
+						"buttonLabel": "${{our-events.gelf2026.buttonLabel}}$"
+						})
+
+
+
+					</div>
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/plugins.min.js"></script>
+		<script src="js/functions.bundle.js"></script>
+
+
+</html>
