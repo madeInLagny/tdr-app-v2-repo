@@ -7,8 +7,8 @@ CNVS.Countdown = function() {
 				return true;
 			}
 
-			core.loadJS({ file: 'plugins.countdown.js', id: 'canvas-countdown-js', jsFolder: true });
-			core.loadJS({ file: 'components/moment.js', id: 'canvas-moment-js', jsFolder: true });
+			__core.loadJS({ file: 'plugins.countdown.js', id: 'canvas-countdown-js', jsFolder: true });
+			__core.loadJS({ file: 'components/moment.js', id: 'canvas-moment-js', jsFolder: true });
 
 			__core.isFuncTrue( function() {
 				return typeof jQuery !== 'undefined' && typeof moment !== "undefined" && jQuery().countdown;

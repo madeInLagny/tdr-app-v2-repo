@@ -14,7 +14,7 @@ CNVS.TopSearch = function() {
 				return true;
 			}
 
-			searchForm.closest('.header-row').classList.add( 'top-search-parent' );
+			searchForm.closest('.header-row')?.classList.add( 'top-search-parent' );
 
 			var topSearchParent = document.querySelector('.top-search-parent'),
 				timeout;
@@ -31,10 +31,10 @@ CNVS.TopSearch = function() {
 				__core.getVars.recalls.menureset();
 
 				if( __core.getVars.elBody.classList.contains('top-search-open') ) {
-					topSearchParent.classList.add('position-relative');
+					topSearchParent?.classList.add('position-relative');
 				} else {
 					timeout = setTimeout( function() {
-						topSearchParent.classList.remove('position-relative');
+						topSearchParent?.classList.remove('position-relative');
 					}, 500);
 				}
 
@@ -50,7 +50,7 @@ CNVS.TopSearch = function() {
 				if (!e.target.closest('.top-search-form')) {
 					__core.getVars.elBody.classList.remove('top-search-open');
 					timeout = setTimeout( function() {
-						topSearchParent.classList.remove('position-relative');
+						topSearchParent?.classList.remove('position-relative');
 					}, 500);
 				}
 			}, false);

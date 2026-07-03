@@ -1,13 +1,13 @@
 {
-  "path": "blank.html",
-  "title": "",
+  "path": "our-events.html",
+  "title": "Our Events",
   "description": "",
-  "name": "",
-  "preHeader": "",
-  "header": "",
+  "name": "Our events",
+  "section-heading": "Where to find us",
+  "main-heading": "Our Next Events",
+  "intro-text": "TDR travels the world to attend the most important international trade events. We are always looking for new opportunities to meet our clients and partners, and to learn about the latest trends in the industry. If you are attending any of the events listed below, reach out and let's arrange a meeting.",
   "gelf2026": {
     "id": "gelf2026",
-    "status": "Open",
     "title": "GELF NYC 2026",
     "thumb": "GELFNYC2026.webp",
     "description": "The workshop theme is Scaling International Growth to the Next Level. Participants will be leaders from global consumer brand companies who have international growth responsibilities. Peer-to-peer knowledge exchange and facilitating deep dives conversations on strategic topics such as managing brand integrity and global pricing architecture are central to the program.",
@@ -16,5 +16,5 @@
     "location": "New York City, USA",
     "eventUrl": "https://www.linkedin.com/events/gelfnycglobalexpertsworkshop7467278112276389888/",
     "buttonLabel": "Register"
-  }
+  } 
 }

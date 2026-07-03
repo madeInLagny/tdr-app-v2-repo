@@ -7,6 +7,8 @@ CNVS.Notifications = function() {
 				return true;
 			}
 
+			__core.loadJS({ file: 'plugins.bootstrap.js', id: 'canvas-bootstrap-js', jsFolder: true });
+
 			__core.isFuncTrue( function() {
 				return typeof jQuery !== 'undefined' && typeof bootstrap !== "undefined";
 			}).then( function(cond) {
@@ -39,7 +41,7 @@ CNVS.Notifications = function() {
 					toast.hide();
 
 					jQuery(elTarget).get(0).addEventListener('hidden.bs.toast', function() {
-						Notifications.init( selector );
+						CNVS.Notifications.init( selector );
 					});
 				}
 

@@ -19,7 +19,7 @@ CNVS.SchemeToggle = function() {
 
 			// Set Storage
 			if( remember == "true" && action ) {
-				localStorage.setItem('cnvsBodyColorScheme', 'dark');
+				__core.cookie.set('__cnvs_body_color_scheme', 'dark', 7);
 			}
 
 			if( 'checkbox' == toggleType && sibling ) {
@@ -36,7 +36,7 @@ CNVS.SchemeToggle = function() {
 
 			// Remove Storage
 			if( remember == "true" && action ) {
-				localStorage.removeItem('cnvsBodyColorScheme');
+				__core.cookie.remove('__cnvs_body_color_scheme');
 			}
 
 			if( 'checkbox' == toggleType && sibling ) {

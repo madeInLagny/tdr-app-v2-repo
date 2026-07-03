@@ -6,17 +6,7 @@ CNVS.GoToTop = function() {
 			elEasing = element.getAttribute('data-easing');
 
 		element.onclick = function(e) {
-			if( elEasing ) {
-				jQuery('body,html').stop(true).animate({
-					'scrollTop': 0
-				}, Number( elSpeed ), elEasing );
-			} else {
-				window.scrollTo({
-					top: 0,
-					behavior: 'smooth'
-				});
-			}
-
+			__core.scrollTo(0, Number(elSpeed), elEasing);
 			e.preventDefault();
 		};
 	};
@@ -49,8 +39,8 @@ CNVS.GoToTop = function() {
 			_scroll(selector[0]);
 
 			window.addEventListener('scroll', function(){
-				_scroll( selector[0] );
-			});
+				_scroll(selector[0]);
+			}, {passive:true});
 		}
 	};
 }();

@@ -40,28 +40,44 @@
 
 		<!-- Content
 		============================================= -->
+
 		<section id="content">
 			<div class="content-wrap">
 				<div class="container">
 
-					<div class="row justify-content-center gutter-50 col-mb-50">
+					<div class="page-title-row pt-5 pb-3">
+						<div class="page-title-content">
+							<span class="fw-medium my-0 text-lightSamaritan">
+								${{our-events.section-heading}}$
+							</span>
+							<h1>
+								<div class="fw-bold display-5">
+									${{our-events.main-heading}}$
+								</div>
+							</h1>
+							<span class="fw-light" style="max-width: 40em;">
+								${{our-events.intro-text}}$
+							</span>
+						</div>
+					</div>
+					<div class="container mt-5">
+						<div class="row justify-content-center gutter-50 col-mb-50">
 
-						@@include('src/blocks/event-entry.html',
-						{"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
-						"id": "${{our-events.gelf2026.id}}$",
-						"status": "${{our-events.gelf2026.status}}$",
-						"description": "${{our-events.gelf2026.description}}$",
-						"title": "${{our-events.gelf2026.title}}$",
-						"thumb": "${{our-events.gelf2026.thumb}}$",
-						"startDate": "${{our-events.gelf2026.startDate}}$",
-						"endDate": "${{our-events.gelf2026.endDate}}$",
-						"location": "${{our-events.gelf2026.location}}$",
-						"eventUrl": "${{our-events.gelf2026.eventUrl}}$",
-						"buttonLabel": "${{our-events.gelf2026.buttonLabel}}$"
-						})
+							@@include('src/blocks/event-entry.html',
+							{"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+							"id": "${{our-events.gelf2026.id}}$",
+							"status": "${{our-events.gelf2026.status}}$",
+							"description": "${{our-events.gelf2026.description}}$",
+							"title": "${{our-events.gelf2026.title}}$",
+							"thumb": "${{our-events.gelf2026.thumb}}$",
+							"startDate": "${{our-events.gelf2026.startDate}}$",
+							"endDate": "${{our-events.gelf2026.endDate}}$",
+							"location": "${{our-events.gelf2026.location}}$",
+							"eventUrl": "${{our-events.gelf2026.eventUrl}}$",
+							"buttonLabel": "${{our-events.gelf2026.buttonLabel}}$"
+							})
 
-
-
+						</div>
 					</div>
 				</div>
 			</div>

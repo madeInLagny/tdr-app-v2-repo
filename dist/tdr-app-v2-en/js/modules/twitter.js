@@ -14,10 +14,10 @@ CNVS.Twitter = function() {
 		if( element.classList.contains('fslider') ) {
 			var slide = document.createElement('div');
 			slide.classList.add('slide');
-			slide.innerHTML += '<p class="mb-3 '+elFontClass+'">'+status+'</p><small class="d-block"><a href="https://twitter.com/'+username+'/statuses/'+tweet.id+'" target="_blank">'+_time(tweet.created_at)+'</a></small>';
+			slide.innerHTML += '<p class="mb-3 '+elFontClass+'">'+status+'</p><small class="d-block"><a href="https://twitter.com/'+username+'/statuses/'+tweet.id_str+'" target="_blank">'+_time(tweet.created_at)+'</a></small>';
 			element.querySelector('.slider-wrap').append(slide);
 		} else {
-			element.innerHTML += '<li><i class="fa-brands fa-twitter"></i><div><span>'+status+'</span><small><a href="https://twitter.com/'+username+'/statuses/'+tweet.id+'" target="_blank">'+_time(tweet.created_at)+'</a></small></div></li>';
+			element.innerHTML += '<li><i class="fa-brands fa-x-twitter"></i><div><span>'+status+'</span><small><a href="https://twitter.com/'+username+'/statuses/'+tweet.id_str+'" target="_blank">'+_time(tweet.created_at)+'</a></small></div></li>';
 		}
 	}
 
@@ -75,9 +75,13 @@ CNVS.Twitter = function() {
 				fetch( elLoader + '?username='+ elUser ).then( function(response) {
 					return response.json();
 				}).then( function(tweets) {
+					if( typeof tweets === 'object' && !tweets.isArray() ) {
+						return false;
+					}
+
 					alert.remove();
 					var i = 0;
-					tweets.data?.some( function(tw) {
+					tweets?.some( function(tw) {
 						if( i == Number(elCount) ) {
 							return;
 						}

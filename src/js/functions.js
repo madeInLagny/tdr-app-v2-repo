@@ -14,6 +14,7 @@ if( typeof jQuery !== 'undefined' ) {
 	var options = {
 		pageTransition: false,
 		cursor: false,
+		tips: false,
 		headerSticky: true,
 		headerMobileSticky: false,
 		menuBreakpoint: 992,
@@ -21,15 +22,24 @@ if( typeof jQuery !== 'undefined' ) {
 		gmapAPI: '',
 		scrollOffset: 60,
 		scrollExternalLinks: true,
+		smoothScroll: false,
 		jsFolder: 'js/',
 		cssFolder: 'css/',
 	};
+
+	if( typeof cnvsOptions !== 'undefined' ) {
+		options = Object.assign({}, options, cnvsOptions);
+	}
 
 	var vars = {
 		baseEl: document,
 		elRoot: document.documentElement,
 		elHead: document.head,
 		elBody: document.body,
+		viewport: {
+			width: 0,
+			height: 0,
+		},
 		hash: window.location.hash,
 		topScrollOffset: 0,
 		elWrapper: document.getElementById('wrapper'),
@@ -67,6 +77,14 @@ if( typeof jQuery !== 'undefined' ) {
 		},
 		get pageTransition() {
 			var value = this.elBody.classList.contains('page-transition') || options.pageTransition;
+			return value == 'true' || value === true ? true : false;
+		},
+		get tips() {
+			var value = this.elBody.getAttribute('data-tips') || options.tips;
+			return value == 'true' || value === true ? true : false;
+		},
+		get smoothScroll() {
+			var value = this.elBody.getAttribute('data-smooth-scroll') || options.smoothScroll;
 			return value == 'true' || value === true ? true : false;
 		},
 		get isRTL() {
@@ -193,7 +211,7 @@ if( typeof jQuery !== 'undefined' ) {
 					window.matchMedia('(prefers-color-scheme: dark)').matches ? vars.elBody.classList.add( 'dark' ) : vars.elBody.classList.remove('dark');
 				}
 
-				var bodyColorScheme = localStorage.getItem('cnvsBodyColorScheme');
+				var bodyColorScheme = Core.cookie.get('__cnvs_body_color_scheme');
 
 				if( bodyColorScheme && bodyColorScheme != '' ) {
 					bodyColorScheme.split(" ").includes('dark') ? vars.elBody.classList.add( 'dark' ) : vars.elBody.classList.remove( 'dark' );
@@ -255,22 +273,33 @@ if( typeof jQuery !== 'undefined' ) {
 					height: window.innerHeight || vars.elRoot.clientHeight
 				};
 
+				vars.viewport = viewport;
+
 				document.documentElement.style.setProperty('--cnvs-viewport-width', viewport.width);
 				document.documentElement.style.setProperty('--cnvs-viewport-height', viewport.height);
+				document.documentElement.style.setProperty('--cnvs-body-height', vars.elBody.clientHeight);
 
 				return viewport;
 			},
 
 			isElement: function(selector) {
-				if (!selector || typeof selector !== 'object') {
-					return false;
+				if (typeof selector === 'object' && selector !== null) {
+					return true;
+				}
+
+				if (selector instanceof Element || selector instanceof HTMLElement) {
+					return true;
 				}
 
 				if (typeof selector.jquery !== 'undefined') {
 					selector = selector[0];
 				}
 
-				return typeof selector.nodeType !== 'undefined';
+				if (typeof selector.nodeType !== 'undefined') {
+					return true;
+				}
+
+				return false;
 			},
 
 			getSelector: function(selector, jquery=true, customjs=true) {
@@ -424,8 +453,8 @@ if( typeof jQuery !== 'undefined' ) {
 
 			offset: function(el) {
 				var rect = el.getBoundingClientRect(),
-					scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-					scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+					scrollLeft = window.scrollX || document.documentElement.scrollLeft,
+					scrollTop = window.scrollY || document.documentElement.scrollTop;
 
 				return {top: rect.top + scrollTop, left: rect.left + scrollLeft};
 			},
@@ -445,6 +474,137 @@ if( typeof jQuery !== 'undefined' ) {
 						selector.classList.remove(classTxt);
 					}
 				});
+			},
+
+			cookie: function() {
+				return {
+					set: function(name, value, daysToExpire) {
+						var date = new Date();
+						date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
+						var expires = "expires=" + date.toUTCString();
+						document.cookie = name + "=" + value + ";" + expires + ";path=/";
+					},
+
+					get: function(name) {
+						var decodedCookies = decodeURIComponent(document.cookie);
+						var cookies = decodedCookies.split(";");
+
+						for (let i = 0; i < cookies.length; i++) {
+						  var cookie = cookies[i].trim();
+						  if (cookie.startsWith(name + "=")) {
+							return cookie.substring(name.length + 1);
+						  }
+						}
+
+						return null;
+					},
+
+					remove: function(name) {
+						document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+					}
+				};
+			}(),
+
+			scrollTo: function(offset = 0, speed = 1250, easing, behavior = 'smooth') {
+				if( easing && (typeof jQuery !== 'undefined' && typeof jQuery.easing["easeOutQuad"] !== 'undefined') ) {
+					jQuery('body,html').stop(true).animate({
+						'scrollTop': Number(offset)
+					}, Number( speed ), easing );
+				} else {
+					var smoothScroll = 'scrollBehavior' in document.documentElement.style;
+
+					if( typeof window.scroll === 'function' && smoothScroll ) {
+						window.scroll({
+							top: Number(offset),
+							behavior: behavior
+						});
+					} else {
+						var body = Core.getVars.elBody;
+						var rootEl = Core.getVars.elRoot;
+
+						body.scrollIntoView();
+						rootEl.scrollIntoView();
+
+						var scrollToTop = function() {
+							if (body.scrollTop > Number(offset) || rootEl.scrollTop > Number(offset)) {
+								body.scrollTop -= 20;
+								rootEl.scrollTop -= 20;
+								setTimeout(scrollToTop, 10);
+							}
+						};
+
+						scrollToTop();
+					}
+				}
+			},
+
+			smoothScroll: function() {
+				new initSmoothScrollfunction(document,90,5);
+
+				function initSmoothScrollfunction(target, speed, smooth) {
+					if (target === document)
+						target = (document.scrollingElement
+							  || document.documentElement
+							  || document.body.parentNode
+							  || document.body); // cross browser support for document scrolling
+
+					var moving = false;
+					var pos = target.scrollTop;
+					var frame = target === document.body
+							  && document.documentElement
+							  ? document.documentElement
+							  : target; // safari is the new IE
+
+					target.addEventListener('mousewheel', scrolled, { passive: false });
+					target.addEventListener('DOMMouseScroll', scrolled, { passive: false });
+
+					function scrolled(e) {
+						e.preventDefault(); // disable default scrolling
+
+						var delta = normalizeWheelDelta(e);
+
+						pos += -delta * speed;
+						pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)); // limit scrolling
+
+						if (!moving) update();
+					}
+
+					function normalizeWheelDelta(e){
+						if(e.detail){
+							if(e.wheelDelta)
+								return e.wheelDelta/e.detail/40 * (e.detail>0 ? 1 : -1); // Opera
+							else
+								return -e.detail/3; // Firefox
+						}else
+							return e.wheelDelta/120; // IE,Safari,Chrome
+					};
+
+					function update() {
+						moving = true;
+
+						var delta = (pos - target.scrollTop) / smooth;
+
+						target.scrollTop += delta;
+
+						if (Math.abs(delta) > 0.5)
+							requestFrame(update);
+						else
+							moving = false;
+					}
+
+					var requestFrame = function() { // requestAnimationFrame cross browser
+						return (
+							window.requestAnimationFrame ||
+							window.webkitRequestAnimationFrame ||
+							window.mozRequestAnimationFrame ||
+							window.oRequestAnimationFrame ||
+							window.msRequestAnimationFrame ||
+							function(func) {
+								window.setTimeout(func, 1000 / 50);
+							}
+						);
+					}();
+				}
 			},
 
 			loadCSS: function(params) {
@@ -540,8 +700,8 @@ if( typeof jQuery !== 'undefined' ) {
 			},
 
 			initFunction: function(params) {
-				vars.elBody.classList.add( params.class );
-				Core.addEvent( window, params.event );
+				vars.elBody.classList.add(params.class);
+				Core.addEvent(window, params.event);
 				vars.events[params.event] = true;
 			},
 
@@ -650,22 +810,20 @@ if( typeof jQuery !== 'undefined' ) {
 			},
 
 			topScrollOffset: function() {
-				var topOffsetScroll = 0;
+				var headerHeight = 0;
 				var pageMenuOffset = vars.elPageMenu?.querySelector('#page-menu-wrap')?.offsetHeight || 0;
 
 				if( vars.elBody.classList.contains('is-expanded-menu') ) {
 					if( vars.elHeader?.classList.contains('sticky-header') ) {
-						topOffsetScroll = vars.elHeaderWrap.offsetHeight;
+						headerHeight = vars.elHeaderWrap.offsetHeight;
 					}
 
-					if( vars.elPageMenu?.classList.contains('dots-menu') ) {
+					if( vars.elPageMenu?.classList.contains('dots-menu') || !vars.elPageMenu?.classList.contains('sticky-page-menu') ) {
 						pageMenuOffset = 0;
 					}
 				}
 
-				topOffsetScroll = topOffsetScroll + pageMenuOffset;
-
-				Core.getVars.topScrollOffset = topOffsetScroll + options.scrollOffset;
+				Core.getVars.topScrollOffset = headerHeight + pageMenuOffset + options.scrollOffset;
 			},
 		};
 	}();
@@ -694,10 +852,6 @@ if( typeof jQuery !== 'undefined' ) {
 						vars.elBody.classList.remove( 'is-expanded-pagemenu' );
 					}
 				}
-			},
-
-			scrollPos: function() {
-				//document.documentElement.style.setProperty('--cnvs-scroll-ratio', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
 			},
 
 			goToTop: function() {
@@ -825,10 +979,6 @@ if( typeof jQuery !== 'undefined' ) {
 
 			modal: function(element) {
 				return Core.initModule({ selector: element ? element : '.modal-on-load', plugin: 'Modal', required: [ vars.required.jQuery ] });
-			},
-
-			parallax: function(element) {
-				return Core.initModule({ selector: element ? element : '.parallax .parallax-bg,.parallax .parallax-element', plugin: 'Parallax' });
 			},
 
 			animations: function(element) {
@@ -966,11 +1116,11 @@ if( typeof jQuery !== 'undefined' ) {
 			},
 
 			pricingSwitcher: function(element) {
-				return Core.initModule({ selector: element ? element : '.pts-switcher', plugin: 'PricingSwitcher' });
+				return Core.initModule({ selector: element ? element : '.pricing-tenure-switcher', plugin: 'PricingSwitcher' });
 			},
 
-			ajaxButton: function(element) {
-				return Core.initModule({ selector: element ? element : '[data-ajax-loader]', plugin: 'AjaxButton' });
+			ajaxTrigger: function(element) {
+				return Core.initModule({ selector: element ? element : '[data-ajax-loader]', plugin: 'AjaxTrigger' });
 			},
 
 			videoFacade: function(element) {
@@ -989,8 +1139,38 @@ if( typeof jQuery !== 'undefined' ) {
 				return Core.initModule({ selector: element ? element : '.code-highlight', plugin: 'CodeHighlight' });
 			},
 
+			tips: function() {
+				if( vars.tips ) {
+					return Core.initModule({ selector: 'body', plugin: 'Tips' });
+				}
+			},
+
+			textSplitter: function(element) {
+				return Core.initModule({ selector: element ? element : '.text-splitter', plugin: 'TextSplitter' });
+			},
+
+			mediaActions: function(element) {
+				return Core.initModule({ selector: element ? element : '.media-wrap', plugin: 'MediaActions' });
+			},
+
 			viewportDetect: function(element) {
 				return Core.initModule({ selector: element ? element : '.viewport-detect', plugin: 'ViewportDetect' });
+			},
+
+			scrollDetect: function(element) {
+				return Core.initModule({ selector: element ? element : '.scroll-detect', plugin: 'ScrollDetect' });
+			},
+
+			fontSizer: function(element) {
+				return Core.initModule({ selector: element ? element : '.font-sizer', plugin: 'FontSizer' });
+			},
+
+			hover3D: function(element) {
+				return Core.initModule({ selector: element ? element : '.hover-3d', plugin: 'Hover3D' });
+			},
+
+			buttons: function(element) {
+				return Core.initModule({ selector: element ? element : '.button-text-effect', plugin: 'Buttons' });
 			},
 
 			bsComponents: function(element) {
@@ -1049,7 +1229,6 @@ if( typeof jQuery !== 'undefined' ) {
 				Core.run(vars.resizers);
 
 				Custom.onResize();
-
 				Core.addEvent( window, 'cnvsResize' );
 			}
 		};
@@ -1063,6 +1242,10 @@ if( typeof jQuery !== 'undefined' ) {
 				Core.runBase();
 				Core.runModules();
 				Core.topScrollOffset();
+
+				if( vars.smoothScroll ) {
+					new Core.smoothScroll();
+				}
 
 				DocumentOnReady.windowscroll();
 
@@ -1089,9 +1272,9 @@ if( typeof jQuery !== 'undefined' ) {
 		DocumentOnReady.init();
 	});
 
-	window.onload = function() {
+	window.addEventListener('load', function() {
 		DocumentOnLoad.init();
-	};
+	});
 
 	var resizeFunctions = Core.debouncedResize( function() {
 		DocumentOnResize.init();

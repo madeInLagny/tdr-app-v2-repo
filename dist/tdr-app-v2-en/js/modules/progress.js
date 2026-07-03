@@ -8,43 +8,48 @@ CNVS.Progress = function() {
 				return true;
 			}
 
-			__core.initFunction({ class: 'has-plugin-progress', event: 'pluginProgressReady' });
+			__core.isFuncTrue( function() {
+				return typeof jQuery !== 'undefined' && jQuery().countTo;
+			}).then( function(cond) {
 
-			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+				__core.initFunction({ class: 'has-plugin-progress', event: 'pluginProgressReady' });
 
-			selector.forEach( function(element) {
-				var elValue	= element.getAttribute('data-percent') || 90,
-					elSpeed	= element.getAttribute('data-speed') || 1200,
-					elBar = element.querySelector('.skill-progress-percent');
+				selector = __core.getSelector( selector, false );
+				if( selector.length < 1 ){
+					return true;
+				}
 
-				elSpeed = Number(elSpeed) + 'ms';
+				selector.forEach( function(element) {
+					var elValue	= element.getAttribute('data-percent') || 90,
+						elSpeed	= element.getAttribute('data-speed') || 1200,
+						elBar = element.querySelector('.skill-progress-percent');
 
-				elBar.style.setProperty( '--cnvs-progress-speed', elSpeed );
+					elSpeed = Number(elSpeed) + 'ms';
 
-				var observer = new IntersectionObserver( function(entries, observer){
-					entries.forEach( function(entry) {
-						if (entry.isIntersecting) {
-							if (!elBar.classList.contains('skill-animated')) {
-								__modules.counter(element.querySelector('.counter'));
+					elBar.style.setProperty( '--cnvs-progress-speed', elSpeed );
 
-								if ( element.classList.contains('skill-progress-vertical') ) {
-									elBar.style.height = elValue + "%";
-									elBar.classList.add('skill-animated');
-								} else {
-									elBar.style.width = elValue + "%";
-									elBar.classList.add('skill-animated');
+					var observer = new IntersectionObserver( function(entries, observer){
+						entries.forEach( function(entry) {
+							if (entry.isIntersecting) {
+								if (!elBar.classList.contains('skill-animated')) {
+									__modules.counter(element.querySelector('.counter'));
+
+									if ( element.classList.contains('skill-progress-vertical') ) {
+										elBar.style.height = elValue + "%";
+										elBar.classList.add('skill-animated');
+									} else {
+										elBar.style.width = elValue + "%";
+										elBar.classList.add('skill-animated');
+									}
 								}
+
+								observer.unobserve( entry.target );
 							}
+						});
+					}, {rootMargin: '0px 0px 50px'});
 
-							observer.unobserve( entry.target );
-						}
-					});
-				}, {rootMargin: '0px 0px 50px'});
-
-				observer.observe( elBar );
+					observer.observe( elBar );
+				});
 			});
 		}
 	};

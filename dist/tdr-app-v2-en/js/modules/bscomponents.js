@@ -38,6 +38,11 @@ CNVS.BSComponents = function() {
 				var tabTargetShow = function(target) {
 					var tabTrigger = new bootstrap.Tab(target);
 					tabTrigger.show();
+					if( __core.getVars.hash && document.querySelector('[data-bs-target="'+__core.getVars.hash+'"]') ) {
+						setTimeout( function(){
+							__core.scrollTo((__core.offset(target).top - __core.getVars.topScrollOffset - 20), 0, false, 'smooth');
+						}, 1000);
+					}
 				};
 
 				document.querySelectorAll('.canvas-tabs').forEach( function(el) {
@@ -51,7 +56,7 @@ CNVS.BSComponents = function() {
 
 				document.querySelectorAll('.tab-hover').forEach( function(el) {
 					el.querySelectorAll('[data-bs-target]').forEach( function(tab) {
-						tab.addEventListener( 'mouseover', function() {
+						tab.addEventListener( 'mouseenter', function() {
 							tabTargetShow(tab);
 						});
 					});

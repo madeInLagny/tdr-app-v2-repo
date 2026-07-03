@@ -1,6 +1,5 @@
 CNVS.OnePage = function() {
 	var __core = SEMICOLON.Core;
-	var __modules = SEMICOLON.Modules;
 
 	var _init = function(selector) {
 		_hash();
@@ -12,7 +11,7 @@ CNVS.OnePage = function() {
 				el.onclick = function(e) {
 					e.preventDefault();
 
-					_scroller( el, 'scrollTo' );
+					_scroller( el, 'scrollTo', true );
 				};
 			});
 		}
@@ -29,7 +28,7 @@ CNVS.OnePage = function() {
 					el.onclick = function(e) {
 						e.preventDefault();
 
-						_scroller( el, 'onePage' );
+						_scroller( el, 'onePage', true );
 					};
 				});
 			});
@@ -43,16 +42,10 @@ CNVS.OnePage = function() {
 
 		if( document.querySelector('a[data-href="'+ __core.getVars.hash +'"]') || document.querySelector('a[data-scrollto="'+ __core.getVars.hash +'"]') ) {
 			window.onbeforeunload = function() {
-				window.scrollTo({
-					top: 0,
-					behavior: 'auto'
-				});
+				__core.scrollTo(0, 0, false, 'auto');
 			};
 
-			window.scrollTo({
-				top: 0,
-				behavior: 'auto'
-			});
+			__core.scrollTo(0, 0, false, 'auto');
 
 			var section = document.querySelector(__core.getVars.hash);
 
@@ -98,25 +91,33 @@ CNVS.OnePage = function() {
 			if( !section.hasAttribute('data-onepage-settings') ) {
 				section.setAttribute( 'data-onepage-settings', JSON.stringify( settings ) );
 			}
+
 			__core.getVars.pageSectionEls = document.querySelectorAll('[data-onepage-settings]');
 		}, 1000);
 	};
 
-	var _scroller = function(el, type) {
+	var _scroller = function(el, type, clicker = false) {
 		var section = _getSection(el, type),
-			sectionId = section.getAttribute('id');
+			sectionId = section.getAttribute('id'),
+			settings;
 
 		if( !section ) {
 			return false;
 		}
 
-		var settings = JSON.parse( section.getAttribute('data-onepage-settings') );
+		if( clicker == true ) {
+			settings = _settings(section, el, false);
+		} else {
+			settings = JSON.parse(section.getAttribute('data-onepage-settings'));
+		}
 
 		if( type != 'scrollTo' && __core.getVars.elOnePageActiveOnClick == 'true' ) {
 			parent = el.closest('.one-page-menu');
+
 			parent.querySelectorAll(__core.getVars.elOnePageParentSelector).forEach( function(el) {
 				el.classList.remove( __core.getVars.elOnePageActiveClass );
 			});
+
 			parent.querySelector('a[data-href="#' + sectionId + '"]').closest(__core.getVars.elOnePageParentSelector).classList.add( __core.getVars.elOnePageActiveClass );
 		}
 
@@ -135,16 +136,7 @@ CNVS.OnePage = function() {
 				return false;
 			}
 
-			if( settings.easing ) {
-				jQuery('html,body').stop(true, true).animate({
-					'scrollTop': sectionOffset - Number( settings.offset )
-				}, Number(settings.speed), settings.easing);
-			} else {
-				window.scrollTo({
-					top: sectionOffset - Number( settings.offset ),
-					behavior: 'smooth'
-				});
-			}
+			__core.scrollTo((sectionOffset - Number(settings.offset)), settings.speed, settings.easing);
 		}, Number(timeout));
 	};
 
@@ -172,7 +164,7 @@ CNVS.OnePage = function() {
 
 			if( settings ) {
 				var h = __core.offset(el).top - settings.offset - 5,
-					y = window.pageYOffset;
+					y = window.scrollY;
 
 				if( ( y >= h ) && ( y < h + el.offsetHeight ) && el.getAttribute('id') != currentOnePageSection && el.getAttribute('id') ) {
 					currentOnePageSection = el.getAttribute('id');
@@ -183,18 +175,18 @@ CNVS.OnePage = function() {
 		return currentOnePageSection;
 	};
 
-	var _settings = function(section, element) {
+	var _settings = function(section, element, json=true) {
 		var body = __core.getVars.elBody.classList;
 
 		if( typeof section === 'undefined' || element.length < 1 ) {
 			return true;
 		}
 
-		if( section.hasAttribute('data-onepage-settings') ) {
+		if( section.hasAttribute('data-onepage-settings') && json ) {
 			return true;
 		}
 
-		var options = {
+		var defaults = {
 			offset: __core.getVars.topScrollOffset,
 			speed: 1250,
 			easing: false
@@ -204,9 +196,9 @@ CNVS.OnePage = function() {
 			parentSettings = {},
 			parent = element.closest( '.one-page-menu' );
 
-		parentSettings.offset = parent?.getAttribute( 'data-offset' ) || options.offset;
-		parentSettings.speed = parent?.getAttribute( 'data-speed' ) || options.speed;
-		parentSettings.easing = parent?.getAttribute( 'data-easing' ) || options.easing;
+		parentSettings.offset = parent?.getAttribute( 'data-offset' ) || defaults.offset;
+		parentSettings.speed = parent?.getAttribute( 'data-speed' ) || defaults.speed;
+		parentSettings.easing = parent?.getAttribute( 'data-easing' ) || defaults.easing;
 
 		var elementSettings = {
 			offset: element.getAttribute( 'data-offset' ) || parentSettings.offset,
@@ -259,8 +251,8 @@ CNVS.OnePage = function() {
 			elementSettings.offset = elOffsetXXL;
 		}
 
-		settings.offset = elementSettings.offset;
-		settings.speed = elementSettings.speed;
+		settings.offset = Number(elementSettings.offset);
+		settings.speed = Number(elementSettings.speed);
 		settings.easing = elementSettings.easing;
 
 		return settings;
@@ -295,10 +287,11 @@ CNVS.OnePage = function() {
 
 			window.addEventListener('scroll', function(){
 				_position();
-			});
+			}, {passive:true});
 
 			__core.getVars.resizers.onepage = function() {
-				__modules.onePage();
+				_init(selector);
+				_position();
 			};
 		}
 	};

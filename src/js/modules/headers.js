@@ -38,13 +38,13 @@ CNVS.Headers = function() {
 			return true;
 		}
 
-		if( window.pageYOffset > stickyOffset ) {
+		if( window.scrollY > stickyOffset ) {
 			if( !__core.getVars.elBody.classList.contains('side-header') ) {
 				__core.getVars.elHeader.classList.add('sticky-header');
 				_changeMenuClass('sticky');
 
 				if( __core.getVars.elBody.classList.contains('is-expanded-menu') && __core.getVars.stickyShrink == 'true' && !__core.getVars.elHeader.classList.contains('no-sticky') ) {
-					if( ( window.pageYOffset - stickyOffset ) > Number( __core.getVars.stickyShrinkOffset ) ) {
+					if( ( window.scrollY - stickyOffset ) > Number( __core.getVars.stickyShrinkOffset ) ) {
 						__core.getVars.elHeader.classList.add('sticky-header-shrink');
 					} else {
 						__core.getVars.elHeader.classList.remove('sticky-header-shrink');
@@ -120,6 +120,8 @@ CNVS.Headers = function() {
 
 	var _includeHeader = function() {
 		var elHeaderInc = document.querySelector('.include-header');
+		var elHeader = __core.getVars.elHeader;
+		__core.getVars.headerHeight = elHeader.offsetHeight;
 
 		if( !elHeaderInc ) {
 			return true;
@@ -131,8 +133,8 @@ CNVS.Headers = function() {
 			return true;
 		}
 
-		if( __core.getVars.elHeader.classList.contains('floating-header') || elHeaderInc.classList.contains('include-topbar') ) {
-			__core.getVars.headerHeight = __core.getVars.elHeader.offsetHeight + __core.offset(__core.getVars.elHeader).top;
+		if( elHeader.classList.contains('floating-header') || elHeaderInc.classList.contains('include-topbar') ) {
+			__core.getVars.headerHeight = elHeader.offsetHeight + __core.offset(elHeader).top;
 		}
 
 		elHeaderInc.style.marginTop = (__core.getVars.headerHeight * -1) + 'px';
@@ -184,7 +186,7 @@ CNVS.Headers = function() {
 
 				window.addEventListener('scroll', function(){
 					_sticky( __core.getVars.headerWrapOffset );
-				});
+				}, {passive:true});
 			}
 
 			_changeMenuClass('responsive');

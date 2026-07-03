@@ -4,7 +4,7 @@ CNVS.PageMenu = function() {
 	var _sticky = function(stickyOffset) {
 		var pageMenu = __core.getVars.elPageMenu;
 
-		if( window.pageYOffset > stickyOffset ) {
+		if( window.scrollY > stickyOffset ) {
 			if( __core.getVars.elBody.classList.contains('device-up-lg') ) {
 				pageMenu.classList.add('sticky-page-menu');
 			} else {
@@ -62,15 +62,15 @@ CNVS.PageMenu = function() {
 
 			var headerHeight;
 
-			if( __core.getVars.elHeader.classList.contains('no-sticky') || __core.getVars.elHeader.getAttribute('data-sticky-shrink') == 'false' ) {
+			if( __core.getVars.elHeader.classList.contains('no-sticky') ) {
+				headerHeight = 0;
+			} else if( __core.getVars.elHeader.getAttribute('data-sticky-shrink') == 'false' ) {
 				headerHeight = getComputedStyle(__core.getVars.elHeader).getPropertyValue('--cnvs-header-height').split('px')[0];
 			} else {
 				headerHeight = getComputedStyle(__core.getVars.elHeader).getPropertyValue('--cnvs-header-height-shrink').split('px')[0];
 			}
 
-			if( __core.getVars.elHeader.getAttribute('data-sticky-shrink') == 'false' ) {
-				pageMenu.style.setProperty("--cnvs-page-submenu-sticky-offset", headerHeight+'px');
-			}
+			pageMenu.style.setProperty("--cnvs-page-submenu-sticky-offset", headerHeight+'px');
 
 			setTimeout(function() {
 				__core.getVars.pageMenuOffset = __core.offset(pageMenu).top - headerHeight;
@@ -79,7 +79,7 @@ CNVS.PageMenu = function() {
 
 			window.addEventListener('scroll', function(){
 				_sticky( __core.getVars.pageMenuOffset );
-			});
+			}, {passive:true});
 
 			__core.getVars.resizers.pagemenu = function() {
 				setTimeout( function() {

@@ -1,6 +1,59 @@
 CNVS.HoverAnimations = function() {
 	var __core = SEMICOLON.Core;
 
+	var _t, _x;
+
+	var _showOverlay = function(params) {
+		clearTimeout(_x);
+
+		_t = setTimeout( function() {
+			params.element.classList.add( 'not-animated' );
+
+			(params.elAnimateOut + ' not-animated').split(" ").forEach( function(_class) {
+				params.element.classList.remove(_class);
+			});
+
+			(params.elAnimate + ' animated').split(" ").forEach( function(_class) {
+				params.element.classList.add(_class);
+			});
+		}, params.elDelayT );
+	};
+
+	var _hideOverlay = function(params) {
+		params.element.classList.add( 'not-animated' );
+
+		(params.elAnimate + ' not-animated').split(" ").forEach( function(_class) {
+			params.element.classList.remove(_class);
+		});
+
+		(params.elAnimateOut + ' animated').split(" ").forEach( function(_class) {
+			params.element.classList.add(_class);
+		});
+
+		if( params.elReset == 'true' ) {
+			_x = setTimeout( function() {
+				(params.elAnimateOut + ' animated').split(" ").forEach( function(_class) {
+					params.element.classList.remove(_class);
+				});
+
+				params.element.classList.add( 'not-animated' );
+			}, Number( params.elSpeed ) );
+		}
+
+		clearTimeout(_t);
+	};
+
+	var _isInsideElement = function(touch){
+		var rect = element.getBoundingClientRect();
+
+		return (
+			touch.clientX >= rect.left &&
+			touch.clientX <= rect.right &&
+			touch.clientY >= rect.top &&
+			touch.clientY <= rect.bottom
+		);
+	};
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
@@ -61,47 +114,42 @@ CNVS.HoverAnimations = function() {
 					element.style.animationDuration = Number( elSpeed ) + 'ms';
 				}
 
-				var t, x;
+				var params = {
+					element: element,
+					elAnimate: elAnimate,
+					elAnimateOut: elAnimateOut,
+					elSpeed: elSpeed,
+					elDelayT: elDelayT,
+					elParent: elParent,
+					elReset: elReset,
+				}
 
-				elParent.addEventListener( 'mouseover', function() {
-					clearTimeout(x);
-
-					t = setTimeout( function() {
-						element.classList.add( 'not-animated' );
-
-						(elAnimateOut + ' not-animated').split(" ").forEach( function(_class) {
-							element.classList.remove(_class);
-						});
-
-						(elAnimate + ' animated').split(" ").forEach( function(_class) {
-							element.classList.add(_class);
-						});
-					}, elDelayT );
+				elParent.addEventListener( 'mouseenter', function(){
+					_showOverlay(params);
 				}, false);
 
-				elParent.addEventListener( 'mouseleave', function() {
-					element.classList.add( 'not-animated' );
-
-					(elAnimate + ' not-animated').split(" ").forEach( function(_class) {
-						element.classList.remove(_class);
-					});
-
-					(elAnimateOut + ' animated').split(" ").forEach( function(_class) {
-						element.classList.add(_class);
-					});
-
-					if( elReset == 'true' ) {
-						x = setTimeout( function() {
-							(elAnimateOut + ' animated').split(" ").forEach( function(_class) {
-								element.classList.remove(_class);
-							});
-
-							element.classList.add( 'not-animated' );
-						}, Number( elSpeed ) );
-					}
-
-					clearTimeout(t);
+				elParent.addEventListener( 'mouseleave', function(){
+					_hideOverlay(params);
 				}, false);
+
+				// elParent.addEventListener( 'touchstart', function(e){
+				// 	e.preventDefault();
+
+				// 	_showOverlay(params);
+
+				// 	elParent.addEventListener('touchmove', function(e){
+				// 		if (!_isInsideElement(e.touches[0])) {
+				// 			_hideOverlay(params);
+				// 			elParent.removeEventListener('touchmove');
+				// 		}
+				// 	});
+
+      			// 	elParent.addEventListener('touchend', function(){
+				// 		_hideOverlay(params);
+				// 		elParent.removeEventListener('touchmove');
+				// 		elParent.removeEventListener('touchend');
+				// 	});
+				// });
 			});
 		}
 	};

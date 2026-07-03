@@ -22,7 +22,7 @@ CNVS.Logo = function() {
 			if( selector[0].querySelector('.logo-sticky') ) {
 				style = document.createElement('style');
 				head.appendChild(style);
-				css = '.sticky-header #logo [class^="logo-"] { display: none; } .sticky-header #logo .logo-sticky { display: flex; }';
+				css = '.sticky-header #logo [class^="logo-"] { display: none !important; } .sticky-header #logo .logo-sticky { display: flex !important; }';
 				style.appendChild(document.createTextNode(css));
 			}
 

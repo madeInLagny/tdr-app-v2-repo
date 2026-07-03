@@ -44,6 +44,16 @@ CNVS.Cursor = function() {
 					cursor.classList.remove('cnvs-cursor-action');
 				});
 			});
+
+			document.querySelectorAll('.cursor-disable').forEach( function(el) {
+				el.addEventListener('mouseenter', function() {
+					cursor.classList.add('cnvs-cursor-disabled');
+				});
+
+				el.addEventListener('mouseleave', function() {
+					cursor.classList.remove('cnvs-cursor-disabled');
+				});
+			});
 		}
 	};
 }();

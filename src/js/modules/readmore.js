@@ -87,10 +87,7 @@ CNVS.ReadMore = function() {
 						elTriggerEl.innerHTML = elTriggerO;
 						setTimeout( function() {
 							if( elScrollUp == 'true' ) {
-								window.scrollTo({
-									top: (element.offsetTop - __core.getVars.topScrollOffset),
-									behavior: 'smooth'
-								});
+								__core.scrollTo((element.offsetTop - __core.getVars.topScrollOffset), false, false);
 							}
 						}, elSpeed );
 						if( elMaskD == 'true' ) {

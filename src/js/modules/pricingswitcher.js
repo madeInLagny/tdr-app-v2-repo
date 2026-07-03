@@ -1,45 +1,52 @@
 CNVS.PricingSwitcher = function() {
 	var __core = SEMICOLON.Core;
 
-	var _switcher = function(checkbox, parent, pricing, defClass, actClass) {
-		parent.querySelectorAll('.pts-left,.pts-right').forEach( function(el) {
-			actClass.split(" ").forEach( function(_class) {
-				el.classList.remove(_class);
-			});
+	var _staticValue;
 
-			defClass.split(" ").forEach( function(_class) {
-				el.classList.add(_class);
-			});
-		});
+	var _switcher = function(check, switcher, pricing, defClass, actClass) {
+		var value;
 
-		pricing.querySelectorAll('.pts-switch-content-left,.pts-switch-content-right').forEach( function(el) {
-			el.classList.add('d-none');
-		});
-
-		if( checkbox.checked == true ) {
-			defClass.split(" ").forEach( function(_class) {
-				parent.querySelector('.pts-right').classList.remove(_class);
-			});
-
-			actClass.split(" ").forEach( function(_class) {
-				parent.querySelector('.pts-right').classList.add(_class);
-			});
-			pricing.querySelectorAll('.pts-switch-content-right').forEach( function(el) {
-				el.classList.remove('d-none');
-			});
+		if( check.type == 'checkbox' ) {
+			_staticValue = check.checked;
+		} else if( check.type == 'radio' ) {
+			if( check.checked ) {
+				_staticValue = check.value;
+			}
 		} else {
-			defClass.split(" ").forEach( function(_class) {
-				parent.querySelector('.pts-left').classList.remove(_class);
-			});
-
-			actClass.split(" ").forEach( function(_class) {
-				parent.querySelector('.pts-left').classList.add(_class);
-			});
-
-			pricing.querySelectorAll('.pts-switch-content-left').forEach( function(el) {
-				el.classList.remove('d-none');
-			});
+			_staticValue = check.value;
 		}
+
+		value = _staticValue;
+
+		switcher.querySelectorAll('.pts-switch')?.forEach( function(elem) {
+			actClass.split(" ").forEach( function(_class) {
+				elem.classList.remove(_class);
+			});
+
+			defClass.split(" ").forEach( function(_class) {
+				elem.classList.add(_class);
+			});
+		});
+
+		pricing.querySelectorAll('.pts-content')?.forEach( function(elem) {
+			elem.classList.add('d-none');
+		});
+
+		if( check.type == 'checkbox' ) {
+			value = value ? 'true' : 'false';
+		}
+
+		defClass.split(" ").forEach( function(_class) {
+			switcher.querySelector('.pts-' + value)?.classList.remove(_class);
+		});
+
+		actClass.split(" ").forEach( function(_class) {
+			switcher.querySelector('.pts-' + value)?.classList.add(_class);
+		});
+
+		pricing.querySelectorAll('.pts-content-' + value).forEach( function(el) {
+			el.classList.remove('d-none');
+		});
 	};
 
 	return {
@@ -56,16 +63,17 @@ CNVS.PricingSwitcher = function() {
 			}
 
 			selector.forEach( function(element) {
-				var elCheck = element.querySelector('[type="checkbox"]'),
-					elParent = element.closest('.pricing-tenure-switcher'),
+				var elCheck = element.querySelectorAll('[type="checkbox"], [type="radio"], select'),
 					elDefClass = element.getAttribute('data-default-class') || 'text-muted op-05',
 					elActClass = element.getAttribute('data-active-class') || 'fw-bold',
-					elPricing = document.querySelector( elParent.getAttribute('data-container') );
+					elPricing = document.querySelector( element.getAttribute('data-container') );
 
-				_switcher(elCheck, elParent, elPricing, elDefClass, elActClass);
+				elCheck.forEach( function(el) {
+					_switcher(el, element, elPricing, elDefClass, elActClass);
 
-				elCheck.addEventListener( 'change', function() {
-					_switcher(elCheck, elParent, elPricing, elDefClass, elActClass);
+					el.addEventListener( 'change', function() {
+						_switcher(el, element, elPricing, elDefClass, elActClass);
+					});
 				});
 			});
 		}

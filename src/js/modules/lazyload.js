@@ -1,6 +1,5 @@
 CNVS.LazyLoad = function() {
 	var __core = SEMICOLON.Core;
-	var __modules = SEMICOLON.Modules;
 
 	return {
 		init: function(selector) {
@@ -20,7 +19,7 @@ CNVS.LazyLoad = function() {
 				__core.initFunction({ class: 'has-plugin-lazyload', event: 'pluginlazyLoadReady' });
 
 				window.lazyLoadInstance = new LazyLoad({
-					threshold: 150,
+					threshold: 0,
 					elements_selector: '.lazy:not(.lazy-loaded)',
 					class_loading: 'lazy-loading',
 					class_loaded: 'lazy-loaded',
@@ -30,7 +29,6 @@ CNVS.LazyLoad = function() {
 						if( el.parentNode.getAttribute('data-lazy-container') == 'true' ) {
 							__core.runContainerModules( el.parentNode );
 						}
-						__modules.parallax();
 					}
 				});
 			});

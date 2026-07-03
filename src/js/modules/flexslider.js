@@ -79,6 +79,7 @@ CNVS.FlexSlider = function() {
 						start: function( slider ){
 							__modules.animations();
 							__modules.lightbox();
+
 							jQuery('.flex-prev').html('<i class="'+ elArrowLeft +'"></i>');
 							jQuery('.flex-next').html('<i class="'+ elArrowRight +'"></i>');
 							setTimeout( function(){
@@ -86,6 +87,7 @@ CNVS.FlexSlider = function() {
 									slider.parents( '.grid-container.has-init-isotope' ).isotope('layout');
 								}
 							}, 1200 );
+
 							if( typeof skrollrInstance !== "undefined" ) {
 								skrollrInstance.refresh();
 							}

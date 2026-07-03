@@ -52,9 +52,7 @@ CNVS.Accordion = function() {
 							element.find('.accordion-header').removeClass('accordion-active ' + elActiveClass).next().slideUp("normal");
 							clickTarget.toggleClass('accordion-active ' + elActiveClass, true).next().stop(true,true).slideDown("normal", function(){
 								if( ( jQuery('body').hasClass('device-sm') || jQuery('body').hasClass('device-xs') ) && element.hasClass('scroll-on-open') ) {
-									jQuery('html,body').stop(true,true).animate({
-										'scrollTop': clickTarget.offset().top - ( Core.getVars.topScrollOffset - 40 )
-									}, 800, 'easeOutQuad' );
+									__core.scrollTo((__core.offset(clickTarget).top - __core.getVars.topScrollOffset - 40), 800, 'easeOutQuad');
 								}
 
 								__core.runContainerModules( clickTarget.next()[0] );

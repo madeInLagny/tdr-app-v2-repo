@@ -110,10 +110,7 @@ CNVS.PortfolioAjax = function() {
 		// __core.getVars.portfolioAjax.loader.classList.remove('loader-overlay-display');
 		setTimeout( function() {
 			__core.runContainerModules( __core.getVars.portfolioAjax.wrapper );
-			window.scrollTo({
-				top: __core.getVars.portfolioAjax.wrapperOffset - __core.getVars.topScrollOffset - 60,
-				behavior: 'smooth'
-			});
+			__core.scrollTo((__core.getVars.portfolioAjax.wrapperOffset - __core.getVars.topScrollOffset - 60), false, false);
 		}, 500);
 	}
 

@@ -7,30 +7,10 @@ CNVS.Modal = function() {
 				return true;
 			}
 
-			var hasCookies = false;
-			__core.getSelector( selector, false ).forEach( function(el) {
-				if( el.hasAttribute('data-cookies') ) {
-					hasCookies = true;
-					return true;
-				}
-			});
-
-			var checkCookies = function() {
-				if( hasCookies ) {
-					if( typeof Cookies !== "undefined" ) {
-						return true;
-					}
-
-					return false;
-				} else {
-					return true;
-				}
-			};
-
 			__core.loadJS({ file: 'plugins.lightbox.js', id: 'canvas-lightbox-js', jsFolder: true });
 
 			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().magnificPopup && checkCookies;
+				return typeof jQuery !== 'undefined' && jQuery().magnificPopup;
 			}).then( function(cond) {
 				if( !cond ) {
 					return false;
@@ -48,7 +28,7 @@ CNVS.Modal = function() {
 				selector.each( function(){
 					var element = jQuery(this),
 						elTarget = element.attr('data-target'),
-						elTargetValue = elTarget.split('#')[1],
+						elTargetValue = '__cnvs_' + elTarget.split('#')[1],
 						elDelay = element.attr('data-delay') || 500,
 						elTimeout = element.attr('data-timeout'),
 						elAnimateIn = element.attr('data-animate-in'),
@@ -60,11 +40,11 @@ CNVS.Modal = function() {
 						elCookieExp = element.attr('data-cookie-expire');
 
 					if( elCookies == "false" ) {
-						Cookies.remove( elTargetValue );
+						__core.cookie.remove( elTargetValue );
 					}
 
 					if( elCookies == 'true' ) {
-						var elementCookie = Cookies.get( elTargetValue );
+						var elementCookie = __core.cookie.get( elTargetValue );
 
 						if( typeof elementCookie !== 'undefined' && elementCookie == '0' ) {
 							return true;
@@ -111,23 +91,30 @@ CNVS.Modal = function() {
 									if( elAnimateIn != '' || elAnimateOut != '' ) {
 										jQuery(elTarget).removeClass( elAnimateIn + ' ' + elAnimateOut + ' animated' );
 									}
-									if( elCookies == 'true' ) {
-										var cookieOps = {};
-
-										if( elCookieExp ) {
-											cookieOps.expires = Number( elCookieExp );
-										}
-
-										if( elCookiePath ) {
-											cookieOps.path = elCookiePath;
-										}
-
-										Cookies.set( elTargetValue, '0', cookieOps );
-									}
 								}
 							}
 						}, 0);
 					}, elDelay );
+
+					if( document.querySelector('.modal-cookies-close') ) {
+						document.querySelector('.modal-cookies-close').onclick = function() {
+							jQuery.magnificPopup.close();
+
+							if( elCookies == 'true' ) {
+								var cookieOps = {};
+
+								if( elCookieExp ) {
+									cookieOps.expires = Number( elCookieExp );
+								}
+
+								if( elCookiePath ) {
+									cookieOps.path = elCookiePath;
+								}
+
+								__core.cookie.set( elTargetValue, '0', cookieOps );
+							}
+						};
+					}
 
 					if( elTimeout != '' ) {
 						setTimeout(function() {

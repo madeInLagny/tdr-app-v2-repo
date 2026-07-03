@@ -32,6 +32,7 @@ CNVS.Carousel = function() {
 						elItemsMd = element.attr('data-items-md') || Number( elItemsSm ),
 						elItemsLg = element.attr('data-items-lg') || Number( elItemsMd ),
 						elItemsXl = element.attr('data-items-xl') || Number( elItemsLg ),
+						elItemsXxl = element.attr('data-items-xxl') || Number( elItemsXl ),
 						elLoop = element.attr('data-loop'),
 						elAutoPlay = element.attr('data-autoplay'),
 						elSpeed = element.attr('data-speed') || 250,
@@ -109,7 +110,8 @@ CNVS.Carousel = function() {
 							576:{ items: elItemsSm },
 							768:{ items: elItemsMd },
 							992:{ items: elItemsLg },
-							1200:{ items: elItemsXl }
+							1200:{ items: elItemsXl },
+							1400:{ items: elItemsXxl }
 						},
 						onInitialized: function(){
 							__base.sliderDimensions(element.parents('.slider-element')[0]);

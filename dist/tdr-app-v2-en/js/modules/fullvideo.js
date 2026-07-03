@@ -52,7 +52,7 @@ CNVS.FullVideo = function() {
 				}
 
 				if( SEMICOLON.Mobile.any() && !element.classList.contains('no-placeholder') ) {
-					var placeholderImg = elVideo.getAttribute('poster');
+					var placeholderImg = elVideo.getAttribute('poster') || elVideo.getAttribute('data-poster');
 
 					if( placeholderImg != '' ) {
 						element.innerHTML += '<div class="video-placeholder" style="background-image: url('+ placeholderImg +');"></div>';

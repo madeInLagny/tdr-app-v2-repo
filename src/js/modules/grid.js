@@ -1,6 +1,10 @@
 CNVS.Grid = function() {
 	var __core = SEMICOLON.Core;
 
+	var _reLayout = function(el) {
+		el.filter('.has-init-isotope').isotope('layout');
+	};
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
@@ -32,12 +36,14 @@ CNVS.Grid = function() {
 						elOriginLeft = true,
 						elGrid;
 
+						_reLayout(element);
+
 					if( __core.getVars.isRTL ) {
 						elOriginLeft = false;
 					}
 
 					if( element.hasClass('portfolio') || element.hasClass('post-timeline') ){
-						elGrid = element.isotope({
+						elGrid = element.filter(':not(.has-init-isotope)').isotope({
 							layoutMode: elLayoutMode,
 							isOriginLeft: elOriginLeft,
 							transitionDuration: elTransition,
@@ -48,7 +54,7 @@ CNVS.Grid = function() {
 							}
 						});
 					} else {
-						elGrid = element.isotope({
+						elGrid = element.filter(':not(.has-init-isotope)').isotope({
 							layoutMode: elLayoutMode,
 							isOriginLeft: elOriginLeft,
 							transitionDuration: elTransition,
@@ -61,22 +67,26 @@ CNVS.Grid = function() {
 						element.addClass('has-init-isotope');
 					}
 
-					var elementInterval = setInterval( function() {
+					var int = setInterval( function() {
 						if( element.find('.lazy.lazy-loaded').length == element.find('.lazy').length ) {
 							setTimeout( function() {
-								element.filter('.has-init-isotope').isotope('layout');
+								_reLayout(element);
 							}, 666);
 
-							clearInterval( elementInterval );
+							clearInterval(int);
 						}
 					}, 1000);
 
-					jQuery(window).on( 'lazyLoadLoaded', function() {
-						element.filter('.has-init-isotope').isotope('layout');
+					window.addEventListener( 'lazyLoadLoaded', function() {
+						_reLayout(element);
+					});
+
+					window.addEventListener( 'load', function() {
+						_reLayout(element);
 					});
 
 					__core.getVars.resizers.isotope = function() {
-						element.filter('.has-init-isotope').isotope('layout');
+						_reLayout(element);
 					};
 				});
 			});

@@ -3,14 +3,14 @@ CNVS.SliderMenuClass = function() {
 	var __base = SEMICOLON.Base;
 
 	var _swiper = function() {
-		if( __core.getVars.elBody.classList.contains('is-expanded-menu') || ( __core.getVars.elHeader.classList.contains('transparent-header-responsive') && !__core.getVars.elBody.classList.contains('primary-menu-open') ) ) {
+		if( !__core.getVars.elHeader.classList.contains('ignore-slider') && ( __core.getVars.elBody.classList.contains('is-expanded-menu') || ( __core.getVars.elHeader.classList.contains('transparent-header-responsive') && !__core.getVars.elBody.classList.contains('primary-menu-open') ) ) ) {
 			var activeSlide = __core.getVars.elSlider.querySelector('.swiper-slide-active');
 			_schemeChanger(activeSlide);
 		}
 	};
 
 	var _revolution = function() {
-		if( __core.getVars.elBody.classList.contains('is-expanded-menu') || ( __core.getVars.elHeader.classList.contains('transparent-header-responsive') && !__core.getVars.elBody.classList.contains('primary-menu-open') ) ) {
+		if( !__core.getVars.elHeader.classList.contains('ignore-slider') && ( __core.getVars.elBody.classList.contains('is-expanded-menu') || ( __core.getVars.elHeader.classList.contains('transparent-header-responsive') && !__core.getVars.elBody.classList.contains('primary-menu-open') ) ) ) {
 			var activeSlide = __core.getVars.elSlider.querySelector('.active-revslide');
 			_schemeChanger(activeSlide);
 		}
@@ -59,7 +59,7 @@ CNVS.SliderMenuClass = function() {
 			if( __core.getVars.elBody.classList.contains('dark') ) {
 				activeSlide.classList.add('not-dark');
 				document.querySelector('#header.transparent-header:not(.semi-transparent,.floating-header)').classList.remove('dark');
-				document.querySelector('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)').querySelector('#header-wrap').classList.add('not-dark');
+				document.querySelector('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)')?.querySelector('#header-wrap').classList.add('not-dark');
 			} else {
 				document.querySelector('#header.transparent-header:not(.semi-transparent,.floating-header)').classList.remove('dark');
 				__core.getVars.elHeaderWrap.classList.remove('not-dark');
@@ -75,6 +75,10 @@ CNVS.SliderMenuClass = function() {
 		init: function(selector) {
 			selector = __core.getSelector( selector, false );
 			if( selector.length < 1 ){
+				return true;
+			}
+
+			if( !__core.getVars.elBody.classList.contains('is-expanded-menu') ) {
 				return true;
 			}
 
