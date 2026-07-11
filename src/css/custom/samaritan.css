@@ -6,13 +6,18 @@
   --cnvs-section-bg: var(--samaritan);
   --bs-primary-rgb: 60, 99, 130;
   --cnvs-themecolor-dark: var(--darkSamaritan);
-  --samaritanGreen: #acf085;
-  --samaritanDarkGreen: #2e501b;
-  --samaritanBrown: #c96556de;
-  --samaritanDarkBrown: #703026;
-  --samaritanBlue: #5086e2;
-  --samaritanDarkBlue: #264170;
+  --samaritanGreen: #88F707;
+  --samaritanDarkGreen: #5BB000;
+  --samaritanRed: #fba6b5;
+  --samaritanDarkRed: #de2054;
+  --samaritanBlue: #7D97DD;
+  --samaritanDarkBlue: #4B5BC5;
+  --samaritanYellow: #fff612;
+   --samaritanDarkYellow: #e0d201;
 }
+/* https://uicolors.app/generate */
+
+
 
 ul {
   padding-left: 2em;
@@ -30,8 +35,12 @@ ul {
   color: var(--darkSamaritan) !important;
 }
 
-.text-samaritanBrown {
-  color: var(--samaritanBrown) !important;
+.text-samaritanRed {
+  color: var(--samaritanRed) !important;
+}
+
+.text-samaritanDarkRed {
+  color: var(--samaritanDarkRed) !important;
 }
 
 .text-samaritanGreen {
@@ -41,7 +50,6 @@ ul {
 .text-samaritanDarkGreen {
   color: var(--samaritanDarkGreen) !important;
 }
-
 
 
 .lightSamaritan-bg {
@@ -87,12 +95,16 @@ ul {
   background-color: var(--samaritanBlue);
 }
 
-.samaritanBrown-bg {
-  background-color: var(--samaritanBrown);
+.samaritanRed-bg {
+  background-color: var(--samaritanRed);
 }
 
-.samaritanBrown-bg:hover {
-  background-color: var(--samaritanDarkBrown);
+.samaritanDarkRed-bg {
+  background-color: var(--samaritanDarkRed);
+}
+
+.samaritanDarkRed-bg:hover {
+  background-color: var(--samaritanRed);
 }
 
 /* a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
@@ -147,8 +159,8 @@ ul {
 }
 
 .button-brown {
-  --cnvs-btn-color: var(--samaritanBrown);
-  --cnvs-btn-color-dark: var(--samaritanDarkBrown);
+  --cnvs-btn-color: var(--samaritanRed);
+  --cnvs-btn-color-dark: var(--samaritanDarkRed);
 }
 
 .button-blue {

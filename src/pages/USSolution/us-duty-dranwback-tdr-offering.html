@@ -46,6 +46,49 @@
 		}
 	</style>
 
+
+	<!-- glass effect -->
+
+	<style>
+		.glass-effect-samaritanGreen {
+			/* From https://css.glass */
+			background: rgba(151, 190, 172, 0.21);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(151, 190, 172, 0.3);
+		}
+
+
+
+		.glass-effect-samaritanYellow {
+			/* From https://css.glass */
+			background: rgba(255, 246, 18, 0.21);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(255, 246, 18, 0.3);
+		}
+
+		.glass-effect-samaritanRed {
+			/* From https://css.glass */
+			background: rgba(251, 166, 181, 0.21);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(251, 166, 181, 0.3);
+		}
+	</style>
+
+	<style>
+		.fbox-icon i {
+			background-color: var(--samaritan);
+		}
+	</style>
+
 </head>
 
 <body class="stretched sticky-responsive-pagemenu samaritan-bg">
@@ -105,46 +148,43 @@
 					</h2>
 					<div class="container">
 
-						<div class="row mt-4 col-mb-50">
-							<div class="col-md-4 text-center">
-								<div class="feature-box fbox-center flex-column fbox-plain p-5">
+						<div class="row justify-content-center gutter-50 col-mb-50">
+							<div class="col-lg-4 col-sm-6 text-center">
+								<div class="feature-box fbox-effect fbox-center flex-column p-5 glass-effect-samaritanGreen"
+									data-animate="fadeIn">
 									<div class="fbox-icon" data-animate="fadeIn">
-										<i class="bi-lightning-charge" style="color:var(--samaritanGreen);"></i>
+										<i class="bi-lightning-charge-fill" style="color:var(--samaritanGreen);"></i>
 									</div>
 									<div class="fbox-content">
-										<h3 class="display-6" data-animate="fadeIn" data-delay="1">AI-Powered,
+										<h3 class="display-6" data-animate="fadeIn" data-delay="1">Tech-Powered,
 											Human-Validated</h3>
 										<p class="text-lightSamaritan" data-animate="fadeIn" data-delay="0.5">We combine
-											cutting-edge AI automation
+											cutting-edge automation
 											with seasoned customs experts to ensure
 											accurate, compliant US Duty Drawback claims at scale.</p>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 text-center">
-								<div class="feature-box fbox-center flex-column fbox-plain p-5">
+							<div class="col-lg-4 col-sm-6 text-center">
+								<div class="feature-box fbox-effect fbox-center flex-column p-5 glass-effect-samaritanYellow"
+									data-animate="fadeIn" data-delay="0.5">
 									<div class="fbox-icon" data-animate="fadeIn">
-										<i style="color:white;"><svg xmlns="http://www.w3.org/2000/svg"
-												viewBox="0 0 640 512"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-												<path
-													d="M598.1 75.4c10.7-7.8 13.1-22.8 5.3-33.5s-22.8-13.1-33.5-5.3l-74.5 54.2-9.9-6.6C465.8 71 442.6 64 418.9 64l-59.2 0-.4 0-143.6 0c-26.7 0-52.5 8.9-73.4 25.1L70.1 36.6c-10.7-7.8-25.7-5.4-33.5 5.3s-5.4 25.7 5.3 33.5l88 64c9.6 6.9 22.7 5.9 31.1-2.4l3.9-3.9c13.5-13.5 31.8-21.1 50.9-21.1l46.3 0-91.7 91.7c-15.6 15.6-15.6 40.9 0 56.6l.8 .8C218 308 294 308 340.9 261.1l27.1-27.1 97.8 97.8c15.6 15.6 15.6 40.9 0 56.6l-9.8 9.8-31-31c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l28 28c-17.5 10.4-37.2 16.7-57.6 18.5L313 399c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l15 15-3.8 0c-36.1 0-70.7-14.3-96.2-39.8L65 279c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9L160.2 442.1c34.5 34.5 81.3 53.9 130.1 53.9l51.8 0 1 1 1-1 5.7 0c48.8 0 95.6-19.4 130.1-53.9l19.9-19.9c1.2-1.2 2.3-2.3 3.4-3.5 .7-.5 1.3-1.1 1.9-1.7L609 313c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-53.8 53.8c-4.2-12.8-11.3-24.9-21.5-35.1L385 183c-9.4-9.4-24.6-9.4-33.9 0l-44.1 44.1c-26.5 26.5-68.5 28-96.7 4.6l98.7-98.7c13.4-13.4 31.6-21 50.6-21.1l8.5 0 .2 0 50.8 0c14.2 0 28.1 4.2 39.9 12.1L482.7 140c8.4 5.6 19.3 5.3 27.4-.6l88-64z" />
-											</svg></i>
+										<i class="bi-people-fill" style="color:var(--samaritanYellow);"></i>
 									</div>
 									<div class="fbox-content">
-										<h3 class="display-6" data-animate="fadeIn" data-delay="1">Decades of CBP
-											Experience</h3>
-										<p class="text-lightSamaritan" data-animate="fadeIn" data-delay="0.5">With
-											long-standing relationships and
-											deep
-											institutional knowledge of CBP processes, we
-											navigate complexity and accelerate your refunds.</p>
+										<h3 class="display-6" data-animate="fadeIn" data-delay="1">Every Drawback Budget
+											Welcome </h3>
+										<p class="text-lightSamaritan" data-animate="fadeIn" data-delay="0.5">No matter
+											your budget, we provide tailored solutions to maximize your duty refund
+											potential.</p>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 text-center">
-								<div class="feature-box fbox-center flex-column fbox-plain p-5">
+							<div class="col-lg-4 col-sm-6 text-center">
+								<div class="feature-box fbox-effect fbox-center flex-column p-5 glass-effect-samaritanRed"
+									data-animate="fadeIn" data-delay="1">
 									<div class="fbox-icon" data-animate="fadeIn">
-										<i class="bi-globe" style="color:var(--samaritanBrown);"></i>
+										<i class="bi-globe" style="color:var(--samaritanRed);"></i>
 									</div>
 									<div class="fbox-content">
 										<h3 class="display-6" data-animate="fadeIn" data-delay="1">Global Single Point
@@ -168,7 +208,7 @@
 				<div id="use-cases" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
 					<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">Turn
 						Customs Duties
-						<span class="text-samaritanBrown">
+						<span class="text-samaritanDarkRed">
 							Into Instant Capital</span>
 
 					</h2>
@@ -178,7 +218,7 @@
 								<div class="h-100 bg-white p-5 rounded" style="transition: all 0.3s ease;">
 									<div class="row gy-4">
 										<div class="col-lg-6">
-											<h3 class="fs-2 mb-3 text-samaritanBrown">Reclaim Duties on International
+											<h3 class="fs-2 mb-3 text-samaritanDarkRed">Reclaim Duties on International
 												eCom Returns</h3>
 											<p class="mb-0 text-samaritan">When cross-border shoppers return items
 												outside the US, those paid import fees shouldn't be lost. Use duty
@@ -186,7 +226,7 @@
 												flow.
 											</p>
 											<a href="#"
-												class="btn samaritanBrown-bg text-white fw-bold mt-4 rounded-pill text-smaller">Learn
+												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">Learn
 												More</a>
 										</div>
 										<div class="col-lg-6 d-flex align-items-center">
@@ -201,7 +241,7 @@
 								<div class="h-100 bg-white p-5 rounded">
 									<div class="row gy-4">
 										<div class="col-lg-6">
-											<h3 class="fs-2 mb-3 text-samaritanBrown">Duty Refunds on Re-Exported
+											<h3 class="fs-2 mb-3 text-samaritanDarkRed">Duty Refunds on Re-Exported
 												Inventory</h3>
 											<p class="mb-0 text-samaritan">Avoid paying double tariffs on your global
 												supply chain. If you import goods into the US and later ship them to
@@ -209,7 +249,7 @@
 												back.
 											</p>
 											<a href="#"
-												class="btn samaritanBrown-bg text-white fw-bold mt-4 rounded-pill text-smaller">Learn
+												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">Learn
 												More</a>
 										</div>
 										<div class="col-lg-6 d-flex align-items-center">
@@ -389,7 +429,7 @@
 									</div>
 									<p class="lead text-muted mt-4 fs-5 px-lg-3 mb-5 mb-lg-0">You get refunds directly
 										on your bank account. We're all set to repeat.</p>
-									
+
 								</div>
 							</div>
 

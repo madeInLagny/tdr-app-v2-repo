@@ -52,7 +52,7 @@
             dateLabel = formatDate(startDate);
         }
 
-        badge.classList.remove('samaritanGreen-bg', 'samaritanBlue-bg', 'samaritanBrown-bg');
+        badge.classList.remove('samaritanGreen-bg', 'samaritanBlue-bg', 'samaritanRed-bg');
 
         if (startDate && today < startDate) {
             badge.textContent = 'Open';
@@ -62,7 +62,7 @@
             badge.classList.add('samaritanBlue-bg');
         } else {
             badge.textContent = 'Past';
-            badge.classList.add('samaritanBrown-bg');
+            badge.classList.add('samaritanRed-bg');
         }
 
         if (dateLabel) {
