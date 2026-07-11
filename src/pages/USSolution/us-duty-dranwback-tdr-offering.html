@@ -24,6 +24,27 @@
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
+	<style>
+		/* Fade-in animation for md screens and up */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+
+		@media (min-width: 768px) {
+			.fade-in-md {
+				animation: fadeIn 800ms ease-out both;
+			}
+		}
+	</style>
 
 </head>
 
@@ -42,7 +63,7 @@
 		}) <!-- end of header -->
 
 
-		<section id="slider" class="slider-element min-vh-60 min-vh-md-100 with-header swiper_wrapper page-section">
+		<section id="slider" class="slider-element slider-parallax swiper_wrapper with-header min-vh-60 min-vh-md-100">
 			<div class="slider-inner">
 
 				<div class="swiper swiper-parent">
@@ -50,122 +71,337 @@
 						<div class="swiper-slide dark">
 							<div class="container">
 								<div class="slider-caption slider-caption-center">
-									<h2 data-animate="fadeInUp">TDR US Duty Drawback<br><br>AI Precision.<br> Human Expertise.</h2>
-									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">We combine
-										advanced automation with seasoned trade specialists and a selection of customs brokers to maximize your U.S. duty drawback.<br>Accurately, efficiently, and at
-										scale.</p>
+									<p class="lead" data-animate="fadeInDown">US Duty Drawback</p>
+									<h1 class="display-4" data-animate="fadeInUp">AI
+										Precision.<br> Human
+										Expertise.</h1>
 								</div>
 							</div>
-							<div class="swiper-slide-bg"
-								style="background-image: url('images/USSolution/usSolution-slider1.webp');filter: opacity(25%);">
+							<div class="swiper-slide-bg fade-in-md"
+								style="background-image: url('images/slider/us-drawback/usSolution-slider1.webp');filter: opacity(25%);">
 							</div>
 						</div>
-						<!-- <div class="swiper-slide dark">
-							<div class="container">
-								<div class="slider-caption slider-caption-center">
-									<h2 data-animate="fadeInUp">Beautifully Flexible</h2>
-									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Looks
-										beautiful &amp; ultra-sharp on Retina Screen Displays. Powerful Layout with
-										Responsive functionality that can be adapted to any screen size.</p>
-								</div>
-							</div>
-							<div class="video-wrap no-placeholder">
-								<video poster="images/videos/deskwork.jpg" preload="auto" loop autoplay muted
-									playsinline>
-									<source src='images/videos/deskwork.mp4' type='video/mp4'>
-									<source src='images/videos/deskwork.webm' type='video/webm'>
-								</video>
-								<div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-							<div class="container">
-								<div class="slider-caption">
-									<h2 data-animate="fadeInUp">Great Performance</h2>
-									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">You'll be
-										surprised to see the Final Results of your Creation &amp; would crave for more.
-									</p>
-								</div>
-							</div>
-							<div class="swiper-slide-bg"
-								style="background-image: url('images/slider/swiper/3.jpg'); background-position: center top;">
-							</div>
-						</div> -->
 					</div>
-					<div class="slider-arrow-left"><i class="bi-chevron-left"></i></div>
-					<div class="slider-arrow-right"><i class="bi-chevron-right"></i></div>
+					<!-- <div class="slider-arrow-left"><i class="uil uil-angle-left-b"></i></div>
+					<div class="slider-arrow-right"><i class="uil uil-angle-right-b"></i></div>
 					<div class="slide-number">
 						<div class="slide-number-current"></div><span>/</span>
 						<div class="slide-number-total"></div>
-					</div>
-					<a href="#" data-scrollto="#section-about" class="one-page-arrow dark">
-						<i class="bi-chevron-down infinite animated fadeInDown"></i>
-					</a>
+					</div> -->
 				</div>
 
 			</div>
 		</section>
 
-		<!-- Page Sub Menu
-		============================================= -->
-		<div id="page-menu">
-			<div id="page-menu-wrap">
-				<div class="container">
-					<div class="page-menu-row">
-
-						<div class="page-menu-title">Explore <span>CANVAS</span></div>
-
-						<nav class="page-menu-nav one-page-menu">
-							<ul class="page-menu-container">
-								<li class="page-menu-item"><a href="#" data-href="#header">
-										<div>Start</div>
-									</a></li>
-								<li class="page-menu-item"><a href="#" data-href="#section-about">
-										<div>About</div>
-									</a></li>
-								<li class="page-menu-item"><a href="#" data-href="#section-work">
-										<div>Work</div>
-									</a></li>
-								<li class="page-menu-item"><a href="#" data-href="#section-team">
-										<div>Team</div>
-									</a></li>
-								<li class="page-menu-item"><a href="#" data-href="#section-services">
-										<div>Services</div>
-									</a></li>
-								<li class="page-menu-item"><a href="#" data-href="#section-pricing">
-										<div>Pricing</div>
-									</a></li>
-								<li class="page-menu-item"><a href="blog.html">
-										<div>Blog</div>
-									</a></li>
-								<li class="page-menu-item"><a href="#" data-href="#section-testimonials"
-										class="no-offset">
-										<div>Testimonials</div>
-									</a></li>
-								<li class="page-menu-item"><a href="#" data-href="#section-contact">
-										<div>Contact</div>
-									</a></li>
-							</ul>
-						</nav>
-
-						<div id="page-menu-trigger"><i class="bi-list"></i></div>
-
-					</div>
-				</div>
-			</div>
-		</div><!-- #page-menu end -->
-
-
-
-
 		<!-- Content
 		============================================= -->
 		<section id="content">
-			<div class="content-wrap">
+			<div class="content-wrap pt-0">
+				<div id="we-make-a-difference" class="page-section py-5 py-lg-6 shiny-samaritan-bg">
+					<h2 class="display-4 fw-bolder ls-n-2 text-center text-lightSamaritan" data-animate="fadeIn">Make
+						<span class="text-white">A
+							Difference</span> With Us
 
-			</div>
-		</section><!-- #content end -->
+					</h2>
+					<div class="container">
 
+						<div class="row mt-4 col-mb-50">
+							<div class="col-md-4 text-center">
+								<div class="feature-box fbox-center flex-column fbox-plain p-5">
+									<div class="fbox-icon" data-animate="fadeIn">
+										<i class="bi-lightning-charge" style="color:var(--samaritanGreen);"></i>
+									</div>
+									<div class="fbox-content">
+										<h3 class="display-6" data-animate="fadeIn" data-delay="1">AI-Powered,
+											Human-Validated</h3>
+										<p class="text-lightSamaritan" data-animate="fadeIn" data-delay="0.5">We combine
+											cutting-edge AI automation
+											with seasoned customs experts to ensure
+											accurate, compliant US Duty Drawback claims at scale.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 text-center">
+								<div class="feature-box fbox-center flex-column fbox-plain p-5">
+									<div class="fbox-icon" data-animate="fadeIn">
+										<i style="color:white;"><svg xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 640 512"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+												<path
+													d="M598.1 75.4c10.7-7.8 13.1-22.8 5.3-33.5s-22.8-13.1-33.5-5.3l-74.5 54.2-9.9-6.6C465.8 71 442.6 64 418.9 64l-59.2 0-.4 0-143.6 0c-26.7 0-52.5 8.9-73.4 25.1L70.1 36.6c-10.7-7.8-25.7-5.4-33.5 5.3s-5.4 25.7 5.3 33.5l88 64c9.6 6.9 22.7 5.9 31.1-2.4l3.9-3.9c13.5-13.5 31.8-21.1 50.9-21.1l46.3 0-91.7 91.7c-15.6 15.6-15.6 40.9 0 56.6l.8 .8C218 308 294 308 340.9 261.1l27.1-27.1 97.8 97.8c15.6 15.6 15.6 40.9 0 56.6l-9.8 9.8-31-31c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l28 28c-17.5 10.4-37.2 16.7-57.6 18.5L313 399c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l15 15-3.8 0c-36.1 0-70.7-14.3-96.2-39.8L65 279c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9L160.2 442.1c34.5 34.5 81.3 53.9 130.1 53.9l51.8 0 1 1 1-1 5.7 0c48.8 0 95.6-19.4 130.1-53.9l19.9-19.9c1.2-1.2 2.3-2.3 3.4-3.5 .7-.5 1.3-1.1 1.9-1.7L609 313c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-53.8 53.8c-4.2-12.8-11.3-24.9-21.5-35.1L385 183c-9.4-9.4-24.6-9.4-33.9 0l-44.1 44.1c-26.5 26.5-68.5 28-96.7 4.6l98.7-98.7c13.4-13.4 31.6-21 50.6-21.1l8.5 0 .2 0 50.8 0c14.2 0 28.1 4.2 39.9 12.1L482.7 140c8.4 5.6 19.3 5.3 27.4-.6l88-64z" />
+											</svg></i>
+									</div>
+									<div class="fbox-content">
+										<h3 class="display-6" data-animate="fadeIn" data-delay="1">Decades of CBP
+											Experience</h3>
+										<p class="text-lightSamaritan" data-animate="fadeIn" data-delay="0.5">With
+											long-standing relationships and
+											deep
+											institutional knowledge of CBP processes, we
+											navigate complexity and accelerate your refunds.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 text-center">
+								<div class="feature-box fbox-center flex-column fbox-plain p-5">
+									<div class="fbox-icon" data-animate="fadeIn">
+										<i class="bi-globe" style="color:var(--samaritanBrown);"></i>
+									</div>
+									<div class="fbox-content">
+										<h3 class="display-6" data-animate="fadeIn" data-delay="1">Global Single Point
+											of Contact</h3>
+										<p class="text-lightSamaritan" data-animate="fadeIn" data-delay="0.5">One
+											dedicated partner for all your
+											duty
+											mitigation
+											needs across the US, EU, and
+											UK—simplifying international trade compliance.
+										</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div><!-- end of We Make a Difference section -->
+
+				<div id="use-cases" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
+					<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">Turn
+						Customs Duties
+						<span class="text-samaritanBrown">
+							Into Instant Capital</span>
+
+					</h2>
+					<div class="container">
+						<div class="row g-4 align-items-stretch">
+							<div class="col-lg-6 col-md-6" data-animate="fadeInLeft" ;>
+								<div class="h-100 bg-white p-5 rounded" style="transition: all 0.3s ease;">
+									<div class="row gy-4">
+										<div class="col-lg-6">
+											<h3 class="fs-2 mb-3 text-samaritanBrown">Reclaim Duties on International
+												eCom Returns</h3>
+											<p class="mb-0 text-samaritan">When cross-border shoppers return items
+												outside the US, those paid import fees shouldn't be lost. Use duty
+												drawback to convert rejected international shipments back into cash
+												flow.
+											</p>
+											<a href="#"
+												class="btn samaritanBrown-bg text-white fw-bold mt-4 rounded-pill text-smaller">Learn
+												More</a>
+										</div>
+										<div class="col-lg-6 d-flex align-items-center">
+											<img src="images/undraw_order.png" alt="Protein drink product"
+												class=" rounded">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 transformY5" data-animate="fadeInRight">
+								<div class="h-100 bg-white p-5 rounded">
+									<div class="row gy-4">
+										<div class="col-lg-6">
+											<h3 class="fs-2 mb-3 text-samaritanBrown">Duty Refunds on Re-Exported
+												Inventory</h3>
+											<p class="mb-0 text-samaritan">Avoid paying double tariffs on your global
+												supply chain. If you import goods into the US and later ship them to
+												foreign markets, you can claim up to 99% of your U.S. import duties
+												back.
+											</p>
+											<a href="#"
+												class="btn samaritanBrown-bg text-white fw-bold mt-4 rounded-pill text-smaller">Learn
+												More</a>
+										</div>
+										<div class="col-lg-6 d-flex align-items-center">
+											<img src="images/undraw_logistics.png" alt="Protein drink product"
+												class=" rounded">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- End Use Cases -->
+
+				<!-- Divider -->
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100">
+					<g fill="var(--lightSamaritan)">
+						<rect fill="var(--samaritan)" width="100%" height="100%" />
+						<path d="M0 0v100l500-48 500 48V0H0z" opacity=".5"></path>
+						<path d="M0 0h1000v52H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z"></path>
+					</g>
+				</svg>
+
+				<!-- Why Choose Us -->
+				<div id="why-choose-us" class="page-section py-5 py-lg-6" style="background-color:var(--samaritan);">
+					<div class="row justify-content-center slider-box-wrap">
+						<div class="col-10">
+							<div class="slider-bottom-box">
+								<div class="row align-items-center">
+									<div class="col-lg-6 mb-3 mb-lg-0" data-animate="fadeInLeft">
+										<h2 class="display-4 fw-bolder ls-n-2 text-center" data-animate="fadeIn">Why
+											Choose Us</h2>
+									</div>
+
+									<div class="col-lg-6 col-sm-6">
+										<ul class="iconlist m-0">
+											<li class="pt-3 pt-lg-0" data-animate="fadeInRight"><img
+													src="images/svg/checked.svg" width="20" height="20" alt="Check mark"
+													class="me-2"> <span class="lead">Duty
+													Drawback Retail Experts</span></li>
+											<li class="pt-3 pt-lg-0" data-animate="fadeInRight" data-delay="200"><img
+													src="images/svg/checked.svg" width="20" height="20" alt="Check mark"
+													class="me-2"> <span class="lead">Carrier and customs broker
+													agnostic</span></li>
+											<li class="pt-3 pt-lg-0" data-animate="fadeInRight" data-delay="400"><img
+													src="images/svg/checked.svg" width="20" height="20" alt="Check mark"
+													class="me-2"> <span class="lead">Success based fees</span></li>
+											<li class="pt-3 pt-lg-0" data-animate="fadeInRight" data-delay="600"><img
+													src="images/svg/checked.svg" width="20" height="20" alt="Check mark"
+													class="me-2"> <span class="lead">Also
+													operates in the UK and the EU.</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- End of Why Choose Us -->
+
+				<!-- Divider -->
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100">
+					<g fill="var(--samaritan)">
+						<rect fill="white" width="100%" height="100%" />
+						<path d="M0 0v100l500-48 500 48V0H0z" opacity=".5"></path>
+						<path d="M0 0h1000v52H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z"></path>
+					</g>
+				</svg>
+
+				<!-- How It Works -->
+				<div id="how-it-works" class="page-section py-5 py-lg-6" style="background-color:white;">
+
+					<div class="container">
+						<div class="row justify-content-center text-center mb-4">
+							<div class="col-lg-8 col-xxl-7">
+								<h2 class="display-4 fw-bolder ls-n-2 text-center text-samaritan" data-animate="fadeIn">
+									How it <span class="text-samaritanGreen">Works</span>
+								</h2>
+								<p class="lead text-samaritan" data-animate="fadeInLeft">We make it easy to
+									navigate the complexities of
+									duty
+									drawback claims. </p>
+								<p class="lead text-samaritan" data-animate="fadeInRight">Leave it with
+									us.</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="text-center position-relative">
+									<div class="step-icon mx-auto samaritanGreen-bg border rounded-circle d-flex align-items-center justify-content-center text-samaritanGreen"
+										style="width:120px;height:120px;">
+										<svg class="text-samaritanDarkGreen" fill="currentColor" width="40" height="40"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 320 512"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+											<path
+												d="M136 24c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 56 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-114.9 0c-24.9 0-45.1 20.2-45.1 45.1 0 22.5 16.5 41.5 38.7 44.7l91.6 13.1c53.8 7.7 93.7 53.7 93.7 108 0 60.3-48.9 109.1-109.1 109.1l-10.9 0 0 40c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-40-72 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l130.9 0c24.9 0 45.1-20.2 45.1-45.1 0-22.5-16.5-41.5-38.7-44.7l-91.6-13.1C55.9 273.5 16 227.4 16 173.1 16 112.9 64.9 64 125.1 64l10.9 0 0-40z" />
+										</svg>
+									</div>
+
+									<p class="lead text-muted mt-4 fs-5 px-lg-3 mb-5 mb-lg-0">We assess your eligibility
+										for duty drawback and the financial opportunity.</p>
+									<div class="arrow-icon position-absolute d-none d-lg-block"
+										style="top:50px; right:-25px">
+										<svg class="bi bi-arrow-right text-samaritanDarkGreen" fill="currentColor"
+											height="30" viewbox="0 0 16 16" width="30"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+												fill-rule="evenodd"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="text-center position-relative">
+									<div class="step-icon mx-auto samaritanGreen-bg border rounded-circle d-flex align-items-center justify-content-center"
+										style="width: 120px;height: 120px;">
+										<svg class="text-samaritanDarkGreen" fill="currentColor" width="40" height="40"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+											<path
+												d="M195.1 9.5C198.1-5.3 211.2-16 226.4-16l59.8 0c15.2 0 28.3 10.7 31.3 25.5L332 79.5c14.1 6 27.3 13.7 39.3 22.8l67.8-22.5c14.4-4.8 30.2 1.2 37.8 14.4l29.9 51.8c7.6 13.2 4.9 29.8-6.5 39.9L447 233.3c.9 7.4 1.3 15 1.3 22.7s-.5 15.3-1.3 22.7l53.4 47.5c11.4 10.1 14 26.8 6.5 39.9l-29.9 51.8c-7.6 13.1-23.4 19.2-37.8 14.4l-67.8-22.5c-12.1 9.1-25.3 16.7-39.3 22.8l-14.4 69.9c-3.1 14.9-16.2 25.5-31.3 25.5l-59.8 0c-15.2 0-28.3-10.7-31.3-25.5l-14.4-69.9c-14.1-6-27.2-13.7-39.3-22.8L73.5 432.3c-14.4 4.8-30.2-1.2-37.8-14.4L5.8 366.1c-7.6-13.2-4.9-29.8 6.5-39.9l53.4-47.5c-.9-7.4-1.3-15-1.3-22.7s.5-15.3 1.3-22.7L12.3 185.8c-11.4-10.1-14-26.8-6.5-39.9L35.7 94.1c7.6-13.2 23.4-19.2 37.8-14.4l67.8 22.5c12.1-9.1 25.3-16.7 39.3-22.8L195.1 9.5zM256.3 336a80 80 0 1 0 -.6-160 80 80 0 1 0 .6 160z" />
+										</svg>
+									</div>
+									<p class="lead text-muted mt-4 fs-5 px-lg-3 mb-5 mb-lg-0">We support you setting up
+										your data management compliantly and get your drawback privileges setup.</p>
+									<div class="arrow-icon d-none d-lg-block position-absolute"
+										style="top:50px; right:-25px">
+										<svg class="bi bi-arrow-right text-samaritanDarkGreen" fill="currentColor"
+											height="30" viewbox="0 0 16 16" width="30"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+												fill-rule="evenodd"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="text-center position-relative">
+									<div class="step-icon mx-auto samaritanGreen-bg border rounded-circle d-flex align-items-center justify-content-center"
+										style="width: 120px;height: 120px;">
+										<svg class="text-samaritanDarkGreen" fill="currentColor" width="40" height="40"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+											<path
+												d="M108.2 322.7C114.3 307.5 112.2 290.1 102.6 276.8C88.1 256.7 80 233.1 80 208C80 141.2 140.5 80 224 80C307.5 80 368 141.2 368 208C368 274.8 307.5 336 224 336C208.1 336 192.9 333.7 178.7 329.5C168.4 326.4 157.3 327 147.3 331L96.9 351.2L108.3 322.7zM32 208C32 243.8 43.6 277.1 63.7 304.8L33.9 379.2C32.6 382.4 32 385.8 32 389.2C32 404 44 416 58.8 416C62.2 416 65.6 415.3 68.8 414.1L165.1 375.6C183.7 381.1 203.5 384 224 384C330 384 416 305.2 416 208C416 110.8 330 32 224 32C118 32 32 110.8 32 208zM416 576C436.6 576 456.3 573 474.9 567.6L571.2 606.1C574.4 607.4 577.8 608 581.2 608C596 608 608 596 608 581.2C608 577.8 607.3 574.4 606.1 571.2L576.4 496.8C596.4 469 608.1 435.7 608.1 400C608.1 317.6 546.4 248.5 463.1 229.3C461.5 245.6 458 261.2 453 276.2C516.9 291 560.2 343.5 560.2 400.1C560.2 425.2 552.1 448.8 537.6 468.9C528 482.2 525.9 499.5 532 514.8L543.4 543.3L493 523.1C483 519.1 471.9 518.6 461.6 521.6C447.4 525.8 432.2 528.1 416.3 528.1C344.1 528.1 289.2 482.4 275.6 426.9C260 430.1 243.9 431.9 227.5 432.1C243.9 514 322.2 576.1 416.3 576.1z" />
+										</svg>
+									</div>
+									<p class="lead text-muted mt-4 fs-5 px-lg-3 mb-5 mb-lg-0">We raise the claims,
+										submit and manage communication with CBP</p>
+									<div class="arrow-icon d-none d-lg-block position-absolute"
+										style="top:50px; right:-25px">
+										<svg class="bi bi-arrow-right text-samaritanDarkGreen" fill="currentColor"
+											height="30" viewbox="0 0 16 16" width="30"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+												fill-rule="evenodd"></path>
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="text-center position-relative">
+									<div class="step-icon mx-auto samaritanGreen-bg border rounded-circle d-flex align-items-center justify-content-center"
+										style="width: 120px;height: 120px;">
+										<svg class="text-samaritanDarkGreen" fill="currentColor" width="40" height="40"
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+											<path
+												d="M544 72C544 58.7 533.3 48 520 48L418.2 48C404.9 48 394.2 58.7 394.2 72C394.2 85.3 404.9 96 418.2 96L462.1 96L350.8 207.3L255.7 125.8C246.7 118.1 233.5 118.1 224.5 125.8L112.5 221.8C102.4 230.4 101.3 245.6 109.9 255.6C118.5 265.6 133.7 266.8 143.7 258.2L240.1 175.6L336.5 258.2C346 266.4 360.2 265.8 369.1 256.9L496.1 129.9L496.1 173.8C496.1 187.1 506.8 197.8 520.1 197.8C533.4 197.8 544.1 187.1 544.1 173.8L544 72zM112 320C85.5 320 64 341.5 64 368L64 528C64 554.5 85.5 576 112 576L528 576C554.5 576 576 554.5 576 528L576 368C576 341.5 554.5 320 528 320L112 320zM159.3 376C155.9 396.1 140.1 412 119.9 415.4C115.5 416.1 111.9 412.5 111.9 408.1L111.9 376.1C111.9 371.7 115.5 368.1 119.9 368.1L151.9 368.1C156.3 368.1 160 371.7 159.2 376.1zM159.3 520.1C160 524.5 156.4 528.1 152 528.1L120 528.1C115.6 528.1 112 524.5 112 520.1L112 488.1C112 483.7 115.6 480 120 480.8C140.1 484.2 156 500 159.4 520.2zM520 480.7C524.4 480 528 483.6 528 488L528 520C528 524.4 524.4 528 520 528L488 528C483.6 528 479.9 524.4 480.7 520C484.1 499.9 499.9 484 520.1 480.6zM480.7 376C480 371.6 483.6 368 488 368L520 368C524.4 368 528 371.6 528 376L528 408C528 412.4 524.4 416.1 520 415.3C499.9 411.9 484 396.1 480.6 375.9zM256 448C256 412.7 284.7 384 320 384C355.3 384 384 412.7 384 448C384 483.3 355.3 512 320 512C284.7 512 256 483.3 256 448z" />
+										</svg>
+									</div>
+									<p class="lead text-muted mt-4 fs-5 px-lg-3 mb-5 mb-lg-0">You get refunds directly
+										on your bank account. We're all set to repeat.</p>
+									
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div> <!-- End of How It Works -->
+		</section>
+
+
+		<div class="section dark bg-transparent">
+			@@include('src/blocks/blog-gallery.html')
+		</div>
 		@@include('src/blocks/footer.html',{
 		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
 		})

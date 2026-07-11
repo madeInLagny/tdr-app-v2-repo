@@ -11,7 +11,7 @@
   --samaritanBrown: #c96556de;
   --samaritanDarkBrown: #703026;
   --samaritanBlue: #5086e2;
-  --samaritanDarkBlue: #264170  ;
+  --samaritanDarkBlue: #264170;
 }
 
 ul {
@@ -29,6 +29,20 @@ ul {
 .text-darkSamaritan {
   color: var(--darkSamaritan) !important;
 }
+
+.text-samaritanBrown {
+  color: var(--samaritanBrown) !important;
+}
+
+.text-samaritanGreen {
+  color: var(--samaritanGreen) !important;
+}
+
+.text-samaritanDarkGreen {
+  color: var(--samaritanDarkGreen) !important;
+}
+
+
 
 .lightSamaritan-bg {
   background-color: var(--lightSamaritan);
@@ -54,6 +68,17 @@ ul {
   --cnvs-link-color: var(--samaritan);
 }
 
+/* Shiny Samaritan Background from https://bgjar.com/simple-shiny */
+.shiny-samaritan-bg {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='960' height='540' preserveAspectRatio='none' viewBox='0 0 960 540'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1056%26quot%3b)' fill='none'%3e%3crect width='960' height='540' x='0' y='0' fill='rgba(59%2c 98%2c 129%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c427.256C77.909%2c443.88%2c147.749%2c377.248%2c215.043%2c334.613C282.749%2c291.717%2c365.336%2c254.594%2c391.886%2c178.968C418.154%2c104.146%2c379.924%2c23.164%2c350.191%2c-50.35C325.712%2c-110.874%2c284.045%2c-160.17%2c236.587%2c-205.004C193.103%2c-246.084%2c143.482%2c-277.008%2c87.619%2c-298.404C27.687%2c-321.358%2c-34.295%2c-342.336%2c-97.8%2c-333.075C-166.658%2c-323.033%2c-233.105%2c-293.849%2c-282.145%2c-244.48C-332.978%2c-193.306%2c-361.112%2c-124.693%2c-375.083%2c-53.929C-389.587%2c19.536%2c-405.614%2c104.165%2c-363.154%2c165.847C-321.001%2c227.083%2c-223.513%2c210.476%2c-163.177%2c253.908C-97.441%2c301.227%2c-79.213%2c410.354%2c0%2c427.256' fill='%23355874'%3e%3c/path%3e%3cpath d='M960 940.8620000000001C1034.138 937.437 1065.862 841.985 1128.891 802.799 1193.367 762.7139999999999 1293.444 775.325 1331.721 709.759 1369.67 644.753 1333.493 561.504 1311.841 489.413 1292.675 425.598 1253.95 373.172 1214.502 319.473 1171.552 261.007 1136.277 193.507 1071.084 161.68200000000002 1000.605 127.27600000000001 912.121 102.75900000000001 841.829 137.546 771.688 172.25900000000001 771.254 272.985 722.492 334.198 676.707 391.674 594.321 415.45799999999997 566.322 483.398 535.476 558.248 519.351 653.113 562.954 721.325 606.688 789.742 709.712 779.5889999999999 780.774 818.881 845.324 854.572 886.319 944.2660000000001 960 940.8620000000001' fill='%23416c8e'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1056'%3e%3crect width='960' height='540' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  --cnvs-heading-color: white;
+  fill: white;
+  --cnvs-link-color: var(--samaritan);
+}
+
 .samaritanGreen-bg {
   background-color: var(--samaritanGreen);
 }
@@ -64,8 +89,11 @@ ul {
 
 .samaritanBrown-bg {
   background-color: var(--samaritanBrown);
-} 
+}
 
+.samaritanBrown-bg:hover {
+  background-color: var(--samaritanDarkBrown);
+}
 
 /* a:not(.btn-link):not(.btn-lightSamaritan):not(.successmsg) {
   color: var(--lightSamaritan);
@@ -92,6 +120,13 @@ ul {
   --cnvs-form-background: var(--samaritan);
 }
 
+.alert-primary {
+  --bs-alert-color: white;
+  --bs-alert-bg: var(--samaritan);
+  --bs-alert-border-color: var(--darkSamaritan);
+  --bs-alert-link-color: var(--darkSamaritan);
+}
+
 .alert-samaritan {
   background-color: var(--lightSamaritan);
   --bs-alert-color: var(--darkSamaritan);
@@ -105,7 +140,8 @@ ul {
 }
 
 /* former btn-primary */
-.button {
+.button,
+.bg-color {
   --cnvs-btn-color: #358f9c;
   --cnvs-btn-color-dark: #25646d;
 }
@@ -139,13 +175,6 @@ ul {
 .form-check-input:checked {
   background-color: #358f9c;
   border-color: #358f9c;
-}
-
-.alert-primary {
-  --bs-alert-color: white;
-  --bs-alert-bg: var(--samaritan);
-  --bs-alert-border-color: var(--darkSamaritan);
-  --bs-alert-link-color: var(--darkSamaritan);
 }
 
 .grid-filter.style-3 li.activeFilter a {
