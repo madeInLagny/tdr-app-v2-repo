@@ -44,6 +44,10 @@
 				animation: fadeIn 800ms ease-out both;
 			}
 		}
+
+		.fbox-icon i {
+			background-color: var(--samaritan);
+		}
 	</style>
 
 
@@ -83,15 +87,35 @@
 		}
 	</style>
 
+
 	<style>
-		.fbox-icon i {
-			background-color: var(--samaritan);
+		.block-sticky-cards .content-wrap,
+		.block-sticky-cards .section {
+			overflow: visible;
+		}
+
+		.block-sticky-cards .sticky-section+.sticky-section {
+			margin-top: 5vh;
+		}
+
+		@media (min-width: 992px) {
+			.block-sticky-cards .sticky-section {
+				--sticky-top-gap: 30px;
+				position: -webkit-sticky;
+				position: sticky;
+				z-index: 2;
+				top: calc(80px + var(--sticky-top-gap));
+			}
+
+			.block-sticky-cards .sticky-section+.sticky-section {
+				margin-top: 20vh;
+			}
 		}
 	</style>
 
 </head>
 
-<body class="stretched sticky-responsive-pagemenu samaritan-bg">
+<body class="stretched sticky-responsive-pagemenu samaritan-bg block-sticky-cards">
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper">
@@ -324,6 +348,86 @@
 
 				<!-- How It Works -->
 				<div id="how-it-works" class="page-section py-5 py-lg-6" style="background-color:white;">
+
+
+					<!-- Sticky Cards Start -->
+					<div class="section bg-white">
+
+						<div class="container">
+
+							<div class="row align-items-start justify-content-between">
+								<div class="col-lg-6 sticky-section sticky-lg-top">
+									<h1 class="display-4 fw-bold font-secondary mt-4">Canvas is a Powerful, Responsive
+										&amp; Multi-Purpose Template.</h1>
+									<p>Discover a versatile, fully responsive framework built for modern web projects of
+										any scale. Craft stunning pages with ease today.</p>
+								</div>
+								<div class="col-lg-5 block-sticky-cards-wrap">
+									<div class="sticky-section sticky-lg-top bg-white">
+										<div class="card border border-color bg-color bg-opacity-10">
+											<div
+												class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center">
+												<i class="bi-person fs-1 mb-3 text-black"></i>
+												<span
+													class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">01</span>
+												<h3>Create a Free Account</h3>
+												Sign up in seconds with just your email address. No credit card required
+												to get started — your account is ready immediately.
+											</div>
+										</div>
+									</div>
+
+									<div class="sticky-section sticky-lg-top bg-white">
+										<div class="card border border-danger bg-danger bg-opacity-10">
+											<div
+												class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center">
+												<i class="bi-file-earmark-person fs-1 mb-3 text-black"></i>
+												<span
+													class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">02</span>
+												<h3>Add your Personal Details</h3>
+												Fill in your name, address, and identity documents. Verification is
+												quick and secure, keeping your account fully compliant.
+											</div>
+										</div>
+									</div>
+
+									<div class="sticky-section sticky-lg-top bg-white">
+										<div class="card border border-warning bg-warning bg-opacity-10">
+											<div
+												class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center">
+												<i class="bi-wallet2 fs-1 mb-3 text-black"></i>
+												<span
+													class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">03</span>
+												<h3>Add money to Wallet</h3>
+												Top up your wallet via bank transfer, debit card, or crypto deposit.
+												Funds appear instantly so you can trade without delay.
+											</div>
+										</div>
+									</div>
+
+									<div class="sticky-section sticky-lg-top bg-white">
+										<div class="card border border-info bg-info bg-opacity-10">
+											<div
+												class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center">
+												<i class="bi-credit-card fs-1 mb-3 text-black"></i>
+												<span
+													class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">04</span>
+												<h3>Buy/Sell the Coins</h3>
+												Browse live market rates and place buy or sell orders in real time.
+												Manage your full portfolio from a single intuitive dashboard.
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div><!-- Sticky Card End -->
+
+
+
+
 
 					<div class="container">
 						<div class="row justify-content-center text-center mb-4">
