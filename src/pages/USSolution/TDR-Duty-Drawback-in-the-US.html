@@ -1,234 +1,542 @@
 <!DOCTYPE html>
 <!-- Lang is required by Cookie Consent -->
-<html dir="ltr" lang="${{index.language}}$" xmlns:og="http://opengraphprotocol.org/schema/">
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
 
 <head>
-  <!-- Google Tag Manager modified to comply with cookie consent-->
-  @@include('src/blocks/head/cookieConsent/headScript.html')
-  <!-- End Google Tag Manager -->
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
 
-  <!-- Metatags Import -->
-  @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
-  "description": "${{TDR-Duty-Drawback-in-the-US.description}}$",
-  "title": "${{TDR-Duty-Drawback-in-the-US.title}}$",
-  "path": "${{TDR-Duty-Drawback-in-the-US.path}}$",
-  })
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+	"description": "${{TDR-Duty-Drawback-in-the-US2.description}}$",
+	"title": "${{TDR-Duty-Drawback-in-the-US2.title}}$",
+	"path": "${{TDR-Duty-Drawback-in-the-US2.path}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+	<!-- Plugins/Components CSS -->
+	<link rel="stylesheet" href="css/swiper.css">
 
 
-  <!-- CSS imports -->
-  @@include('src/blocks/head/cssImports.html')
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
-    <!-- Only Required if darkBlue color is required -->
-  <link rel="stylesheet" href="./css/custom/darkBlue.css">
+	<style>
+		/* Fade-in animation for md screens and up */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
 
-  <!-- Flip Cards -->
-  @@include('src/css/custom/flipCards.html',{
-  "front-text-color":"white",
-  "back-bg-color":"var(--darkerBlue)",
-  "back-text-color":"#fafafa",
-  "link-color":"var(--lightBlue)",
-  "bg-image-url":"url(./images/darkBlueCardBg.webp)"
-  })
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+
+		@media (min-width: 768px) {
+			.fade-in-md {
+				animation: fadeIn 800ms ease-out both;
+			}
+		}
+
+		.fbox-icon i {
+			background-color: var(--samaritan);
+		}
+	</style>
+
+
+	<!-- Subtle card movement on hover -->
+	<style>
+		.feature-box {
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.feature-box:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+		}
+	</style>
+
+
+	<!-- glass effect -->
+	<style>
+		.glass-effect-samaritanGreen {
+			/* From https://css.glass */
+			background: rgba(151, 190, 172, 0.21);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(151, 190, 172, 0.3);
+		}
+
+
+
+		.glass-effect-samaritanYellow {
+			/* From https://css.glass */
+			background: rgba(255, 246, 18, 0.21);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(255, 246, 18, 0.3);
+		}
+
+		.glass-effect-samaritanRed {
+			/* From https://css.glass */
+			background: rgba(251, 166, 181, 0.21);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(251, 166, 181, 0.3);
+		}
+	</style>
+
+
+	<style>
+		.block-sticky-cards .content-wrap,
+		.block-sticky-cards .section {
+			overflow: visible;
+		}
+
+		.block-sticky-cards .sticky-section+.sticky-section {
+			margin-top: 5vh;
+		}
+
+		@media (min-width: 992px) {
+			.block-sticky-cards .sticky-section {
+				--sticky-top-gap: 30px;
+				position: -webkit-sticky;
+				position: sticky;
+				z-index: 2;
+				top: calc(80px + var(--sticky-top-gap));
+			}
+
+			.block-sticky-cards .sticky-section+.sticky-section {
+				margin-top: 20vh;
+			}
+		}
+	</style>
+
+	<style>
+		.table>:not(caption)>*>* {
+			background: rgba(151, 190, 172, 0.21);
+			color: white
+		}
+	</style>
 
 </head>
 
-<body class="stretched darkBlue-background page-transition" data-loader="2" data-animation-in="fadeIn"
-  data-speed-in="1500" data-animation-out="fadeOut" data-speed-out="800">
-  <div id="wrapper">
-    @@include('src/blocks/header.html',{"text-color":"white",
-    "header-bg":"var(--darkBlue)",
-    "submenu-bg":"var(--darkerBlue)",
-    "menu-text-hover":"var(--lightBlue)"
-    })
-<!-- IEEPA CallOut -->
-                            @@include('src/blocks/ieepaCallOut.html')
-    <!-- Page Title
-		============================================= -->
-    <section class="page-title page-title-parallax parallax dark">
-      <img src="./images/TDR-Duty-Drawback-in-the-US.webp" class="parallax-bg">
-      <div class="container">
-        <div class="page-title-row">
-
-          <div class="page-title-content" data-animate="fadeInUp">
-            <h1 class="text-darkBlue">${{TDR-Duty-Drawback-in-the-US.name}}$</h1>
-            <span class="text-darkBlue">${{TDR-Duty-Drawback-in-the-US.subtitle}}$</span>
-          </div>
-        </div>
-      </div>
-    </section><!-- .page-title end -->
-
-    <!-- Content
-		============================================= -->
-    <section id="content" class="darkBlue-background">
-      <div class="content-wrap">
-        <div class="container">
-
-          <div class="block-hero-25">
-
-            <div class="row align-items-lg-center gutter-50 flex-wrap">
-              <div class="col-lg-6">
-
-                @@include('src/blocks/SVGAnimations/SVG-Duty-Drawback-in-the-US.html')
-              </div>
-
-              <div class="col-lg-6 align-self-center">
-                <p class="h2 fw-semibold lh-X mb-5">${{TDR-Duty-Drawback-in-the-US.reclaim_duties}}$</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Feature boxes start -->
-
-        <div class="container">
-          <div class="css-grid">
-            <!-- Card 1-->
-            <div class="flip-card-2">
-              <div class="flip-card-2-inner">
-                <div class="front">
-                  <div class="text-wrapper">
-                    <i class="bi-question-circle h1 mb-2"></i>
-                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.what_is_duty_drawback}}$</h3>
-                  </div>
-                </div>
-                <div class="back">
-                  <p>${{TDR-Duty-Drawback-in-the-US.drawback_refund_description}}$</p>
-                </div>
-              </div>
-            </div>
-            <!-- Card 2-->
-            <div class="flip-card-2">
-              <div class="flip-card-2-inner">
-                <div class="front">
-                  <div class="text-wrapper">
-                    <i class="bi-bag-fill h1 mb-2"></i>
-                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.what_qualifies_for_duty_drawback}}$</h3>
-                  </div>
-                </div>
-                <div class="back">
-                  <span class="lead text-left">${{TDR-Duty-Drawback-in-the-US.eligible_merchandise}}$</span>
-                  <ul class="card-ul">
-                    <li>${{TDR-Duty-Drawback-in-the-US.imported_for_manufacturing}}$</li>
-                    <li>${{TDR-Duty-Drawback-in-the-US.imported_but_unused}}$</li>
-                    <li>${{TDR-Duty-Drawback-in-the-US.substituted_merchandise}}$</li>
-                    <li>${{TDR-Duty-Drawback-in-the-US.rejected_merchandise}}$</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!-- Card 3-->
-            <div class="flip-card-2">
-              <div class="flip-card-2-inner">
-                <div class="front">
-                  <div class="text-wrapper">
-                    <i class="bi-people-fill h1 mb-2"></i>
-                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.who_qualifies_for_duty_drawback}}$</h3>
-                  </div>
-                </div>
-                <div class="back">
-                  <p>${{TDR-Duty-Drawback-in-the-US.eligibility_requirements}}$</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 4-->
-            <div class="flip-card-2">
-              <div class="flip-card-2-inner">
-                <div class="front">
-                  <div class="text-wrapper">
-                    <i class="bi-cash-coin h1 mb-2"></i>
-                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.how_much_is_duty_drawback}}$</h3>
-                  </div>
-                </div>
-                <div class="back">
-                  <p>${{TDR-Duty-Drawback-in-the-US.refund_percentage}}$</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 5-->
-            <div class="flip-card-2">
-              <div class="flip-card-2-inner">
-                <div class="front">
-                  <div class="text-wrapper">
-                    <i class="bi-arrow-left-right h1 mb-2"></i>
-                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.import_ecom_orders}}$</h3>
-                  </div>
-                </div>
-                <div class="back">
-                  <p>${{TDR-Duty-Drawback-in-the-US.reclaim_import_duties}}$</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 6-->
-            <div class="flip-card-2">
-              <div class="flip-card-2-inner">
-                <div class="front">
-                  <div class="text-wrapper">
-                    <i class="bi-search h1 mb-2"></i>
-                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.identify_unused_goods}}$</h3>
-                  </div>
-                </div>
-                <div class="back">
-                  <span class="lead text-left">${{TDR-Duty-Drawback-in-the-US.duties_on_unused_goods}}$</span>
-                  <ul class="card-ul">
-                    <li>
-                      <strong>${{TDR-Duty-Drawback-in-the-US.direct_identification_title}}$</strong>:<br>
-                      ${{TDR-Duty-Drawback-in-the-US.direct_identification}}$
-                    </li>
-                    <li>
-                      <strong>${{TDR-Duty-Drawback-in-the-US.substitution_title}}$</strong>:<br>
-                      ${{TDR-Duty-Drawback-in-the-US.substitution_method}}$
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 7-->
-            <div class="flip-card-2">
-              <div class="flip-card-2-inner">
-                <div class="front">
-                  <div class="text-wrapper">
-                    <i><img class="logo-default" srcset="./images/logo.png, ./images/logo@2x.png 2x"
-                        src="./images/logo@2x.png" alt="TDR Logo"></i>
-                    <h3 class="card-title">${{TDR-Duty-Drawback-in-the-US.tdr_value}}$</h3>
-                  </div>
-                </div>
-                <div class="back">
-                  <p>${{TDR-Duty-Drawback-in-the-US.tdr_broker_services}}$ <a class="text-decoration-underline"
-                      href="${{ index.domain }}$">${{TDR-Duty-Drawback-in-the-US.discover_more}}$</a> ${{TDR-Duty-Drawback-in-the-US.benefit_organization}}$
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        @@include('src/blocks/seamlessDutyRefund.html',{
-        "text-color":"text-darkBlue"
-        })
-
-    </section>
-    <!-- #content end -->
-    @@include('src/blocks/linkToFAQ.html')
-    @@include('src/blocks/contactUsCallOut.html')
-    		<div class="section dark bg-transparent">
-			@@include('src/blocks/blog-gallery.html')
-		</div>
-
-    @@include('src/blocks/footer.html',{
-    "bg-color":"var(--darkBlue)"})
-  </div>
-  <!-- Javascripts
+<body class="stretched sticky-responsive-pagemenu samaritan-bg block-sticky-cards">
+	<!-- Document Wrapper
 	============================================= -->
-  @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
-  <!-- Tawk Chatbox -->
-  @@include('src/blocks/tawk.html')
-  <!-- URL Campaign Logger -->
-@@include('src/blocks/URLCampaignLogger.html')
+	<div id="wrapper">
 
-  <!-- Canvas Scripts -->
-  <script src="js/functions.js"></script>
+		<!-- Header
+		============================================= -->
+		<!-- header -->
+		@@include('src/blocks/header.html',{"text-color":"white",
+		"header-bg":"var(--samaritan)",
+		"submenu-bg":"var(--darkSamaritan)",
+		"menu-text-hover":"white"
+		}) <!-- end of header -->
+
+
+		<section id="slider" class="slider-element slider-parallax swiper_wrapper with-header min-vh-60 min-vh-md-100">
+			<div class="slider-inner">
+
+				<div class="swiper swiper-parent">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption slider-caption-center">
+									<h1 class="display-5" data-animate="fadeInDown">Recover 99% of US Customs
+										Duties<br>On
+										Re-Exported Goods
+									</h1>
+									<p class="lead" data-animate="fadeInUp">
+										The Only Dedicated Crossborder Retail Duty Drawback
+									</p>
+								</div>
+							</div>
+							<div class="swiper-slide-bg fade-in-md"
+								style="background-image: url('images/slider/us-drawback/usSolution-slider1.webp');filter: opacity(25%);">
+							</div>
+						</div>
+					</div>
+					<!-- <div class="slider-arrow-left"><i class="uil uil-angle-left-b"></i></div>
+					<div class="slider-arrow-right"><i class="uil uil-angle-right-b"></i></div>
+					<div class="slide-number">
+						<div class="slide-number-current"></div><span>/</span>
+						<div class="slide-number-total"></div>
+					</div> -->
+				</div>
+
+			</div>
+		</section>
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap pt-0">
+				<div id="we-make-a-difference" class="page-section py-5 py-lg-6 shiny-samaritan-bg">
+					<h2 class="display-4 fw-bolder ls-n-2 text-center text-lightSamaritan" data-animate="fadeIn">You’re
+						Overpaying on Crossborder Returns <br><span class="text-white">Here’s How to Fix
+							It</span>
+
+					</h2>
+					<div class="container">
+
+						<div class="row justify-content-center gutter-50 col-mb-50 align-items-stretch">
+							<div class="col-lg-4 col-sm-6 text-center">
+								<div class="feature-box fbox-effect fbox-center flex-column p-5 glass-effect-samaritanGreen h-100"
+									data-animate="fadeIn">
+									<div class="fbox-icon" data-animate="fadeIn">
+										<i class="bi-lightning-charge-fill" style="color:var(--samaritanGreen);"></i>
+									</div>
+									<div class="fbox-content">
+										<span class="display-6" data-animate="fadeIn" data-delay="1">Recover 99% of
+											duties
+										</span>
+										<p class="text-lightSamaritan lead" data-animate="fadeIn" data-delay="0.5">on
+											returned or re-exported goods <br>no manual paperwork.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 text-center">
+								<div class="feature-box fbox-effect fbox-center flex-column p-5 glass-effect-samaritanYellow h-100"
+									data-animate="fadeIn" data-delay="0.5">
+									<div class="fbox-icon" data-animate="fadeIn">
+										<i class="bi-people-fill" style="color:var(--samaritanYellow);"></i>
+									</div>
+									<div class="fbox-content">
+										<span class="display-6" data-animate="fadeIn" data-delay="1">Every Drawback
+											Budget
+											Welcome </span>
+										<p class="text-lightSamaritan lead" data-animate="fadeIn" data-delay="0.5">No
+											matter
+											your budget, we provide tailored solutions to maximize your duty refund
+											potential.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-sm-6 text-center">
+								<div class="feature-box fbox-effect fbox-center flex-column p-5 glass-effect-samaritanRed h-100"
+									data-animate="fadeIn" data-delay="1">
+									<div class="fbox-icon" data-animate="fadeIn">
+										<i class="bi-globe" style="color:var(--samaritanRed);"></i>
+									</div>
+									<div class="fbox-content">
+										<span class="display-6" data-animate="fadeIn" data-delay="1">One partner, global
+											reach</span>
+										<p class="text-lightSamaritan lead" data-animate="fadeIn" data-delay="0.5">US,
+											EU, and UK duty mitigation <br> no coordinator needed.
+										</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div><!-- end of We Make a Difference section -->
+
+				<div id="use-cases" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
+					<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">Two Ways
+						to Reclaim Your Money
+						<span class="text-samaritanDarkRed">
+							Starting Today</span>
+					</h2>
+					<div class="container">
+						<div class="row g-4 align-items-stretch">
+							<div class="col-lg-6 col-md-6" data-animate="fadeInLeft" ;>
+								<div class="h-100 bg-white p-5 rounded" style="transition: all 0.3s ease;">
+									<div class="row gy-4">
+										<div class="col-lg-6">
+											<h3 class="fs-2 mb-3 text-samaritanDarkRed">Cross-Border Returns?</h3>
+											<p class="mb-0 text-samaritan">When international shoppers return items, you
+												lose the duties you paid. We automate claims to refund up to 99% of
+												those fees—so every return puts money back in your pocket.
+											</p>
+											<a href="${{contactOptions.book-a-call-with-us}}$"
+												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">Contact
+												Us</a>
+										</div>
+										<div class="col-lg-6 d-flex align-items-center">
+											<img src="images/undraw_order.png" alt="Protein drink product"
+												class=" rounded">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 transformY5" data-animate="fadeInRight">
+								<div class="h-100 bg-white p-5 rounded">
+									<div class="row gy-4">
+										<div class="col-lg-6">
+											<h3 class="fs-2 mb-3 text-samaritanDarkRed">Re-Exporting Inventory?</h3>
+											<p class="mb-0 text-samaritan">Paying US duties and foreign tariffs? Stop
+												double-paying. Claim back up to 99% of US import duties when you ship
+												goods overseas.
+											</p>
+											<a href="${{contactOptions.book-a-call-with-us}}$"
+												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">Contact
+												Us</a>
+										</div>
+										<div class="col-lg-6 d-flex align-items-center">
+											<img src="images/undraw_logistics.png" alt="Protein drink product"
+												class=" rounded">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- End Use Cases -->
+
+				<!-- Divider -->
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100">
+					<g fill="var(--lightSamaritan)">
+						<rect fill="var(--samaritan)" width="100%" height="100%" />
+						<path d="M0 0v100l500-48 500 48V0H0z" opacity=".5"></path>
+						<path d="M0 0h1000v52H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z"></path>
+					</g>
+				</svg>
+
+				<!-- Why Choose Us -->
+				<div id="why-choose-us" class="page-section py-5 py-lg-6" style="background-color:var(--samaritan);">
+					<div class="row justify-content-center slider-box-wrap">
+						<div class="col-10">
+							<div class="slider-bottom-box">
+								<div class="row align-items-center">
+									<div class="col-lg-5 mb-3 mb-lg-0" data-animate="fadeInLeft">
+										<h2 class="display-4 fw-bolder ls-n-2 text-center" data-animate="fadeIn">Why
+											eCommerce Brands Trust Us with Their Duty Refunds</h2>
+									</div>
+
+									<div class="col-lg-6 col-sm-6">
+										<div class="container my-5">
+
+											<div class="table-responsive" data-animate="fadeInRight">
+												<table class="table table-striped table-bordered">
+													<thead>
+														<tr>
+															<th scope="col">Your Pain</th>
+															<th scope="col">Our Fix</th>
+															<th scope="col">Your Gain</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td><em>"Duty claims are too complex."</em></td>
+															<td><strong>We handle everything</strong> <br>no forms, no
+																CBP
+																jargon.</td>
+															<td><strong>Zero paperwork, 100% compliance.</strong></td>
+														</tr>
+														<tr>
+															<td><em>"My broker misses refunds."</em></td>
+															<td><strong>AI + customs experts</strong> audit every
+																shipment.</td>
+															<td><strong>Recover 20–40% more</strong> than DIY.</td>
+														</tr>
+														<tr>
+															<td><em>"Global trade = global headaches."</em></td>
+															<td><strong>One partner for US, EU, UK.</strong></td>
+															<td><strong>Simplified compliance, maximized
+																	savings.</strong></td>
+														</tr>
+														<tr>
+															<td><em>"I pay too much upfront."</em></td>
+															<td><strong>Success-based fees</strong><br>we earn when you
+																do.
+															</td>
+															<td><strong>Risk-free recovery.</strong></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- End of Why Choose Us -->
+
+				<!-- Divider -->
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100">
+					<g fill="var(--samaritan)">
+						<rect fill="white" width="100%" height="100%" />
+						<path d="M0 0v100l500-48 500 48V0H0z" opacity=".5"></path>
+						<path d="M0 0h1000v52H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z" opacity=".5"></path>
+						<path d="M0 0v4l500 48 500-48V0H0z"></path>
+					</g>
+				</svg>
+
+				<!-- Enrollment Section -->
+				<div id="enrollment" class="page-section py-5 py-lg-6 bg-white">
+
+					<!-- Sticky Cards Start -->
+					<div class="container">
+						<div class="row align-items-start justify-content-between">
+							<div class="col-lg-5 sticky-section sticky-lg-top">
+								<h2 class="display-4 fw-bold mt-4 text-samaritan">From Zero to Refunds in 4 Steps</h2>
+								<p class="text-samaritan lead">Our end-to-end service ensures you claim every dollar
+									you're entitled to, without the
+									administrative burden.</p>
+							</div>
+							<div class="col-lg-5 block-sticky-cards-wrap">
+								<div class="sticky-section sticky-lg-top bg-white">
+									<div class="card border border-danger bg-danger bg-opacity-10">
+										<div
+											class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center">
+											<i class="bi-cash-coin fs-1 mb-3 text-black"></i>
+											<span
+												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">01</span>
+											<h3 class="text-darkSamaritan">Discover Hidden Refunds</h3>
+											<p class="text-darkSamaritan">We audit your import history to uncover every
+												eligible dollar (most brands miss 30%+).</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="sticky-section sticky-lg-top bg-white">
+									<div class="card border border-warning bg-warning bg-opacity-10">
+										<div
+											class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center">
+											<i class="bi-truck fs-1 mb-3 text-black"></i>
+											<span
+												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">02</span>
+											<h3 class="text-darkSamaritan">Stress-Free Compliance</h3>
+											<p class="text-darkSamaritan">We align your logistics with CBP rules <br>so
+												you avoid costly errors.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="sticky-section sticky-lg-top bg-white">
+									<div class="card border border-info bg-info bg-opacity-10">
+										<div
+											class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center text-samaritan">
+											<i class="bi-file-check fs-1 mb-3 text-black"></i>
+											<span
+												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">03</span>
+											<h3 class="text-darkSamaritan"> Hands-Off Setup</h3>
+											<p class="text-darkSamaritan">We configure your ACE account and
+												documentation<br><strong>you focus on growth</strong></p>
+										</div>
+									</div>
+								</div>
+
+								<div class="sticky-section sticky-lg-top bg-white">
+									<div class="card border border-color bg-color bg-opacity-10">
+										<div
+											class="card-body p-5 min-vh-50 d-flex flex-column justify-content-center text-center">
+											<i class="bi-globe fs-1 mb-3 text-black"></i>
+											<span
+												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">04</span>
+											<h3 class="text-darkSamaritan">Global Savings</h3>
+											<p class="text-darkSamaritan">We apply US, EU, and UK duty mitigation
+												<br><strong> so you
+													keep more profit everywhere</strong>.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Sticky Card End -->
+				</div> <!-- End of How It Works -->
+
+
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100">
+					<g fill="#FFFFFF">
+						<path d="M0 100V0h1000v4L0 100z"></path>
+						<path d="M0 100V0h1000v24L0 100z" opacity=".5"></path>
+						<path d="M0 100V0h1000v44L0 100z" opacity=".4"></path>
+						<path d="M0 100V0h1000v64L0 100z" opacity=".4"></path>
+						<path d="M0 100V0h1000v84L0 100z" opacity=".2"></path>
+					</g>
+				</svg>
+
+				<!-- CTA Start -->
+
+				<div class="section text-center text-white bg-transparent">
+					<div class="container py-5">
+						<div class="row justify-content-center">
+							<div class="col-md-10">
+								<p class="text-uppercase fw-bold mb-4">Your Competitors Are Already Reclaiming Their
+									Duties. Are You?</p>
+								<h1 class="text-white fw-bold display-3" style="letter-spacing: -1px;">Average client
+									recovers <br>$50K–$1500K/year in duties</h1>
+
+								<p class="lead"></p>Get Your Free Savings Estimate (No commitment, no forms—just
+								answers.)</p>
+
+
+
+								@@include("src/blocks/contactOptions.html")
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="section dark bg-transparent">
+					@@include('src/blocks/blog-gallery.html')
+				</div>
+			</div>
+		</section>
+
+
+
+		@@include('src/blocks/footer.html',{
+		"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+		})
+		<!-- Javascripts
+		============================================= -->
+		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+		<!-- Tawk Chatbox -->
+		@@include('src/blocks/tawk.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/URLCampaignLogger.html')
+		<!-- URL Campaign Logger -->
+		@@include('src/blocks/linkedInInsideTag.html')
+
+
+		<!-- Canvas Scripts -->
+		<script src="js/plugins.min.js"></script>
+		<script src="js/functions.bundle.js"></script>
 
 
 </body>
