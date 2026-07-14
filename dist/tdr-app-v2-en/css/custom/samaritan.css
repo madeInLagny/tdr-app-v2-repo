@@ -6,18 +6,16 @@
   --cnvs-section-bg: var(--samaritan);
   --bs-primary-rgb: 60, 99, 130;
   --cnvs-themecolor-dark: var(--darkSamaritan);
-  --samaritanGreen: #88F707;
-  --samaritanDarkGreen: #5BB000;
-  --samaritanRed: #fba6b5;
-  --samaritanDarkRed: #de2054;
-  --samaritanBlue: #7D97DD;
-  --samaritanDarkBlue: #4B5BC5;
+  --samaritanGreen: #88f707;
+  --samaritanDarkGreen: #5bb000;
+  --samaritanRed: #fda4b2;
+  --samaritanDarkRed: #fa6781;
+  --samaritanBlue: #7d97dd;
+  --samaritanDarkBlue: #4b5bc5;
   --samaritanYellow: #fff612;
-   --samaritanDarkYellow: #e0d201;
+  --samaritanDarkYellow: #e0d201;
 }
 /* https://uicolors.app/generate */
-
-
 
 ul {
   padding-left: 2em;
@@ -50,7 +48,6 @@ ul {
 .text-samaritanDarkGreen {
   color: var(--samaritanDarkGreen) !important;
 }
-
 
 .lightSamaritan-bg {
   background-color: var(--lightSamaritan);
@@ -91,9 +88,26 @@ ul {
   background-color: var(--samaritanGreen);
 }
 
+.samaritanDarkGreen-bg {
+  background-color: var(--samaritanDarkGreen);
+}
+
+.samaritanYellow-bg {
+  background-color: var(--samaritanYellow);
+}
+
+.samaritanDarkYellow-bg {
+  background-color: var(--samaritanDarkYellow);
+}
+
 .samaritanBlue-bg {
   background-color: var(--samaritanBlue);
 }
+
+.samaritanDarkBlue-bg {
+  background-color: var(--samaritanDarkBlue);
+}
+
 
 .samaritanRed-bg {
   background-color: var(--samaritanRed);
