@@ -19,9 +19,6 @@
 	@@include('src/blocks/head/cssImports.html')
 
 
-	<!-- Only Required if Samaritan color is required -->
-	<link rel="stylesheet" href="./css/custom/samaritan.css">
-
 	<!-- Plugins/Components CSS -->
 	<link rel="stylesheet" href="./css/swiper.css">
 
@@ -178,6 +175,9 @@
 		}
 	</style>
 
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
 
 </head>
 
@@ -188,12 +188,10 @@
 
 		<!-- Header
 		============================================= -->
-		<!-- header -->
-		@@include('src/blocks/header.html',{
+		@@include('src/blocks/header.html',{"text-color":"white",
 		"header-bg":"var(--samaritan)",
 		"submenu-bg":"var(--darkSamaritan)",
-		"menu-text-hover":"white",
-		"text-color":"white"
+		"menu-text-hover":"white"
 		}) <!-- end of header -->
 
 

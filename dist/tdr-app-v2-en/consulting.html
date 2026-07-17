@@ -91,9 +91,6 @@
 </noscript>
 
 
-	<!-- Only Required if Samaritan color is required -->
-	<link rel="stylesheet" href="./css/custom/samaritan.css">
-
 	<!-- Plugins/Components CSS -->
 	<link rel="stylesheet" href="./css/swiper.css">
 
@@ -250,6 +247,9 @@
 		}
 	</style>
 
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+
 
 </head>
 
@@ -260,7 +260,6 @@
 
 		<!-- Header
 		============================================= -->
-		<!-- header -->
 		<style>
   @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
   /* Ref: https://icons.getbootstrap.com/#icons */
@@ -486,8 +485,8 @@
     --cnvs-primary-menu-active-color: white;
   }
 
-  .sub-menu-container .menu-item > .menu-link {
-    --cnvs-primary-menu-submenu-color: white;
+  .sub-menu-container .menu-item>.menu-link {
+    color: white;
   }
 
   .is-expanded-menu .sub-menu-container .menu-item:hover > .menu-link,
