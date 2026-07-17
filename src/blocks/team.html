@@ -11,13 +11,13 @@
 						============================================= -->
     <ul class="grid-filter" data-container="#portfolio">
         <li class="activeFilter  text-white"><a href="#" data-filter="*">Show All</a></li>
-        <li><a href="#" class="text-white" data-filter=".pf-management">TDR Management</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-dd">Duty Drawback</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-customs">Customs</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-vat">VAT</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-supply">Supply Chain</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-eu">EU based</a></li>
         <li><a href="#" class="text-white" data-filter=".pf-uk">UK based</a></li>
+        <li><a href="#" class="text-white" data-filter=".pf-us">US based</a></li>
 
     </ul><!-- .grid-filter end -->
 
@@ -34,25 +34,25 @@
     @@include('src/blocks/teamCard.html',{"path":"${{jocelyn-montpert.path}}$",
     "firstName":"${{jocelyn-montpert.firstName}}$",
     "lastName":"${{jocelyn-montpert.lastName}}$",
-    "practice":"pf-supply pf-dd pf-management pf-eu",
+    "practice":"pf-supply pf-dd pf-eu",
     "jobTitle":"${{jocelyn-montpert.jobTitle}}$",
     "country":"${{jocelyn-montpert.country}}$",
     "path":"${{jocelyn-montpert.path}}$"
     })
 
-    @@include('src/blocks/teamCard.html',{"path":"${{jason-cooper.path}}$",
-    "firstName":"${{jason-cooper.firstName}}$",
-    "lastName":"${{jason-cooper.lastName}}$",
-    "practice":"pf-supply pf-dd pf-management pf-uk",
-    "jobTitle":"${{jason-cooper.jobTitle}}$",
-    "country":"${{jason-cooper.country}}$",
-    "path":"${{jason-cooper.path}}$"
+    @@include('src/blocks/teamCard.html',{"path":"${{ron-shepherd.path}}$",
+    "firstName":"${{ron-shepherd.firstName}}$",
+    "lastName":"${{ron-shepherd.lastName}}$",
+    "practice":"pf-dd pf-us",
+    "jobTitle":"${{ron-shepherd.jobTitle}}$",
+    "country":"${{ron-shepherd.country}}$",
+    "path":"${{ron-shepherd.path}}$"
     })
 
     @@include('src/blocks/teamCard.html',{"path":"${{elke-rodel.path}}$",
     "firstName":"${{elke-rodel.firstName}}$",
     "lastName":"${{elke-rodel.lastName}}$",
-    "practice":"pf-dd pf-customs pf-management pf-eu",
+    "practice":"pf-dd pf-customs pf-eu",
     "jobTitle":"${{elke-rodel.jobTitle}}$",
     "country":"${{elke-rodel.country}}$",
     "path":"${{elke-rodel.path}}$"
@@ -61,7 +61,7 @@
     @@include('src/blocks/teamCard.html',{"path":"${{richard-krempel.path}}$",
     "firstName":"${{richard-krempel.firstName}}$",
     "lastName":"${{richard-krempel.lastName}}$",
-    "practice":"pf-dd pf-customs pf-management pf-eu",
+    "practice":"pf-dd pf-customs pf-eu",
     "jobTitle":"${{richard-krempel.jobTitle}}$",
     "country":"${{richard-krempel.country}}$",
     "path":"${{richard-krempel.path}}$"
@@ -70,10 +70,19 @@
     @@include('src/blocks/teamCard.html',{"path":"${{peter-arts.path}}$",
     "firstName":"${{peter-arts.firstName}}$",
     "lastName":"${{peter-arts.lastName}}$",
-    "practice":"pf-dd pf-customs pf-management pf-eu",
+    "practice":"pf-dd pf-customs pf-eu",
     "jobTitle":"${{peter-arts.jobTitle}}$",
     "country":"${{peter-arts.country}}$",
     "path":"${{peter-arts.path}}$"
+    })
+
+    @@include('src/blocks/teamCard.html',{"path":"${{jason-cooper.path}}$",
+    "firstName":"${{jason-cooper.firstName}}$",
+    "lastName":"${{jason-cooper.lastName}}$",
+    "practice":"pf-supply pf-dd pf-uk",
+    "jobTitle":"${{jason-cooper.jobTitle}}$",
+    "country":"${{jason-cooper.country}}$",
+    "path":"${{jason-cooper.path}}$"
     })
 
     @@include('src/blocks/teamCard.html',{"path":"${{ian-crauwels.path}}$",
