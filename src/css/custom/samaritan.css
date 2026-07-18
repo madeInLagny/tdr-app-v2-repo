@@ -96,8 +96,16 @@ ul {
   background-color: var(--samaritanGreen);
 }
 
+.samaritanGreen-bg:hover {
+  background-color: var(--samaritanDarkGreen);
+}
+
 .samaritanDarkGreen-bg {
   background-color: var(--samaritanDarkGreen);
+}
+
+.samaritanDarkGreen-bg:hover {
+  background-color: var(--samaritanGreen);
 }
 
 .samaritanYellow-bg {
@@ -182,6 +190,7 @@ ul {
 .button-brown {
   --cnvs-btn-color: var(--samaritanRed);
   --cnvs-btn-color-dark: var(--samaritanDarkRed);
+  color: black;
 }
 
 .button-blue {
