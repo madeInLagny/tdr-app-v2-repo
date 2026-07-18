@@ -13,7 +13,7 @@
   --samaritanBlue: #7d97dd;
   --samaritanDarkBlue: #4b5bc5;
   --samaritanYellow: #fff612;
-  --samaritanDarkYellow: #e0d201;
+  --samaritanDarkYellow: #c9b000;
 }
 /* https://uicolors.app/generate */
 
@@ -47,6 +47,14 @@ ul {
 
 .text-samaritanDarkGreen {
   color: var(--samaritanDarkGreen) !important;
+}
+
+.text-samaritanYellow {
+  color: var(--samaritanYellow) !important;
+}
+
+.text-samaritanDarkYellow {
+  color: var(--samaritanDarkYellow) !important;
 }
 
 .lightSamaritan-bg {
@@ -107,7 +115,6 @@ ul {
 .samaritanDarkBlue-bg {
   background-color: var(--samaritanDarkBlue);
 }
-
 
 .samaritanRed-bg {
   background-color: var(--samaritanRed);
