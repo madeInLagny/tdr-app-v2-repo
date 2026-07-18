@@ -24,8 +24,9 @@
 	<!-- Only Required if Samaritan color is required -->
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 
+
+	<!-- Fade-in animation for md screens and up -->
 	<style>
-		/* Fade-in animation for md screens and up */
 		@keyframes fadeIn {
 			from {
 				opacity: 0;
@@ -49,20 +50,6 @@
 			background-color: var(--samaritan);
 		}
 	</style>
-
-
-	<!-- Subtle card movement on hover -->
-	<style>
-		.feature-box {
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-		}
-
-		.feature-box:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-		}
-	</style>
-
 
 	<!-- glass effect -->
 	<style>
@@ -99,41 +86,8 @@
 		}
 	</style>
 
-
+	<!-- Swiper Tabs -->
 	<style>
-		.block-sticky-cards .content-wrap,
-		.block-sticky-cards .section {
-			overflow: visible;
-		}
-
-		.block-sticky-cards .sticky-section+.sticky-section {
-			margin-top: 5vh;
-		}
-
-		@media (min-width: 992px) {
-			.block-sticky-cards .sticky-section {
-				--sticky-top-gap: 30px;
-				position: -webkit-sticky;
-				position: sticky;
-				z-index: 2;
-				top: calc(80px + var(--sticky-top-gap));
-			}
-
-			.block-sticky-cards .sticky-section+.sticky-section {
-				margin-top: 20vh;
-			}
-		}
-	</style>
-
-	<style>
-		.table>:not(caption)>*>* {
-			background: rgba(151, 190, 172, 0.21);
-			color: white
-		}
-	</style>
-
-	<style>
-		/* Swiper Tabs */
 		.swiper-pagination-progress {
 			--cnvs-swiper-bar-size: 2px;
 			--cnvs-swiper-bar-color: var(--cnvs-contrast-200);
@@ -257,6 +211,7 @@
 		}
 	</style>
 
+	<!-- Accordion Style for Q&A -->
 	<style>
 		.accordion-header,
 		.toggle-header,
@@ -266,7 +221,6 @@
 	</style>
 
 	<!-- Layered background -->
-
 	<style>
 		.layered-background {
 			background-image: url("data:image/svg+xml,%3Csvg id='visual' viewBox='0 0 960 540' width='960' height='540' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1'%3E%3Cpath d='M0 60L160 60L160 66L320 66L320 44L480 44L480 50L640 50L640 39L800 39L800 39L960 39L960 39L960 0L960 0L800 0L800 0L640 0L640 0L480 0L480 0L320 0L320 0L160 0L160 0L0 0Z' fill='%23b1c0cd'%3E%3C/path%3E%3Cpath d='M0 201L160 201L160 212L320 212L320 212L480 212L480 185L640 185L640 147L800 147L800 158L960 158L960 195L960 37L960 37L800 37L800 37L640 37L640 48L480 48L480 42L320 42L320 64L160 64L160 58L0 58Z' fill='%23bcc9d4'%3E%3C/path%3E%3Cpath d='M0 276L160 276L160 309L320 309L320 266L480 266L480 255L640 255L640 206L800 206L800 233L960 233L960 255L960 193L960 156L800 156L800 145L640 145L640 183L480 183L480 210L320 210L320 210L160 210L160 199L0 199Z' fill='%23c7d2db'%3E%3C/path%3E%3Cpath d='M0 325L160 325L160 357L320 357L320 330L480 330L480 314L640 314L640 276L800 276L800 287L960 287L960 298L960 253L960 231L800 231L800 204L640 204L640 253L480 253L480 264L320 264L320 307L160 307L160 274L0 274Z' fill='%23d2dbe2'%3E%3C/path%3E%3Cpath d='M0 433L160 433L160 455L320 455L320 417L480 417L480 422L640 422L640 433L800 433L800 438L960 438L960 433L960 296L960 285L800 285L800 274L640 274L640 312L480 312L480 328L320 328L320 355L160 355L160 323L0 323Z' fill='%23dee4ea'%3E%3C/path%3E%3Cpath d='M0 471L160 471L160 482L320 482L320 460L480 460L480 460L640 460L640 460L800 460L800 471L960 471L960 465L960 431L960 436L800 436L800 431L640 431L640 420L480 420L480 415L320 415L320 453L160 453L160 431L0 431Z' fill='%23e9edf1'%3E%3C/path%3E%3Cpath d='M0 509L160 509L160 514L320 514L320 498L480 498L480 509L640 509L640 514L800 514L800 514L960 514L960 498L960 463L960 469L800 469L800 458L640 458L640 458L480 458L480 458L320 458L320 480L160 480L160 469L0 469Z' fill='%23f4f6f8'%3E%3C/path%3E%3Cpath d='M0 541L160 541L160 541L320 541L320 541L480 541L480 541L640 541L640 541L800 541L800 541L960 541L960 541L960 496L960 512L800 512L800 512L640 512L640 507L480 507L480 496L320 496L320 512L160 512L160 507L0 507Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
@@ -275,106 +229,6 @@
 			/* background-attachment: fixed; */
 		}
 	</style>
-
-	<script type="application/ld+json">
-	{
-			"@context": "https://schema.org",
-			"@type": "FAQPage",
-			"name": "Frequently Asked Questions",
-			"url": "block-content-faqs-2.html",
-			"description": "Browse our Frequently Asked Questions covering marketplace policies, author resources, affiliate programs, legal guidelines, and item support for Canvas users.",
-			"mainEntity": [
-						{
-									"@type": "Question",
-									"name": "How do I become an author?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "To become an author, simply sign up for a free account and submit your work through the Author Dashboard. Our review team evaluates submissions for quality, originality, and marketplace fit. Once approved, your items go live and you can start earning royalties immediately. Most applications receive a decision within five business days."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "Helpful Resources for Authors",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "Authors have access to a dedicated resource hub featuring step-by-step upload guides, pricing recommendations, portfolio best practices, and community forums. You can also join live webinars hosted by experienced authors and browse the knowledge base for answers to common questions about publishing, licensing, and growing your sales."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "How much money can I make?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "Earnings vary based on your item's price, exclusivity, and sales volume. Exclusive authors earn higher royalty rates, while non-exclusive authors retain flexibility to sell elsewhere. Many top authors generate consistent monthly income by building a diverse portfolio. Your author dashboard tracks all sales, payouts, and performance metrics in real time."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "Can I offer my items for free on a promotional basis?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "Yes, authors may participate in approved promotional campaigns and limited-time free download events organized by the marketplace. Outside of official promotions, items must maintain their listed price. If you want to run your own promotion, contact the author support team to discuss eligible programs and ensure your campaign complies with marketplace policies."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "An Introduction to the Marketplaces for Authors",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "The marketplace connects creative professionals with millions of buyers worldwide. Authors can list digital assets including themes, plugins, graphics, audio, and video. Each marketplace has its own review standards and category guidelines. Registering as an author is free, and you retain full control over your portfolio, pricing, and item updates after your items are approved."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "How does the Tuts+ Premium affiliate program work?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "As an affiliate, you earn a commission for every new Tuts+ Premium subscriber you refer. Simply grab your unique referral link from the affiliate dashboard and share it on your site, social channels, or email list. Commissions are tracked in real time, and payouts are processed monthly once you reach the minimum threshold. No sales experience is required."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "What Images, Videos, Code or Music Can I Use in my Items?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "You may only include assets you own outright, have licensed for commercial redistribution, or that are in the public domain. Stock imagery, third-party plugins, and music tracks must carry a license explicitly permitting resale or bundling. Always document your asset sources and include a credits file with your submission to simplify the review process."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "Can I use trademarked names in my items?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "Using trademarked names, logos, or brands in your items without explicit written permission from the trademark holder is not allowed. This applies to item titles, descriptions, preview images, and bundled assets. If your item is inspired by a trademarked product but does not infringe, consult the legal guidelines in the author help center before submitting."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "Tips for Increasing Your Referral Income",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "Boost referral income by targeting audiences who are actively searching for the products you recommend. Write in-depth reviews and tutorials, embed banners in high-traffic blog posts, and share your referral links in relevant online communities. Consistent promotion, combined with seasonal offers and honest product comparisons, tends to drive higher conversion rates over time."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "How can I get support for an item which isn't working correctly?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "Start by visiting the item's dedicated support tab, where the author may have posted known fixes or setup guides. If the issue persists, post a detailed bug report including your browser, OS, WordPress version, and any error messages. Most authors respond within 48 hours. For items covered by official support, you can also submit a ticket directly."
-									}
-						},
-						{
-									"@type": "Question",
-									"name": "How do I pay for items on the Marketplaces?",
-									"acceptedAnswer": {
-												"@type": "Answer",
-												"text": "Purchases are made using credits added to your account. You can top up your credit balance using major credit cards, PayPal, or other locally supported payment methods. Once credits are in your account, checkout is instant. A payment receipt is emailed after every transaction, and your full purchase history is available in your account settings."
-									}
-						}
-			]
-}
-	</script>
 
 </head>
 
@@ -401,12 +255,12 @@
 						<div class="swiper-slide dark">
 							<div class="container">
 								<div class="slider-caption slider-caption-center">
-									<h1 class="display-5" data-animate="fadeInDown">Recover 99% of US Customs
-										Duties<br>On
-										Re-Exported Goods
+									<h1 class="display-5" data-animate="fadeInDown">
+										${{TDR-Duty-Drawback-in-the-US.hero_headline_line}}$
+
 									</h1>
 									<p class="fs-3" data-animate="fadeInUp">
-										The Only Dedicated Crossborder Retail Duty Drawback
+										${{TDR-Duty-Drawback-in-the-US.hero_subheadline}}$
 									</p>
 								</div>
 							</div>
@@ -431,9 +285,9 @@
 		<section id="content">
 			<div class="content-wrap pt-0">
 				<div id="overpaying" class="page-section py-5 py-lg-6 shiny-samaritan-bg">
-					<h2 class="display-4 fw-bolder ls-n-2 text-center text-lightSamaritan" data-animate="fadeIn">You’re
-						Overpaying on Crossborder Returns <br><span class="text-white">Here’s How to Fix
-							It</span>
+					<h2 class="display-4 fw-bolder ls-n-2 text-center text-lightSamaritan" data-animate="fadeIn">
+						${{TDR-Duty-Drawback-in-the-US.overpaying_title}}$<br><span
+							class="text-white">${{TDR-Duty-Drawback-in-the-US.overpaying_subtitle}}$</span>
 
 					</h2>
 					<div class="container">
@@ -446,11 +300,11 @@
 										<i class="bi-lightning-charge-fill" style="color:var(--samaritanGreen);"></i>
 									</div>
 									<div class="fbox-content">
-										<span class="display-6" data-animate="fadeIn" data-delay="1">Recover 99% of
-											duties
+										<span class="display-6" data-animate="fadeIn"
+											data-delay="1">${{TDR-Duty-Drawback-in-the-US.feature_1_title}}$
 										</span>
-										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">on
-											returned or re-exported goods <br>no manual paperwork.</p>
+										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">
+											${{TDR-Duty-Drawback-in-the-US.feature_1_text}}$</p>
 									</div>
 								</div>
 							</div>
@@ -461,10 +315,11 @@
 										<i class="bi-people-fill" style="color:var(--samaritanYellow);"></i>
 									</div>
 									<div class="fbox-content">
-										<span class="display-6" data-animate="fadeIn" data-delay="1">No Budget Threshold
+										<span class="display-6" data-animate="fadeIn"
+											data-delay="1">${{TDR-Duty-Drawback-in-the-US.feature_2_title}}$
 										</span>
-										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">Our solution
-											supports both small and large drawback budgets. Every customer counts!
+										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">
+											${{TDR-Duty-Drawback-in-the-US.feature_2_text}}$
 										</p>
 									</div>
 								</div>
@@ -476,10 +331,10 @@
 										<i class="bi-globe" style="color:var(--samaritanRed);"></i>
 									</div>
 									<div class="fbox-content">
-										<span class="display-6" data-animate="fadeIn" data-delay="1">One partner, global
-											reach</span>
-										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">US,
-											EU, and UK duty mitigation <br> no coordinator needed.
+										<span class="display-6" data-animate="fadeIn"
+											data-delay="1">${{TDR-Duty-Drawback-in-the-US.feature_3_title}}$</span>
+										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">
+											${{TDR-Duty-Drawback-in-the-US.feature_3_text}}$
 										</p>
 									</div>
 								</div>
@@ -491,10 +346,10 @@
 				</div><!-- end of Overpaying section -->
 
 				<div id="use-cases" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
-					<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">Two Ways
-						to Reclaim Your Money
+					<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">
+						${{TDR-Duty-Drawback-in-the-US.use_cases_title}}$
 						<span class="text-samaritanDarkRed">
-							Starting Today</span>
+							${{TDR-Duty-Drawback-in-the-US.use_cases_subtitle}}$</span>
 					</h2>
 					<div class="container">
 						<div class="row g-4 align-items-stretch">
@@ -502,14 +357,13 @@
 								<div class="h-100 bg-white p-5 rounded" style="transition: all 0.3s ease;">
 									<div class="row gy-4">
 										<div class="col-lg-6">
-											<h3 class="fs-2 mb-3 text-samaritanDarkRed">Cross-Border Returns?</h3>
-											<p class="mb-0 text-samaritan">When international shoppers return items, you
-												lose the duties you paid. We automate claims to refund up to 99% of
-												those fees—so every return puts money back in your pocket.
+											<h3 class="fs-2 mb-3 text-samaritanDarkRed">
+												${{TDR-Duty-Drawback-in-the-US.use_case_1_title}}$</h3>
+											<p class="mb-0 text-samaritan">
+												${{TDR-Duty-Drawback-in-the-US.use_case_1_text}}$
 											</p>
-											<a href="Book a call with us"
-												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">Contact
-												Us</a>
+											<a href="${{contact-us.path}}$"
+												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">${{TDR-Duty-Drawback-in-the-US.contact_us_button}}$</a>
 										</div>
 										<div class="col-lg-6 d-flex align-items-center">
 											<img src="images/undraw_order.png"
@@ -523,15 +377,13 @@
 								<div class="h-100 bg-white p-5 rounded">
 									<div class="row gy-4">
 										<div class="col-lg-6">
-											<h3 class="fs-2 mb-3 text-samaritanDarkRed">Re-Exporting Inventory?</h3>
-											<p class="mb-0 text-samaritan">Paying US duties and foreign tariffs? Stop
-												double-paying.
-												<br> Claim back up to 99% of US import duties when you ship
-												goods overseas.
+											<h3 class="fs-2 mb-3 text-samaritanDarkRed">
+												${{TDR-Duty-Drawback-in-the-US.use_case_2_title}}$</h3>
+											<p class="mb-0 text-samaritan">
+												${{TDR-Duty-Drawback-in-the-US.use_case_2_text}}$
 											</p>
-											<a href="Book a call with us"
-												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">Contact
-												Us</a>
+											<a href="${{contact-us.path}}$"
+												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">${{TDR-Duty-Drawback-in-the-US.contact_us_button}}$</a>
 										</div>
 										<div class="col-lg-6 d-flex align-items-center">
 											<img src="images/undraw_logistics.png"
@@ -559,19 +411,16 @@
 						<div class="row align-items-start gy-4">
 							<div class="col-lg-5">
 								<h2 class="display-4 fw-bolder ls-n-2 text-darkSamaritan"><span
-										class="text-samaritanDarkGreen">Who
-										Benefits</span> From Duty Drawback?</h2>
-								<p class="lead text-samaritan">If your eCommerce brand imports goods, pays duties, and
-									later sees
-									returns, re-exports, or other eligible movements, duty drawback can turn those costs
-									into recoverable
-									cash.</p>
-								<p class="text-samaritan">We help CFOs and finance teams improve cash flow, reduce
-									returns-related
-									expenses, and manage the process through one experienced point of contact.</p>
+										class="text-samaritanDarkGreen">${{TDR-Duty-Drawback-in-the-US.who_benefits_title_prefix}}$</span>${{TDR-Duty-Drawback-in-the-US.who_benefits_title_suffix}}$
+								</h2>
+								<p class="lead text-samaritan">
+									${{TDR-Duty-Drawback-in-the-US.who_benefits_text_primary}}$</p>
+								<p class="text-samaritan">${{TDR-Duty-Drawback-in-the-US.who_benefits_text_secondary}}$
+								</p>
 								<a href="https://blog.tradedutyrefund.com"
 									class="btn samaritanDarkGreen-bg text-white fw-bold mt-3 rounded-pill text-smaller"
-									target="_blank" rel="noopener">Read our insights</a>
+									target="_blank"
+									rel="noopener">${{TDR-Duty-Drawback-in-the-US.read_insights_button}}$</a>
 							</div>
 							<div class="col-lg-1"></div>
 							<div class="col-lg-4">
@@ -579,20 +428,20 @@
 									<div class="col-lg-12 d-flex justify-content-center" data-animate="fadeInDown">
 										<div class="card h-100 border-0 shadow">
 											<div class="card-body p-4">
-												<h3 class="h5 text-samaritanDarkGreen">For eCommerce brands</h3>
-												<p class="mb-0 text-samaritan">Recover duties tied to returns,
-													re-exports, and other eligible
-													customs movements without adding internal complexity.</p>
+												<h3 class="h5 text-samaritanDarkGreen">
+													${{TDR-Duty-Drawback-in-the-US.card_brand_title}}$</h3>
+												<p class="mb-0 text-samaritan">
+													${{TDR-Duty-Drawback-in-the-US.card_brand_text}}$</p>
 											</div>
 										</div>
 									</div>
 									<div class="col-lg-12 d-flex justify-content-center" data-animate="fadeInUp">
 										<div class="card h-100 border-0 shadow">
 											<div class="card-body p-4">
-												<h3 class="h5 text-samaritanDarkGreen">For finance leaders</h3>
-												<p class="mb-0 text-samaritan">Improve working capital and reduce the
-													cost of returns with a
-													single partner for global duty recovery.</p>
+												<h3 class="h5 text-samaritanDarkGreen">
+													${{TDR-Duty-Drawback-in-the-US.card_finance_title}}$</h3>
+												<p class="mb-0 text-samaritan">
+													${{TDR-Duty-Drawback-in-the-US.card_finance_text}}$</p>
 											</div>
 										</div>
 									</div>
@@ -623,9 +472,9 @@
 						<div class="row justify-content-center text-center mb-3">
 							<div class="col-lg-8 col-xl-7">
 
-								<h2 class="display-4 fw-bolder ls-n-2 text-center" data-animate="fadeIn">Your Duty
-									Drawback Challenges,<span class="text-samaritanYellow"> Solved
-
+								<h2 class="display-4 fw-bolder ls-n-2 text-center" data-animate="fadeIn">
+									${{TDR-Duty-Drawback-in-the-US.challenges_title_prefix}}$<span
+										class="text-samaritanYellow">${{TDR-Duty-Drawback-in-the-US.challenges_title_suffix}}$
 									</span></h2>
 
 							</div>
@@ -635,13 +484,14 @@
 							<div class="col-md-5">
 								<ul class="swiper-links-container list-unstyled">
 									<li class="swiper-tab-link active">
-										<h3 class="swiper-tab-title">"Duty claims are <span
-												class="nocolor swiper-tab-title-highlight">eroding my margins</span>."
+										<h3 class="swiper-tab-title">
+											"${{TDR-Duty-Drawback-in-the-US.challenge_1_title_prefix}}$ <span
+												class="nocolor swiper-tab-title-highlight">${{TDR-Duty-Drawback-in-the-US.challenge_1_title_suffix}}$</span>."
 										</h3>
-										<p class="swiper-tab-content">No in-house bandwidth? No problem.
+										<p class="swiper-tab-content">
+											${{TDR-Duty-Drawback-in-the-US.challenge_1_text_1}}$
 											<br>
-											<strong>We handle ACE reports, data, and customs so you reclaim every dollar
-												owed, effortlessly.</strong>
+											<strong>${{TDR-Duty-Drawback-in-the-US.challenge_1_text_2}}$</strong>
 										</p>
 										<p class="fs-3 text"></p>
 										<div class="swiper-pagination-progress">
@@ -650,42 +500,48 @@
 										</div>
 									</li>
 									<li class="swiper-tab-link">
-										<h3 class="swiper-tab-title">"Small drawback budgets mean <span
-												class="nocolor swiper-tab-title-highlight">no broker
-												support</span>."</h3>
-										<p class="swiper-tab-content">No minimums and no wasted effort. We assess each
-											opportunity for cost-effective recovery so even modest budgets get results.
+										<h3 class="swiper-tab-title">
+											"${{TDR-Duty-Drawback-in-the-US.challenge_2_title_prefix}}$ <span
+												class="nocolor swiper-tab-title-highlight">${{TDR-Duty-Drawback-in-the-US.challenge_2_title_suffix}}$</span>."
+										</h3>
+										<p class="swiper-tab-content">
+											${{TDR-Duty-Drawback-in-the-US.challenge_2_text_1}}$
 											<br>
-											<strong>Tailored, low-effort recovery for startups and small retailers —
-												scalable support that maximizes returns without straining
-												resources.</strong>
+											<strong>${{TDR-Duty-Drawback-in-the-US.challenge_2_text_2}}$</strong>
 										</p>
+										<p class="fs-3 text"></p>
 										<div class="swiper-pagination-progress">
 											<span class="swiper-pagination-bar"></span><span
 												class="swiper-pagination-bar-active"></span>
 										</div>
 									</li>
 									<li class="swiper-tab-link">
-										<h3 class="swiper-tab-title">"Upfront costs are <span
-												class="nocolor swiper-tab-title-highlight">killing my working
-												capital</span>."</h3>
-										<p class="swiper-tab-content">Success-based fees mean we only earn when you do.
+										<h3 class="swiper-tab-title">
+											"${{TDR-Duty-Drawback-in-the-US.challenge_3_title_prefix}}$ <span
+												class="nocolor swiper-tab-title-highlight">${{TDR-Duty-Drawback-in-the-US.challenge_3_title_suffix}}$</span>."
+										</h3>
+										<p class="swiper-tab-content">
+											${{TDR-Duty-Drawback-in-the-US.challenge_3_text_1}}$
 											<br>
-											<strong>Pure profit recovery. No cash flow strain.</strong>
+											<strong>${{TDR-Duty-Drawback-in-the-US.challenge_3_text_2}}$</strong>
 										</p>
+										<p class="fs-3 text"></p>
 										<div class="swiper-pagination-progress">
 											<span class="swiper-pagination-bar"></span><span
 												class="swiper-pagination-bar-active"></span>
 										</div>
 									</li>
 									<li class="swiper-tab-link">
-										<h3 class="swiper-tab-title">"Global duties are a <span
-												class="nocolor swiper-tab-title-highlight">profit leak I can't
-												plug</span>."</h3>
-										<p class="swiper-tab-content">29 countries covered. One seamless process.
+										<h3 class="swiper-tab-title">
+											"${{TDR-Duty-Drawback-in-the-US.challenge_4_title_prefix}}$ <span
+												class="nocolor swiper-tab-title-highlight">${{TDR-Duty-Drawback-in-the-US.challenge_4_title_suffix}}$</span>."
+										</h3>
+										<p class="swiper-tab-content">
+											${{TDR-Duty-Drawback-in-the-US.challenge_4_text_1}}$
 											<br>
-											<strong>Maximize cash flow across every border, every market.</strong>
+											<strong>${{TDR-Duty-Drawback-in-the-US.challenge_4_text_2}}$</strong>
 										</p>
+										<p class="fs-3 text"></p>
 										<div class="swiper-pagination-progress">
 											<span class="swiper-pagination-bar"></span><span
 												class="swiper-pagination-bar-active"></span>
@@ -5555,8 +5411,6 @@
 
 								<p class="lead"></p>Get Your Free Savings Estimate (No commitment, no forms—just
 								answers.)</p>
-
-
 
 								@@include("src/blocks/contactOptions.html")
 							</div>
