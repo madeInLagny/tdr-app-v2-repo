@@ -9,9 +9,9 @@
 
 	<!-- Metatags Import -->
 	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
-	"description": "${{TDR-Duty-Drawback-in-the-US2.description}}$",
-	"title": "${{TDR-Duty-Drawback-in-the-US2.title}}$",
-	"path": "${{TDR-Duty-Drawback-in-the-US2.path}}$"
+	"description": "${{TDR-Duty-Drawback-in-the-US.description}}$",
+	"title": "${{TDR-Duty-Drawback-in-the-US.title}}$",
+	"path": "${{TDR-Duty-Drawback-in-the-US.path}}$"
 	})
 
 	<!-- CSS imports -->
@@ -264,7 +264,7 @@
 									</p>
 								</div>
 							</div>
-							<div class="swiper-slide-bg fade-in-md"
+							<div class="swiper-slide-bg fade-in-md kenburns"
 								style="background-image: url('images/slider/us-drawback/usSolution-slider1.webp');filter: opacity(25%);">
 							</div>
 						</div>
@@ -474,7 +474,8 @@
 
 								<h2 class="display-4 fw-bolder ls-n-2 text-center" data-animate="fadeIn">
 									${{TDR-Duty-Drawback-in-the-US.challenges_title_prefix}}$<span
-										class="text-samaritanYellow"> ${{TDR-Duty-Drawback-in-the-US.challenges_title_suffix}}$
+										class="text-samaritanYellow">
+										${{TDR-Duty-Drawback-in-the-US.challenges_title_suffix}}$
 									</span></h2>
 
 							</div>
@@ -5314,17 +5315,14 @@
 				<!-- CTA Start -->
 
 				<div class="section text-center text-white bg-transparent">
-					<div class="container py-5">
+					<div class="container py-2">
 						<div class="row justify-content-center">
 							<div class="col-md-10">
-								<p class="text-uppercase fw-bold mb-4">Your Competitors Are Already Reclaiming Their
-									Duties. Are You?</p>
-								<h1 class="text-white fw-bold display-3" style="letter-spacing: -1px;">Average
-									client
-									recovers <br>$50K–$1500K/year in duties</h1>
+								<p class="fw-bold mb-4">${{TDR-Duty-Drawback-in-the-US.cta_prefix}}$</p>
+								<h2 class="text-white fw-bold display-3" style="letter-spacing: -1px;">
+									${{TDR-Duty-Drawback-in-the-US.cta_title}}$</h2>
 
-								<p class="lead"></p>Get Your Free Savings Estimate (No commitment, no forms—just
-								answers.)</p>
+								<p class="lead"></p>${{TDR-Duty-Drawback-in-the-US.cta_suffix}}$</p>
 
 								@@include("src/blocks/contactOptions.html")
 							</div>
