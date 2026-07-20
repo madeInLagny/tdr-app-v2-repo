@@ -1,5 +1,5 @@
 {
-  "name": "TDR US Duty Drawback",
+  "name": "US Duty Drawback",
   "path": "TDR-Duty-Drawback-in-the-US.html",
   "subtitle": "Reclaim US Import Duty On Exported Goods",
   "title": "US Duty Drawback for eCommerce | Recover up to 99% of Import Duties",
@@ -81,5 +81,14 @@
   "alt_reexport_image": "Duty drawback workflow for re-exported inventory",
   "cta_prefix": "Your Competitors Are Already Reclaiming Their Duties. Are You?",
   "cta_title": "Average client recovers&lt;br&gt;$50K–$1500K/year in duties",
-  "cta_suffix":"Get Your Free Savings Estimate (No commitment, no forms. Just answers.)"
+  "cta_suffix":"Get Your Free Savings Estimate (No commitment, no forms. Just answers.)",
+  "related_services_title": "You may also like",
+  "related_services_subtitle": "Explore related TDR services built for returns, customs recovery, and international duty mitigation.",
+  "related_service_1_title": "US Duty Free Returns",
+  "related_service_1_text": "Recover duties tied to customer returns and outbound shipments from the US with a streamlined process.",
+  "related_service_2_title": "EU Duty Drawback",
+  "related_service_2_text": "Unlock reclaim opportunities for eligible exports and customs movements across Europe.",
+  "related_service_3_title": "EU Duty Free Returns",
+  "related_service_3_text": "Simplify return-based recovery for brands operating across EU markets and logistics flows.",
+  "related_service_cta": "Explore service"
 }

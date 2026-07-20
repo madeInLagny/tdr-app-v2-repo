@@ -242,6 +242,30 @@
 			background-blend-mode: lighten;
 			background: linear-gradient(135deg, var(--samaritanBlue) 0%, var(--samaritanDarkBlue) 100%);
 		}
+
+		.related-services-card {
+			transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+			border: 1px solid rgba(151, 190, 172, 0.24);
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 247, 243, 0.96) 100%);
+		}
+
+		.related-services-card:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+			border-color: var(--samaritan);
+		}
+
+		.related-services-icon {
+			width: 48px;
+			height: 48px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 50%;
+			background: rgba(151, 190, 172, 0.16);
+			color: var(--samaritanDarkGreen);
+			font-size: 1.25rem;
+		}
 	</style>
 
 	<script type="application/ld+json">
@@ -364,47 +388,6 @@
 		"submenu-bg":"var(--darkSamaritan)",
 		"menu-text-hover":"white"
 		}) <!-- end of header -->
-
-
-		<!-- Quick Reference Sidebar -->
-		<div id="quickReferenceSidebar" class="offcanvas offcanvas-end" tabindex="-1">
-			<div class="offcanvas-header samaritanDarkGreen-bg text-white">
-				<h5 class="offcanvas-title">Quick reference</h5>
-				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-					aria-label="Close"></button>
-			</div>
-			<div class="offcanvas-body" style="overflow-y: auto; max-height: 100vh;">
-				<h2 class="h4 mb-3">US duty drawback for eCommerce returns and re-exported inventory</h2>
-				<p class="lead mb-4">Duty drawback is a U.S. Customs program that lets importers recover duties paid on
-					goods that are later exported, destroyed, or otherwise removed from the U.S. market. For online
-					retailers, the biggest opportunities are customer returns, unsold inventory sent overseas, and other
-					customs movements that reduce margin.</p>
-				<div class="row g-3">
-					<div class="col-12">
-						<h3 class="h6 text-samaritanDarkGreen">Who it helps</h3>
-						<p class="mb-0">eCommerce brands, finance teams, and importers of record.</p>
-					</div>
-					<div class="col-12">
-						<h3 class="h6 text-samaritanDarkGreen">Typical recovery</h3>
-						<p class="mb-0">Up to 99% of duties, taxes, and most fees.</p>
-					</div>
-					<div class="col-12">
-						<h3 class="h6 text-samaritanDarkGreen">Key timing</h3>
-						<p class="mb-0">Claims are generally tied to the import-to-export timeline and can be filed
-							within a five-year window.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Drag indicator to open sidebar -->
-		<div class="drag-indicator" data-bs-toggle="offcanvas" data-bs-target="#quickReferenceSidebar"
-			aria-controls="quickReferenceSidebar" title="Quick Reference: US Duty Drawback"
-			style="position: fixed; right: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 80px; background-color: var(--samaritanDarkBlue); border-radius: 8px 0 0 8px; cursor: grab; display: flex; align-items: center; justify-content: center; z-index: 1040; box-shadow: -2px 0 8px rgba(0,0,0,0.1);">
-			<i class="bi-info-circle-fill" style="color: white; font-size: 1.5rem;"></i>
-		</div>
-
-
 
 
 		<section id="slider" class="slider-element slider-parallax swiper_wrapper with-header min-vh-60 min-vh-md-100">
@@ -669,7 +652,7 @@
 						<div class="row align-items-start gy-4">
 							<div class="col-lg-5">
 								<h2 class="display-4 fw-bolder ls-n-2 text-darkSamaritan"><span
-										class="text-samaritanDarkGreen">${{TDR-Duty-Drawback-in-the-US.who_benefits_title_prefix}}$</span>${{TDR-Duty-Drawback-in-the-US.who_benefits_title_suffix}}$
+										class="text-samaritanDarkGreen">${{TDR-Duty-Drawback-in-the-US.who_benefits_title_prefix}}$</span> ${{TDR-Duty-Drawback-in-the-US.who_benefits_title_suffix}}$
 								</h2>
 								<p class="lead text-samaritan">
 									${{TDR-Duty-Drawback-in-the-US.who_benefits_text_primary}}$</p>
@@ -5572,7 +5555,6 @@
 				</svg>
 
 				<!-- CTA Start -->
-
 				<div class="section text-center text-white bg-transparent">
 					<div class="container py-2">
 						<div class="row justify-content-center">
@@ -5589,6 +5571,37 @@
 					</div>
 				</div>
 
+				<!-- Divider -->
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" version="1.1"
+					xmlns:xlink="http://www.w3.org/1999/xlink" transform="matrix(1,0,0,-1,0,0)">
+					<path d="M0 0v4c250 0 250 96 500 96S750 4 1000 4V0H0Z" fill="#fff"></path>
+				</svg>
+
+
+				<div class="section py-5 py-lg-6 mt-0 bg-white">
+					<div class="container">
+						<div
+							class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+							<div>
+								<h2 class="display-5 fw-bolder ls-n-2 text-darkSamaritan mb-2">
+									${{TDR-Duty-Drawback-in-the-US.related_services_title}}$</h2>
+								<p class="text-samaritan mb-0">
+									${{TDR-Duty-Drawback-in-the-US.related_services_subtitle}}$</p>
+							</div>
+						</div>
+						<div class="row block-card-9 col-mb-50">
+							<div class="col-lg-4 min-vh-75">
+								@@include('src/blocks/cards/TDR-Duty-Free-Returns-to-the-US.html')
+							</div>
+							<div class="col-lg-4 min-vh-75">
+								@@include('src/blocks/cards/TDR-Duty-Drawback-in-Europe.html')
+							</div>
+							<div class="col-lg-4 min-vh-75">
+								@@include('src/blocks/cards/TDR-Duty-Free-Returns-to-Europe.html')
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<div class="section dark bg-transparent">
 					@@include('src/blocks/blog-gallery.html')
