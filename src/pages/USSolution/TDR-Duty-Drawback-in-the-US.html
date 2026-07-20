@@ -53,8 +53,8 @@
 
 	<!-- glass effect -->
 	<style>
+		/* From https://css.glass */
 		.glass-effect-samaritanGreen {
-			/* From https://css.glass */
 			background: rgba(151, 190, 172, 0.21);
 			border-radius: 16px;
 			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -63,10 +63,7 @@
 			border: 1px solid rgba(151, 190, 172, 0.3);
 		}
 
-
-
 		.glass-effect-samaritanYellow {
-			/* From https://css.glass */
 			background: rgba(255, 246, 18, 0.21);
 			border-radius: 16px;
 			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -76,13 +73,21 @@
 		}
 
 		.glass-effect-samaritanRed {
-			/* From https://css.glass */
 			background: rgba(251, 166, 181, 0.21);
 			border-radius: 16px;
 			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 			backdrop-filter: blur(5px);
 			-webkit-backdrop-filter: blur(5px);
 			border: 1px solid rgba(251, 166, 181, 0.3);
+		}
+
+		.glass-effect-samaritanBlue {
+			background: rgba(75, 91, 197, 0.33);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(75, 91, 197, 0.3);
 		}
 	</style>
 
@@ -230,6 +235,120 @@
 		}
 	</style>
 
+
+	<style>
+		.gradient-bg {
+			background-color: rgba(255, 255, 255, 0.6);
+			background-blend-mode: lighten;
+			background: linear-gradient(135deg, var(--samaritanBlue) 0%, var(--samaritanDarkBlue) 100%);
+		}
+	</style>
+
+	<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["WebPage", "Article"],
+  "name": "${{TDR-Duty-Drawback-in-the-US.title}}$",
+  "url": "${{index.domain}}$${{TDR-Duty-Drawback-in-the-US.path}}$",
+  "description": "${{TDR-Duty-Drawback-in-the-US.description}}$",
+  "inLanguage": "${{index.language}}$",
+  "about": {
+    "@type": "Thing",
+    "name": "US duty drawback",
+    "description": "A U.S. Customs program that allows importers to recover duties paid on goods later exported, destroyed, or otherwise removed from the U.S. market."
+  },
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_1_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_1_answer}}$"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_2_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_2_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_3_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_3_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_4_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_4_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_5_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_5_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_6_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_6_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_7_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_7_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_8_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_8_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_9_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_9_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Duty-Drawback-in-the-US.faq_10_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Duty-Drawback-in-the-US.faq_10_answer}}$"
+        }
+      },
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Trade Duty Refund",
+    "url": "${{index.domain}}$"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tradedutyrefund.com/" },
+      { "@type": "ListItem", "position": 2, "name": "${{TDR-Duty-Drawback-in-the-US.name}}$", "item": "${{index.domain}}$${{TDR-Duty-Drawback-in-the-US.path}}$" }
+    ]
+  }
+}
+</script>
+
 </head>
 
 <body class="stretched sticky-responsive-pagemenu samaritan-bg block-sticky-cards">
@@ -245,6 +364,47 @@
 		"submenu-bg":"var(--darkSamaritan)",
 		"menu-text-hover":"white"
 		}) <!-- end of header -->
+
+
+		<!-- Quick Reference Sidebar -->
+		<div id="quickReferenceSidebar" class="offcanvas offcanvas-end" tabindex="-1">
+			<div class="offcanvas-header samaritanDarkGreen-bg text-white">
+				<h5 class="offcanvas-title">Quick reference</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+					aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body" style="overflow-y: auto; max-height: 100vh;">
+				<h2 class="h4 mb-3">US duty drawback for eCommerce returns and re-exported inventory</h2>
+				<p class="lead mb-4">Duty drawback is a U.S. Customs program that lets importers recover duties paid on
+					goods that are later exported, destroyed, or otherwise removed from the U.S. market. For online
+					retailers, the biggest opportunities are customer returns, unsold inventory sent overseas, and other
+					customs movements that reduce margin.</p>
+				<div class="row g-3">
+					<div class="col-12">
+						<h3 class="h6 text-samaritanDarkGreen">Who it helps</h3>
+						<p class="mb-0">eCommerce brands, finance teams, and importers of record.</p>
+					</div>
+					<div class="col-12">
+						<h3 class="h6 text-samaritanDarkGreen">Typical recovery</h3>
+						<p class="mb-0">Up to 99% of duties, taxes, and most fees.</p>
+					</div>
+					<div class="col-12">
+						<h3 class="h6 text-samaritanDarkGreen">Key timing</h3>
+						<p class="mb-0">Claims are generally tied to the import-to-export timeline and can be filed
+							within a five-year window.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Drag indicator to open sidebar -->
+		<div class="drag-indicator" data-bs-toggle="offcanvas" data-bs-target="#quickReferenceSidebar"
+			aria-controls="quickReferenceSidebar" title="Quick Reference: US Duty Drawback"
+			style="position: fixed; right: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 80px; background-color: var(--samaritanDarkBlue); border-radius: 8px 0 0 8px; cursor: grab; display: flex; align-items: center; justify-content: center; z-index: 1040; box-shadow: -2px 0 8px rgba(0,0,0,0.1);">
+			<i class="bi-info-circle-fill" style="color: white; font-size: 1.5rem;"></i>
+		</div>
+
+
 
 
 		<section id="slider" class="slider-element slider-parallax swiper_wrapper with-header min-vh-60 min-vh-md-100">
@@ -280,11 +440,109 @@
 			</div>
 		</section>
 
+
+
 		<!-- Content
 		============================================= -->
 		<section id="content">
 			<div class="content-wrap pt-0">
 				<div id="overpaying" class="page-section py-5 py-lg-6 shiny-samaritan-bg">
+					<!-- <div class="container">
+						<div id="references"
+							class="page-section py-5 py-lg-6 row align-items-center min-vh-lg-100 gutter-50 glass-effect-samaritanBlue">
+							<div class="col-lg-6">
+								<h2 class="h1 fw-semibold lh-base mb-4">Let retail specialists handle your global
+									drawback.
+								</h2>
+								<p class="text-muted">Duty drawback is a U.S. Customs program that lets importers
+									recover
+									duties
+									paid on goods that are later exported, destroyed, or otherwise removed from the U.S.
+									market.
+									For
+									online retailers, the biggest opportunities are customer returns, unsold inventory
+									sent
+									overseas,
+									and other customs movements that reduce margin.</p>
+
+								<dl class="row gx-3 mb-0">
+									<div class="col mb-3 fw-bold"><i class="fa-solid fa-check-circle me-2 color"></i>
+										Who it
+										helps: eCommerce brands, finance teams, and IORs.</div>
+									<div class="clear"></div>
+
+									<div class="col mb-3 fw-bold"><i class="fa-solid fa-check-circle me-2 color"></i>
+										Typical
+										recovery: Up to 99% of duties, taxes, and most fees.</div>
+									<div class="clear"></div>
+
+									<div class="col mb-0 fw-bold"><i class="fa-solid fa-check-circle me-2 color"></i>
+										Key
+										timing: Claims are generally tied to the import-to-export timeline and can be
+										filed
+										within a five-year window.</div>
+									<div class="clear"></div>
+								</dl>
+							</div>
+
+							<div class="col-lg-6">
+								<div id="bs-carousel" class="carousel slide" data-bs-ride="carousel">
+									<div class="carousel-indicators">
+										<button type="button" data-bs-target="#bs-carousel" data-bs-slide-to="0"
+											class="active" aria-current="true" aria-label="Slide 1"></button>
+										<button type="button" data-bs-target="#bs-carousel" data-bs-slide-to="1"
+											aria-label="Slide 2"></button>
+										<button type="button" data-bs-target="#bs-carousel" data-bs-slide-to="2"
+											aria-label="Slide 3"></button>
+									</div>
+									<div class="carousel-inner">
+										<div class="carousel-item active">
+											<img class="d-block w-100" src="images/blocks/preview/hero-26/1.jpg"
+												alt="Fitness program carousel — daily exercise routine">
+											<div class="carousel-caption">
+												<h3 class="text-white mb-2">First slide label</h3>
+												<p class="mb-3 op-07">Short daily workouts that fit your schedule
+													perfectly.
+												</p>
+											</div>
+										</div>
+										<div class="carousel-item">
+											<img class="d-block w-100" src="images/blocks/preview/hero-26/2.jpg"
+												alt="Fitness program carousel — flexible healthy eating">
+											<div class="carousel-caption">
+												<h3 class="text-white mb-2">Second slide label</h3>
+												<p class="mb-3 op-07">Enjoy meals you love while still reaching your
+													goals.
+												</p>
+											</div>
+										</div>
+										<div class="carousel-item">
+											<img class="d-block w-100" src="images/blocks/preview/hero-26/3.jpg"
+												alt="Fitness program carousel — transformation results">
+											<div class="carousel-caption">
+												<h3 class="text-dark mb-2">Third slide label - Dark</h3>
+												<p class="mb-3 text-muted">Real members, real transformations in six
+													months.
+												</p>
+											</div>
+										</div>
+									</div>
+									<a class="carousel-control-prev" href="#bs-carousel" role="button"
+										data-bs-slide="prev">
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Previous</span>
+									</a>
+									<a class="carousel-control-next" href="#bs-carousel" role="button"
+										data-bs-slide="next">
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Next</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div> -->
+
 					<h2 class="display-4 fw-bolder ls-n-2 text-center text-lightSamaritan" data-animate="fadeIn">
 						${{TDR-Duty-Drawback-in-the-US.overpaying_title}}$<br><span
 							class="text-white">${{TDR-Duty-Drawback-in-the-US.overpaying_subtitle}}$</span>
@@ -5107,7 +5365,8 @@
 						<div class="row justify-content-center text-center mb-3">
 							<div class="col-lg-8 col-xl-7">
 								<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan"
-									data-animate="fadeIn">${{TDR-Duty-Drawback-in-the-US.faq_section_title}}$
+									data-animate="fadeIn">
+									${{TDR-Duty-Drawback-in-the-US.faq_section_title}}$
 								</h2>
 							</div>
 						</div>
