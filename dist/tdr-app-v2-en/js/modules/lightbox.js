@@ -7,35 +7,32 @@ CNVS.Lightbox = function() {
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.lightbox.js', id: 'canvas-lightbox-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().magnificPopup;
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-lightbox', event: 'pluginLightboxReady' });
+			__core.requirePlugin({
+				file: 'plugins.lightbox.js',
+				id: 'canvas-lightbox-js',
+				check: function() { return typeof jQuery !== 'undefined' && jQuery().magnificPopup; },
+				class: 'has-plugin-lightbox',
+				event: 'pluginLightboxReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( selector.length < 1 ) return;
 
 				var closeButtonIcon = '<i class="bi-x-lg"></i>';
 
-				selector.each( function(){
-					var element = jQuery(this),
-						elType = element.attr('data-lightbox'),
-						elCloseButton = element.attr('data-close-button') || 'outside',
-						elDisableUnder = element.attr('data-disable-under') || 600,
-						elFixedContent = element.attr('data-content-position') || 'auto',
-						elZoom = element.attr('data-zoom'),
-						$body = jQuery('body');
+				var $body = jQuery('body');
 
-					elCloseButton = elCloseButton == 'inside' ? true : false;
-					elFixedContent = elFixedContent == 'fixed' ? true : false;
+				selector.each( function(){
+					var element = jQuery(this);
+					var rawEl = element[0];
+					if( !__core.markOnce(rawEl, 'cnvsLightboxInit') ) return;
+
+					var elType = element.attr('data-lightbox'),
+						elCloseButton = element.attr('data-close-button') === 'inside',
+						elDisableUnder = Number(element.attr('data-disable-under')) || 600,
+						elFixedContent = element.attr('data-content-position') === 'fixed',
+						elZoom = element.attr('data-zoom') === 'true';
 
 					if( elType == 'image' ) {
 						var settings = {
@@ -51,7 +48,7 @@ CNVS.Lightbox = function() {
 							closeIcon: closeButtonIcon,
 						};
 
-						if( elZoom == 'true' ) {
+						if( elZoom ) {
 							settings.zoom = {
 								enabled: true,
 								duration: 300,
@@ -96,7 +93,7 @@ CNVS.Lightbox = function() {
 
 					if( elType == 'iframe' ) {
 						element.magnificPopup({
-							disableOn: Number( elDisableUnder ),
+							disableOn: elDisableUnder,
 							type: 'iframe',
 							tLoading: '',
 							removalDelay: 160,
@@ -167,17 +164,21 @@ CNVS.Lightbox = function() {
 						});
 					}
 
-					element.on( 'mfpOpen', function(){
-						var lightboxItem = jQuery.magnificPopup.instance.currItem.el,
-							lightboxClass = jQuery( lightboxItem ).attr('data-lightbox-class'),
-							lightboxBgClass = jQuery( lightboxItem ).attr('data-lightbox-bg-class');
+					element.off('mfpOpen.cnvs').on('mfpOpen.cnvs', function(){
+						var instance = jQuery.magnificPopup.instance;
+						if( !instance ) return;
 
-						if( lightboxClass != '' ) {
-							jQuery(jQuery.magnificPopup.instance.container).addClass( lightboxClass );
+						var lightboxItem = instance.currItem?.el || instance.st?.el || element;
+						var $item = jQuery(lightboxItem);
+						var lightboxClass = $item.attr('data-lightbox-class');
+						var lightboxBgClass = $item.attr('data-lightbox-bg-class');
+
+						if( lightboxClass && instance.container ) {
+							jQuery(instance.container).addClass(lightboxClass);
 						}
 
-						if( lightboxBgClass != '' ) {
-							jQuery(jQuery.magnificPopup.instance.bgOverlay).addClass( lightboxBgClass );
+						if( lightboxBgClass && instance.bgOverlay ) {
+							jQuery(instance.bgOverlay).addClass(lightboxBgClass);
 						}
 					});
 				});

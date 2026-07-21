@@ -2,71 +2,90 @@ CNVS.SliderMenuClass = function() {
 	var __core = SEMICOLON.Core;
 	var __base = SEMICOLON.Base;
 
+	var _retryTimer;
+
+	var _shouldRun = function() {
+		var elHeader = __core.getVars.elHeader;
+		var elBody = __core.getVars.elBody;
+		if( !elHeader || !elBody ) return false;
+		if( elHeader.classList.contains('ignore-slider') ) return false;
+		if( elBody.classList.contains('is-expanded-menu') ) return true;
+		if( elHeader.classList.contains('transparent-header-responsive') && !elBody.classList.contains('primary-menu-open') ) return true;
+		return false;
+	};
+
 	var _swiper = function() {
-		if( !__core.getVars.elHeader.classList.contains('ignore-slider') && ( __core.getVars.elBody.classList.contains('is-expanded-menu') || ( __core.getVars.elHeader.classList.contains('transparent-header-responsive') && !__core.getVars.elBody.classList.contains('primary-menu-open') ) ) ) {
-			var activeSlide = __core.getVars.elSlider.querySelector('.swiper-slide-active');
-			_schemeChanger(activeSlide);
-		}
+		if( !_shouldRun() ) return;
+		var slider = __core.getVars.elSlider;
+		if( !slider ) return;
+		_schemeChanger(slider.querySelector('.swiper-slide-active'), 'swiper');
 	};
 
 	var _revolution = function() {
-		if( !__core.getVars.elHeader.classList.contains('ignore-slider') && ( __core.getVars.elBody.classList.contains('is-expanded-menu') || ( __core.getVars.elHeader.classList.contains('transparent-header-responsive') && !__core.getVars.elBody.classList.contains('primary-menu-open') ) ) ) {
-			var activeSlide = __core.getVars.elSlider.querySelector('.active-revslide');
-			_schemeChanger(activeSlide);
-		}
+		if( !_shouldRun() ) return;
+		var slider = __core.getVars.elSlider;
+		if( !slider ) return;
+		_schemeChanger(slider.querySelector('.active-revslide'), 'revslider');
 	};
 
-	var _schemeChanger = function(activeSlide) {
+	var _hasDarkInOldClasses = function() {
+		var classes = __core.getVars.headerClasses;
+		if( !classes ) return false;
+		if( typeof classes === 'string' ) return classes.split(/\s+/).indexOf('dark') !== -1;
+		if( typeof classes.length === 'number' ) {
+			for( var i = 0; i < classes.length; i++ ) {
+				if( classes[i] === 'dark' ) return true;
+			}
+		}
+		return false;
+	};
+
+	var _schemeChanger = function(activeSlide, slider) {
 		if( !activeSlide ) {
+			_retryTimer = setTimeout( function() {
+				if( slider === 'revslider' ) {
+					_revolution();
+				} else {
+					_swiper();
+				}
+			}, 500);
 			return;
 		}
 
-		var darkExists = false,
-			oldClassesArray,
-			noOfOldClasses;
+		clearTimeout(_retryTimer);
+
+		var elHeader = __core.getVars.elHeader;
+		var elBody = __core.getVars.elBody;
+		var elHeaderWrap = __core.getVars.elHeaderWrap;
+		if( !elHeader || !elBody ) return;
+
+		var transparentHeader = document.querySelector('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)');
+		var transparentHeaderAny = document.querySelector('#header.transparent-header:not(.semi-transparent,.floating-header)');
+		var stickyTransparent = document.querySelector('#header.transparent-header.sticky-header,#header.transparent-header.semi-transparent.sticky-header,#header.transparent-header.floating-header.sticky-header');
 
 		if( activeSlide.classList.contains('dark') ){
-			if( __core.getVars.headerClasses ) {
-				oldClassesArray = __core.getVars.headerClasses;
-			} else {
-				oldClassesArray = '';
+			if( transparentHeader ) {
+				transparentHeader.classList.add('dark');
 			}
 
-			noOfOldClasses = oldClassesArray.length;
-
-			if( noOfOldClasses > 0 ) {
-				for( var i=0; i<noOfOldClasses; i++ ) {
-					if( oldClassesArray[i] == 'dark' ) {
-						darkExists = true;
-						break;
-					}
-				}
+			if( !_hasDarkInOldClasses() && stickyTransparent ) {
+				stickyTransparent.classList.remove('dark');
 			}
 
-			var headerToChange = document.querySelector('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)');
-			if( headerToChange ) {
-				headerToChange.classList.add('dark');
-			}
-
-			if( !darkExists ) {
-				var headerToChange = document.querySelector('#header.transparent-header.sticky-header,#header.transparent-header.semi-transparent.sticky-header,#header.transparent-header.floating-header.sticky-header');
-				if( headerToChange ) {
-					headerToChange.classList.remove('dark');
-				}
-			}
-			__core.getVars.elHeaderWrap.classList.remove('not-dark');
+			if( elHeaderWrap ) elHeaderWrap.classList.remove('not-dark');
 		} else {
-			if( __core.getVars.elBody.classList.contains('dark') ) {
+			if( elBody.classList.contains('dark') ) {
 				activeSlide.classList.add('not-dark');
-				document.querySelector('#header.transparent-header:not(.semi-transparent,.floating-header)').classList.remove('dark');
-				document.querySelector('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)')?.querySelector('#header-wrap').classList.add('not-dark');
+				if( transparentHeaderAny ) transparentHeaderAny.classList.remove('dark');
+				var headerWrap = transparentHeader ? transparentHeader.querySelector('#header-wrap') : null;
+				if( headerWrap ) headerWrap.classList.add('not-dark');
 			} else {
-				document.querySelector('#header.transparent-header:not(.semi-transparent,.floating-header)').classList.remove('dark');
-				__core.getVars.elHeaderWrap.classList.remove('not-dark');
+				if( transparentHeaderAny ) transparentHeaderAny.classList.remove('dark');
+				if( elHeaderWrap ) elHeaderWrap.classList.remove('not-dark');
 			}
 		}
 
-		if( __core.getVars.elHeader.classList.contains('sticky-header') ) {
+		if( elHeader.classList.contains('sticky-header') ) {
 			__base.headers();
 		}
 	};
@@ -74,11 +93,14 @@ CNVS.SliderMenuClass = function() {
 	return {
 		init: function(selector) {
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
+			if( !selector || selector.length < 1 ){
 				return true;
 			}
 
-			if( !__core.getVars.elBody.classList.contains('is-expanded-menu') ) {
+			var elBody = __core.getVars.elBody;
+			var elHeader = __core.getVars.elHeader;
+			if( !elBody || !elHeader ) return true;
+			if( !elBody.classList.contains('is-expanded-menu') && !elHeader.classList.contains('transparent-header-responsive') ) {
 				return true;
 			}
 

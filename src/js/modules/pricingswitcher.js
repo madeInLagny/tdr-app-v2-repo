@@ -1,50 +1,46 @@
 CNVS.PricingSwitcher = function() {
 	var __core = SEMICOLON.Core;
 
-	var _staticValue;
+	var _tokens = function(str) {
+		return String(str || '').split(/\s+/).filter(Boolean);
+	};
 
-	var _switcher = function(check, switcher, pricing, defClass, actClass) {
+	var _switcher = function(check, switcher, pricing, defClass, actClass, state) {
 		var value;
 
-		if( check.type == 'checkbox' ) {
-			_staticValue = check.checked;
-		} else if( check.type == 'radio' ) {
-			if( check.checked ) {
-				_staticValue = check.value;
-			}
+		if( check.type === 'checkbox' ) {
+			state.value = check.checked;
+		} else if( check.type === 'radio' ) {
+			if( check.checked ) state.value = check.value;
 		} else {
-			_staticValue = check.value;
+			state.value = check.value;
 		}
 
-		value = _staticValue;
+		value = state.value;
 
-		switcher.querySelectorAll('.pts-switch')?.forEach( function(elem) {
-			actClass.split(" ").forEach( function(_class) {
-				elem.classList.remove(_class);
-			});
+		var defTokens = _tokens(defClass);
+		var actTokens = _tokens(actClass);
 
-			defClass.split(" ").forEach( function(_class) {
-				elem.classList.add(_class);
-			});
+		switcher.querySelectorAll('.pts-switch').forEach( function(elem) {
+			actTokens.forEach( function(_class) { elem.classList.remove(_class); });
+			defTokens.forEach( function(_class) { elem.classList.add(_class); });
 		});
 
-		pricing.querySelectorAll('.pts-content')?.forEach( function(elem) {
+		pricing?.querySelectorAll('.pts-content').forEach( function(elem) {
 			elem.classList.add('d-none');
 		});
 
-		if( check.type == 'checkbox' ) {
+		if( check.type === 'checkbox' ) {
 			value = value ? 'true' : 'false';
 		}
 
-		defClass.split(" ").forEach( function(_class) {
-			switcher.querySelector('.pts-' + value)?.classList.remove(_class);
-		});
+		var activeSwitch = switcher.querySelector('.pts-' + value);
+		if( activeSwitch ) {
+			defTokens.forEach( function(_class) { activeSwitch.classList.remove(_class); });
+			actTokens.forEach( function(_class) { activeSwitch.classList.add(_class); });
+		}
 
-		actClass.split(" ").forEach( function(_class) {
-			switcher.querySelector('.pts-' + value)?.classList.add(_class);
-		});
-
-		pricing.querySelectorAll('.pts-content-' + value).forEach( function(el) {
+		pricing?.querySelectorAll('.pts-content-' + value).forEach( function(el) {
 			el.classList.remove('d-none');
 		});
 	};
@@ -58,22 +54,28 @@ CNVS.PricingSwitcher = function() {
 			__core.initFunction({ class: 'has-plugin-pricing-switcher', event: 'pluginPricingSwitcherReady' });
 
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
 			selector.forEach( function(element) {
-				var elCheck = element.querySelectorAll('[type="checkbox"], [type="radio"], select'),
-					elDefClass = element.getAttribute('data-default-class') || 'text-muted op-05',
-					elActClass = element.getAttribute('data-active-class') || 'fw-bold',
-					elPricing = document.querySelector( element.getAttribute('data-container') );
+				var containerSel = element.getAttribute('data-container');
+				var elPricing = null;
+				if( containerSel ) {
+					try { elPricing = document.querySelector(containerSel); } catch(e) { elPricing = null; }
+				}
+				if( !elPricing ) return;
+
+				var elCheck = element.querySelectorAll('[type="checkbox"], [type="radio"], select');
+				var elDefClass = element.getAttribute('data-default-class') || 'text-muted op-05';
+				var elActClass = element.getAttribute('data-active-class') || 'fw-bold';
+				var state = { value: undefined };
 
 				elCheck.forEach( function(el) {
-					_switcher(el, element, elPricing, elDefClass, elActClass);
+					_switcher(el, element, elPricing, elDefClass, elActClass, state);
 
-					el.addEventListener( 'change', function() {
-						_switcher(el, element, elPricing, elDefClass, elActClass);
-					});
+					var handler = function() {
+						_switcher(el, element, elPricing, elDefClass, elActClass, state);
+					};
+					__core.rebind(el, 'change', handler, 'pricingswitcher.input');
 				});
 			});
 		}

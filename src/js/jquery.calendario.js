@@ -434,7 +434,7 @@
 		  logError("Cannot call methods on calendario prior to initialization; Attempted to call method '" + options + "'");
 		  return;
 		}
-		if (!$.isFunction(instance[options]) || options.charAt(0) === "_"){
+		if (typeof instance[options] !== 'function' || options.charAt(0) === "_"){
 		  logError("No such method '" + options + "' for calendario instance.");
 		}
 		instance[options].apply(instance, args);

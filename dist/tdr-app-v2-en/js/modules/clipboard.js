@@ -1,54 +1,63 @@
 CNVS.Clipboard = function() {
 	var __core = SEMICOLON.Core;
 
+	var _instances = new WeakMap();
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.clipboard.js', id: 'canvas-clipboard-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof ClipboardJS !== 'undefined';
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-clipboard', event: 'pluginClipboardReady' });
+			__core.requirePlugin({
+				file: 'plugins.clipboard.js',
+				id: 'canvas-clipboard-js',
+				check: function() { return typeof ClipboardJS !== 'undefined'; },
+				class: 'has-plugin-clipboard',
+				event: 'pluginClipboardReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector, false );
-				if( selector.length < 1 ){
-					return true;
-				}
-
-				var clipboards = [],
-					count = 0;
+				if( selector.length < 1 ) return;
 
 				selector.forEach( function(el) {
-					var trigger = el.querySelector('button'),
-						triggerText = trigger.innerHTML,
-						copiedtext = trigger.getAttribute('data-copied') || 'Copied',
-						copiedTimeout = trigger.getAttribute('data-copied-timeout') || 5000;
+					var trigger = el.querySelector('button');
+					if( !trigger ) return;
 
-					clipboards[count] = new ClipboardJS( trigger, {
+					var prev = _instances.get(trigger);
+					if( prev && typeof prev.destroy === 'function' ) {
+						prev.destroy();
+					}
+
+					var triggerText = trigger.innerHTML;
+					var copiedText = trigger.getAttribute('data-copied') || 'Copied';
+					var errorText = trigger.getAttribute('data-copy-error') || 'Copy failed';
+					var copiedTimeout = Number(trigger.getAttribute('data-copied-timeout')) || 5000;
+					var resetTimer = null;
+
+					var clipboard = new ClipboardJS(trigger, {
 						target: function(content) {
-							return content.closest('.clipboard-copy').querySelector('code');
+							var wrap = content.closest('.clipboard-copy');
+							return wrap ? wrap.querySelector('code') : null;
 						}
 					});
 
-					clipboards[count].on('success', function(e) {
-						trigger.innerHTML = copiedtext;
+					var showFeedback = function(text) {
+						trigger.innerHTML = text;
 						trigger.disabled = true;
-
-						setTimeout( function() {
+						if( resetTimer ) clearTimeout(resetTimer);
+						resetTimer = setTimeout( function() {
 							trigger.innerHTML = triggerText;
 							trigger.disabled = false;
-						}, Number(copiedTimeout));
-					});
+							resetTimer = null;
+						}, copiedTimeout);
+					};
 
-					count++;
+					clipboard.on('success', function() { showFeedback(copiedText); });
+					clipboard.on('error', function() { showFeedback(errorText); });
+
+					_instances.set(trigger, clipboard);
 				});
 			});
 		}

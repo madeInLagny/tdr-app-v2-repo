@@ -3,6 +3,14 @@ CNVS.Headers = function() {
 	var __base = SEMICOLON.Base;
 	var __modules = SEMICOLON.Modules;
 
+	var _state = {
+		isSticky: false,
+		isShrunk: false,
+		menuClassApplied: null,
+		rafPending: false,
+		resizeTimer: null,
+	};
+
 	var _offset = function() {
 		var elHeader = __core.getVars.elHeader;
 		var elHeaderInc = document.querySelector('.include-header');
@@ -20,7 +28,7 @@ CNVS.Headers = function() {
 			if( headerDefinedOffset == 'full' ) {
 				__core.getVars.headerWrapOffset = __core.viewport().height;
 				var headerOffsetNegative = elHeader.getAttribute('data-sticky-offset-negative');
-				if( typeof headerOffsetNegative !== 'undefined' ) {
+				if( typeof headerOffsetNegative !== 'undefined' && headerOffsetNegative !== null ) {
 					if( headerOffsetNegative == 'auto' ) {
 						__core.getVars.headerWrapOffset = __core.getVars.headerWrapOffset - elHeader.offsetHeight - 1;
 					} else {
@@ -33,33 +41,64 @@ CNVS.Headers = function() {
 		}
 	};
 
-	var _sticky = function(stickyOffset) {
-		if( !__core.getVars.elBody.classList.contains('is-expanded-menu') && __core.getVars.mobileSticky != 'true' ) {
-			return true;
-		}
+	var _applyMenuClass = function(type) {
+		if( _state.menuClassApplied === type ) return;
 
-		if( window.scrollY > stickyOffset ) {
-			if( !__core.getVars.elBody.classList.contains('side-header') ) {
-				__core.getVars.elHeader.classList.add('sticky-header');
-				_changeMenuClass('sticky');
+		var newClassesArray = '';
 
-				if( __core.getVars.elBody.classList.contains('is-expanded-menu') && __core.getVars.stickyShrink == 'true' && !__core.getVars.elHeader.classList.contains('no-sticky') ) {
-					if( ( window.scrollY - stickyOffset ) > Number( __core.getVars.stickyShrinkOffset ) ) {
-						__core.getVars.elHeader.classList.add('sticky-header-shrink');
-					} else {
-						__core.getVars.elHeader.classList.remove('sticky-header-shrink');
-					}
-				}
+		if( type === 'responsive' ) {
+			if( __core.getVars.elBody.classList.contains('is-expanded-menu') ) return;
+			if( __core.getVars.mobileHeaderClasses ) {
+				newClassesArray = __core.getVars.mobileHeaderClasses.split(/ +/);
 			}
 		} else {
-			_removeSticky();
-			if( __core.getVars.mobileSticky == 'true' ) {
-				_changeMenuClass('responsive');
+			if( !__core.getVars.elHeader.classList.contains('sticky-header') ) return;
+			if( __core.getVars.stickyHeaderClasses ) {
+				newClassesArray = __core.getVars.stickyHeaderClasses.split(/ +/);
 			}
 		}
+
+		_state.menuClassApplied = type;
+
+		if( !newClassesArray.length ) {
+			__base.setBSTheme();
+			return;
+		}
+
+		var elHeader = __core.getVars.elHeader;
+		var elHeaderWrap = __core.getVars.elHeaderWrap;
+
+		for( var i = 0, len = newClassesArray.length; i < len; i++ ) {
+			var cls = newClassesArray[i];
+			if( cls === 'not-dark' ) {
+				elHeader.classList.remove('dark');
+				if( elHeaderWrap && !elHeaderWrap.classList.contains('not-dark') ) {
+					elHeaderWrap.classList.add('not-dark');
+				}
+			} else if( cls === 'dark' ) {
+				elHeaderWrap?.classList.remove('not-dark', 'force-not-dark');
+				if( !elHeader.classList.contains(cls) ) {
+					elHeader.classList.add(cls);
+				}
+			} else if( !elHeader.classList.contains(cls) ) {
+				elHeader.classList.add(cls);
+			}
+		}
+
+		__base.setBSTheme();
 	};
 
-	var _removeSticky = function() {
+	var _enterSticky = function() {
+		if( _state.isSticky ) return;
+		_state.isSticky = true;
+		__core.getVars.elHeader.classList.add('sticky-header');
+		_applyMenuClass('sticky');
+	};
+
+	var _resetHeader = function() {
+		_state.isSticky = false;
+		_state.isShrunk = false;
+
 		__core.getVars.elHeader.className = __core.getVars.headerClasses;
 		__core.getVars.elHeader.classList.remove('sticky-header', 'sticky-header-shrink');
 
@@ -70,52 +109,58 @@ CNVS.Headers = function() {
 			__core.getVars.elHeaderWrap?.classList.remove('not-dark');
 		}
 
+		_state.menuClassApplied = null;
 		__base.sliderMenuClass();
 	};
 
-	var _changeMenuClass = function(type) {
-		var newClassesArray = '';
+	var _exitSticky = function() {
+		if( !_state.isSticky && _state.menuClassApplied !== 'sticky' ) return;
+		_resetHeader();
 
-		if( 'responsive' == type ) {
-			if( __core.getVars.elBody.classList.contains('is-expanded-menu') ){
-				return true;
-			}
+		if( __core.getVars.mobileSticky == 'true' ) {
+			_applyMenuClass('responsive');
+		}
+	};
 
-			if( __core.getVars.mobileHeaderClasses ) {
-				newClassesArray = __core.getVars.mobileHeaderClasses.split(/ +/);
+	var _setShrunk = function(shouldShrink) {
+		if( _state.isShrunk === shouldShrink ) return;
+		_state.isShrunk = shouldShrink;
+		if( shouldShrink ) {
+			__core.getVars.elHeader.classList.add('sticky-header-shrink');
+		} else {
+			__core.getVars.elHeader.classList.remove('sticky-header-shrink');
+		}
+	};
+
+	var _stickyUpdate = function() {
+		_state.rafPending = false;
+
+		if( !__core.getVars.elBody.classList.contains('is-expanded-menu') && __core.getVars.mobileSticky != 'true' ) {
+			return;
+		}
+
+		var stickyOffset = __core.getVars.headerWrapOffset;
+		var scrollY = window.scrollY;
+
+		if( scrollY > stickyOffset ) {
+			if( __core.getVars.elBody.classList.contains('side-header') ) return;
+
+			_enterSticky();
+
+			if( __core.getVars.elBody.classList.contains('is-expanded-menu')
+				&& __core.getVars.stickyShrink == 'true'
+				&& !__core.getVars.elHeader.classList.contains('no-sticky') ) {
+				_setShrunk( (scrollY - stickyOffset) > Number(__core.getVars.stickyShrinkOffset) );
 			}
 		} else {
-			if( !__core.getVars.elHeader.classList.contains('sticky-header') ){
-				return true;
-			}
-
-			if( __core.getVars.stickyHeaderClasses ) {
-				newClassesArray = __core.getVars.stickyHeaderClasses.split(/ +/);
-			}
+			_exitSticky();
 		}
+	};
 
-		var noOfNewClasses = newClassesArray.length;
-
-		if( noOfNewClasses > 0 ) {
-			var i = 0;
-			for( i=0; i<noOfNewClasses; i++ ) {
-				if( newClassesArray[i] == 'not-dark' ) {
-					__core.getVars.elHeader.classList.remove('dark');
-					if( !__core.getVars.elHeaderWrap?.classList.contains('.not-dark') ) {
-						__core.getVars.elHeaderWrap?.classList.add('not-dark');
-					}
-				} else if( newClassesArray[i] == 'dark' ) {
-					__core.getVars.elHeaderWrap?.classList.remove('not-dark force-not-dark');
-					if( !__core.getVars.elHeader.classList.contains( newClassesArray[i] ) ) {
-						__core.getVars.elHeader.classList.add( newClassesArray[i] );
-					}
-				} else if( !__core.getVars.elHeader.classList.contains( newClassesArray[i] ) ) {
-					__core.getVars.elHeader.classList.add( newClassesArray[i] );
-				}
-			}
-		}
-
-		__base.setBSTheme();
+	var _requestSticky = function() {
+		if( _state.rafPending ) return;
+		_state.rafPending = true;
+		window.requestAnimationFrame(_stickyUpdate);
 	};
 
 	var _includeHeader = function() {
@@ -123,13 +168,11 @@ CNVS.Headers = function() {
 		var elHeader = __core.getVars.elHeader;
 		__core.getVars.headerHeight = elHeader.offsetHeight;
 
-		if( !elHeaderInc ) {
-			return true;
-		}
+		if( !elHeaderInc ) return true;
 
 		elHeaderInc.style.marginTop = '';
 
-		if( !__core.getVars.elBody.classList.contains('is-expanded-menu') ) {
+		if( !__core.getVars.elBody.classList.contains('is-expanded-menu') && !elHeader.classList.contains('transparent-header-responsive') ) {
 			return true;
 		}
 
@@ -139,7 +182,7 @@ CNVS.Headers = function() {
 
 		elHeaderInc.style.marginTop = (__core.getVars.headerHeight * -1) + 'px';
 		__modules.sliderParallax();
-	}
+	};
 
 	var _sideHeader = function() {
 		var headerTrigger = document.getElementById("header-trigger");
@@ -154,12 +197,10 @@ CNVS.Headers = function() {
 	return {
 		init: function(selector) {
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
 			var elHeader = __core.getVars.elHeader;
-			var isSticky = elHeader.classList.contains('no-sticky') ? false : true;
+			var isSticky = !elHeader.classList.contains('no-sticky');
 			var headerWrapClone = elHeader.querySelector('.header-wrap-clone');
 
 			__core.getVars.stickyHeaderClasses = elHeader.getAttribute('data-sticky-class');
@@ -172,38 +213,40 @@ CNVS.Headers = function() {
 			if( !headerWrapClone ) {
 				headerWrapClone = document.createElement('div');
 				headerWrapClone.classList = 'header-wrap-clone';
-
 				__core.getVars.elHeaderWrap?.parentNode.insertBefore( headerWrapClone, __core.getVars.elHeaderWrap?.nextSibling);
-				headerWrapClone = elHeader.querySelector('.header-wrap-clone');
 			}
 
 			if( isSticky ) {
-				setTimeout( function() {
+				var initSticky = function() {
 					_offset();
-					_sticky( __core.getVars.headerWrapOffset );
-					_changeMenuClass('sticky');
-				}, 500);
+					_stickyUpdate();
+				};
+				if( document.readyState === 'complete' ) {
+					window.requestAnimationFrame(initSticky);
+				} else {
+					window.addEventListener('load', function() {
+						window.requestAnimationFrame(initSticky);
+					}, { once: true });
+				}
 
-				window.addEventListener('scroll', function(){
-					_sticky( __core.getVars.headerWrapOffset );
-				}, {passive:true});
+				window.addEventListener('scroll', _requestSticky, { passive: true });
 			}
 
-			_changeMenuClass('responsive');
+			_applyMenuClass('responsive');
 			_includeHeader();
 			_sideHeader();
 
 			__core.getVars.resizers.headers = function() {
-				setTimeout( function() {
-					_removeSticky();
+				clearTimeout(_state.resizeTimer);
+				_state.resizeTimer = setTimeout( function() {
+					_resetHeader();
 					if( isSticky ) {
 						_offset();
-						_sticky( __core.getVars.headerWrapOffset );
-						_changeMenuClass('sticky');
+						_stickyUpdate();
 					}
-					_changeMenuClass('responsive');
+					_applyMenuClass('responsive');
 					_includeHeader();
-				}, 250);
+				}, 150);
 			};
 		}
 	};

@@ -15,6 +15,8 @@ CNVS.Buttons = function() {
 			}
 
 			selector.forEach( function(el){
+				if( el.querySelector(':scope > .button-inner') ) return;
+
 				var text = el.innerHTML;
 				el.innerHTML = '';
 
@@ -22,7 +24,6 @@ CNVS.Buttons = function() {
 				inner.classList.add('button-inner');
 
 				var span = document.createElement('span');
-
 				span.innerHTML = text;
 
 				inner.append(span);

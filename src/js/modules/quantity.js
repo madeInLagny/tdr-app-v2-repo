@@ -10,62 +10,62 @@ CNVS.Quantity = function() {
 			__core.initFunction({ class: 'has-plugin-quantity', event: 'pluginQuantityReady' });
 
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
 			selector.forEach( function(element) {
-				var plus = element.querySelector('.plus'),
-					minus = element.querySelector('.minus'),
-					input = element.querySelector('.qty');
+				var plus  = element.querySelector('.plus');
+				var minus = element.querySelector('.minus');
+				var input = element.querySelector('.qty');
+				if( !plus || !minus || !input ) return;
 
-				var eventChange = new Event("change");
-
-				plus.onclick = function(e) {
-					e.preventDefault();
-
-					var value = input.value,
-						step = input.getAttribute('step') || 1,
-						max = input.getAttribute('max'),
-						intRegex = /^\d+$/;
-
-					if( max && ( Number(elValue) >= Number( max ) ) ) {
-						return false;
-					}
-
-					if( intRegex.test( value ) ) {
-						var valuePlus = Number(value) + Number(step);
-						input.value = valuePlus;
-					} else {
-						input.value = Number(step);
-					}
-
-					input.dispatchEvent(eventChange);
+				var fireChange = function() {
+					input.dispatchEvent(new Event('change', { bubbles: true }));
 				};
 
-				minus.onclick = function(e) {
+				var plusHandler = function(e) {
 					e.preventDefault();
 
-					var value = input.value,
-						step = input.getAttribute('step') || 1,
-						min = input.getAttribute('min'),
-						intRegex = /^\d+$/;
+					var value = input.value;
+					var step = Number(input.getAttribute('step')) || 1;
+					var maxAttr = input.getAttribute('max');
+					var max = maxAttr !== null ? Number(maxAttr) : null;
+					var intRegex = /^\d+$/;
 
-					if( !min || min < 0 ) {
-						min = 1;
+					if( max !== null && isFinite(max) && Number(value) >= max ) {
+						return;
 					}
 
-					if( intRegex.test( value ) ) {
-						if( Number(value) > Number(min) ) {
-							var valueMinus = Number(value) - Number(step);
-							input.value = valueMinus;
+					if( intRegex.test(value) ) {
+						input.value = Number(value) + step;
+					} else {
+						input.value = step;
+					}
+
+					fireChange();
+				};
+				__core.rebind(plus, 'click', plusHandler, 'quantity.plus');
+
+				var minusHandler = function(e) {
+					e.preventDefault();
+
+					var value = input.value;
+					var step = Number(input.getAttribute('step')) || 1;
+					var minAttr = input.getAttribute('min');
+					var min = minAttr !== null ? Number(minAttr) : NaN;
+					if( !isFinite(min) || min < 0 ) min = 1;
+					var intRegex = /^\d+$/;
+
+					if( intRegex.test(value) ) {
+						if( Number(value) > min ) {
+							input.value = Number(value) - step;
 						}
 					} else {
-						input.value = Number(step);
+						input.value = step;
 					}
 
-					input.dispatchEvent(eventChange);
+					fireChange();
 				};
+				__core.rebind(minus, 'click', minusHandler, 'quantity.minus');
 			});
 		}
 	};

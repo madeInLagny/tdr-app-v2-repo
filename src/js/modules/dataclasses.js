@@ -11,31 +11,32 @@ CNVS.DataClasses = function() {
 			__core.initFunction({ class: 'has-plugin-dataclasses', event: 'pluginDataClassesReady' });
 
 			selector = __core.getSelector( selector, false, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
 			selector.forEach( function(el) {
-				var classes = el.getAttribute('data-class');
+				var raw = el.getAttribute('data-class');
+				if( !raw ) return;
 
-				classes = classes.split(/ +/);
-				if( classes.length > 0 ) {
-					classes.forEach( function(_class) {
-						var deviceClass = _class.split(":");
-						if( __core.getVars.elBody.classList.contains(deviceClass[0] == 'dark' ? deviceClass[0] : 'device-' + deviceClass[0]) ) {
-							el.classList.add(deviceClass[1]);
-						} else {
-							el.classList.remove(deviceClass[1]);
-						}
-					});
-				}
+				var classes = raw.split(/\s+/).filter(Boolean);
+				classes.forEach( function(_class) {
+					var parts = _class.split(':');
+					if( parts.length < 2 || !parts[1] ) return;
+
+					var deviceKey = parts[0];
+					var targetClass = parts[1];
+					var bodyClass = deviceKey === 'dark' ? 'dark' : 'device-' + deviceKey;
+
+					if( __core.getVars.elBody.classList.contains(bodyClass) ) {
+						el.classList.add(targetClass);
+					} else {
+						el.classList.remove(targetClass);
+					}
+				});
 			});
 
-			__core.getVars.resizers.dataClasses = function() {
-				setTimeout( function() {
-					__modules.dataClasses();
-				}, 333);
-			};
+			__core.getVars.resizers.dataClasses = __core.debounce(function() {
+				__modules.dataClasses();
+			}, 200);
 		}
 	};
 }();

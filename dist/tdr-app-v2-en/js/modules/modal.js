@@ -1,69 +1,64 @@
 CNVS.Modal = function() {
 	var __core = SEMICOLON.Core;
 
+	var _closeMagnific = function() {
+		var mfp = typeof jQuery !== 'undefined' && jQuery.magnificPopup;
+		if( !mfp ) return;
+		if( mfp.instance && typeof mfp.instance.close === 'function' ) {
+			mfp.instance.close();
+		} else if( typeof mfp.close === 'function' ) {
+			mfp.close();
+		}
+	};
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.lightbox.js', id: 'canvas-lightbox-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().magnificPopup;
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-modal', event: 'pluginModalReady' });
+			__core.requirePlugin({
+				file: 'plugins.lightbox.js',
+				id: 'canvas-lightbox-js',
+				check: function() { return typeof jQuery !== 'undefined' && jQuery().magnificPopup; },
+				class: 'has-plugin-modal',
+				event: 'pluginModalReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( selector.length < 1 ) return;
 
 				var closeButtonIcon = '<i class="bi-x-lg"></i>';
 
 				selector.each( function(){
-					var element = jQuery(this),
-						elTarget = element.attr('data-target'),
-						elTargetValue = '__cnvs_' + elTarget.split('#')[1],
-						elDelay = element.attr('data-delay') || 500,
-						elTimeout = element.attr('data-timeout'),
-						elAnimateIn = element.attr('data-animate-in'),
-						elAnimateOut = element.attr('data-animate-out'),
-						elBgClick = element.attr('data-bg-click'),
-						elCloseBtn = element.attr('data-close-btn'),
-						elCookies = element.attr('data-cookies'),
-						elCookiePath = element.attr('data-cookie-path'),
-						elCookieExp = element.attr('data-cookie-expire');
+					var element = jQuery(this);
+					var elTarget = element.attr('data-target');
+					if( !elTarget || elTarget.charAt(0) !== '#' ) return;
 
-					if( elCookies == "false" ) {
-						__core.cookie.remove( elTargetValue );
+					var elTargetId = elTarget.slice(1);
+					var elTargetValue = '__cnvs_' + elTargetId;
+					var elDelay = Number(element.attr('data-delay')) || 500;
+					var elTimeoutRaw = element.attr('data-timeout');
+					var elTimeout = elTimeoutRaw ? Number(elTimeoutRaw) : null;
+					var elAnimateIn = element.attr('data-animate-in') || '';
+					var elAnimateOut = element.attr('data-animate-out') || '';
+					var elBgClick = element.attr('data-bg-click') !== 'false';
+					var elCloseBtn = element.attr('data-close-btn') !== 'false';
+					var elCookies = element.attr('data-cookies');
+					var elCookiePath = element.attr('data-cookie-path');
+					var elCookieExp = element.attr('data-cookie-expire');
+
+					if( elCookies === 'false' ) {
+						__core.cookie.remove(elTargetValue);
 					}
 
-					if( elCookies == 'true' ) {
-						var elementCookie = __core.cookie.get( elTargetValue );
-
-						if( typeof elementCookie !== 'undefined' && elementCookie == '0' ) {
-							return true;
-						}
+					if( elCookies === 'true' ) {
+						var elementCookie = __core.cookie.get(elTargetValue);
+						if( typeof elementCookie !== 'undefined' && elementCookie === '0' ) return;
 					}
 
-					if( elBgClick == 'false' ) {
-						elBgClick = false;
-					} else {
-						elBgClick = true;
-					}
-
-					if( elCloseBtn == 'false' ) {
-						elCloseBtn = false;
-					} else {
-						elCloseBtn = true;
-					}
-
-					elDelay = Number(elDelay) + 500;
+					var totalDelay = elDelay + 500;
 
 					setTimeout(function() {
 						jQuery.magnificPopup.open({
@@ -77,49 +72,46 @@ CNVS.Modal = function() {
 							removalDelay: 500,
 							closeIcon: closeButtonIcon,
 							callbacks: {
-								open: function(){
-									if( elAnimateIn != '' ) {
-										jQuery(elTarget).addClass( elAnimateIn + ' animated' );
+								open: function() {
+									if( elAnimateIn ) {
+										jQuery(elTarget).addClass(elAnimateIn + ' animated');
 									}
 								},
-								beforeClose: function(){
-									if( elAnimateOut != '' ) {
-										jQuery(elTarget).removeClass( elAnimateIn ).addClass( elAnimateOut );
+								beforeClose: function() {
+									if( elAnimateOut ) {
+										var $target = jQuery(elTarget);
+										if( elAnimateIn ) $target.removeClass(elAnimateIn);
+										$target.addClass(elAnimateOut);
 									}
 								},
 								afterClose: function() {
-									if( elAnimateIn != '' || elAnimateOut != '' ) {
-										jQuery(elTarget).removeClass( elAnimateIn + ' ' + elAnimateOut + ' animated' );
+									if( elAnimateIn || elAnimateOut ) {
+										jQuery(elTarget).removeClass(elAnimateIn + ' ' + elAnimateOut + ' animated');
 									}
 								}
 							}
 						}, 0);
-					}, elDelay );
+					}, totalDelay);
 
-					if( document.querySelector('.modal-cookies-close') ) {
-						document.querySelector('.modal-cookies-close').onclick = function() {
-							jQuery.magnificPopup.close();
-
-							if( elCookies == 'true' ) {
+					var scopedClose = document.querySelector(elTarget + ' .modal-cookies-close')
+						|| document.querySelector('.modal-cookies-close');
+					if( scopedClose ) {
+						scopedClose.addEventListener('click', function(e) {
+							e.preventDefault();
+							_closeMagnific();
+							if( elCookies === 'true' ) {
 								var cookieOps = {};
-
-								if( elCookieExp ) {
-									cookieOps.expires = Number( elCookieExp );
-								}
-
-								if( elCookiePath ) {
-									cookieOps.path = elCookiePath;
-								}
-
-								__core.cookie.set( elTargetValue, '0', cookieOps );
+								if( elCookieExp ) cookieOps.expires = Number(elCookieExp);
+								if( elCookiePath ) cookieOps.path = elCookiePath;
+								__core.cookie.set(elTargetValue, '0', cookieOps);
 							}
-						};
+						});
 					}
 
-					if( elTimeout != '' ) {
+					if( elTimeout !== null && isFinite(elTimeout) ) {
 						setTimeout(function() {
-							jQuery.magnificPopup.close();
-						}, elDelay + Number(elTimeout) );
+							_closeMagnific();
+						}, totalDelay + elTimeout);
 					}
 				});
 			});

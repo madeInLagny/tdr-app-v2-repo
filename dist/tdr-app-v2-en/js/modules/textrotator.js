@@ -7,59 +7,62 @@ CNVS.TextRotator = function() {
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.textrotator.js', id: 'canvas-textrotator-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().Morphext && typeof Typed !== 'undefined';
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-textrotator', event: 'pluginTextRotatorReady' });
+			__core.requirePlugin({
+				file: 'plugins.textrotator.js',
+				id: 'canvas-textrotator-js',
+				check: function() { return typeof jQuery !== 'undefined' && jQuery().Morphext && typeof Typed !== 'undefined'; },
+				class: 'has-plugin-textrotator',
+				event: 'pluginTextRotatorReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( !selector || selector.length < 1 ) return;
 
 				selector.each( function(){
-					var element = jQuery(this),
-						elTyped = element.attr('data-typed') || 'false',
-						elRotator = element.find('.t-rotate'),
+					var element = jQuery(this);
+					var raw = element[0];
+					if( !raw ) return;
+
+					var elRotator = element.find('.t-rotate');
+					if( !elRotator.length ) return;
+
+					if( !__core.markOnce(raw, 'cnvsTextrotatorInit') ) return;
+
+					var elTyped     = element.attr('data-typed') === 'true',
 						elAnimation = element.attr('data-rotate') || 'fade',
-						elSpeed = element.attr('data-speed') || 1200,
-						elSep = element.attr('data-separator') || ',';
+						elSep       = element.attr('data-separator') || ',';
 
-					if( elTyped == 'true' ) {
-						var elTexts = elRotator.html().split( elSep ),
-							elLoop = element.attr('data-loop') || 'true',
-							elShuffle = element.attr('data-shuffle'),
-							elCur = element.attr('data-cursor') || 'true',
-							elSpeed = element.attr('data-speed') || 50,
-							elBackSpeed = element.attr('data-backspeed') || 30,
-							elBackDelay = element.attr('data-backdelay');
+					if( elTyped ) {
+						var rotatorEl = elRotator[0];
+						if( !rotatorEl ) return;
 
-						if( elLoop == 'true' ) { elLoop = true; } else { elLoop = false; }
-						if( elShuffle == 'true' ) { elShuffle = true; } else { elShuffle = false; }
-						if( elCur == 'true' ) { elCur = true; } else { elCur = false; }
+						var rawText = elRotator.html() || '';
+						var elTexts = rawText.split( elSep );
 
-						elRotator.html( '' ).addClass('plugin-typed-init');
+						var elLoop      = element.attr('data-loop') !== 'false',
+							elShuffle   = element.attr('data-shuffle') === 'true',
+							elCur       = element.attr('data-cursor') !== 'false',
+							typeSpeed   = __core.toNumber(element.attr('data-speed'), 50),
+							backSpeed   = __core.toNumber(element.attr('data-backspeed'), 30),
+							backDelay   = __core.toNumber(element.attr('data-backdelay'), 500);
 
-						var typed = new Typed( elRotator[0], {
+						elRotator.html('').addClass('plugin-typed-init');
+
+						new Typed( rotatorEl, {
 							strings: elTexts,
-							typeSpeed: Number( elSpeed ),
+							typeSpeed: typeSpeed,
 							loop: elLoop,
 							shuffle: elShuffle,
 							showCursor: elCur,
-							backSpeed: Number( elBackSpeed ),
-							backDelay: Number( elBackDelay )
+							backSpeed: backSpeed,
+							backDelay: backDelay
 						});
 					} else {
-						var pluginData = elRotator.Morphext({
+						elRotator.Morphext({
 							animation: elAnimation,
 							separator: elSep,
-							speed: Number(elSpeed)
+							speed: __core.toNumber(element.attr('data-speed'), 1200)
 						});
 					}
 				});

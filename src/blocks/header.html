@@ -15,7 +15,7 @@
     color: @@text-color;
   }
 
-  .menu-item.current > .menu-link {
+  .menu-item.current>.menu-link {
     --cnvs-primary-menu-active-color: @@text-color;
   }
 
@@ -23,12 +23,12 @@
     color: @@text-color;
   }
 
-  .is-expanded-menu .sub-menu-container .menu-item:hover > .menu-link,
-  .is-expanded-menu .sub-menu-container .menu-item.current > .menu-link {
+  .is-expanded-menu .sub-menu-container .menu-item:hover>.menu-link,
+  .is-expanded-menu .sub-menu-container .menu-item.current>.menu-link {
     --cnvs-primary-menu-submenu-hover-color: @@text-color-hover;
   }
 
-  .menu-item:hover > .menu-link {
+  .menu-item:hover>.menu-link {
     --cnvs-primary-menu-hover-color: @@text-color-hover;
   }
 
@@ -54,20 +54,12 @@
 <!-- Call Out Header -->
 <header id="callOutHeader" class="callOutBackgroundColor">
   <div class="container p-2 text-center fw-bold callOutColor">
-    <a
-      href="/ieepa-refund-support?utm_source=Website&utm_medium=TopBanner"
-      class="fw-bold callOutColor"
-      target="_blank"
-    >
-      <span style="color: darkgoldenrod"
-        ><i class="bi-exclamation-circle-fill"></i> New!</span
-      >
+    <a href="/TDR-Duty-Drawback-in-the-UK.html?utm_source=Website&utm_medium=TopBanner" class="fw-bold callOutColor"
+      target="_blank">
+      <span style="color: darkgoldenrod"><i class="bi-exclamation-circle-fill"></i> <!-- New! --></span>
       <!-- <img src="./images/flags/eu.svg" alt="EU flag" style="width:18px;height:18px;display:inline-block;"
         loading="lazy" /> -->
-      We Claim Back Invalidated US Duties On Your Behalf  <i
-        class="bi-arrow-right-square"
-      ></i
-    ></a>
+      Check Our UK Duty Drawback For eCom Brands <i class="bi-arrow-right-square"></i></a>
   </div>
 </header>
 <!-- End of Call Out Header -->
@@ -80,12 +72,8 @@
         ============================================= -->
         <div id="logo">
           <a href="index.html">
-            <img
-              class="logo-default"
-              srcset="./images/logo.png, ./images/logo@2x.png 2x"
-              src="./images/logo@2x.png"
-              alt="TDR Logo"
-            />
+            <img class="logo-default" srcset="./images/logo.png, ./images/logo@2x.png 2x" src="./images/logo@2x.png"
+              alt="TDR Logo" />
           </a>
         </div>
         <!-- #logo end -->
@@ -97,9 +85,7 @@
         <!-- Optional Text Panel end-->
         <div class="primary-menu-trigger">
           <button class="cnvs-hamburger" type="button" title="Open Mobile Menu">
-            <span class="cnvs-hamburger-box"
-              ><span class="cnvs-hamburger-inner"></span
-            ></span>
+            <span class="cnvs-hamburger-box"><span class="cnvs-hamburger-inner"></span></span>
           </button>
         </div>
 
@@ -108,10 +94,7 @@
         <nav class="primary-menu">
           <ul class="menu-container">
             <li class="menu-item">
-              <a
-                class="menu-link"
-                href="${{duty-refund-questionnaire-main-page.path}}$"
-              >
+              <a class="menu-link" href="${{duty-refund-questionnaire-main-page.path}}$">
                 <div style="color: #f3b32a">
                   <i class="bi-star-fill me-2"></i>Check Your Eligibility
                 </div>
@@ -123,34 +106,22 @@
               </a>
               <ul class="sub-menu-container">
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{solutions-for-us-shippers.path}}$"
-                  >
+                  <a class="menu-link" href="${{solutions-for-us-shippers.path}}$">
                     <div>${{header.to-us-shippers}}$</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{solutions-for-uk-shippers.path}}$"
-                  >
+                  <a class="menu-link" href="${{solutions-for-uk-shippers.path}}$">
                     <div>${{header.to-uk-shippers}}$</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{solutions-for-eu-shippers.path}}$"
-                  >
+                  <a class="menu-link" href="${{solutions-for-eu-shippers.path}}$">
                     <div>${{header.to-eu-shippers}}$</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{solutions-for-all-shippers.path}}$"
-                  >
+                  <a class="menu-link" href="${{solutions-for-all-shippers.path}}$">
                     <div>${{header.to-all-shippers}}$</div>
                   </a>
                 </li>
@@ -162,34 +133,27 @@
               </a>
               <ul class="sub-menu-container">
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{TDR-Duty-Drawback-in-the-US.path}}$"
-                  >
+                  <a class="menu-link" href="${{TDR-Duty-Drawback-in-the-US.path}}$">
                     <div>${{TDR-Duty-Drawback-in-the-US.name}}$</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{TDR-Duty-Drawback-in-Europe.path}}$"
-                  >
+                  <a class="menu-link" href="${{TDR-Duty-Drawback-in-the-UK.path}}$">
+                    <div>${{TDR-Duty-Drawback-in-the-UK.name}}$</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="${{TDR-Duty-Drawback-in-Europe.path}}$">
                     <div>${{TDR-Duty-Drawback-in-Europe.name}}$</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{TDR-Duty-Free-Returns-to-the-US.path}}$"
-                  >
+                  <a class="menu-link" href="${{TDR-Duty-Free-Returns-to-the-US.path}}$">
                     <div>${{TDR-Duty-Free-Returns-to-the-US.name}}$</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{TDR-Duty-Free-Returns-to-Europe.path}}$"
-                  >
+                  <a class="menu-link" href="${{TDR-Duty-Free-Returns-to-Europe.path}}$">
                     <div>${{TDR-Duty-Free-Returns-to-Europe.name}}$</div>
                   </a>
                 </li>
@@ -221,20 +185,15 @@
                   </a>
                   <ul class="sub-menu-container">
                     <li class="menu-item">
-                      <a
-                        class="menu-link"
-                        href="${{e-book-navigating-global-tariffs-for-cross-border-e-commerce.path}}$"
-                      >
+                      <a class="menu-link"
+                        href="${{e-book-navigating-global-tariffs-for-cross-border-e-commerce.path}}$">
                         <div>
                           ${{e-book-navigating-global-tariffs-for-cross-border-e-commerce.menuName}}$
                         </div>
                       </a>
                     </li>
                     <li class="menu-item">
-                      <a
-                        class="menu-link"
-                        href="${{e-book-a-practical-guide-to-customs-duties-on-returns.path}}$"
-                      >
+                      <a class="menu-link" href="${{e-book-a-practical-guide-to-customs-duties-on-returns.path}}$">
                         <div>
                           ${{e-book-a-practical-guide-to-customs-duties-on-returns.menuName}}$
                         </div>
@@ -243,10 +202,7 @@
                   </ul>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{ACE-secure-data-portal-account-application-form.path}}$"
-                  >
+                  <a class="menu-link" href="${{ACE-secure-data-portal-account-application-form.path}}$">
                     <div>Apply for ACE access</div>
                   </a>
                 </li>
@@ -261,10 +217,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{eu-2026-import-regulations-cost-impact-tool.path}}$"
-                  >
+                  <a class="menu-link" href="${{eu-2026-import-regulations-cost-impact-tool.path}}$">
                     <div style="color: #f3b32a">
                       <i class="bi-exclamation-circle-fill me-2"></i>New!
                     </div>
@@ -279,10 +232,7 @@
               </a>
               <ul class="sub-menu-container">
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="javascript:void(Tawk_API.toggle())"
-                  >
+                  <a class="menu-link" href="javascript:void(Tawk_API.toggle())">
                     <div>${{contactOptions.chat-with-us}}$</div>
                   </a>
                 </li>
@@ -292,11 +242,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a
-                    class="menu-link"
-                    href="${{socials.li-path}}$"
-                    target="_blank"
-                  >
+                  <a class="menu-link" href="${{socials.li-path}}$" target="_blank">
                     <div>${{contactOptions.dm-us-on-LinkedIn}}$</div>
                   </a>
                 </li>

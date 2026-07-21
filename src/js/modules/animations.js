@@ -1,6 +1,8 @@
 CNVS.Animations = function() {
 	var __core = SEMICOLON.Core;
 
+	var _observer = null;
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
@@ -14,44 +16,64 @@ CNVS.Animations = function() {
 				return true;
 			}
 
-			var SELECTOR = '[data-animate]',
-				ANIMATE_CLASS_NAME = 'animated';
+			var SELECTOR = '[data-animate]';
+			var ANIMATE_CLASS_NAME = 'animated';
+
+			var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 			var isAnimated = function(element) {
-				element.classList.contains(ANIMATE_CLASS_NAME);
+				return element.classList.contains(ANIMATE_CLASS_NAME);
 			};
 
-			var intersectionObserver = new IntersectionObserver(
+			if( _observer ) {
+				_observer.disconnect();
+				_observer = null;
+			}
+
+			if( prefersReducedMotion ) {
+				document.querySelectorAll(SELECTOR).forEach( function(element) {
+					var elAnimation = element.getAttribute('data-animate');
+					if( elAnimation ) {
+						elAnimation.split(/\s+/).filter(Boolean).forEach( function(item) {
+							element.classList.add(item);
+						});
+					}
+					element.classList.add(ANIMATE_CLASS_NAME);
+				});
+				return;
+			}
+
+			_observer = new IntersectionObserver(
 				function(entries, observer) {
 					entries.forEach( function(entry) {
-						var element = entry.target,
-							elAnimation = element.getAttribute('data-animate'),
-							elAnimOut = element.getAttribute('data-animate-out'),
-							elAnimDelay = element.getAttribute('data-delay'),
-							elAnimDelayOut = element.getAttribute('data-delay-out'),
-							elAnimDelayTime = 0,
-							elAnimDelayOutTime = 3000,
-							elAnimations = elAnimation.split(' ');
+						var element = entry.target;
 
-						if( element.closest('.fslider.no-thumbs-animate') ) {
-							return true;
+						if( element.closest('.fslider.no-thumbs-animate') || element.closest('.swiper-slide') ) {
+							observer.unobserve(element);
+							return;
 						}
 
-						if( element.closest('.swiper-slide') ) {
-							return true;
+						var elAnimation = element.getAttribute('data-animate');
+						if( !elAnimation ) {
+							observer.unobserve(element);
+							return;
 						}
 
-						if( elAnimDelay ) {
-							elAnimDelayTime = Number( elAnimDelay ) + 500;
-						} else {
-							elAnimDelayTime = 500;
+						var elAnimations = elAnimation.split(/\s+/).filter(Boolean);
+						if( elAnimations.length === 0 ) {
+							observer.unobserve(element);
+							return;
 						}
 
-						if( elAnimOut && elAnimDelayOut ) {
-							elAnimDelayOutTime = Number( elAnimDelayOut ) + elAnimDelayTime;
-						}
+						var elAnimOut = element.getAttribute('data-animate-out');
+						var elAnimDelay = element.getAttribute('data-delay');
+						var elAnimDelayOut = element.getAttribute('data-delay-out');
+						var elAnimDelayTime = elAnimDelay ? Number(elAnimDelay) + 500 : 500;
+						var elAnimDelayOutTime = ( elAnimOut && elAnimDelayOut )
+							? Number(elAnimDelayOut) + elAnimDelayTime
+							: elAnimDelayTime + 3000;
 
-						if( !element.classList.contains('animated') ) {
+						if( !element.classList.contains(ANIMATE_CLASS_NAME) ) {
 							element.classList.add('not-animated');
 							if( entry.intersectionRatio > 0 ) {
 								setTimeout( function() {
@@ -59,7 +81,7 @@ CNVS.Animations = function() {
 									elAnimations.forEach( function(item) {
 										element.classList.add(item);
 									});
-									element.classList.add('animated');
+									element.classList.add(ANIMATE_CLASS_NAME);
 								}, elAnimDelayTime);
 
 								if( elAnimOut ) {
@@ -67,8 +89,7 @@ CNVS.Animations = function() {
 										elAnimations.forEach( function(item) {
 											element.classList.remove(item);
 										});
-
-										elAnimOut.split(' ').forEach( function(item) {
+										elAnimOut.split(/\s+/).filter(Boolean).forEach( function(item) {
 											element.classList.add(item);
 										});
 									}, elAnimDelayOutTime);
@@ -84,11 +105,11 @@ CNVS.Animations = function() {
 			);
 
 			var elements = [].filter.call(document.querySelectorAll(SELECTOR), function(element) {
-				return !isAnimated(element, ANIMATE_CLASS_NAME);
+				return !isAnimated(element);
 			});
 
 			elements.forEach( function(element) {
-				return intersectionObserver.observe(element);
+				_observer.observe(element);
 			});
 		}
 	};

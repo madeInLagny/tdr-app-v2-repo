@@ -1,57 +1,45 @@
 CNVS.HoverAnimations = function() {
 	var __core = SEMICOLON.Core;
 
-	var _t, _x;
+	var _bindings = new WeakMap();
 
-	var _showOverlay = function(params) {
-		clearTimeout(_x);
+	var _showOverlay = function(state) {
+		clearTimeout(state.hideTimer);
 
-		_t = setTimeout( function() {
-			params.element.classList.add( 'not-animated' );
+		state.showTimer = setTimeout( function() {
+			state.element.classList.add('not-animated');
 
-			(params.elAnimateOut + ' not-animated').split(" ").forEach( function(_class) {
-				params.element.classList.remove(_class);
+			(state.elAnimateOut + ' not-animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
+				state.element.classList.remove(_class);
 			});
 
-			(params.elAnimate + ' animated').split(" ").forEach( function(_class) {
-				params.element.classList.add(_class);
+			(state.elAnimate + ' animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
+				state.element.classList.add(_class);
 			});
-		}, params.elDelayT );
+		}, state.elDelayT);
 	};
 
-	var _hideOverlay = function(params) {
-		params.element.classList.add( 'not-animated' );
+	var _hideOverlay = function(state) {
+		state.element.classList.add('not-animated');
 
-		(params.elAnimate + ' not-animated').split(" ").forEach( function(_class) {
-			params.element.classList.remove(_class);
+		(state.elAnimate + ' not-animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
+			state.element.classList.remove(_class);
 		});
 
-		(params.elAnimateOut + ' animated').split(" ").forEach( function(_class) {
-			params.element.classList.add(_class);
+		(state.elAnimateOut + ' animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
+			state.element.classList.add(_class);
 		});
 
-		if( params.elReset == 'true' ) {
-			_x = setTimeout( function() {
-				(params.elAnimateOut + ' animated').split(" ").forEach( function(_class) {
-					params.element.classList.remove(_class);
+		if( state.elReset === 'true' ) {
+			state.hideTimer = setTimeout( function() {
+				(state.elAnimateOut + ' animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
+					state.element.classList.remove(_class);
 				});
-
-				params.element.classList.add( 'not-animated' );
-			}, Number( params.elSpeed ) );
+				state.element.classList.add('not-animated');
+			}, Number(state.elSpeed));
 		}
 
-		clearTimeout(_t);
-	};
-
-	var _isInsideElement = function(touch){
-		var rect = element.getBoundingClientRect();
-
-		return (
-			touch.clientX >= rect.left &&
-			touch.clientX <= rect.right &&
-			touch.clientY >= rect.top &&
-			touch.clientY <= rect.bottom
-		);
+		clearTimeout(state.showTimer);
 	};
 
 	return {
@@ -63,93 +51,65 @@ CNVS.HoverAnimations = function() {
 			__core.initFunction({ class: 'has-plugin-hoveranimation', event: 'pluginHoverAnimationReady' });
 
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
 			selector.forEach( function(element) {
-				var elAnimate = element.getAttribute( 'data-hover-animate' ),
-					elAnimateOut = element.getAttribute( 'data-hover-animate-out' ) || 'fadeOut',
-					elSpeed = element.getAttribute( 'data-hover-speed' ) || 600,
-					elDelay = element.getAttribute( 'data-hover-delay' ),
-					elParent = element.getAttribute( 'data-hover-parent' ),
-					elReset = element.getAttribute( 'data-hover-reset' ) || 'false',
-					elMobile = element.getAttribute( 'data-hover-mobile' ) || 'true';
+				var elAnimate    = element.getAttribute('data-hover-animate');
+				if( !elAnimate ) return;
 
-				if( elMobile != 'true' ) {
-					if( elMobile == 'false' ) {
-						if( !__core.getVars.elBody.classList.contains('device-up-lg') ) {
-							return true;
-						}
-					} else {
-						if( !__core.getVars.elBody.classList.contains('device-up-' + elMobile) ) {
-							return true;
-						}
-					}
+				var elAnimateOut = element.getAttribute('data-hover-animate-out') || 'fadeOut';
+				var elSpeed      = element.getAttribute('data-hover-speed') || 600;
+				var elDelay      = element.getAttribute('data-hover-delay');
+				var elParentAttr = element.getAttribute('data-hover-parent');
+				var elReset      = element.getAttribute('data-hover-reset') || 'false';
+				var elMobile     = element.getAttribute('data-hover-mobile') || 'true';
+
+				if( elMobile !== 'true' ) {
+					var requiredClass = elMobile === 'false' ? 'device-up-lg' : 'device-up-' + elMobile;
+					if( !__core.getVars.elBody.classList.contains(requiredClass) ) return;
 				}
 
-				element.classList.add( 'not-animated' );
+				element.classList.add('not-animated');
 
-				if( !elParent ) {
-					if( element.closest( '.bg-overlay' ) ) {
-						elParent = element.closest( '.bg-overlay' );
-					} else {
-						elParent = element;
-					}
+				var elParent;
+				if( !elParentAttr ) {
+					elParent = element.closest('.bg-overlay') || element;
+				} else if( elParentAttr === 'self' ) {
+					elParent = element;
 				} else {
-					if( elParent == 'self' ) {
-						elParent = element;
-					} else {
-						elParent = element.closest( elParent );
-					}
+					elParent = element.closest(elParentAttr);
 				}
-
-				var elDelayT = 0;
-
-				if( elDelay ) {
-					elDelayT = Number( elDelay );
-				}
+				if( !elParent ) return;
 
 				if( elSpeed ) {
-					element.style.animationDuration = Number( elSpeed ) + 'ms';
+					element.style.animationDuration = Number(elSpeed) + 'ms';
 				}
 
-				var params = {
+				var prev = _bindings.get(element);
+				if( prev ) {
+					if( prev.parent && prev.enter ) prev.parent.removeEventListener('mouseenter', prev.enter);
+					if( prev.parent && prev.leave ) prev.parent.removeEventListener('mouseleave', prev.leave);
+					clearTimeout(prev.state.showTimer);
+					clearTimeout(prev.state.hideTimer);
+				}
+
+				var state = {
 					element: element,
 					elAnimate: elAnimate,
 					elAnimateOut: elAnimateOut,
 					elSpeed: elSpeed,
-					elDelayT: elDelayT,
-					elParent: elParent,
+					elDelayT: elDelay ? Number(elDelay) : 0,
 					elReset: elReset,
-				}
+					showTimer: null,
+					hideTimer: null,
+				};
 
-				elParent.addEventListener( 'mouseenter', function(){
-					_showOverlay(params);
-				}, false);
+				var enterHandler = function() { _showOverlay(state); };
+				var leaveHandler = function() { _hideOverlay(state); };
+				elParent.addEventListener('mouseenter', enterHandler, false);
+				elParent.addEventListener('mouseleave', leaveHandler, false);
 
-				elParent.addEventListener( 'mouseleave', function(){
-					_hideOverlay(params);
-				}, false);
-
-				// elParent.addEventListener( 'touchstart', function(e){
-				// 	e.preventDefault();
-
-				// 	_showOverlay(params);
-
-				// 	elParent.addEventListener('touchmove', function(e){
-				// 		if (!_isInsideElement(e.touches[0])) {
-				// 			_hideOverlay(params);
-				// 			elParent.removeEventListener('touchmove');
-				// 		}
-				// 	});
-
-      			// 	elParent.addEventListener('touchend', function(){
-				// 		_hideOverlay(params);
-				// 		elParent.removeEventListener('touchmove');
-				// 		elParent.removeEventListener('touchend');
-				// 	});
-				// });
+				_bindings.set(element, { parent: elParent, enter: enterHandler, leave: leaveHandler, state: state });
 			});
 		}
 	};

@@ -7,16 +7,18 @@ CNVS.LazyLoad = function() {
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.lazyload.js', id: 'canvas-lazyload-js', jsFolder: true });
+			__core.requirePlugin({
+				file: 'plugins.lazyload.js',
+				id: 'canvas-lazyload-js',
+				check: function() { return typeof LazyLoad !== 'undefined'; },
+				class: 'has-plugin-lazyload',
+				event: 'pluginlazyLoadReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
-			__core.isFuncTrue( function() {
-				return typeof LazyLoad !== "undefined"
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
+				if( window.lazyLoadInstance && typeof window.lazyLoadInstance.destroy === 'function' ) {
+					window.lazyLoadInstance.destroy();
 				}
-
-				__core.initFunction({ class: 'has-plugin-lazyload', event: 'pluginlazyLoadReady' });
 
 				window.lazyLoadInstance = new LazyLoad({
 					threshold: 0,
@@ -26,7 +28,7 @@ CNVS.LazyLoad = function() {
 					class_error: 'lazy-error',
 					callback_loaded: function(el) {
 						__core.addEvent( window, 'lazyLoadLoaded' );
-						if( el.parentNode.getAttribute('data-lazy-container') == 'true' ) {
+						if( el.parentNode && el.parentNode.getAttribute('data-lazy-container') === 'true' ) {
 							__core.runContainerModules( el.parentNode );
 						}
 					}

@@ -3,84 +3,111 @@ CNVS.CanvasSlider = function() {
 	var __base = SEMICOLON.Base;
 	var __modules = SEMICOLON.Modules;
 
+	var _applyAnimation = function(el, baseDelay) {
+		var toAnimateDelay = el.getAttribute('data-delay');
+		var toAnimateDelayTime = toAnimateDelay ? Number(toAnimateDelay) + baseDelay : baseDelay;
+
+		if( el.classList.contains('animated') ) return;
+		el.classList.add('not-animated');
+
+		var elementAnimation = el.getAttribute('data-animate');
+		if( !elementAnimation ) return;
+
+		setTimeout( function() {
+			el.classList.remove('not-animated');
+			(elementAnimation + ' animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
+				el.classList.add(_class);
+			});
+		}, toAnimateDelayTime);
+	};
+
+	var _resetNonActiveAnimations = function(element) {
+		element.querySelectorAll('[data-animate]').forEach( function(el) {
+			var slide = el.closest('.swiper-slide');
+			if( slide && slide.classList.contains('swiper-slide-active') ) return;
+			var elementAnimation = el.getAttribute('data-animate');
+			if( elementAnimation ) {
+				(elementAnimation + ' animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
+					el.classList.remove(_class);
+				});
+			}
+			el.classList.add('not-animated');
+		});
+	};
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.swiper.js', id: 'canvas-swiper-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof Swiper !== "undefined";
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-swiper', event: 'pluginSwiperReady' });
+			__core.requirePlugin({
+				file: 'plugins.swiper.js',
+				id: 'canvas-swiper-js',
+				check: function() { return typeof Swiper !== 'undefined'; },
+				class: 'has-plugin-swiper',
+				event: 'pluginSwiperReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector, false );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( selector.length < 1 ) return;
 
 				selector.forEach( function(element) {
-					if( !element.classList.contains('swiper_wrapper') ) {
-						 return true;
-					}
+					if( !element.classList.contains('swiper_wrapper') ) return;
+					if( element.querySelectorAll('.swiper-slide').length < 1 ) return;
 
-					if( element.querySelectorAll('.swiper-slide').length < 1 ) {
-						return true;
+					var swiperParent = element.querySelector('.swiper-parent');
+					if( !swiperParent ) return;
+
+					if( swiperParent.swiper && typeof swiperParent.swiper.destroy === 'function' ) {
+						swiperParent.swiper.destroy(true, true);
 					}
 
 					var elDirection = element.getAttribute('data-direction') || 'horizontal',
 						elSpeed = element.getAttribute('data-speed') || 300,
-						elAutoPlay = element.getAttribute('data-autoplay'),
-						elAutoPlayDisableOnInteraction = element.getAttribute('data-autoplay-disable-on-interaction') || true,
-						elPauseOnHover = element.getAttribute('data-hover'),
-						elLoop = element.getAttribute('data-loop'),
+						elAutoPlayRaw = element.getAttribute('data-autoplay'),
+						elAutoPlayDisableOnInteraction = element.getAttribute('data-autoplay-disable-on-interaction'),
+						elPauseOnHover = element.getAttribute('data-hover') === 'true',
+						elLoop = element.getAttribute('data-loop') === 'true',
 						elStart = element.getAttribute('data-start') || 1,
 						elEffect = element.getAttribute('data-effect') || 'slide',
-						elGrabCursor = element.getAttribute('data-grab'),
-						elParallax = element.getAttribute('data-parallax'),
-						elAutoHeight = element.getAttribute('data-autoheight'),
+						elGrabCursor = element.getAttribute('data-grab') !== 'false',
+						elParallax = element.getAttribute('data-parallax') === 'true',
+						elAutoHeight = element.getAttribute('data-autoheight') === 'true',
 						slideNumberTotal = element.querySelector('.slide-number-total'),
 						slideNumberCurrent = element.querySelector('.slide-number-current'),
-						elVideoAutoPlay = element.getAttribute('data-video-autoplay'),
-						elSettings = element.getAttribute('data-settings'),
-						elPagination, elPaginationClickable;
+						elVideoAutoPlay = element.getAttribute('data-video-autoplay') !== 'false';
 
-					elAutoPlay = elAutoPlay ? Number( elAutoPlay ) : 999999999;
-					elPauseOnHover = elPauseOnHover == 'true' ? true : false;
-					elAutoPlayDisableOnInteraction = elAutoPlayDisableOnInteraction == 'false' ? false : true;
-					elLoop = elLoop == 'true' ? true : false;
-					elParallax = elParallax == 'true' ? true : false;
-					elGrabCursor = elGrabCursor == 'false' ? false : true;
-					elAutoHeight = elAutoHeight == 'true' ? true : false;
-					elVideoAutoPlay = elVideoAutoPlay == 'false' ? false : true;
-					elStart = elStart == 'random' ? Math.floor( Math.random() * element.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)').length ) : Number( elStart ) - 1;
+					var disableOnInteraction = elAutoPlayDisableOnInteraction === 'false' ? false : true;
+					var autoplayConfig = elAutoPlayRaw
+						? { delay: Number(elAutoPlayRaw), pauseOnMouseEnter: elPauseOnHover, disableOnInteraction: disableOnInteraction }
+						: false;
 
-					if( element.querySelector('.swiper-pagination') ) {
-						elPagination = element.querySelector('.swiper-pagination');
-						elPaginationClickable = true;
-					} else {
-						elPagination = '';
-						elPaginationClickable = false;
-					}
+					var realSlides = element.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)');
+					elStart = elStart == 'random'
+						? Math.floor( Math.random() * realSlides.length )
+						: Number( elStart ) - 1;
 
-					var elementNavNext = element.querySelector('.slider-arrow-right'),
-						elementNavPrev = element.querySelector('.slider-arrow-left'),
-						elementScollBar = element.querySelector('.swiper-scrollbar');
+					var elPagination = element.querySelector('.swiper-pagination');
+					var elementNavNext = element.querySelector('.slider-arrow-right');
+					var elementNavPrev = element.querySelector('.slider-arrow-left');
+					var elementScollBar = element.querySelector('.swiper-scrollbar');
 
-					var cnvsSwiper = new Swiper( element.querySelector('.swiper-parent'), {
+					var hasJQ = function() { return typeof jQuery !== 'undefined'; };
+
+					var playActiveYTVideo = function() {
+						if( !hasJQ() ) return;
+						var active = element.querySelector('.swiper-slide-active .yt-bg-player.mb_YTPlayer:not(.customjs)');
+						if( active ) {
+							try { jQuery(active).YTPPlay(); } catch(e) {}
+						}
+					};
+
+					var cnvsSwiper = new Swiper( swiperParent, {
 						direction: elDirection,
 						speed: Number( elSpeed ),
-						autoplay: {
-							delay: elAutoPlay,
-							pauseOnMouseEnter: elPauseOnHover,
-							disableOnInteraction: elAutoPlayDisableOnInteraction
-						},
+						autoplay: autoplayConfig,
 						loop: elLoop,
 						initialSlide: elStart,
 						effect: elEffect,
@@ -88,17 +115,9 @@ CNVS.CanvasSlider = function() {
 						slidesPerView: 1,
 						grabCursor: elGrabCursor,
 						autoHeight: elAutoHeight,
-						pagination: {
-							el: elPagination,
-							clickable: elPaginationClickable
-						},
-						navigation: {
-							prevEl: elementNavPrev,
-							nextEl: elementNavNext
-						},
-						scrollbar: {
-							el: elementScollBar
-						},
+						pagination: elPagination ? { el: elPagination, clickable: true } : false,
+						navigation: (elementNavPrev || elementNavNext) ? { prevEl: elementNavPrev, nextEl: elementNavNext } : false,
+						scrollbar: elementScollBar ? { el: elementScollBar } : false,
 						on: {
 							afterInit: function(swiper) {
 								__base.sliderDimensions();
@@ -111,52 +130,21 @@ CNVS.CanvasSlider = function() {
 
 									__modules.youtubeBgVideo();
 
-									var activeYTVideo = jQuery('.swiper-slide-active').find('.yt-bg-player:not(.customjs)');
-									activeYTVideo.on('YTPReady', function() {
-										setTimeout( function() {
-											activeYTVideo.filter('.mb_YTPlayer').YTPPlay();
-										}, 1200);
-									});
+									if( hasJQ() ) {
+										var activeYTVideo = jQuery(element).find('.swiper-slide-active .yt-bg-player:not(.customjs)');
+										activeYTVideo.on('YTPReady', function() {
+											setTimeout( function() {
+												activeYTVideo.filter('.mb_YTPlayer').YTPPlay();
+											}, 1200);
+										});
+									}
 								}
 
-								document.querySelectorAll('.swiper-slide-active [data-animate]').forEach( function(el) {
-									var toAnimateDelay = el.getAttribute('data-delay'),
-										toAnimateDelayTime = 0;
-
-									if( toAnimateDelay ) {
-										toAnimateDelayTime = Number( toAnimateDelay ) + 750;
-									} else {
-										toAnimateDelayTime = 750;
-									}
-
-									if( !el.classList.contains('animated') ) {
-										el.classList.add('not-animated');
-
-										var elementAnimation = el.getAttribute('data-animate');
-
-										setTimeout( function() {
-											el.classList.remove('not-animated');
-
-											( elementAnimation + ' animated').split(" ").forEach( function(_class) {
-												el.classList.add(_class);
-											});
-										}, toAnimateDelayTime);
-									}
+								element.querySelectorAll('.swiper-slide-active [data-animate]').forEach( function(el) {
+									_applyAnimation(el, 750);
 								});
 
-								element.querySelectorAll('[data-animate]').forEach( function(el) {
-									var elementAnimation = el.getAttribute('data-animate');
-
-									if( el.closest('.swiper-slide').classList.contains('swiper-slide-active') ) {
-										return true;
-									}
-
-									( elementAnimation + ' animated').split(" ").forEach( function(_class) {
-										el.classList.remove(_class);
-									});
-
-									el.classList.add('not-animated');
-								});
+								_resetNonActiveAnimations(element);
 
 								if( elAutoHeight ) {
 									setTimeout( function() {
@@ -164,94 +152,62 @@ CNVS.CanvasSlider = function() {
 									}, 1000);
 								}
 							},
-							transitionStart: function(swiper) {
-								element.querySelectorAll('[data-animate]').forEach( function(el) {
-									var elementAnimation = el.getAttribute('data-animate');
-
-									if( el.closest('.swiper-slide').classList.contains('swiper-slide-active') ) {
-										return true;
-									}
-
-									( elementAnimation + ' animated').split(" ").forEach( function(_class) {
-										el.classList.remove(_class);
-									});
-
-									el.classList.add('not-animated');
-								});
-
-								SEMICOLON.Base.sliderMenuClass();
+							transitionStart: function() {
+								_resetNonActiveAnimations(element);
+								__base.sliderMenuClass();
 							},
 							transitionEnd: function(swiper) {
-								if( slideNumberCurrent ){
-									if( elLoop == true ) {
-										slideNumberCurrent.innerHTML = Number( element.querySelector('.swiper-slide.swiper-slide-active').getAttribute('data-swiper-slide-index') ) + 1;
+								if( slideNumberCurrent ) {
+									var active = element.querySelector('.swiper-slide.swiper-slide-active');
+									if( elLoop && active ) {
+										slideNumberCurrent.innerHTML = Number( active.getAttribute('data-swiper-slide-index') ) + 1;
 									} else {
 										slideNumberCurrent.innerHTML = swiper.activeIndex + 1;
 									}
 								}
 
 								element.querySelectorAll('.swiper-slide').forEach( function(slide) {
-									if( slide.querySelector('video') && elVideoAutoPlay == true ) {
-										slide.querySelector('video').pause();
+									var video = slide.querySelector('video');
+									if( video && elVideoAutoPlay ) {
+										video.pause();
 									}
-
-									if( slide.querySelector('.yt-bg-player.mb_YTPlayer:not(.customjs)') ) {
-										jQuery(slide).find('.yt-bg-player.mb_YTPlayer:not(.customjs)').YTPPause();
+									if( hasJQ() ) {
+										var ytActive = slide.querySelector('.yt-bg-player.mb_YTPlayer:not(.customjs)');
+										if( ytActive ) {
+											try { jQuery(ytActive).YTPPause(); } catch(e) {}
+										}
 									}
 								});
 
 								element.querySelectorAll('.swiper-slide:not(.swiper-slide-active)').forEach( function(slide) {
-									if( slide.querySelector('video') ) {
-										if( slide.querySelector('video').currentTime != 0 ) {
-											slide.querySelector('video').currentTime = 0;
-										}
+									var video = slide.querySelector('video');
+									if( video && video.currentTime !== 0 ) {
+										video.currentTime = 0;
 									}
-
-									var activeYTPlayer = slide.querySelector('.yt-bg-player.mb_YTPlayer:not(.customjs)');
-
-									if( activeYTPlayer ) {
-										jQuery(activeYTPlayer).YTPSeekTo( activeYTPlayer.getAttribute('data-start') );
+									if( hasJQ() ) {
+										var ytPlayer = slide.querySelector('.yt-bg-player.mb_YTPlayer:not(.customjs)');
+										if( ytPlayer ) {
+											try { jQuery(ytPlayer).YTPSeekTo( ytPlayer.getAttribute('data-start') ); } catch(e) {}
+										}
 									}
 								});
 
-								if( element.querySelector('.swiper-slide.swiper-slide-active').querySelector('video') && elVideoAutoPlay == true ) {
-									element.querySelector('.swiper-slide.swiper-slide-active').querySelector('video').play();
-								}
-
-								if( element.querySelector('.swiper-slide.swiper-slide-active').querySelector('.yt-bg-player.mb_YTPlayer:not(.customjs)') && elVideoAutoPlay == true ) {
-									jQuery(element).find('.swiper-slide.swiper-slide-active').find('.yt-bg-player.mb_YTPlayer:not(.customjs)').YTPPlay();
+								var activeSlide = element.querySelector('.swiper-slide.swiper-slide-active');
+								if( activeSlide && elVideoAutoPlay ) {
+									var activeVideo = activeSlide.querySelector('video');
+									if( activeVideo ) activeVideo.play();
+									playActiveYTVideo();
 								}
 
 								element.querySelectorAll('.swiper-slide.swiper-slide-active [data-animate]').forEach( function(el) {
-									var toAnimateDelay = el.getAttribute('data-delay'),
-										toAnimateDelayTime = 0;
-
-									if( toAnimateDelay ) {
-										toAnimateDelayTime = Number( toAnimateDelay ) + 300;
-									} else {
-										toAnimateDelayTime = 300;
-									}
-
-									if( !el.classList.contains('animated') ) {
-										el.classList.add('not-animated');
-
-										var elementAnimation = el.getAttribute('data-animate');
-
-										setTimeout( function() {
-											el.classList.remove('not-animated');
-
-											( elementAnimation + ' animated').split(" ").forEach( function(_class) {
-												el.classList.add(_class);
-											});
-										}, toAnimateDelayTime);
-									}
+									_applyAnimation(el, 300);
 								});
 							}
 						}
 					});
 
 					if( slideNumberCurrent ) {
-						if( elLoop == true ) {
+						if( elLoop ) {
 							slideNumberCurrent.innerHTML = cnvsSwiper.realIndex + 1;
 						} else {
 							slideNumberCurrent.innerHTML = cnvsSwiper.activeIndex + 1;
@@ -259,7 +215,7 @@ CNVS.CanvasSlider = function() {
 					}
 
 					if( slideNumberTotal ) {
-						slideNumberTotal.innerHTML = element.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)').length;
+						slideNumberTotal.innerHTML = realSlides.length;
 					}
 				});
 			});

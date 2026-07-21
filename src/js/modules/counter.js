@@ -1,21 +1,51 @@
 CNVS.Counter = function() {
 	var __core = SEMICOLON.Core;
 
-	var _run = function(elCounter, elFormat) {
-		if( elFormat.comma == 'true' ) {
-			var reFormat = '\\B(?=(\\d{'+ elFormat.places +'})+(?!\\d))',
-				regExp = new RegExp( reFormat, "g" );
+	var _prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	var _easeOutQuad = function(t) { return t * (2 - t); };
 
-			elCounter.find('span').countTo({
-				formatter: function(value, options) {
-					value = value.toFixed( options.decimals );
-					value = value.replace( regExp, elFormat.sep );
-					return value;
-				}
-			});
-		} else {
-			elCounter.find('span').countTo();
+	var _animate = function(span) {
+		if( span.dataset.cnvsCounterDone === '1' ) return;
+
+		var from     = Number(span.getAttribute('data-from')) || 0;
+		var to       = Number(span.getAttribute('data-to')) || 0;
+		var duration = Number(span.getAttribute('data-speed')) || 1000;
+		var decimals = Number(span.getAttribute('data-decimals')) || 0;
+		var useComma = span.getAttribute('data-comma') === 'true';
+		var sep      = span.getAttribute('data-sep') || ',';
+		var places   = Number(span.getAttribute('data-places')) || 3;
+
+		var regExp = useComma ? new RegExp('\\B(?=(\\d{' + places + '})+(?!\\d))', 'g') : null;
+		var format = function(value) {
+			var str = value.toFixed(decimals);
+			if( regExp ) str = str.replace(regExp, sep);
+			return str;
+		};
+
+		if( _prefersReducedMotion || duration <= 0 ) {
+			span.textContent = format(to);
+			span.dataset.cnvsCounterDone = '1';
+			return;
 		}
+
+		var start = null;
+		var step = function(timestamp) {
+			if( !start ) start = timestamp;
+			var progress = Math.min((timestamp - start) / duration, 1);
+			var current = from + (to - from) * _easeOutQuad(progress);
+			span.textContent = format(current);
+			if( progress < 1 ) {
+				window.requestAnimationFrame(step);
+			} else {
+				span.textContent = format(to);
+				span.dataset.cnvsCounterDone = '1';
+			}
+		};
+		window.requestAnimationFrame(step);
+	};
+
+	var _runElement = function(element) {
+		element.querySelectorAll('span[data-to]').forEach(_animate);
 	};
 
 	return {
@@ -24,49 +54,24 @@ CNVS.Counter = function() {
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.counter.js', id: 'canvas-counter-js', jsFolder: true });
+			__core.initFunction({ class: 'has-plugin-counter', event: 'pluginCounterReady' });
 
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().countTo;
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
+			selector = __core.getSelector(selector, false);
+			if( selector instanceof Element ) selector = [selector];
+			if( !selector || selector.length < 1 ) return true;
+
+			Array.prototype.forEach.call(selector, function(element) {
+				if( element.classList.contains('counter-instant') ) {
+					_runElement(element);
+					return;
 				}
 
-				__core.initFunction({ class: 'has-plugin-counter', event: 'pluginCounterReady' });
+				if( element.closest('.skill-progress') ) return;
 
-				selector = __core.getSelector( selector );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( !__core.markOnce(element, 'cnvsCounterObserved') ) return;
 
-				selector.each(function(){
-					var element = jQuery(this),
-						elComma = element.find('span').attr('data-comma'),
-						elSep = element.find('span').attr('data-sep') || ',',
-						elPlaces = element.find('span').attr('data-places') || 3;
-
-					var elCommaObj = {
-						comma: elComma,
-						sep: elSep,
-						places: Number( elPlaces )
-					}
-
-					if( element.hasClass('counter-instant') ) {
-						_run(element, elCommaObj);
-						return;
-					}
-
-					var observer = new IntersectionObserver( function(entries, observer) {
-						entries.forEach( function(entry) {
-							if (entry.isIntersecting) {
-								_run(element, elCommaObj);
-								observer.unobserve(entry.target);
-							}
-						});
-					}, {rootMargin: '0px 0px 50px'});
-
-					observer.observe( element[0] );
+				__core.intersect(element, { rootMargin: '0px 0px 50px' }, function(target) {
+					_runElement(target);
 				});
 			});
 		}

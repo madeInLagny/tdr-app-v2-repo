@@ -1,5 +1,11 @@
 CNVS.ShapeDivider = function() {
 	var __core = SEMICOLON.Core;
+	var _counter = 0;
+
+	var _sanitizeFill = function(value) {
+		if( !value ) return '';
+		return String(value).replace(/[;{}<>]/g, '').trim();
+	};
 
 	return {
 		init: function(selector) {
@@ -10,48 +16,42 @@ CNVS.ShapeDivider = function() {
 			__core.initFunction({ class: 'has-plugin-shapedivider', event: 'pluginShapeDividerReady' });
 
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
+			if( !selector || selector.length < 1 ){
 				return true;
 			}
 
 			selector.forEach( function(element) {
+				if( element.classList.contains('shape-divider-complete') ) {
+					return;
+				}
+
 				var elShape = element.getAttribute('data-shape') || 'valley',
-					elWidth = element.getAttribute('data-width') || 100,
-					elHeight = element.getAttribute('data-height') || 100,
-					elFill = element.getAttribute('data-fill'),
+					elWidth = __core.toNumber(element.getAttribute('data-width'), 100),
+					elHeight = __core.toNumber(element.getAttribute('data-height'), 100),
+					elFill = _sanitizeFill(element.getAttribute('data-fill')),
 					elOut = element.getAttribute('data-outside') || 'false',
 					elPos = element.getAttribute('data-position') || 'top',
-					elId = 'shape-divider-' + Math.floor( Math.random() * 10000 ),
+					elId = 'shape-divider-' + (++_counter) + '-' + Date.now().toString(36),
 					shape = '',
-					width, height, fill,
 					outside = '';
 
-				if( element.classList.contains('shape-divider-complete') ) {
-					return true;
+				if( elWidth < 100 ) elWidth = 100;
+
+				var width = 'width: calc( ' + elWidth + '% + 1.5px );';
+				var height = 'height: ' + elHeight + 'px;';
+				var fill = elFill ? 'fill: ' + elFill + ';' : '';
+
+				if( elOut === 'true' ) {
+					var offsetEdge = elPos === 'bottom' ? 'bottom' : 'top';
+					outside = '#' + elId + '.shape-divider { ' + offsetEdge + ': -' + (elHeight - 1) + 'px; } ';
 				}
 
-				if( elWidth < 100 ) {
-					elWidth = 100;
-				}
+				var css = outside + '#' + elId + '.shape-divider svg { ' + width + height + ' }';
+				if( fill ) css += ' #' + elId + '.shape-divider .shape-divider-fill { ' + fill + ' }';
 
-				width = 'width: calc( '+ Number( elWidth ) +'% + 1.5px );';
-				height = 'height: '+ Number( elHeight ) +'px;';
-				fill = 'fill: '+elFill+';';
-
-				if( elOut == 'true' ) {
-					if( elPos == 'bottom' ) {
-						outside = '#'+ elId +'.shape-divider { bottom: -'+( Number( elHeight ) - 1 ) +'px; } ';
-					} else {
-						outside = '#'+ elId +'.shape-divider { top: -'+( Number( elHeight ) - 1 ) +'px; } ';
-					}
-				}
-
-				var css = outside + '#'+ elId +'.shape-divider svg { '+ width + height +' } #'+ elId +'.shape-divider .shape-divider-fill { '+ fill +' }',
-					style = document.createElement('style');
-
-				__core.getVars.elHead.appendChild(style);
-
+				var style = document.createElement('style');
 				style.appendChild(document.createTextNode(css));
+				__core.getVars.elHead.appendChild(style);
 
 				element.setAttribute( 'id', elId );
 
@@ -222,11 +222,14 @@ CNVS.ShapeDivider = function() {
 				}
 
 				element.innerHTML = shape;
-				element.querySelector('svg').classList.add( 'op-ts' );
 
-				setTimeout( function() {
-					element.querySelector('svg').classList.add( 'op-1' );
-				}, 500);
+				var svg = element.querySelector('svg');
+				if( svg ) {
+					svg.classList.add('op-ts');
+					setTimeout( function() {
+						svg.classList.add('op-1');
+					}, 500);
+				}
 
 				element.classList.add('shape-divider-complete');
 			});

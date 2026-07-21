@@ -8,47 +8,36 @@ CNVS.Progress = function() {
 				return true;
 			}
 
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().countTo;
-			}).then( function(cond) {
+			__core.initFunction({ class: 'has-plugin-progress', event: 'pluginProgressReady' });
 
-				__core.initFunction({ class: 'has-plugin-progress', event: 'pluginProgressReady' });
+			selector = __core.getSelector( selector, false );
+			if( selector.length < 1 ){
+				return true;
+			}
 
-				selector = __core.getSelector( selector, false );
-				if( selector.length < 1 ){
-					return true;
-				}
+			selector.forEach( function(element) {
+				var elValue	= element.getAttribute('data-percent') || 90,
+					elSpeed	= element.getAttribute('data-speed') || 1200,
+					elBar = element.querySelector('.skill-progress-percent');
 
-				selector.forEach( function(element) {
-					var elValue	= element.getAttribute('data-percent') || 90,
-						elSpeed	= element.getAttribute('data-speed') || 1200,
-						elBar = element.querySelector('.skill-progress-percent');
+				if( !elBar ) return;
 
-					elSpeed = Number(elSpeed) + 'ms';
+				if( !__core.markOnce(elBar, 'cnvsProgressObserved') ) return;
 
-					elBar.style.setProperty( '--cnvs-progress-speed', elSpeed );
+				elSpeed = Number(elSpeed) + 'ms';
 
-					var observer = new IntersectionObserver( function(entries, observer){
-						entries.forEach( function(entry) {
-							if (entry.isIntersecting) {
-								if (!elBar.classList.contains('skill-animated')) {
-									__modules.counter(element.querySelector('.counter'));
+				elBar.style.setProperty( '--cnvs-progress-speed', elSpeed );
 
-									if ( element.classList.contains('skill-progress-vertical') ) {
-										elBar.style.height = elValue + "%";
-										elBar.classList.add('skill-animated');
-									} else {
-										elBar.style.width = elValue + "%";
-										elBar.classList.add('skill-animated');
-									}
-								}
-
-								observer.unobserve( entry.target );
-							}
-						});
-					}, {rootMargin: '0px 0px 50px'});
-
-					observer.observe( elBar );
+				__core.intersect(elBar, { rootMargin: '0px 0px 50px' }, function() {
+					if( elBar.classList.contains('skill-animated') ) return;
+					var counterEl = element.querySelector('.counter');
+					if( counterEl ) __modules.counter(counterEl);
+					if( element.classList.contains('skill-progress-vertical') ) {
+						elBar.style.height = elValue + '%';
+					} else {
+						elBar.style.width = elValue + '%';
+					}
+					elBar.classList.add('skill-animated');
 				});
 			});
 		}

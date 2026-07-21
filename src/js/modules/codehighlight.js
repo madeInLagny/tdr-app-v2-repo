@@ -8,24 +8,25 @@ CNVS.CodeHighlight = function() {
 			}
 
 			__core.loadCSS({ file: 'components/prism.css', id: 'canvas-prism-css', cssFolder: true });
-			__core.loadJS({ file: 'plugins.prism.js', id: 'canvas-prism-js', jsFolder: true });
 
-			__core.isFuncTrue( function() {
-				return typeof Prism !== 'undefined';
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-codehighlight', event: 'pluginCodeHighlightReady' });
+			__core.requirePlugin({
+				file: 'plugins.prism.js',
+				id: 'canvas-prism-js',
+				check: function() { return typeof Prism !== 'undefined'; },
+				class: 'has-plugin-codehighlight',
+				event: 'pluginCodeHighlightReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector, false );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( selector.length < 1 ) return;
 
 				selector.forEach( function(el) {
-					Prism.highlightElement( el.querySelector('code') );
+					var codeEl = el.querySelector('code');
+					if( !codeEl ) return;
+					if( codeEl.dataset.cnvsHighlighted === 'true' ) return;
+					Prism.highlightElement(codeEl);
+					codeEl.dataset.cnvsHighlighted = 'true';
 				});
 			});
 		}

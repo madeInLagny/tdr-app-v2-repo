@@ -1,8 +1,26 @@
 CNVS.AjaxTrigger = function() {
 	var __core = SEMICOLON.Core;
 
+	var _inFlight = new WeakSet();
+
+	var _safeJSONParse = function(raw) {
+		if( !raw ) return null;
+		try { return JSON.parse(raw); } catch(e) { return null; }
+	};
+
 	var _load = function(params) {
+		if( _inFlight.has(params.trigger) ) return;
+		_inFlight.add(params.trigger);
+
+		if( params.triggerDisable == 'true' && params.trigger ) {
+			params.trigger.setAttribute('aria-disabled', 'true');
+			params.trigger.classList.add('disabled');
+		}
+
 		fetch(params.loader).then( function(response) {
+			if( !response.ok ) {
+				throw new Error('HTTP ' + response.status + ' ' + response.statusText);
+			}
 			return response.text();
 		}).then( function(html) {
 			_scripts(params.loadCSS, params.loadJS);
@@ -10,54 +28,57 @@ CNVS.AjaxTrigger = function() {
 			var domParser = new DOMParser();
 			var parsedHTML = domParser.parseFromString(html, 'text/html');
 
-			if( params.placement == 'append' ) {
-				params.container?.insertAdjacentHTML('beforeend', parsedHTML.body.innerHTML);
-			} else {
-				params.container?.insertAdjacentHTML('afterbegin', parsedHTML.body.innerHTML);
+			if( !params.container ) {
+				_inFlight.delete(params.trigger);
+				return;
 			}
 
-			if( params.triggerHide == 'true' ) {
+			if( params.contentPlacement == 'append' ) {
+				params.container.insertAdjacentHTML('beforeend', parsedHTML.body.innerHTML);
+			} else {
+				params.container.insertAdjacentHTML('afterbegin', parsedHTML.body.innerHTML);
+			}
+
+			if( params.triggerHide == 'true' && params.trigger ) {
 				params.trigger.classList.add('d-none');
 			}
 
 			__core.runContainerModules(params.container);
 			__core.viewport();
 
-			if( params.triggerDisable == 'true' ) {
-				setTimeout( function() {
-					params.trigger.onclick = function(e) {
-						e.stopPropagation();
-						e.preventDefault();
-
-						return false;
-					};
-				}, 1000);
+			if( params.triggerDisable == 'true' && params.trigger ) {
+				params.trigger.addEventListener('click', function(e) {
+					e.stopPropagation();
+					e.preventDefault();
+				}, true);
 			}
+
+			_inFlight.delete(params.trigger);
 		}).catch( function(err) {
-			var errorDIV = document.createElement("div");
-			errorDIV.classList.add( 'd-inline-block', 'text-danger', 'me-3' );
-			errorDIV.innerText = 'Content Cannot be Loaded!';
-			params.container?.prepend( errorDIV, ': ' + err );
+			_inFlight.delete(params.trigger);
+
+			if( params.triggerDisable == 'true' && params.trigger ) {
+				params.trigger.removeAttribute('aria-disabled');
+				params.trigger.classList.remove('disabled');
+			}
+
+			if( params.container ) {
+				var errorDIV = document.createElement('div');
+				errorDIV.classList.add('d-inline-block', 'text-danger', 'me-3');
+				errorDIV.innerText = 'Content Cannot be Loaded: ' + (err && err.message ? err.message : String(err));
+				params.container.prepend(errorDIV);
+			}
 		});
 	};
 
-	var _scripts = function(loadCSS=false, loadJS=false) {
-		if( loadCSS ) {
-			loadCSS = JSON.parse(loadCSS);
-			if( loadCSS.length > 0 ) {
-				loadCSS.forEach( function(css) {
-					__core.loadCSS(css);
-				});
-			}
+	var _scripts = function(loadCSS, loadJS) {
+		var cssList = _safeJSONParse(loadCSS);
+		if( Array.isArray(cssList) ) {
+			cssList.forEach( function(css) { __core.loadCSS(css); });
 		}
-
-		if( loadJS ) {
-			loadJS = JSON.parse(loadJS);
-			if( loadJS.length > 0 ) {
-				loadJS.forEach( function(js) {
-					__core.loadJS(js);
-				});
-			}
+		var jsList = _safeJSONParse(loadJS);
+		if( Array.isArray(jsList) ) {
+			jsList.forEach( function(js) { __core.loadJS(js); });
 		}
 	};
 
@@ -86,17 +107,18 @@ CNVS.AjaxTrigger = function() {
 					triggerDisable: el.getAttribute('data-ajax-trigger-disable') || 'true',
 					loadCSS: el.getAttribute('data-ajax-loadcss') || false,
 					loadJS: el.getAttribute('data-ajax-loadjs') || false,
-				}
+				};
+
+				if( !params.loader ) return;
 
 				if( params.triggerType == 'load' ) {
-					setTimeout( function() {
-						_load(params);
-					}, Number(params.loadDelay));
+					setTimeout( function() { _load(params); }, Number(params.loadDelay));
 				} else {
-					params.trigger.onclick = function(e) {
+					var clickHandler = function(e) {
 						e.preventDefault();
 						_load(params);
 					};
+					el.addEventListener('click', clickHandler);
 				}
 			});
 		}

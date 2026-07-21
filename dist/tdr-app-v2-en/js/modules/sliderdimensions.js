@@ -5,19 +5,21 @@ CNVS.SliderDimensions = function() {
 	return {
 		init: function(selector) {
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
+			if( !selector || selector.length < 1 ){
 				return true;
 			}
 
-			var slider = document.querySelector('.slider-element'),
-				sliderParallaxEl = document.querySelector('.slider-parallax'),
-				body = __core.getVars.elBody,
-				parallaxElHeight = sliderParallaxEl?.offsetHeight,
-				parallaxElWidth = sliderParallaxEl?.offsetWidth,
-				slInner = sliderParallaxEl?.querySelector('.slider-inner'),
-				slSwiperW = slider.querySelector('.swiper-wrapper'),
-				slSwiperS = slider.querySelector('.swiper-slide'),
-				slFlexHeight = slider.classList.contains('h-auto') || slider.classList.contains('min-vh-0');
+			var slider = document.querySelector('.slider-element');
+			if( !slider ) return true;
+
+			var sliderParallaxEl = document.querySelector('.slider-parallax'),
+				body             = __core.getVars.elBody,
+				parallaxElHeight = sliderParallaxEl ? sliderParallaxEl.offsetHeight : 0,
+				parallaxElWidth  = sliderParallaxEl ? sliderParallaxEl.offsetWidth : 0,
+				slInner          = sliderParallaxEl ? sliderParallaxEl.querySelector('.slider-inner') : null,
+				slSwiperW        = slider.querySelector('.swiper-wrapper'),
+				slSwiperS        = slider.querySelector('.swiper-slide'),
+				slFlexHeight     = slider.classList.contains('h-auto') || slider.classList.contains('min-vh-0');
 
 			if( body.classList.contains('device-up-lg') ) {
 				setTimeout(function() {
@@ -25,20 +27,24 @@ CNVS.SliderDimensions = function() {
 						slInner.style.height = parallaxElHeight + 'px';
 					}
 					if( slFlexHeight ) {
-						parallaxElHeight = slider.querySelector('.slider-inner')?.querySelector('*').offsetHeight;
-						slider.style.height = parallaxElHeight + 'px';
-						if( slInner ) {
-							slInner.style.height = parallaxElHeight + 'px';
+						var innerEl = slider.querySelector('.slider-inner');
+						var firstChild = innerEl ? innerEl.querySelector('*') : null;
+						if( firstChild ) {
+							parallaxElHeight = firstChild.offsetHeight;
+							slider.style.height = parallaxElHeight + 'px';
+							if( slInner ) {
+								slInner.style.height = parallaxElHeight + 'px';
+							}
 						}
 					}
 				}, 500);
 
-				if( slFlexHeight && slSwiperS ) {
+				if( slFlexHeight && slSwiperS && slSwiperW ) {
 					var slSwiperFC = slSwiperS.querySelector('*');
-					if( slSwiperFC.classList.contains('container') || slSwiperFC.classList.contains('container-fluid') ) {
+					if( slSwiperFC && (slSwiperFC.classList.contains('container') || slSwiperFC.classList.contains('container-fluid')) ) {
 						slSwiperFC = slSwiperFC.querySelector('*');
 					}
-					if( slSwiperFC.offsetHeight > slSwiperW.offsetHeight ) {
+					if( slSwiperFC && slSwiperFC.offsetHeight > slSwiperW.offsetHeight ) {
 						slSwiperW.style.height = 'auto';
 					}
 				}

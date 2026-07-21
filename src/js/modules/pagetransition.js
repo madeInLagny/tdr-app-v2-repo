@@ -1,126 +1,99 @@
 CNVS.PageTransition = function() {
 	var __core = SEMICOLON.Core;
 
+	var _loaderTemplates = {
+		'2':  '<div class="css3-spinner-flipper"></div>',
+		'3':  '<div class="css3-spinner-double-bounce1"></div><div class="css3-spinner-double-bounce2"></div>',
+		'4':  '<div class="css3-spinner-rect1"></div><div class="css3-spinner-rect2"></div><div class="css3-spinner-rect3"></div><div class="css3-spinner-rect4"></div><div class="css3-spinner-rect5"></div>',
+		'5':  '<div class="css3-spinner-cube1"></div><div class="css3-spinner-cube2"></div>',
+		'6':  '<div class="css3-spinner-scaler"></div>',
+		'7':  '<div class="css3-spinner-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>',
+		'8':  '<div class="css3-spinner-clip-rotate"><div></div></div>',
+		'9':  '<div class="css3-spinner-ball-rotate"><div></div><div></div><div></div></div>',
+		'10': '<div class="css3-spinner-zig-zag"><div></div><div></div></div>',
+		'11': '<div class="css3-spinner-triangle-path"><div></div><div></div><div></div></div>',
+		'12': '<div class="css3-spinner-ball-scale-multiple"><div></div><div></div><div></div></div>',
+		'13': '<div class="css3-spinner-ball-pulse-sync"><div></div><div></div><div></div></div>',
+		'14': '<div class="css3-spinner-scale-ripple"><div></div><div></div><div></div></div>',
+	};
+
+	var _defaultLoader = '<div class="css3-spinner-bounce1"></div><div class="css3-spinner-bounce2"></div><div class="css3-spinner-bounce3"></div>';
+
+	var _sanitizeColorValue = function(v) {
+		if( !v ) return '';
+		return String(v).replace(/[";{}<>]/g, '');
+	};
+
 	return {
 		init: function(selector) {
 			var body = __core.getVars.elBody;
 
 			__core.initFunction({ class: 'has-plugin-pagetransition', event: 'pluginPageTransitionReady' });
 
-			if( body.classList.contains('no-transition') ) {
-				return true;
-			}
+			if( body.classList.contains('no-transition') ) return true;
+			if( !body.classList.contains('page-transition') ) body.classList.add('page-transition');
 
-			if( !body.classList.contains('page-transition') ) {
-				body.classList.add('page-transition');
-			}
+			window.addEventListener('pageshow', function(event) {
+				if( event.persisted ) window.location.reload();
+			});
 
-			window.onpageshow = function(event) {
-				if(event.persisted) {
-					window.location.reload();
-				}
-			};
+			var elAnimIn      = body.getAttribute('data-animation-in') || 'fadeIn';
+			var elSpeedIn     = Number(body.getAttribute('data-speed-in')) || 1000;
+			var elTimeoutRaw  = body.getAttribute('data-loader-timeout');
+			var elTimeout     = elTimeoutRaw ? Number(elTimeoutRaw) : null;
+			var elLoader      = body.getAttribute('data-loader');
+			var elLoaderColor = body.getAttribute('data-loader-color');
+			var elLoaderHtml  = body.getAttribute('data-loader-html');
 
-			var pageTransition = document.querySelector('.page-transition-wrap');
-
-			var elAnimIn = body.getAttribute('data-animation-in') || 'fadeIn',
-				elSpeedIn = body.getAttribute('data-speed-in') || 1000,
-				elTimeoutActive = false,
-				elTimeout = body.getAttribute('data-loader-timeout'),
-				elLoader = body.getAttribute('data-loader'),
-				elLoaderColor = body.getAttribute('data-loader-color'),
-				elLoaderHtml = body.getAttribute('data-loader-html'),
-				elLoaderAppend = '',
-				elLoaderCSSVar = '';
-
-			if( !elTimeout ) {
-				elTimeoutActive = false;
-				elTimeout = false;
-			} else {
-				elTimeoutActive = true;
-				elTimeout = Number(elTimeout);
-			}
-
+			var elLoaderCSSVar = '';
 			if( elLoaderColor ) {
-				if( elLoaderColor == 'theme' ) {
-					elLoaderCSSVar = ' style="--cnvs-loader-color:var(--cnvs-themecolor);"';
-				} else {
-					elLoaderCSSVar = ' style="--cnvs-loader-color:'+elLoaderColor+';"';
-				}
+				var colorValue = elLoaderColor === 'theme' ? 'var(--cnvs-themecolor)' : _sanitizeColorValue(elLoaderColor);
+				elLoaderCSSVar = ' style="--cnvs-loader-color:' + colorValue + ';"';
 			}
 
-			var elLoaderBefore = '<div class="css3-spinner"'+elLoaderCSSVar+'>',
-				elLoaderAfter = '</div>';
+			var innerLoader = elLoaderHtml || _loaderTemplates[elLoader] || _defaultLoader;
+			var finalLoaderHtml = '<div class="css3-spinner"' + elLoaderCSSVar + '>' + innerLoader + '</div>';
 
-			if( elLoader == '2' ) {
-				elLoaderAppend = '<div class="css3-spinner-flipper"></div>';
-			} else if( elLoader == '3' ) {
-				elLoaderAppend = '<div class="css3-spinner-double-bounce1"></div><div class="css3-spinner-double-bounce2"></div>';
-			} else if( elLoader == '4' ) {
-				elLoaderAppend = '<div class="css3-spinner-rect1"></div><div class="css3-spinner-rect2"></div><div class="css3-spinner-rect3"></div><div class="css3-spinner-rect4"></div><div class="css3-spinner-rect5"></div>';
-			} else if( elLoader == '5' ) {
-				elLoaderAppend = '<div class="css3-spinner-cube1"></div><div class="css3-spinner-cube2"></div>';
-			} else if( elLoader == '6' ) {
-				elLoaderAppend = '<div class="css3-spinner-scaler"></div>';
-			} else if( elLoader == '7' ) {
-				elLoaderAppend = '<div class="css3-spinner-grid-pulse"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>';
-			} else if( elLoader == '8' ) {
-				elLoaderAppend = '<div class="css3-spinner-clip-rotate"><div></div></div>';
-			} else if( elLoader == '9' ) {
-				elLoaderAppend = '<div class="css3-spinner-ball-rotate"><div></div><div></div><div></div></div>';
-			} else if( elLoader == '10' ) {
-				elLoaderAppend = '<div class="css3-spinner-zig-zag"><div></div><div></div></div>';
-			} else if( elLoader == '11' ) {
-				elLoaderAppend = '<div class="css3-spinner-triangle-path"><div></div><div></div><div></div></div>';
-			} else if( elLoader == '12' ) {
-				elLoaderAppend = '<div class="css3-spinner-ball-scale-multiple"><div></div><div></div><div></div></div>';
-			} else if( elLoader == '13' ) {
-				elLoaderAppend = '<div class="css3-spinner-ball-pulse-sync"><div></div><div></div><div></div></div>';
-			} else if( elLoader == '14' ) {
-				elLoaderAppend = '<div class="css3-spinner-scale-ripple"><div></div><div></div><div></div></div>';
-			} else {
-				elLoaderAppend = '<div class="css3-spinner-bounce1"></div><div class="css3-spinner-bounce2"></div><div class="css3-spinner-bounce3"></div>';
-			}
-
-			if( !elLoaderHtml ) {
-				elLoaderHtml = elLoaderAppend;
-			}
-
-			elLoaderHtml = elLoaderBefore + elLoaderHtml + elLoaderAfter;
-
-			if( elAnimIn == 'fadeIn' ) {
+			if( elAnimIn === 'fadeIn' ) {
 				__core.getVars.elWrapper.classList.add('op-1');
 			} else {
 				__core.getVars.elWrapper.classList.add('not-animated');
 			}
 
+			var pageTransition = document.querySelector('.page-transition-wrap');
 			if( !pageTransition ) {
 				var divPT = document.createElement('div');
-				divPT.classList.add('page-transition-wrap');
-				divPT.innerHTML = elLoaderHtml;
-				body.prepend( divPT );
-				pageTransition = document.querySelector('.page-transition-wrap');
+				divPT.className = 'page-transition-wrap';
+				divPT.innerHTML = finalLoaderHtml;
+				body.prepend(divPT);
+				pageTransition = divPT;
 			}
 
 			if( elSpeedIn ) {
-				__core.getVars.elWrapper.style.setProperty('--cnvs-animate-duration', Number(elSpeedIn)+'ms');
-				if( elAnimIn == 'fadeIn' ) {
-					pageTransition.style.setProperty('--cnvs-animate-duration', Number(elSpeedIn)+'ms');
+				__core.getVars.elWrapper.style.setProperty('--cnvs-animate-duration', elSpeedIn + 'ms');
+				if( elAnimIn === 'fadeIn' ) {
+					pageTransition.style.setProperty('--cnvs-animate-duration', elSpeedIn + 'ms');
 				}
 			}
 
+			var ended = false;
+			var failsafeTimer = null;
+
 			var endPageTransition = function() {
-				elAnimIn.split(" ").forEach( function(_class) {
+				if( ended ) return;
+				ended = true;
+				clearTimeout(failsafeTimer);
+
+				elAnimIn.split(/\s+/).filter(Boolean).forEach( function(_class) {
 					pageTransition.classList.remove(_class);
 				});
-
 				pageTransition.classList.add('fadeOut', 'animated');
 
 				var removePageTransition = function() {
-					pageTransition.remove();
-					if( elAnimIn != 'fadeIn' ) {
+					if( pageTransition.parentNode ) pageTransition.remove();
+					if( elAnimIn !== 'fadeIn' ) {
 						__core.getVars.elWrapper.classList.remove('not-animated');
-						(elAnimIn + ' animated').split(" ").forEach(function(_class) {
+						(elAnimIn + ' animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
 							__core.getVars.elWrapper.classList.add(_class);
 						});
 					}
@@ -128,37 +101,39 @@ CNVS.PageTransition = function() {
 
 				var displayContent = function() {
 					body.classList.remove('page-transition');
-
-					setTimeout(function() {
-						(elAnimIn + ' animated').split(" ").forEach( function(_class) {
+					setTimeout( function() {
+						(elAnimIn + ' animated').split(/\s+/).filter(Boolean).forEach( function(_class) {
 							__core.getVars.elWrapper.classList.remove(_class);
 						});
 					}, 333);
-
-					setTimeout(function() {
+					setTimeout( function() {
 						__core.getVars.elWrapper.style.removeProperty('--cnvs-animate-duration');
 					}, 666);
 				};
 
-				pageTransition.addEventListener('transitionend', removePageTransition);
-				pageTransition.addEventListener('animationend', removePageTransition);
-				__core.getVars.elWrapper.addEventListener('transitionend', displayContent);
-				__core.getVars.elWrapper.addEventListener('animationend', displayContent);
-
-				return true;
+				pageTransition.addEventListener('transitionend', removePageTransition, { once: true });
+				pageTransition.addEventListener('animationend', removePageTransition, { once: true });
+				__core.getVars.elWrapper.addEventListener('transitionend', displayContent, { once: true });
+				__core.getVars.elWrapper.addEventListener('animationend', displayContent, { once: true });
 			};
 
 			if( document.readyState === 'complete' ) {
 				endPageTransition();
+			} else {
+				window.addEventListener('load', endPageTransition, { once: true });
 			}
 
-			if( elTimeoutActive ) {
-				setTimeout( endPageTransition, elTimeout );
+			if( elTimeout !== null && isFinite(elTimeout) ) {
+				setTimeout(endPageTransition, elTimeout);
 			}
 
-			window.addEventListener('load', function(){
+			failsafeTimer = setTimeout( function() {
 				endPageTransition();
-			});
+				if( pageTransition && pageTransition.parentNode ) {
+					pageTransition.remove();
+				}
+				body.classList.remove('page-transition');
+			}, Math.max(elSpeedIn * 3, 8000));
 		}
 	};
 }();

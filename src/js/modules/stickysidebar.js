@@ -7,30 +7,29 @@ CNVS.StickySidebar = function() {
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.stickysidebar.js', id: 'canvas-stickysidebar-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().scwStickySidebar;
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-stickysidebar', event: 'pluginStickySidebarReady' });
+			__core.requirePlugin({
+				file: 'plugins.stickysidebar.js',
+				id: 'canvas-stickysidebar-js',
+				check: function() { return typeof jQuery !== 'undefined' && jQuery().scwStickySidebar; },
+				class: 'has-plugin-stickysidebar',
+				event: 'pluginStickySidebarReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector );
-				if( selector.length < 1 ){
-					return false;
-				}
+				if( !selector || selector.length < 1 ) return;
 
 				selector.each( function(){
-					var element = jQuery(this),
-						elTop = element.attr('data-offset-top') || 110,
-						elBottom = element.attr('data-offset-bottom') || 50;
+					var element = jQuery(this);
+					var raw = element[0];
+					if( !__core.markOnce(raw, 'cnvsStickysidebarInit') ) return;
+
+					var elTop    = __core.toNumber(element.attr('data-offset-top'), 110),
+						elBottom = __core.toNumber(element.attr('data-offset-bottom'), 50);
 
 					element.scwStickySidebar({
-						additionalMarginTop: Number(elTop),
-						additionalMarginBottom: Number(elBottom)
+						additionalMarginTop: elTop,
+						additionalMarginBottom: elBottom
 					});
 				});
 			});

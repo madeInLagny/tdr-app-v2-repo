@@ -1,14 +1,14 @@
 CNVS.RoundedSkills = function() {
 	var __core = SEMICOLON.Core;
 
-	var _run = function(element, properties) {
-		element.easyPieChart({
+	var _run = function($element, properties) {
+		$element.easyPieChart({
 			size: properties.size,
 			animate: properties.speed,
 			scaleColor: false,
 			trackColor: properties.trackcolor,
 			lineWidth: properties.width,
-			lineCap: 'square',
+			lineCap: properties.cap,
 			barColor: properties.color
 		});
 	};
@@ -19,60 +19,52 @@ CNVS.RoundedSkills = function() {
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.piechart.js', id: 'canvas-piechart-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().easyPieChart;
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-piechart', event: 'pluginRoundedSkillReady' });
+			__core.requirePlugin({
+				file: 'plugins.piechart.js',
+				id: 'canvas-piechart-js',
+				check: function() { return typeof jQuery !== 'undefined' && jQuery().easyPieChart; },
+				class: 'has-plugin-piechart',
+				event: 'pluginRoundedSkillReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( !selector || selector.length < 1 ) return;
 
 				selector.each(function(){
-					var element = jQuery(this),
-						elSize = element.attr('data-size') || 140,
-						elSpeed = element.attr('data-speed') || 2000,
-						elWidth = element.attr('data-width') || 4,
-						elColor = element.attr('data-color') || '#0093BF',
-						elTrackColor = element.attr('data-trackcolor') || 'rgba(0,0,0,0.04)';
+					var $element = jQuery(this);
+					var element = $element[0];
+					if( !__core.markOnce(element, 'cnvsRoundedskillInit') ) return;
+
+					var size       = __core.toNumber($element.attr('data-size'), 140),
+						speed      = __core.toNumber($element.attr('data-speed'), 2000),
+						width      = __core.toNumber($element.attr('data-width'), 4),
+						color      = $element.attr('data-color') || '#0093BF',
+						trackColor = $element.attr('data-trackcolor') || 'rgba(0,0,0,0.04)',
+						cap        = $element.attr('data-cap') || 'square';
 
 					var properties = {
-						size: Number( elSize ),
-						speed: Number( elSpeed ),
-						width: Number( elWidth ),
-						color: elColor,
-						trackcolor:	elTrackColor
+						size: size,
+						speed: speed,
+						width: width,
+						color: color,
+						trackcolor: trackColor,
+						cap: cap
 					};
 
-					element.css({ 'width': elSize+'px', 'height': elSize+'px', 'line-height': elSize+'px' });
+					$element.css({ 'width': size + 'px', 'height': size + 'px', 'line-height': size + 'px' });
 
 					if( jQuery('body').hasClass('device-up-lg') ){
-						element.animate({opacity:0}, 10);
-						var observer = new IntersectionObserver( function(entries, observer){
-							entries.forEach( function(entry){
-								if (entry.isIntersecting) {
-									if (!element.hasClass('skills-animated')) {
-										setTimeout( function(){
-											element.css({opacity: 1});
-										}, 100);
-
-										_run(element, properties);
-										element.addClass('skills-animated');
-									}
-									observer.unobserve( entry.target );
-								}
-							});
-						}, {rootMargin: '0px 0px 50px'});
-						observer.observe( element[0] );
+						$element.css({ opacity: 0 });
+						__core.intersect(element, { rootMargin: '0px 0px 50px' }, function() {
+							if( $element.hasClass('skills-animated') ) return;
+							setTimeout( function(){ $element.css({ opacity: 1 }); }, 100);
+							_run($element, properties);
+							$element.addClass('skills-animated');
+						});
 					} else {
-						_run(element, properties);
+						_run($element, properties);
+						$element.addClass('skills-animated');
 					}
 				});
 			});

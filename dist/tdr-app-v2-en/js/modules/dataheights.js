@@ -2,6 +2,16 @@ CNVS.DataHeights = function() {
 	var __core = SEMICOLON.Core;
 	var __modules = SEMICOLON.Modules;
 
+	var _bpOrder = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+
+	var _currentBreakpoint = function() {
+		var body = __core.getVars.elBody.classList;
+		for( var i = 0; i < _bpOrder.length; i++ ) {
+			if( body.contains('device-' + _bpOrder[i]) ) return _bpOrder[i];
+		}
+		return null;
+	};
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
@@ -11,42 +21,33 @@ CNVS.DataHeights = function() {
 			__core.initFunction({ class: 'has-plugin-dataheights', event: 'pluginDataHeightsReady' });
 
 			selector = __core.getSelector( selector, false, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
+
+			var bp = _currentBreakpoint();
 
 			selector.forEach( function(el) {
-				var heightXs = el.getAttribute('data-height-xs') || 'auto',
-					heightSm = el.getAttribute('data-height-sm') || heightXs,
-					heightMd = el.getAttribute('data-height-md') || heightSm,
-					heightLg = el.getAttribute('data-height-lg') || heightMd,
-					heightXl = el.getAttribute('data-height-xl') || heightLg,
-					heightXxl = el.getAttribute('data-height-xxl') || heightXl,
-					body = __core.getVars.elBody.classList,
-					elHeight;
+				var h = {
+					xs: el.getAttribute('data-height-xs') || 'auto',
+				};
+				h.sm = el.getAttribute('data-height-sm') || h.xs;
+				h.md = el.getAttribute('data-height-md') || h.sm;
+				h.lg = el.getAttribute('data-height-lg') || h.md;
+				h.xl = el.getAttribute('data-height-xl') || h.lg;
+				h.xxl = el.getAttribute('data-height-xxl') || h.xl;
 
-				if( body.contains('device-xs') ) {
-					elHeight = heightXs;
-				} else if( body.contains('device-sm') ) {
-					elHeight = heightSm;
-				} else if( body.contains('device-md') ) {
-					elHeight = heightMd;
-				} else if( body.contains('device-lg') ) {
-					elHeight = heightLg;
-				} else if( body.contains('device-xl') ) {
-					elHeight = heightXl;
-				} else if( body.contains('device-xxl') ) {
-					elHeight = heightXxl;
-				}
+				var elHeight = bp ? h[bp] : null;
+				if( !elHeight ) return;
 
-				if( elHeight ) {
-					el.style.height = !isNaN( elHeight ) ? elHeight + 'px' : elHeight;
+				if( /^-?\d+(\.\d+)?$/.test(String(elHeight)) ) {
+					el.style.height = elHeight + 'px';
+				} else {
+					el.style.height = elHeight;
 				}
 			});
 
-			__core.getVars.resizers.dataHeights = function() {
+			__core.getVars.resizers.dataHeights = __core.debounce(function() {
 				__modules.dataHeights();
-			};
+			}, 150);
 		}
 	};
 }();

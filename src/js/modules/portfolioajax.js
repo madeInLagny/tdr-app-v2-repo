@@ -1,10 +1,16 @@
 CNVS.PortfolioAjax = function() {
 	var __core = SEMICOLON.Core;
 
+	var _transitionHandler = null;
+	var _closeHandler = null;
+
 	var _newNextPrev = function(portPostId) {
 		var portNext = _getNext(portPostId);
 		var portPrev = _getPrev(portPostId);
 		var portNav = document.getElementById('portfolio-navigation');
+		if( !portNav ) return;
+
+		var closeBtn = document.getElementById('close-portfolio');
 
 		if( !document.getElementById('prev-portfolio') && portPrev ) {
 			var prevPortItem = document.createElement('a');
@@ -12,7 +18,7 @@ CNVS.PortfolioAjax = function() {
 			prevPortItem.setAttribute('id', 'prev-portfolio');
 			prevPortItem.setAttribute('data-id', portPrev);
 			prevPortItem.innerHTML = '<i class="bi-arrow-left"></i>';
-			prevPortItem && portNav?.insertBefore(prevPortItem, document.getElementById('close-portfolio'));
+			portNav.insertBefore(prevPortItem, closeBtn);
 		}
 
 		if( !document.getElementById('next-portfolio') && portNext ) {
@@ -21,119 +27,116 @@ CNVS.PortfolioAjax = function() {
 			nextPortItem.setAttribute('id', 'next-portfolio');
 			nextPortItem.setAttribute('data-id', portNext);
 			nextPortItem.innerHTML = '<i class="bi-arrow-right"></i>';
-			nextPortItem && portNav?.insertBefore(nextPortItem, document.getElementById('close-portfolio'));
+			portNav.insertBefore(nextPortItem, closeBtn);
 		}
 	};
 
 	var _load = function(portPostId, prevPostPortId, getIt) {
-		if( !getIt ) {
-			getIt = false;
-		}
+		if( !getIt ) getIt = false;
+		if( getIt !== false ) return;
+
+		var srcEl = document.getElementById(portPostId);
+		if( !srcEl ) return;
 
 		var portNext = _getNext(portPostId);
 		var portPrev = _getPrev(portPostId);
 
-		if( getIt == false ) {
-			_close();
-			__core.getVars.elBody.classList.add('portfolio-ajax-loading');
-			// __core.getVars.portfolioAjax.loader.classList.add('loader-overlay-display');
-			var portfolioDataLoader = document.getElementById(portPostId).getAttribute('data-loader');
+		_close();
+		__core.getVars.elBody.classList.add('portfolio-ajax-loading');
+		var portfolioDataLoader = srcEl.getAttribute('data-loader');
+		if( !portfolioDataLoader ) return;
 
-			fetch(portfolioDataLoader).then( function(response) {
-				return response.text();
-			}).then( function(html) {
-				__core.getVars.portfolioAjax.container.innerHTML = html;
+		fetch(portfolioDataLoader).then( function(response) {
+			if( !response.ok ) throw new Error('HTTP ' + response.status);
+			return response.text();
+		}).then( function(html) {
+			var container = __core.getVars.portfolioAjax.container;
+			if( !container ) return;
+			container.innerHTML = html;
 
-				var nextPortfolio = document.getElementById('next-portfolio'),
-					prevPortfolio = document.getElementById('prev-portfolio');
+			var nextPortfolio = document.getElementById('next-portfolio'),
+				prevPortfolio = document.getElementById('prev-portfolio');
 
-				nextPortfolio?.classList.add('d-none');
-				prevPortfolio?.classList.add('d-none');
+			nextPortfolio?.classList.add('d-none');
+			prevPortfolio?.classList.add('d-none');
 
-				if( portNext ) {
-					nextPortfolio?.setAttribute('data-id', portNext);
-					nextPortfolio?.classList.remove('d-none');
-				}
+			if( portNext ) {
+				nextPortfolio?.setAttribute('data-id', portNext);
+				nextPortfolio?.classList.remove('d-none');
+			}
+			if( portPrev ) {
+				prevPortfolio?.setAttribute('data-id', portPrev);
+				prevPortfolio?.classList.remove('d-none');
+			}
 
-				if( portPrev ) {
-					prevPortfolio?.setAttribute('data-id', portPrev);
-					prevPortfolio?.classList.remove('d-none');
-				}
+			_initAjax(portPostId);
+			_open();
 
-				_initAjax(portPostId);
-				_open();
-
-				__core.getVars.portfolioAjax.items.forEach( function(item) {
-					item.classList.remove('portfolio-active');
-				});
-
-				document.getElementById(portPostId).classList.add('portfolio-active');
-			}).catch( function(error) {
-				console.warn('Something went wrong.', error);
+			__core.getVars.portfolioAjax.items?.forEach( function(item) {
+				item.classList.remove('portfolio-active');
 			});
-		}
+
+			document.getElementById(portPostId)?.classList.add('portfolio-active');
+		}).catch( function(error) {
+			console.warn('Something went wrong.', error);
+			__core.getVars.elBody.classList.remove('portfolio-ajax-loading');
+		});
 	};
 
 	var _close = function() {
-		if( __core.getVars.portfolioAjax.wrapper && __core.getVars.portfolioAjax.wrapper.offsetHeight > 32 ) {
-			__core.getVars.elBody.classList.remove('portfolio-ajax-loading');
-			// __core.getVars.portfolioAjax.loader.classList.add('loader-overlay-display');
-			__core.getVars.portfolioAjax.wrapper.classList.remove('portfolio-ajax-opened');
+		var wrapper = __core.getVars.portfolioAjax.wrapper;
+		if( !wrapper || wrapper.offsetHeight <= 32 ) return;
 
-			__core.getVars.portfolioAjax.wrapper.querySelector('#portfolio-ajax-single').addEventListener('transitionend', function() {
-				__core.getVars.portfolioAjax.wrapper.querySelector('#portfolio-ajax-single').remove();
-			});
+		__core.getVars.elBody.classList.remove('portfolio-ajax-loading');
+		wrapper.classList.remove('portfolio-ajax-opened');
 
-			__core.getVars.portfolioAjax.items.forEach( function(item) {
-				item.classList.remove('portfolio-active');
-			});
+		var single = wrapper.querySelector('#portfolio-ajax-single');
+		if( single ) {
+			if( _transitionHandler ) {
+				single.removeEventListener('transitionend', _transitionHandler);
+			}
+			_transitionHandler = function() {
+				single.remove();
+				_transitionHandler = null;
+			};
+			single.addEventListener('transitionend', _transitionHandler, { once: true });
 		}
+
+		__core.getVars.portfolioAjax.items?.forEach( function(item) {
+			item.classList.remove('portfolio-active');
+		});
 	};
 
 	var _open = function() {
-		var countImages = __core.getVars.portfolioAjax.container.querySelectorAll('img').length;
-
-		if( countImages < 1 ) {
-			_display();
-		} else {
-			__core.imagesLoaded(__core.getVars.portfolioAjax.container);
-			__core.getVars.portfolioAjax.container.addEventListener( 'CanvasImagesLoaded', function() {
-				_display();
-			});
-		}
+		var container = __core.getVars.portfolioAjax.container;
+		if( !container ) return;
+		_display();
 	};
 
 	var _display = function() {
-		__core.getVars.portfolioAjax.container.style.display = 'block';
-		__core.getVars.portfolioAjax.wrapper.classList.add('portfolio-ajax-opened');
+		var portfolioAjax = __core.getVars.portfolioAjax;
+		if( !portfolioAjax.container || !portfolioAjax.wrapper ) return;
+		portfolioAjax.container.style.display = 'block';
+		portfolioAjax.wrapper.classList.add('portfolio-ajax-opened');
 		__core.getVars.elBody.classList.remove('portfolio-ajax-loading');
-		// __core.getVars.portfolioAjax.loader.classList.remove('loader-overlay-display');
 		setTimeout( function() {
-			__core.runContainerModules( __core.getVars.portfolioAjax.wrapper );
-			__core.scrollTo((__core.getVars.portfolioAjax.wrapperOffset - __core.getVars.topScrollOffset - 60), false, false);
+			__core.runContainerModules(portfolioAjax.wrapper);
+			__core.scrollTo((portfolioAjax.wrapperOffset - __core.getVars.topScrollOffset - 60), false, false);
 		}, 500);
-	}
+	};
 
 	var _getNext = function(portPostId) {
-		var portNext = false;
-		var hasNext = document.getElementById(portPostId).nextElementSibling;
-
-		if( hasNext ) {
-			portNext = hasNext.getAttribute('id');
-		}
-
-		return portNext;
+		var el = document.getElementById(portPostId);
+		if( !el ) return false;
+		var next = el.nextElementSibling;
+		return next ? next.getAttribute('id') : false;
 	};
 
 	var _getPrev = function(portPostId) {
-		var portPrev = false;
-		var hasPrev = document.getElementById(portPostId).previousElementSibling;
-
-		if( hasPrev ) {
-			portPrev = hasPrev.getAttribute('id');
-		}
-
-		return portPrev;
+		var el = document.getElementById(portPostId);
+		if( !el ) return false;
+		var prev = el.previousElementSibling;
+		return prev ? prev.getAttribute('id') : false;
 	};
 
 	var _initAjax = function(portPostId) {
@@ -142,20 +145,26 @@ CNVS.PortfolioAjax = function() {
 		_newNextPrev(portPostId);
 
 		document.querySelectorAll('#next-portfolio, #prev-portfolio').forEach( function(el) {
-			el.onclick = function(e) {
+			var handler = function(e) {
 				e.preventDefault();
 				_close();
-
-				var portPostId = el.getAttribute('data-id');
-				document.getElementById(portPostId).classList.add('portfolio-active');
-				_load(portPostId, __core.getVars.portfolioAjax.prevItem);
+				var nextId = el.getAttribute('data-id');
+				if( !nextId ) return;
+				document.getElementById(nextId)?.classList.add('portfolio-active');
+				_load(nextId, __core.getVars.portfolioAjax.prevItem);
 			};
-		})
+			__core.rebind(el, 'click', handler, 'portfolioajax.nav');
+		});
 
-		document.getElementById('close-portfolio').onclick = function(e) {
-			e.preventDefault();
-			_close();
-		};
+		var closeBtn = document.getElementById('close-portfolio');
+		if( closeBtn ) {
+			if( _closeHandler ) closeBtn.removeEventListener('click', _closeHandler);
+			_closeHandler = function(e) {
+				e.preventDefault();
+				_close();
+			};
+			closeBtn.addEventListener('click', _closeHandler);
+		}
 	};
 
 	return {
@@ -167,31 +176,32 @@ CNVS.PortfolioAjax = function() {
 			__core.initFunction({ class: 'has-plugin-ajaxportfolio', event: 'pluginAjaxPortfolioReady' });
 
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
-			__core.getVars.portfolioAjax.items = selector[0].querySelectorAll('.portfolio-item');
-			__core.getVars.portfolioAjax.wrapper = document.getElementById('portfolio-ajax-wrap');
-			__core.getVars.portfolioAjax.wrapperOffset = __core.offset(__core.getVars.portfolioAjax.wrapper).top;
-			__core.getVars.portfolioAjax.container = document.getElementById('portfolio-ajax-container');
-			__core.getVars.portfolioAjax.loader = document.getElementById('portfolio-ajax-loader');
-			__core.getVars.portfolioAjax.prevItem = '';
+			var wrapper = document.getElementById('portfolio-ajax-wrap');
+			__core.getVars.portfolioAjax.items         = selector[0].querySelectorAll('.portfolio-item');
+			__core.getVars.portfolioAjax.wrapper       = wrapper;
+			__core.getVars.portfolioAjax.wrapperOffset = wrapper ? __core.offset(wrapper).top : 0;
+			__core.getVars.portfolioAjax.container     = document.getElementById('portfolio-ajax-container');
+			__core.getVars.portfolioAjax.loader        = document.getElementById('portfolio-ajax-loader');
+			__core.getVars.portfolioAjax.prevItem      = '';
 
 			selector[0].querySelectorAll('.portfolio-ajax-trigger').forEach( function(el) {
 				if( !el.querySelector('i:nth-child(2)') ) {
-					el.innerHTML += '<i class="bi-arrow-repeat icon-spin"></i>';
+					el.insertAdjacentHTML('beforeend', '<i class="bi-arrow-repeat icon-spin"></i>');
 				}
 
-				el.onclick = function(e) {
+				var handler = function(e) {
 					e.preventDefault();
-
-					var portPostId = e.target.closest('.portfolio-item').getAttribute('id');
-
-					if( !e.target.closest('.portfolio-item').classList.contains('portfolio-active') ) {
+					var portItem = e.target.closest('.portfolio-item');
+					if( !portItem ) return;
+					var portPostId = portItem.getAttribute('id');
+					if( !portPostId ) return;
+					if( !portItem.classList.contains('portfolio-active') ) {
 						_load(portPostId, __core.getVars.portfolioAjax.prevItem);
 					}
 				};
+				__core.rebind(el, 'click', handler, 'portfolioajax.trigger');
 			});
 		}
 	};

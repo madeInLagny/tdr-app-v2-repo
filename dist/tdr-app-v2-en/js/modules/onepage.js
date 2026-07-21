@@ -1,7 +1,10 @@
 CNVS.OnePage = function() {
 	var __core = SEMICOLON.Core;
 
-	var _init = function(selector) {
+	var _rafPending = false;
+	var _lastActive = null;
+
+	var _init = function() {
 		_hash();
 
 		if( __core.getVars.elLinkScrolls ) {
@@ -41,9 +44,10 @@ CNVS.OnePage = function() {
 		}
 
 		if( document.querySelector('a[data-href="'+ __core.getVars.hash +'"]') || document.querySelector('a[data-scrollto="'+ __core.getVars.hash +'"]') ) {
-			window.onbeforeunload = function() {
+			var onBeforeUnload = function() {
 				__core.scrollTo(0, 0, false, 'auto');
 			};
+			window.addEventListener('beforeunload', onBeforeUnload, { once: true });
 
 			__core.scrollTo(0, 0, false, 'auto');
 
@@ -54,7 +58,11 @@ CNVS.OnePage = function() {
 					var settings = section.getAttribute('data-onepage-settings') && JSON.parse( section.getAttribute('data-onepage-settings') );
 
 					if( settings ) {
-						_scroll(section, settings, 0);
+						if( __core.getVars.hashScroll != 1 ) {
+							_scroll(section, settings, 0);
+						}
+
+						__core.getVars.hashScroll = 1;
 						clearInterval(int);
 					}
 				}, 250);
@@ -71,7 +79,12 @@ CNVS.OnePage = function() {
 			anchor = el.getAttribute('data-href');
 		}
 
-		var section = document.querySelector( anchor );
+		var section;
+		try {
+			section = document.querySelector( anchor );
+		} catch(e) {
+			section = null;
+		}
 
 		return section;
 	};
@@ -88,7 +101,7 @@ CNVS.OnePage = function() {
 		var settings = _settings( section, el );
 
 		setTimeout( function() {
-			if( !section.hasAttribute('data-onepage-settings') ) {
+			if( !section.hasAttribute('data-onepage-settings') && settings ) {
 				section.setAttribute( 'data-onepage-settings', JSON.stringify( settings ) );
 			}
 
@@ -97,13 +110,14 @@ CNVS.OnePage = function() {
 	};
 
 	var _scroller = function(el, type, clicker = false) {
-		var section = _getSection(el, type),
-			sectionId = section.getAttribute('id'),
-			settings;
+		var section = _getSection(el, type);
 
 		if( !section ) {
 			return false;
 		}
+
+		var sectionId = section.getAttribute('id'),
+			settings;
 
 		if( clicker == true ) {
 			settings = _settings(section, el, false);
@@ -112,13 +126,15 @@ CNVS.OnePage = function() {
 		}
 
 		if( type != 'scrollTo' && __core.getVars.elOnePageActiveOnClick == 'true' ) {
-			parent = el.closest('.one-page-menu');
+			var parentMenu = el.closest('.one-page-menu');
 
-			parent.querySelectorAll(__core.getVars.elOnePageParentSelector).forEach( function(el) {
-				el.classList.remove( __core.getVars.elOnePageActiveClass );
-			});
+			if( parentMenu ) {
+				parentMenu.querySelectorAll(__core.getVars.elOnePageParentSelector).forEach( function(p) {
+					p.classList.remove( __core.getVars.elOnePageActiveClass );
+				});
 
-			parent.querySelector('a[data-href="#' + sectionId + '"]').closest(__core.getVars.elOnePageParentSelector).classList.add( __core.getVars.elOnePageActiveClass );
+				parentMenu.querySelector('a[data-href="#' + sectionId + '"]')?.closest(__core.getVars.elOnePageParentSelector)?.classList.add( __core.getVars.elOnePageActiveClass );
+			}
 		}
 
 		if( !__core.getVars.elBody.classList.contains('is-expanded-menu') || __core.getVars.elBody.classList.contains('overlay-menu') ) {
@@ -130,33 +146,47 @@ CNVS.OnePage = function() {
 
 	var _scroll = function(section, settings, timeout) {
 		setTimeout( function() {
-			var sectionOffset = __core.offset(section).top;
-
-			if( !settings ) {
+			if( !settings || typeof settings !== 'object' ) {
 				return false;
 			}
+
+			var sectionOffset = __core.offset(section).top;
 
 			__core.scrollTo((sectionOffset - Number(settings.offset)), settings.speed, settings.easing);
 		}, Number(timeout));
 	};
 
 	var _position = function() {
+		_rafPending = false;
+
+		var current = _current();
+		if( current === _lastActive ) return;
+		_lastActive = current;
+
 		__core.getVars.elOnePageMenus && __core.getVars.elOnePageMenus.forEach( function(el) {
 			el.querySelectorAll('[data-href]').forEach( function(item) {
-				item.closest(__core.getVars.elOnePageParentSelector).classList.remove( __core.getVars.elOnePageActiveClass );
+				item.closest(__core.getVars.elOnePageParentSelector)?.classList.remove( __core.getVars.elOnePageActiveClass );
 			});
 		});
 
+		if( !current ) return;
+
 		__core.getVars.elOnePageMenus && __core.getVars.elOnePageMenus.forEach( function(el) {
-			el.querySelector('[data-href="#' + _current() + '"]')?.closest(__core.getVars.elOnePageParentSelector).classList.add( __core.getVars.elOnePageActiveClass );
+			el.querySelector('[data-href="#' + current + '"]')?.closest(__core.getVars.elOnePageParentSelector)?.classList.add( __core.getVars.elOnePageActiveClass );
 		});
 	};
 
+	var _requestPosition = function() {
+		if( _rafPending ) return;
+		_rafPending = true;
+		window.requestAnimationFrame(_position);
+	};
+
 	var _current = function() {
-		var currentOnePageSection;
+		var currentOnePageSection = null;
 
 		if( typeof __core.getVars.pageSectionEls === 'undefined' ) {
-			return true;
+			return null;
 		}
 
 		__core.getVars.pageSectionEls.forEach( function(el) {
@@ -178,12 +208,12 @@ CNVS.OnePage = function() {
 	var _settings = function(section, element, json=true) {
 		var body = __core.getVars.elBody.classList;
 
-		if( typeof section === 'undefined' || element.length < 1 ) {
-			return true;
+		if( typeof section === 'undefined' || !element ) {
+			return null;
 		}
 
 		if( section.hasAttribute('data-onepage-settings') && json ) {
-			return true;
+			return null;
 		}
 
 		var defaults = {
@@ -213,43 +243,19 @@ CNVS.OnePage = function() {
 			elOffsetSM = element.getAttribute( 'data-offset-sm' ),
 			elOffsetXS = element.getAttribute( 'data-offset-xs' );
 
-		if( !elOffsetXS ) {
-			elOffsetXS = Number(elementSettings.offset);
-		}
+		if( !elOffsetXS ) elOffsetXS = Number(elementSettings.offset);
+		if( !elOffsetSM ) elOffsetSM = Number(elOffsetXS);
+		if( !elOffsetMD ) elOffsetMD = Number(elOffsetSM);
+		if( !elOffsetLG ) elOffsetLG = Number(elOffsetMD);
+		if( !elOffsetXL ) elOffsetXL = Number(elOffsetLG);
+		if( !elOffsetXXL ) elOffsetXXL = Number(elOffsetXL);
 
-		if( !elOffsetSM ) {
-			elOffsetSM = Number(elOffsetXS);
-		}
-
-		if( !elOffsetMD ) {
-			elOffsetMD = Number(elOffsetSM);
-		}
-
-		if( !elOffsetLG ) {
-			elOffsetLG = Number(elOffsetMD);
-		}
-
-		if( !elOffsetXL ) {
-			elOffsetXL = Number(elOffsetLG);
-		}
-
-		if( !elOffsetXXL ) {
-			elOffsetXXL = Number(elOffsetXL);
-		}
-
-		if( body.contains('device-xs') ) {
-			elementSettings.offset = elOffsetXS;
-		} else if( body.contains('device-sm') ) {
-			elementSettings.offset = elOffsetSM;
-		} else if( body.contains('device-md') ) {
-			elementSettings.offset = elOffsetMD;
-		} else if( body.contains('device-lg') ) {
-			elementSettings.offset = elOffsetLG;
-		} else if( body.contains('device-xl') ) {
-			elementSettings.offset = elOffsetXL;
-		} else if( body.contains('device-xxl') ) {
-			elementSettings.offset = elOffsetXXL;
-		}
+		if( body.contains('device-xs') ) elementSettings.offset = elOffsetXS;
+		else if( body.contains('device-sm') ) elementSettings.offset = elOffsetSM;
+		else if( body.contains('device-md') ) elementSettings.offset = elOffsetMD;
+		else if( body.contains('device-lg') ) elementSettings.offset = elOffsetLG;
+		else if( body.contains('device-xl') ) elementSettings.offset = elOffsetXL;
+		else if( body.contains('device-xxl') ) elementSettings.offset = elOffsetXXL;
 
 		settings.offset = Number(elementSettings.offset);
 		settings.speed = Number(elementSettings.speed);
@@ -282,15 +288,13 @@ CNVS.OnePage = function() {
 				__core.getVars.elOnePageMenus = onePageLinks;
 			}
 
-			_init(selector);
+			_init();
 			_position();
 
-			window.addEventListener('scroll', function(){
-				_position();
-			}, {passive:true});
+			window.addEventListener('scroll', _requestPosition, { passive: true });
 
 			__core.getVars.resizers.onepage = function() {
-				_init(selector);
+				_init();
 				_position();
 			};
 		}

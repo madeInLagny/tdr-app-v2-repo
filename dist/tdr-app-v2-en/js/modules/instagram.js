@@ -2,47 +2,67 @@ CNVS.Instagram = function() {
 	var __core = SEMICOLON.Core;
 	var __modules = SEMICOLON.Modules;
 
-	var _get = function(element, loader, limit, fetchAlert) {
-		var alert = element.closest('.instagram-widget-alert');
+	var _loadedHandlers = new WeakMap();
 
-		if( !alert ) {
-			alert = document.createElement('div');
-			alert.classList.add( 'alert', 'alert-warning', 'instagram-widget-alert', 'text-center' );
-			element.insertAdjacentElement( 'beforebegin', alert );
-			alert.innerHTML = '<div class="spinner-grow spinner-grow-sm me-2" role="status"><span class="visually-hidden">Loading...</span></div> ' + fetchAlert;
-		}
+	var _get = function(element, loader, limit, fetchAlert) {
+		var alert = document.createElement('div');
+		alert.className = 'alert alert-warning instagram-widget-alert text-center';
+		element.insertAdjacentElement('beforebegin', alert);
+
+		var spinner = document.createElement('div');
+		spinner.className = 'spinner-grow spinner-grow-sm me-2';
+		spinner.setAttribute('role', 'status');
+		var hidden = document.createElement('span');
+		hidden.className = 'visually-hidden';
+		hidden.textContent = 'Loading...';
+		spinner.appendChild(hidden);
+		alert.appendChild(spinner);
+		alert.appendChild(document.createTextNode(' ' + fetchAlert));
 
 		fetch(loader).then( function(response) {
+			if( !response.ok ) throw new Error('HTTP ' + response.status);
 			return response.json();
 		}).then( function(images) {
-			if( images.length > 0 ) {
-				alert.remove();
-				for (var i = 0; i < limit; i++) {
-					if ( i === limit )
-						continue;
+			alert.remove();
+			if( !Array.isArray(images) || images.length === 0 ) return;
 
-					var photo = images[i],
-						thumb = photo.media_url;
-					if( photo.media_type === 'VIDEO' ) {
-						thumb = photo.thumbnail_url;
-					}
+			var count = Math.min(images.length, limit);
+			for( var i = 0; i < count; i++ ) {
+				var photo = images[i];
+				if( !photo ) continue;
+				var thumb = photo.media_type === 'VIDEO' ? photo.thumbnail_url : photo.media_url;
+				if( !thumb || !photo.permalink ) continue;
 
-					element.innerHTML += '<a class="grid-item" href="'+ photo.permalink +'" target="_blank"><img src="'+ thumb +'" alt="Image"></a>';
-				}
+				var a = document.createElement('a');
+				a.className = 'grid-item';
+				a.setAttribute('href', photo.permalink);
+				a.setAttribute('target', '_blank');
+				a.setAttribute('rel', 'noopener noreferrer');
+				var img = document.createElement('img');
+				img.setAttribute('src', thumb);
+				img.setAttribute('alt', 'Image');
+				a.appendChild(img);
+				element.appendChild(a);
 			}
 
 			element.classList.remove('customjs');
 			__core.imagesLoaded(element);
 
-			element.addEventListener( 'CanvasImagesLoaded', function() {
+			var prevHandler = _loadedHandlers.get(element);
+			if( prevHandler ) {
+				element.removeEventListener('CanvasImagesLoaded', prevHandler);
+			}
+			var onLoaded = function() {
 				__modules.masonryThumbs();
 				__modules.lightbox();
-			});
+			};
+			element.addEventListener('CanvasImagesLoaded', onLoaded, { once: true });
+			_loadedHandlers.set(element, onLoaded);
 		}).catch( function(err) {
 			console.log(err);
-			alert.classList.remove( 'alert-warning' );
-			alert.classList.add( 'alert-danger' );
-			alert.innerHTML = 'Could not fetch Photos from Instagram API. Please try again later.';
+			alert.classList.remove('alert-warning');
+			alert.classList.add('alert-danger');
+			alert.textContent = 'Could not fetch Photos from Instagram API. Please try again later.';
 		});
 	};
 
@@ -55,18 +75,14 @@ CNVS.Instagram = function() {
 			__core.initFunction({ class: 'has-plugin-instagram', event: 'pluginInstagramReady' });
 
 			selector = __core.getSelector( selector, false, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
 			selector.forEach( function(element) {
-				var elLimit = element.getAttribute('data-count') || 12,
-					elLoader = element.getAttribute('data-loader') || 'include/instagram/instagram.php',
-					elFetch = element.getAttribute('data-fetch-message') || 'Fetching Photos from Instagram...';
+				if( !__core.markOnce(element, 'cnvsInstagramLoaded') ) return;
 
-				if( Number( elLimit ) > 12 ) {
-					elLimit = 12;
-				}
+				var elLimit = Math.min(Number(element.getAttribute('data-count')) || 12, 12);
+				var elLoader = element.getAttribute('data-loader') || 'include/instagram/instagram.php';
+				var elFetch = element.getAttribute('data-fetch-message') || 'Fetching Photos from Instagram...';
 
 				_get(element, elLoader, elLimit, elFetch);
 			});

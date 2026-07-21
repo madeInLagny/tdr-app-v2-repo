@@ -1,110 +1,71 @@
 CNVS.YoutubeBG = function() {
 	var __core = SEMICOLON.Core;
 
+	var _counter = 0;
+
 	return {
 		init: function(selector) {
 			if( __core.getSelector(selector, false, false).length < 1 ){
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.youtube.js', id: 'canvas-youtube-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().YTPlayer;
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-youtubebg', event: 'pluginYoutubeBgVideoReady' });
+			__core.requirePlugin({
+				file: 'plugins.youtube.js',
+				id: 'canvas-youtube-js',
+				check: function() { return typeof jQuery !== 'undefined' && jQuery().YTPlayer; },
+				class: 'has-plugin-youtubebg',
+				event: 'pluginYoutubeBgVideoReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector, true, '.mb_YTPlayer,.customjs' );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( !selector || selector.length < 1 ) return;
 
 				selector.each( function(){
-					var element = jQuery(this),
-						elVideo = element.attr('data-video'),
-						elMute = element.attr('data-mute') || true,
-						elRatio = element.attr('data-ratio') || '16/9',
-						elQuality = element.attr('data-quality') || 'hd720',
-						elOpacity = element.attr('data-opacity') || 1,
-						elContainer = element.attr('data-container') || 'parent',
-						elOptimize = element.attr('data-optimize') || true,
-						elLoop = element.attr('data-loop') || true,
-						elControls = element.attr('data-controls') || false,
-						elVolume = element.attr('data-volume') || 50,
-						elStart = element.attr('data-start') || 0,
-						elStop = element.attr('data-stop') || 0,
-						elAutoPlay = element.attr('data-autoplay') || true,
-						elFullScreen = element.attr('data-fullscreen') || false,
-						elCoverImage = element.attr('data-coverimage') || '',
-						elPauseOnBlur = element.attr('data-pauseonblur') || true,
-						elPlayIfVisible = element.attr('data-playifvisible') || false;
+					var element = jQuery(this);
+					var raw = element[0];
+					if( !raw ) return;
 
-					if( elMute == 'false' ) {
-						elMute = false;
-					}
+					var elVideo = element.attr('data-video');
+					if( !elVideo ) return;
 
-					if( elContainer == 'parent' ) {
+					if( !__core.markOnce(raw, 'cnvsYoutubebgInit') ) return;
+
+					var elContainer = element.attr('data-container') || 'parent';
+					if( elContainer === 'parent' ) {
 						var parent = element.parent();
-						if( parent.attr('id') ) {
-							elContainer = '#' + parent.attr('id');
-						} else {
-							var ytPid = 'yt-bg-player-parent-' + Math.floor( Math.random() * 10000 );
-							parent.attr( 'id', ytPid );
-							elContainer = '#' + ytPid;
+						var parentEl = parent[0];
+						if( parentEl ) {
+							var existingId = parent.attr('id');
+							if( existingId ) {
+								elContainer = '#' + existingId;
+							} else {
+								var ytPid = 'yt-bg-player-parent-' + (++_counter) + '-' + Date.now().toString(36);
+								parent.attr('id', ytPid);
+								elContainer = '#' + ytPid;
+							}
 						}
 					}
 
-					if( elOptimize == 'false' ) {
-						elOptimize = false;
-					}
-
-					if( elLoop == 'false' ) {
-						elLoop = false;
-					}
-
-					if( elControls == 'true' ) {
-						elControls = true;
-					}
-
-					if( elAutoPlay == 'false' ) {
-						elAutoPlay = false;
-					}
-
-					if( elFullScreen == 'true' ) {
-						elFullScreen = true;
-					}
-
-					if( elPauseOnBlur == 'true' ) {
-						elPauseOnBlur = true;
-					}
-
-					if( elPlayIfVisible == 'true' ) {
-						elPlayIfVisible = true;
-					}
-
 					element.YTPlayer({
-						videoURL: elVideo,
-						mute: elMute,
-						ratio: elRatio,
-						quality: elQuality,
-						opacity: Number(elOpacity),
-						containment: elContainer,
-						optimizeDisplay: elOptimize,
-						loop: elLoop,
-						vol: Number(elVolume),
-						startAt: Number(elStart),
-						stopAt: Number(elStop),
-						autoPlay: elAutoPlay,
-						realfullscreen: elFullScreen,
-						showYTLogo: false,
-						showControls: false,
-						coverImage: elCoverImage,
-						stopMovieOnBlur: elPauseOnBlur,
-						playOnlyIfVisible: elPlayIfVisible,
+						videoURL:          elVideo,
+						mute:              __core.toBool(element.attr('data-mute'), true),
+						ratio:             element.attr('data-ratio') || '16/9',
+						quality:           element.attr('data-quality') || 'hd720',
+						opacity:           __core.toNumber(element.attr('data-opacity'), 1),
+						containment:       elContainer,
+						optimizeDisplay:   __core.toBool(element.attr('data-optimize'), true),
+						loop:              __core.toBool(element.attr('data-loop'), true),
+						vol:               __core.toNumber(element.attr('data-volume'), 50),
+						startAt:           __core.toNumber(element.attr('data-start'), 0),
+						stopAt:            __core.toNumber(element.attr('data-stop'), 0),
+						autoPlay:          __core.toBool(element.attr('data-autoplay'), true),
+						realfullscreen:    __core.toBool(element.attr('data-fullscreen'), false),
+						showYTLogo:        false,
+						showControls:      __core.toBool(element.attr('data-controls'), false),
+						coverImage:        element.attr('data-coverimage') || '',
+						stopMovieOnBlur:   __core.toBool(element.attr('data-pauseonblur'), true),
+						playOnlyIfVisible: __core.toBool(element.attr('data-playifvisible'), false)
 					});
 				});
 			});

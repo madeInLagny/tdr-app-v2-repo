@@ -1,59 +1,88 @@
 CNVS.Cursor = function() {
 	var __core = SEMICOLON.Core;
 
+	var _state = {
+		initialized: false,
+		cursor: null,
+		rafPending: false,
+		pendingX: 0,
+		pendingY: 0,
+		mouseMoveHandler: null,
+		actionEnterHandler: null,
+		actionLeaveHandler: null,
+		disableEnterHandler: null,
+		disableLeaveHandler: null,
+	};
+
+	var _addCursorEl = function(className, parent) {
+		var el = document.createElement('div');
+		el.classList.add(className);
+		parent.prepend(el);
+		return el;
+	};
+
+	var _onMouseMoveRaf = function() {
+		_state.rafPending = false;
+		if( !_state.cursor ) return;
+		_state.cursor.style.transform = 'translate3d(' + _state.pendingX + 'px,' + _state.pendingY + 'px,0)';
+	};
+
 	return {
 		init: function(selector) {
 			__core.initFunction({ class: 'has-plugin-cursor', event: 'pluginCursorReady' });
 
+			var hasFinePointer = !window.matchMedia || window.matchMedia('(pointer: fine)').matches;
+			if( !hasFinePointer ) return;
+
 			var cursor = document.querySelector('.cnvs-cursor');
-			var cursorFollower = document.querySelector('.cnvs-cursor-follower');
-			var cursorDot = document.querySelector('.cnvs-cursor-dot');
-
-			var addCursorEl = function(selector, parent) {
-				var el = document.createElement('div');
-				el.classList.add(selector.split('.')[1]);
-
-				parent.prepend( el );
-				return document.querySelector(selector);
-			};
-
 			if( !cursor ) {
-				cursor = addCursorEl('.cnvs-cursor', __core.getVars.elWrapper);
+				cursor = _addCursorEl('cnvs-cursor', __core.getVars.elWrapper);
 			}
-
-			if( !cursorFollower ) {
-				cursorFollower = addCursorEl('.cnvs-cursor-follower', cursor);
+			if( !cursor.querySelector('.cnvs-cursor-follower') ) {
+				_addCursorEl('cnvs-cursor-follower', cursor);
 			}
-
-			if( !cursorDot ) {
-				cursorDot = addCursorEl('.cnvs-cursor-dot', cursor);
+			if( !cursor.querySelector('.cnvs-cursor-dot') ) {
+				_addCursorEl('cnvs-cursor-dot', cursor);
 			}
+			_state.cursor = cursor;
 
-			var onMouseMove = function(event) {
-				cursor.style.transform = "translate3d("+ event.clientX + 'px'+","+event.clientY+'px'+",0px)";
-			}
+			if( _state.initialized ) return;
+			_state.initialized = true;
 
-			document.addEventListener('mousemove', onMouseMove);
+			_state.mouseMoveHandler = function(event) {
+				_state.pendingX = event.clientX;
+				_state.pendingY = event.clientY;
+				if( _state.rafPending ) return;
+				_state.rafPending = true;
+				window.requestAnimationFrame(_onMouseMoveRaf);
+			};
+			document.addEventListener('mousemove', _state.mouseMoveHandler, { passive: true });
 
-			document.querySelectorAll('a,button').forEach( function(el) {
-				el.addEventListener('mouseenter', function() {
+			_state.actionEnterHandler = function(e) {
+				if( e.target.closest('a,button') && !e.target.closest('.cursor-disable') ) {
 					cursor.classList.add('cnvs-cursor-action');
-				});
-
-				el.addEventListener('mouseleave', function() {
+				}
+			};
+			_state.actionLeaveHandler = function(e) {
+				if( e.target.closest('a,button') ) {
 					cursor.classList.remove('cnvs-cursor-action');
-				});
-			});
+				}
+			};
+			document.addEventListener('mouseover', _state.actionEnterHandler);
+			document.addEventListener('mouseout', _state.actionLeaveHandler);
 
-			document.querySelectorAll('.cursor-disable').forEach( function(el) {
-				el.addEventListener('mouseenter', function() {
+			_state.disableEnterHandler = function(e) {
+				if( e.target.closest('.cursor-disable') ) {
 					cursor.classList.add('cnvs-cursor-disabled');
-				});
-
-				el.addEventListener('mouseleave', function() {
+				}
+			};
+			_state.disableLeaveHandler = function(e) {
+				if( e.target.closest('.cursor-disable') ) {
 					cursor.classList.remove('cnvs-cursor-disabled');
-				});
-			});
+				}
+			};
+			document.addEventListener('mouseover', _state.disableEnterHandler);
+			document.addEventListener('mouseout', _state.disableLeaveHandler);
 		}
 	};
 }();

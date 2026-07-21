@@ -11,6 +11,56 @@ if( typeof jQuery !== 'undefined' ) {
 	// USE STRICT
 	"use strict";
 
+	function applyJQueryCompat($) {
+		if( !$ || $.__cnvsCompat ) return;
+		$.__cnvsCompat = true;
+		if( typeof $.isFunction !== 'function' ) {
+			$.isFunction = function(x) { return typeof x === 'function'; };
+		}
+		if( typeof $.isArray !== 'function' ) {
+			$.isArray = Array.isArray;
+		}
+		if( typeof $.parseJSON !== 'function' ) {
+			$.parseJSON = function(s) { return JSON.parse(s); };
+		}
+		if( typeof $.proxy !== 'function' ) {
+			$.proxy = function(fn, ctx) {
+				if( typeof ctx === 'string' ) { var tmp = fn[ctx]; ctx = fn; fn = tmp; }
+				if( typeof fn !== 'function' ) return undefined;
+				var args = Array.prototype.slice.call(arguments, 2);
+				return function() { return fn.apply(ctx, args.concat(Array.prototype.slice.call(arguments))); };
+			};
+		}
+		if( typeof $.trim !== 'function' ) {
+			$.trim = function(s) { return s == null ? '' : String(s).trim(); };
+		}
+		if( typeof $.holdReady !== 'function' ) {
+			$.holdReady = function() {};
+		}
+		if( typeof $.unique !== 'function' && typeof $.uniqueSort === 'function' ) {
+			$.unique = $.uniqueSort;
+		}
+		if( typeof $.now !== 'function' ) {
+			$.now = Date.now;
+		}
+		if( typeof $.camelCase !== 'function' ) {
+			$.camelCase = function(s) {
+				return String(s).replace(/^-ms-/, 'ms-').replace(/-([a-z])/g, function(_, c) { return c.toUpperCase(); });
+			};
+		}
+		if( typeof $.nodeName !== 'function' ) {
+			$.nodeName = function(el, name) { return el && el.nodeName && el.nodeName.toLowerCase() === String(name).toLowerCase(); };
+		}
+		if( typeof $.type !== 'function' ) {
+			$.type = function(obj) {
+				if( obj == null ) return obj + '';
+				return typeof obj === 'object' || typeof obj === 'function'
+					? Object.prototype.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+					: typeof obj;
+			};
+		}
+	}
+
 	var options = {
 		pageTransition: false,
 		cursor: false,
@@ -97,7 +147,6 @@ if( typeof jQuery !== 'undefined' ) {
 		$jq: typeof jQuery !== "undefined" ? jQuery.noConflict() : '',
 		resizers: {},
 		recalls: {},
-		debounced: false,
 		events: {},
 		modules: {},
 		fn: {},
@@ -105,7 +154,9 @@ if( typeof jQuery !== 'undefined' ) {
 			jQuery: {
 				plugin: 'jquery',
 				fn: function(){
-					return typeof jQuery !== 'undefined';
+					if( typeof jQuery === 'undefined' ) return false;
+					applyJQueryCompat(jQuery);
+					return true;
 				},
 				file: options.jsFolder+'jquery.js',
 				id: 'canvas-jquery',
@@ -124,8 +175,8 @@ if( typeof jQuery !== 'undefined' ) {
 			getVars: vars,
 
 			run: function(obj) {
-				Object.values(obj).map( function(fn) {
-					return typeof fn === 'function' && fn.call();
+				Object.values(obj).forEach( function(fn) {
+					if( typeof fn === 'function' ) fn.call();
 				});
 			},
 
@@ -218,34 +269,6 @@ if( typeof jQuery !== 'undefined' ) {
 				}
 			},
 
-			throttle: function(timer, func, delay) {
-				if(timer) {
-					return;
-				}
-
-				timer = setTimeout( function() {
-					func();
-					timer = undefined;
-				}, delay);
-			},
-
-			debounce: function(callback, delay) {
-				clearTimeout(vars.debounced);
-				vars.debounced = setTimeout(callback, delay);
-			},
-
-			debouncedResize: function(func, delay) {
-				var timeoutId;
-				return function() {
-					var context = this;
-					var args = arguments;
-					clearTimeout(timeoutId);
-					timeoutId = setTimeout( function() {
-						func.apply(context, args);
-					}, delay);
-				};
-			},
-
 			addEvent: function(el, event, args = {}) {
 				if( typeof el === "undefined" || typeof event === "undefined" ) {
 					return;
@@ -261,10 +284,7 @@ if( typeof jQuery !== 'undefined' ) {
 
 			scrollEnd: function(callback, refresh = 199) {
 				if (!callback || typeof callback !== 'function') return;
-
-				window.addEventListener('scroll', function() {
-					Core.debounce( callback, refresh );
-				}, {passive: true});
+				window.addEventListener('scroll', Core.debounce(callback, refresh), { passive: true });
 			},
 
 			viewport: function() {
@@ -338,10 +358,7 @@ if( typeof jQuery !== 'undefined' ) {
 
 			onResize: function(callback, refresh = 333) {
 				if (!callback || typeof callback !== 'function') return;
-
-				window.addEventListener('resize', function() {
-					Core.debounce( callback, refresh );
-				});
+				window.addEventListener('resize', Core.debounce(callback, refresh));
 			},
 
 			imagesLoaded: function(el) {
@@ -383,33 +400,18 @@ if( typeof jQuery !== 'undefined' ) {
 			},
 
 			has: function(nodeList, selector) {
-				return [].slice.call(nodeList)?.filter( function(e) {
+				return [].slice.call(nodeList).filter( function(e) {
 					return e.querySelector(selector);
 				});
 			},
 
 			filtered: function(nodeList, selector) {
-				return [].slice.call(nodeList)?.filter( function(e) {
+				return [].slice.call(nodeList).filter( function(e) {
 					return e.matches(selector);
 				});
 			},
 
 			parents: function(elem, selector) {
-				if (!Element.prototype.matches) {
-					Element.prototype.matches =
-						Element.prototype.matchesSelector ||
-						Element.prototype.mozMatchesSelector ||
-						Element.prototype.msMatchesSelector ||
-						Element.prototype.oMatchesSelector ||
-						Element.prototype.webkitMatchesSelector ||
-						function(s) {
-							var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-								i = matches.length;
-							while (--i >= 0 && matches.item(i) !== this) {}
-							return i > -1;
-						};
-				}
-
 				var parents = [];
 
 				for ( ; elem && elem !== document; elem = elem.parentNode ) {
@@ -463,6 +465,93 @@ if( typeof jQuery !== 'undefined' ) {
 				return (el.offsetParent === null);
 			},
 
+			toNumber: function(value, fallback) {
+				var n = parseFloat(value);
+				return isFinite(n) ? n : fallback;
+			},
+
+			toBool: function(value, fallback) {
+				if( value === undefined || value === null || value === '' ) return fallback;
+				var v = String(value).toLowerCase();
+				if( v === 'true' || v === '1' ) return true;
+				if( v === 'false' || v === '0' ) return false;
+				return fallback;
+			},
+
+			escapeHTML: function(str) {
+				return String(str)
+					.replace(/&/g, '&amp;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;')
+					.replace(/"/g, '&quot;')
+					.replace(/'/g, '&#39;');
+			},
+
+			markOnce: function(el, name) {
+				if( !el || el.dataset[name] === '1' ) return false;
+				el.dataset[name] = '1';
+				return true;
+			},
+
+			debounce: function(fn, wait) {
+				var timer;
+				return function() {
+					var ctx = this, args = arguments;
+					clearTimeout(timer);
+					timer = setTimeout(function() { fn.apply(ctx, args); }, wait);
+				};
+			},
+
+			intersect: function(elements, options, onEnter, onLeave) {
+				if( typeof IntersectionObserver === 'undefined' || !elements ) return null;
+				var oneShot = !onLeave;
+				var observer = new IntersectionObserver(function(entries) {
+					entries.forEach(function(entry) {
+						if( entry.isIntersecting ) {
+							onEnter(entry.target, entry, observer);
+							if( oneShot ) observer.unobserve(entry.target);
+						} else if( onLeave ) {
+							onLeave(entry.target, entry, observer);
+						}
+					});
+				}, options || {});
+				if( elements instanceof Element ) {
+					observer.observe(elements);
+				} else {
+					Array.prototype.forEach.call(elements, function(el) {
+						if( el instanceof Element ) observer.observe(el);
+					});
+				}
+				return observer;
+			},
+
+			rebind: (function() {
+				var registries = {};
+				return function(el, eventName, handler, registryKey) {
+					if( !el || !eventName || typeof handler !== 'function' ) return;
+					registryKey = registryKey || eventName;
+					if( !registries[registryKey] ) registries[registryKey] = new WeakMap();
+					var registry = registries[registryKey];
+					var prev = registry.get(el);
+					if( prev ) el.removeEventListener(eventName, prev);
+					el.addEventListener(eventName, handler);
+					registry.set(el, handler);
+				};
+			})(),
+
+			requirePlugin: function(opts) {
+				if( opts.file ) {
+					Core.loadJS({ file: opts.file, id: opts.id, jsFolder: true });
+				}
+				return Core.isFuncTrue(opts.check).then(function(cond) {
+					if( !cond ) return false;
+					if( opts.class || opts.event ) {
+						Core.initFunction({ class: opts.class, event: opts.event });
+					}
+					return true;
+				});
+			},
+
 			classesFn: function(func, classes, selector) {
 				var classArray = classes.split(" ");
 				classArray.forEach( function(classTxt) {
@@ -482,20 +571,19 @@ if( typeof jQuery !== 'undefined' ) {
 						var date = new Date();
 						date.setTime(date.getTime() + (daysToExpire * 24 * 60 * 60 * 1000));
 						var expires = "expires=" + date.toUTCString();
-						document.cookie = name + "=" + value + ";" + expires + ";path=/";
+						document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
 					},
 
 					get: function(name) {
-						var decodedCookies = decodeURIComponent(document.cookie);
-						var cookies = decodedCookies.split(";");
-
-						for (let i = 0; i < cookies.length; i++) {
-						  var cookie = cookies[i].trim();
-						  if (cookie.startsWith(name + "=")) {
-							return cookie.substring(name.length + 1);
-						  }
+						var cookies = document.cookie.split(";");
+						var prefix = name + "=";
+						for( let i = 0; i < cookies.length; i++ ) {
+							var cookie = cookies[i].trim();
+							if( cookie.startsWith(prefix) ) {
+								try { return decodeURIComponent(cookie.substring(prefix.length)); }
+								catch(e) { return cookie.substring(prefix.length); }
+							}
 						}
-
 						return null;
 					},
 
@@ -587,23 +675,10 @@ if( typeof jQuery !== 'undefined' ) {
 						target.scrollTop += delta;
 
 						if (Math.abs(delta) > 0.5)
-							requestFrame(update);
+							window.requestAnimationFrame(update);
 						else
 							moving = false;
 					}
-
-					var requestFrame = function() { // requestAnimationFrame cross browser
-						return (
-							window.requestAnimationFrame ||
-							window.webkitRequestAnimationFrame ||
-							window.mozRequestAnimationFrame ||
-							window.oRequestAnimationFrame ||
-							window.msRequestAnimationFrame ||
-							function(func) {
-								window.setTimeout(func, 1000 / 50);
-							}
-						);
-					}();
 				}
 			},
 
@@ -927,6 +1002,15 @@ if( typeof jQuery !== 'undefined' ) {
 				vars.elBody.querySelectorAll('.not-dark')?.forEach( function(el) {
 					el.setAttribute('data-bs-theme', 'light');
 				});
+			},
+
+			getCurrentYear: function() {
+				var year = new Date();
+				var yearHTML = document.getElementById('cnvs-year');
+
+				if( yearHTML ) {
+					yearHTML.innerText = year.getFullYear();
+				}
 			}
 		}
 	}();
@@ -938,17 +1022,9 @@ if( typeof jQuery !== 'undefined' ) {
 			},
 
 			bootstrap: function() {
-				var notExec = true;
-				document.querySelectorAll('*').forEach( function(el) {
-					if( notExec ) {
-						el.getAttributeNames().some( function(text) {
-							if( text.includes('data-bs') ) {
-								notExec = false;
-								return Core.initModule({ selector: 'body', plugin: 'Bootstrap' });
-							}
-						});
-					}
-				});
+				if( document.querySelector('[data-bs-toggle], [data-bs-target], [data-bs-spy], [data-bs-dismiss], [data-bs-ride], [data-bs-parent], [data-bs-slide], [data-bs-slide-to]') ) {
+					return Core.initModule({ selector: 'body', plugin: 'Bootstrap' });
+				}
 			},
 
 			resizeVideos: function(element) {
@@ -1276,13 +1352,9 @@ if( typeof jQuery !== 'undefined' ) {
 		DocumentOnLoad.init();
 	});
 
-	var resizeFunctions = Core.debouncedResize( function() {
+	window.addEventListener('resize', Core.debounce(function() {
 		DocumentOnResize.init();
-	}, 250);
-
-	window.addEventListener('resize', function() {
-		resizeFunctions();
-	});
+	}, 250));
 
 	var canvas_umd = {
 		Core,
@@ -1308,7 +1380,7 @@ if( typeof jQuery !== 'undefined' ) {
 	 * DO NOT DELETE!! Start (Required)
 	 * --------------------------------------------------------------------------
 	 */
-	if( SEMICOLON === 'undefined' || SEMICOLON.Core === 'undefined' || SEMICOLON.Base === 'undefined' || SEMICOLON.Modules === 'undefined' || SEMICOLON.Mobile === 'undefined' ) {
+	if( typeof SEMICOLON === 'undefined' || !SEMICOLON.Core || !SEMICOLON.Base || !SEMICOLON.Modules || !SEMICOLON.Mobile ) {
 		return false;
 	}
 

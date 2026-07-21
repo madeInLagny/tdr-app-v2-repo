@@ -8,36 +8,28 @@ CNVS.AjaxForm = function() {
 				return true;
 			}
 
-			__core.loadJS({ file: 'plugins.form.js', id: 'canvas-form-js', jsFolder: true });
-
-			__core.isFuncTrue( function() {
-				return typeof jQuery !== 'undefined' && jQuery().validate && jQuery().ajaxSubmit;
-			}).then( function(cond) {
-				if( !cond ) {
-					return false;
-				}
-
-				__core.initFunction({ class: 'has-plugin-form', event: 'pluginFormReady' });
+			__core.requirePlugin({
+				file: 'plugins.form.js',
+				id: 'canvas-form-js',
+				check: function() { return typeof jQuery !== 'undefined' && jQuery().validate && jQuery().ajaxSubmit; },
+				class: 'has-plugin-form',
+				event: 'pluginFormReady'
+			}).then( function(ready) {
+				if( !ready ) return;
 
 				selector = __core.getSelector( selector );
-				if( selector.length < 1 ){
-					return true;
-				}
+				if( selector.length < 1 ) return;
 
 				selector.each( function(){
 					var element = jQuery(this),
 						$body = jQuery('body'),
-						elForm = element.find('form'),
-						elFormId = elForm.attr('id'),
-						elAlert = element.attr('data-alert-type'),
+						elFormId = element.find('form').attr('id'),
+						elAlert = element.attr('data-alert-type') || 'notify',
 						elLoader = element.attr('data-loader'),
 						elResult = element.find('.form-result'),
 						elRedirect = element.attr('data-redirect'),
-						defaultBtn, alertType;
-
-					if( !elAlert ) {
-						elAlert = 'notify';
-					}
+						elTimeout = Number(element.attr('data-timeout')) || 30000,
+						defaultBtn, defaultBtnText, alertType;
 
 					if( elFormId ) {
 						$body.addClass( elFormId + '-ready' );
@@ -73,15 +65,28 @@ CNVS.AjaxForm = function() {
 								$body.removeClass( elFormId + '-ready ' + elFormId + '-complete ' + elFormId + '-success ' + elFormId + '-error' ).addClass( elFormId + '-processing' );
 							}
 
+							var restoreLoader = function() {
+								if( elLoader == 'button' ) {
+									if( defaultBtn && typeof defaultBtnText !== 'undefined' ) {
+										defaultBtn.html( defaultBtnText );
+									}
+								} else {
+									jQuery(form).find('.form-process').fadeOut();
+								}
+							};
+
+							var resetRecaptcha = function() {
+								if( jQuery(form).find('.g-recaptcha').children('div').length > 0 && typeof grecaptcha !== 'undefined' ) {
+									try { grecaptcha.reset(); } catch(e) {}
+								}
+							};
+
 							jQuery(form).ajaxSubmit({
 								target: elResult,
 								dataType: 'json',
+								timeout: elTimeout,
 								success: function(data) {
-									if( elLoader == 'button' ) {
-										defaultBtn.html( defaultBtnText );
-									} else {
-										jQuery(form).find('.form-process').fadeOut();
-									}
+									restoreLoader();
 
 									if( data.alert != 'error' && elRedirect ){
 										window.location.replace( elRedirect );
@@ -89,12 +94,7 @@ CNVS.AjaxForm = function() {
 									}
 
 									if( elAlert == 'inline' ) {
-										if( data.alert == 'error' ) {
-											alertType = 'alert-danger';
-										} else {
-											alertType = 'alert-success';
-										}
-
+										alertType = data.alert == 'error' ? 'alert-danger' : 'alert-success';
 										elResult.removeClass( 'alert-danger alert-success' ).addClass( 'alert ' + alertType ).html( data.message ).slideDown( 400 );
 									} else if( elAlert == 'notify' ) {
 										elResult.attr( 'data-notify-type', data.alert ).attr( 'data-notify-msg', data.message ).html('');
@@ -105,15 +105,16 @@ CNVS.AjaxForm = function() {
 										jQuery(form).resetForm();
 										jQuery(form).find('.btn-group > .btn').removeClass('active');
 
-										if( (typeof tinyMCE != 'undefined') && tinyMCE.activeEditor && !tinyMCE.activeEditor.isHidden() ){
-											tinymce.activeEditor.setContent('');
+										var tmce = window.tinymce || window.tinyMCE;
+										if( tmce && tmce.activeEditor && !tmce.activeEditor.isHidden() ){
+											tmce.activeEditor.setContent('');
 										}
 
 										var rangeSlider = jQuery(form).find('.input-range-slider');
 										if( rangeSlider.length > 0 ) {
 											rangeSlider.each( function(){
 												var range = jQuery(this).data('ionRangeSlider');
-												range.reset();
+												if( range ) range.reset();
 											});
 										}
 
@@ -135,19 +136,44 @@ CNVS.AjaxForm = function() {
 										jQuery(form).find('.input-select2,select[data-selectsplitter-firstselect-selector]').change();
 
 										jQuery(form).trigger( 'formSubmitSuccess', data );
-										$body.removeClass( elFormId + '-error' ).addClass( elFormId + '-success' );
+										if( elFormId ) {
+											$body.removeClass( elFormId + '-error' ).addClass( elFormId + '-success' );
+										}
 									} else {
 										jQuery(form).trigger( 'formSubmitError', data );
-										$body.removeClass( elFormId + '-success' ).addClass( elFormId + '-error' );
+										if( elFormId ) {
+											$body.removeClass( elFormId + '-success' ).addClass( elFormId + '-error' );
+										}
 									}
 
 									if( elFormId ) {
 										$body.removeClass( elFormId + '-processing' ).addClass( elFormId + '-complete' );
 									}
 
-									if( jQuery(form).find('.g-recaptcha').children('div').length > 0 ) {
-										grecaptcha.reset();
+									resetRecaptcha();
+								},
+								error: function(xhr, status) {
+									restoreLoader();
+
+									var errorMsg = status === 'timeout'
+										? 'The request timed out. Please try again.'
+										: 'A network error occurred. Please try again.';
+
+									if( elAlert == 'inline' ) {
+										elResult.removeClass( 'alert-danger alert-success' ).addClass( 'alert alert-danger' ).html( errorMsg ).slideDown( 400 );
+									} else if( elAlert == 'notify' ) {
+										elResult.attr( 'data-notify-type', 'error' ).attr( 'data-notify-msg', errorMsg ).html('');
+										__modules.notifications(elResult);
 									}
+
+									jQuery(form).trigger( 'formSubmitError', { alert: 'error', message: errorMsg, status: status, xhr: xhr } );
+
+									if( elFormId ) {
+										$body.removeClass( elFormId + '-success' ).addClass( elFormId + '-error' );
+										$body.removeClass( elFormId + '-processing' ).addClass( elFormId + '-complete' );
+									}
+
+									resetRecaptcha();
 								}
 							});
 						}

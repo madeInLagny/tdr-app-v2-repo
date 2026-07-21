@@ -2,6 +2,8 @@ CNVS.Menus = function() {
 	var __core = SEMICOLON.Core;
 	var __base = SEMICOLON.Base;
 
+	var _docClickHandler = null;
+
 	var _init = function() {
 		__core.getVars.headerWrapHeight = __core.getVars.elHeaderWrap?.offsetHeight;
 
@@ -23,7 +25,10 @@ CNVS.Menus = function() {
 			onClickTopMenuCurrent.push(topMenu.querySelector('.current'));
 		});
 
-		document.addEventListener('click', function(e) {
+		if( _docClickHandler ) {
+			document.removeEventListener('click', _docClickHandler, false);
+		}
+		_docClickHandler = function(e) {
 			if( !e.target.closest('.primary-menu-trigger') && !e.target.closest('.primary-menu') ) {
 				_reset();
 				_functions();
@@ -58,7 +63,8 @@ CNVS.Menus = function() {
 					current?.classList.add('current');
 				});
 			}
-		}, false);
+		};
+		document.addEventListener('click', _docClickHandler, false);
 
 		document.querySelectorAll( '.menu-item' ).forEach(function(el) {
 			if( el.querySelectorAll('.sub-menu-container').length > 0 ) {
@@ -217,18 +223,32 @@ CNVS.Menus = function() {
 		});
 	};
 
+	var _getMenuHoverDelay = function() {
+		const fallback = 666;
+
+		let raw = getComputedStyle(__core.getVars.elHeader).getPropertyValue('--cnvs-primary-menu-submenu-display-speed');
+
+		if (!raw) return fallback;
+
+		raw = raw.trim().toLowerCase();
+
+		const match = raw.match(/[\d.]+/);
+		if (!match) return fallback;
+
+		const value = parseFloat(match[0]);
+
+		if (raw.includes('ms')) return value;
+		if (raw.includes('s')) return value * 1000;
+
+		return value;
+	};
+
 	var _hover = function() {
 		if( !__core.getVars.elBody.classList.contains('is-expanded-menu') ) {
 			return true;
 		}
 
-		var menuHoverDelay = getComputedStyle(__core.getVars.elHeader).getPropertyValue('--cnvs-primary-menu-submenu-display-speed') || 666;
-
-		if( !isNaN(menuHoverDelay.split('ms')[0]) ) {
-			menuHoverDelay = menuHoverDelay.split('ms')[0];
-		} else if( !isNaN(menuHoverDelay.split('s')[0]) ) {
-			menuHoverDelay = menuHoverDelay.split('s')[0] * 1000;
-		}
+		var menuHoverDelay = _getMenuHoverDelay();
 
 		[].slice.call(__core.getVars.elPrimaryMenus).filter( function(elem) {
 			return !elem.matches('.on-click');

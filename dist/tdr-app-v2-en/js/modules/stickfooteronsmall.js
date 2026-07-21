@@ -5,24 +5,32 @@ CNVS.StickFooterOnSmall = function() {
 	return {
 		init: function(selector) {
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
+			if( !selector || selector.length < 1 ){
 				return true;
 			}
 
-			__core.getVars.elFooter.style.marginTop = '';
+			var elFooter  = __core.getVars.elFooter,
+				elWrapper = __core.getVars.elWrapper,
+				elBody    = __core.getVars.elBody,
+				elAppMenu = __core.getVars.elAppMenu;
+
+			if( !elFooter || !elWrapper || !elBody ) return true;
+
+			elFooter.style.marginTop = '';
 
 			var windowH = __core.viewport().height,
-				wrapperH = __core.getVars.elWrapper.offsetHeight;
+				wrapperH = elWrapper.offsetHeight;
 
-			if( !__core.getVars.elBody.classList.contains('sticky-footer') && __core.getVars.elFooter !== 'undefined' && __core.getVars.elWrapper.contains( __core.getVars.elFooter ) ) {
+			if( !elBody.classList.contains('sticky-footer') && elWrapper.contains( elFooter ) ) {
 				if( windowH > wrapperH ) {
-					__core.getVars.elFooter.style.marginTop = (windowH - wrapperH)+'px';
+					elFooter.style.marginTop = (windowH - wrapperH) + 'px';
 				}
 			}
 
-			if( __core.getVars.elAppMenu ) {
-				if((__core.viewport().height - (__core.getVars.elAppMenu.getBoundingClientRect().top + __core.getVars.elAppMenu.getBoundingClientRect().height)) === 0) {
-					__core.getVars.elFooter.style.marginBottom = __core.getVars.elAppMenu.offsetHeight+'px';
+			if( elAppMenu ) {
+				var rect = elAppMenu.getBoundingClientRect();
+				if( (windowH - (rect.top + rect.height)) === 0 ) {
+					elFooter.style.marginBottom = elAppMenu.offsetHeight + 'px';
 				}
 			}
 

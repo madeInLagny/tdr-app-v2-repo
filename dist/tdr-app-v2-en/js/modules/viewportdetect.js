@@ -1,7 +1,12 @@
 CNVS.ViewportDetect = function() {
 	var __core = SEMICOLON.Core;
 
+	var _splitClasses = function(value) {
+		return (value || '').split(/\s+/).filter(Boolean);
+	};
+
 	var _setBSTheme = function(target) {
+		if( !target ) return;
 		if( target.classList.contains('dark') ) {
 			target.setAttribute('data-bs-theme', 'dark');
 		} else {
@@ -18,71 +23,46 @@ CNVS.ViewportDetect = function() {
 			__core.initFunction({ class: 'has-plugin-viewportdetect', event: 'pluginViewportDetectReady' });
 
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
+			if( !selector || selector.length < 1 ){
 				return true;
 			}
 
 			selector.forEach( function(el) {
-				var elDelay = el.getAttribute('data-delay') || 0;
-				var elClass = el.getAttribute('data-viewport-class') || "";
-				var elClassOut = el.getAttribute('data-viewport-class-out') || "";
-				var elClassTarget = el.getAttribute('data-viewport-class-target');
-				var elThreshold = el.getAttribute('data-viewport-threshold') || "0";
-				var elRootMargin = el.getAttribute('data-viewport-rootmargin') || "0px";
+				if( !__core.markOnce(el, 'cnvsViewportdetectInit') ) return;
 
-				elClass = elClass.split(" ");
-				elClassOut = elClassOut.split(" ");
+				var elDelay        = __core.toNumber(el.getAttribute('data-delay'), 0);
+				var elClass        = _splitClasses(el.getAttribute('data-viewport-class'));
+				var elClassOut     = _splitClasses(el.getAttribute('data-viewport-class-out'));
+				var elClassTargetA = el.getAttribute('data-viewport-class-target');
+				var elThreshold    = __core.toNumber(el.getAttribute('data-viewport-threshold'), 0);
+				var elRootMargin   = el.getAttribute('data-viewport-rootmargin') || '0px';
 
-				var hasDark = false;
+				var hasDark = elClass.indexOf('dark') !== -1 || elClassOut.indexOf('dark') !== -1;
 
-				if( elClass.includes('dark') || elClassOut.includes('dark') ) {
-					hasDark = true;
-				}
+				var resolvedTarget = elClassTargetA ? document.querySelector(elClassTargetA) : null;
 
-				elClassTarget = elClassTarget ? document.querySelector(elClassTarget) : false;
-
-				var observer = new IntersectionObserver( function(el) {
-					el.forEach( function(entry) {
-						var elTarget = entry.target;
-
-						if( !elClassTarget ) {
-							elClassTarget = elTarget;
-						}
-
-						if( entry.isIntersecting ) {
+				try {
+					__core.intersect(el, { threshold: elThreshold, rootMargin: elRootMargin },
+						function(elTarget) {
+							var classTarget = resolvedTarget || elTarget;
 							setTimeout( function() {
 								elTarget.classList.add('is-in-viewport');
-
-								elClass.forEach( function(_class) {
-									_class && elClassTarget.classList.add(_class);
-								});
-
-								elClassOut.forEach( function(_class) {
-									_class && elClassTarget.classList.remove(_class);
-								});
-
-								hasDark && _setBSTheme(elClassTarget);
-							}, Number(elDelay));
-						} else {
+								elClass.forEach( function(c) { classTarget.classList.add(c); });
+								elClassOut.forEach( function(c) { classTarget.classList.remove(c); });
+								if( hasDark ) _setBSTheme(classTarget);
+							}, elDelay);
+						},
+						function(elTarget) {
+							var classTarget = resolvedTarget || elTarget;
 							elTarget.classList.remove('is-in-viewport');
-
-							elClass.forEach( function(_class) {
-								_class && elClassTarget.classList.remove(_class);
-							});
-
-							elClassOut.forEach( function(_class) {
-								_class && elClassTarget.classList.add(_class);
-							});
-
-							hasDark && _setBSTheme(elClassTarget);
+							elClass.forEach( function(c) { classTarget.classList.remove(c); });
+							elClassOut.forEach( function(c) { classTarget.classList.add(c); });
+							if( hasDark ) _setBSTheme(classTarget);
 						}
-					});
-				}, {
-					threshold: parseFloat(elThreshold),
-					rootMargin: elRootMargin,
-				});
-
-				observer.observe(el);
+					);
+				} catch(e) {
+					console.warn('ViewportDetect: invalid IntersectionObserver options', e);
+				}
 			});
 		}
 	};

@@ -1,44 +1,54 @@
 CNVS.Logo = function() {
 	var __core = SEMICOLON.Core;
 
+	var _styleId = 'cnvs-logo-variant-styles';
+
 	return {
 		init: function(selector) {
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
+			if( selector.length < 1 ) return true;
+
+			var head = __core.getVars.elHead;
+			var logoEl = selector[0];
+			var rules = [];
+
+			if( logoEl.querySelector('.logo-dark') ) {
+				rules.push(
+					'.dark #header-wrap:not(.not-dark) #logo [class^="logo-"], .dark .header-row:not(.not-dark) #logo [class^="logo-"] { display: none; }',
+					'.dark #header-wrap:not(.not-dark) #logo .logo-dark, .dark .header-row:not(.not-dark) #logo .logo-dark { display: flex; }'
+				);
 			}
 
-			var head = __core.getVars.elHead,
-				style,
-				css;
-
-			if( selector[0].querySelector('.logo-dark') ) {
-				style = document.createElement('style');
-				head.appendChild(style);
-				css = '.dark #header-wrap:not(.not-dark) #logo [class^="logo-"], .dark .header-row:not(.not-dark) #logo [class^="logo-"] { display: none; } .dark #header-wrap:not(.not-dark) #logo .logo-dark, .dark .header-row:not(.not-dark) #logo .logo-dark { display: flex; }';
-				style.appendChild(document.createTextNode(css));
+			if( logoEl.querySelector('.logo-sticky') ) {
+				rules.push(
+					'.sticky-header #logo [class^="logo-"] { display: none !important; }',
+					'.sticky-header #logo .logo-sticky { display: flex !important; }'
+				);
 			}
 
-			if( selector[0].querySelector('.logo-sticky') ) {
-				style = document.createElement('style');
-				head.appendChild(style);
-				css = '.sticky-header #logo [class^="logo-"] { display: none !important; } .sticky-header #logo .logo-sticky { display: flex !important; }';
-				style.appendChild(document.createTextNode(css));
+			if( logoEl.querySelector('.logo-sticky-shrink') ) {
+				rules.push(
+					'.sticky-header-shrink #logo [class^="logo-"] { display: none; }',
+					'.sticky-header-shrink #logo .logo-sticky-shrink { display: flex; }'
+				);
 			}
 
-			if( selector[0].querySelector('.logo-sticky-shrink') ) {
-				style = document.createElement('style');
-				head.appendChild(style);
-				css = '.sticky-header-shrink #logo [class^="logo-"] { display: none; } .sticky-header-shrink #logo .logo-sticky-shrink { display: flex; }';
-				style.appendChild(document.createTextNode(css));
+			if( logoEl.querySelector('.logo-mobile') ) {
+				rules.push(
+					'body:not(.is-expanded-menu) #logo [class^="logo-"] { display: none; }',
+					'body:not(.is-expanded-menu) #logo .logo-mobile { display: flex; }'
+				);
 			}
 
-			if( selector[0].querySelector('.logo-mobile') ) {
-				style = document.createElement('style');
-				head.appendChild(style);
-				css = 'body:not(.is-expanded-menu) #logo [class^="logo-"] { display: none; } body:not(.is-expanded-menu) #logo .logo-mobile { display: flex; }';
-				style.appendChild(document.createTextNode(css));
-			}
+			if( rules.length === 0 ) return;
+
+			var existing = document.getElementById(_styleId);
+			if( existing ) existing.remove();
+
+			var style = document.createElement('style');
+			style.id = _styleId;
+			style.textContent = rules.join('\n');
+			head.appendChild(style);
 		}
 	};
 }();

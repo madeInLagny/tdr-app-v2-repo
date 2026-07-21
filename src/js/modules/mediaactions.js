@@ -1,23 +1,23 @@
 CNVS.MediaActions = function() {
 	var __core = SEMICOLON.Core;
 
+	var _bindings = new WeakMap();
 	var _pauseEv = ['ended', 'error', 'pause', 'seeking', 'waiting'];
-	var _playEv = ['play', 'playing', 'timeupdate'];
+	var _playEv  = ['play', 'playing'];
 
-	var _volume = function(mediaEl) {
-		var mediaWrap = mediaEl.closest('.media-wrap');
-
-		if( mediaEl.volume < 0.1 || mediaEl.muted == true ) {
+	var _updateVolumeState = function(mediaEl, mediaWrap) {
+		if( !mediaWrap ) return;
+		if( mediaEl.volume < 0.1 || mediaEl.muted ) {
 			mediaWrap.classList.add('media-is-muted');
 		} else {
 			mediaWrap.classList.remove('media-is-muted');
 		}
 	};
 
-	var _time = function(duration) {
-		var minutes = (duration / 60).toFixed(0);
-		var seconds = (duration % 60).toFixed(0);
-
+	var _formatTime = function(duration) {
+		if( !isFinite(duration) ) return '0:00';
+		var minutes = Math.floor(duration / 60);
+		var seconds = Math.floor(duration % 60);
 		return minutes + ':' + (seconds < 10 ? '0' + seconds : seconds);
 	};
 
@@ -30,75 +30,92 @@ CNVS.MediaActions = function() {
 			__core.initFunction({ class: 'has-plugin-mediaactions', event: 'pluginMediaActionsReady' });
 
 			selector = __core.getSelector( selector, false );
-			if( selector.length < 1 ){
-				return true;
-			}
+			if( selector.length < 1 ) return true;
 
 			selector.forEach( function(mediaWrap) {
 				var mediaEl = mediaWrap.querySelector('video,audio');
-				var mediaTrigger = mediaWrap.querySelector('.media-trigger-playback');
+				if( !mediaEl ) return;
+
+				var mediaTrigger  = mediaWrap.querySelector('.media-trigger-playback');
 				var volumeTrigger = mediaWrap.querySelector('.media-trigger-volume');
 				var mediaDuration = mediaWrap.querySelector('.media-duration');
 
-				if( !mediaEl ) {
-					return true;
+				var prev = _bindings.get(mediaEl);
+				if( prev ) {
+					prev.pauseHandlers.forEach( function(h, i) { mediaEl.removeEventListener(_pauseEv[i], h); });
+					prev.playHandlers.forEach( function(h, i) { mediaEl.removeEventListener(_playEv[i], h); });
+					mediaEl.removeEventListener('timeupdate', prev.timeHandler);
+					mediaEl.removeEventListener('volumechange', prev.volHandler);
+					mediaEl.removeEventListener('loadedmetadata', prev.metaHandler);
+					if( prev.playClick ) prev.playClick.target.removeEventListener('click', prev.playClick.fn);
+					if( prev.volClick )  prev.volClick.target.removeEventListener('click', prev.volClick.fn);
 				}
 
-				_pauseEv.forEach( function(_event) {
-					mediaEl.addEventListener(_event, function(){
+				var pauseHandlers = _pauseEv.map( function(evName) {
+					var h = function(){
 						mediaWrap.classList.remove('media-is-playing');
-						_volume(mediaEl);
-					});
+						_updateVolumeState(mediaEl, mediaWrap);
+					};
+					mediaEl.addEventListener(evName, h);
+					return h;
 				});
 
-				_playEv.forEach( function(_event) {
-					mediaEl.addEventListener(_event, function(){
+				var playHandlers = _playEv.map( function(evName) {
+					var h = function(){
 						mediaWrap.classList.add('media-is-playing');
-						_volume(mediaEl);
-
-						if( mediaDuration ) {
-							mediaDuration.innerHTML = _time(mediaEl.currentTime);
-						}
-					});
+						_updateVolumeState(mediaEl, mediaWrap);
+					};
+					mediaEl.addEventListener(evName, h);
+					return h;
 				});
 
-				mediaEl.addEventListener('volumechange', function(){
-					_volume(mediaEl);
-				});
-
-				var ifLoaded = setInterval( function(){
-					if( mediaEl.readyState === 4 ) {
-						if( mediaDuration ) {
-							mediaDuration.innerHTML = _time(mediaEl.duration);
-						}
-
-						clearInterval(ifLoaded);
+				var timeHandler = function(){
+					if( mediaDuration ) {
+						mediaDuration.textContent = _formatTime(mediaEl.currentTime);
 					}
-				}, 1000);
+				};
+				mediaEl.addEventListener('timeupdate', timeHandler);
 
+				var volHandler = function(){ _updateVolumeState(mediaEl, mediaWrap); };
+				mediaEl.addEventListener('volumechange', volHandler);
+
+				var metaHandler = function(){
+					if( mediaDuration ) {
+						mediaDuration.textContent = _formatTime(mediaEl.duration);
+					}
+				};
+				mediaEl.addEventListener('loadedmetadata', metaHandler);
+				if( mediaEl.readyState >= 1 ) metaHandler();
+
+				var playClick = null;
 				if( mediaTrigger ) {
-					mediaTrigger.onclick = function(e) {
+					var pFn = function(e) {
 						e.preventDefault();
-
-						if (mediaEl.paused) {
-							mediaEl.play();
-						} else {
-							mediaEl.pause();
-						}
+						if( mediaEl.paused ) { mediaEl.play(); } else { mediaEl.pause(); }
 					};
+					mediaTrigger.addEventListener('click', pFn);
+					playClick = { target: mediaTrigger, fn: pFn };
 				}
 
+				var volClick = null;
 				if( volumeTrigger ) {
-					volumeTrigger.onclick = function(e) {
+					var vFn = function(e) {
 						e.preventDefault();
-
-						if (mediaEl.muted) {
-							mediaEl.muted = false;
-						} else {
-							mediaEl.muted = true;
-						}
+						mediaEl.muted = !mediaEl.muted;
 					};
+					volumeTrigger.addEventListener('click', vFn);
+					volClick = { target: volumeTrigger, fn: vFn };
 				}
+
+				_bindings.set(mediaEl, {
+					pauseHandlers: pauseHandlers,
+					playHandlers: playHandlers,
+					timeHandler: timeHandler,
+					volHandler: volHandler,
+					metaHandler: metaHandler,
+					playClick: playClick,
+					volClick: volClick,
+				});
 			});
 		}
 	};
