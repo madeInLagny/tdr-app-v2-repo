@@ -9,9 +9,9 @@
 
 	<!-- Metatags Import -->
 	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
-	"description": "${{TDR-Duty-Drawback-in-the-UK.description}}$",
-	"title": "${{TDR-Duty-Drawback-in-the-UK.title}}$",
-	"path": "${{TDR-Duty-Drawback-in-the-UK.path}}$"
+	"description": "${{TDR-Duty-Drawback-in-the-EU.description}}$",
+	"title": "${{TDR-Duty-Drawback-in-the-EU.title}}$",
+	"path": "${{TDR-Duty-Drawback-in-the-EU.path}}$"
 	})
 
 	<!-- CSS imports -->
@@ -23,8 +23,17 @@
 
 	<!-- Hero Block -->
 	<style>
-		.block-hero-6 .hero-img {
-			border: 16px solid #FFF;
+		#slider .display-3 {
+			color: var(--cnvs-contrast-0);
+			mix-blend-mode: difference;
+		}
+
+		@media (min-width: 768px) {
+			.text-stretch {
+				position: relative;
+				width: calc(100% + 300px);
+				z-index: 1;
+			}
 		}
 	</style>
 
@@ -90,7 +99,7 @@
 		}
 	</style>
 
-
+	<!-- Use-Case Styles -->
 	<style>
 		.gradient-bg {
 			background-color: rgba(255, 255, 255, 0.6);
@@ -120,6 +129,173 @@
 			background: rgba(151, 190, 172, 0.16);
 			color: var(--samaritanDarkGreen);
 			font-size: 1.25rem;
+		}
+
+		.eu-duty-flow {
+			position: relative;
+			padding: 0;
+			isolation: isolate;
+		}
+
+		.eu-duty-flow .flow-grid {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			gap: 1.25rem;
+			position: relative;
+			z-index: 2;
+		}
+
+		.eu-duty-flow .flow-card {
+			position: relative;
+			background: rgba(255, 255, 255, 0.82);
+			border-radius: 30px;
+			padding: 1.5rem 1.4rem 4.5rem;
+			min-height: 360px;
+			box-shadow: 0 10px 24px rgba(36, 59, 78, 0.06);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			overflow: hidden;
+		}
+
+		.eu-duty-flow .flow-card h4 {
+			margin: 0 0 1rem;
+			color: var(--samaritanDarkRed);
+			font-size: 1.05rem;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			font-weight: 800;
+			line-height: 1.2;
+		}
+
+		.eu-duty-flow .flow-card p {
+			margin: 0;
+			color: var(--darkSamaritan);
+			font-size: 1.1rem;
+			line-height: 1.4;
+			font-weight: 500;
+		}
+
+		.eu-duty-flow .flow-card .mini-pill {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 1.3rem;
+			padding: 0.45rem 1rem;
+			background: rgba(250, 103, 129, 0.12);
+			color: var(--samaritanDarkRed);
+			border-radius: 999px;
+			font-size: 0.9rem;
+			font-weight: 700;
+			line-height: 1.1;
+		}
+
+		.eu-duty-flow .flow-link {
+			position: absolute;
+			left: 1.5rem;
+			right: 1.5rem;
+			bottom: 1.2rem;
+			height: 2px;
+			background: rgba(250, 103, 129, 0.85);
+			border-bottom: 2px dashed rgba(250, 103, 129, 0.9);
+		}
+
+		.eu-duty-flow .flow-link::before,
+		.eu-duty-flow .flow-link::after {
+			content: "";
+			position: absolute;
+			top: -5px;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: var(--samaritanDarkRed);
+		}
+
+		.eu-duty-flow .flow-link::before {
+			left: 0;
+		}
+
+		.eu-duty-flow .flow-link::after {
+			right: 0;
+		}
+
+		.eu-duty-flow .flow-card.alt .flow-link {
+			background: rgba(75, 91, 197, 0.7);
+			border-bottom-color: rgba(75, 91, 197, 0.8);
+		}
+
+		.eu-duty-flow .flow-card.alt .flow-link::before,
+		.eu-duty-flow .flow-card.alt .flow-link::after {
+			background: var(--samaritanDarkBlue);
+		}
+
+		.eu-duty-flow .flow-card.green .flow-link {
+			background: rgba(91, 176, 0, 0.8);
+			border-bottom-color: rgba(91, 176, 0, 0.9);
+		}
+
+		.eu-duty-flow .flow-card.green .flow-link::before,
+		.eu-duty-flow .flow-card.green .flow-link::after {
+			background: var(--samaritanDarkGreen);
+		}
+
+		.eu-duty-flow .flow-card .mini-pill[data-tone="blue"] {
+			background: rgba(75, 91, 197, 0.12);
+			color: var(--samaritanDarkBlue);
+		}
+
+		.eu-duty-flow .flow-card .mini-pill[data-tone="green"] {
+			background: rgba(91, 176, 0, 0.12);
+			color: var(--samaritanDarkGreen);
+		}
+
+		.eu-duty-flow .flow-legend {
+			margin-top: 1.2rem;
+			background: rgba(255, 255, 255, 0.72);
+			border-radius: 22px;
+			padding: 1rem 1.25rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 2rem;
+			flex-wrap: wrap;
+			color: var(--darkSamaritan);
+			font-size: 0.9rem;
+			font-weight: 700;
+		}
+
+		.eu-duty-flow .legend-item {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.6rem;
+		}
+
+		.eu-duty-flow .legend-line {
+			display: inline-block;
+			width: 30px;
+			height: 2px;
+			border-radius: 999px;
+			background: linear-gradient(90deg, var(--samaritanDarkBlue), var(--samaritanDarkRed));
+			border-bottom: 2px dashed rgba(75, 91, 197, 0.8);
+		}
+
+		.eu-duty-flow .legend-line.green {
+			background: linear-gradient(90deg, var(--samaritanDarkGreen), var(--samaritanDarkGreen));
+			border-bottom-color: rgba(91, 176, 0, 0.9);
+		}
+
+		@media (max-width: 1200px) {
+			.eu-duty-flow .flow-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+
+		@media (max-width: 767px) {
+			.eu-duty-flow .flow-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.eu-duty-flow .flow-card {
+				min-height: 280px;
+			}
 		}
 	</style>
 
@@ -167,88 +343,88 @@
 {
   "@context": "https://schema.org",
   "@type": ["WebPage", "Article"],
-  "name": "${{TDR-Duty-Drawback-in-the-UK.title}}$",
-  "url": "${{index.domain}}$${{TDR-Duty-Drawback-in-the-UK.path}}$",
-  "description": "${{TDR-Duty-Drawback-in-the-UK.description}}$",
+  "name": "${{TDR-Duty-Drawback-in-the-EU.title}}$",
+  "url": "${{index.domain}}$${{TDR-Duty-Drawback-in-the-EU.path}}$",
+  "description": "${{TDR-Duty-Drawback-in-the-EU.description}}$",
   "inLanguage": "${{index.language}}$",
   "about": {
     "@type": "Thing",
-    "name": "UK duty drawback",
-    "description": "UK Duty Drawback: a TDR solution that allows importers into the UK to recover duties, taxes and most fees paid on goods that are subsequently exported, destroyed, or otherwise removed from the UK market."
+    "name": "EU duty drawback",
+    "description": "EU Duty Drawback: a TDR solution that allows importers into the EU to recover duties, taxes and most fees paid on goods that are subsequently exported, destroyed, or otherwise removed from the EU market."
   },
   "mainEntity": {
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_1_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_1_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_1_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_1_answer}}$"
         }
       },
       {
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_2_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_2_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_2_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_2_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_3_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_3_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_3_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_3_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_4_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_4_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_4_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_4_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_5_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_5_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_5_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_5_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_6_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_6_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_6_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_6_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_7_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_7_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_7_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_7_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_8_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_8_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_8_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_8_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_9_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_9_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_9_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_9_answer}}$"
         }
       },{
         "@type": "Question",
-        "name": "${{TDR-Duty-Drawback-in-the-UK.faq_10_question}}$",
+        "name": "${{TDR-Duty-Drawback-in-the-EU.faq_10_question}}$",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "${{TDR-Duty-Drawback-in-the-UK.faq_10_answer}}$"
+          "text": "${{TDR-Duty-Drawback-in-the-EU.faq_10_answer}}$"
         }
       }
     ]
@@ -262,7 +438,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tradedutyrefund.com/" },
-      { "@type": "ListItem", "position": 2, "name": "${{TDR-Duty-Drawback-in-the-UK.name}}$", "item": "${{index.domain}}$${{TDR-Duty-Drawback-in-the-UK.path}}$" }
+      { "@type": "ListItem", "position": 2, "name": "${{TDR-Duty-Drawback-in-the-EU.name}}$", "item": "${{index.domain}}$${{TDR-Duty-Drawback-in-the-EU.path}}$" }
     ]
   }
 }
@@ -287,30 +463,25 @@
 
 		<!-- Hero Section
 		============================================= -->
-		<section id="slider" class="slider-element dark block-hero-6">
-			<div class="bg-overlay z-1 d-md-block d-none"
-				style="background: linear-gradient(to right, white 0%, white 25%, transparent 25%, transparent 100%)">
-			</div>
-			<div class=" swiper-slide-bg"
-				style="background-image: url('images/flags/ukWavingFlag.webp');filter: opacity(15%);">
-			</div>
+		<section id="slider" class="slider-element min-vh-90">
 
-			<div class="container z-2">
-				<div class="row min-vh-100 align-items-center justify-content-sm-around py-5">
-					<div class="col-md-6 order-md-last text-center">
-						<h1 class="display-3 text-white" data-animate="fadeInRight">
-							${{TDR-Duty-Drawback-in-the-UK.hero_headline_line}}$</h1>
-						<p class="fs-3 text-white" data-animate="fadeInUp" data-animate-delay="1">
-							${{TDR-Duty-Drawback-in-the-UK.hero_subheadline}}$</p>
-					</div>
+			<div class="row align-items-center">
 
-					<div class="col-md-4 mt-5 mt-md-0" data-animate="fadeInLeft">
-						<img src="images/Uk-drawback-hero.webp" alt="returned eCom order" class="hero-img">
-					</div>
+				<div class="col-md-5 offset-md-1 p-5">
+					<h1 class="text-stretch display-3 fw-bold position-relative" data-animate="fadeInLeft"
+						data-animate-delay="1000">EU Duty Drawback, Simplified for Global Traders.</h1>
+					<p class="lead text-lightSamaritan" data-animate="fadeInRight" data-animate-delay="1000">As the only
+						global duty drawback provider, TDR helps EU importers and exporters reclaim duties worldwide
+						with speed, compliance, and certainty.</p>
 				</div>
 
+				<div class="col-md-6 order-md-2 min-vh-md-90 min-vh-40"
+					style="background-image: url('images/TDR-Duty-Drawback-In-The-EU-Hero.webp'); background-size: cover; background-repeat: no-repeat; background-position: center center;"
+					data-animate="fadeIn"></div>
 
 			</div>
+
+
 
 		</section>
 
@@ -321,105 +492,9 @@
 		<section id="content">
 			<div class="content-wrap pt-0">
 				<div id="overpaying" class="page-section py-5 py-lg-6 shiny-samaritan-bg">
-					<!-- <div class="container">
-						<div id="references"
-							class="page-section py-5 py-lg-6 row align-items-center min-vh-lg-100 gutter-50 glass-effect-samaritanBlue">
-							<div class="col-lg-6">
-								<h2 class="h1 fw-semibold lh-base mb-4">Let retail specialists handle your global
-									drawback.
-								</h2>
-								<p class="text-muted">Duty drawback is a U.S. Customs program that lets importers
-									recover
-									duties
-									paid on goods that are later exported, destroyed, or otherwise removed from the U.S.
-									market.
-									For
-									online retailers, the biggest opportunities are customer returns, unsold inventory
-									sent
-									overseas,
-									and other customs movements that reduce margin.</p>
-
-								<dl class="row gx-3 mb-0">
-									<div class="col mb-3 fw-bold"><i class="fa-solid fa-check-circle me-2 color"></i>
-										Who it
-										helps: eCommerce brands, finance teams, and IORs.</div>
-									<div class="clear"></div>
-
-									<div class="col mb-3 fw-bold"><i class="fa-solid fa-check-circle me-2 color"></i>
-										Typical
-										recovery: Up to 99% of duties, taxes, and most fees.</div>
-									<div class="clear"></div>
-
-									<div class="col mb-0 fw-bold"><i class="fa-solid fa-check-circle me-2 color"></i>
-										Key
-										timing: Claims are generally tied to the import-to-export timeline and can be
-										filed
-										within a five-year window.</div>
-									<div class="clear"></div>
-								</dl>
-							</div>
-
-							<div class="col-lg-6">
-								<div id="bs-carousel" class="carousel slide" data-bs-ride="carousel">
-									<div class="carousel-indicators">
-										<button type="button" data-bs-target="#bs-carousel" data-bs-slide-to="0"
-											class="active" aria-current="true" aria-label="Slide 1"></button>
-										<button type="button" data-bs-target="#bs-carousel" data-bs-slide-to="1"
-											aria-label="Slide 2"></button>
-										<button type="button" data-bs-target="#bs-carousel" data-bs-slide-to="2"
-											aria-label="Slide 3"></button>
-									</div>
-									<div class="carousel-inner">
-										<div class="carousel-item active">
-											<img class="d-block w-100" src="images/blocks/preview/hero-26/1.jpg"
-												alt="Fitness program carousel — daily exercise routine">
-											<div class="carousel-caption">
-												<h3 class="text-white mb-2">First slide label</h3>
-												<p class="mb-3 op-07">Short daily workouts that fit your schedule
-													perfectly.
-												</p>
-											</div>
-										</div>
-										<div class="carousel-item">
-											<img class="d-block w-100" src="images/blocks/preview/hero-26/2.jpg"
-												alt="Fitness program carousel — flexible healthy eating">
-											<div class="carousel-caption">
-												<h3 class="text-white mb-2">Second slide label</h3>
-												<p class="mb-3 op-07">Enjoy meals you love while still reaching your
-													goals.
-												</p>
-											</div>
-										</div>
-										<div class="carousel-item">
-											<img class="d-block w-100" src="images/blocks/preview/hero-26/3.jpg"
-												alt="Fitness program carousel — transformation results">
-											<div class="carousel-caption">
-												<h3 class="text-dark mb-2">Third slide label - Dark</h3>
-												<p class="mb-3 text-muted">Real members, real transformations in six
-													months.
-												</p>
-											</div>
-										</div>
-									</div>
-									<a class="carousel-control-prev" href="#bs-carousel" role="button"
-										data-bs-slide="prev">
-										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-										<span class="visually-hidden">Previous</span>
-									</a>
-									<a class="carousel-control-next" href="#bs-carousel" role="button"
-										data-bs-slide="next">
-										<span class="carousel-control-next-icon" aria-hidden="true"></span>
-										<span class="visually-hidden">Next</span>
-									</a>
-								</div>
-							</div>
-						</div>
-
-					</div> -->
-
 					<h2 class="display-4 fw-bolder ls-n-2 text-center text-lightSamaritan" data-animate="fadeIn">
-						${{TDR-Duty-Drawback-in-the-UK.overpaying_title}}$<br><span
-							class="text-white">${{TDR-Duty-Drawback-in-the-UK.overpaying_subtitle}}$</span>
+						${{TDR-Duty-Drawback-in-the-EU.overpaying_title}}$<br><span
+							class="text-white">${{TDR-Duty-Drawback-in-the-EU.overpaying_subtitle}}$</span>
 
 					</h2>
 					<div class="container">
@@ -433,10 +508,10 @@
 									</div>
 									<div class="fbox-content">
 										<span class="display-6" data-animate="fadeIn"
-											data-delay="1">${{TDR-Duty-Drawback-in-the-UK.feature_1_title}}$
+											data-delay="1">${{TDR-Duty-Drawback-in-the-EU.feature_1_title}}$
 										</span>
 										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">
-											${{TDR-Duty-Drawback-in-the-UK.feature_1_text}}$</p>
+											${{TDR-Duty-Drawback-in-the-EU.feature_1_text}}$</p>
 									</div>
 								</div>
 							</div>
@@ -448,10 +523,10 @@
 									</div>
 									<div class="fbox-content">
 										<span class="display-6" data-animate="fadeIn"
-											data-delay="1">${{TDR-Duty-Drawback-in-the-UK.feature_2_title}}$
+											data-delay="1">${{TDR-Duty-Drawback-in-the-EU.feature_2_title}}$
 										</span>
 										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">
-											${{TDR-Duty-Drawback-in-the-UK.feature_2_text}}$
+											${{TDR-Duty-Drawback-in-the-EU.feature_2_text}}$
 										</p>
 									</div>
 								</div>
@@ -464,9 +539,9 @@
 									</div>
 									<div class="fbox-content">
 										<span class="display-6" data-animate="fadeIn"
-											data-delay="1">${{TDR-Duty-Drawback-in-the-UK.feature_3_title}}$</span>
+											data-delay="1">${{TDR-Duty-Drawback-in-the-EU.feature_3_title}}$</span>
 										<p class="text-white lead" data-animate="fadeIn" data-delay="0.5">
-											${{TDR-Duty-Drawback-in-the-UK.feature_3_text}}$
+											${{TDR-Duty-Drawback-in-the-EU.feature_3_text}}$
 										</p>
 									</div>
 								</div>
@@ -478,52 +553,56 @@
 				</div><!-- end of Overpaying section -->
 
 				<div id="use-cases" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
-					<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">
-						${{TDR-Duty-Drawback-in-the-UK.use_cases_title}}$
-						<span class="text-samaritanDarkRed">
-							${{TDR-Duty-Drawback-in-the-UK.use_cases_subtitle}}$</span>
-					</h2>
 					<div class="container">
-						<div class="row g-4 align-items-stretch">
-							<div class="col-lg-6 col-md-6" data-animate="fadeInLeft" ;>
-								<div class="h-100 bg-white p-5 rounded" style="transition: all 0.3s ease;">
-									<div class="row gy-4">
-										<div class="col-lg-6">
-											<h3 class="fs-2 mb-3 text-samaritanDarkRed">
-												${{TDR-Duty-Drawback-in-the-UK.use_case_1_title}}$</h3>
-											<p class="mb-0 text-samaritan">
-												${{TDR-Duty-Drawback-in-the-UK.use_case_1_text}}$
-											</p>
-											<a href="${{contact-us.path}}$"
-												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">${{TDR-Duty-Drawback-in-the-UK.contact_us_button}}$</a>
+						<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">
+							How EU duty drawback works for <br>
+							<span class="text-samaritanDarkRed">crossborder e-commerce returns</span>
+						</h2>
+					</div>
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-xl-11">
+								<div class="eu-duty-flow">
+									<div class="flow-grid">
+										<div class="flow-card" data-animate="flipInY">
+											<h4>1. Order placed</h4>
+											<p>Your brand ships a direct-to-consumer order to a shopper in the EU.</p>
+											<span class="mini-pill">Non-EU retailer</span>
+											<div class="flow-link"></div>
 										</div>
-										<div class="col-lg-6 d-flex align-items-center">
-											<img src="images/undraw_order.png"
-												alt="US duty drawback process for eCommerce returns" class=" rounded">
+										<div class="flow-card alt" data-animate="flipInY" data-delay="500">
+											<h4>2. Import + clearance</h4>
+											<p>Goods clear customs in the EU and duties are paid at import.</p>
+											<span class="mini-pill" data-tone="blue">Duties paid</span>
+											<div class="flow-link"></div>
+										</div>
+										<div class="flow-card green" data-animate="flipInY" data-delay="1000">
+											<h4>3. Delivered</h4>
+											<p>The consignee receives the order and the goods are sold in-market.</p>
+											<span class="mini-pill" data-tone="green">B2C fulfilled</span>
+											<div class="flow-link"></div>
+										</div>
+										<div class="flow-card" data-animate="flipInY" data-delay="1500">
+											<h4>4. Returned goods</h4>
+											<p>Part of the order comes back to a consolidation point for inspection and
+												resale or re-export.</p>
+											<span class="mini-pill">Eligible for drawback</span>
+											<div class="flow-link"></div>
+										</div>
+									</div>
 
-										</div>
+									<div class="flow-legend" aria-label="Flow legend">
+										<span class="legend-item"><span class="legend-line"></span>Order and return
+											flow</span>
+										<span class="legend-item"><span class="legend-line green"></span>Duty drawback
+											eligible goods</span>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-6 col-md-6 transformY5" data-animate="fadeInRight">
-								<div class="h-100 bg-white p-5 rounded">
-									<div class="row gy-4">
-										<div class="col-lg-6">
-											<h3 class="fs-2 mb-3 text-samaritanDarkRed">
-												${{TDR-Duty-Drawback-in-the-UK.use_case_2_title}}$</h3>
-											<p class="mb-0 text-samaritan">
-												${{TDR-Duty-Drawback-in-the-UK.use_case_2_text}}$
-											</p>
-											<a href="${{contact-us.path}}$"
-												class="btn samaritanDarkRed-bg text-white fw-bold mt-4 rounded-pill text-smaller">${{TDR-Duty-Drawback-in-the-UK.contact_us_button}}$</a>
-										</div>
-										<div class="col-lg-6 d-flex align-items-center">
-											<img src="images/undraw_logistics.png"
-												alt="Duty drawback workflow for re-exported inventory" class=" rounded">
-										</div>
-									</div>
-								</div>
-							</div>
+						</div>
+						<div class="mt-4 text-center text-samaritan">
+							<p class="lead mb-0">When returned goods are consolidated and exported outside the EU,
+								eligible import duties can be recovered and redeployed into your working capital.</p>
 						</div>
 					</div>
 				</div> <!-- End Use Cases -->
@@ -543,17 +622,17 @@
 						<div class="row align-items-start gy-4">
 							<div class="col-lg-5">
 								<h2 class="display-4 fw-bolder ls-n-2 text-darkSamaritan"><span
-										class="text-samaritanDarkGreen">${{TDR-Duty-Drawback-in-the-UK.who_benefits_title_prefix}}$</span>
-									${{TDR-Duty-Drawback-in-the-UK.who_benefits_title_suffix}}$
+										class="text-samaritanDarkGreen">${{TDR-Duty-Drawback-in-the-EU.who_benefits_title_prefix}}$</span>
+									${{TDR-Duty-Drawback-in-the-EU.who_benefits_title_suffix}}$
 								</h2>
 								<p class="lead text-samaritan">
-									${{TDR-Duty-Drawback-in-the-UK.who_benefits_text_primary}}$</p>
-								<p class="text-samaritan">${{TDR-Duty-Drawback-in-the-UK.who_benefits_text_secondary}}$
+									${{TDR-Duty-Drawback-in-the-EU.who_benefits_text_primary}}$</p>
+								<p class="text-samaritan">${{TDR-Duty-Drawback-in-the-EU.who_benefits_text_secondary}}$
 								</p>
 								<a href="https://blog.tradedutyrefund.com"
 									class="btn samaritanDarkGreen-bg text-white fw-bold mt-3 rounded-pill text-smaller"
 									target="_blank"
-									rel="noopener">${{TDR-Duty-Drawback-in-the-UK.read_insights_button}}$</a>
+									rel="noopener">${{TDR-Duty-Drawback-in-the-EU.read_insights_button}}$</a>
 							</div>
 							<div class="col-lg-1"></div>
 							<div class="col-lg-4">
@@ -562,9 +641,9 @@
 										<div class="card h-100 border-0 shadow">
 											<div class="card-body p-4">
 												<h3 class="h5 text-samaritanDarkGreen">
-													${{TDR-Duty-Drawback-in-the-UK.card_brand_title}}$</h3>
+													${{TDR-Duty-Drawback-in-the-EU.card_brand_title}}$</h3>
 												<p class="mb-0 text-samaritan">
-													${{TDR-Duty-Drawback-in-the-UK.card_brand_text}}$</p>
+													${{TDR-Duty-Drawback-in-the-EU.card_brand_text}}$</p>
 											</div>
 										</div>
 									</div>
@@ -572,9 +651,9 @@
 										<div class="card h-100 border-0 shadow">
 											<div class="card-body p-4">
 												<h3 class="h5 text-samaritanDarkGreen">
-													${{TDR-Duty-Drawback-in-the-UK.card_finance_title}}$</h3>
+													${{TDR-Duty-Drawback-in-the-EU.card_finance_title}}$</h3>
 												<p class="mb-0 text-samaritan">
-													${{TDR-Duty-Drawback-in-the-UK.card_finance_text}}$</p>
+													${{TDR-Duty-Drawback-in-the-EU.card_finance_text}}$</p>
 											</div>
 										</div>
 									</div>
@@ -605,9 +684,9 @@
 						<div class="row align-items-start justify-content-between">
 							<div class="col-lg-6 sticky-section sticky-lg-top">
 								<h2 class="display-4 fw-bold font-secondary mt-4">
-									${{TDR-Duty-Drawback-in-the-UK.challenges_title_prefix}}$<span
+									${{TDR-Duty-Drawback-in-the-EU.challenges_title_prefix}}$<span
 										class="text-samaritanYellow">
-										${{TDR-Duty-Drawback-in-the-UK.challenges_title_suffix}}$
+										${{TDR-Duty-Drawback-in-the-EU.challenges_title_suffix}}$
 									</span></h2>
 								<!-- <p>Discover a versatile, fully responsive framework built for modern web projects of any
 								scale. Craft stunning pages with ease today.</p> -->
@@ -624,13 +703,13 @@
 												</svg></i>
 											<span
 												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">01</span>
-											<h3>"${{TDR-Duty-Drawback-in-the-UK.challenge_1_title_prefix}}$ <span
-													class="underline">${{TDR-Duty-Drawback-in-the-UK.challenge_1_title_suffix}}$</span>".
+											<h3>"${{TDR-Duty-Drawback-in-the-EU.challenge_1_title_prefix}}$ <span
+													class="underline">${{TDR-Duty-Drawback-in-the-EU.challenge_1_title_suffix}}$</span>".
 											</h3>
 											<p>
-												${{TDR-Duty-Drawback-in-the-UK.challenge_1_text_1}}$
+												${{TDR-Duty-Drawback-in-the-EU.challenge_1_text_1}}$
 												<br>
-												<strong>${{TDR-Duty-Drawback-in-the-UK.challenge_1_text_2}}$</strong>
+												<strong>${{TDR-Duty-Drawback-in-the-EU.challenge_1_text_2}}$</strong>
 											</p>
 
 										</div>
@@ -650,13 +729,13 @@
 											</i>
 											<span
 												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">02</span>
-											<h3>"${{TDR-Duty-Drawback-in-the-UK.challenge_2_title_prefix}}$ <span
-													class="underline">${{TDR-Duty-Drawback-in-the-UK.challenge_2_title_suffix}}$</span>".
+											<h3>"${{TDR-Duty-Drawback-in-the-EU.challenge_2_title_prefix}}$ <span
+													class="underline">${{TDR-Duty-Drawback-in-the-EU.challenge_2_title_suffix}}$</span>".
 											</h3>
 											<p>
-												${{TDR-Duty-Drawback-in-the-UK.challenge_2_text_1}}$
+												${{TDR-Duty-Drawback-in-the-EU.challenge_2_text_1}}$
 												<br>
-												<strong>${{TDR-Duty-Drawback-in-the-UK.challenge_2_text_2}}$</strong>
+												<strong>${{TDR-Duty-Drawback-in-the-EU.challenge_2_text_2}}$</strong>
 											</p>
 
 										</div>
@@ -676,13 +755,13 @@
 											</i>
 											<span
 												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">03</span>
-											<h3>"${{TDR-Duty-Drawback-in-the-UK.challenge_3_title_prefix}}$ <span
-													class="underline">${{TDR-Duty-Drawback-in-the-UK.challenge_3_title_suffix}}$</span>".
+											<h3>"${{TDR-Duty-Drawback-in-the-EU.challenge_3_title_prefix}}$ <span
+													class="underline">${{TDR-Duty-Drawback-in-the-EU.challenge_3_title_suffix}}$</span>".
 											</h3>
 											<p>
-												${{TDR-Duty-Drawback-in-the-UK.challenge_3_text_1}}$
+												${{TDR-Duty-Drawback-in-the-EU.challenge_3_text_1}}$
 												<br>
-												<strong>${{TDR-Duty-Drawback-in-the-UK.challenge_3_text_2}}$</strong>
+												<strong>${{TDR-Duty-Drawback-in-the-EU.challenge_3_text_2}}$</strong>
 											</p>
 
 										</div>
@@ -700,13 +779,13 @@
 												</svg></i>
 											<span
 												class="badge rounded-circle p-3 mt-3 ms-3 bg-dark position-absolute top-0 start-0">04</span>
-											<h3>"${{TDR-Duty-Drawback-in-the-UK.challenge_4_title_prefix}}$ <span
-													class="underline">${{TDR-Duty-Drawback-in-the-UK.challenge_4_title_suffix}}$</span>".
+											<h3>"${{TDR-Duty-Drawback-in-the-EU.challenge_4_title_prefix}}$ <span
+													class="underline">${{TDR-Duty-Drawback-in-the-EU.challenge_4_title_suffix}}$</span>".
 											</h3>
 											<p>
-												${{TDR-Duty-Drawback-in-the-UK.challenge_4_text_1}}$
+												${{TDR-Duty-Drawback-in-the-EU.challenge_4_text_1}}$
 												<br>
-												<strong>${{TDR-Duty-Drawback-in-the-UK.challenge_4_text_2}}$</strong>
+												<strong>${{TDR-Duty-Drawback-in-the-EU.challenge_4_text_2}}$</strong>
 											</p>
 
 										</div>
@@ -748,19 +827,19 @@
 								@@include("src/blocks/contactOptions.html")
 							</div>
 							<div class="col-md-7">
-								<div class="accordion" id="UKDDFAQ">
+								<div class="accordion" id="EUDDFAQ">
 									<div class="accordion-item">
 										<h2 class="accordion-header">
 											<button class="accordion-button" type="button" data-bs-toggle="collapse"
 												data-bs-target="#collapseOne" aria-expanded="true"
 												aria-controls="collapseOne">
-												${{TDR-Duty-Drawback-in-the-UK.faq_1_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_1_question}}$
 											</button>
 										</h2>
 										<div id="collapseOne" class="accordion-collapse collapse show"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_1_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_1_answer}}$
 											</div>
 										</div>
 									</div>
@@ -769,13 +848,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseTwo"
 												aria-expanded="false" aria-controls="collapseTwo">
-												${{TDR-Duty-Drawback-in-the-UK.faq_2_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_2_question}}$
 											</button>
 										</h2>
 										<div id="collapseTwo" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_2_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_2_answer}}$
 											</div>
 										</div>
 									</div>
@@ -784,13 +863,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseThree"
 												aria-expanded="false" aria-controls="collapseThree">
-												${{TDR-Duty-Drawback-in-the-UK.faq_3_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_3_question}}$
 											</button>
 										</h2>
 										<div id="collapseThree" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_3_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_3_answer}}$
 											</div>
 										</div>
 									</div>
@@ -799,13 +878,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseFour"
 												aria-expanded="false" aria-controls="collapseFour">
-												${{TDR-Duty-Drawback-in-the-UK.faq_4_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_4_question}}$
 											</button>
 										</h2>
 										<div id="collapseFour" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_4_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_4_answer}}$
 											</div>
 										</div>
 									</div>
@@ -814,13 +893,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseFive"
 												aria-expanded="false" aria-controls="collapseFive">
-												${{TDR-Duty-Drawback-in-the-UK.faq_5_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_5_question}}$
 											</button>
 										</h2>
 										<div id="collapseFive" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_5_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_5_answer}}$
 											</div>
 										</div>
 									</div>
@@ -829,13 +908,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseSix"
 												aria-expanded="false" aria-controls="collapseSix">
-												${{TDR-Duty-Drawback-in-the-UK.faq_6_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_6_question}}$
 											</button>
 										</h2>
 										<div id="collapseSix" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_6_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_6_answer}}$
 											</div>
 										</div>
 									</div>
@@ -844,13 +923,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseSeven"
 												aria-expanded="false" aria-controls="collapseSeven">
-												${{TDR-Duty-Drawback-in-the-UK.faq_7_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_7_question}}$
 											</button>
 										</h2>
 										<div id="collapseSeven" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_7_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_7_answer}}$
 											</div>
 										</div>
 									</div>
@@ -859,13 +938,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseHeight"
 												aria-expanded="false" aria-controls="collapseHeight">
-												${{TDR-Duty-Drawback-in-the-UK.faq_8_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_8_question}}$
 											</button>
 										</h2>
 										<div id="collapseHeight" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_8_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_8_answer}}$
 											</div>
 										</div>
 									</div>
@@ -874,13 +953,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseNine"
 												aria-expanded="false" aria-controls="collapseNine">
-												${{TDR-Duty-Drawback-in-the-UK.faq_9_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_9_question}}$
 											</button>
 										</h2>
 										<div id="collapseNine" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_9_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_9_answer}}$
 											</div>
 										</div>
 									</div>
@@ -889,13 +968,13 @@
 											<button class="accordion-button collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseTen"
 												aria-expanded="false" aria-controls="collapseTen">
-												${{TDR-Duty-Drawback-in-the-UK.faq_10_question}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_10_question}}$
 											</button>
 										</h2>
 										<div id="collapseTen" class="accordion-collapse collapse"
-											data-bs-parent="#UKDDFAQ">
+											data-bs-parent="#EUDDFAQ">
 											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-UK.faq_10_answer}}$
+												${{TDR-Duty-Drawback-in-the-EU.faq_10_answer}}$
 											</div>
 										</div>
 									</div>
@@ -915,11 +994,11 @@
 					<div class="container py-2">
 						<div class="row justify-content-center">
 							<div class="col-md-10">
-								<p class="fw-bold mb-4 text-white">${{TDR-Duty-Drawback-in-the-UK.cta_prefix}}$</p>
+								<p class="fw-bold mb-4 text-white">${{TDR-Duty-Drawback-in-the-EU.cta_prefix}}$</p>
 								<h2 class="text-white fw-bold display-3" style="letter-spacing: -1px;">
-									${{TDR-Duty-Drawback-in-the-UK.cta_title}}$</h2>
+									${{TDR-Duty-Drawback-in-the-EU.cta_title}}$</h2>
 
-								<p class="lead"></p>${{TDR-Duty-Drawback-in-the-UK.cta_suffix}}$</p>
+								<p class="lead"></p>${{TDR-Duty-Drawback-in-the-EU.cta_suffix}}$</p>
 
 								@@include("src/blocks/contactOptions.html")
 							</div>
@@ -940,9 +1019,9 @@
 							class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
 							<div>
 								<h2 class="display-5 fw-bolder ls-n-2 text-darkSamaritan mb-2">
-									${{TDR-Duty-Drawback-in-the-UK.related_services_title}}$</h2>
+									${{TDR-Duty-Drawback-in-the-EU.related_services_title}}$</h2>
 								<p class="text-samaritan mb-0">
-									${{TDR-Duty-Drawback-in-the-UK.related_services_subtitle}}$</p>
+									${{TDR-Duty-Drawback-in-the-EU.related_services_subtitle}}$</p>
 							</div>
 						</div>
 						<div class="row block-card-9 col-mb-50">

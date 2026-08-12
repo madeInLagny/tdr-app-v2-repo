@@ -765,13 +765,37 @@
       // Google Sheets Web App URL - V10
       const webAppUrl = 'https://script.google.com/macros/s/AKfycbz4BQva_FEhtQoZsGwWO5ItIWC_h0brpO1UDKouADGgVSpNcCN1RkaQdTe8avj-XmAFUA/exec';
 
-      // Send data to Google Sheets
-      fetch(webAppUrl, {
-        method: 'POST',
-        body: JSON.stringify(data),
-      }).then(response => response.text())
-        .then(result => console.log('Success:', result))
-        .catch(error => console.error('Error:', error));
+      function sendData(payload) {
+        fetch(webAppUrl, {
+          method: 'POST',
+          body: JSON.stringify(payload),
+        })
+          .then(response => response.text())
+          .then(result => console.log('Success:', result))
+          .catch(error => console.error('Error:', error));
+      }
+
+      function addUserLocation(payload) {
+        fetch('https://ipapi.co/json/')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Unable to resolve location');
+            }
+            return response.json();
+          })
+          .then(location => {
+            payload.country = location.country_name || location.country || '';
+            payload.city = location.city || '';
+            sendData(payload);
+          })
+          .catch(() => {
+            payload.country = '';
+            payload.city = '';
+            sendData(payload);
+          });
+      }
+
+      addUserLocation(data);
     }
 
     // Run on page load
