@@ -86,6 +86,14 @@
 			color: var(--darkSamaritan);
 			--bs-accordion-active-bg: var(--lightSamaritan)
 		}
+
+		.toggle-header {
+			color: var(--darkSamaritan);
+		}
+
+		.toggle-content {
+			color: var(--darkSamaritan);
+		}
 	</style>
 
 
@@ -137,12 +145,20 @@
 			isolation: isolate;
 		}
 
+		.eu-duty-flow {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0;
+		}
+
 		.eu-duty-flow .flow-grid {
 			display: grid;
 			grid-template-columns: repeat(4, minmax(0, 1fr));
 			gap: 1.25rem;
 			position: relative;
 			z-index: 2;
+			width: 100%;
 		}
 
 		.eu-duty-flow .flow-card {
@@ -156,6 +172,20 @@
 			overflow: hidden;
 		}
 
+		.eu-duty-flow .flow-card.conclusion {
+			color: var(--lightSamaritan);
+			margin-top: 1.25rem;
+			width: min(100%, 760px);
+			min-height: 50px;
+			background: var(--darkSamaritan);
+			border: 1px solid rgba(75, 91, 197, 0.12);
+			box-shadow: 0 18px 36px rgba(36, 59, 78, 0.12), 0 0 0 1px rgba(75, 91, 197, 0.04);
+		}
+
+		.eu-duty-flow .flow-card.conclusion p {
+			color: var(--lightSamaritan);
+		}
+
 		.eu-duty-flow .flow-card h4 {
 			margin: 0 0 1rem;
 			color: var(--samaritanDarkRed);
@@ -164,6 +194,10 @@
 			text-transform: uppercase;
 			font-weight: 800;
 			line-height: 1.2;
+		}
+
+		.eu-duty-flow .flow-card.conclusion h4 {
+			color: whitesmoke;
 		}
 
 		.eu-duty-flow .flow-card p {
@@ -196,6 +230,19 @@
 			height: 2px;
 			background: rgba(250, 103, 129, 0.85);
 			border-bottom: 2px dashed rgba(250, 103, 129, 0.9);
+		}
+
+		.eu-duty-flow .flow-card.conclusion .flow-link {
+			left: 2.5rem;
+			right: 2.5rem;
+			height: 3px;
+			background: linear-gradient(90deg, rgba(75, 91, 197, 0.35), rgba(75, 91, 197, 0.95));
+			border-bottom-color: rgba(75, 91, 197, 0.95);
+		}
+
+		.eu-duty-flow .flow-card.conclusion .flow-link::before,
+		.eu-duty-flow .flow-card.conclusion .flow-link::after {
+			background: var(--samaritanDarkBlue);
 		}
 
 		.eu-duty-flow .flow-link::before,
@@ -237,14 +284,36 @@
 			background: var(--samaritanDarkGreen);
 		}
 
+		.eu-duty-flow .flow-card.gold .flow-link {
+			background: var(--samaritanDarkYellow);
+			border-bottom-color: var(--samaritanDarkYellow);
+		}
+
+		.eu-duty-flow .flow-card.gold .flow-link::before,
+		.eu-duty-flow .flow-card.gold .flow-link::after {
+			background: var(--samaritanDarkYellow);
+		}
+
+
 		.eu-duty-flow .flow-card .mini-pill[data-tone="blue"] {
 			background: rgba(75, 91, 197, 0.12);
 			color: var(--samaritanDarkBlue);
 		}
 
+		.eu-duty-flow .flow-card.conclusion .mini-pill {
+			background: rgba(75, 91, 197, 0.12);
+			color: var(--samaritanDarkBlue);
+			box-shadow: inset 0 0 0 1px rgba(75, 91, 197, 0.12);
+		}
+
 		.eu-duty-flow .flow-card .mini-pill[data-tone="green"] {
 			background: rgba(91, 176, 0, 0.12);
 			color: var(--samaritanDarkGreen);
+		}
+
+		.eu-duty-flow .flow-card .mini-pill[data-tone="gold"] {
+			background: rgba(176, 173, 0, 0.12);
+			color: var(--samaritanDarkYellow);
 		}
 
 		.eu-duty-flow .flow-legend {
@@ -282,6 +351,18 @@
 			border-bottom-color: rgba(91, 176, 0, 0.9);
 		}
 
+		@keyframes conclusionReveal {
+			0% {
+				opacity: 0;
+				transform: translateY(18px) scale(0.98);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+
 		@media (max-width: 1200px) {
 			.eu-duty-flow .flow-grid {
 				grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -295,6 +376,10 @@
 
 			.eu-duty-flow .flow-card {
 				min-height: 280px;
+			}
+
+			.eu-duty-flow .flow-card.conclusion {
+				width: 100%;
 			}
 		}
 	</style>
@@ -469,10 +554,9 @@
 
 				<div class="col-md-5 offset-md-1 p-5">
 					<h1 class="text-stretch display-3 fw-bold position-relative" data-animate="fadeInLeft"
-						data-animate-delay="1000">EU Duty Drawback, Simplified for Global Traders.</h1>
-					<p class="lead text-lightSamaritan" data-animate="fadeInRight" data-animate-delay="1000">As the only
-						global duty drawback provider, TDR helps EU importers and exporters reclaim duties worldwide
-						with speed, compliance, and certainty.</p>
+						data-animate-delay="1000">${{TDR-Duty-Drawback-in-the-EU.hero_headline_line}}$</h1>
+					<p class="lead text-lightSamaritan" data-animate="fadeInRight" data-animate-delay="1000">
+						${{TDR-Duty-Drawback-in-the-EU.hero_subheadline}}$</p>
 				</div>
 
 				<div class="col-md-6 order-md-2 min-vh-md-90 min-vh-40"
@@ -555,8 +639,10 @@
 				<div id="use-cases" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
 					<div class="container">
 						<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan" data-animate="fadeIn">
-							How EU duty drawback works for <br>
-							<span class="text-samaritanDarkRed">crossborder e-commerce returns</span>
+							${{TDR-Duty-Drawback-in-the-EU.use_cases_title}}$
+							<br>
+							<span
+								class="text-samaritanDarkRed">${{TDR-Duty-Drawback-in-the-EU.use_cases_subtitle}}$</span>
 						</h2>
 					</div>
 					<div class="container">
@@ -565,37 +651,41 @@
 								<div class="eu-duty-flow">
 									<div class="flow-grid">
 										<div class="flow-card" data-animate="flipInY">
-											<h4>1. Order placed</h4>
-											<p>Your brand ships a direct-to-consumer order to a shopper in the EU.</p>
-											<span class="mini-pill">Non-EU retailer</span>
+											<h4>${{TDR-Duty-Drawback-in-the-EU.use_case_1_title}}$</h4>
+											<p>${{TDR-Duty-Drawback-in-the-EU.use_case_1_text}}$</p>
+											<span
+												class="mini-pill">${{TDR-Duty-Drawback-in-the-EU.use_case_1_badge}}$</span>
 											<div class="flow-link"></div>
 										</div>
 										<div class="flow-card alt" data-animate="flipInY" data-delay="500">
-											<h4>2. Import + clearance</h4>
-											<p>Goods clear customs in the EU and duties are paid at import.</p>
-											<span class="mini-pill" data-tone="blue">Duties paid</span>
+											<h4>${{TDR-Duty-Drawback-in-the-EU.use_case_2_title}}$</h4>
+											<p>${{TDR-Duty-Drawback-in-the-EU.use_case_2_text}}$</p>
+											<span
+												class="mini-pill">${{TDR-Duty-Drawback-in-the-EU.use_case_2_badge}}$</span>
 											<div class="flow-link"></div>
 										</div>
 										<div class="flow-card green" data-animate="flipInY" data-delay="1000">
-											<h4>3. Delivered</h4>
-											<p>The consignee receives the order and the goods are sold in-market.</p>
-											<span class="mini-pill" data-tone="green">B2C fulfilled</span>
+											<h4>${{TDR-Duty-Drawback-in-the-EU.use_case_3_title}}$</h4>
+											<p>${{TDR-Duty-Drawback-in-the-EU.use_case_3_text}}$</p>
+											<span
+												class="mini-pill">${{TDR-Duty-Drawback-in-the-EU.use_case_3_badge}}$</span>
 											<div class="flow-link"></div>
 										</div>
-										<div class="flow-card" data-animate="flipInY" data-delay="1500">
-											<h4>4. Returned goods</h4>
-											<p>Part of the order comes back to a consolidation point for inspection and
-												resale or re-export.</p>
-											<span class="mini-pill">Eligible for drawback</span>
+										<div class="flow-card gold" data-animate="flipInY" data-delay="1500">
+											<h4>${{TDR-Duty-Drawback-in-the-EU.use_case_4_title}}$</h4>
+											<p>${{TDR-Duty-Drawback-in-the-EU.use_case_4_text}}$</p>
+											<span
+												class="mini-pill">${{TDR-Duty-Drawback-in-the-EU.use_case_4_badge}}$</span>
 											<div class="flow-link"></div>
 										</div>
 									</div>
 
-									<div class="flow-legend" aria-label="Flow legend">
-										<span class="legend-item"><span class="legend-line"></span>Order and return
-											flow</span>
-										<span class="legend-item"><span class="legend-line green"></span>Duty drawback
-											eligible goods</span>
+									<div class="flow-card conclusion text-center" data-animate="zoomInUp"
+										data-delay="2000">
+										<h4>${{TDR-Duty-Drawback-in-the-EU.use_case_5_title}}$</h4>
+										<p>${{TDR-Duty-Drawback-in-the-EU.use_case_5_text}}$</p>
+										<span
+											class="mini-pill">${{TDR-Duty-Drawback-in-the-EU.use_case_5_badge}}$</span>
 									</div>
 								</div>
 							</div>
@@ -815,168 +905,202 @@
 					<div class="container">
 						<div class="row justify-content-center text-center mb-3">
 							<div class="col-lg-8 col-xl-7">
-								<span class="text-muted">F.A.Q</span>
-								<h2 class="display-5 fw-bold text-darkSamaritan">
-									${{TDR-Duty-Drawback-in-the-US.faq_section_title}}$</h2>
+								<h2 class="display-4 fw-bolder ls-n-2 text-center text-darkSamaritan"
+									data-animate="fadeIn">
+									${{TDR-Duty-Drawback-in-the-EU.faq_section_title}}$
+								</h2>
 							</div>
 						</div>
-						<div class="row justify-content-center">
-							<div class="col-md-5 d-none d-lg-block">
-								<!-- <span class="text-muted">Lorem ipsum dolor</span> -->
-								<h2 class="pb-4 fw-bold text-samaritan text-center">Need more support?</h2>
-								@@include("src/blocks/contactOptions.html")
-							</div>
-							<div class="col-md-7">
-								<div class="accordion" id="EUDDFAQ">
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button" type="button" data-bs-toggle="collapse"
-												data-bs-target="#collapseOne" aria-expanded="true"
-												aria-controls="collapseOne">
-												${{TDR-Duty-Drawback-in-the-EU.faq_1_question}}$
-											</button>
-										</h2>
-										<div id="collapseOne" class="accordion-collapse collapse show"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_1_answer}}$
-											</div>
+
+						<div class="mx-md-auto col-md-6">
+							<div id="faqs" class="faqs">
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-finance">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_1_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-												aria-expanded="false" aria-controls="collapseTwo">
-												${{TDR-Duty-Drawback-in-the-EU.faq_2_question}}$
-											</button>
-										</h2>
-										<div id="collapseTwo" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_2_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_1_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-returns faq-finance">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_2_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseThree"
-												aria-expanded="false" aria-controls="collapseThree">
-												${{TDR-Duty-Drawback-in-the-EU.faq_3_question}}$
-											</button>
-										</h2>
-										<div id="collapseThree" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_3_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_2_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-exports faq-finance">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_3_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseFour"
-												aria-expanded="false" aria-controls="collapseFour">
-												${{TDR-Duty-Drawback-in-the-EU.faq_4_question}}$
-											</button>
-										</h2>
-										<div id="collapseFour" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_4_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_3_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-customs">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_4_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseFive"
-												aria-expanded="false" aria-controls="collapseFive">
-												${{TDR-Duty-Drawback-in-the-EU.faq_5_question}}$
-											</button>
-										</h2>
-										<div id="collapseFive" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_5_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_4_answer}}$ </div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-finance">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_5_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseSix"
-												aria-expanded="false" aria-controls="collapseSix">
-												${{TDR-Duty-Drawback-in-the-EU.faq_6_question}}$
-											</button>
-										</h2>
-										<div id="collapseSix" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_6_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_5_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-finance">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_6_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-												aria-expanded="false" aria-controls="collapseSeven">
-												${{TDR-Duty-Drawback-in-the-EU.faq_7_question}}$
-											</button>
-										</h2>
-										<div id="collapseSeven" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_7_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_6_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-customs">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_7_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseHeight"
-												aria-expanded="false" aria-controls="collapseHeight">
-												${{TDR-Duty-Drawback-in-the-EU.faq_8_question}}$
-											</button>
-										</h2>
-										<div id="collapseHeight" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_8_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_7_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-customs">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_8_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseNine"
-												aria-expanded="false" aria-controls="collapseNine">
-												${{TDR-Duty-Drawback-in-the-EU.faq_9_question}}$
-											</button>
-										</h2>
-										<div id="collapseNine" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_9_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_8_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-finance">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
+										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_9_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
 										</div>
 									</div>
-									<div class="accordion-item">
-										<h2 class="accordion-header">
-											<button class="accordion-button collapsed" type="button"
-												data-bs-toggle="collapse" data-bs-target="#collapseTen"
-												aria-expanded="false" aria-controls="collapseTen">
-												${{TDR-Duty-Drawback-in-the-EU.faq_10_question}}$
-											</button>
-										</h2>
-										<div id="collapseTen" class="accordion-collapse collapse"
-											data-bs-parent="#EUDDFAQ">
-											<div class="accordion-body">
-												${{TDR-Duty-Drawback-in-the-EU.faq_10_answer}}$
-											</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_9_answer}}$
+									</div>
+								</div>
+
+								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-customs">
+									<div class="toggle-header">
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-question-circle"></i>
+											<i class="toggle-open bi-question-circle"></i>
 										</div>
+										<div class="toggle-title ps-1">
+											${{TDR-Duty-Drawback-in-the-EU.faq_10_question}}$
+										</div>
+										<div class="toggle-icon">
+											<i class="toggle-closed bi-chevron-down"></i>
+											<i class="toggle-open bi-chevron-up"></i>
+										</div>
+									</div>
+									<div class="toggle-content ps-4">
+										${{TDR-Duty-Drawback-in-the-EU.faq_10_answer}}$
 									</div>
 								</div>
 							</div>
@@ -1026,13 +1150,13 @@
 						</div>
 						<div class="row block-card-9 col-mb-50">
 							<div class="col-lg-4 min-vh-75">
-								@@include('src/blocks/cards/TDR-Duty-Free-Returns-to-the-US.html')
+								@@include('src/blocks/cards/Drawback-in-the-US-card.html')
 							</div>
 							<div class="col-lg-4 min-vh-75">
-								@@include('src/blocks/cards/TDR-Duty-Drawback-in-Europe.html')
+								@@include('src/blocks/cards/Drawback-in-the-UK-card.html')
 							</div>
 							<div class="col-lg-4 min-vh-75">
-								@@include('src/blocks/cards/TDR-Duty-Free-Returns-to-Europe.html')
+								@@include('src/blocks/cards/Free-Returns-to-Europe-card.html')
 							</div>
 						</div>
 					</div>
