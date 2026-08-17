@@ -101,6 +101,247 @@
     <!-- Style for vertical steps -->
     <link rel="stylesheet" href="./css/custom/verticalSteps.css">
 
+    <style>
+        .uk-shipper-hero {
+            position: relative;
+            margin: 1.5rem auto 2rem;
+            padding: 2rem 1.5rem;
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(12, 35, 60, 0.96), rgba(27, 76, 103, 0.88));
+            box-shadow: 0 24px 80px rgba(10, 24, 38, 0.28);
+            overflow: hidden;
+        }
+
+        .uk-shipper-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(123, 213, 255, 0.18), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(128, 255, 214, 0.16), transparent 30%);
+            pointer-events: none;
+        }
+
+        .uk-shipper-hero .eyebrow {
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            color: #bed7ef;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+        }
+
+        .uk-shipper-hero h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .uk-shipper-hero p {
+            color: rgba(245, 250, 255, 0.82);
+            max-width: 36rem;
+        }
+
+        .route-toggle {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .route-toggle-btn {
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-radius: 999px;
+            padding: 0.6rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.2s ease;
+        }
+
+        .route-toggle-btn.active,
+        .route-toggle-btn:hover {
+            background: #fff;
+            border-color: #fff;
+            color: var(--samaritan);
+        }
+
+        .hero-nav {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .hero-nav button {
+            min-width: 110px;
+            border-radius: 999px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .route-map-shell {
+            position: relative;
+            min-height: 420px;
+            padding: 1rem;
+            background: rgba(7, 18, 33, 0.3);
+            border: 1px solid rgba(172, 204, 236, 0.2);
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .route-map-shell svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            background: linear-gradient(180deg, rgba(19, 45, 73, 0.18), rgba(8, 19, 28, 0.3));
+            border-radius: 16px;
+        }
+
+        .route-main {
+            fill: none;
+            stroke: rgba(208, 223, 240, 0.8);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 12 16;
+            stroke-linejoin: round;
+        }
+
+        .route-branch {
+            fill: none;
+            stroke-width: 7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 10 18;
+        }
+
+        .route-us {
+            stroke: #7fe0c9;
+        }
+
+        .route-eu {
+            stroke: #77b9ff;
+        }
+
+        .route-node {
+            fill: #d8ebff;
+            stroke: rgba(255, 255, 255, 0.8);
+            stroke-width: 3;
+        }
+
+        .map-land {
+            fill: rgba(196, 222, 247, 0.06);
+            stroke: rgba(208, 223, 240, 0.48);
+            stroke-width: 2;
+            stroke-linejoin: round;
+        }
+
+        .route-node.route-step {
+            fill: #fff;
+            stroke: #84d0ff;
+        }
+
+        .route-labels {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .route-point {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #eaf6ff, #8de0d2);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 0 4px rgba(94, 161, 203, 0.18), 0 10px 20px rgba(7, 18, 28, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--samaritan);
+            font-size: 0.58rem;
+            font-weight: 700;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            z-index: 1;
+        }
+
+        .route-point.active {
+            transform: translate(-50%, -50%) scale(1.35);
+            box-shadow: 0 0 0 6px rgba(127, 224, 201, 0.2), 0 12px 28px rgba(7, 18, 28, 0.25);
+            background: linear-gradient(135deg, #ffffff, #b9f1e4);
+        }
+
+        .route-label {
+            position: absolute;
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0;
+            visibility: hidden;
+            max-width: 185px;
+            padding: 0.55rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(10, 21, 28, 0.72);
+            border: 1px solid rgba(185, 210, 233, 0.28);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+            color: #ecf4ff;
+            font-size: 0.72rem;
+            line-height: 1.2;
+            text-align: center;
+            letter-spacing: 0.01em;
+            transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        .route-label.active {
+            opacity: 1;
+            visibility: visible;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(127, 224, 201, 0.9);
+            transform: translate(-50%, -50%) scale(1.03);
+        }
+
+        .route-flight {
+            position: absolute;
+            left: 7%;
+            top: 59%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dbeaf9, #7ee2c8);
+            color: var(--samaritan);
+            box-shadow: 0 12px 30px rgba(22, 70, 89, 0.45);
+            font-size: 1.1rem;
+            font-weight: 700;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            transition: left 0.6s ease, top 0.6s ease, transform 0.6s ease;
+            z-index: 2;
+        }
+
+        @media (max-width: 991px) {
+            .uk-shipper-hero {
+                padding: 1.5rem 1rem;
+            }
+
+            .route-map-shell {
+                min-height: 350px;
+            }
+
+            .route-map-shell svg {
+                min-height: 310px;
+            }
+
+            .route-label {
+                max-width: 155px;
+                font-size: 0.68rem;
+            }
+        }
+    </style>
 
 </head>
 
@@ -568,6 +809,53 @@
   </div>
   <div class="header-wrap-clone"></div>
 </header>
+
+        <div class="container">
+            <div class="uk-shipper-hero">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <span class="eyebrow">Duty refund flow</span>
+                        <h2 class="display-6 fw-bold">Follow the UK return journey.</h2>
+                        <p>Move through the flow to understand how inventory can be imported into the UK, shipped to consumers, and later recovered on return routes in the US or EU.</p>
+
+                        <div class="route-toggle" aria-label="Choose a return route">
+                            <button type="button" class="route-toggle-btn active" data-route="us">US route</button>
+                            <button type="button" class="route-toggle-btn" data-route="eu">EU route</button>
+                        </div>
+
+                        <div class="hero-nav">
+                            <button id="routePrev" type="button" class="btn btn-outline-light btn-sm">Prev</button>
+                            <button id="routeNext" type="button" class="btn btn-light btn-sm">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="route-map-shell" aria-label="UK return route animation">
+                            <svg viewBox="0 0 1100 420" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="routeJourneyTitle routeJourneyDesc">
+                                <title id="routeJourneyTitle">UK shippers return routes</title>
+                                <desc id="routeJourneyDesc">Travel from the UK to either the US or EU and back.</desc>
+                                <g class="map-land">
+                                    <path d="M 120 130 L 146 106 L 168 110 L 182 126 L 178 142 L 162 150 L 138 152 L 124 146 Z" />
+                                    <path d="M 196 110 L 272 96 L 350 102 L 420 120 L 462 142 L 468 190 L 440 216 L 390 228 L 338 224 L 294 196 L 228 190 L 198 150 Z" />
+                                    <path d="M 748 120 L 786 110 L 840 118 L 886 128 L 922 146 L 950 170 L 946 202 L 914 220 L 866 224 L 826 216 L 772 182 L 742 154 Z" />
+                                    <path d="M 520 246 L 560 238 L 604 244 L 640 260 L 654 286 L 638 298 L 582 300 L 536 278 Z" />
+                                </g>
+                                <path class="route-main" d="M 150 146 L 250 146" />
+                                <path class="route-branch route-us" d="M 250 146 C 362 150, 420 138, 482 148 C 602 162, 696 108, 810 118 C 895 126, 956 146, 980 170" />
+                                <path class="route-branch route-eu" d="M 250 146 C 360 172, 430 210, 520 216 C 616 222, 720 248, 820 266 C 896 280, 952 286, 980 250" />
+                                <circle class="route-node route-step" cx="150" cy="146" r="10" />
+                                <circle class="route-node" cx="250" cy="146" r="9" />
+                                <circle class="route-node" cx="980" cy="170" r="9" />
+                                <circle class="route-node" cx="980" cy="250" r="9" />
+                            </svg>
+
+                            <div id="flight-badge" class="route-flight" aria-hidden="true">✈</div>
+                            <div id="route-labels" class="route-labels" aria-live="polite"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section id="content">
             <div class="container">
@@ -1117,6 +1405,107 @@
     <!-- Canvas Scripts -->
     <script src="js/functions.js"></script>
 
+    <script>
+        const routeMarkers = {
+            us: [
+                { x: 150, y: 146, text: 'Import Inventory Into The UK', icon: '•' },
+                { x: 250, y: 146, text: 'B2C order shipped from the UK', icon: '•' },
+                { x: 480, y: 148, text: 'Order is imported in the US', icon: '•' },
+                { x: 700, y: 110, text: 'Customer returns some items', icon: '↩' },
+                { x: 895, y: 130, text: 'items are exported from the US', icon: '⇢' },
+                { x: 980, y: 170, text: 'returned orders are imported back in the UK', icon: '✓' }
+            ],
+            eu: [
+                { x: 150, y: 146, text: 'Import Inventory Into The UK', icon: '•' },
+                { x: 250, y: 146, text: 'B2C order shipped from the UK', icon: '•' },
+                { x: 520, y: 216, text: 'Order is imported in the EU', icon: '•' },
+                { x: 720, y: 248, text: 'Customer returns some items', icon: '↩' },
+                { x: 840, y: 270, text: 'items are exported from the EU', icon: '⇢' },
+                { x: 980, y: 250, text: 'returned orders are imported back in the UK', icon: '✓' }
+            ]
+        };
+
+        const labelsContainer = document.getElementById('route-labels');
+        const flightBadge = document.getElementById('flight-badge');
+        const routeButtons = document.querySelectorAll('.route-toggle-btn');
+        const prevButton = document.getElementById('routePrev');
+        const nextButton = document.getElementById('routeNext');
+
+        let activeRoute = 'us';
+        let activeIndex = 0;
+
+        function renderLabels(routeKey, index) {
+            const points = routeMarkers[routeKey];
+            labelsContainer.innerHTML = '';
+
+            points.forEach((point, pointIndex) => {
+                const pointBadge = document.createElement('div');
+                pointBadge.className = 'route-point' + (pointIndex === index ? ' active' : '');
+                pointBadge.innerHTML = point.icon;
+                pointBadge.style.left = ((point.x / 1100) * 100) + '%';
+                pointBadge.style.top = ((point.y / 420) * 100) + '%';
+                labelsContainer.appendChild(pointBadge);
+
+                const label = document.createElement('div');
+                label.className = 'route-label' + (pointIndex === index ? ' active' : '');
+                label.textContent = point.text;
+
+                const x = ((point.x / 1100) * 100);
+                const y = ((point.y / 420) * 100);
+                const offsetX = point.x < 420 ? 9 : point.x > 900 ? -9 : 0;
+                const offsetY = point.y < 180 ? -18 : point.y > 310 ? 20 : -6;
+
+                label.style.left = (x + offsetX) + '%';
+                label.style.top = (y + offsetY) + '%';
+                labelsContainer.appendChild(label);
+            });
+        }
+
+        function moveFlight(routeKey, index) {
+            const point = routeMarkers[routeKey][index];
+            const left = ((point.x / 1100) * 100) + '%';
+            const top = ((point.y / 420) * 100) + '%';
+            const angle = routeKey === 'us'
+                ? (index >= 2 ? -22 : 0)
+                : (index >= 2 ? 22 : 0);
+
+            flightBadge.style.left = left;
+            flightBadge.style.top = top;
+            flightBadge.style.transform = 'translate(-50%, -50%) rotate(' + angle + 'deg)';
+        }
+
+        function updateRoute(routeKey, index) {
+            activeRoute = routeKey;
+            activeIndex = index;
+
+            routeButtons.forEach((button) => {
+                button.classList.toggle('active', button.dataset.route === routeKey);
+            });
+
+            renderLabels(routeKey, index);
+            moveFlight(routeKey, index);
+        }
+
+        routeButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const route = button.dataset.route;
+                updateRoute(route, 0);
+            });
+        });
+
+        prevButton.addEventListener('click', () => {
+            const nextIndex = activeIndex > 0 ? activeIndex - 1 : 0;
+            updateRoute(activeRoute, nextIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            const maxIndex = routeMarkers[activeRoute].length - 1;
+            const nextIndex = activeIndex < maxIndex ? activeIndex + 1 : maxIndex;
+            updateRoute(activeRoute, nextIndex);
+        });
+
+        updateRoute(activeRoute, 0);
+    </script>
 
 </body>
 
