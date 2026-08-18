@@ -18,7 +18,7 @@
     <!-- CSS imports -->
     @@include('src/blocks/head/cssImports.html')
 
-        <!-- Only Required when there are cards on the page -->
+    <!-- Only Required when there are cards on the page -->
     <link rel="stylesheet" href="./css/custom/cards.css">
 
     <!-- Only Required if Samaritan color is required -->
@@ -28,246 +28,135 @@
     <link rel="stylesheet" href="./css/custom/verticalSteps.css">
 
     <style>
-        .uk-shipper-hero {
+        /* Hero Section for UK Shippers */
+        .hero-section-uk {
+            padding: 60px 0;
             position: relative;
-            margin: 1.5rem auto 2rem;
-            padding: 2rem 1.5rem;
-            border-radius: 32px;
-            background: linear-gradient(135deg, rgba(12, 35, 60, 0.96), rgba(27, 76, 103, 0.88));
-            box-shadow: 0 24px 80px rgba(10, 24, 38, 0.28);
             overflow: hidden;
         }
 
-        .uk-shipper-hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(123, 213, 255, 0.18), transparent 32%),
-                radial-gradient(circle at bottom right, rgba(128, 255, 214, 0.16), transparent 30%);
-            pointer-events: none;
-        }
-
-        .uk-shipper-hero .eyebrow {
-            display: inline-block;
-            margin-bottom: 0.75rem;
-            color: #bed7ef;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.12rem;
-            text-transform: uppercase;
-        }
-
-        .uk-shipper-hero h2 {
-            color: #fff;
-            margin-bottom: 1rem;
-            line-height: 1.15;
-        }
-
-        .uk-shipper-hero p {
-            color: rgba(245, 250, 255, 0.82);
-            max-width: 36rem;
-        }
-
-        .route-toggle {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-        }
-
-        .route-toggle-btn {
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            border-radius: 999px;
-            padding: 0.6rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            transition: all 0.2s ease;
-        }
-
-        .route-toggle-btn.active,
-        .route-toggle-btn:hover {
-            background: #fff;
-            border-color: #fff;
-            color: var(--samaritan);
-        }
-
-        .hero-nav {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .hero-nav button {
-            min-width: 110px;
-            border-radius: 999px;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-
-        .route-map-shell {
+                .hero-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
             position: relative;
-            min-height: 420px;
-            padding: 1rem;
-            background: rgba(7, 18, 33, 0.3);
-            border: 1px solid rgba(172, 204, 236, 0.2);
-            border-radius: 24px;
-            overflow: hidden;
-        }
-
-        .route-map-shell svg {
-            display: block;
-            width: 100%;
-            height: 100%;
-            min-height: 380px;
-            background: linear-gradient(180deg, rgba(19, 45, 73, 0.18), rgba(8, 19, 28, 0.3));
-            border-radius: 16px;
-        }
-
-        .route-main {
-            fill: none;
-            stroke: rgba(208, 223, 240, 0.8);
-            stroke-width: 8;
-            stroke-linecap: round;
-            stroke-dasharray: 12 16;
-            stroke-linejoin: round;
-        }
-
-        .route-branch {
-            fill: none;
-            stroke-width: 7;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-dasharray: 10 18;
-        }
-
-        .route-us {
-            stroke: #7fe0c9;
-        }
-
-        .route-eu {
-            stroke: #77b9ff;
-        }
-
-        .route-node {
-            fill: #d8ebff;
-            stroke: rgba(255, 255, 255, 0.8);
-            stroke-width: 3;
-        }
-
-        .map-land {
-            fill: rgba(196, 222, 247, 0.06);
-            stroke: rgba(208, 223, 240, 0.48);
-            stroke-width: 2;
-            stroke-linejoin: round;
-        }
-
-        .route-node.route-step {
-            fill: #fff;
-            stroke: #84d0ff;
-        }
-
-        .route-labels {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .route-point {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background: linear-gradient(135deg, #eaf6ff, #8de0d2);
-            border: 2px solid rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 0 4px rgba(94, 161, 203, 0.18), 0 10px 20px rgba(7, 18, 28, 0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--samaritan);
-            font-size: 0.58rem;
-            font-weight: 700;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
             z-index: 1;
         }
 
-        .route-point.active {
-            transform: translate(-50%, -50%) scale(1.35);
-            box-shadow: 0 0 0 6px rgba(127, 224, 201, 0.2), 0 12px 28px rgba(7, 18, 28, 0.25);
-            background: linear-gradient(135deg, #ffffff, #b9f1e4);
-        }
-
-        .route-label {
-            position: absolute;
-            transform: translate(-50%, -50%) scale(0.9);
-            opacity: 0;
-            visibility: hidden;
-            max-width: 185px;
-            padding: 0.55rem 0.7rem;
-            border-radius: 999px;
-            background: rgba(10, 21, 28, 0.72);
-            border: 1px solid rgba(185, 210, 233, 0.28);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
-            color: #ecf4ff;
-            font-size: 0.72rem;
-            line-height: 1.2;
+        .hero-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 35px 25px;
             text-align: center;
-            letter-spacing: 0.01em;
-            transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-            z-index: 2;
-            white-space: nowrap;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .route-label.active {
-            opacity: 1;
-            visibility: visible;
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(127, 224, 201, 0.9);
-            transform: translate(-50%, -50%) scale(1.03);
-        }
-
-        .route-flight {
+        .hero-card::before {
+            content: '';
             position: absolute;
-            left: 7%;
-            top: 59%;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .hero-card:hover::before {
+            left: 100%;
+        }
+
+        .hero-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card-icon {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #dbeaf9, #7ee2c8);
-            color: var(--samaritan);
-            box-shadow: 0 12px 30px rgba(22, 70, 89, 0.45);
-            font-size: 1.1rem;
-            font-weight: 700;
-            transform: translate(-50%, -50%) rotate(-5deg);
-            transition: left 0.6s ease, top 0.6s ease, transform 0.6s ease;
-            z-index: 2;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--samaritanYellow), var(--samaritanGreen));
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-size: 28px;
+            color: #1a1a1a;
         }
 
-        @media (max-width: 991px) {
-            .uk-shipper-hero {
-                padding: 1.5rem 1rem;
+        .hero-card:hover .hero-card-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 20px rgba(136, 247, 7, 0.3);
+        }
+
+        .hero-card h3 {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .hero-card:hover h3 {
+            color: var(--samaritanYellow);
+        }
+
+        .hero-card-description {
+            color: #b1c0cd;
+            line-height: 1.5;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        .hero-card:hover .hero-card-description {
+            color: #e0e8f0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+
+            .hero-cards-grid {
+                gap: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             }
 
-            .route-map-shell {
-                min-height: 350px;
+            .hero-card {
+                padding: 25px 15px;
             }
 
-            .route-map-shell svg {
-                min-height: 310px;
+            .hero-card-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
             }
 
-            .route-label {
-                max-width: 155px;
-                font-size: 0.68rem;
+        }
+
+        @media (max-width: 480px) {
+            .hero-section-uk {
+                padding: 40px 0;
+            }
+
+            .hero-content {
+                margin-bottom: 30px;
+            }
+
+            .hero-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .hero-card {
+                padding: 20px 15px;
             }
         }
     </style>
+
 
 </head>
 
@@ -277,53 +166,6 @@
         "header-bg":"var(--samaritan)",
         "submenu-bg":"var(--darkSamaritan)"
         })
-
-        <div class="container">
-            <div class="uk-shipper-hero">
-                <div class="row align-items-center">
-                    <div class="col-lg-5">
-                        <span class="eyebrow">Duty refund flow</span>
-                        <h2 class="display-6 fw-bold">Follow the UK return journey.</h2>
-                        <p>Move through the flow to understand how inventory can be imported into the UK, shipped to consumers, and later recovered on return routes in the US or EU.</p>
-
-                        <div class="route-toggle" aria-label="Choose a return route">
-                            <button type="button" class="route-toggle-btn active" data-route="us">US route</button>
-                            <button type="button" class="route-toggle-btn" data-route="eu">EU route</button>
-                        </div>
-
-                        <div class="hero-nav">
-                            <button id="routePrev" type="button" class="btn btn-outline-light btn-sm">Prev</button>
-                            <button id="routeNext" type="button" class="btn btn-light btn-sm">Next</button>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7">
-                        <div class="route-map-shell" aria-label="UK return route animation">
-                            <svg viewBox="0 0 1100 420" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="routeJourneyTitle routeJourneyDesc">
-                                <title id="routeJourneyTitle">UK shippers return routes</title>
-                                <desc id="routeJourneyDesc">Travel from the UK to either the US or EU and back.</desc>
-                                <g class="map-land">
-                                    <path d="M 120 130 L 146 106 L 168 110 L 182 126 L 178 142 L 162 150 L 138 152 L 124 146 Z" />
-                                    <path d="M 196 110 L 272 96 L 350 102 L 420 120 L 462 142 L 468 190 L 440 216 L 390 228 L 338 224 L 294 196 L 228 190 L 198 150 Z" />
-                                    <path d="M 748 120 L 786 110 L 840 118 L 886 128 L 922 146 L 950 170 L 946 202 L 914 220 L 866 224 L 826 216 L 772 182 L 742 154 Z" />
-                                    <path d="M 520 246 L 560 238 L 604 244 L 640 260 L 654 286 L 638 298 L 582 300 L 536 278 Z" />
-                                </g>
-                                <path class="route-main" d="M 150 146 L 250 146" />
-                                <path class="route-branch route-us" d="M 250 146 C 362 150, 420 138, 482 148 C 602 162, 696 108, 810 118 C 895 126, 956 146, 980 170" />
-                                <path class="route-branch route-eu" d="M 250 146 C 360 172, 430 210, 520 216 C 616 222, 720 248, 820 266 C 896 280, 952 286, 980 250" />
-                                <circle class="route-node route-step" cx="150" cy="146" r="10" />
-                                <circle class="route-node" cx="250" cy="146" r="9" />
-                                <circle class="route-node" cx="980" cy="170" r="9" />
-                                <circle class="route-node" cx="980" cy="250" r="9" />
-                            </svg>
-
-                            <div id="flight-badge" class="route-flight" aria-hidden="true">✈</div>
-                            <div id="route-labels" class="route-labels" aria-live="polite"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <section id="content">
             <div class="container">
@@ -343,131 +185,54 @@
                     </div>
                 </div>
             </div>
-            <div class="content-wrap pb-1">
+            <div id="hero" class="hero-section-uk">
                 <div class="container">
-                    <h2>
-                        <div class="fw-bold display-6">
-                            ${{solutions-for-uk-shippers.solution-heading}}$
-                        </div>
-                    </h2>
-                    <div
-                        class="row feature-box-border-vertical col-mb-50 justify-content-center align-items-center my-5">
-                        <div class="col-md-6 feature-box fbox-active fbox-dark fbox-sm">
-                            <div class="fbox-icon">
-                                <i class="bi-check"></i>
+                    <div class="hero-cards-grid">
+                        <!-- Option 1: Duty Free Transit -->
+                        <div class="hero-card">
+                            <div class="hero-card-icon">
+                                <i class="bi bi-box2"></i>
                             </div>
-                            <div class="fbox-content">
-                                <h3 class="text-transform-none mb-2">
-                                    ${{solutions-for-uk-shippers.step1-title}}$ <img class="flags"
-                                        src="./images/flags/uk-flag.png" alt="UK Flag" />
-                                </h3>
-                                <p>${{solutions-for-uk-shippers.step1-text}}$</p>
-                            </div>
+                            <h3>Inventory Duty Free Transit</h3>
+                            <p class="hero-card-description">Store goods in the UK without paying duties</p>
                         </div>
 
-                        <div class="clear"></div>
-
-                        <div class="col-md-6 feature-box fbox-active fbox-dark fbox-sm">
-                            <div class="fbox-icon">
-                                <i class="bi-check"></i>
+                        <!-- Option 2: Duty Drawback -->
+                        <div class="hero-card">
+                            <div class="hero-card-icon">
+                                <i class="bi bi-arrow-return-left"></i>
                             </div>
-                            <div class="fbox-content">
-                                <h3 class="text-transform-none mb-2">
-                                    Order Imported <img class="flags" src="./images/flags/eu-flag.png" alt="EU Flag" />
-                                    <img class="flags" src="./images/flags/us-flag.png" alt="US Flag" />
-                                </h3>
-                                <p>Order is imported at its final destination and delivered to the buyer.</p>
-                                <p> <img class="flags" src="./images/flags/warning.png" alt="warning Flag" /> Customs
-                                    Duties Are Charged to the Importer</p>
-                            </div>
+                            <h3>Duty Drawback</h3>
+                            <p class="hero-card-description">Recover duties on returned goods from the EU & US</p>
                         </div>
 
-                        <div class="clear"></div>
-
-                        <div class="col-md-6 feature-box fbox-active fbox-border fbox-light fbox-sm">
-                            <div class="fbox-icon">
-                                <i class="bi-check border"></i>
+                        <!-- Option 3: Duty & VAT Free Importation -->
+                        <div class="hero-card">
+                            <div class="hero-card-icon">
+                                <i class="bi bi-shield-check"></i>
                             </div>
-                            <div class="fbox-content">
-                                <h3 class="text-transform-none mb-2">
-                                    ${{solutions-for-uk-shippers.step2-title}}$
-                                </h3>
-                                <p>${{solutions-for-uk-shippers.step2-text}}$</p>
-                                <p>
-                                    ${{solutions-for-uk-shippers.step2-cta-prefix}}$
-                                    <a class="text-decoration-underline" href="${{TDR-Duty-Drawback-in-the-US.path}}$">
-                                        ${{TDR-Duty-Drawback-in-the-US.name}}$
-                                    </a>
-                                    and
-                                    <a class="text-decoration-underline" href="${{TDR-Duty-Drawback-in-the-EU.path}}$">
-                                        ${{TDR-Duty-Drawback-in-the-EU.name}}$
-                                    </a>
-                                    ${{solutions-for-uk-shippers.step2-cta-suffix}}$
-                                </p>
-                                <p> <img class="flags" src="./images/flags/check.png" alt="warning Flag" /> Trade Duty
-                                    Refund claims import duties back.</p>
-                                </p>
-                            </div>
+                            <h3>Duty & VAT Free Import</h3>
+                            <p class="hero-card-description">Bring goods back to the UK without duties</p>
                         </div>
 
-                        <div class="clear"></div>
-
-                        <div class="col-md-6 feature-box fbox-active noborder fbox-light fbox-sm">
-                            <div class="fbox-icon">
-                                <i class="bi-check border"></i>
+                        <!-- Option 4: Trade Optimisation -->
+                        <div class="hero-card">
+                            <div class="hero-card-icon">
+                                <i class="bi bi-graph-up"></i>
                             </div>
-                            <div class="fbox-content">
-                                <h3 class="text-transform-none mb-2">
-                                    ${{solutions-for-uk-shippers.step3-title}}$ <img class="flags"
-                                        src="./images/flags/uk-flag.png" alt="UK Flag" />
-                                </h3>
-                                <p>${{solutions-for-uk-shippers.step3-text}}$</p>
-                                <p> <img class="flags" src="./images/flags/warning.png" alt="warning Flag" /> Import
-                                    customs duties are due on returned goods
-                                </p>
-                                <p> <img class="flags" src="./images/flags/check.png" alt="warning Flag" /> But <a
-                                        class="text-decoration-underline"
-                                        href="${{TDR-Duty-Free-Returns-to-Europe.path}}$">
-                                        ${{TDR-Duty-Free-Returns-to-Europe.name}}$
-                                    </a>
-                                    ${{solutions-for-uk-shippers.step3-cta}}$
-                                </p>
-
-                            </div>
+                            <h3>Trade Optimisation</h3>
+                            <p class="hero-card-description">Strategic analysis to minimise customs costs</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <h2>
-                    <div class="fw-bold display-6">
-                        ${{solutions-for-uk-shippers.discovery-heading}}$
-                    </div>
-                </h2>
-            </div>
 
-
-            <div class="d-flex align-items-center pb-4">
-                <div class="container">
-                    <div class="row block-card-9 col-mb-50">
-                        <div class="col-lg-4 min-vh-75">
-                            @@include('src/blocks/cards/Drawback-in-the-US-card.html')
-                        </div>
-                        <div class="col-lg-4 min-vh-75">
-                            @@include('src/blocks/cards/Drawback-in-the-EU-card.html')
-                        </div>
-                        <div class="col-lg-4 min-vh-75">
-                            @@include('src/blocks/cards/Free-Returns-to-Europe-card.html')
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
-        @@include('src/blocks/linkToFAQ.html')
+        
         @@include('src/blocks/contactUsCallOut.html')
-        		<div class="section dark bg-transparent">
-			@@include('src/blocks/blog-gallery.html')
-		</div>
+        <div class="section dark bg-transparent">
+            @@include('src/blocks/blog-gallery.html')
+        </div>
 
         @@include('src/blocks/footer.html',{
         "bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
