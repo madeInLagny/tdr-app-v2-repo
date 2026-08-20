@@ -109,7 +109,7 @@
             overflow: hidden;
         }
 
-                .hero-cards-grid {
+        .hero-cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
@@ -761,7 +761,7 @@
               <ul class="sub-menu-container">
                 <li class="menu-item">
                   <a class="menu-link" href="contact-request.html">
-                    <div>Chat with us</div>
+                    <div>Contact Us</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -811,16 +811,17 @@
                             <div class="hero-card-icon">
                                 <i class="bi bi-box2"></i>
                             </div>
-                            <h3>Inventory Duty Free Transit</h3>
-                            <p class="hero-card-description">Store goods in the UK without paying duties</p>
+                            <h3>Buy and Sell Abroad, Transit in the UK</h3>
+                            <p class="hero-card-description">Store goods in the UK without paying duties or reclaim duties on goods that are re-exported</p>
                         </div>
 
                         <!-- Option 2: Duty Drawback -->
-                        <div class="hero-card" id="duty-drawback-card" tabindex="0" role="button" aria-label="Choose a duty drawback destination">
+                        <div class="hero-card" id="duty-drawback-card" tabindex="0" role="button" data-bs-toggle="modal"
+                            data-bs-target=".bs-example-modal-centered">
                             <div class="hero-card-icon">
                                 <i class="bi bi-arrow-return-left"></i>
                             </div>
-                            <h3>Duty Drawback</h3>
+                            <h3>Sell Abroad, Return Goods and Recover Duties</h3>
                             <p class="hero-card-description">Recover duties on returned goods from the EU & US</p>
                         </div>
 
@@ -829,8 +830,8 @@
                             <div class="hero-card-icon">
                                 <i class="bi bi-shield-check"></i>
                             </div>
-                            <h3>Duty & VAT Free Import</h3>
-                            <p class="hero-card-description">Bring goods back to the UK without duties</p>
+                            <h3>Bring Returned Goods Back to the UK Duty and VAT free</h3>
+                            <p class="hero-card-description">Bring goods back to the UK free of duties and taxes</p>
                         </div>
 
                         <!-- Option 4: Trade Optimisation -->
@@ -838,7 +839,7 @@
                             <div class="hero-card-icon">
                                 <i class="bi bi-graph-up"></i>
                             </div>
-                            <h3>Trade Optimisation</h3>
+                            <h3>Trade Compliantly and Optimise Your Supply Chain</h3>
                             <p class="hero-card-description">Strategic analysis to minimise customs costs</p>
                         </div>
                     </div>
@@ -846,21 +847,49 @@
             </div>
 
         </section>
-        
+
         <div class="container">
   <div class="promo shadow-sm text-center p-4 border rounded-5 mb-5">
     <h2 class="mb-1 h2">Eager to start saving big?</h2>
     <h3 class="mb-4 fw-medium">You're just one click away.</h3>
-    <div class="d-flex gap-3 flex-wrap justify-content-center">
-  <a class="button button-rounded" href="contact-request.html"
-    role="button">Chat with us</a>
-  <a class="button button-rounded button-brown" href="make-an-appointment.html"
-    role="button">Book a call with us</a>
-  <a class="button button-rounded button-blue" href="https://www.linkedin.com/company/trade-duty-refund" target="_blank"
-    role="button">DM us on LinkedIn</a>
+    <div class="contact-options  tdr-contact-page">
+    <a class="contact-option contact-option-primary" href="contact-request.html" role="button">
+        <span class="contact-option-icon" aria-hidden="true"><i class="bi-chat-dots-fill"></i></span>
+        <span class="contact-option-copy">
+            <strong>Contact Us</strong>
+        </span>
+
+    </a>
+    <a class="contact-option contact-option-appointment" href="make-an-appointment.html" role="button">
+        <span class="contact-option-icon" aria-hidden="true"><i class="bi-calendar2-check-fill"></i></span>
+        <span class="contact-option-copy">
+            <strong>Book a call with us</strong>
+        </span>
+
+    </a>
+    <a class="contact-option contact-option-linkedin" href="https://www.linkedin.com/company/trade-duty-refund" target="_blank" rel="noopener"
+        role="button">
+        <span class="contact-option-icon" aria-hidden="true"><i class="bi-linkedin"></i></span>
+        <span class="contact-option-copy">
+            <strong>DM us on LinkedIn</strong>
+        </span>
+
+    </a>
 </div>
+
+<style>
+    .contact-options {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        gap: 1rem !important;
+        max-width: 900px !important;
+        width: 100% !important;
+        margin: 0px auto !important;
+    }
+</style>
   </div>
 </div>
+
         <div class="section dark bg-transparent">
             <!-- Title
 		============================================= -->
@@ -1151,163 +1180,39 @@
 </noscript>
 
 
-    <!-- Canvas Scripts -->
-    <script src="js/functions.js"></script>
+    <!-- JavaScripts
+	============================================= -->
+    <script src="js/plugins.min.js"></script>
+    <script src="js/functions.bundle.js"></script>
 
     <div id="drawback-choice-modal" class="drawback-choice-modal" aria-hidden="true">
         <div class="drawback-choice-dialog" role="dialog" aria-modal="true" aria-labelledby="drawback-choice-title">
             <button class="drawback-choice-close" type="button" aria-label="Close">×</button>
-            <h3 id="drawback-choice-title" class="mb-2">Choose your drawback route</h3>
+            <h3 id="drawback-choice-title" class="mb-2"></h3>
             <p class="mb-0">Select the market that applies to your return or re-export.</p>
-            <div class="drawback-choice-actions">
-                <a href="TDR-Duty-Drawback-in-the-US.html" class="choice-btn">US Duty Drawback</a>
-                <a href="TDR-Duty-Drawback-in-the-EU.html" class="choice-btn">EU Duty Drawback</a>
+
+        </div>
+    </div>
+
+    <div class="modal fade text-start bs-example-modal-centered" tabindex="-1" role="dialog"
+        aria-labelledby="centerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content lightSamaritan-bg">
+                <div class="modal-header">
+                    <h4 class="modal-title text-darkSamaritan" id="myModalLabel">Choose your drawback route</h4>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0 text-darkSamaritan">Select the market that applies to your return or re-export.</p>
+                    <div class="drawback-choice-actions">
+                        <a href="TDR-Duty-Drawback-in-the-US.html" class="button button-rounded">US</a>
+                        <a href="TDR-Duty-Drawback-in-the-EU.html" class="button button-rounded">EU</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        const routeMarkers = {
-            us: [
-                { x: 150, y: 146, text: 'Import Inventory Into The UK', icon: '•' },
-                { x: 250, y: 146, text: 'B2C order shipped from the UK', icon: '•' },
-                { x: 480, y: 148, text: 'Order is imported in the US', icon: '•' },
-                { x: 700, y: 110, text: 'Customer returns some items', icon: '↩' },
-                { x: 895, y: 130, text: 'items are exported from the US', icon: '⇢' },
-                { x: 980, y: 170, text: 'returned orders are imported back in the UK', icon: '✓' }
-            ],
-            eu: [
-                { x: 150, y: 146, text: 'Import Inventory Into The UK', icon: '•' },
-                { x: 250, y: 146, text: 'B2C order shipped from the UK', icon: '•' },
-                { x: 520, y: 216, text: 'Order is imported in the EU', icon: '•' },
-                { x: 720, y: 248, text: 'Customer returns some items', icon: '↩' },
-                { x: 840, y: 270, text: 'items are exported from the EU', icon: '⇢' },
-                { x: 980, y: 250, text: 'returned orders are imported back in the UK', icon: '✓' }
-            ]
-        };
-
-        const labelsContainer = document.getElementById('route-labels');
-        const flightBadge = document.getElementById('flight-badge');
-        const routeButtons = document.querySelectorAll('.route-toggle-btn');
-        const prevButton = document.getElementById('routePrev');
-        const nextButton = document.getElementById('routeNext');
-        const dutyDrawbackCard = document.getElementById('duty-drawback-card');
-        const drawbackChoiceModal = document.getElementById('drawback-choice-modal');
-        const drawbackChoiceClose = document.querySelector('.drawback-choice-close');
-
-        function openDrawbackChoice() {
-            drawbackChoiceModal.classList.add('is-open');
-            drawbackChoiceModal.setAttribute('aria-hidden', 'false');
-        }
-
-        function closeDrawbackChoice() {
-            drawbackChoiceModal.classList.remove('is-open');
-            drawbackChoiceModal.setAttribute('aria-hidden', 'true');
-        }
-
-        if (dutyDrawbackCard) {
-            dutyDrawbackCard.addEventListener('click', openDrawbackChoice);
-            dutyDrawbackCard.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    openDrawbackChoice();
-                }
-            });
-        }
-
-        if (drawbackChoiceClose) {
-            drawbackChoiceClose.addEventListener('click', closeDrawbackChoice);
-        }
-
-        if (drawbackChoiceModal) {
-            drawbackChoiceModal.addEventListener('click', (event) => {
-                if (event.target === drawbackChoiceModal) {
-                    closeDrawbackChoice();
-                }
-            });
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape' && drawbackChoiceModal.classList.contains('is-open')) {
-                    closeDrawbackChoice();
-                }
-            });
-        }
-
-        let activeRoute = 'us';
-        let activeIndex = 0;
-
-        function renderLabels(routeKey, index) {
-            const points = routeMarkers[routeKey];
-            labelsContainer.innerHTML = '';
-
-            points.forEach((point, pointIndex) => {
-                const pointBadge = document.createElement('div');
-                pointBadge.className = 'route-point' + (pointIndex === index ? ' active' : '');
-                pointBadge.innerHTML = point.icon;
-                pointBadge.style.left = ((point.x / 1100) * 100) + '%';
-                pointBadge.style.top = ((point.y / 420) * 100) + '%';
-                labelsContainer.appendChild(pointBadge);
-
-                const label = document.createElement('div');
-                label.className = 'route-label' + (pointIndex === index ? ' active' : '');
-                label.textContent = point.text;
-
-                const x = ((point.x / 1100) * 100);
-                const y = ((point.y / 420) * 100);
-                const offsetX = point.x < 420 ? 9 : point.x > 900 ? -9 : 0;
-                const offsetY = point.y < 180 ? -18 : point.y > 310 ? 20 : -6;
-
-                label.style.left = (x + offsetX) + '%';
-                label.style.top = (y + offsetY) + '%';
-                labelsContainer.appendChild(label);
-            });
-        }
-
-        function moveFlight(routeKey, index) {
-            const point = routeMarkers[routeKey][index];
-            const left = ((point.x / 1100) * 100) + '%';
-            const top = ((point.y / 420) * 100) + '%';
-            const angle = routeKey === 'us'
-                ? (index >= 2 ? -22 : 0)
-                : (index >= 2 ? 22 : 0);
-
-            flightBadge.style.left = left;
-            flightBadge.style.top = top;
-            flightBadge.style.transform = 'translate(-50%, -50%) rotate(' + angle + 'deg)';
-        }
-
-        function updateRoute(routeKey, index) {
-            activeRoute = routeKey;
-            activeIndex = index;
-
-            routeButtons.forEach((button) => {
-                button.classList.toggle('active', button.dataset.route === routeKey);
-            });
-
-            renderLabels(routeKey, index);
-            moveFlight(routeKey, index);
-        }
-
-        routeButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                const route = button.dataset.route;
-                updateRoute(route, 0);
-            });
-        });
-
-        prevButton.addEventListener('click', () => {
-            const nextIndex = activeIndex > 0 ? activeIndex - 1 : 0;
-            updateRoute(activeRoute, nextIndex);
-        });
-
-        nextButton.addEventListener('click', () => {
-            const maxIndex = routeMarkers[activeRoute].length - 1;
-            const nextIndex = activeIndex < maxIndex ? activeIndex + 1 : maxIndex;
-            updateRoute(activeRoute, nextIndex);
-        });
-
-        updateRoute(activeRoute, 0);
-    </script>
 
 </body>
 

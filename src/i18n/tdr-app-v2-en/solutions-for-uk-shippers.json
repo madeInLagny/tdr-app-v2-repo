@@ -9,25 +9,25 @@
     "card1": {
       "id": "duty-free-transit",
       "icon": "bi-box2",
-      "title": "Inventory Duty Free Transit",
-      "description": "Store goods in the UK without paying duties"
+      "title": "Buy and Sell Abroad, Transit in the UK",
+      "description": "Store goods in the UK without paying duties or reclaim duties on goods that are re-exported"
     },
     "card2": {
       "id": "duty-drawback",
       "icon": "bi-arrow-return-left",
-      "title": "Duty Drawback",
+      "title": "Sell Abroad, Return Goods and Recover Duties",
       "description": "Recover duties on returned goods from the EU & US"
     },
     "card3": {
       "id": "duty-vat-free-import",
       "icon": "bi-shield-check",
-      "title": "Duty & VAT Free Import",
-      "description": "Bring goods back to the UK without duties"
+      "title": "Bring Returned Goods Back to the UK Duty and VAT free",
+      "description": "Bring goods back to the UK free of duties and taxes"
     },
     "card4": {
       "id": "trade-optimisation",
       "icon": "bi-graph-up",
-      "title": "Trade Optimisation",
+      "title": "Trade Compliantly and Optimise Your Supply Chain",
       "description": "Strategic analysis to minimise customs costs"
     }
   }

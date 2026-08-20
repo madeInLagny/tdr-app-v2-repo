@@ -545,7 +545,7 @@
               <ul class="sub-menu-container">
                 <li class="menu-item">
                   <a class="menu-link" href="contact-request.html">
-                    <div>Chat with us</div>
+                    <div>Contact Us</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -770,16 +770,44 @@
   <div class="promo shadow-sm text-center p-4 border rounded-5 mb-5">
     <h2 class="mb-1 h2">Eager to start saving big?</h2>
     <h3 class="mb-4 fw-medium">You're just one click away.</h3>
-    <div class="d-flex gap-3 flex-wrap justify-content-center">
-  <a class="button button-rounded" href="contact-request.html"
-    role="button">Chat with us</a>
-  <a class="button button-rounded button-brown" href="make-an-appointment.html"
-    role="button">Book a call with us</a>
-  <a class="button button-rounded button-blue" href="https://www.linkedin.com/company/trade-duty-refund" target="_blank"
-    role="button">DM us on LinkedIn</a>
+    <div class="contact-options  tdr-contact-page">
+    <a class="contact-option contact-option-primary" href="contact-request.html" role="button">
+        <span class="contact-option-icon" aria-hidden="true"><i class="bi-chat-dots-fill"></i></span>
+        <span class="contact-option-copy">
+            <strong>Contact Us</strong>
+        </span>
+
+    </a>
+    <a class="contact-option contact-option-appointment" href="make-an-appointment.html" role="button">
+        <span class="contact-option-icon" aria-hidden="true"><i class="bi-calendar2-check-fill"></i></span>
+        <span class="contact-option-copy">
+            <strong>Book a call with us</strong>
+        </span>
+
+    </a>
+    <a class="contact-option contact-option-linkedin" href="https://www.linkedin.com/company/trade-duty-refund" target="_blank" rel="noopener"
+        role="button">
+        <span class="contact-option-icon" aria-hidden="true"><i class="bi-linkedin"></i></span>
+        <span class="contact-option-copy">
+            <strong>DM us on LinkedIn</strong>
+        </span>
+
+    </a>
 </div>
+
+<style>
+    .contact-options {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        gap: 1rem !important;
+        max-width: 900px !important;
+        width: 100% !important;
+        margin: 0px auto !important;
+    }
+</style>
   </div>
 </div>
+
     		<div class="section dark bg-transparent">
 			<!-- Title
 		============================================= -->
