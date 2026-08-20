@@ -191,6 +191,92 @@
             color: #e0e8f0;
         }
 
+        .drawback-choice-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(18, 30, 42, 0.38);
+            z-index: 9999;
+        }
+
+        .drawback-choice-modal.is-open {
+            display: flex;
+        }
+
+        .drawback-choice-dialog {
+            position: relative;
+            width: min(100%, 560px);
+            background: #f5f8fb;
+            border: 1px solid rgba(15, 31, 44, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+            padding: 30px 24px 22px;
+            color: var(--darkSamaritan, #1c2b3a);
+        }
+
+        .drawback-choice-dialog h3 {
+            color: var(--samaritan, #1d4d39);
+        }
+
+        .drawback-choice-dialog p {
+            color: rgba(28, 43, 58, 0.8);
+        }
+
+        .drawback-choice-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            border: 0;
+            background: transparent;
+            color: rgba(28, 43, 58, 0.7);
+            font-size: 28px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .drawback-choice-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .drawback-choice-actions .choice-btn {
+            min-width: 180px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            background: linear-gradient(135deg, var(--samaritanYellow), #d9ff78);
+            border: 1px solid rgba(8, 83, 59, 0.15);
+            color: var(--darkSamaritan, #1c2b3a);
+            box-shadow: 0 8px 20px rgba(69, 124, 34, 0.12);
+        }
+
+        .drawback-choice-actions .choice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(69, 124, 34, 0.18);
+            text-decoration: none;
+            background: linear-gradient(135deg, #f9d32c, #f3c40f);
+        }
+
+        .drawback-choice-actions .choice-btn:last-child {
+            background: var(--samaritan, #1d4d39);
+            border-color: rgba(25, 60, 46, 0.15);
+            color: #ffffff;
+        }
+
+        .drawback-choice-actions .choice-btn:last-child:hover {
+            background: linear-gradient(135deg, #0d6d4d, #14906c);
+            color: #ffffff;
+            box-shadow: 0 12px 24px rgba(13, 109, 77, 0.25);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
 
@@ -730,7 +816,7 @@
                         </div>
 
                         <!-- Option 2: Duty Drawback -->
-                        <div class="hero-card">
+                        <div class="hero-card" id="duty-drawback-card" tabindex="0" role="button" aria-label="Choose a duty drawback destination">
                             <div class="hero-card-icon">
                                 <i class="bi bi-arrow-return-left"></i>
                             </div>
@@ -973,11 +1059,7 @@
     <!-- Tawk Chatbox -->
     <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-  if (
-    location.protocol !== "file:" &&
-    location.hostname !== "localhost" &&
-    location.hostname !== "127.0.0.1"
-  ) {
+ {
     var Tawk_API = Tawk_API || {},
       Tawk_LoadStart = new Date();
     (function () {
@@ -992,7 +1074,6 @@
   }
 </script>
 <!--End of Tawk.to Script-->
-
     <!-- URL Campaign Logger -->
     <script>
   if (
@@ -1086,6 +1167,18 @@
     <!-- Canvas Scripts -->
     <script src="js/functions.js"></script>
 
+    <div id="drawback-choice-modal" class="drawback-choice-modal" aria-hidden="true">
+        <div class="drawback-choice-dialog" role="dialog" aria-modal="true" aria-labelledby="drawback-choice-title">
+            <button class="drawback-choice-close" type="button" aria-label="Close">×</button>
+            <h3 id="drawback-choice-title" class="mb-2">Choose your drawback route</h3>
+            <p class="mb-0">Select the market that applies to your return or re-export.</p>
+            <div class="drawback-choice-actions">
+                <a href="TDR-Duty-Drawback-in-the-US.html" class="choice-btn">US Duty Drawback</a>
+                <a href="TDR-Duty-Drawback-in-the-EU.html" class="choice-btn">EU Duty Drawback</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         const routeMarkers = {
             us: [
@@ -1111,6 +1204,47 @@
         const routeButtons = document.querySelectorAll('.route-toggle-btn');
         const prevButton = document.getElementById('routePrev');
         const nextButton = document.getElementById('routeNext');
+        const dutyDrawbackCard = document.getElementById('duty-drawback-card');
+        const drawbackChoiceModal = document.getElementById('drawback-choice-modal');
+        const drawbackChoiceClose = document.querySelector('.drawback-choice-close');
+
+        function openDrawbackChoice() {
+            drawbackChoiceModal.classList.add('is-open');
+            drawbackChoiceModal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeDrawbackChoice() {
+            drawbackChoiceModal.classList.remove('is-open');
+            drawbackChoiceModal.setAttribute('aria-hidden', 'true');
+        }
+
+        if (dutyDrawbackCard) {
+            dutyDrawbackCard.addEventListener('click', openDrawbackChoice);
+            dutyDrawbackCard.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openDrawbackChoice();
+                }
+            });
+        }
+
+        if (drawbackChoiceClose) {
+            drawbackChoiceClose.addEventListener('click', closeDrawbackChoice);
+        }
+
+        if (drawbackChoiceModal) {
+            drawbackChoiceModal.addEventListener('click', (event) => {
+                if (event.target === drawbackChoiceModal) {
+                    closeDrawbackChoice();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && drawbackChoiceModal.classList.contains('is-open')) {
+                    closeDrawbackChoice();
+                }
+            });
+        }
 
         let activeRoute = 'us';
         let activeIndex = 0;

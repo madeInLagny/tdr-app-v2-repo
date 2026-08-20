@@ -5,5 +5,30 @@
   "section-heading": "TDR for UK Shippers",
   "main-heading": "4 Ways to Save on Customs Duties",
   "intro-text": "Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.",
-  "solution-heading": "A Solution For Each Customs Duty Spend"
+  "cards": {
+    "card1": {
+      "id": "duty-free-transit",
+      "icon": "bi-box2",
+      "title": "Inventory Duty Free Transit",
+      "description": "Store goods in the UK without paying duties"
+    },
+    "card2": {
+      "id": "duty-drawback",
+      "icon": "bi-arrow-return-left",
+      "title": "Duty Drawback",
+      "description": "Recover duties on returned goods from the EU & US"
+    },
+    "card3": {
+      "id": "duty-vat-free-import",
+      "icon": "bi-shield-check",
+      "title": "Duty & VAT Free Import",
+      "description": "Bring goods back to the UK without duties"
+    },
+    "card4": {
+      "id": "trade-optimisation",
+      "icon": "bi-graph-up",
+      "title": "Trade Optimisation",
+      "description": "Strategic analysis to minimise customs costs"
+    }
   }
+}
