@@ -1,0 +1,20 @@
+{
+  "path": "contact-request.html",
+  "name":"Contact Form",
+  "title": "Contact Trade Duty Refund – Connect with International Trade Experts",
+  "description": "Get in touch with Trade Duty Refund’s team for tailored advice on customs, duty recovery, and efficient global returns. Our specialists are ready to help you streamline your cross-border operations and reclaim hidden savings.",
+  "form-title":"Let us know how we can help you",
+  "form-description":"Please fill out the form below and our team will get back to you as soon as possible.",
+  "form-firstname-label":"First Name",
+  "form-name-label":"Name",
+  "form-email-label":"Email",
+  "form-company-label":"Company",
+  "form-subscribe-label":"Add me to the TDR newsletter subscribers list",
+  "form-notsubscribe-label":"No, I do not want be updated on the latest global trade news",
+  "form-loading":"Loading...",
+  "form-submit":"Submit",
+  "thank-you":"Thank you",
+  "confirmation-message":"Your message has been sent. We will get back to you shortly.",
+  "button-label":"Back to the website"
+}
+

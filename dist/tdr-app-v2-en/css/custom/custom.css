@@ -33,6 +33,155 @@
   margin: 0 auto;
 }
 
+.tdr-contact-page #content .content-wrap {
+  padding-top: 5rem;
+}
+
+.tdr-contact-intro {
+  max-width: 52rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.tdr-contact-kicker {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--samaritanGreen);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tdr-contact-intro h1 {
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1;
+}
+
+.tdr-contact-lead {
+  color: var(--lightSamaritan);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.tdr-contact-options-wrap {
+  max-width: 70rem;
+  margin: 0 auto 5rem;
+  padding: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 1rem;
+  background: rgb(17 40 57 / 52%);
+  box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 18%);
+}
+
+.tdr-contact-page .contact-options {
+  align-items: stretch;
+}
+
+.tdr-contact-page .contact-option {
+  position: relative;
+  display: flex;
+  flex: 1 1 18rem;
+  align-items: center;
+  min-height: 8.5rem;
+  gap: 1rem;
+  padding: 1.25rem;
+  overflow: hidden;
+  color: white;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 7%);
+  text-align: left;
+  text-decoration: none;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.tdr-contact-page .contact-option:hover,
+.tdr-contact-page .contact-option:focus-visible {
+  color: white;
+  background: rgb(255 255 255 / 14%);
+  transform: translateY(-0.25rem);
+}
+
+.tdr-contact-page .contact-option-primary:hover,
+.tdr-contact-page .contact-option-primary:focus-visible {
+  border-color: var(--samaritanGreen);
+  background: rgb(136 247 7 / 12%);
+}
+
+.tdr-contact-page .contact-option-appointment:hover,
+.tdr-contact-page .contact-option-appointment:focus-visible {
+  border-color: var(--samaritanGold);
+  background: rgb(225 184 151 / 12%);
+}
+
+.tdr-contact-page .contact-option-linkedin:hover,
+.tdr-contact-page .contact-option-linkedin:focus-visible {
+  border-color: var(--samaritanBlue);
+  background: rgb(125 151 221 / 12%);
+}
+
+.tdr-contact-page .contact-option-primary .contact-option-icon {
+  color: var(--samaritanDarkGreen);
+  background: var(--samaritanGreen);
+}
+
+.tdr-contact-page .contact-option-appointment .contact-option-icon {
+  color: var(--darkSamaritan);
+  background: var(--samaritanGold);
+}
+
+.tdr-contact-page .contact-option-linkedin .contact-option-icon {
+  color: white;
+  background: var(--samaritanBlue);
+}
+
+.tdr-contact-page .contact-option-icon {
+  display: inline-flex;
+  flex: 0 0 3rem;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.65rem;
+  font-size: 1.25rem;
+}
+
+.tdr-contact-page .contact-option-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tdr-contact-page .contact-option-copy strong {
+  font-family: var(--cnvs-primary-font);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.tdr-contact-page .contact-option-arrow {
+  align-self: flex-start;
+  color: var(--lightSamaritan);
+  font-size: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .tdr-contact-page #content .content-wrap {
+    padding-top: 3rem;
+  }
+
+  .tdr-contact-options-wrap {
+    padding: 0.75rem;
+  }
+
+  .tdr-contact-page .contact-option {
+    flex-basis: 100%;
+  }
+}
+
 @media (max-width: 575.98px) {
   .tdr-contact-widget {
     right: 0.75rem;

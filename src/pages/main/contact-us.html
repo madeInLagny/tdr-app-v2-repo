@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="./css/custom/samaritan.css">
 </head>
 
-<body class="stretched samaritan-bg">
+<body class="stretched samaritan-bg tdr-contact-page">
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper">
@@ -43,18 +43,24 @@
 			<div class="content-wrap">
 				<div class="container">
 
-					<div class="promo shadow-sm text-center p-4 border rounded-5 mb-5">
-						<h2 class="mb-1 h2">We're there for you</h2>
-						<h3 class="mb-4 fw-medium">Contact us to discover how our trade experts can help you reduce
-							import duties in the EU, US, and UK, and boost your cross-border sales.</h3>
-						@@include("src/blocks/contactOptions.html")
+					<div class="tdr-contact-intro text-center mb-5">
+						<span class="tdr-contact-kicker">Trade duty experts, on your side</span>
+						<h1 class="mb-3">We're there for you</h1>
+						<p class="tdr-contact-lead mb-0">Contact us to discover how our trade experts can help you
+							reduce
+							import duties in the EU, US, and UK, and boost your cross-border sales.</p>
+					</div>
+
+					<div class="tdr-contact-options-wrap">
+						@@include("src/blocks/contactPageOptions.html")
 					</div>
 				</div>
-				<div class="section dark bg-transparent">
-					@@include('src/blocks/blog-gallery.html')
-				</div>
-
 			</div>
+			<div class="section dark bg-transparent">
+				@@include('src/blocks/blog-gallery.html')
+			</div>
+
+	</div>
 	</div>
 	</section><!-- #content end -->
 
