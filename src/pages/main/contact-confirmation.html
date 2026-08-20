@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="${{ index.language }}$">
+
+<head>
+  @@include('src/blocks/head/cookieConsent/headScript.html')
+  @@include('src/blocks/head/metatags.html',{"OGImage":"https://tradedutyrefund.com/images/OGImages/contact-us.jpg",
+  "description":"Your message was sent to Trade Duty Refund",
+  "title":"Message sent",
+  "path":"contact-confirmation.html"
+  })
+  @@include('src/blocks/head/cssImports.html')
+  <link rel="stylesheet" href="./css/custom/samaritan.css">
+</head>
+
+<body class="stretched samaritan-bg">
+  <div id="wrapper">
+    @@include('src/blocks/header.html',{"text-color":"white",
+    "header-bg":"var(--samaritan)",
+    "submenu-bg":"var(--darkSamaritan)",
+    "menu-text-hover":"white"
+    })
+
+    <section id="content">
+      <div class="content-wrap">
+        <div class="container">
+          <div class="promo shadow-sm text-center p-4 p-md-5 border rounded-5 tdr-contact-form">
+            <i class="bi-check-circle-fill text-samaritan" style="font-size: 3rem;" aria-hidden="true"></i>
+            <h1 class="h2 mt-3 mb-2">Thank you</h1>
+            <p class="mb-4">Your message has been sent. We will get back to you shortly.</p>
+            <a class="button button-rounded" href="./">Back to the website</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    @@include('src/blocks/footer.html',{
+    "bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+    })
+  </div>
+
+  @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+  <script src="js/plugins.min.js"></script>
+  <script src="js/functions.bundle.js"></script>
+</body>
+
+</html>

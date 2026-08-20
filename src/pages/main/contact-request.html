@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="${{ index.language }}$">
+
+<head>
+  @@include('src/blocks/head/cookieConsent/headScript.html')
+  @@include('src/blocks/head/metatags.html',{"OGImage":"https://tradedutyrefund.com/images/OGImages/contact-us.jpg",
+  "description":"Contact Trade Duty Refund",
+  "title":"Contact us",
+  "path":"contact-request.html"
+  })
+  @@include('src/blocks/head/cssImports.html')
+  <link rel="stylesheet" href="./css/custom/samaritan.css">
+</head>
+
+<body class="stretched samaritan-bg">
+  <div id="wrapper">
+    @@include('src/blocks/header.html',{"text-color":"white",
+    "header-bg":"var(--samaritan)",
+    "submenu-bg":"var(--darkSamaritan)",
+    "menu-text-hover":"white"
+    })
+
+    <section id="content">
+      <div class="content-wrap">
+        <div class="container">
+          <div class="promo shadow-sm p-4 p-md-5 border rounded-5 tdr-contact-form">
+            <h1 class="h2 mb-2">Contact us</h1>
+            <p class="mb-4">Send us your question and our team will get back to you.</p>
+
+            <form action="https://formsubmit.co/contact@tradedutyrefund.com" method="POST">
+              <input type="hidden" name="_subject" value="New contact request from Trade Duty Refund website">
+              <input type="hidden" name="_next" id="contact-form-next" value="">
+              <input type="hidden" name="_captcha" value="true">
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="d-none" aria-hidden="true">
+
+              <div class="form-group mb-3">
+                <label for="contact-name">Name</label>
+                <input class="form-control" type="text" id="contact-name" name="name" autocomplete="name" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="contact-email">Email address</label>
+                <input class="form-control" type="email" id="contact-email" name="email" autocomplete="email" required>
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="contact-message">Message</label>
+                <textarea class="form-control" id="contact-message" name="message" rows="6" required></textarea>
+              </div>
+
+              <button class="button button-rounded" type="submit">Send message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    @@include('src/blocks/footer.html',{
+    "bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+    })
+  </div>
+
+  @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+  <script>
+    document.getElementById("contact-form-next").value = window.location.origin + "/contact-confirmation.html";
+  </script>
+  <script src="js/plugins.min.js"></script>
+  <script src="js/functions.bundle.js"></script>
+</body>
+
+</html>
