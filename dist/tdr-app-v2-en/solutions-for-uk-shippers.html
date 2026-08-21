@@ -98,9 +98,6 @@
     <!-- Only Required if Samaritan color is required -->
     <link rel="stylesheet" href="./css/custom/samaritan.css">
 
-    <!-- Style for vertical steps -->
-    <link rel="stylesheet" href="./css/custom/verticalSteps.css">
-
     <style>
         /* Hero Section for UK Shippers */
         .hero-section-uk {
@@ -128,6 +125,33 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+        }
+
+        .hero-card-link {
+            color: inherit;
+            display: block;
+            text-decoration: none;
+        }
+
+        .hero-card-link:hover,
+        .hero-card-link:focus {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .hero-card-link-indicator {
+            position: absolute;
+            right: 18px;
+            bottom: 16px;
+            color: var(--samaritanYellow);
+            font-size: 20px;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover .hero-card-link-indicator,
+        .hero-card:focus .hero-card-link-indicator {
+            transform: translateX(4px);
         }
 
         .hero-card::before {
@@ -807,13 +831,14 @@
                 <div class="container">
                     <div class="hero-cards-grid">
                         <!-- Option 1: Duty Free Transit -->
-                        <div class="hero-card">
+                        <a class="hero-card hero-card-link" href="TDR-Duty-Drawback-in-the-UK.html">
                             <div class="hero-card-icon">
                                 <i class="bi bi-box2"></i>
                             </div>
                             <h3>Buy and Sell Abroad, Transit in the UK</h3>
                             <p class="hero-card-description">Store goods in the UK without paying duties or reclaim duties on goods that are re-exported</p>
-                        </div>
+                            <span class="hero-card-link-indicator" aria-hidden="true"><i class="bi bi-arrow-right-circle"></i></span>
+                        </a>
 
                         <!-- Option 2: Duty Drawback -->
                         <div class="hero-card" id="duty-drawback-card" tabindex="0" role="button" data-bs-toggle="modal"
@@ -823,25 +848,28 @@
                             </div>
                             <h3>Sell Abroad, Return Goods and Recover Duties</h3>
                             <p class="hero-card-description">Recover duties on returned goods from the EU & US</p>
+                            <span class="hero-card-link-indicator" aria-hidden="true"><i class="bi bi-arrow-right-circle"></i></span>
                         </div>
 
                         <!-- Option 3: Duty & VAT Free Importation -->
-                        <div class="hero-card">
+                        <a class="hero-card hero-card-link" href="TDR-Duty-Free-Returns-to-Europe.html">
                             <div class="hero-card-icon">
                                 <i class="bi bi-shield-check"></i>
                             </div>
                             <h3>Bring Returned Goods Back to the UK Duty and VAT free</h3>
                             <p class="hero-card-description">Bring goods back to the UK free of duties and taxes</p>
-                        </div>
+                            <span class="hero-card-link-indicator" aria-hidden="true"><i class="bi bi-arrow-right-circle"></i></span>
+                        </a>
 
                         <!-- Option 4: Trade Optimisation -->
-                        <div class="hero-card">
+                        <a class="hero-card hero-card-link" href="consulting.html">
                             <div class="hero-card-icon">
                                 <i class="bi bi-graph-up"></i>
                             </div>
                             <h3>Trade Compliantly and Optimise Your Supply Chain</h3>
                             <p class="hero-card-description">Strategic analysis to minimise customs costs</p>
-                        </div>
+                            <span class="hero-card-link-indicator" aria-hidden="true"><i class="bi bi-arrow-right-circle"></i></span>
+                        </a>
                     </div>
                 </div>
             </div>
