@@ -1,15 +1,22 @@
 {
-  "name": "taric-proxy",
-  "version": "0.1.0",
-  "description": "Simple proxy to call the EU TARIC SOAP WSDL for local development",
+  "name": "tdr-server",
+  "version": "0.2.0",
+  "description": "Server for TDR website with dashboard and Google Sheets integration",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "googleapis": "^120.0.0",
+    "memorystore": "^1.6.7",
     "soap": "^0.43.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   }
 }
