@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!-- Lang is required by Cookie Consent -->
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+	<!-- Google Tag Manager modified to comply with cookie consent-->
+	@@include('src/blocks/head/cookieConsent/headScript.html')
+	<!-- End Google Tag Manager -->
+
+	<!-- Metatags Import -->
+	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+	"description": "${{TDR-Returned-Goods-Relief-in-the-UK.description}}$",
+	"title": "${{TDR-Returned-Goods-Relief-in-the-UK.title}}$",
+	"path": "${{TDR-Returned-Goods-Relief-in-the-UK.path}}$"
+	})
+
+	<!-- CSS imports -->
+	@@include('src/blocks/head/cssImports.html')
+
+
+	<!-- Only Required if Samaritan color is required -->
+	<link rel="stylesheet" href="./css/custom/samaritan.css">
+    <style>
+        .rgr-glass {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 16px;
+            backdrop-filter: blur(6px);
+        }
+
+        .rgr-feature {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .rgr-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .rgr-number {
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--samaritanDarkGreen);
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .rgr-step+.rgr-step {
+            border-top: 1px solid rgba(151, 190, 172, 0.35);
+        }
+
+        .rgr-faq {
+            background-color: var(--samaritan);
+        }
+
+        .rgr-faq .text-muted {
+            color: var(--lightSamaritan) !important;
+        }
+
+        .rgr-faq h2 {
+            color: #fff;
+        }
+
+        .rgr-faq .accordion-item {
+            background-color: transparent;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .rgr-faq .accordion-button,
+        .rgr-faq .accordion-body {
+            color: #fff;
+        }
+
+        .rgr-faq .accordion-button {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .rgr-faq .accordion-button::after {
+            filter: brightness(0) invert(1);
+        }
+
+        .rgr-faq .accordion-button:not(.collapsed) {
+            color: var(--samaritanYellow);
+            background-color: rgba(255, 255, 255, 0.14);
+        }
+
+        .rgr-faq .accordion-body {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .rgr-hero-image {
+            border: 14px solid #fff;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    	<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["WebPage", "Article"],
+  "name": "${{TDR-Returned-Goods-Relief-in-the-UK.title}}$",
+  "url": "${{index.domain}}$${{TDR-Returned-Goods-Relief-in-the-UK.path}}$",
+  "description": "${{TDR-Returned-Goods-Relief-in-the-UK.description}}$",
+  "inLanguage": "${{index.language}}$",
+  "about": {
+    "@type": "Thing",
+    "name": "${{TDR-Returned-Goods-Relief-in-the-UK.name}}$",
+    "description": "${{TDR-Returned-Goods-Relief-in-the-UK.description}}$"
+  },
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_1_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_1_answer}}$"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_2_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_2_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_3_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_3_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_4_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_4_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_5_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_5_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_6_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_6_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_7_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_7_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_8_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_8_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_9_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_9_answer}}$"
+        }
+      },{
+        "@type": "Question",
+        "name": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_10_question}}$",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "${{TDR-Returned-Goods-Relief-in-the-UK.faq_10_answer}}$"
+        }
+      }
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Trade Duty Refund",
+    "url": "${{index.domain}}$"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tradedutyrefund.com/" },
+      { "@type": "ListItem", "position": 2, "name": "${{TDR-Returned-Goods-Relief-in-the-UK.name}}$", "item": "${{index.domain}}$${{TDR-Returned-Goods-Relief-in-the-UK.path}}$" }
+    ]
+  }
+}
+</script>
+
+</head>
+
+<body class="stretched samaritan-bg">
+    <div id="wrapper">
+        @@include('src/blocks/header.html', {"text-color":"white",
+        "header-bg":"var(--samaritan)",
+        "submenu-bg":"var(--darkSamaritan)",
+        "menu-text-hover":"white"
+        })
+
+        <section id="slider" class="slider-element dark block-hero-6">
+            <div class="bg-overlay z-1 d-md-block d-none"
+                style="background: linear-gradient(to right, white 0%, white 25%, transparent 25%, transparent 100%)">
+            </div>
+            <div class="swiper-slide-bg"
+                style="background-image: url('images/flags/ukWavingFlag.webp'); filter: opacity(15%);"></div>
+            <div class="container z-2">
+                <div class="row min-vh-100 align-items-center justify-content-sm-around py-5">
+                    <div class="col-md-6 order-md-last text-center">
+                        <h1 class="display-3 text-white" data-animate="fadeInRight">Returned Goods Relief<br><span
+                                class="text-samaritanYellow">in the UK</span></h1>
+                        <p class="fs-3 text-white" data-animate="fadeInUp" data-animate-delay="1">Bring qualifying UK
+                            goods home without paying import duty twice.</p>
+                    </div>
+                    <div class="col-md-4 mt-5 mt-md-0" data-animate="fadeInLeft">
+                        <img src="images/Uk-drawback-hero.webp" alt="Returned goods ready for re-import into the UK"
+                            class="rgr-hero-image w-100">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="content">
+            <div class="content-wrap pt-0">
+                <section class="page-section py-5 py-lg-6 shiny-samaritan-bg">
+                    <div class="container">
+                        <div class="row justify-content-center text-center mb-5">
+                            <div class="col-lg-8">
+                                <h2 class="display-4 fw-bolder ls-n-2 text-lightSamaritan">Returned goods should not
+                                    become <span class="text-white">a second duty bill.</span></h2>
+                                <p class="lead text-white">Returned Goods Relief (RGR) is a UK customs provision that
+                                    may remove import duty when goods previously exported from the UK return to the
+                                    country.</p>
+                            </div>
+                        </div>
+                        <div class="row g-4 align-items-stretch">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="rgr-glass rgr-feature h-100 p-4 text-center">
+                                    <i class="bi-arrow-return-left display-5 text-samaritanYellow"></i>
+                                    <h3 class="h3 text-white mt-3">Goods come back</h3>
+                                    <p class="text-white mb-0">Customer returns, repairs, exhibitions and other exported
+                                        goods may qualify when they are re-imported.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="rgr-glass rgr-feature h-100 p-4 text-center">
+                                    <i class="bi-shield-check display-5 text-samaritanYellow"></i>
+                                    <h3 class="h3 text-white mt-3">Evidence matters</h3>
+                                    <p class="text-white mb-0">Export declarations, import records and product identity
+                                        evidence help demonstrate that the goods are the same.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="rgr-glass rgr-feature h-100 p-4 text-center">
+                                    <i class="bi-graph-down-arrow display-5 text-samaritanYellow"></i>
+                                    <h3 class="h3 text-white mt-3">Cash stays working</h3>
+                                    <p class="text-white mb-0">A reliable RGR process can reduce avoidable landed costs
+                                        and make cross-border returns easier to manage.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="how-it-works" class="page-section py-5 py-lg-6 samaritan-to-lightSamaritan-gradient-bg">
+                    <div class="container">
+                        <div class="row align-items-start gy-5">
+                            <div class="col-lg-5">
+                                <h2 class="display-4 fw-bolder ls-n-2 text-darkSamaritan">How Returned Goods Relief
+                                    <span class="text-samaritanDarkGreen">works</span>
+                                </h2>
+                                <p class="lead text-samaritan">RGR is about connecting the outbound movement to the
+                                    return. TDR helps you turn fragmented shipment data into a clear, supportable claim
+                                    position.</p>
+                                <a href="duty-refund-questionnaire-UK.html"
+                                    class="btn samaritanDarkGreen-bg text-white fw-bold mt-3 rounded-pill text-smaller">Check
+                                    your eligibility <i class="bi-arrow-right ms-2" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-lg-6 offset-lg-1">
+                                <div class="bg-white rounded shadow-sm p-4">
+                                    <div class="rgr-step d-flex gap-3 py-3">
+                                        <span class="rgr-number">01</span>
+                                        <div>
+                                            <h3 class="h4 text-darkSamaritan">Identify the export</h3>
+                                            <p class="mb-0 text-samaritan">Find the original UK export and confirm when
+                                                the goods left the UK.</p>
+                                        </div>
+                                    </div>
+                                    <div class="rgr-step d-flex gap-3 py-3">
+                                        <span class="rgr-number">02</span>
+                                        <div>
+                                            <h3 class="h4 text-darkSamaritan">Match the goods</h3>
+                                            <p class="mb-0 text-samaritan">Use commercial, product and transport records
+                                                to link the returning goods to that export.</p>
+                                        </div>
+                                    </div>
+                                    <div class="rgr-step d-flex gap-3 py-3">
+                                        <span class="rgr-number">03</span>
+                                        <div>
+                                            <h3 class="h4 text-darkSamaritan">Declare the return</h3>
+                                            <p class="mb-0 text-samaritan">Apply the correct relief on the UK import
+                                                declaration and retain the supporting evidence.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="eligibility" class="page-section py-5 py-lg-6 bg-light">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="card border-0 shadow-sm rgr-glass"
+                                    style="background: var(--lightSamaritan);" data-animate="fadeInUp">
+                                    <div class="card-body p-4 p-lg-5">
+                                        <div class="row align-items-center g-4">
+                                            <div class="col-auto"><i
+                                                    class="bi-patch-check-fill display-5 text-samaritanDarkGreen"
+                                                    aria-hidden="true"></i></div>
+                                            <div class="col">
+                                                <h2 class="h2 fw-bold text-darkSamaritan mb-2">Could your goods qualify?
+                                                </h2>
+                                                <p class="lead text-samaritan mb-0">The details of the export,
+                                                    ownership, condition and timing all matter. Start with a quick
+                                                    review of your UK movements.</p>
+                                            </div>
+                                            <div class="col-lg-auto"><a href="duty-refund-questionnaire-UK.html"
+                                                    class="btn samaritanDarkGreen-bg text-white fw-bold rounded-pill text-smaller">Start
+                                                    the questionnaire <i class="bi-arrow-right ms-2"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="faqs" class="page-section py-5 py-lg-6 rgr-faq">
+                    <div class="container">
+                        <div class="row justify-content-center text-center mb-4">
+                            <div class="col-lg-8"><span class="text-muted">F.A.Q</span>
+                                <h2 class="display-5 fw-bold text-white">Returned Goods Relief questions</h2>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-9">
+                                <div class="accordion" id="RGRFAQ">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header"><button class="accordion-button" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#rgrOne" aria-expanded="true"
+                                                aria-controls="rgrOne">What is Returned Goods Relief?</button></h2>
+                                        <div id="rgrOne" class="accordion-collapse collapse show"
+                                            data-bs-parent="#RGRFAQ">
+                                            <div class="accordion-body">Returned Goods Relief is a customs relief that
+                                                can allow eligible goods previously exported from the UK to return
+                                                without import duty being charged again.</div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header"><button class="accordion-button collapsed"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#rgrTwo"
+                                                aria-expanded="false" aria-controls="rgrTwo">Which types of returns
+                                                might qualify?</button></h2>
+                                        <div id="rgrTwo" class="accordion-collapse collapse" data-bs-parent="#RGRFAQ">
+                                            <div class="accordion-body">Goods made in the UK, or previously imported
+                                                into the UK, may qualify if they return in the same condition after
+                                                exportation.</div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header"><button class="accordion-button collapsed"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#rgrThree"
+                                                aria-expanded="false" aria-controls="rgrThree">What evidence is usually
+                                                needed?</button></h2>
+                                        <div id="rgrThree" class="accordion-collapse collapse" data-bs-parent="#RGRFAQ">
+                                            <div class="accordion-body">Evidence can include the original export
+                                                declaration, import records, invoices, transport documents, product
+                                                identifiers and records showing that the goods have not been materially
+                                                changed.</div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header"><button class="accordion-button collapsed"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#rgrFour"
+                                                aria-expanded="false" aria-controls="rgrFour">How does TDR
+                                                help?</button></h2>
+                                        <div id="rgrFour" class="accordion-collapse collapse" data-bs-parent="#RGRFAQ">
+                                            <div class="accordion-body">TDR can review your shipment data and
+                                                operating process to identify potentially eligible movements and the
+                                                evidence needed to support future declarations and recovery
+                                                opportunities. Thanks to our access to HRMC database, we pull down all
+                                                necessary data so that we only require from you documentation to
+                                                substantiate the claim.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section text-center text-white bg-transparent">
+                    <div class="container py-4">
+                        <div class="row justify-content-center">
+                            <div class="col-md-9">
+                                <p class="fw-bold mb-3 text-white">Make every return work harder for your business.</p>
+                                <h2 class="text-white fw-bold display-4">Understand your Returned Goods Relief
+                                    opportunity.</h2>
+                                <p class="lead text-white">Complete the questionnaire or speak to our customs
+                                    specialists for a practical review of your UK returns process.</p>
+                                @@include("src/blocks/contactOptions.html")
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        @@include('src/blocks/footer.html', {"bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"})
+        @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+        @@include('src/blocks/contactRequest.html')
+        @@include('src/blocks/URLCampaignLogger.html')
+        @@include('src/blocks/linkedInInsideTag.html')
+        <script src="js/plugins.min.js"></script>
+        <script src="js/functions.bundle.js"></script>
+    </div>
+</body>
+
+</html>
