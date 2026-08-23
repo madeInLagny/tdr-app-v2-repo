@@ -12,7 +12,8 @@ import flatten from "gulp-flatten";
 /* eBooks and downloads removed from delete/copy methods as these assets are static */
 const paths = {
   specificHtml: ["src/pages/**/*.html", "!src/pages/pagesInDev/*.html"],
-  i18n: "src/i18n/en/**/",
+  i18n: "src/i18n/tdr-app-v2-en/**/",
+  blocks: "src/blocks/",
   dist: "dist/tdr-app-v2-en",
   assets: {
     css: "src/css/**/*",
