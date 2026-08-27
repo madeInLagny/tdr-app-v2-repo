@@ -19,9 +19,43 @@
   @@include('src/blocks/head/cssImports.html')
 
   <link rel="stylesheet" href="./css/custom/samaritan.css">
+
+  <style>
+    .vpn-warning-modal {
+      width: min(90vw, 34rem);
+      padding: 2.5rem;
+      border: 0;
+      border-radius: 0.5rem;
+      color: var(--darkSamaritan);
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+    }
+
+    .vpn-warning-modal::backdrop {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .vpn-warning-modal h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .vpn-warning-modal p {
+      margin: 0 0 1.5rem;
+    }
+
+    .vpn-warning-modal .button {
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body class="stretched samaritan-bg">
+  <dialog class="vpn-warning-modal" id="vpnWarningModal" aria-labelledby="vpnWarningTitle" data-animate="fadeIn">
+    <h2 id="vpnWarningTitle" class="text-darkSamaritan">If you are using a VPN, please disable it before continuing</h2>
+    <p>Even if this page confirms submission, your message may not be delivered.</p>
+    <button class="button button-rounded" id="vpnWarningClose" type="button">Close</button>
+  </dialog>
+
   <div id="wrapper">
     @@include('src/blocks/header.html',{"text-color":"white",
     "header-bg":"var(--samaritan)",
@@ -115,7 +149,32 @@
   </div>
 
   @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+
+  
+
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const vpnWarningModal = document.getElementById("vpnWarningModal");
+      const vpnWarningClose = document.getElementById("vpnWarningClose");
+
+      if (!vpnWarningModal || !vpnWarningClose) return;
+
+      vpnWarningModal.addEventListener("cancel", function (event) {
+        event.preventDefault();
+      });
+
+      vpnWarningModal.addEventListener("close", function () {
+        document.body.style.overflow = "";
+      });
+
+      vpnWarningClose.addEventListener("click", function () {
+        vpnWarningModal.close();
+      });
+
+      document.body.style.overflow = "hidden";
+      vpnWarningModal.showModal();
+    });
+
     document.addEventListener("DOMContentLoaded", function () {
       // Get the current domain
       const currentDomain = window.location.origin;
@@ -141,6 +200,8 @@
 
   <script src="js/plugins.min.js"></script>
   <script src="js/functions.bundle.js"></script>
+
+
 </body>
 
 </html>
