@@ -9,20 +9,20 @@
 
     <!-- Metatags Import -->
     @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
-    "description": "${{solutions-for-all-shippers.description}}$",
-    "title": "${{solutions-for-all-shippers.title}}$",
-    "path": "${{solutions-for-all-shippers.path}}$",
+    "description": "${{solutions-for-uk-shippers.description}}$",
+    "title": "${{solutions-for-uk-shippers.title}}$",
+    "path": "${{solutions-for-uk-shippers.path}}$",
     })
 
 
     <!-- CSS imports -->
     @@include('src/blocks/head/cssImports.html')
 
-    <!-- Only Required when there are cards on the page -->
-    <link rel="stylesheet" href="./css/custom/cards.css">
-
     <!-- Only Required if Samaritan color is required -->
     <link rel="stylesheet" href="./css/custom/samaritan.css">
+
+    <link rel="stylesheet" href="./css/custom/solutions-pages.css">
+
 
     <style>
         /* Hero Section for UK Shippers */
@@ -295,7 +295,7 @@
                     </div>
                 </div>
             </div>
-            <div id="hero" class="hero-section-uk">
+            <div id="hero" class="hero-section-solution">
                 <div class="container">
                     <div class="hero-cards-grid">
                         <!-- Option 1: Duty Free Transit -->
@@ -375,11 +375,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content lightSamaritan-bg">
                 <div class="modal-header">
-                    <h4 class="modal-title text-darkSamaritan" id="myModalLabel">Choose your drawback route</h4>
+                    <h4 class="modal-title text-darkSamaritan" id="myModalLabel">${{solutions-for-uk-shippers.modal.title}}$</h4>
                     <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-hidden="true"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="mb-0 text-darkSamaritan">Select the market that applies to your return or re-export.</p>
+                    <p class="mb-0 text-darkSamaritan">${{solutions-for-uk-shippers.modal.description}}$</p>
                     <div class="drawback-choice-actions">
                         <a href="${{TDR-Duty-Drawback-in-the-US.path}}$" class="button button-rounded">US</a>
                         <a href="${{TDR-Duty-Drawback-in-the-EU.path}}$" class="button button-rounded">EU</a>
