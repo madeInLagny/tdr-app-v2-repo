@@ -3,9 +3,13 @@
 
 <head>
   @@include('src/blocks/head/cookieConsent/headScript.html')
-  @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg", "description":"Specialized ancillary services that make your US duty drawback program compliant, visible, and easier to manage.", "title":"Trade Duty Refund | Ancillary Services", "path":"/trade-duty-refund-ancillary-services.html"})
+  @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+  "description":"Specialized ancillary services", "title":"Trade Duty Refund | Ancillary Services",
+  "path":"/trade-duty-refund-ancillary-services.html"})
   @@include('src/blocks/head/cssImports.html')
   <link rel="stylesheet" href="./css/custom/samaritan.css">
+  <link rel="stylesheet" href="./css/custom/solutions-pages.css">
+
   <style>
     :root {
       --ancillary-ink: #102b46;
@@ -16,85 +20,431 @@
       --ancillary-muted: #5e7180;
     }
 
-    .ancillary-page { color: var(--ancillary-ink); background: #fff; }
-    .ancillary-hero { position: relative; overflow: hidden; padding: 145px 0 96px; background: linear-gradient(120deg, #102b46 0%, #174d76 62%, #1f76b8 100%); color: #fff; }
-    .ancillary-hero::after { content: ""; position: absolute; right: -120px; bottom: -170px; width: 480px; height: 480px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; box-shadow: 0 0 0 38px rgba(255,255,255,.04), 0 0 0 78px rgba(255,255,255,.035); }
-    .ancillary-kicker { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; color: #f8cf72; font-size: .78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-    .ancillary-kicker::before { content: ""; width: 30px; height: 2px; background: var(--ancillary-yellow); }
-    .ancillary-hero h1 { max-width: 760px; margin: 0 0 20px; color: #fff; font-size: clamp(2.7rem, 6vw, 5.25rem); font-weight: 700; line-height: 1.02; }
-    .ancillary-hero p { max-width: 660px; margin: 0; color: rgba(255,255,255,.82); font-size: 1.2rem; line-height: 1.7; }
-    .ancillary-hero .button { margin-top: 34px; padding: 15px 25px; border: 0; color: var(--ancillary-ink); background: var(--ancillary-yellow); font-weight: 700; }
-    .ancillary-hero .button:hover { color: var(--ancillary-ink); background: #ffd779; }
+    .ancillary-page {
+      color: var(--ancillary-ink);
+      background: #fff;
+    }
 
-    .ancillary-intro { padding: 68px 0 52px; }
-    .ancillary-intro h2, .ancillary-section-heading h2 { margin: 0 0 16px; color: var(--ancillary-ink); font-size: 2.2rem; line-height: 1.15; }
-    .ancillary-intro p { max-width: 760px; margin: 0; color: var(--ancillary-muted); font-size: 1.08rem; line-height: 1.75; }
-    .ancillary-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 38px; background: var(--ancillary-line); border: 1px solid var(--ancillary-line); }
-    .ancillary-stat { padding: 24px 26px; background: #fff; }
-    .ancillary-stat strong { display: block; margin-bottom: 5px; color: var(--ancillary-blue); font-size: 1.08rem; }
-    .ancillary-stat span { color: var(--ancillary-muted); font-size: .92rem; }
+    .ancillary-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 145px 0 96px;
+      background: linear-gradient(120deg, #102b46 0%, #174d76 62%, #1f76b8 100%);
+      color: #fff;
+    }
 
-    .ancillary-services { padding: 72px 0 78px; background: var(--ancillary-sky); }
-    .ancillary-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 34px; }
-    .ancillary-section-heading p { max-width: 350px; margin: 0; color: var(--ancillary-muted); line-height: 1.6; text-align: right; }
-    .ancillary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    .ancillary-card { display: flex; flex-direction: column; min-height: 100%; padding: 30px; border: 1px solid var(--ancillary-line); background: #fff; box-shadow: 0 8px 24px rgba(16,43,70,.06); }
-    .ancillary-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; margin-bottom: 20px; }
-    .ancillary-icon { display: grid; flex: 0 0 46px; place-items: center; width: 46px; height: 46px; color: var(--ancillary-blue); background: #dceef8; font-size: 1.35rem; }
-    .ancillary-type { padding: 6px 9px; color: #35616f; background: #eef7f5; font-size: .7rem; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
-    .ancillary-type.compulsory { color: #8a5a06; background: #fff4d7; }
-    .ancillary-card h3 { margin: 0 0 10px; color: var(--ancillary-ink); font-size: 1.35rem; }
-    .ancillary-card .service-label { margin: 0 0 14px; color: var(--ancillary-blue); font-size: .88rem; font-weight: 700; }
-    .ancillary-card p, .ancillary-card li { color: var(--ancillary-muted); font-size: .95rem; line-height: 1.6; }
-    .ancillary-card ul { margin: 0 0 25px; padding-left: 20px; }
-    .ancillary-card li { margin-bottom: 7px; }
-    .ancillary-price { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--ancillary-line); }
-    .ancillary-price small { display: block; margin-bottom: 4px; color: var(--ancillary-muted); font-size: .75rem; }
-    .ancillary-price strong { color: var(--ancillary-blue); font-size: 1.65rem; }
-    .ancillary-price del { display: block; color: #8293a0; font-size: .82rem; }
+    .ancillary-hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -170px;
+      width: 480px;
+      height: 480px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 38px rgba(255, 255, 255, .04), 0 0 0 78px rgba(255, 255, 255, .035);
+    }
 
-    .ancillary-note { padding: 62px 0; }
-    .ancillary-note-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 45px; align-items: center; padding: 38px 42px; border-left: 5px solid var(--ancillary-yellow); background: #102b46; color: #fff; }
-    .ancillary-note h2 { margin: 0; color: #fff; font-size: 1.8rem; }
-    .ancillary-note p { margin: 0; color: rgba(255,255,255,.78); line-height: 1.7; }
-    .ancillary-cta { padding: 76px 0 88px; background: linear-gradient(120deg, #eaf5fb 0%, #f8fcfd 100%); text-align: center; }
-    .ancillary-cta h2 { margin: 0 0 12px; color: var(--ancillary-ink); font-size: 2.35rem; }
-    .ancillary-cta p { margin: 0 auto 26px; color: var(--ancillary-muted); font-size: 1.05rem; }
-    .ancillary-cta .button { padding: 14px 24px; color: #fff; background: var(--ancillary-blue); font-weight: 700; }
-    .ancillary-cta .button:hover { color: #fff; background: var(--ancillary-ink); }
+    .ancillary-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: #f8cf72;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .ancillary-kicker::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--ancillary-yellow);
+    }
+
+    .ancillary-hero h1 {
+      max-width: 760px;
+      margin: 0 0 20px;
+      color: #fff;
+      font-size: clamp(2.7rem, 6vw, 5.25rem);
+      font-weight: 700;
+      line-height: 1.02;
+    }
+
+    .ancillary-hero p {
+      max-width: 660px;
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      font-size: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .ancillary-hero .button {
+      margin-top: 34px;
+      padding: 15px 25px;
+      border: 0;
+      color: var(--ancillary-ink);
+      background: var(--samaritanYellow);
+      font-weight: 700;
+    }
+
+    .ancillary-hero .button:hover {
+      color: var(--ancillary-ink);
+      background: #ffd779;
+    }
+
+    .ancillary-intro {
+      padding: 68px 0 52px;
+    }
+
+    .ancillary-intro h2,
+    .ancillary-section-heading h2 {
+      margin: 0 0 16px;
+      color: var(--ancillary-ink);
+      font-size: 2.2rem;
+      line-height: 1.15;
+    }
+
+    .ancillary-intro p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--ancillary-muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .ancillary-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .ancillary-stat {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 158px;
+      padding: 28px 26px 24px;
+      overflow: hidden;
+    }
+
+    .ancillary-stat::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      bottom: -42px;
+      width: 128px;
+      height: 128px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      opacity: .16;
+    }
+
+    .ancillary-stat-index {
+      display: block;
+      margin-bottom: 24px;
+      color: currentColor;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      opacity: .7;
+    }
+
+    .ancillary-stat strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ancillary-ink);
+      font-size: 1.08rem;
+    }
+
+    .ancillary-stat>span:not(.ancillary-stat-index) {
+      margin-top: auto;
+      color: var(--ancillary-ink);
+      font-size: .92rem;
+      line-height: 1.55;
+      opacity: .78;
+    }
+
+    .ancillary-stat.glass-effect-samaritanBlue {
+      color: var(--samaritanBlue);
+    }
+
+    .ancillary-stat.glass-effect-samaritanYellow {
+      color: var(--samaritanDarkYellow);
+    }
+
+    .ancillary-stat.glass-effect-samaritanGreen {
+      color: var(--samaritanDarkGreen);
+    }
+
+    .ancillary-services {
+      padding: 72px 0 78px;
+      background: var(--ancillary-sky);
+    }
+
+    .ancillary-section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .ancillary-section-heading p {
+      max-width: 350px;
+      margin: 0;
+      color: var(--ancillary-muted);
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    .ancillary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .ancillary-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 30px;
+      border: 1px solid var(--ancillary-line);
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(16, 43, 70, .06);
+    }
+
+    .ancillary-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .ancillary-icon {
+      display: grid;
+      flex: 0 0 46px;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      color: var(--ancillary-blue);
+      background: #dceef8;
+      font-size: 1.35rem;
+    }
+
+    .ancillary-type {
+      padding: 6px 9px;
+      color: #35616f;
+      background: #eef7f5;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    .ancillary-type.compulsory {
+      color: #8a5a06;
+      background: #fff4d7;
+    }
+
+    .ancillary-card h3 {
+      margin: 0 0 10px;
+      color: var(--ancillary-ink);
+      font-size: 1.35rem;
+    }
+
+    .ancillary-card .service-label {
+      margin: 0 0 14px;
+      color: var(--ancillary-blue);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .ancillary-card p,
+    .ancillary-card li {
+      color: var(--ancillary-muted);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+
+    .ancillary-card ul {
+      margin: 0 0 25px;
+      padding-left: 20px;
+    }
+
+    .ancillary-card li {
+      margin-bottom: 7px;
+    }
+
+    .ancillary-price {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--ancillary-line);
+    }
+
+    .ancillary-price small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ancillary-muted);
+      font-size: .75rem;
+    }
+
+    .ancillary-price strong {
+      color: var(--ancillary-blue);
+      font-size: 1.65rem;
+    }
+
+    .ancillary-price del {
+      display: block;
+      color: #8293a0;
+      font-size: .82rem;
+    }
+
+    .ancillary-note {
+      padding: 62px 0;
+    }
+
+    .ancillary-note-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 45px;
+      align-items: center;
+      padding: 38px 42px;
+      border-left: 5px solid var(--ancillary-yellow);
+      background: #102b46;
+      color: #fff;
+    }
+
+    .ancillary-note h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.8rem;
+    }
+
+    .ancillary-note p {
+      margin: 0;
+      color: rgba(255, 255, 255, .78);
+      line-height: 1.7;
+    }
+
+    .ancillary-cta {
+      padding: 76px 0 88px;
+      text-align: center;
+    }
+
+    .ancillary-cta h2 {
+      margin: 0 0 12px;
+      color: var(--ancillary-ink);
+      font-size: 2.35rem;
+    }
+
+    .ancillary-cta p {
+      margin: 0 auto 26px;
+      color: var(--ancillary-muted);
+      font-size: 1.05rem;
+    }
+
+    .ancillary-cta .button {
+      padding: 14px 24px;
+      color: #fff;
+      background: var(--ancillary-blue);
+      font-weight: 700;
+    }
+
+    .ancillary-cta .button:hover {
+      color: #fff;
+      background: var(--ancillary-ink);
+    }
+
     @media (max-width: 767px) {
-      .ancillary-hero { padding: 110px 0 70px; }
-      .ancillary-hero h1 { font-size: 3rem; }
-      .ancillary-stats, .ancillary-grid, .ancillary-note-inner { grid-template-columns: 1fr; }
-      .ancillary-section-heading { display: block; }
-      .ancillary-section-heading p { margin-top: 15px; text-align: left; }
-      .ancillary-note-inner { gap: 18px; padding: 30px 26px; }
+      .ancillary-hero {
+        padding: 110px 0 70px;
+      }
+
+      .ancillary-hero h1 {
+        font-size: 3rem;
+      }
+
+      .ancillary-stats,
+      .ancillary-grid,
+      .ancillary-note-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .ancillary-section-heading {
+        display: block;
+      }
+
+      .ancillary-section-heading p {
+        margin-top: 15px;
+        text-align: left;
+      }
+
+      .ancillary-note-inner {
+        gap: 18px;
+        padding: 30px 26px;
+      }
     }
   </style>
 </head>
 
 <body class="stretched samaritan-bg">
   <div id="wrapper">
-    @@include('src/blocks/header.html', {"text-color":"white", "header-bg":"var(--samaritan)", "submenu-bg":"var(--darkSamaritan)", "menu-text-hover":"white"})
+    @@include('src/blocks/header.html', {"text-color":"white", "header-bg":"var(--samaritan)",
+    "submenu-bg":"var(--darkSamaritan)", "menu-text-hover":"white"})
 
     <main class="ancillary-page">
       <section class="ancillary-hero">
         <div class="container">
-          <span class="ancillary-kicker">Trade Duty Refund</span>
+          <span class="ancillary-kicker">Ancillary US Services</span>
           <h1>Make every eligible duty work harder.</h1>
-          <p>Ancillary services that give your US drawback program the structure, visibility, and compliance discipline it needs to recover more with confidence.</p>
-          <a class="button button-3d" href="contact-us.html">Talk to our team <i class="bi-arrow-right ms-2"></i></a>
+          <p>Ancillary services that give your US drawback program the structure, visibility, and compliance discipline
+            it needs to recover more with confidence.</p>
         </div>
-      </section>
+        <div id="hero" class="hero-section-solution">
+          <div class="container">
+            <div class="hero-cards-grid">
+              <!-- Option 2: Duty Drawback -->
+              <div class="hero-card" id="duty-drawback-card">
+                <div class="hero-card-icon">
+                  <i class="bi-check-circle"></i>
+                </div>
+                <h3>Compliant by design</h3>
+                <p class="hero-card-description">Documentation and processes aligned to CBP expectations.</p>
+              </div>
 
-      <section class="ancillary-intro">
-        <div class="container">
-          <h2>The operational layer behind better recovery</h2>
-          <p>From ACE reporting and privilege applications to daily entry monitoring, TDR helps you build a drawback process that is clear, documented, and ready for review.</p>
-          <div class="ancillary-stats">
-            <div class="ancillary-stat"><strong>Compliant by design</strong><span>Documentation and processes aligned to CBP expectations.</span></div>
-            <div class="ancillary-stat"><strong>Visible in real time</strong><span>Spot entry issues before they become claim problems.</span></div>
-            <div class="ancillary-stat"><strong>Built around your data</strong><span>Reporting and integrations shaped to your operation.</span></div>
+              <!-- Option 3: Duty & VAT Free Importation -->
+              <div class="hero-card">
+                <div class="hero-card-icon">
+                  <i class="bi-eye"></i>
+                </div>
+                <h3>Visible in real time</h3>
+                <p class="hero-card-description">Spot entry issues before they become claim problems.</p>
+
+              </div>
+
+              <!-- Option 4: Trade Optimisation -->
+              <div class="hero-card">
+                <div class=" hero-card-icon">
+                  <i class="bi bi-graph-up"></i>
+                </div>
+                <h3>Built around your data</h3>
+                <p class="hero-card-description">Reporting and integrations shaped to your operation.</p>
+
+              </div>
+
+
+            </div>
+            <a class="button button-3d" href="contact-us.html">Talk to our team <i class="bi-arrow-right ms-2"></i></a>
+
           </div>
         </div>
       </section>
@@ -102,45 +452,150 @@
       <section class="ancillary-services">
         <div class="container">
           <div class="ancillary-section-heading">
-            <div><span class="ancillary-kicker">Our services</span><h2>Choose the support your program needs.</h2></div>
+            <div>
+              <h2>Choose the support your program needs.</h2>
+            </div>
           </div>
           <div class="ancillary-grid">
-            <article class="ancillary-card">
-              <div class="ancillary-card-head"><div class="ancillary-icon"><i class="bi-bar-chart"></i></div><span class="ancillary-type">Optional</span></div>
-              <h3>ACE Setup</h3><p class="service-label">ACE registration and custom report configuration</p><p>Establish the reporting foundation needed to see import entry details and prepare claims efficiently.</p>
-              <ul><li>Import activity visibility</li><li>Real-time monitoring reports</li><li>Proactive entry deviation checks</li></ul>
-              <div class="ancillary-price"><div><small>TDR customer rate</small><strong>$400</strong></div><div><small>Full cost</small><del>$800</del></div></div>
+            <article class="ancillary-card" data-animate="fadeIn">
+              <div class="ancillary-card-head">
+                <div class="ancillary-icon"><i class="bi-bar-chart"></i></div><span
+                  class="ancillary-type">Optional</span>
+              </div>
+              <h3>ACE Setup</h3>
+              <p class="service-label">ACE registration and custom report configuration</p>
+              <p>Establish the reporting foundation needed to see import entry details and prepare claims efficiently.
+              </p>
+              <ul>
+                <li>Import activity visibility</li>
+                <li>Real-time monitoring reports</li>
+                <li>The source of proactive entry deviation checks</li>
+              </ul>
+              <div class="ancillary-price">
+                <div><small>TDR customer rate</small><strong>$400</strong></div>
+                <div><small>Full cost</small><del>$800</del></div>
+              </div>
             </article>
-            <article class="ancillary-card">
-              <div class="ancillary-card-head"><div class="ancillary-icon"><i class="bi-search"></i></div><span class="ancillary-type">Optional</span></div>
-              <h3>Drawback Eligibility Assessment</h3><p class="service-label">Comprehensive logistics and compliance review</p><p>Understand where drawback applies today and where your logistics, data, and invoicing model can improve.</p>
-              <ul><li>Eligible goods and recovery opportunities</li><li>CBP documentation readiness</li><li>Sustainable program foundation</li></ul>
-              <div class="ancillary-price"><div><small>TDR customer rate</small><strong>$7,500</strong></div><div><small>Full cost</small><del>$10,000</del></div></div>
+            <article class="ancillary-card" data-animate="fadeIn">
+              <div class="ancillary-card-head">
+                <div class="ancillary-icon"><i class="bi-search"></i></div><span class="ancillary-type">Optional</span>
+              </div>
+              <h3>Drawback Eligibility Assessment</h3>
+              <p class="service-label">Comprehensive logistics and compliance review</p>
+              <p>Understand where drawback applies today and where your logistics, data, and invoicing model can
+                improve.</p>
+              <ul>
+                <li>Eligible goods and recovery opportunities</li>
+                <li>CBP documentation readiness</li>
+                <li>Sustainable program foundation</li>
+              </ul>
+              <div class="ancillary-price">
+                <div><small>TDR customer rate</small><strong>$7,500</strong></div>
+                <div><small>Full cost</small><del>$10,000</del></div>
+              </div>
             </article>
-            <article class="ancillary-card">
-              <div class="ancillary-card-head"><div class="ancillary-icon"><i class="bi-file-earmark-check"></i></div><span class="ancillary-type">Optional</span></div>
-              <h3>Privilege Application</h3><p class="service-label">Complete application preparation</p><p>Present CBP with a clear, complete description of your customized drawback process and controls.</p>
-              <ul><li>Business-specific process descriptions</li><li>Accurate, compliant submission</li><li>Fewer avoidable approval delays</li></ul>
-              <div class="ancillary-price"><div><small>TDR customer rate</small><strong>$2,000</strong></div><div><small>Full cost</small><del>$4,000</del></div></div>
+            <article class="ancillary-card" data-animate="fadeIn">
+              <div class="ancillary-card-head">
+                <div class="ancillary-icon"><i class="bi-file-earmark-check"></i></div><span
+                  class="ancillary-type">Optional</span>
+              </div>
+              <h3>Privilege Application</h3>
+              <p class="service-label">Complete application preparation</p>
+              <p>Present CBP with a clear, complete description of your customized drawback process and controls.</p>
+              <ul>
+                <li>Business-specific process descriptions</li>
+                <li>Accurate, compliant submission</li>
+                <li>Fewer avoidable approval delays</li>
+              </ul>
+              <div class="ancillary-price">
+                <div><small>TDR customer rate</small><strong>$2,000</strong></div>
+                <div><small>Full cost</small><del>$4,000</del></div>
+              </div>
             </article>
-            <article class="ancillary-card">
-              <div class="ancillary-card-head"><div class="ancillary-icon"><i class="bi-diagram-3"></i></div><span class="ancillary-type compulsory">Compulsory</span></div>
-              <h3>Drawback Setup</h3><p class="service-label">Transportation and invoice data integration</p><p>Connect your data and documentation into a drawback infrastructure that is ready for daily operations and review.</p>
-              <ul><li>Transportation and invoice field matching</li><li>Compliant documentation archiving</li><li>Customs desk review simulation</li></ul>
-              <div class="ancillary-price"><div><small>TDR customer rate</small><strong>$2,000</strong></div><div><small>Full cost</small><del>$4,000</del></div></div>
+            <article class="ancillary-card" data-animate="fadeIn">
+              <div class="ancillary-card-head">
+                <div class="ancillary-icon"><i class="bi-diagram-3"></i></div><span
+                  class="ancillary-type compulsory">Compulsory</span>
+              </div>
+              <h3>Drawback Setup</h3>
+              <p class="service-label">Transportation and invoice data integration</p>
+              <p>Connect your data and documentation into a drawback infrastructure that is ready for daily operations
+                and review.</p>
+              <ul>
+                <li>Transportation and invoice field matching</li>
+                <li>Compliant documentation archiving</li>
+                <li>Customs desk review simulation</li>
+              </ul>
+              <div class="ancillary-price">
+                <div><small>TDR customer rate</small><strong>$2,000</strong></div>
+                <div><small>Full cost</small><del>$4,000</del></div>
+              </div>
             </article>
-            <article class="ancillary-card">
-              <div class="ancillary-card-head"><div class="ancillary-icon"><i class="bi-bell"></i></div><span class="ancillary-type">Optional</span></div>
-              <h3>Daily Monitoring</h3><p class="service-label">Entry and transportation data monitoring</p><p>Receive alerts when cleared orders miss IOR or drawback-compliant key data, while issues are still easy to resolve.</p>
-              <ul><li>Automated alerts to you and brokers</li><li>Immediate issue resolution</li><li>Fewer claim-stage surprises</li></ul>
-              <div class="ancillary-price"><div><small>Exclusive TDR rate</small><strong>$0.20</strong></div><div><small>Pricing</small><span>per shipment</span></div></div>
+            <article class="ancillary-card" data-animate="fadeIn">
+              <div class="ancillary-card-head">
+                <div class="ancillary-icon"><i class="bi-bell"></i></div><span class="ancillary-type">Optional</span>
+              </div>
+              <h3>Daily Monitoring</h3>
+              <p class="service-label">Entry and transportation data monitoring</p>
+              <p>Receive alerts when cleared orders miss IOR or drawback-compliant key data, while issues are still easy
+                to resolve.</p>
+              <ul>
+                <li>Automated alerts to you and brokers</li>
+                <li>Immediate issue resolution</li>
+                <li>Fewer claim-stage surprises</li>
+              </ul>
+              <div class="ancillary-price">
+                <div><small>Exclusive to TDR customers</small><strong>$0.20</strong></div>
+                <div><small>Pricing</small><span>per shipment</span></div>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="ancillary-note"><div class="container"><div class="ancillary-note-inner"><h2>Special pricing for TDR customers.</h2><p>Reduced rates apply when Trade Duty Refund is your drawback provider. These fees are offset from contingency fees, adding value to a full-service engagement.</p></div></div></section>
-      <section class="ancillary-cta"><div class="container"><h2>Ready to strengthen your drawback program?</h2><p>Let’s identify the right operational support for your business.</p><a class="button button-3d" href="contact-us.html">Get started <i class="bi-arrow-right ms-2"></i></a></div></section>
+      <section class="ancillary-note" data-animate="fadeInUp">
+        <div class="container">
+          <div class="ancillary-note-inner">
+            <h2>Special pricing for TDR customers.</h2>
+            <p>Reduced rates apply when Trade Duty Refund is your drawback provider. These fees are offset from
+              contingency fees, adding value to a full-service engagement.</p>
+          </div>
+        </div>
+      </section>
+      <section class="ancillary-cta samaritan-bg">
+        <div class="container">
+          <h2 class="text-white">Ready to strengthen your drawback program?</h2>
+          <p class="text-white">Let’s identify the right operational support for your business.</p>
+          @@include('src/blocks/contactOptions.html')
+        </div>
+      </section>
+      <div class="section py-5 py-lg-6 mt-0 bg-white">
+        <div class="container">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+            <div>
+              <h2 class="display-5 fw-bolder ls-n-2 text-darkSamaritan mb-2">
+                ${{you-may-also-like.title}}$</h2>
+              <p class="text-samaritan mb-0">
+                ${{you-may-also-like.subtitle}}$</p>
+            </div>
+          </div>
+          <div class="row block-card-9 col-mb-50">
+            <div class="col-lg-4 min-vh-75">
+              @@include('src/blocks/cards/Free-Returns-to-the-US-card.html')
+            </div>
+            <div class="col-lg-4 min-vh-75">
+              @@include('src/blocks/cards/Drawback-in-the-UK-card.html')
+            </div>
+            <div class="col-lg-4 min-vh-75">
+              @@include('src/blocks/cards/Drawback-in-the-EU-card.html')
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section dark samaritan-bg">
+        @@include('src/blocks/blog-gallery.html')
+      </div>
     </main>
 
     @@include('src/blocks/footer.html', {"bg-color":"var(--samaritan)", "text-color":"var(--lightSamaritan)"})
@@ -151,4 +606,5 @@
   @@include('src/blocks/linkedInInsideTag.html')
   <script src="js/functions.js"></script>
 </body>
+
 </html>

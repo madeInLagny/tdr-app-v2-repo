@@ -58,6 +58,14 @@ ul {
   color: var(--samaritanDarkYellow) !important;
 }
 
+.text-samaritanBlue {
+  color: var(--samaritanBlue) !important;
+}
+
+.text-samaritanDarkBlue {
+  color: var(--samaritanDarkBlue) !important;
+}
+
 .lightSamaritan-bg {
   background-color: var(--lightSamaritan);
 }
