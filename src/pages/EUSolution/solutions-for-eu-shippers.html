@@ -18,15 +18,10 @@
   <!-- CSS imports -->
   @@include('src/blocks/head/cssImports.html')
 
-   <!-- Only Required when there are cards on the page -->
-  <link rel="stylesheet" href="./css/custom/cards.css">
-
   <!-- Only Required if Samaritan color is required -->
   <link rel="stylesheet" href="./css/custom/samaritan.css">
 
-  <!-- Style for vertical steps -->
-  <link rel="stylesheet" href="./css/custom/verticalSteps.css">
-
+  <link rel="stylesheet" href="./css/custom/solutions-pages.css">
 
 </head>
 
@@ -50,131 +45,54 @@
               </div>
             </h1>
             <span class="fw-light" style="max-width: 40em;">
-              ${{solutions-for-eu-shippers.sub-heading}}$
+              ${{solutions-for-eu-shippers.intro-text}}$
             </span>
           </div>
         </div>
       </div>
-      <div class="content-wrap pb-1">
+      <div id="hero" class="hero-section-solution">
         <div class="container">
-          <h2>
-            <div class="fw-bold display-6">
-              ${{solutions-for-eu-shippers.solution-heading}}$
-            </div>
-          </h2>
-
-          <div class="row feature-box-border-vertical col-mb-50 justify-content-center align-items-center my-5">
-            <div class="col-md-6 feature-box fbox-active fbox-dark fbox-sm">
-              <div class="fbox-icon">
-                <i class="bi-check"></i>
+          <div class="hero-cards-grid">
+            <!-- Option 2: Duty Drawback -->
+            <div class="hero-card" id="duty-drawback-card" tabindex="0" role="button" data-bs-toggle="modal"
+              data-bs-target=".bs-example-modal-centered">
+              <div class="hero-card-icon">
+                <i class="bi bi-arrow-return-left"></i>
               </div>
-              <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">
-                  ${{solutions-for-eu-shippers.step1-title}}$ <img class="flags" src="./images/flags/eu-flag.png"
-                    alt="EU Flag" />
-                </h3>
-                <p>${{solutions-for-eu-shippers.step1-description}}$</p>
-              </div>
+              <h3>${{solutions-for-eu-shippers.cards.card2.title}}$</h3>
+              <p class="hero-card-description">${{solutions-for-eu-shippers.cards.card2.description}}$</p>
+              <span class="hero-card-link-indicator" aria-hidden="true"><i class="bi bi-arrow-right-circle"></i></span>
             </div>
 
-            <div class="clear"></div>
-
-            <div class="col-md-6 feature-box fbox-active fbox-dark fbox-sm">
-              <div class="fbox-icon">
-                <i class="bi-check"></i>
+            <!-- Option 3: Duty & VAT Free Importation -->
+            <a class="hero-card hero-card-link" href="${{TDR-returned-goods-relief-in-the-EU.path}}$">
+              <div class="hero-card-icon">
+                <i class="bi bi-shield-check"></i>
               </div>
-              <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">
-                  Order Imported <img class="flags" src="./images/flags/us-flag.png" alt="US Flag" />
-                  <img class="flags" src="./images/flags/uk-flag.png" alt="UK Flag" />
-                </h3>
-                <p>Order is imported at its final destination and delivered to the buyer.</p>
-                <p> <img class="flags" src="./images/flags/warning.png" alt="warning Flag" /> Customs
-                  Duties Are Charged to the Importer</p>
+              <h3>${{solutions-for-eu-shippers.cards.card3.title}}$</h3>
+              <p class="hero-card-description">${{solutions-for-eu-shippers.cards.card3.description}}$</p>
+              <span class="hero-card-link-indicator" aria-hidden="true"><i class="bi bi-arrow-right-circle"></i></span>
+            </a>
+
+            <!-- Option 4: Trade Optimisation -->
+            <a class="hero-card hero-card-link" href="${{consulting.path}}$">
+              <div class="hero-card-icon">
+                <i class="bi bi-graph-up"></i>
               </div>
-            </div>
-
-            <div class="clear"></div>
-
-            <div class="col-md-6 feature-box fbox-active fbox-border fbox-light fbox-sm">
-              <div class="fbox-icon">
-                <i class="bi-check border"></i>
-              </div>
-              <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">
-                  ${{solutions-for-eu-shippers.step2-title}}$
-                </h3>
-                <p>${{solutions-for-eu-shippers.step2-description}}$</p>
-                <p>
-                  ${{solutions-for-eu-shippers.step2-cta-prefix}}$
-                  <a class="text-decoration-underline" href="${{TDR-Duty-Drawback-in-the-US.path}}$">
-                    ${{TDR-Duty-Drawback-in-the-US.name}}$
-                  </a> ${{solutions-for-eu-shippers.step2-cta-coord}}$ <a class="text-decoration-underline"
-                    href="${{TDR-Duty-Drawback-in-the-EU.path}}$">
-                    ${{TDR-Duty-Drawback-in-the-EU.name}}$
-                  </a>
-                  ${{solutions-for-eu-shippers.step2-cta-suffix}}$
-                </p>
-                <p>
-                  <img class="flags" src="./images/flags/check.png" alt="warning Flag" /> Trade Duty
-                  Refund claims import duties back.
-                </p>
-
-              </div>
-            </div>
-
-            <div class="clear"></div>
-
-            <div class="col-md-6 feature-box fbox-active noborder fbox-light fbox-sm">
-              <div class="fbox-icon">
-                <i class="bi-check border"></i>
-              </div>
-              <div class="fbox-content">
-                <h3 class="text-transform-none mb-2">
-                  ${{solutions-for-eu-shippers.step3-title}}$ <img class="flags" src="./images/flags/eu-flag.png"
-                    alt="UE Flag" />
-                </h3>
-                <p>${{solutions-for-eu-shippers.step3-description}}$</p>
-                <p> <img class="flags" src="./images/flags/warning.png" alt="warning Flag" /> Import
-                  customs duties are due on returned goods
-                </p>
-                <p> <img class="flags" src="./images/flags/check.png" alt="warning Flag" /> But <a
-                    class="text-decoration-underline" href="${{TDR-Duty-Free-Returns-to-Europe.path}}$">
-                    ${{TDR-Duty-Free-Returns-to-Europe.name}}$
-                  </a>
-                  ${{solutions-for-eu-shippers.step3-cta}}$
-                </p>
-
-              </div>
-            </div>
+              <h3>${{solutions-for-eu-shippers.cards.card4.title}}$</h3>
+              <p class="hero-card-description">${{solutions-for-eu-shippers.cards.card4.description}}$</p>
+              <span class="hero-card-link-indicator" aria-hidden="true"><i class="bi bi-arrow-right-circle"></i></span>
+            </a>
           </div>
         </div>
       </div>
-      <div class="container">
-        <h2>
-          <div class="fw-bold display-6">
-            ${{solutions-for-eu-shippers.discovery-heading}}$
-          </div>
-        </h2>
-      </div>
-      <div class="d-flex align-items-center pb-4">
-        <div class="container">
-          <div class="row block-card-9 col-mb-50">
-            <div class="col-lg-6 min-vh-75">
-              @@include('src/blocks/cards/Drawback-in-the-US-card.html')
-            </div>
-            <div class="col-lg-6 min-vh-75">
-              @@include('src/blocks/cards/Free-Returns-to-Europe-card.html')
-            </div>
-          </div>
-        </div>
-      </div>
+
     </section>
-    @@include('src/blocks/linkToFAQ.html')
+
     @@include('src/blocks/contactUsCallOut.html')
-    		<div class="section dark bg-transparent">
-			@@include('src/blocks/blog-gallery.html')
-		</div>
+    <div class="section dark bg-transparent">
+      @@include('src/blocks/blog-gallery.html')
+    </div>
 
     @@include('src/blocks/footer.html',{
     "bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
@@ -191,10 +109,30 @@
   @@include('src/blocks/linkedInInsideTag.html')
 
 
-  <!-- Canvas Scripts -->
-  <script src="js/functions.js"></script>
+  <!-- JavaScripts
+	============================================= -->
+  <script src="js/plugins.min.js"></script>
+  <script src="js/functions.bundle.js"></script>
 
 
+  <div class="modal fade text-start bs-example-modal-centered" tabindex="-1" role="dialog"
+    aria-labelledby="centerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content lightSamaritan-bg">
+        <div class="modal-header">
+          <h4 class="modal-title text-darkSamaritan" id="myModalLabel">${{solutions-for-eu-shippers.modal.title}}$</h4>
+          <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-hidden="true"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0 text-darkSamaritan">${{solutions-for-eu-shippers.modal.description}}$</p>
+          <div class="drawback-choice-actions">
+            <a href="${{TDR-Duty-Drawback-in-the-US.path}}$" class="button button-rounded">US</a>
+            <a href="${{TDR-Duty-Drawback-in-the-EU.path}}$" class="button button-rounded">EU</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
