@@ -271,7 +271,7 @@
                         <div class="row align-items-start gy-5">
                             <div class="col-lg-5">
                                 <h2 class="display-4 fw-bolder ls-n-2 text-darkSamaritan">How Returned Goods Relief
-                                    <span class="text-samaritanDarkGreen">works</span>
+                                    <span class="text-samaritanDarkGreen">Works</span>
                                 </h2>
                                 <p class="lead text-samaritan">RGR is about connecting the outbound movement to the
                                     return. TDR helps you turn fragmented shipment data into a clear, supportable claim
@@ -324,18 +324,22 @@
                     </div>
                 </section>
 
-                <section id="eligibility" class="page-section py-5 py-lg-6 layered-background" >
+                <section id="eligibility" class="page-section py-5 py-lg-6 sliding-background-section">
+                    <div class="bg"></div>
+                    <div class="bg bg2"></div>
+                    <div class="bg bg3"></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
-                                <div class="card border-0 shadow-sm glass-effect-samaritanRed" data-animate="fadeInUp">
+                                <div class="card border-0 shadow-sm bg-light bg-gradient" data-animate="fadeInLeft">
                                     <div class="card-body p-4 p-lg-5">
                                         <div class="row align-items-center g-4">
                                             <div class="col-auto"><i
                                                     class="bi-patch-check-fill display-5 text-samaritanDarkRed"
                                                     aria-hidden="true"></i></div>
                                             <div class="col">
-                                                <h2 class="h2 fw-bold text-darkSamaritan mb-2">Could your goods qualify?
+                                                <h2 class="h2 fw-bold text-samaritanDarkRed mb-2">Could your goods
+                                                    qualify?
                                                 </h2>
                                                 <p class="lead text-samaritan mb-0">The details of the export,
                                                     ownership, condition and timing all matter. Start with a quick
@@ -356,8 +360,8 @@
                 <section id="faqs" class="page-section py-5 py-lg-6 rgr-faq">
                     <div class="container">
                         <div class="row justify-content-center text-center mb-4">
-                            <div class="col-lg-8"><span class="text-muted">F.A.Q</span>
-                                <h2 class="display-5 fw-bold text-white">Returned Goods Relief questions</h2>
+                            <div class="col-lg-8"><span class="text-samaritanDarkYellow">F.A.Q</span>
+                                <h2 class="display-5 fw-bold text-white">Returned Goods Relief Questions</h2>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -431,6 +435,32 @@
                         </div>
                     </div>
                 </section>
+
+                <div class="section py-5 py-lg-6 mt-0 bg-white">
+                    <div class="container">
+                        <div
+                            class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+                            <div>
+                                <h2 class="display-5 fw-bolder ls-n-2 text-darkSamaritan mb-2">
+                                    ${{TDR-Duty-Drawback-in-the-UK.related_services_title}}$</h2>
+                                <p class="text-samaritan mb-0">
+                                    ${{TDR-Duty-Drawback-in-the-UK.related_services_subtitle}}$</p>
+                            </div>
+                        </div>
+                        <div class="row block-card-9 col-mb-50">
+                            <div class="col-lg-4 min-vh-75">
+                                @@include('src/blocks/cards/Free-Returns-to-the-US-card.html')
+                            </div>
+                            <div class="col-lg-4 min-vh-75">
+                                @@include('src/blocks/cards/Drawback-in-the-EU-card.html')
+                            </div>
+                            <div class="col-lg-4 min-vh-75">
+                                @@include('src/blocks/cards/Free-Returns-to-Europe-card.html')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
