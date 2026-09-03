@@ -3,23 +3,23 @@
 <html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
 
 <head>
-	<!-- Google Tag Manager modified to comply with cookie consent-->
-	@@include('src/blocks/head/cookieConsent/headScript.html')
-	<!-- End Google Tag Manager -->
+    <!-- Google Tag Manager modified to comply with cookie consent-->
+    @@include('src/blocks/head/cookieConsent/headScript.html')
+    <!-- End Google Tag Manager -->
 
-	<!-- Metatags Import -->
-	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+    <!-- Metatags Import -->
+    @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
     "description": "${{TDR-returned-goods-relief-in-the-UK.description}}$",
     "title": "${{TDR-returned-goods-relief-in-the-UK.title}}$",
     "path": "${{TDR-returned-goods-relief-in-the-UK.path}}$"
-	})
+    })
 
-	<!-- CSS imports -->
-	@@include('src/blocks/head/cssImports.html')
+    <!-- CSS imports -->
+    @@include('src/blocks/head/cssImports.html')
 
 
-	<!-- Only Required if Samaritan color is required -->
-	<link rel="stylesheet" href="./css/custom/samaritan.css">
+    <!-- Only Required if Samaritan color is required -->
+    <link rel="stylesheet" href="./css/custom/samaritan.css">
     <style>
         .rgr-glass {
             background: rgba(255, 255, 255, 0.12);
@@ -93,12 +93,80 @@
         }
 
         .rgr-hero-image {
-            border: 14px solid #fff;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+            max-height: 620px;
+            object-fit: contain;
+            filter: drop-shadow(0 22px 26px rgba(9, 8, 20, 0.18));
+            animation: rgr-hero-float 6s ease-in-out infinite;
+        }
+
+        .rgr-hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, var(--samaritan) 0%, var(--darkSamaritan) 62%, #090814 100%);
+        }
+
+        .rgr-hero::before,
+        .rgr-hero::after {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 50%;
+            content: "";
+            pointer-events: none;
+        }
+
+        .rgr-hero::before {
+            width: 42rem;
+            height: 42rem;
+            right: -14rem;
+            top: -12rem;
+        }
+
+        .rgr-hero::after {
+            width: 30rem;
+            height: 30rem;
+            right: -7rem;
+            top: -6rem;
+        }
+
+        .rgr-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .rgr-hero-kicker {
+            display: inline-block;
+            margin-bottom: 1.25rem;
+            color: var(--samaritanGreen);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        @keyframes rgr-hero-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .rgr-hero .row {
+                min-height: auto;
+            }
+
+            .rgr-hero-image {
+                max-height: 390px;
+            }
         }
     </style>
 
-    	<script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": ["WebPage", "Article"],
@@ -136,23 +204,20 @@
         "menu-text-hover":"white"
         })
 
-        <section id="slider" class="slider-element dark block-hero-6">
-            <div class="bg-overlay z-1 d-md-block d-none"
-                style="background: linear-gradient(to right, white 0%, white 25%, transparent 25%, transparent 100%)">
-            </div>
-            <div class="swiper-slide-bg"
-                style="background-image: url('images/flags/ukWavingFlag.webp'); filter: opacity(15%);"></div>
-            <div class="container z-2">
-                <div class="row min-vh-100 align-items-center justify-content-sm-around py-5">
-                    <div class="col-md-6 order-md-last text-center">
+        <section id="slider" class="slider-element dark block-hero-6 rgr-hero">
+            <div class="container rgr-hero-content">
+                <div class="row min-vh-100 align-items-center justify-content-between py-5">
+                    <div class="col-lg-5 col-md-6 text-center text-md-start">
+                        <span class="rgr-hero-kicker">UK customs relief</span>
                         <h1 class="display-3 text-white" data-animate="fadeInRight">Returned Goods Relief<br><span
-                                class="text-samaritanYellow">in the UK</span></h1>
-                        <p class="fs-3 text-white" data-animate="fadeInUp" data-animate-delay="1">Bring qualifying UK
+                                class="text-samaritanGreen">in the UK</span></h1>
+                        <p class="fs-3 text-white mb-0" data-animate="fadeInUp" data-animate-delay="1">Bring qualifying
+                            UK
                             goods home without paying import duty twice.</p>
                     </div>
-                    <div class="col-md-4 mt-5 mt-md-0" data-animate="fadeInLeft">
-                        <img src="images/Uk-drawback-hero.webp" alt="Returned goods ready for re-import into the UK"
-                            class="rgr-hero-image w-100">
+                    <div class="col-lg-6 col-md-6 mt-4 mt-md-0 text-center" data-animate="fadeInLeft">
+                        <img src="images/slider/uk-rgr/returned-goods-hero.svg"
+                            alt="Person checking returned goods relief on a laptop" class="rgr-hero-image w-100">
                     </div>
                 </div>
             </div>
@@ -164,10 +229,10 @@
                     <div class="container">
                         <div class="row justify-content-center text-center mb-5">
                             <div class="col-lg-8">
-                                <h2 class="display-4 fw-bolder ls-n-2 text-lightSamaritan">Returned goods should not
-                                    become <span class="text-white">a second duty bill.</span></h2>
+                                <h2 class="display-4 fw-bolder ls-n-2 text-white">Returned goods should not
+                                    become <span class="text-samaritanYellow">a second duty bill.</span></h2>
                                 <p class="lead text-white">Returned Goods Relief (RGR) is a UK customs provision that
-                                    may remove import duty when goods previously exported from the UK return to the
+                                    removes import duty and VAT when goods previously exported from the UK return to the
                                     country.</p>
                             </div>
                         </div>
