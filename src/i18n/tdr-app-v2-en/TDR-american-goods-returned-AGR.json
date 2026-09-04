@@ -1,0 +1,79 @@
+{
+  "name": "American Goods Returned (AGR)",
+  "path": "TDR-american-goods-returned-AGR.html",
+  "title": "American Goods Returned (AGR) | U.S. Duty-Free Returns under HTSUS 9801.00.10",
+  "description": "Identify qualifying goods returned to the United States under HTSUS 9801.00.10. Reduce avoidable customs duties, support CBP documentation, and simplify cross-border returns.",
+  "hero-kicker": "American Goods Returned (AGR)",
+  "hero-title": "Bring American Goods &lt;span class=&quot;text-samaritanDarkRed&quot;&gt;Back Home Duty-Free&lt;/span&gt;",
+  "hero-description": "Your U.S.-made goods are coming home. Make sure you do not pay duty on them again.",
+  "page-title": "Bring It Home &lt;span class=&quot;text-samaritanYellow&quot;&gt;For Less&lt;/span&gt;", 
+  "page-description": "American Goods Returned (AGR) can provide duty-free treatment for qualifying goods returned to the United States under HTSUS 9801.00.10. The key is proving the goods qualify and supporting the claim with the right documentation.",
+  "card1": {
+    "title": "Goods return to the U.S.",
+    "description": "Customer returns, rejected shipments and other qualifying goods may be eligible for duty-free treatment when they come back to the United States."
+  },
+  "card2": {
+    "title": "The proof follows the goods",
+    "description": "Export records, invoices, transport documents and product identifiers can help demonstrate what left the United States is what returned."
+  },
+  "card3": {
+    "title": "Don't pay duty unnecessarily",
+    "description": "A well-managed AGR process can help prevent avoidable duty costs and keep returned inventory moving efficiently."
+  },
+  "how-it-works-title": "How American Goods Returned&lt;span class=&quot;text-samaritanDarkGreen&quot;&gt; Works&lt;/span&gt;",
+
+  "how-it-works-description": "AGR is about proving that qualifying goods meet the requirements for duty-free return to the United States. TDR helps connect your export history, returned merchandise and supporting evidence into a clear claim position.",
+
+  "how-it-works-label": "Check your eligibility",
+
+  "how-it-works-step1": {
+    "title": "Trace the original export",
+    "description": "Identify when and how the goods left the United States using export invoices, bills of lading, air waybills, EEI records or other supporting documentation."
+  },
+
+  "how-it-works-step2": {
+    "title": "Prove the goods qualify",
+    "description": "Match the returned merchandise to the exported goods and confirm that it was not advanced in value or improved in condition while abroad."
+  },
+
+  "how-it-works-step3": {
+    "title": "Support the duty-free entry",
+    "description": "Prepare the appropriate AGR claim and supporting declarations and evidence required to substantiate duty-free treatment under HTSUS 9801.00.10."
+  },
+
+  "how-it-works-callout": {
+    "title": "Already paid duty on returned goods?",
+    "description": "Don't assume the opportunity is lost. Keep your import, export and product documentation and let us review whether a recovery opportunity may exist.",
+    "label": "Contact TDR"
+  },
+  "eligibility-title": "Could your goods qualify?",
+  "eligibility-description": "The origin of the goods, timing of the return, condition abroad, export history and available evidence all matter. Start with a quick review of your U.S. movements.",
+  "eligibility-label": "Start the questionnaire",
+  "FAQ-kicker": "F.A.Q",
+  "FAQ-title": "American Goods Returned (AGR) Questions",
+  "faq_1_question": "What is American Goods Returned (AGR)?",
+  "faq_1_answer": "American Goods Returned refers generally to merchandise that was exported from the United States and is subsequently returned to the United States. Under HTSUS subheading 9801.00.10, qualifying products of the United States may generally be returned duty-free when they were not advanced in value or improved in condition while abroad.",
+  "faq_2_question": "What HTSUS provision applies to American Goods Returned?",
+  "faq_2_answer": "The principal provision is HTSUS subheading 9801.00.10. It provides duty-free treatment for products of the United States returned after exportation, without having been advanced in value or improved in condition abroad. The provision also covers other products returned within three years after exportation, subject to the applicable requirements.",
+  "faq_3_question": "Do American Goods Returned have to be manufactured in the United States?",
+  "faq_3_answer": "Not necessarily. Following the 2016 amendment, HTSUS 9801.00.10 can cover products other than U.S.-origin goods when they are returned within three years after exportation from the United States, provided the other requirements are satisfied. For U.S.-origin goods, evidence establishing U.S. origin may be required.",
+  "faq_4_question": "Is there a time limit for returning goods under the AGR provision?",
+  "faq_4_answer": "For products that are not products of the United States, HTSUS 9801.00.10 generally requires that they be returned within three years after their exportation from the United States. Products of the United States can qualify when returned after exportation, provided the applicable conditions are met.",
+  "faq_5_question": "Can goods qualify as AGR if they were repaired, modified, or manufactured abroad?",
+  "faq_5_answer": "Generally, no. Merchandise must not have been advanced in value or improved in condition by a process of manufacture or other means while abroad. Repairs, manufacturing, substantial modifications, or other operations that increase value or improve condition can make the merchandise ineligible for duty-free treatment under HTSUS 9801.00.10.",
+  "faq_6_question": "Does simple repackaging abroad prevent merchandise from qualifying as AGR?",
+  "faq_6_answer": "Not necessarily. CBP rulings have recognized that mere repackaging, when it does not alter the merchandise or otherwise advance its value or improve its condition, may be permissible under HTSUS 9801.00.10. The specific facts and nature of the foreign operation must be evaluated.",
+  "faq_7_question": "What documentation is required to support an AGR claim?",
+  "faq_7_answer": "The documentation requirements are addressed in 19 CFR 10.1. Depending on the circumstances, supporting evidence can include information concerning the U.S. exportation, export date, port of exportation, quantity, merchandise description, value, and confirmation that the merchandise was not advanced in value or improved in condition abroad. Additional evidence may be required depending on the origin and value of the merchandise.",
+  "faq_8_question": "Is CBP Form 3311 required for American Goods Returned?",
+  "faq_8_answer": "CBP identifies Form 3311, Declaration for Free Entry of Returned American Products, as a form used when clearing returned U.S. goods. However, the exact documentation required for a particular entry depends on the applicable HTSUS provision and circumstances. Importers should ensure that the documentation supporting the 9801.00.10 claim is available to CBP.",
+  "faq_9_question": "Who is responsible for proving that merchandise qualifies as American Goods Returned?",
+  "faq_9_answer": "The importer should be prepared to substantiate the claim to CBP. CBP guidance states that AGR does not simply mean that duty is automatically waived; the importer must be prepared to demonstrate that the merchandise satisfies the applicable requirements or otherwise pay the applicable customs duties.",
+  "faq_10_question": "Can foreign-origin goods that were previously imported into the United States qualify for AGR treatment when returned?",
+  "faq_10_answer": "Yes, in certain circumstances. HTSUS 9801.00.10 was amended to allow products other than products of the United States to qualify when returned within three years after exportation from the United States, provided they were not advanced in value or improved in condition abroad and the applicable documentary requirements are satisfied.",
+  "contact-kicker": "Make every return work harder for your business.",
+  "contact-title": "Understand your American Goods Returned opportunity.",
+  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-US.html&quot; class=&quot;text-decoration-underline&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your returned goods may qualify for duty-free treatment.",
+  "contact-label": "Start the questionnaire",
+  "card-subtitle": "Bring Qualifying Goods Back To The United States Duty Free."
+}
