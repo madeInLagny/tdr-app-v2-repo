@@ -1,63 +1,73 @@
 {
   "name": "Returned Goods Relief in the EU",
   "path": "TDR-returned-goods-relief-in-the-EU.html",
-  "title": "EU Returned Goods Relief for eCommerce | Import Goods 100% Duty and Tax Free",
-  "description": "Unlock EU Returned Goods Relief for eCommerce returns and re-exported inventory. Avoid 100% of import duties and taxes, improve cash flow, and simplify HMRC compliance.",
-  "hero-kicker": "EU customs relief",
-  "hero-title": "Returned Goods Relief&lt;br&gt;&lt;span class=&quot;text-samaritanGreen&quot;&gt;in the EU&lt;/span&gt;",
-  "hero-description": "Bring qualifying EU goods home without paying import duty twice.",
-  "page-title": "Returned goods should not become &lt;span class=&quot;text-samaritanYellow&quot;&gt;a second duty bill.&lt;/span&gt;",
-  "page-description": "Returned Goods Relief (RGR) is a EU customs provision that removes import duty and VAT when goods previously exported from the EU return to the country.",
+  "title": "EU Returned Goods Relief for eCommerce | Import Goods 100% Duty and VAT Free",
+  "description": "Identify qualifying goods returned to the European Union under Union Customs Code Article 203. Reduce avoidable customs duties and VAT, support EU customs documentation, and simplify cross-border returns.",
+  "hero-kicker": "Returned Goods Relief (RGR)",
+  "hero-title": "Bring EU Goods &lt;span class=&quot;text-samaritanDarkRed&quot;&gt;Back Home Duty-Free&lt;/span&gt;",
+  "hero-description": "Your EU-origin goods are coming home. Make sure you do not pay duty or VAT on them again.",
+  "page-title": "Bring It Home &lt;span class=&quot;text-samaritanYellow&quot;&gt;For Less&lt;/span&gt;",
+  "page-description": "Returned Goods Relief (RGR) can provide duty-free and VAT-free treatment for qualifying goods returned to the European Union under Union Customs Code Article 203. The key is proving the goods qualify and supporting the claim with the right documentation.",
   "card1": {
-    "title": "Goods come back",
-    "description": "Customer returns, repairs, exhibitions and other exported goods may qualify when they are re-imported."
+    "title": "Goods return to the EU",
+    "description": "Customer returns, rejected shipments and other qualifying goods may be eligible for duty-free and VAT-free treatment when they come back to the European Union."
   },
   "card2": {
-    "title": "Evidence matters",
-    "description": "Export declarations, import records and product identity evidence help demonstrate that the goods are the same."
+    "title": "The proof follows the goods",
+    "description": "Export records, invoices, transport documents and product identifiers can help demonstrate what left the European Union is what returned."
   },
   "card3": {
-    "title": "Cash stays working",
-    "description": "A reliable RGR process can reduce avoidable landed costs and make cross-border returns easier to manage."
+    "title": "Don't pay duty unnecessarily",
+    "description": "A well-managed RGR process can help prevent avoidable duty and VAT costs and keep returned inventory moving efficiently."
   },
   "how-it-works-title": "How Returned Goods Relief&lt;span class=&quot;text-samaritanDarkGreen&quot;&gt; Works&lt;/span&gt;",
-  "how-it-works-description": "RGR is about connecting the outbound movement to the return. TDR helps you turn fragmented shipment data into a clear, supportable claim position.",
+  "how-it-works-description": "RGR is about proving that qualifying goods meet the requirements for duty-free and VAT-free return to the European Union. TDR helps connect your export history, returned merchandise and supporting evidence into a clear claim position.",
   "how-it-works-label": "Check your eligibility",
   "how-it-works-step1": {
-    "title": "Identify the export",
-    "description": "Find the original EU export and confirm when the goods left the EU."
+    "title": "Trace the original export",
+    "description": "Identify when and how the goods left the European Union using export invoices, bills of lading, air waybills, export declarations or other supporting documentation."
   },
   "how-it-works-step2": {
-    "title": "Match the goods",
-    "description": "Use commercial, product and transport records to link the returning goods to that export."
+    "title": "Prove the goods qualify",
+    "description": "Match the returned merchandise to the exported goods and confirm that it was not advanced in value or improved in condition while abroad."
   },
   "how-it-works-step3": {
-    "title": "Declare the return",
-    "description": "Apply the correct relief on the EU import declaration and retain the supporting evidence."
+    "title": "Support the duty-free entry",
+    "description": "Prepare the appropriate RGR claim and supporting declarations and evidence required to substantiate duty-free and VAT-free treatment under Union Customs Code Article 203."
   },
   "how-it-works-callout": {
-    "title": "Already returned without applying RGR?",
-    "description": "Don’t worry. Keep all your documentation and let us know. We will contact Customs on your behalf and sort it out.",
+    "title": "Already paid duty on returned goods?",
+    "description": "Don't assume the opportunity is lost. Keep your import, export and product documentation and let us review whether a recovery opportunity may exist.",
     "label": "Contact TDR"
   },
   "eligibility-title": "Could your goods qualify?",
-  "eligibility-description": "The details of the export, ownership, condition and timing all matter. Start with a quick review of your EU movements.",
+  "eligibility-description": "The origin of the goods, timing of the return, condition abroad, export history and available evidence all matter. Start with a quick review of your EU movements.",
   "eligibility-label": "Start the questionnaire",
   "FAQ-kicker": "F.A.Q",
-  "FAQ-title": "Returned Goods Relief Questions",
+  "FAQ-title": "Returned Goods Relief (RGR) Questions",
   "faq_1_question": "What is Returned Goods Relief (RGR)?",
-  "faq_1_answer": "Returned Goods Relief (RGR) is a EU customs provision that removes import duty and VAT when goods previously exported from the EU return to the country. It is designed to prevent businesses from paying import duties twice on the same goods.",
-  "faq_2_question": "What are the eligibility criteria for RGR?",
-  "faq_2_answer": "To qualify for RGR, the goods must have been exported from the EU, must be the same goods being returned, and must not have been materially altered while abroad. Additionally, proper documentation and evidence of the original export and return are required.",
-  "faq_3_question": "What documentation is needed to claim RGR?",
-  "faq_3_answer": "To claim RGR, you will need to provide the original export declaration, import records, invoices, transport documents, product identifiers, and any other evidence that demonstrates the goods are the same as those originally exported.",
-  "faq_4_question": "What evidence is usually needed?",
-  "faq_4_answer": "Evidence can include the original export declaration, import records, invoices, transport documents, product identifiers and records showing that the goods have not been materially changed.",
-  "faq_5_question": "How does TDR help?",
-  "faq_5_answer": "TDR can review your shipment data and operating process to identify potentially eligible movements and the evidence needed to support future declarations and recovery opportunities. Thanks to our access to HRMC database, we pull down all necessary data so that we only require from you documentation to substantiate the claim.",
+  "faq_1_answer": "Returned Goods Relief refers generally to merchandise that was exported from the European Union and is subsequently returned to the European Union. Under Union Customs Code Article 203, qualifying goods may generally be returned duty-free and VAT-free when they were not advanced in value or improved in condition while abroad.",
+  "faq_2_question": "What EU regulation applies to Returned Goods Relief?",
+  "faq_2_answer": "The principal provision is Union Customs Code (UCC) Article 203. It provides duty-free and VAT-free treatment for goods exported from the customs territory of the Union and returned to Union territory, without having been advanced in value or improved in condition abroad. The provision also covers goods returned within three years after exportation, subject to the applicable requirements.",
+  "faq_3_question": "Do goods have to be manufactured in the European Union to qualify for RGR?",
+  "faq_3_answer": "Not necessarily. Goods that were previously in free circulation in the EU can qualify for RGR when returned within three years after exportation from the European Union, provided the other requirements are satisfied. For EU-origin goods, evidence establishing Union origin may strengthen your claim.",
+  "faq_4_question": "Is there a time limit for returning goods under the RGR provision?",
+  "faq_4_answer": "Yes, goods must generally be returned within three years from the date of export from the European Union. This period may be extended under special circumstances as determined by EU customs authorities.",
+  "faq_5_question": "Can goods qualify as RGR if they were repaired, modified, or manufactured abroad?",
+  "faq_5_answer": "Generally, no. Merchandise must not have been advanced in value or improved in condition by a process of manufacture or other means while abroad. However, treatment necessary for repair or to keep the goods in good condition, handling that only alters appearance, or treatments to address unsuitability for intended use may be permissible under UCC Article 203.",
+  "faq_6_question": "Does simple repackaging abroad prevent merchandise from qualifying as RGR?",
+  "faq_6_answer": "Not necessarily. EU customs guidance recognizes that mere repackaging, when it does not alter the merchandise or otherwise advance its value or improve its condition, may be permissible under Union Customs Code Article 203. The specific facts and nature of the foreign operation must be evaluated.",
+  "faq_7_question": "What documentation is required to support an RGR claim?",
+  "faq_7_answer": "Documentation must be attached to the outside of the parcel and marked as Customs Documents. Depending on the circumstances, supporting evidence can include the export declaration authenticated by EU customs, Form INF3 (returned goods information sheet) stamped and signed by customs, proof that goods have not been altered, and confirmation that the merchandise was not advanced in value or improved in condition abroad. Additional evidence may be required depending on the origin and value of the merchandise.",
+  "faq_8_question": "Is Form INF3 required for Returned Goods Relief?",
+  "faq_8_answer": "Form INF3 (returned goods information sheet) is commonly used and must be issued by the competent authorities in the exporting EU Member State and stamped by customs. However, the exact documentation required for a particular entry depends on the applicable UCC provision and circumstances. In the Republic of Ireland, the audit trail housed in the CAS Special Procedures module satisfies RGR requirements, so no INF3 form is required. Importers should ensure that the documentation supporting the RGR claim is available to EU customs authorities.",
+  "faq_9_question": "Who is responsible for proving that merchandise qualifies as Returned Goods Relief?",
+  "faq_9_answer": "The importer or declarant should be prepared to substantiate the claim to EU customs authorities. EU guidance states that RGR does not simply mean that duty and VAT are automatically waived; the importer must be prepared to demonstrate that the merchandise satisfies the applicable requirements or otherwise pay the applicable customs duties and VAT.",
+  "faq_10_question": "Can non-EU origin goods that were previously imported into the European Union qualify for RGR treatment when returned?",
+  "faq_10_answer": "Yes, in certain circumstances. Union Customs Code Article 203 allows goods other than products of the European Union to qualify when returned within three years after exportation from the European Union, provided they were not advanced in value or improved in condition abroad and the applicable documentary requirements are satisfied.",
   "contact-kicker": "Make every return work harder for your business.",
   "contact-title": "Understand your Returned Goods Relief opportunity.",
-  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-EU.html&quot; class=&quot;text-decoration-underline&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your goods qualify for RGR.",
+  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-EU.html&quot; class=&quot;text-decoration-underline&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your returned goods may qualify for duty-free and VAT-free treatment.",
   "contact-label": "Start the questionnaire",
-  "card-subtitle": "Bring Goods Back Home Duty And VAT Free."
+  "card-subtitle": "Bring Qualifying Goods Back To The European Union Duty and VAT Free."
 }
