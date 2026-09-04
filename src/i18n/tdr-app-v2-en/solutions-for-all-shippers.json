@@ -5,6 +5,14 @@
   "section-heading": "TDR for Cross-Border Shippers",
   "main-heading": "2 Ways to Save on Customs Duties",
   "intro-text": "Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.",
+  "alert-eyebrow": "Regional expertise",
+  "alert-text": "Shipping from the EU, UK or US? Explore the solution built for your market.",
+  "us-link-text": "US shippers",
+  "us-link-path": "solutions-for-us-shippers.html",
+  "eu-link-text": "EU shippers",
+  "eu-link-path": "solutions-for-eu-shippers.html",
+  "uk-link-text": "UK shippers",
+  "uk-link-path": "solutions-for-uk-shippers.html",
   "cards": {
     "card2": {
       "id": "duty-drawback",
