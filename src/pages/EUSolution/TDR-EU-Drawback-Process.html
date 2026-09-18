@@ -180,6 +180,10 @@
             background: var(--lightSamaritan);
         }
 
+        .drawback-page .process-band .section-kicker {
+            color: var(--samaritanDarkRed);
+        }
+
         .drawback-page .drawback-divider {
             height: 76px;
             line-height: 0;
@@ -213,28 +217,30 @@
         .drawback-page .process-tabs .nav-link {
             border: 1px solid rgba(28, 43, 58, 0.12);
             border-radius: 999px;
-            color: var(--samaritan);
+            color: var(--darkSamaritan);
             font-weight: 700;
             padding: 0.8rem 1.4rem;
             transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+            background: var(--samaritanRed);
         }
 
         .drawback-page .process-tabs .nav-link:hover,
         .drawback-page .process-tabs .nav-link:focus-visible {
             transform: translateY(-2px);
             color: var(--darkSamaritan);
+            border-color: var(--samaritanDarkRed);
         }
 
         .drawback-page .process-tabs .nav-link.active {
-            background: var(--samaritan);
-            border-color: var(--samaritan);
-            color: var(--lightSamaritan);
+            background: var(--samaritanDarkRed);
+            border-color: var(--samaritanDarkRed);
+            color: var(--darkSamaritan);
             box-shadow: 0 0.5rem 1rem rgba(28, 43, 58, 0.15);
         }
 
         .drawback-page .process-tab-icon {
             margin-right: 0.45rem;
-            color: var(--samaritanYellow);
+            color: var(--darkSamaritan);
         }
 
         .drawback-page .process-panel {
@@ -269,7 +275,7 @@
             top: 1.25rem;
             left: 9%;
             right: 9%;
-            border-top: 2px solid rgba(91, 176, 0, 0.45);
+            border-top: 2px solid rgba(250, 103, 129, 0.45);
         }
 
         .drawback-page .process-card {
@@ -300,7 +306,7 @@
             justify-content: center;
             border: 5px solid var(--lightSamaritan);
             border-radius: 50%;
-            background: var(--samaritanGreen);
+            background: var(--samaritanDarkRed);
             color: var(--darkSamaritan);
             font-weight: 700;
             transform: translateY(-50%);
@@ -490,7 +496,7 @@
                 left: 1.25rem;
                 right: auto;
                 border-top: 0;
-                border-left: 2px solid rgba(91, 176, 0, 0.45);
+                border-left: 2px solid rgba(250, 103, 129, 0.45);
             }
 
             .drawback-page .process-card {
@@ -523,7 +529,8 @@
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6">
                             <p class="section-kicker text-samaritanYellow mb-3">EU duty drawback for retailers</p>
-                            <h1 id="drawback-title" class="display-3 fw-bold text-white">How <span class="text-lightSamaritan">TDR EU duty drawback</span>  works for returned
+                            <h1 id="drawback-title" class="display-3 fw-bold text-white">How <span
+                                    class="text-lightSamaritan">TDR EU duty drawback</span> works for returned
                                 orders</h1>
                             <p class="lead mt-4 mb-4">EU duty drawback lets DTC retailers reclaim import duties paid on
                                 goods that are returned by customers, refunded, and re-exported.</p>
@@ -550,7 +557,8 @@
                     <div class="row justify-content-center text-center mb-5">
                         <div class="col-lg-8">
                             <p class="section-kicker mb-2">A quick check</p>
-                            <h2 id="qualifies-title" class="display-5 fw-bold text-darkSamaritan">Who qualifies?</h2>
+                            <h2 id="qualifies-title" class="display-5 fw-bold text-darkSamaritan">Who <span
+                                    class="text-samaritanDarkGreen">Qualifies?</span></h2>
                             <p class="text-samaritan mb-0">Your business may qualify when these conditions are met.</p>
                         </div>
                     </div>
@@ -604,6 +612,7 @@
                 </div>
             </section>
 
+            <!-- Process Bands -->
             <section class="section process-band" aria-labelledby="process-title">
                 <!-- Dividers -->
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
@@ -616,7 +625,8 @@
                     <div class="row justify-content-center text-center mb-5">
                         <div class="col-lg-8">
                             <p class="section-kicker mb-2">Simple, managed flow</p>
-                            <h2 id="process-title" class="display-5 fw-bold text-darkSamaritan">How the process works
+                            <h2 id="process-title" class="display-5 fw-bold text-darkSamaritan">How The <span
+                                    class="text-samaritanDarkRed">Process Works</span>
                             </h2>
                         </div>
                     </div>
@@ -712,14 +722,16 @@
                 </div>
             </section>
 
-            <section class="section bg-white" aria-labelledby="role-title">
-                <!-- Divider -->
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
-                    preserveAspectRatio="none">
-                    <path d="M0,0V6c0,21.6,291,111.46,741,110.26,445.39,3.6,459-88.3,459-110.26V0Z" class="shape-fill"
-                        fill="#B1C0CD" fill-opacity="1"></path>
-                </svg>
-                <!-- Section Content -->
+            <!-- Divider -->
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'>
+                <g fill='#B1C0CD'>
+                    <rect fill="#FFF" width="100%" height="100%" />
+                    <path d='M0 0v100c250 0 375-24 500-48 125 24 250 48 500 48V0H0Z' opacity='.5'></path>
+                    <path d='M0 0v4c250 0 375 24 500 48C625 28 750 4 1000 4V0H0Z'></path>
+                </g>
+            </svg>
+
+            <section class="section bg-white pt-3" aria-labelledby="role-title">
                 <div class="container">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-5">
