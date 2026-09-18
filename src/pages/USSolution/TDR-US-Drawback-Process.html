@@ -10,6 +10,14 @@
     @@include('src/blocks/head/cssImports.html')
     <link rel="stylesheet" href="./css/custom/samaritan.css">
     <style>
+        :root {
+            --drawback-us-ink: #12263a;
+            --drawback-us-blue: #176b87;
+            --drawback-us-copper: #e18b54;
+            --drawback-us-mist: #edf5f4;
+            --drawback-us-line: rgba(18, 38, 58, 0.14);
+        }
+
         .section {
             margin: 0;
         }
@@ -138,7 +146,6 @@
             justify-content: center;
             border-radius: 1.5rem;
             background: var(--samaritanYellow);
-            color: var(--darkSamaritan);
             font-size: 4rem;
             position: relative;
             z-index: 1;
@@ -148,7 +155,6 @@
         .drawback-page .drawback-arrow {
             position: absolute;
             color: var(--samaritanYellow);
-            font-size: 2rem;
         }
 
         .drawback-page .drawback-arrow-one {
@@ -490,33 +496,92 @@
             }
         }
 
-        .eu-process-cta {
-            padding: 76px 0 88px;
-            text-align: center;
+        .drawback-page .drawback-hero {
+            background: #12263a;
         }
 
-        .eu-process-cta h2 {
+        .drawback-page .drawback-hero::after {
+            background: linear-gradient(90deg, rgba(18, 38, 58, .98), rgba(18, 38, 58, .78) 52%, rgba(23, 107, 135, .34));
+        }
+
+        .drawback-page .drawback-wave-bg::before,
+        .drawback-page .drawback-wave-bg::after {
+            content: "";
+            position: absolute;
+            inset: 12% 7% 12% 48%;
+            border: 1px solid rgba(225, 139, 84, .28);
+            transform: skewX(-24deg) rotate(-8deg);
+        }
+
+        .drawback-page .drawback-wave-bg::after {
+            inset: 24% 13% 24% 54%;
+            border-color: rgba(111, 208, 211, .25);
+            transform: skewX(-24deg) rotate(8deg);
+        }
+
+        .drawback-page .drawback-wave-bg > div {
+            right: -12rem;
+            background: transparent;
+            border: 1px solid rgba(111, 208, 211, .45);
+            animation: drawback-us-pulse 8s ease-in-out infinite alternate;
+        }
+
+        .drawback-page .drawback-parcel {
+            background: var(--drawback-us-copper);
+            color: var(--drawback-us-ink);
+        }
+
+        .drawback-page .drawback-arrow {
+            color: #6fd0d3;
+        }
+
+        .drawback-page .process-band {
+            background: var(--drawback-us-mist);
+        }
+
+        .drawback-page .process-tabs .nav-link {
+            color: var(--drawback-us-ink);
+            background: #dcebea;
+        }
+
+        .drawback-page .process-tabs .nav-link.active,
+        .drawback-page .process-number {
+            background: var(--drawback-us-blue);
+            border-color: var(--drawback-us-blue);
+            color: #fff;
+        }
+
+        .drawback-page .process-timeline::before {
+            border-color: rgba(225, 139, 84, .55);
+        }
+
+        .drawback-page .section-kicker,
+        .drawback-page .check-icon,
+        .drawback-page .value-icon {
+            color: var(--drawback-us-blue);
+        }
+
+        .us-process-cta {
+            padding: 76px 0 88px;
+            text-align: center;
+            background: var(--drawback-us-ink);
+        }
+
+        .us-process-cta h2 {
             margin: 0 0 12px;
-            color: var(--ancillary-ink);
+            color: #fff;
             font-size: 2.35rem;
         }
 
-        .eu-process-cta p {
+        .us-process-cta p {
             margin: 0 auto 26px;
-            color: var(--ancillary-muted);
+            color: rgba(255, 255, 255, .78);
             font-size: 1.05rem;
         }
 
-        .eu-process-cta .button {
-            padding: 14px 24px;
-            color: #fff;
-            background: var(--ancillary-blue);
-            font-weight: 700;
-        }
-
-        .eu-process-cta .button:hover {
-            color: #fff;
-            background: var(--ancillary-ink);
+        @keyframes drawback-us-pulse {
+            from { transform: translateY(-50%) rotate(-4deg) scale(1); }
+            to { transform: translateY(-50%) rotate(4deg) scale(1.12); }
         }
     </style>
 </head>
@@ -538,14 +603,13 @@
                 <div class="container">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6">
-                            <p class="section-kicker text-samaritanYellow mb-3">EU duty drawback for retailers</p>
+                            <p class="section-kicker text-samaritanYellow mb-3">US duty drawback for retailers</p>
                             <h1 id="drawback-title" class="display-3 fw-bold text-white">How <span
-                                    class="text-samaritanYellow">TDR EU duty drawback</span> works for returned
+                                    class="text-samaritanYellow">TDR US duty drawback</span> works for returned
                                 orders</h1>
-                            <p class="lead mt-4 mb-4">EU duty drawback lets DTC retailers reclaim import duties paid on
-                                goods that are returned by customers, refunded, and re-exported.</p>
+                            <p class="lead mt-4 mb-4">US duty drawback helps importers recover duties paid on goods that are later exported, destroyed, or removed from the US market.</p>
                             <a class="btn samaritanYellow-bg text-darkSamaritan fw-bold rounded-pill"
-                                href="duty-refund-questionnaire-EU.html">Check your eligibility <i
+                                href="${{contact-us.path}}$">Check your eligibility <i
                                     class="bi-arrow-right ms-2" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-lg-6">
@@ -576,25 +640,25 @@
                         <div class="col-md-6 col-lg">
                             <div class="card check-card" data-animate="fadeInUp">
                                 <div class="card-body p-4"><i class="bi-shop check-icon" aria-hidden="true"></i>
-                                    <h3 class="h5 mt-3 text-darkSamaritan">EU-registered importer</h3>
-                                    <p class="mb-0 text-samaritan">You sell direct to consumers from outside the EU.</p>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">US importer of record</h3>
+                                    <p class="mb-0 text-samaritan">You import goods into the United States and can provide entry data.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg">
                             <div class="card check-card" data-animate="fadeInUp" data-delay="300">
-                                <div class="card-body p-4"><i class="bi-currency-euro check-icon"
+                                <div class="card-body p-4"><i class="bi-currency-dollar check-icon"
                                         aria-hidden="true"></i>
-                                    <h3 class="h5 mt-3 text-darkSamaritan">Orders above EUR 150</h3>
-                                    <p class="mb-0 text-samaritan">The order value is above the refund threshold.</p>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Duties and fees paid</h3>
+                                    <p class="mb-0 text-samaritan">Import duties, taxes, or eligible fees were paid at entry.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg">
                             <div class="card check-card" data-animate="fadeInUp" data-delay="600">
                                 <div class="card-body p-4"><i class="bi-receipt check-icon" aria-hidden="true"></i>
-                                    <h3 class="h5 mt-3 text-darkSamaritan">Import at market value</h3>
-                                    <p class="mb-0 text-samaritan">The customs value matches the item's retail value.
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Traceable documentation</h3>
+                                    <p class="mb-0 text-samaritan">Entry, invoice, transportation, and export records can be matched.
                                     </p>
                                 </div>
                             </div>
@@ -613,19 +677,17 @@
                             <div class="card check-card" data-animate="fadeInUp" data-delay="1200">
                                 <div class="card-body p-4"><i class="bi-calendar-check check-icon"
                                         aria-hidden="true"></i>
-                                    <h3 class="h5 mt-3 text-darkSamaritan">Re-exported in 3 months</h3>
-                                    <p class="mb-0 text-samaritan">The returned goods leave the EU within three months
-                                        of import.</p>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Exported within five years</h3>
+                                    <p class="mb-0 text-samaritan">The eligible goods are exported from the United States within the claim period.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
             <!-- Dividers -->
             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'>
-                <g fill='#F8F9FA'>
+                <g fill='#B1C0CD'>
                     <rect fill="#B1C0CD" width="100%" height="100%" />
                     <path d='M1000 0H0v52C62.5 28 125 4 250 4c250 0 250 96 500 96 125 0 187.5-24 250-48V0Z'></path>
                 </g>
@@ -688,7 +750,7 @@
                                 <div class="process-card" data-animate="fadeIn" data-delay="600"><span
                                         class="process-number">4</span>
                                     <h4>Set up a duty deferment account</h4>
-                                    <p>TDR helps you set up a deferment account with Dutch customs.</p>
+                                    <p>TDR helps configure the data, reporting, and controls needed for CBP-ready claims.</p>
                                 </div>
                             </div>
                         </div>
@@ -703,7 +765,7 @@
                             <div class="process-timeline">
                                 <div class="process-card" data-animate="fadeIn"><span class="process-number">1</span>
                                     <h4>Import clearance</h4>
-                                    <p>TDR clears each import through an approved EU customs procedure.</p>
+                                    <p>TDR connects each import entry to the records needed for a compliant US claim.</p>
                                 </div>
                                 <div class="process-card" data-animate="fadeIn" data-delay="200"><span
                                         class="process-number">2</span>
@@ -713,9 +775,7 @@
                                 <div class="process-card" data-animate="fadeIn" data-delay="400"><span
                                         class="process-number">3</span>
                                     <h4>Returns consolidated</h4>
-                                    <p>Returned items are consolidated in an EU country. In the Netherlands, TDR can
-                                        handle
-                                        the export declaration.</p>
+                                    <p>Eligible goods are exported, destroyed, or otherwise removed from the US market with the right evidence.</p>
                                 </div>
                                 <div class="process-card" data-animate="fadeIn" data-delay="600"><span
                                         class="process-number">4</span>
@@ -767,11 +827,11 @@
                                         <li class="col-md-6 d-flex gap-2 text-samaritan"><i
                                                 class="bi-check-circle-fill text-samaritanDarkBlue"
                                                 aria-hidden="true"></i><span>You are the importer of record for goods
-                                                entering Europe.</span></li>
+                                                entering the United States.</span></li>
                                         <li class="col-md-6 d-flex gap-2 text-samaritan"><i
                                                 class="bi-check-circle-fill text-samaritanDarkBlue"
                                                 aria-hidden="true"></i><span>You provide a manifest of imported orders
-                                                under EU customs rules.</span></li>
+                                                under US customs rules.</span></li>
                                         <li class="col-md-6 d-flex gap-2 text-samaritan"><i
                                                 class="bi-check-circle-fill text-samaritanDarkBlue"
                                                 aria-hidden="true"></i><span>Manifest values match each item's retail
@@ -815,8 +875,7 @@
                             <div class="card value-card" data-animate="fadeInUp">
                                 <div class="card-body p-4"><i class="bi-globe2 value-icon" aria-hidden="true"></i>
                                     <h3 class="h5 mt-3 text-darkSamaritan">One global specialist</h3>
-                                    <p class="mb-0 text-samaritan">One point of contact for EU, UK, and US drawback
-                                        needs.</p>
+                                    <p class="mb-0 text-samaritan">One point of contact for US drawback, reporting, and compliance needs.</p>
                                 </div>
                             </div>
                         </div>
@@ -849,7 +908,7 @@
                 </div>
             </section>
 
-            <section class="eu-process-cta samaritan-bg">
+            <section class="us-process-cta samaritan-bg">
                 <div class="container">
                     <h2 class="text-white">Ready to kick off your drawback program?</h2>
                     <p class="text-white">Let’s get started together.</p>
