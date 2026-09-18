@@ -2,326 +2,695 @@
 <html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
 
 <head>
-	@@include('src/blocks/head/cookieConsent/headScript.html')
-	@@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
-	"description":"Recover EU import duties on eligible customer returns with Trade Duty Refund.",
-	"title":"EU Duty Drawback for Retailers | Trade Duty Refund",
-	"path":"TDR-EU-Drawback-Process.html"})
-	@@include('src/blocks/head/cssImports.html')
-	<link rel="stylesheet" href="./css/custom/samaritan.css">
-	<style>
-		.drawback-page .drawback-hero {
-			background: var(--samaritan);
-			overflow: hidden;
-		}
+    @@include('src/blocks/head/cookieConsent/headScript.html')
+    @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+    "description":"Recover EU import duties on eligible customer returns with Trade Duty Refund.",
+    "title":"EU Duty Drawback for Retailers | Trade Duty Refund",
+    "path":"TDR-EU-Drawback-Process.html"})
+    @@include('src/blocks/head/cssImports.html')
+    <link rel="stylesheet" href="./css/custom/samaritan.css">
+    <style>
+        .drawback-page .drawback-hero {
+            background: var(--samaritan);
+            overflow: hidden;
+        }
 
-		.drawback-page .drawback-hero h1,
-		.drawback-page .drawback-hero p {
-			color: var(--lightSamaritan);
-		}
+        .drawback-page .drawback-hero h1,
+        .drawback-page .drawback-hero p {
+            color: var(--lightSamaritan);
+        }
 
-		.drawback-page .drawback-hero h1 {
-			letter-spacing: -0.04em;
-		}
+        .drawback-page .drawback-hero h1 {
+            letter-spacing: -0.04em;
+        }
 
-		.drawback-page .drawback-visual {
-			min-height: 330px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: relative;
-		}
+        .drawback-page .drawback-visual {
+            min-height: 330px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-		.drawback-page .drawback-visual::before,
-		.drawback-page .drawback-visual::after {
-			content: "";
-			position: absolute;
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			border-radius: 50%;
-		}
+        .drawback-page .drawback-visual::before,
+        .drawback-page .drawback-visual::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
 
-		.drawback-page .drawback-visual::before { width: 280px; height: 280px; }
-		.drawback-page .drawback-visual::after { width: 190px; height: 190px; }
+        .drawback-page .drawback-visual::before {
+            width: 280px;
+            height: 280px;
+        }
 
-		.drawback-page .drawback-parcel {
-			width: 130px;
-			height: 130px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			border-radius: 1.5rem;
-			background: var(--samaritanYellow);
-			color: var(--darkSamaritan);
-			font-size: 4rem;
-			position: relative;
-			z-index: 1;
-			box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18);
-		}
+        .drawback-page .drawback-visual::after {
+            width: 190px;
+            height: 190px;
+        }
 
-		.drawback-page .drawback-arrow {
-			position: absolute;
-			color: var(--samaritanYellow);
-			font-size: 2rem;
-		}
+        .drawback-page .drawback-parcel {
+            width: 130px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1.5rem;
+            background: var(--samaritanYellow);
+            color: var(--darkSamaritan);
+            font-size: 4rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18);
+        }
 
-		.drawback-page .drawback-arrow-one { top: 18%; right: 16%; }
-		.drawback-page .drawback-arrow-two { bottom: 17%; left: 15%; }
+        .drawback-page .drawback-arrow {
+            position: absolute;
+            color: var(--samaritanYellow);
+            font-size: 2rem;
+        }
 
-		.drawback-page .check-card,
-		.drawback-page .value-card,
-		.drawback-page .role-card {
-			height: 100%;
-			border: 0;
-			box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
-		}
+        .drawback-page .drawback-arrow-one {
+            top: 18%;
+            right: 16%;
+        }
 
-		.drawback-page .check-icon,
-		.drawback-page .value-icon {
-			color: var(--samaritanDarkGreen);
-			font-size: 1.7rem;
-		}
+        .drawback-page .drawback-arrow-two {
+            bottom: 17%;
+            left: 15%;
+        }
 
-		.drawback-page .process-band {
-			background: var(--lightSamaritan);
-		}
+        .drawback-page .check-card,
+        .drawback-page .value-card,
+        .drawback-page .role-card {
+            height: 100%;
+            border: 0;
+            box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
+        }
 
-		.drawback-page .process-column {
-			position: relative;
-		}
+        .drawback-page .check-icon,
+        .drawback-page .value-icon {
+            color: var(--samaritanDarkGreen);
+            font-size: 1.7rem;
+        }
 
-		.drawback-page .process-step {
-			display: flex;
-			gap: 1rem;
-			position: relative;
-			padding-bottom: 1.25rem;
-		}
+        .drawback-page .process-band {
+            background: var(--lightSamaritan);
+        }
 
-		.drawback-page .process-step:last-child { padding-bottom: 0; }
+        .drawback-page .process-tabs {
+            border: 0;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
 
-		.drawback-page .process-step:not(:last-child)::before {
-			content: "";
-			position: absolute;
-			top: 2.4rem;
-			bottom: 0;
-			left: 1.05rem;
-			border-left: 2px dashed var(--samaritanGreen);
-		}
+        .drawback-page .process-tabs .nav-link {
+            border: 1px solid rgba(28, 43, 58, 0.12);
+            border-radius: 999px;
+            color: var(--samaritan);
+            font-weight: 700;
+            padding: 0.8rem 1.4rem;
+            transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
 
-		.drawback-page .process-number {
-			width: 2.15rem;
-			height: 2.15rem;
-			flex: 0 0 2.15rem;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			border-radius: 50%;
-			background: var(--samaritanGreen);
-			color: var(--darkSamaritan);
-			font-weight: 700;
-			position: relative;
-			z-index: 1;
-		}
+        .drawback-page .process-tabs .nav-link:hover,
+        .drawback-page .process-tabs .nav-link:focus-visible {
+            transform: translateY(-2px);
+            color: var(--darkSamaritan);
+        }
 
-		.drawback-page .process-step h3 { font-size: 1rem; color: var(--darkSamaritan); }
-		.drawback-page .process-step p { color: var(--samaritan); margin-bottom: 0; }
+        .drawback-page .process-tabs .nav-link.active {
+            background: var(--samaritan);
+            border-color: var(--samaritan);
+            color: var(--lightSamaritan);
+            box-shadow: 0 0.5rem 1rem rgba(28, 43, 58, 0.15);
+        }
 
-		.drawback-page .section-kicker {
-			color: var(--samaritanDarkGreen);
-			font-weight: 700;
-			letter-spacing: 0.08em;
-			text-transform: uppercase;
-		}
+        .drawback-page .process-tab-icon {
+            margin-right: 0.45rem;
+            color: var(--samaritanYellow);
+        }
 
-		@keyframes drawback-rise-in {
-			from { opacity: 0; transform: translateY(22px); }
-			to { opacity: 1; transform: translateY(0); }
-		}
+        .drawback-page .process-panel {
+            animation: drawback-rise-in 0.45s ease-out;
+        }
 
-		@keyframes drawback-drift {
-			0%, 100% { transform: translateY(0) rotate(-2deg); }
-			50% { transform: translateY(-10px) rotate(2deg); }
-		}
+        .drawback-page .process-intro {
+            max-width: 42rem;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+        }
 
-		@keyframes drawback-orbit {
-			from { transform: rotate(0deg); }
-			to { transform: rotate(360deg); }
-		}
+        .drawback-page .process-intro h3 {
+            color: var(--darkSamaritan);
+        }
 
-		@keyframes drawback-orbit-reverse {
-			from { transform: rotate(360deg); }
-			to { transform: rotate(0deg); }
-		}
+        .drawback-page .process-intro p {
+            color: var(--samaritan);
+            margin-bottom: 0;
+        }
 
-		.drawback-page .drawback-hero .section-kicker,
-		.drawback-page .drawback-hero h1,
-		.drawback-page .drawback-hero p,
-		.drawback-page .drawback-hero .btn {
-			opacity: 0;
-			animation: drawback-rise-in 0.7s ease-out forwards;
-		}
+        .drawback-page .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.25rem;
+            position: relative;
+        }
 
-		.drawback-page .drawback-hero h1 { animation-delay: 0.12s; }
-		.drawback-page .drawback-hero p { animation-delay: 0.24s; }
-		.drawback-page .drawback-hero .btn { animation-delay: 0.36s; }
-		.drawback-page .drawback-visual::before { animation: drawback-orbit 24s linear infinite; }
-		.drawback-page .drawback-visual::after { animation: drawback-orbit-reverse 18s linear infinite; }
-		.drawback-page .drawback-parcel { animation: drawback-drift 4s ease-in-out infinite; }
-		.drawback-page .drawback-arrow-one { animation: drawback-drift 4s ease-in-out 0.4s infinite; }
-		.drawback-page .drawback-arrow-two { animation: drawback-drift 4s ease-in-out 1.2s infinite reverse; }
+        .drawback-page .process-timeline::before {
+            content: "";
+            position: absolute;
+            top: 1.25rem;
+            left: 9%;
+            right: 9%;
+            border-top: 2px solid rgba(91, 176, 0, 0.45);
+        }
 
-		.drawback-page .check-card,
-		.drawback-page .value-card,
-		.drawback-page .role-card {
-			transition: transform 0.25s ease, box-shadow 0.25s ease;
-		}
+        .drawback-page .process-card {
+            position: relative;
+            z-index: 1;
+            background: #fff;
+            border: 1px solid rgba(28, 43, 58, 0.08);
+            border-radius: 1rem;
+            box-shadow: 0 0.6rem 1.25rem rgba(28, 43, 58, 0.08);
+            padding: 2.25rem 1.25rem 1.35rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
 
-		/* .drawback-page .check-card:hover,
-		.drawback-page .check-card:focus-within,
-		.drawback-page .value-card:hover,
-		.drawback-page .value-card:focus-within,
-		.drawback-page .role-card:hover {
-			transform: translateY(-6px);
-			box-shadow: 0 1rem 2rem rgba(28, 43, 58, 0.13);
-		}
+        .drawback-page .process-card:hover,
+        .drawback-page .process-card:focus-within {
+            transform: translateY(-7px);
+            box-shadow: 0 1rem 1.75rem rgba(28, 43, 58, 0.14);
+        }
 
-		.drawback-page .check-card,
-		.drawback-page .value-card,
-		.drawback-page .process-step {
-			opacity: 0;
-			animation: drawback-rise-in 0.6s ease-out forwards;
-		} */
+        .drawback-page .process-number {
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid var(--lightSamaritan);
+            border-radius: 50%;
+            background: var(--samaritanGreen);
+            color: var(--darkSamaritan);
+            font-weight: 700;
+            transform: translateY(-50%);
+        }
 
-		/* .drawback-page .check-card:nth-child(1) { animation-delay: 0.05s; }
-		.drawback-page .check-card:nth-child(2) { animation-delay: 0.12s; }
-		.drawback-page .check-card:nth-child(3) { animation-delay: 0.19s; }
-		.drawback-page .check-card:nth-child(4) { animation-delay: 0.26s; }
-		.drawback-page .check-card:nth-child(5) { animation-delay: 0.33s; }
-		.drawback-page .value-card:nth-child(1) { animation-delay: 0.05s; }
-		.drawback-page .value-card:nth-child(2) { animation-delay: 0.12s; }
-		.drawback-page .value-card:nth-child(3) { animation-delay: 0.19s; }
-		.drawback-page .value-card:nth-child(4) { animation-delay: 0.26s; }
-		.drawback-page .process-step:nth-child(2) { animation-delay: 0.08s; }
-		.drawback-page .process-step:nth-child(3) { animation-delay: 0.16s; }
-		.drawback-page .process-step:nth-child(4) { animation-delay: 0.24s; }
-		.drawback-page .process-step:nth-child(5) { animation-delay: 0.32s; }
-		.drawback-page .process-step:nth-child(6) { animation-delay: 0.40s; }
-		.drawback-page .process-step:nth-child(7) { animation-delay: 0.48s; } */
+        .drawback-page .process-card h4 {
+            color: var(--darkSamaritan);
+            font-size: 1.05rem;
+        }
 
-		@media (prefers-reduced-motion: reduce) {
-			.drawback-page *,
-			.drawback-page *::before,
-			.drawback-page *::after {
-				animation-duration: 0.01ms !important;
-				animation-iteration-count: 1 !important;
-				scroll-behavior: auto !important;
-				transition-duration: 0.01ms !important;
-			}
+        .drawback-page .process-card p {
+            color: var(--samaritan);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
 
-			.drawback-page .drawback-hero .section-kicker,
-			.drawback-page .drawback-hero h1,
-			.drawback-page .drawback-hero p,
-			.drawback-page .drawback-hero .btn,
-			.drawback-page .check-card,
-			.drawback-page .value-card,
-			.drawback-page .process-step {
-				opacity: 1;
-			}
-		}
+        .drawback-page .section-kicker {
+            color: var(--samaritanDarkGreen);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
 
-		@media (max-width: 767.98px) {
-			.drawback-page .drawback-visual { min-height: 240px; }
-			.drawback-page .drawback-visual::before { width: 220px; height: 220px; }
-			.drawback-page .drawback-visual::after { width: 150px; height: 150px; }
-		}
-	</style>
+        @keyframes drawback-rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes drawback-drift {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+
+        @keyframes drawback-orbit {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes drawback-orbit-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        .drawback-page .drawback-hero .section-kicker,
+        .drawback-page .drawback-hero h1,
+        .drawback-page .drawback-hero p,
+        .drawback-page .drawback-hero .btn {
+            opacity: 0;
+            animation: drawback-rise-in 0.7s ease-out forwards;
+        }
+
+        .drawback-page .drawback-hero h1 {
+            animation-delay: 0.12s;
+        }
+
+        .drawback-page .drawback-hero p {
+            animation-delay: 0.24s;
+        }
+
+        .drawback-page .drawback-hero .btn {
+            animation-delay: 0.36s;
+        }
+
+        .drawback-page .drawback-visual::before {
+            animation: drawback-orbit 24s linear infinite;
+        }
+
+        .drawback-page .drawback-visual::after {
+            animation: drawback-orbit-reverse 18s linear infinite;
+        }
+
+        .drawback-page .drawback-parcel {
+            animation: drawback-drift 4s ease-in-out infinite;
+        }
+
+        .drawback-page .drawback-arrow-one {
+            animation: drawback-drift 4s ease-in-out 0.4s infinite;
+        }
+
+        .drawback-page .drawback-arrow-two {
+            animation: drawback-drift 4s ease-in-out 1.2s infinite reverse;
+        }
+
+        .drawback-page .check-card,
+        .drawback-page .value-card,
+        .drawback-page .role-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .drawback-page *,
+            .drawback-page *::before,
+            .drawback-page *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .drawback-page .drawback-hero .section-kicker,
+            .drawback-page .drawback-hero h1,
+            .drawback-page .drawback-hero p,
+            .drawback-page .drawback-hero .btn,
+            .drawback-page .check-card,
+            .drawback-page .value-card,
+            .drawback-page .process-panel {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .drawback-page .drawback-visual {
+                min-height: 240px;
+            }
+
+            .drawback-page .drawback-visual::before {
+                width: 220px;
+                height: 220px;
+            }
+
+            .drawback-page .drawback-visual::after {
+                width: 150px;
+                height: 150px;
+            }
+
+            .drawback-page .process-tabs {
+                justify-content: stretch;
+            }
+
+            .drawback-page .process-tabs .nav-item {
+                flex: 1 1 50%;
+            }
+
+            .drawback-page .process-tabs .nav-link {
+                width: 100%;
+                padding-inline: 0.75rem;
+            }
+
+            .drawback-page .process-timeline {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .drawback-page .process-timeline::before {
+                top: 1.25rem;
+                bottom: 1.25rem;
+                left: 1.25rem;
+                right: auto;
+                border-top: 0;
+                border-left: 2px solid rgba(91, 176, 0, 0.45);
+            }
+
+            .drawback-page .process-card {
+                margin-left: 1.25rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="stretched samaritan-bg drawback-page">
-	<div id="wrapper">
-		@@include('src/blocks/header.html', {"text-color":"white", "header-bg":"var(--samaritan)", "submenu-bg":"var(--darkSamaritan)"})
+    <div id="wrapper">
+        @@include('src/blocks/header.html', {"text-color":"white", "header-bg":"var(--samaritan)",
+        "submenu-bg":"var(--darkSamaritan)"})
 
-		<main id="content">
-			<section class="drawback-hero py-5 py-lg-6" aria-labelledby="drawback-title">
-				<div class="container">
-					<div class="row align-items-center g-5">
-						<div class="col-lg-6">
-							<p class="section-kicker text-samaritanYellow mb-3">EU duty drawback for retailers</p>
-							<h1 id="drawback-title" class="display-3 fw-bold">How EU duty drawback works for returned orders</h1>
-							<p class="lead mt-4 mb-4">EU duty drawback lets DTC retailers reclaim import duties paid on goods that are returned by customers, refunded, and re-exported.</p>
-							<a class="btn samaritanYellow-bg text-darkSamaritan fw-bold rounded-pill" href="duty-refund-questionnaire-EU.html">Check your eligibility <i class="bi-arrow-right ms-2" aria-hidden="true"></i></a>
-						</div>
-						<div class="col-lg-6">
-							<div class="drawback-visual" aria-label="Parcel return cycle illustration" role="img">
-								<span class="drawback-arrow drawback-arrow-one bi-arrow-return-right" aria-hidden="true"></span>
-								<span class="drawback-arrow drawback-arrow-two bi-arrow-return-left" aria-hidden="true"></span>
-								<div class="drawback-parcel"><i class="bi-box-seam" aria-hidden="true"></i></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+        <main id="content">
+            <section class="drawback-hero py-5 py-lg-6" aria-labelledby="drawback-title">
+                <div class="container">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6">
+                            <p class="section-kicker text-samaritanYellow mb-3">EU duty drawback for retailers</p>
+                            <h1 id="drawback-title" class="display-3 fw-bold">How EU duty drawback works for returned
+                                orders</h1>
+                            <p class="lead mt-4 mb-4">EU duty drawback lets DTC retailers reclaim import duties paid on
+                                goods that are returned by customers, refunded, and re-exported.</p>
+                            <a class="btn samaritanYellow-bg text-darkSamaritan fw-bold rounded-pill"
+                                href="duty-refund-questionnaire-EU.html">Check your eligibility <i
+                                    class="bi-arrow-right ms-2" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="drawback-visual" aria-label="Parcel return cycle illustration" role="img">
+                                <span class="drawback-arrow drawback-arrow-one bi-arrow-return-right"
+                                    aria-hidden="true"></span>
+                                <span class="drawback-arrow drawback-arrow-two bi-arrow-return-left"
+                                    aria-hidden="true"></span>
+                                <div class="drawback-parcel"><i class="bi-box-seam" aria-hidden="true"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-			<section class="section bg-light py-5 py-lg-6" aria-labelledby="qualifies-title">
-				<div class="container">
-					<div class="row justify-content-center text-center mb-5">
-						<div class="col-lg-8">
-							<p class="section-kicker mb-2">A quick check</p>
-							<h2 id="qualifies-title" class="display-5 fw-bold text-darkSamaritan">Who qualifies?</h2>
-							<p class="text-samaritan mb-0">Your business may qualify when these conditions are met.</p>
-						</div>
-					</div>
-					<div class="row g-4">
-						<div class="col-md-6 col-lg"><div class="card check-card" data-animate="fadeInUp"><div class="card-body p-4"><i class="bi-shop check-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">EU-registered importer</h3><p class="mb-0 text-samaritan">You sell direct to consumers from outside the EU.</p></div></div></div>
-						<div class="col-md-6 col-lg"><div class="card check-card" data-animate="fadeInUp" data-delay="300"><div class="card-body p-4"><i class="bi-currency-euro check-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">Orders above EUR 150</h3><p class="mb-0 text-samaritan">The order value is above the refund threshold.</p></div></div></div>
-						<div class="col-md-6 col-lg"><div class="card check-card" data-animate="fadeInUp" data-delay="600"><div class="card-body p-4"><i class="bi-receipt check-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">Fair market value</h3><p class="mb-0 text-samaritan">The customs value matches the item's fair value.</p></div></div></div>
-						<div class="col-md-6 col-lg"><div class="card check-card" data-animate="fadeInUp" data-delay="900"><div class="card-body p-4"><i class="bi-box-arrow-in-left check-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">Unused and refunded</h3><p class="mb-0 text-samaritan">The customer returns the unused item and receives a refund.</p></div></div></div>
-						<div class="col-md-6 col-lg"><div class="card check-card" data-animate="fadeInUp" data-delay="1200"><div class="card-body p-4"><i class="bi-calendar-check check-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">Re-exported in 3 months</h3><p class="mb-0 text-samaritan">The returned goods leave the EU within three months of import.</p></div></div></div>
-					</div>
-				</div>
-			</section>
-			<section class="section process-band py-5 py-lg-6" aria-labelledby="process-title">
-				<div class="container">
-					<div class="row justify-content-center text-center mb-5"><div class="col-lg-8"><p class="section-kicker mb-2">Simple, managed flow</p><h2 id="process-title" class="display-5 fw-bold text-darkSamaritan">How the process works</h2></div></div>
-					<div class="row g-5">
-						<div class="col-lg-5 process-column">
-							<h3 class="h2 fw-bold text-darkSamaritan mb-4">Part A: one-time onboarding</h3>
-							<div class="process-step"><span class="process-number">1</span><div><h3>Free eligibility review</h3><p>TDR reviews your import history, documents, and refund potential.</p></div></div>
-							<div class="process-step"><span class="process-number">2</span><div><h3>Connect your carrier</h3><p>TDR connects with your carrier, or you choose a pre-integrated carrier.</p></div></div>
-							<div class="process-step"><span class="process-number">3</span><div><h3>Connect your export broker</h3><p>Use your broker or one of TDR's pre-integrated brokers.</p></div></div>
-							<div class="process-step"><span class="process-number">4</span><div><h3>Set up deferment</h3><p>TDR helps you set up a deferment account with Dutch customs.</p></div></div>
-						</div>
-						<div class="col-lg-7 process-column">
-							<h3 class="h2 fw-bold text-darkSamaritan mb-4">Part B: every eligible order</h3>
-							<div class="process-step"><span class="process-number">1</span><div><h3>Import clearance</h3><p>TDR clears each import through an approved EU customs procedure.</p></div></div>
-							<div class="process-step"><span class="process-number">2</span><div><h3>Real-time coordination</h3><p>We coordinate with your carrier so goods keep moving smoothly.</p></div></div>
-							<div class="process-step"><span class="process-number">3</span><div><h3>Returns consolidated</h3><p>Returned items are consolidated in an EU country. In the Netherlands, TDR handles the export declaration.</p></div></div>
-							<div class="process-step"><span class="process-number">4</span><div><h3>Complete audit trail</h3><p>TDR matches import and export data for each item.</p></div></div>
-							<div class="process-step"><span class="process-number">5</span><div><h3>Instant claim</h3><p>The refund claim is submitted to customs as soon as the file is complete.</p></div></div>
-							<div class="process-step"><span class="process-number">6</span><div><h3>Money returned</h3><p>Once approved, duties go straight to your retailer deferment account.</p></div></div>
-						</div>
-					</div>
-				</div>
-			</section>
+            <section class="section bg-light py-5 py-lg-6" aria-labelledby="qualifies-title">
+                <div class="container">
+                    <div class="row justify-content-center text-center mb-5">
+                        <div class="col-lg-8">
+                            <p class="section-kicker mb-2">A quick check</p>
+                            <h2 id="qualifies-title" class="display-5 fw-bold text-darkSamaritan">Who qualifies?</h2>
+                            <p class="text-samaritan mb-0">Your business may qualify when these conditions are met.</p>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg">
+                            <div class="card check-card" data-animate="fadeInUp">
+                                <div class="card-body p-4"><i class="bi-shop check-icon" aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">EU-registered importer</h3>
+                                    <p class="mb-0 text-samaritan">You sell direct to consumers from outside the EU.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg">
+                            <div class="card check-card" data-animate="fadeInUp" data-delay="300">
+                                <div class="card-body p-4"><i class="bi-currency-euro check-icon"
+                                        aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Orders above EUR 150</h3>
+                                    <p class="mb-0 text-samaritan">The order value is above the refund threshold.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg">
+                            <div class="card check-card" data-animate="fadeInUp" data-delay="600">
+                                <div class="card-body p-4"><i class="bi-receipt check-icon" aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Fair market value</h3>
+                                    <p class="mb-0 text-samaritan">The customs value matches the item's fair value.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg">
+                            <div class="card check-card" data-animate="fadeInUp" data-delay="900">
+                                <div class="card-body p-4"><i class="bi-box-arrow-in-left check-icon"
+                                        aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Unused and refunded</h3>
+                                    <p class="mb-0 text-samaritan">The customer returns the unused item and receives a
+                                        refund.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg">
+                            <div class="card check-card" data-animate="fadeInUp" data-delay="1200">
+                                <div class="card-body p-4"><i class="bi-calendar-check check-icon"
+                                        aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Re-exported in 3 months</h3>
+                                    <p class="mb-0 text-samaritan">The returned goods leave the EU within three months
+                                        of import.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section process-band py-5 py-lg-6" aria-labelledby="process-title">
+                <div class="container">
+                    <div class="row justify-content-center text-center mb-5">
+                        <div class="col-lg-8">
+                            <p class="section-kicker mb-2">Simple, managed flow</p>
+                            <h2 id="process-title" class="display-5 fw-bold text-darkSamaritan">How the process works
+                            </h2>
+                        </div>
+                    </div>
 
-			<section class="section bg-white py-5 py-lg-6" aria-labelledby="role-title">
-				<div class="container"><div class="row align-items-center g-5"><div class="col-lg-5"><p class="section-kicker mb-2">Your part is clear</p><h2 id="role-title" class="display-5 fw-bold text-darkSamaritan">Your role as a retailer</h2><p class="lead text-samaritan">You stay in control of your customer and sales experience. TDR manages the customs work around it.</p></div><div class="col-lg-7"><div class="card role-card"><div class="card-body p-4 p-lg-5"><ul class="list-unstyled row g-3 mb-0"><li class="col-md-6 d-flex gap-2 text-samaritan"><i class="bi-check-circle-fill text-samaritanDarkGreen" aria-hidden="true"></i><span>You are the importer of record for goods entering Europe.</span></li><li class="col-md-6 d-flex gap-2 text-samaritan"><i class="bi-check-circle-fill text-samaritanDarkGreen" aria-hidden="true"></i><span>You provide a manifest of imported orders under EU customs rules.</span></li><li class="col-md-6 d-flex gap-2 text-samaritan"><i class="bi-check-circle-fill text-samaritanDarkGreen" aria-hidden="true"></i><span>Manifest values match each item's fair market value.</span></li><li class="col-md-6 d-flex gap-2 text-samaritan"><i class="bi-check-circle-fill text-samaritanDarkGreen" aria-hidden="true"></i><span>You use an integrated carrier, or share carrier details for validation.</span></li><li class="col-md-6 d-flex gap-2 text-samaritan"><i class="bi-check-circle-fill text-samaritanDarkGreen" aria-hidden="true"></i><span>TDR handles import clearance; duties use your deferment account.</span></li><li class="col-md-6 d-flex gap-2 text-samaritan"><i class="bi-check-circle-fill text-samaritanDarkGreen" aria-hidden="true"></i><span>Only unused, refunded, and timely re-exported items qualify.</span></li></ul></div></div></div></div></div>
-			</section>
+                    <ul class="nav process-tabs" id="processTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="onboarding-tab" data-bs-toggle="tab"
+                                data-bs-target="#onboarding-panel" type="button" role="tab"
+                                aria-controls="onboarding-panel" aria-selected="true">
+                                <i class="bi-stars process-tab-icon" aria-hidden="true"></i>Part A: Onboarding
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders-panel"
+                                type="button" role="tab" aria-controls="orders-panel" aria-selected="false">
+                                <i class="bi-arrow-repeat process-tab-icon" aria-hidden="true"></i>Part B: Every order
+                            </button>
+                        </li>
+                    </ul>
 
-			<section class="section bg-light py-5 py-lg-6" aria-labelledby="why-title">
-				<div class="container"><div class="row justify-content-center text-center mb-5"><div class="col-lg-8"><p class="section-kicker mb-2">Built for cross-border retail</p><h2 id="why-title" class="display-5 fw-bold text-darkSamaritan">Why Trade Duty Refund?</h2></div></div><div class="row g-4"><div class="col-md-6 col-lg-3"><div class="card value-card"><div class="card-body p-4"><i class="bi-globe2 value-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">One global specialist</h3><p class="mb-0 text-samaritan">One point of contact for EU, UK, and US drawback needs.</p></div></div></div><div class="col-md-6 col-lg-3"><div class="card value-card"><div class="card-body p-4"><i class="bi-diagram-3 value-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">End-to-end handling</h3><p class="mb-0 text-samaritan">We manage the formalities on your behalf.</p></div></div></div><div class="col-md-6 col-lg-3"><div class="card value-card"><div class="card-body p-4"><i class="bi-cart-check value-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">Retail expertise</h3><p class="mb-0 text-samaritan">Customs clearance and duty reclaim shaped around returns.</p></div></div></div><div class="col-md-6 col-lg-3"><div class="card value-card"><div class="card-body p-4"><i class="bi-calculator value-icon" aria-hidden="true"></i><h3 class="h5 mt-3 text-darkSamaritan">Upfront quote</h3><p class="mb-0 text-samaritan">Forecast your savings before you commit.</p></div></div></div></div></div>
-			</section>
+                    <div class="tab-content" id="processTabContent">
+                        <div class="tab-pane fade show active process-panel" id="onboarding-panel" role="tabpanel"
+                            aria-labelledby="onboarding-tab" tabindex="0">
+                            <div class="process-intro">
+                                <h3 class="h2 fw-bold">One-time setup</h3>
+                                <p>We connect the people, systems, and customs account needed to make every future claim
+                                    run smoothly.</p>
+                            </div>
+                            <div class="process-timeline">
+                                <div class="process-card" data-animate="fadeIn"><span class="process-number">1</span>
+                                    <h4>Free eligibility review</h4>
+                                    <p>TDR reviews your import history, documents, and refund potential.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="200"><span
+                                        class="process-number">2</span>
+                                    <h4>Connect your carrier</h4>
+                                    <p>Connect your carrier, or choose one of TDR's pre-integrated carriers.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="400"><span
+                                        class="process-number">3</span>
+                                    <h4>Connect your export broker</h4>
+                                    <p>Use your broker or one of TDR's pre-integrated brokers.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="600"><span
+                                        class="process-number">4</span>
+                                    <h4>Set up deferment</h4>
+                                    <p>TDR helps you set up a deferment account with Dutch customs.</p>
+                                </div>
+                            </div>
+                        </div>
 
-			<section class="section py-5 py-lg-6 text-center" style="background:var(--samaritan);" aria-labelledby="cta-title"><div class="container"><p class="section-kicker text-samaritanYellow mb-2">Start with a clear answer</p><h2 id="cta-title" class="display-5 fw-bold text-white">Request your free eligibility assessment</h2><p class="lead text-lightSamaritan mt-3 mb-4">Find out whether your returned orders could put money back into your working capital.</p><a class="btn samaritanYellow-bg text-darkSamaritan fw-bold rounded-pill" href="contact-us.html">Request your assessment <i class="bi-arrow-right ms-2" aria-hidden="true"></i></a></div></section>
-		</main>
+                        <div class="tab-pane fade process-panel" id="orders-panel" role="tabpanel"
+                            aria-labelledby="orders-tab" tabindex="0">
+                            <div class="process-intro">
+                                <h3 class="h2 fw-bold">The flow for every eligible order</h3>
+                                <p>Each return is matched, documented, and submitted so the right duty refund reaches
+                                    your account.</p>
+                            </div>
+                            <div class="process-timeline">
+                                <div class="process-card" data-animate="fadeIn"><span class="process-number">1</span>
+                                    <h4>Import clearance</h4>
+                                    <p>TDR clears each import through an approved EU customs procedure.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="200"><span
+                                        class="process-number">2</span>
+                                    <h4>Real-time coordination</h4>
+                                    <p>We coordinate with your carrier so goods keep moving smoothly.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="400"><span
+                                        class="process-number">3</span>
+                                    <h4>Returns consolidated</h4>
+                                    <p>Returned items are consolidated in an EU country. In the Netherlands, TDR handles
+                                        the export declaration.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="600"><span
+                                        class="process-number">4</span>
+                                    <h4>Complete audit trail</h4>
+                                    <p>TDR matches import and export data for each item.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="800"><span
+                                        class="process-number">5</span>
+                                    <h4>Instant claim</h4>
+                                    <p>The refund claim is submitted to customs as soon as the file is complete.</p>
+                                </div>
+                                <div class="process-card" data-animate="fadeIn" data-delay="1000"><span
+                                        class="process-number">6</span>
+                                    <h4>Money returned</h4>
+                                    <p>Once approved, duties go straight to your retailer deferment account.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-		@@include('src/blocks/footer.html', {"bg-color":"var(--samaritan)", "text-color":"var(--lightSamaritan)"})
-		@@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
-		@@include('src/blocks/contactRequest.html')
-		@@include('src/blocks/URLCampaignLogger.html')
-		@@include('src/blocks/linkedInInsideTag.html')
-		<script src="js/plugins.min.js"></script>
-		<script src="js/functions.bundle.js"></script>
-	</div>
+            <section class="section bg-white py-5 py-lg-6" aria-labelledby="role-title">
+                <div class="container">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-5">
+                            <div data-animate="fadeInLeft">
+                                <p class="section-kicker mb-2">Your part is clear</p>
+                                <h2 id="role-title" class="display-5 fw-bold text-darkSamaritan">Your role as a retailer
+                                </h2>
+                                <p class="lead text-samaritan">You stay in control of your customer and sales
+                                    experience.
+                                    TDR manages the customs work around it.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="card role-card" data-animate="fadeIn">
+                                <div class="card-body p-4 p-lg-5">
+                                    <ul class="list-unstyled row g-3 mb-0">
+                                        <li class="col-md-6 d-flex gap-2 text-samaritan"><i
+                                                class="bi-check-circle-fill text-samaritanDarkGreen"
+                                                aria-hidden="true"></i><span>You are the importer of record for goods
+                                                entering Europe.</span></li>
+                                        <li class="col-md-6 d-flex gap-2 text-samaritan"><i
+                                                class="bi-check-circle-fill text-samaritanDarkGreen"
+                                                aria-hidden="true"></i><span>You provide a manifest of imported orders
+                                                under EU customs rules.</span></li>
+                                        <li class="col-md-6 d-flex gap-2 text-samaritan"><i
+                                                class="bi-check-circle-fill text-samaritanDarkGreen"
+                                                aria-hidden="true"></i><span>Manifest values match each item's fair
+                                                market value.</span></li>
+                                        <li class="col-md-6 d-flex gap-2 text-samaritan"><i
+                                                class="bi-check-circle-fill text-samaritanDarkGreen"
+                                                aria-hidden="true"></i><span>You use an integrated carrier, or share
+                                                carrier details for validation.</span></li>
+                                        <li class="col-md-6 d-flex gap-2 text-samaritan"><i
+                                                class="bi-check-circle-fill text-samaritanDarkGreen"
+                                                aria-hidden="true"></i><span>TDR handles import clearance; duties use
+                                                your deferment account.</span></li>
+                                        <li class="col-md-6 d-flex gap-2 text-samaritan"><i
+                                                class="bi-check-circle-fill text-samaritanDarkGreen"
+                                                aria-hidden="true"></i><span>Only unused, refunded, and timely
+                                                re-exported items qualify.</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section bg-light py-5 py-lg-6" aria-labelledby="why-title">
+                <div class="container">
+                    <div class="row justify-content-center text-center mb-5">
+                        <div class="col-lg-8">
+                            <p class="section-kicker mb-2">Built for cross-border retail</p>
+                            <h2 id="why-title" class="display-5 fw-bold text-darkSamaritan">Why Trade Duty Refund?</h2>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card value-card" data-animate="fadeInUp">
+                                <div class="card-body p-4"><i class="bi-globe2 value-icon" aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">One global specialist</h3>
+                                    <p class="mb-0 text-samaritan">One point of contact for EU, UK, and US drawback
+                                        needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card value-card" data-animate="fadeInUp" data-delay="200">
+                                <div class="card-body p-4"><i class="bi-diagram-3 value-icon" aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">End-to-end handling</h3>
+                                    <p class="mb-0 text-samaritan">We manage the formalities on your behalf.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card value-card" data-animate="fadeInUp" data-delay="400">
+                                <div class="card-body p-4"><i class="bi-cart-check value-icon" aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Retail expertise</h3>
+                                    <p class="mb-0 text-samaritan">Customs clearance and duty reclaim shaped around
+                                        returns.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card value-card" data-animate="fadeInUp" data-delay="600">
+                                <div class="card-body p-4"><i class="bi-calculator value-icon" aria-hidden="true"></i>
+                                    <h3 class="h5 mt-3 text-darkSamaritan">Upfront quote</h3>
+                                    <p class="mb-0 text-samaritan">Forecast your savings before you commit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section py-5 py-lg-6 text-center" style="background:var(--samaritan);"
+                aria-labelledby="cta-title">
+                <div class="container">
+                    <p class="section-kicker text-samaritanYellow mb-2">Start with a clear answer</p>
+                    <h2 id="cta-title" class="display-5 fw-bold text-white">Request your free eligibility assessment
+                    </h2>
+                    <p class="lead text-lightSamaritan mt-3 mb-4">Find out whether your returned orders could put money
+                        back into your working capital.</p><a
+                        class="btn samaritanYellow-bg text-darkSamaritan fw-bold rounded-pill"
+                        href="contact-us.html">Request your assessment <i class="bi-arrow-right ms-2"
+                            aria-hidden="true"></i></a>
+                </div>
+            </section>
+        </main>
+
+        @@include('src/blocks/footer.html', {"bg-color":"var(--samaritan)", "text-color":"var(--lightSamaritan)"})
+        @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+        @@include('src/blocks/contactRequest.html')
+        @@include('src/blocks/URLCampaignLogger.html')
+        @@include('src/blocks/linkedInInsideTag.html')
+        <script src="js/plugins.min.js"></script>
+        <script src="js/functions.bundle.js"></script>
+    </div>
 </body>
 
 </html>
