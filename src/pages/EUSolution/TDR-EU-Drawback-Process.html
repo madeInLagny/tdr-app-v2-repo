@@ -10,6 +10,10 @@
     @@include('src/blocks/head/cssImports.html')
     <link rel="stylesheet" href="./css/custom/samaritan.css">
     <style>
+        .section {
+            margin: 0;
+        }
+
         .drawback-page .drawback-hero {
             background: linear-gradient(135deg, var(--samaritan) 0%, var(--darkSamaritan) 100%);
             overflow: hidden;
@@ -35,7 +39,7 @@
             pointer-events: none;
         }
 
-        .drawback-page .drawback-wave-bg > div {
+        .drawback-page .drawback-wave-bg>div {
             position: absolute;
             top: 50%;
             left: auto;
@@ -91,7 +95,7 @@
             color: var(--lightSamaritan);
         }
 
-        .drawback-page .drawback-hero > .container {
+        .drawback-page .drawback-hero>.container {
             position: relative;
             z-index: 2;
         }
@@ -297,8 +301,13 @@
         }
 
         @keyframes drawback-wave-scale {
-            from { transform: translateY(-50%) scale(1); }
-            to { transform: translateY(-50%) scale(1.1); }
+            from {
+                transform: translateY(-50%) scale(1);
+            }
+
+            to {
+                transform: translateY(-50%) scale(1.1);
+            }
         }
 
         @keyframes drawback-rise-in {
@@ -429,7 +438,7 @@
                 height: 150px;
             }
 
-            .drawback-page .drawback-wave-bg > div {
+            .drawback-page .drawback-wave-bg>div {
                 right: -14rem;
             }
 
