@@ -11,13 +11,89 @@
     <link rel="stylesheet" href="./css/custom/samaritan.css">
     <style>
         .drawback-page .drawback-hero {
-            background: var(--samaritan);
+            background: linear-gradient(135deg, var(--samaritan) 0%, var(--darkSamaritan) 100%);
             overflow: hidden;
+            position: relative;
+        }
+
+        .drawback-page .drawback-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(90deg, rgba(22, 42, 58, 0.92) 0%, rgba(22, 42, 58, 0.72) 48%, rgba(22, 42, 58, 0.32) 100%);
+            pointer-events: none;
+        }
+
+        .drawback-page .drawback-wave-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .drawback-page .drawback-wave-bg > div {
+            position: absolute;
+            top: 50%;
+            left: auto;
+            right: -9rem;
+            border-radius: 50%;
+            background: var(--lightSamaritan);
+            transform: translateY(-50%) scale(1);
+            animation: drawback-wave-scale 3s ease-in-out infinite alternate;
+            animation-timing-function: cubic-bezier(.6, 0, .4, 1);
+        }
+
+        .drawback-page #circle-small {
+            width: 300px;
+            height: 300px;
+            opacity: 0.34;
+            animation-delay: 0s;
+        }
+
+        .drawback-page #circle-medium {
+            width: 600px;
+            height: 600px;
+            right: -18rem;
+            opacity: 0.24;
+            animation-delay: 0.3s;
+        }
+
+        .drawback-page #circle-large {
+            width: 900px;
+            height: 900px;
+            right: -27rem;
+            opacity: 0.16;
+            animation-delay: 0.6s;
+        }
+
+        .drawback-page #circle-xlarge {
+            width: 1200px;
+            height: 1200px;
+            right: -36rem;
+            opacity: 0.10;
+            animation-delay: 0.9s;
+        }
+
+        .drawback-page #circle-xxlarge {
+            width: 1500px;
+            height: 1500px;
+            right: -45rem;
+            opacity: 0.06;
+            animation-delay: 1.2s;
         }
 
         .drawback-page .drawback-hero h1,
         .drawback-page .drawback-hero p {
             color: var(--lightSamaritan);
+        }
+
+        .drawback-page .drawback-hero > .container {
+            position: relative;
+            z-index: 2;
         }
 
         .drawback-page .drawback-hero h1 {
@@ -220,6 +296,11 @@
             text-transform: uppercase;
         }
 
+        @keyframes drawback-wave-scale {
+            from { transform: translateY(-50%) scale(1); }
+            to { transform: translateY(-50%) scale(1.1); }
+        }
+
         @keyframes drawback-rise-in {
             from {
                 opacity: 0;
@@ -330,6 +411,7 @@
             .drawback-page .process-panel {
                 opacity: 1;
             }
+
         }
 
         @media (max-width: 767.98px) {
@@ -345,6 +427,10 @@
             .drawback-page .drawback-visual::after {
                 width: 150px;
                 height: 150px;
+            }
+
+            .drawback-page .drawback-wave-bg > div {
+                right: -14rem;
             }
 
             .drawback-page .process-tabs {
@@ -388,6 +474,13 @@
 
         <main id="content">
             <section class="drawback-hero py-5 py-lg-6" aria-labelledby="drawback-title">
+                <div class="drawback-wave-bg" aria-hidden="true">
+                    <div id="circle-small"></div>
+                    <div id="circle-medium"></div>
+                    <div id="circle-large"></div>
+                    <div id="circle-xlarge"></div>
+                    <div id="circle-xxlarge"></div>
+                </div>
                 <div class="container">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6">
