@@ -22,6 +22,19 @@
             margin: 0;
         }
 
+        .drawback-page .drawback-hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .drawback-page .drawback-hero>[data-aifx="noise-shimmer"] {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            display: block;
+        }
+
 
         .drawback-page .drawback-hero h1,
         .drawback-page .drawback-hero p {
@@ -533,7 +546,12 @@
         "submenu-bg":"var(--darkSamaritan)"})
 
         <main id="content">
-            <section class="drawback-hero py-5 py-lg-6" aria-labelledby="drawback-title">
+            <section class="drawback-hero py-5 py-lg-6 relative isolate" aria-labelledby="drawback-title">
+                <div data-aifx="noise-shimmer" class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+                </div>
+
+
+
                 <div class="container">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6">
@@ -549,7 +567,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </section>
 
             <!-- Who qualifies -->
@@ -888,6 +906,7 @@
         @@include('src/blocks/linkedInInsideTag.html')
         <script src="js/plugins.min.js"></script>
         <script src="js/functions.bundle.js"></script>
+        <script src="https://cdn.aidesigner.ai/effects/runtime/v1.js" defer></script>
     </div>
 
 </body>
