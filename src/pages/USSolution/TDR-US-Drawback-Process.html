@@ -22,57 +22,6 @@
             margin: 0;
         }
 
-        .drawback-page .drawback-hero {
-            background: linear-gradient(315deg, var(--darkSamaritan) 3%, var(--samaritanBlue) 38%, var(--samaritan) 68%, var(--darkSamaritan) 98%);
-            background-size: 400% 400%;
-            animation: drawback-hero-gradient 18s ease infinite;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .drawback-page .drawback-hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background: linear-gradient(90deg, rgba(22, 42, 58, 0.92) 0%, rgba(22, 42, 58, 0.72) 48%, rgba(22, 42, 58, 0.32) 100%);
-            pointer-events: none;
-        }
-
-        .drawback-page .drawback-wave-bg {
-            position: absolute;
-            inset: auto 0 0;
-            z-index: 0;
-            width: 100%;
-            height: 44%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .drawback-page .drawback-wave-bg>div {
-            position: absolute;
-            width: 200%;
-            height: 12em;
-            bottom: 0;
-            left: 0;
-            border-radius: 1000% 1000% 0 0;
-            background: rgba(177, 192, 205, .24);
-            transform: translate3d(0, 0, 0);
-            animation: drawback-wave 12s -3s linear infinite;
-            opacity: .8;
-        }
-
-        .drawback-page .drawback-wave-bg>div:nth-of-type(2) {
-            bottom: -1.25em;
-            animation: drawback-wave 18s linear reverse infinite;
-            opacity: .65;
-        }
-
-        .drawback-page .drawback-wave-bg>div:nth-of-type(3) {
-            bottom: -2.5em;
-            animation: drawback-wave 20s -1s reverse infinite;
-            opacity: .5;
-        }
 
         .drawback-page .drawback-hero h1,
         .drawback-page .drawback-hero p {
@@ -531,21 +480,49 @@
         }
 
         @keyframes drawback-hero-gradient {
-            0%, 100% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
+
+            0%,
+            100% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
         }
 
         @keyframes drawback-wave {
-            2% { transform: translateX(1px); }
-            25% { transform: translateX(-25%); }
-            50% { transform: translateX(-50%); }
-            75% { transform: translateX(-25%); }
-            100% { transform: translateX(1px); }
+            2% {
+                transform: translateX(1px);
+            }
+
+            25% {
+                transform: translateX(-25%);
+            }
+
+            50% {
+                transform: translateX(-50%);
+            }
+
+            75% {
+                transform: translateX(-25%);
+            }
+
+            100% {
+                transform: translateX(1px);
+            }
         }
 
         @keyframes drawback-illustration-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
     </style>
 </head>
@@ -557,11 +534,6 @@
 
         <main id="content">
             <section class="drawback-hero py-5 py-lg-6" aria-labelledby="drawback-title">
-                <div class="drawback-wave-bg" aria-hidden="true">
-                    <div class="wave"></div>
-                    <div class="wave"></div>
-                    <div class="wave"></div>
-                </div>
                 <div class="container">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6">
@@ -569,48 +541,15 @@
                             <h1 id="drawback-title" class="display-3 fw-bold text-white">How <span
                                     class="text-samaritanGreen">TDR US duty drawback</span> works for returned
                                 orders</h1>
-                            <p class="lead mt-4 mb-4">US duty drawback helps importers recover duties paid on goods that are later exported, destroyed, or removed from the US market.</p>
+                            <p class="lead mt-4 mb-4">US duty drawback helps importers recover duties paid on goods that
+                                are later exported, destroyed, or removed from the US market.</p>
                             <a class="btn samaritanGreen-bg text-darkSamaritan fw-bold rounded-pill"
-                                href="${{contact-us.path}}$">Check your eligibility <i
-                                    class="bi-arrow-right ms-2" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="drawback-visual" data-animate="fadeIn" data-delay="300">
-                                <svg class="drawback-illustration" xmlns="http://www.w3.org/2000/svg"
-                                    width="800" height="618.862" viewBox="0 0 800 618.862" role="img"
-                                    aria-labelledby="drawback-illustration-title" artist="Katerina Limpitsouni"
-                                    source="https://undraw.co/">
-                                    <title id="drawback-illustration-title">US duty drawback reporting dashboard</title>
-                                    <g transform="translate(-560 -230.251)">
-                                        <path d="M15.18,488.765c0,.873.479,1.575,1.074,1.575H552c.6,0,1.074-.7,1.074-1.575S552.6,487.19,552,487.19H16.254C15.659,487.191,15.18,487.892,15.18,488.765Z" transform="translate(674.868 358.773)" fill="#e6e6e6"/>
-                                        <rect width="19.128" height="3.375" transform="translate(865.532 842.346)" fill="#b6b3c5"/>
-                                        <rect width="19.128" height="3.375" transform="translate(1034.87 842.91)" fill="#b6b3c5"/>
-                                        <path d="M353.105,370.945a27.562,27.562,0,0,1-54.387,0H229.146V521.719H422.68V370.945Z" transform="translate(634.088 321.188)" fill="#d6d6e3"/>
-                                        <rect width="193.53" height="5.248" transform="translate(863.798 830.961)" fill="#090814"/>
-                                        <path d="M789.211,487.734H10.789A10.8,10.8,0,0,1,0,476.945V32.7a10.8,10.8,0,0,1,10.789-10.79H789.211A10.8,10.8,0,0,1,800,32.7V476.945A10.8,10.8,0,0,1,789.211,487.734Z" transform="translate(560 208.34)" fill="#090814"/>
-                                        <rect width="761.745" height="429.818" transform="translate(578.125 247.327)" fill="#fff"/>
-                                        <g transform="translate(83 26)">
-                                            <path d="M14,0A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(743 274)" fill="#5bb000"/>
-                                            <path d="M14,0A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(803 274)" fill="#5bb000"/>
-                                            <path d="M14,0A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(923 274)" fill="#e6e6e6"/>
-                                            <path d="M14,0A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(983 274)" fill="#e6e6e6"/>
-                                            <path d="M0,0H134.912V8H0Z" transform="translate(755 284)" fill="#5bb000"/>
-                                            <path d="M0,0H114V8H0Z" transform="translate(886 284)" fill="#e6e6e6"/>
-                                            <path d="M14,0A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" transform="translate(863 274)" fill="#5bb000"/>
-                                        </g>
-                                        <path d="M6,0H42a6,6,0,0,1,0,12H6A6,6,0,0,1,6,0Z" transform="translate(816 376)" fill="#e6e6e6"/>
-                                        <path d="M14,0H266a14,14,0,0,1,0,28H14A14,14,0,0,1,14,0Z" transform="translate(816 392)" fill="#e6e6e6"/>
-                                        <path d="M6,0H42a6,6,0,0,1,0,12H6A6,6,0,0,1,6,0Z" transform="translate(816 444)" fill="#e6e6e6"/>
-                                        <path d="M14,0H266a14,14,0,0,1,0,28H14A14,14,0,0,1,14,0Z" transform="translate(816 460)" fill="#e6e6e6"/>
-                                        <path d="M6,0H42a6,6,0,0,1,0,12H6A6,6,0,0,1,6,0Z" transform="translate(816 512)" fill="#e6e6e6"/>
-                                        <path d="M14,0H266a14,14,0,0,1,0,28H14A14,14,0,0,1,14,0Z" transform="translate(816 528)" fill="#e6e6e6"/>
-                                        <path d="M14,0H266a14,14,0,0,1,0,28H14A14,14,0,0,1,14,0Z" transform="translate(816 596)" fill="#5bb000"/>
-                                    </g>
-                                </svg>
-                            </div>
+                                href="${{contact-us.path}}$">Check your eligibility <i class="bi-arrow-right ms-2"
+                                    aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
+                
             </section>
 
             <!-- Who qualifies -->
@@ -629,7 +568,8 @@
                             <div class="card check-card" data-animate="fadeInUp">
                                 <div class="card-body p-4"><i class="bi-shop check-icon" aria-hidden="true"></i>
                                     <h3 class="h5 mt-3 text-darkSamaritan">US importer of record</h3>
-                                    <p class="mb-0 text-samaritan">You import goods into the United States and can provide entry data.</p>
+                                    <p class="mb-0 text-samaritan">You import goods into the United States and can
+                                        provide entry data.</p>
                                 </div>
                             </div>
                         </div>
@@ -638,7 +578,8 @@
                                 <div class="card-body p-4"><i class="bi-currency-dollar check-icon"
                                         aria-hidden="true"></i>
                                     <h3 class="h5 mt-3 text-darkSamaritan">Duties and fees paid</h3>
-                                    <p class="mb-0 text-samaritan">Import duties, taxes, or eligible fees were paid at entry.</p>
+                                    <p class="mb-0 text-samaritan">Import duties, taxes, or eligible fees were paid at
+                                        entry.</p>
                                 </div>
                             </div>
                         </div>
@@ -646,7 +587,8 @@
                             <div class="card check-card" data-animate="fadeInUp" data-delay="600">
                                 <div class="card-body p-4"><i class="bi-receipt check-icon" aria-hidden="true"></i>
                                     <h3 class="h5 mt-3 text-darkSamaritan">Traceable documentation</h3>
-                                    <p class="mb-0 text-samaritan">Entry, invoice, transportation, and export records can be matched.
+                                    <p class="mb-0 text-samaritan">Entry, invoice, transportation, and export records
+                                        can be matched.
                                     </p>
                                 </div>
                             </div>
@@ -666,7 +608,8 @@
                                 <div class="card-body p-4"><i class="bi-calendar-check check-icon"
                                         aria-hidden="true"></i>
                                     <h3 class="h5 mt-3 text-darkSamaritan">Exported within five years</h3>
-                                    <p class="mb-0 text-samaritan">The eligible goods are exported from the United States within the claim period.</p>
+                                    <p class="mb-0 text-samaritan">The eligible goods are exported from the United
+                                        States within the claim period.</p>
                                 </div>
                             </div>
                         </div>
@@ -738,7 +681,8 @@
                                 <div class="process-card" data-animate="fadeIn" data-delay="600"><span
                                         class="process-number">4</span>
                                     <h4>Set up a duty deferment account</h4>
-                                    <p>TDR helps configure the data, reporting, and controls needed for CBP-ready claims.</p>
+                                    <p>TDR helps configure the data, reporting, and controls needed for CBP-ready
+                                        claims.</p>
                                 </div>
                             </div>
                         </div>
@@ -753,7 +697,8 @@
                             <div class="process-timeline">
                                 <div class="process-card" data-animate="fadeIn"><span class="process-number">1</span>
                                     <h4>Import clearance</h4>
-                                    <p>TDR connects each import entry to the records needed for a compliant US claim.</p>
+                                    <p>TDR connects each import entry to the records needed for a compliant US claim.
+                                    </p>
                                 </div>
                                 <div class="process-card" data-animate="fadeIn" data-delay="200"><span
                                         class="process-number">2</span>
@@ -763,7 +708,8 @@
                                 <div class="process-card" data-animate="fadeIn" data-delay="400"><span
                                         class="process-number">3</span>
                                     <h4>Returns consolidated</h4>
-                                    <p>Eligible goods are exported, destroyed, or otherwise removed from the US market with the right evidence.</p>
+                                    <p>Eligible goods are exported, destroyed, or otherwise removed from the US market
+                                        with the right evidence.</p>
                                 </div>
                                 <div class="process-card" data-animate="fadeIn" data-delay="600"><span
                                         class="process-number">4</span>
@@ -863,7 +809,8 @@
                             <div class="card value-card" data-animate="fadeInUp">
                                 <div class="card-body p-4"><i class="bi-globe2 value-icon" aria-hidden="true"></i>
                                     <h3 class="h5 mt-3 text-darkSamaritan">One global specialist</h3>
-                                    <p class="mb-0 text-samaritan">One point of contact for US drawback, reporting, and compliance needs.</p>
+                                    <p class="mb-0 text-samaritan">One point of contact for US drawback, reporting, and
+                                        compliance needs.</p>
                                 </div>
                             </div>
                         </div>
@@ -942,6 +889,7 @@
         <script src="js/plugins.min.js"></script>
         <script src="js/functions.bundle.js"></script>
     </div>
+
 </body>
 
 </html>
