@@ -17,64 +17,46 @@
   <!-- CSS imports -->
   @@include('src/blocks/head/cssImports.html')
 
-  <!-- CSS for index -->
-  <link rel="stylesheet" href="./css/custom/index.css" />
-
   <!-- Only Required if Samaritan color is required -->
   <link rel="stylesheet" href="./css/custom/samaritan.css" />
 
+
   <style>
-    .modal-content {
-      color: var(--darkSamaritan);
+    #slider {
+      isolation: isolate;
     }
 
-    .notification {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      max-width: 700px;
-      z-index: 1050;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      display: flex;
-      justify-content: space-between;
+    #slider .slider-inner {
+      z-index: 1;
+    }
+
+    #slider > .vanta-canvas {
+      z-index: 0 !important;
+    }
+
+    .subtitle {
       align-items: center;
-      padding: 20px;
-      border-radius: 0;
+      gap: 5px;
+      font-size: 1.7rem;
     }
 
-    .notification.show {
-      opacity: 1;
+    @media (max-width: 576px) {
+      #slider .slider-inner {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        flex-grow: 1;
+        align-items: flex-start;
+        top: 50px;
+      }
     }
-
-    .notification .content {
-      flex-grow: 1;
-    }
-
-    .notification .content h2 {
-      margin-top: 0;
-    }
-
-    .notification .actions {
-      display: flex;
-      align-items: center;
-    }
-
-    .btn-close.lightSamaritan {
-      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1c0cd'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
-    }
-
-    /* .button-circle {
-      background-image: url("/src/images/flags/cn.svg");
-      background-repeat: no-repeat;
-      background-position: 8px center;
-    } */
   </style>
+
+
+
 </head>
 
-<body class="stretched dynamic-background">
-  <div id="notification-container"></div>
+<body class="stretched">
 
   <!-- Document Wrapper
 	============================================= -->
@@ -110,17 +92,11 @@
                   from
                   somewhere else?</button>
               </div>
-
-
-
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- World Map SVG Overlay -->
-    @@include('src/blocks/homePageOverlay.html')
-    <!-- end World Map Overlay -->
 
     <!-- Footer -->
     @@include('src/blocks/footer.html',{ "bg-color":"#677EC4" })
@@ -137,7 +113,7 @@
           <!-- <h4 class="modal-title" id="myModalLabel">Modal Heading</h4> -->
           <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-hidden="true"></button>
         </div>
-        <div class="modal-body fs-4 text text-center">
+        <div class="modal-body fs-4 text text-center text-darkSamaritan">
           We also provide value to shippers in
           <div class="list-group">
             <a href="${{solutions-for-us-shippers.path}}$"
@@ -183,51 +159,23 @@
   @@include('src/blocks/linkedInInsideTag.html')
 
   <!-- Canvas Scripts -->
-  <script src="js/functions.js"></script>
+  <script src="js/plugins.min.js"></script>
+  <script src="js/functions.bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   <script>
-    function showNotification() {
-      const notification = document.createElement("div");
-      notification.className =
-        "notification alert alert-primary alert-dismissible";
-      notification.setAttribute("role", "alert");
-      notification.innerHTML = `@@include('src/blocks/eBookNotification.html')`;
-
-      const container = document.getElementById("notification-container");
-      container.appendChild(notification);
-
-      // Trigger the fade-in effect by adding the 'show' class
-      setTimeout(() => {
-        notification.classList.add("show");
-      }, 10); // Small delay to ensure the transition is applied
-
-      // Remove notification after 10 seconds
-      setTimeout(() => {
-        if (notification) {
-          notification.classList.remove("show");
-          notification.classList.add("fade");
-          notification.addEventListener("transitionend", () => {
-            notification.remove();
-          });
-        }
-      }, 10000);
-
-      // Add click event to close button
-      notification.querySelector(".close").addEventListener("click", () => {
-        notification.classList.remove("show");
-        notification.classList.add("fade");
-        notification.addEventListener("transitionend", () => {
-          notification.remove();
-        });
-      });
-    }
-
-    // If the notification is reactivated, make sure the showNotification method is also updated with the proper notification panel
-
-    // Show notification 3 seconds after page load
-    /* window.addEventListener('load', function () {
-    setTimeout(showNotification, 3000);
-  }); */
+    VANTA.GLOBE({
+      el: "#slider",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00
+    });
   </script>
+
   <!-- Floating geo flag button -->
   <script>
     (function () {
