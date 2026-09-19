@@ -12,6 +12,8 @@
   --samaritanDarkRed: #fa6781;
   --samaritanBlue: #7d97dd;
   --samaritanDarkBlue: #4b5bc5;
+  --samaritanPurple: #8b5cf6;
+  --samaritanDarkPurple: #6d28d9;
   --samaritanYellow: #fff612;
   --samaritanDarkYellow: #c9b000;
   --samaritanGold: #e1b897;
@@ -64,6 +66,14 @@ ul {
 
 .text-samaritanDarkBlue {
   color: var(--samaritanDarkBlue) !important;
+}
+
+.text-samaritanPurple {
+  color: var(--samaritanPurple) !important;
+}
+
+.text-samaritanDarkPurple {
+  color: var(--samaritanDarkPurple) !important;
 }
 
 .lightSamaritan-bg {
@@ -131,6 +141,22 @@ ul {
 
 .samaritanDarkBlue-bg {
   background-color: var(--samaritanDarkBlue);
+}
+
+.samaritanPurple-bg {
+  background-color: var(--samaritanPurple);
+}
+
+.samaritanPurple-bg:hover {
+  background-color: var(--samaritanDarkPurple);
+}
+
+.samaritanDarkPurple-bg {
+  background-color: var(--samaritanDarkPurple);
+}
+
+.samaritanDarkPurple-bg:hover {
+  background-color: var(--samaritanPurple);
 }
 
 .samaritanRed-bg {
