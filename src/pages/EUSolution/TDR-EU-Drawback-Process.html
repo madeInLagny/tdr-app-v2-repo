@@ -193,46 +193,6 @@
 
 
 
-        .drawback-page .process-tabs {
-            border: 0;
-            gap: 0.75rem;
-            justify-content: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .drawback-page .process-tabs .nav-link {
-            border: 1px solid rgba(28, 43, 58, 0.12);
-            border-radius: 999px;
-            color: var(--darkSamaritan);
-            font-weight: 700;
-            padding: 0.8rem 1.4rem;
-            transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-            background: var(--samaritanRed);
-        }
-
-        .drawback-page .process-tabs .nav-link:hover,
-        .drawback-page .process-tabs .nav-link:focus-visible {
-            transform: translateY(-2px);
-            color: var(--darkSamaritan);
-            border-color: var(--samaritanDarkRed);
-        }
-
-        .drawback-page .process-tabs .nav-link.active {
-            background: var(--samaritanDarkRed);
-            border-color: var(--samaritanDarkRed);
-            color: var(--darkSamaritan);
-            box-shadow: 0 0.5rem 1rem rgba(28, 43, 58, 0.15);
-        }
-
-        .drawback-page .process-tab-icon {
-            margin-right: 0.45rem;
-            color: var(--darkSamaritan);
-        }
-
-        .drawback-page .process-panel {
-            animation: drawback-rise-in 0.45s ease-out;
-        }
-
         .drawback-page .process-intro {
             max-width: 42rem;
             margin: 0 auto 2.5rem;
@@ -248,62 +208,61 @@
             margin-bottom: 0;
         }
 
-        .drawback-page .process-timeline {
+        .drawback-page .onboarding-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.25rem;
-            position: relative;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
         }
 
-        .drawback-page .process-timeline::before {
-            content: "";
-            position: absolute;
-            top: 1.25rem;
-            left: 9%;
-            right: 9%;
-            border-top: 2px solid rgba(250, 103, 129, 0.45);
-        }
-
-        .drawback-page .process-card {
+        .drawback-page .onboarding-card {
             position: relative;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: 4.5rem 1fr;
+            min-height: 12rem;
+            overflow: hidden;
             background: #fff;
-            border: 1px solid rgba(28, 43, 58, 0.08);
-            border-radius: 1rem;
-            box-shadow: 0 0.6rem 1.25rem rgba(28, 43, 58, 0.08);
-            padding: 2.25rem 1.25rem 1.35rem;
+            border: 1px solid rgba(28, 43, 58, 0.1);
+            border-left: 0.35rem solid var(--samaritanDarkRed);
+            border-radius: 0.35rem;
+            box-shadow: 0 0.75rem 1.5rem rgba(28, 43, 58, 0.1);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .drawback-page .process-card:hover,
-        .drawback-page .process-card:focus-within {
-            transform: translateY(-7px);
-            box-shadow: 0 1rem 1.75rem rgba(28, 43, 58, 0.14);
+        .drawback-page .onboarding-card:hover,
+        .drawback-page .onboarding-card:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 2rem rgba(28, 43, 58, 0.16);
         }
 
-        .drawback-page .process-number {
-            position: absolute;
-            top: 0;
-            left: 1.25rem;
-            width: 2.5rem;
-            height: 2.5rem;
-            display: inline-flex;
+        .drawback-page .onboarding-marker {
+            display: flex;
             align-items: center;
             justify-content: center;
-            border: 5px solid var(--lightSamaritan);
-            border-radius: 50%;
             background: var(--samaritanDarkRed);
             color: var(--darkSamaritan);
+            font-size: 2rem;
+        }
+
+        .drawback-page .onboarding-content {
+            padding: 1.5rem 1.5rem 1.35rem;
+        }
+
+        .drawback-page .onboarding-step {
+            display: block;
+            margin-bottom: 0.45rem;
+            color: var(--samaritanDarkGreen);
+            font-size: 0.72rem;
             font-weight: 700;
-            transform: translateY(-50%);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
-        .drawback-page .process-card h4 {
+        .drawback-page .onboarding-card h4 {
             color: var(--darkSamaritan);
-            font-size: 1.05rem;
+            font-size: 1.2rem;
         }
 
-        .drawback-page .process-card p {
+        .drawback-page .onboarding-card p {
             color: var(--samaritan);
             margin-bottom: 0;
             font-size: 0.95rem;
@@ -572,35 +531,9 @@
                 right: -14rem;
             }
 
-            .drawback-page .process-tabs {
-                justify-content: stretch;
-            }
-
-            .drawback-page .process-tabs .nav-item {
-                flex: 1 1 50%;
-            }
-
-            .drawback-page .process-tabs .nav-link {
-                width: 100%;
-                padding-inline: 0.75rem;
-            }
-
-            .drawback-page .process-timeline {
+            .drawback-page .onboarding-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
-            }
-
-            .drawback-page .process-timeline::before {
-                top: 1.25rem;
-                bottom: 1.25rem;
-                left: 1.25rem;
-                right: auto;
-                border-top: 0;
-                border-left: 2px solid rgba(250, 103, 129, 0.45);
-            }
-
-            .drawback-page .process-card {
-                margin-left: 1.25rem;
             }
 
             .drawback-page .flow-list {
@@ -866,109 +799,62 @@
                 </g>
             </svg>
 
-            <!-- Process Bands -->
+            <!-- Onboarding support -->
             <section class="section process-band" aria-labelledby="process-title">
-
                 <div class="container">
                     <div class="row justify-content-center text-center mb-5">
                         <div class="col-lg-8">
-                            <p class="section-kicker mb-2">Simple, managed flow</p>
+                            <p class="section-kicker mb-2">Your launch, managed by TDR</p>
                             <h2 id="process-title" class="display-5 fw-bold text-darkSamaritan">How The <span
                                     class="text-samaritanDarkRed">Process Works</span>
                             </h2>
+                            <p class="text-samaritan mb-0">TDR prepares the people, systems, and customs setup behind
+                                your drawback program.</p>
                         </div>
                     </div>
-                    <!-- Section Content -->
-                    <ul class="nav process-tabs" id="processTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="onboarding-tab" data-bs-toggle="tab"
-                                data-bs-target="#onboarding-panel" type="button" role="tab"
-                                aria-controls="onboarding-panel" aria-selected="true">
-                                <i class="bi-stars process-tab-icon" aria-hidden="true"></i>Part A: Onboarding
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders-panel"
-                                type="button" role="tab" aria-controls="orders-panel" aria-selected="false">
-                                <i class="bi-arrow-repeat process-tab-icon" aria-hidden="true"></i>Part B: Every order
-                            </button>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content" id="processTabContent">
-                        <div class="tab-pane fade show active process-panel" id="onboarding-panel" role="tabpanel"
-                            aria-labelledby="onboarding-tab" tabindex="0">
-                            <div class="process-intro">
-                                <h3 class="h2 fw-bold">One-time setup</h3>
-                                <p>We connect the people, systems, and customs account needed to make every future claim
-                                    run smoothly.</p>
+                    <div class="process-intro">
+                        <h3 class="h2 fw-bold">One-time setup, ongoing support</h3>
+                        <p>We connect the people, systems, and customs account needed to make every future claim run
+                            smoothly.</p>
+                    </div>
+                    <div class="onboarding-grid">
+                        <article class="onboarding-card" data-animate="fadeInUp">
+                            <div class="onboarding-marker"><i class="bi-search" aria-hidden="true"></i></div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 01</span>
+                                <h4>Eligibility review</h4>
+                                <p>TDR reviews your import history, documents, and refund potential, then maps the
+                                    right process for your business.</p>
                             </div>
-                            <div class="process-timeline">
-                                <div class="process-card" data-animate="fadeIn"><span class="process-number">1</span>
-                                    <h4>Eligibility review</h4>
-                                    <p>TDR reviews your import history, documents, and refund potential.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="200"><span
-                                        class="process-number">2</span>
-                                    <h4>Carrier Integration</h4>
-                                    <p>Choose one of TDR's pre-integrated carriers, or let us handle the integration of
-                                        your existing carrier for you.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="400"><span
-                                        class="process-number">3</span>
-                                    <h4>Export broker integration</h4>
-                                    <p>Use TDR as your export broker or one of our pre-integrated broker partners. We're
-                                        also happy to connect our system with your existing export customs broker.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="600"><span
-                                        class="process-number">4</span>
-                                    <h4>Set up a duty deferment account</h4>
-                                    <p>TDR helps you set up a deferment account with Dutch customs.</p>
-                                </div>
+                        </article>
+                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="200">
+                            <div class="onboarding-marker"><i class="bi-link-45deg" aria-hidden="true"></i></div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 02</span>
+                                <h4>Carrier integration</h4>
+                                <p>Choose a pre-integrated carrier, or let TDR connect our system with your existing
+                                    carrier.</p>
                             </div>
-                        </div>
-
-                        <div class="tab-pane fade process-panel" id="orders-panel" role="tabpanel"
-                            aria-labelledby="orders-tab" tabindex="0">
-                            <div class="process-intro">
-                                <h3 class="h2 fw-bold">The flow for every eligible order</h3>
-                                <p>Each return is matched, documented, and submitted so the right duty refund reaches
-                                    your account.</p>
+                        </article>
+                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="400">
+                            <div class="onboarding-marker"><i class="bi-box-arrow-up-right" aria-hidden="true"></i>
                             </div>
-                            <div class="process-timeline">
-                                <div class="process-card" data-animate="fadeIn"><span class="process-number">1</span>
-                                    <h4>Import clearance</h4>
-                                    <p>TDR clears each import through an approved EU customs procedure.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="200"><span
-                                        class="process-number">2</span>
-                                    <h4>Real-time coordination</h4>
-                                    <p>We coordinate with your carrier so goods keep moving smoothly.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="400"><span
-                                        class="process-number">3</span>
-                                    <h4>Returns consolidated</h4>
-                                    <p>Returned items are consolidated in an EU country. In the Netherlands, TDR can
-                                        handle
-                                        the export declaration.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="600"><span
-                                        class="process-number">4</span>
-                                    <h4>Complete audit trail</h4>
-                                    <p>TDR matches import and export data for each item.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="800"><span
-                                        class="process-number">5</span>
-                                    <h4>Instant claim</h4>
-                                    <p>The refund claim is submitted to customs as soon as the file is complete.</p>
-                                </div>
-                                <div class="process-card" data-animate="fadeIn" data-delay="1000"><span
-                                        class="process-number">6</span>
-                                    <h4>Money returned</h4>
-                                    <p>Once approved, duties go straight to the retailer deferment account.</p>
-                                </div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 03</span>
+                                <h4>Export broker integration</h4>
+                                <p>Use TDR or a pre-integrated broker partner, or connect your existing export customs
+                                    broker.</p>
                             </div>
-                        </div>
+                        </article>
+                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="600">
+                            <div class="onboarding-marker"><i class="bi-wallet2" aria-hidden="true"></i></div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 04</span>
+                                <h4>Duty deferment account</h4>
+                                <p>TDR helps you set up the deferment account with Dutch Customs that supports your
+                                    future refund claims.</p>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>
