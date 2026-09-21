@@ -175,14 +175,6 @@
             font-size: 1.7rem;
         }
 
-        .drawback-page .process-band {
-            background: var(--lightSamaritan);
-        }
-
-        .drawback-page .process-band .section-kicker {
-            color: var(--samaritanDarkRed);
-        }
-
         .drawback-page .role-section .section-kicker {
             color: var(--samaritanDarkBlue);
         }
@@ -222,7 +214,7 @@
             overflow: hidden;
             background: #fff;
             border: 1px solid rgba(28, 43, 58, 0.1);
-            border-left: 0.35rem solid var(--samaritanDarkRed);
+            border-left: 0.35rem solid var(--samaritanDarkYellow);
             border-radius: 0.35rem;
             box-shadow: 0 0.75rem 1.5rem rgba(28, 43, 58, 0.1);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -238,7 +230,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--samaritanDarkRed);
+            background: var(--samaritanDarkYellow);
             color: var(--darkSamaritan);
             font-size: 2rem;
         }
@@ -250,7 +242,7 @@
         .drawback-page .onboarding-step {
             display: block;
             margin-bottom: 0.45rem;
-            color: var(--samaritanDarkGreen);
+            color: var(--samaritanDarkYellow);
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.08em;
@@ -297,15 +289,6 @@
             position: relative;
         }
 
-        .drawback-page .flow-list::before {
-            content: "";
-            position: absolute;
-            top: 1.25rem;
-            left: 8%;
-            right: 8%;
-            border-top: 2px solid rgba(250, 103, 129, 0.45);
-        }
-
         .drawback-page .flow-step {
             min-width: 0;
             position: relative;
@@ -330,7 +313,7 @@
         .drawback-page .flow-card {
             height: 100%;
             padding: 2.25rem 1.25rem 1.35rem;
-            background: var(--lightSamaritan);
+            background: #F7F9FA;
             border: 1px solid rgba(28, 43, 58, 0.1);
             border-radius: 1rem;
             box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
@@ -706,13 +689,86 @@
                 </div>
             </section>
 
+            <!-- Dividers -->
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'>
+                <g fill='#F8F9FA'>
+                    <rect fill="var(--samaritan)" width="100%" height="100%" />
+                    <path d='M1000 0H0v52C62.5 28 125 4 250 4c250 0 250 96 500 96 125 0 187.5-24 250-48V0Z'></path>
+                </g>
+            </svg>
+
+            <!-- Onboarding support -->
+            <section class="section process-band" aria-labelledby="process-title" style="background: var(--samaritan)">
+                <div class="container">
+                    <div class="row justify-content-center text-center mb-5">
+                        <div class="col-lg-8">
+                            <p class="section-kicker mb-2 text-samaritanYellow">Your launch, managed by TDR</p>
+                            <h2 id="process-title" class="display-5 fw-bold">One-time setup, <span
+                                    class="text-samaritanYellow">ongoing support</span>
+                            </h2>
+                            <p class="text-lightSamaritan mb-0">We connect the people, systems, and customs account needed to
+                                make every future claim run
+                                smoothly.</p>
+                        </div>
+                    </div>
+                    <div class="onboarding-grid">
+                        <article class="onboarding-card" data-animate="fadeInUp">
+                            <div class="onboarding-marker"><i class="bi-search" aria-hidden="true"></i></div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 01</span>
+                                <h4>Eligibility review</h4>
+                                <p>TDR reviews your import history, documents, and refund potential, then maps the
+                                    right process for your business.</p>
+                            </div>
+                        </article>
+                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="200">
+                            <div class="onboarding-marker"><i class="bi-link-45deg" aria-hidden="true"></i></div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 02</span>
+                                <h4>Carrier integration</h4>
+                                <p>Choose a pre-integrated carrier, or let TDR connect our system with your existing
+                                    carrier.</p>
+                            </div>
+                        </article>
+                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="400">
+                            <div class="onboarding-marker"><i class="bi-box-arrow-up-right" aria-hidden="true"></i>
+                            </div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 03</span>
+                                <h4>Export broker integration</h4>
+                                <p>Use TDR or a pre-integrated broker partner, or connect your existing export customs
+                                    broker.</p>
+                            </div>
+                        </article>
+                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="600">
+                            <div class="onboarding-marker"><i class="bi-wallet2" aria-hidden="true"></i></div>
+                            <div class="onboarding-content">
+                                <span class="onboarding-step">Step 04</span>
+                                <h4>Duty deferment account</h4>
+                                <p>TDR helps you set up the deferment account with Dutch Customs that supports your
+                                    future refund claims.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'>
+                <g fill='var(--samaritan)'>
+                    <rect fill="#FFF" width="100%" height="100%" />
+                    <path d='M0 0v100c250 0 375-24 500-48 125 24 250 48 500 48V0H0Z' opacity='.5'></path>
+                    <path d='M0 0v4c250 0 375 24 500 48C625 28 750 4 1000 4V0H0Z'></path>
+                </g>
+            </svg>
+
             <!-- End-to-end process flow -->
             <section class="section flow-section py-5 py-lg-6" aria-labelledby="flow-title">
                 <div class="container">
                     <div class="flow-intro">
                         <p class="section-kicker mb-2">From import to refund</p>
-                        <h2 id="flow-title" class="display-5 fw-bold">The <span
-                                class="text-samaritanDarkRed">end-to-end flow</span></h2>
+                        <h2 id="flow-title" class="display-5 fw-bold">The <span class="text-samaritanDarkRed">end-to-end
+                                flow</span></h2>
                         <p>Every eligible order is coordinated from the initial shipment through the final customs
                             refund.</p>
                     </div>
@@ -790,83 +846,6 @@
                     </ol>
                 </div>
             </section>
-
-            <!-- Dividers -->
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'>
-                <g fill='#F8F9FA'>
-                    <rect fill="#B1C0CD" width="100%" height="100%" />
-                    <path d='M1000 0H0v52C62.5 28 125 4 250 4c250 0 250 96 500 96 125 0 187.5-24 250-48V0Z'></path>
-                </g>
-            </svg>
-
-            <!-- Onboarding support -->
-            <section class="section process-band" aria-labelledby="process-title">
-                <div class="container">
-                    <div class="row justify-content-center text-center mb-5">
-                        <div class="col-lg-8">
-                            <p class="section-kicker mb-2">Your launch, managed by TDR</p>
-                            <h2 id="process-title" class="display-5 fw-bold text-darkSamaritan">How The <span
-                                    class="text-samaritanDarkRed">Process Works</span>
-                            </h2>
-                            <p class="text-samaritan mb-0">TDR prepares the people, systems, and customs setup behind
-                                your drawback program.</p>
-                        </div>
-                    </div>
-                    <div class="process-intro">
-                        <h3 class="h2 fw-bold">One-time setup, ongoing support</h3>
-                        <p>We connect the people, systems, and customs account needed to make every future claim run
-                            smoothly.</p>
-                    </div>
-                    <div class="onboarding-grid">
-                        <article class="onboarding-card" data-animate="fadeInUp">
-                            <div class="onboarding-marker"><i class="bi-search" aria-hidden="true"></i></div>
-                            <div class="onboarding-content">
-                                <span class="onboarding-step">Step 01</span>
-                                <h4>Eligibility review</h4>
-                                <p>TDR reviews your import history, documents, and refund potential, then maps the
-                                    right process for your business.</p>
-                            </div>
-                        </article>
-                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="200">
-                            <div class="onboarding-marker"><i class="bi-link-45deg" aria-hidden="true"></i></div>
-                            <div class="onboarding-content">
-                                <span class="onboarding-step">Step 02</span>
-                                <h4>Carrier integration</h4>
-                                <p>Choose a pre-integrated carrier, or let TDR connect our system with your existing
-                                    carrier.</p>
-                            </div>
-                        </article>
-                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="400">
-                            <div class="onboarding-marker"><i class="bi-box-arrow-up-right" aria-hidden="true"></i>
-                            </div>
-                            <div class="onboarding-content">
-                                <span class="onboarding-step">Step 03</span>
-                                <h4>Export broker integration</h4>
-                                <p>Use TDR or a pre-integrated broker partner, or connect your existing export customs
-                                    broker.</p>
-                            </div>
-                        </article>
-                        <article class="onboarding-card" data-animate="fadeInUp" data-delay="600">
-                            <div class="onboarding-marker"><i class="bi-wallet2" aria-hidden="true"></i></div>
-                            <div class="onboarding-content">
-                                <span class="onboarding-step">Step 04</span>
-                                <h4>Duty deferment account</h4>
-                                <p>TDR helps you set up the deferment account with Dutch Customs that supports your
-                                    future refund claims.</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Divider -->
-            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100'>
-                <g fill='#B1C0CD'>
-                    <rect fill="#FFF" width="100%" height="100%" />
-                    <path d='M0 0v100c250 0 375-24 500-48 125 24 250 48 500 48V0H0Z' opacity='.5'></path>
-                    <path d='M0 0v4c250 0 375 24 500 48C625 28 750 4 1000 4V0H0Z'></path>
-                </g>
-            </svg>
 
             <section class="section bg-white pt-3 role-section" aria-labelledby="role-title">
                 <div class="container">
@@ -977,6 +956,7 @@
                     @@include('src/blocks/contactOptions.html')
                 </div>
             </section>
+
             <div class="section py-5 py-lg-6 mt-0 bg-white">
                 <div class="container">
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">

@@ -76,6 +76,10 @@ ul {
   color: var(--samaritanDarkPurple) !important;
 }
 
+.text-samaritanGold {
+  color: var(--samaritanGold) !important;
+}
+
 .lightSamaritan-bg {
   background-color: var(--lightSamaritan);
 }
