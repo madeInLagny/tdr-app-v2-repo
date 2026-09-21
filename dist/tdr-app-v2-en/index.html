@@ -132,7 +132,7 @@
       z-index: 1;
     }
 
-    #slider > .vanta-canvas {
+    #slider>.vanta-canvas {
       z-index: 0 !important;
     }
 
@@ -140,6 +140,14 @@
       align-items: center;
       gap: 5px;
       font-size: 1.7rem;
+    }
+
+    @media (min-width: 768px) {
+      #slider .slider-caption.slider-caption-center {
+        width: 50%;
+        max-width: 50%;
+        margin: 0 auto 0 0;
+      }
     }
 
     @media (max-width: 576px) {
@@ -656,7 +664,7 @@
     <style>
   #footer {
     --cnvs-socialicon-color: @@text-color;
-    --cnvs-footer-bg: #677EC4;
+    --cnvs-footer-bg: var(--darkSamaritan);
     z-index: 10;
   }
 
@@ -723,7 +731,7 @@
           <!-- <h4 class="modal-title" id="myModalLabel">Modal Heading</h4> -->
           <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-hidden="true"></button>
         </div>
-        <div class="modal-body fs-4 text text-center">
+        <div class="modal-body fs-4 text text-center text-darkSamaritan">
           We also provide value to shippers in
           <div class="list-group">
             <a href="solutions-for-us-shippers.html"
@@ -930,12 +938,15 @@
     VANTA.GLOBE({
       el: "#slider",
       mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xfda4b2,
+  color2: 0xb1c0cd,
+  backgroundColor: 0x3b6281
     });
   </script>
 
