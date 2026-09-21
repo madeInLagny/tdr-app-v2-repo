@@ -309,6 +309,120 @@
             font-size: 0.95rem;
         }
 
+        .drawback-page .flow-section {
+            background: #fff;
+        }
+
+        .drawback-page .flow-intro {
+            max-width: 44rem;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .drawback-page .flow-intro h2 {
+            color: var(--darkSamaritan);
+        }
+
+        .drawback-page .flow-intro p {
+            color: var(--samaritan);
+            margin-bottom: 0;
+        }
+
+        .drawback-page .flow-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 2.75rem 1.25rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .drawback-page .flow-list::before {
+            content: "";
+            position: absolute;
+            top: 1.25rem;
+            left: 8%;
+            right: 8%;
+            border-top: 2px solid rgba(250, 103, 129, 0.45);
+        }
+
+        .drawback-page .flow-step {
+            min-width: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .drawback-page .flow-step::after {
+            content: "\2192";
+            position: absolute;
+            top: 0.55rem;
+            right: -1rem;
+            color: var(--samaritanDarkRed);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .drawback-page .flow-step:nth-child(4)::after,
+        .drawback-page .flow-step:last-child::after {
+            display: none;
+        }
+
+        .drawback-page .flow-card {
+            height: 100%;
+            padding: 2.25rem 1.25rem 1.35rem;
+            background: var(--lightSamaritan);
+            border: 1px solid rgba(28, 43, 58, 0.1);
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .drawback-page .flow-card:hover,
+        .drawback-page .flow-card:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 1.75rem rgba(28, 43, 58, 0.14);
+        }
+
+        .drawback-page .flow-number {
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #fff;
+            border-radius: 50%;
+            background: var(--samaritanDarkRed);
+            color: var(--darkSamaritan);
+            font-weight: 700;
+            transform: translateY(-50%);
+        }
+
+        .drawback-page .flow-actor {
+            display: block;
+            margin-bottom: 0.55rem;
+            color: var(--samaritanDarkGreen);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .drawback-page .flow-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--darkSamaritan);
+            font-size: 1.05rem;
+        }
+
+        .drawback-page .flow-card p {
+            margin-bottom: 0;
+            color: var(--samaritan);
+            font-size: 0.94rem;
+        }
+
         .drawback-page .section-kicker {
             color: var(--samaritanDarkGreen);
             font-weight: 700;
@@ -488,6 +602,42 @@
             .drawback-page .process-card {
                 margin-left: 1.25rem;
             }
+
+            .drawback-page .flow-list {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding-left: 1.25rem;
+            }
+
+            .drawback-page .flow-list::before {
+                top: 1.25rem;
+                bottom: 1.25rem;
+                left: 1.25rem;
+                right: auto;
+                border-top: 0;
+                border-left: 2px solid rgba(250, 103, 129, 0.45);
+            }
+
+            .drawback-page .flow-step {
+                margin-left: 1.25rem;
+            }
+
+            .drawback-page .flow-step::after {
+                content: "\2193";
+                top: auto;
+                right: auto;
+                bottom: -0.85rem;
+                left: -1.05rem;
+                font-size: 1.1rem;
+            }
+
+            .drawback-page .flow-step:nth-child(4)::after {
+                display: block;
+            }
+
+            .drawback-page .flow-step:last-child::after {
+                display: none;
+            }
         }
 
         .eu-process-cta {
@@ -620,6 +770,91 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- End-to-end process flow -->
+            <section class="section flow-section py-5 py-lg-6" aria-labelledby="flow-title">
+                <div class="container">
+                    <div class="flow-intro">
+                        <p class="section-kicker mb-2">From import to refund</p>
+                        <h2 id="flow-title" class="display-5 fw-bold">The <span
+                                class="text-samaritanDarkRed">end-to-end flow</span></h2>
+                        <p>Every eligible order is coordinated from the initial shipment through the final customs
+                            refund.</p>
+                    </div>
+                    <ol class="flow-list">
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">1</span>
+                                <span class="flow-actor">Retailer</span>
+                                <h3>Ships goods and sends manifest</h3>
+                                <p>The retailer ships the goods and shares the order manifest with the carrier and
+                                    TDR.</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">2</span>
+                                <span class="flow-actor">TDR</span>
+                                <h3>Pre-clearance and duty deferment</h3>
+                                <p>TDR performs pre-clearance, instructs the carrier, and duties are paid from the
+                                    retailer's deferment account.</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">3</span>
+                                <span class="flow-actor">Carrier</span>
+                                <h3>Delivers goods into the EU</h3>
+                                <p>The carrier brings the goods to the EU and forwards cleared orders to consignees.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">4</span>
+                                <span class="flow-actor">Consignee</span>
+                                <h3>Returns part or all of the order</h3>
+                                <p>The consignee returns the unused goods using a carrier-provided return label.</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">5</span>
+                                <span class="flow-actor">Carrier</span>
+                                <h3>Consolidates returned goods</h3>
+                                <p>The carrier brings all returns to a consolidation center located in the EU.</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">6</span>
+                                <span class="flow-actor">TDR or external broker</span>
+                                <h3>Clears bulk return shipments</h3>
+                                <p>TDR or an external broker clears the returned goods out of the EU in bulk
+                                    shipments.</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">7</span>
+                                <span class="flow-actor">TDR</span>
+                                <h3>Reconciles data and submits the claim</h3>
+                                <p>TDR reconciles import and export data at item level and submits the refund request
+                                    to EU Customs.</p>
+                            </div>
+                        </li>
+                        <li class="flow-step">
+                            <div class="flow-card">
+                                <span class="flow-number">8</span>
+                                <span class="flow-actor">EU Customs</span>
+                                <h3>Approves and credits the refund</h3>
+                                <p>After regulatory checks, Customs approves the refund and credits the retailer's
+                                    deferment account.</p>
+                            </div>
+                        </li>
+                    </ol>
                 </div>
             </section>
 
