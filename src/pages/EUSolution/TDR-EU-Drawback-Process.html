@@ -337,8 +337,8 @@
             justify-content: center;
             border: 5px solid #fff;
             border-radius: 50%;
-            background: var(--samaritanDarkRed);
-            color: var(--darkSamaritan);
+            background: var(--samaritanRed);
+            color: white;
             font-weight: 700;
             transform: translateY(-50%);
         }
@@ -346,7 +346,7 @@
         .drawback-page .flow-actor {
             display: block;
             margin-bottom: 0.55rem;
-            color: var(--samaritanDarkGreen);
+            color: var(--samaritanDarkRed);
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.06em;
@@ -773,7 +773,7 @@
                             refund.</p>
                     </div>
                     <ol class="flow-list">
-                        <li class="flow-step">
+                        <li class="flow-step" data-animate="flipInY">
                             <div class="flow-card">
                                 <span class="flow-number">1</span>
                                 <span class="flow-actor">Retailer</span>
@@ -782,7 +782,7 @@
                                     TDR.</p>
                             </div>
                         </li>
-                        <li class="flow-step">
+                        <li class="flow-step" data-animate="flipInY">
                             <div class="flow-card">
                                 <span class="flow-number">2</span>
                                 <span class="flow-actor">TDR</span>
@@ -791,7 +791,7 @@
                                     retailer's deferment account.</p>
                             </div>
                         </li>
-                        <li class="flow-step">
+                        <li class="flow-step" data-animate="flipInY">
                             <div class="flow-card">
                                 <span class="flow-number">3</span>
                                 <span class="flow-actor">Carrier</span>
@@ -800,15 +800,7 @@
                                 </p>
                             </div>
                         </li>
-                        <li class="flow-step">
-                            <div class="flow-card">
-                                <span class="flow-number">4</span>
-                                <span class="flow-actor">Consignee</span>
-                                <h3>Returns part or all of the order</h3>
-                                <p>The consignee returns the unused goods using a carrier-provided return label.</p>
-                            </div>
-                        </li>
-                        <li class="flow-step">
+                        <li class="flow-step" data-animate="flipInY">
                             <div class="flow-card">
                                 <span class="flow-number">5</span>
                                 <span class="flow-actor">Carrier</span>
@@ -816,7 +808,7 @@
                                 <p>The carrier brings all returns to a consolidation center located in the EU.</p>
                             </div>
                         </li>
-                        <li class="flow-step">
+                        <li class="flow-step" data-animate="flipInY">
                             <div class="flow-card">
                                 <span class="flow-number">6</span>
                                 <span class="flow-actor">TDR or external broker</span>
@@ -825,7 +817,7 @@
                                     shipments.</p>
                             </div>
                         </li>
-                        <li class="flow-step">
+                        <li class="flow-step" data-animate="flipInY">
                             <div class="flow-card">
                                 <span class="flow-number">7</span>
                                 <span class="flow-actor">TDR</span>
@@ -834,7 +826,7 @@
                                     to EU Customs.</p>
                             </div>
                         </li>
-                        <li class="flow-step">
+                        <li class="flow-step" data-animate="flipInY">
                             <div class="flow-card">
                                 <span class="flow-number">8</span>
                                 <span class="flow-actor">EU Customs</span>
