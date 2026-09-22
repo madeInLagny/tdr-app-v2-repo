@@ -17,319 +17,55 @@
             --drawback-us-blue: #176b87;
             --drawback-us-copper: #e18b54;
             --drawback-us-mist: #edf5f4;
-            --drawback-us-line: rgba(18, 38, 58, 0.14);
         }
 
-        .section {
+        .drawback-page .section {
             margin: 0;
         }
 
         .drawback-page .drawback-hero {
             position: relative;
-            isolation: isolate;
             overflow: hidden;
+            isolation: isolate;
+            background: linear-gradient(135deg, var(--samaritan) 0%, var(--darkSamaritan) 100%);
         }
 
-        .drawback-page .drawback-hero>[data-aifx] {
+        .drawback-page .drawback-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(18, 38, 58, 0.92) 0%, rgba(18, 38, 58, 0.72) 48%, rgba(18, 38, 58, 0.32) 100%);
+        }
+
+        .drawback-page .drawback-hero > [data-aifx] {
             position: absolute;
             inset: 0;
             z-index: 0;
             display: block;
         }
 
-
-        .drawback-page .drawback-hero h1,
-        .drawback-page .drawback-hero p {
-            color: var(--lightSamaritan);
+        .drawback-page div[data-aifx-wm] {
+            display: none !important;
         }
 
-        .drawback-page .drawback-hero>.container {
+        .drawback-page .drawback-hero > .container {
             position: relative;
             z-index: 2;
-        }
-
-        .drawback-page .drawback-hero h1 {
-            letter-spacing: -0.04em;
-        }
-
-        .drawback-page .drawback-visual {
-            min-height: 330px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .drawback-page .drawback-visual::before,
-        .drawback-page .drawback-visual::after {
-            display: none;
-        }
-
-        .drawback-page .drawback-illustration {
-            display: block;
-            width: min(100%, 540px);
-            height: auto;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 1.25rem 1.5rem rgba(9, 8, 20, .22));
-            animation: drawback-illustration-float 5s ease-in-out infinite;
-        }
-
-        .drawback-page .drawback-visual::before,
-        .drawback-page .drawback-visual::after {
-            content: "";
-            position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-        }
-
-        .drawback-page .drawback-visual::before {
-            width: 280px;
-            height: 280px;
-        }
-
-        .drawback-page .drawback-visual::after {
-            width: 190px;
-            height: 190px;
-        }
-
-        .drawback-page .drawback-parcel {
-            width: 130px;
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 1.5rem;
-            background: var(--samaritanYellow);
-            font-size: 4rem;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18);
-        }
-
-        .drawback-page .drawback-arrow {
-            position: absolute;
-            color: var(--samaritanYellow);
-        }
-
-        .drawback-page .drawback-arrow-one {
-            top: 18%;
-            right: 16%;
-        }
-
-        .drawback-page .drawback-arrow-two {
-            bottom: 17%;
-            left: 15%;
-        }
-
-        .drawback-page .check-card,
-        .drawback-page .value-card,
-        .drawback-page .role-card {
-            height: 100%;
-            border: 0;
-            box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
-        }
-
-        .drawback-page .check-icon,
-        .drawback-page .value-icon {
-            color: var(--samaritanDarkGreen);
-            font-size: 1.7rem;
-        }
-
-        .drawback-page .process-band {
-            background: var(--lightSamaritan);
-        }
-
-        .drawback-page .process-band .section-kicker {
-            color: var(--samaritanDarkRed);
-        }
-
-        .drawback-page .role-section .section-kicker {
-            color: var(--samaritanDarkBlue);
-        }
-
-        .drawback-page .value-section {
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-        }
-
-
-
-        .drawback-page .process-tabs {
-            border: 0;
-            gap: 0.75rem;
-            justify-content: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .drawback-page .process-tabs .nav-link {
-            border: 1px solid rgba(28, 43, 58, 0.12);
-            border-radius: 999px;
-            color: var(--darkSamaritan);
-            font-weight: 700;
-            padding: 0.8rem 1.4rem;
-            transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-            background: var(--samaritanRed);
-        }
-
-        .drawback-page .process-tabs .nav-link:hover,
-        .drawback-page .process-tabs .nav-link:focus-visible {
-            transform: translateY(-2px);
-            color: var(--darkSamaritan);
-            border-color: var(--samaritanDarkRed);
-        }
-
-        .drawback-page .process-tabs .nav-link.active {
-            background: var(--samaritanDarkRed);
-            border-color: var(--samaritanDarkRed);
-            color: var(--darkSamaritan);
-            box-shadow: 0 0.5rem 1rem rgba(28, 43, 58, 0.15);
-        }
-
-        .drawback-page .process-tab-icon {
-            margin-right: 0.45rem;
-            color: var(--darkSamaritan);
-        }
-
-        .drawback-page .process-panel {
-            animation: drawback-rise-in 0.45s ease-out;
-        }
-
-        .drawback-page .process-intro {
-            max-width: 42rem;
-            margin: 0 auto 2.5rem;
-            text-align: center;
-        }
-
-        .drawback-page .process-intro h3 {
-            color: var(--darkSamaritan);
-        }
-
-        .drawback-page .process-intro p {
-            color: var(--samaritan);
-            margin-bottom: 0;
-        }
-
-        .drawback-page .process-timeline {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.25rem;
-            position: relative;
-        }
-
-        .drawback-page .process-timeline::before {
-            content: "";
-            position: absolute;
-            top: 1.25rem;
-            left: 9%;
-            right: 9%;
-            border-top: 2px solid rgba(250, 103, 129, 0.45);
-        }
-
-        .drawback-page .process-card {
-            position: relative;
-            z-index: 1;
-            background: #fff;
-            border: 1px solid rgba(28, 43, 58, 0.08);
-            border-radius: 1rem;
-            box-shadow: 0 0.6rem 1.25rem rgba(28, 43, 58, 0.08);
-            padding: 2.25rem 1.25rem 1.35rem;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .drawback-page .process-card:hover,
-        .drawback-page .process-card:focus-within {
-            transform: translateY(-7px);
-            box-shadow: 0 1rem 1.75rem rgba(28, 43, 58, 0.14);
-        }
-
-        .drawback-page .process-number {
-            position: absolute;
-            top: 0;
-            left: 1.25rem;
-            width: 2.5rem;
-            height: 2.5rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 5px solid var(--lightSamaritan);
-            border-radius: 50%;
-            background: var(--samaritanDarkRed);
-            color: var(--darkSamaritan);
-            font-weight: 700;
-            transform: translateY(-50%);
-        }
-
-        .drawback-page .process-card h4 {
-            color: var(--darkSamaritan);
-            font-size: 1.05rem;
-        }
-
-        .drawback-page .process-card p {
-            color: var(--samaritan);
-            margin-bottom: 0;
-            font-size: 0.95rem;
-        }
-
-        .drawback-page .section-kicker {
-            color: var(--samaritanDarkGreen);
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        @keyframes drawback-rise-in {
-            from {
-                opacity: 0;
-                transform: translateY(22px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes drawback-drift {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(-2deg);
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(2deg);
-            }
-        }
-
-        @keyframes drawback-orbit {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes drawback-orbit-reverse {
-            from {
-                transform: rotate(360deg);
-            }
-
-            to {
-                transform: rotate(0deg);
-            }
         }
 
         .drawback-page .drawback-hero .section-kicker,
         .drawback-page .drawback-hero h1,
         .drawback-page .drawback-hero p,
         .drawback-page .drawback-hero .btn {
+            color: var(--lightSamaritan);
             opacity: 0;
             animation: drawback-rise-in 0.7s ease-out forwards;
         }
 
         .drawback-page .drawback-hero h1 {
+            letter-spacing: -0.04em;
             animation-delay: 0.12s;
         }
 
@@ -341,395 +77,48 @@
             animation-delay: 0.36s;
         }
 
-        .drawback-page .drawback-visual::before {
-            animation: drawback-orbit 24s linear infinite;
-        }
-
-        .drawback-page .drawback-visual::after {
-            animation: drawback-orbit-reverse 18s linear infinite;
-        }
-
-        .drawback-page .drawback-parcel {
-            animation: drawback-drift 4s ease-in-out infinite;
-        }
-
-        .drawback-page .drawback-arrow-one {
-            animation: drawback-drift 4s ease-in-out 0.4s infinite;
-        }
-
-        .drawback-page .drawback-arrow-two {
-            animation: drawback-drift 4s ease-in-out 1.2s infinite reverse;
-        }
-
         .drawback-page .check-card,
         .drawback-page .value-card,
         .drawback-page .role-card {
+            height: 100%;
+            border: 0;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-
-            .drawback-page *,
-            .drawback-page *::before,
-            .drawback-page *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .drawback-page .drawback-hero .section-kicker,
-            .drawback-page .drawback-hero h1,
-            .drawback-page .drawback-hero p,
-            .drawback-page .drawback-hero .btn,
-            .drawback-page .check-card,
-            .drawback-page .value-card,
-            .drawback-page .process-panel {
-                opacity: 1;
-            }
-
+        .drawback-page .check-card:hover,
+        .drawback-page .value-card:hover,
+        .drawback-page .role-card:hover,
+        .drawback-page .onboarding-card:hover,
+        .drawback-page .onboarding-card:focus-within,
+        .drawback-page .flow-card:hover,
+        .drawback-page .flow-card:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 2rem rgba(28, 43, 58, 0.14);
         }
 
-        @media (max-width: 767.98px) {
-            .drawback-page .drawback-visual {
-                min-height: 240px;
-            }
-
-            .drawback-page .drawback-visual::before {
-                width: 220px;
-                height: 220px;
-            }
-
-            .drawback-page .drawback-visual::after {
-                width: 150px;
-                height: 150px;
-            }
-
-            .drawback-page .process-tabs {
-                justify-content: stretch;
-            }
-
-            .drawback-page .process-tabs .nav-item {
-                flex: 1 1 50%;
-            }
-
-            .drawback-page .process-tabs .nav-link {
-                width: 100%;
-                padding-inline: 0.75rem;
-            }
-
-            .drawback-page .process-timeline {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .drawback-page .process-timeline::before {
-                top: 1.25rem;
-                bottom: 1.25rem;
-                left: 1.25rem;
-                right: auto;
-                border-top: 0;
-                border-left: 2px solid rgba(250, 103, 129, 0.45);
-            }
-
-            .drawback-page .process-card {
-                margin-left: 1.25rem;
-            }
-        }
-
-        .drawback-page .drawback-hero::after {
-            background: linear-gradient(90deg, rgba(18, 38, 58, .98), rgba(18, 38, 58, .78) 52%, rgba(23, 107, 135, .34));
-        }
-
-        .drawback-page .drawback-parcel {
-            background: var(--drawback-us-copper);
-            color: var(--drawback-us-ink);
-        }
-
-        .drawback-page .drawback-arrow {
-            color: #6fd0d3;
+        .drawback-page .check-icon,
+        .drawback-page .value-icon {
+            color: var(--drawback-us-blue);
+            font-size: 1.7rem;
         }
 
         .drawback-page .process-band {
             background: var(--drawback-us-mist);
         }
 
-        .drawback-page .process-tabs .nav-link {
-            color: var(--drawback-us-ink);
-            background: #dcebea;
-        }
-
-        .drawback-page .process-tabs .nav-link.active,
-        .drawback-page .process-number {
-            background: var(--drawback-us-blue);
-            border-color: var(--drawback-us-blue);
-            color: #fff;
-        }
-
-        .drawback-page .process-timeline::before {
-            border-color: rgba(225, 139, 84, .55);
-        }
-
-        .drawback-page .section-kicker,
-        .drawback-page .check-icon,
-        .drawback-page .value-icon {
+        .drawback-page .process-band .section-kicker,
+        .drawback-page .role-section .section-kicker,
+        .drawback-page .section-kicker {
             color: var(--drawback-us-blue);
-        }
-
-        .us-process-cta {
-            padding: 76px 0 88px;
-            text-align: center;
-            background: var(--drawback-us-ink);
-        }
-
-        .us-process-cta h2 {
-            margin: 0 0 12px;
-            color: #fff;
-            font-size: 2.35rem;
-        }
-
-        .us-process-cta p {
-            margin: 0 auto 26px;
-            color: rgba(255, 255, 255, .78);
-            font-size: 1.05rem;
-        }
-
-        @keyframes drawback-hero-gradient {
-
-            0%,
-            100% {
-                background-position: 0% 0%;
-            }
-
-            50% {
-                background-position: 100% 100%;
-            }
-        }
-
-        @keyframes drawback-wave {
-            2% {
-                transform: translateX(1px);
-            }
-
-            25% {
-                transform: translateX(-25%);
-            }
-
-            50% {
-                transform: translateX(-50%);
-            }
-
-            75% {
-                transform: translateX(-25%);
-            }
-
-            100% {
-                transform: translateX(1px);
-            }
-        }
-
-        @keyframes drawback-illustration-float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-    </style>
-
-    <style>
-        .section {
-            margin: 0;
-        }
-
-        .drawback-page .drawback-hero {
-            background: linear-gradient(135deg, var(--samaritan) 0%, var(--darkSamaritan) 100%);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .drawback-page .drawback-hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background: linear-gradient(90deg, rgba(22, 42, 58, 0.92) 0%, rgba(22, 42, 58, 0.72) 48%, rgba(22, 42, 58, 0.32) 100%);
-            pointer-events: none;
-        }
-
-        .drawback-page .drawback-wave-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .drawback-page .drawback-wave-bg>div {
-            position: absolute;
-            top: 50%;
-            left: auto;
-            right: -9rem;
-            border-radius: 50%;
-            background: var(--lightSamaritan);
-            transform: translateY(-50%) scale(1);
-            animation: drawback-wave-scale 3s ease-in-out infinite alternate;
-            animation-timing-function: cubic-bezier(.6, 0, .4, 1);
-        }
-
-        .drawback-page #circle-small {
-            width: 300px;
-            height: 300px;
-            opacity: 0.34;
-            animation-delay: 0s;
-        }
-
-        .drawback-page #circle-medium {
-            width: 600px;
-            height: 600px;
-            right: -18rem;
-            opacity: 0.24;
-            animation-delay: 0.3s;
-        }
-
-        .drawback-page #circle-large {
-            width: 900px;
-            height: 900px;
-            right: -27rem;
-            opacity: 0.16;
-            animation-delay: 0.6s;
-        }
-
-        .drawback-page #circle-xlarge {
-            width: 1200px;
-            height: 1200px;
-            right: -36rem;
-            opacity: 0.10;
-            animation-delay: 0.9s;
-        }
-
-        .drawback-page #circle-xxlarge {
-            width: 1500px;
-            height: 1500px;
-            right: -45rem;
-            opacity: 0.06;
-            animation-delay: 1.2s;
-        }
-
-        .drawback-page .drawback-hero h1,
-        .drawback-page .drawback-hero p {
-            color: var(--lightSamaritan);
-        }
-
-        .drawback-page .drawback-hero>.container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .drawback-page .drawback-hero h1 {
-            letter-spacing: -0.04em;
-        }
-
-        .drawback-page .drawback-visual {
-            min-height: 330px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .drawback-page .drawback-visual::before,
-        .drawback-page .drawback-visual::after {
-            content: "";
-            position: absolute;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-        }
-
-        .drawback-page .drawback-visual::before {
-            width: 280px;
-            height: 280px;
-        }
-
-        .drawback-page .drawback-visual::after {
-            width: 190px;
-            height: 190px;
-        }
-
-        .drawback-page .drawback-parcel {
-            width: 130px;
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 1.5rem;
-            background: var(--samaritanYellow);
-            color: var(--darkSamaritan);
-            font-size: 4rem;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.18);
-        }
-
-        .drawback-page .drawback-arrow {
-            position: absolute;
-            color: var(--samaritanYellow);
-            font-size: 2rem;
-        }
-
-        .drawback-page .drawback-arrow-one {
-            top: 18%;
-            right: 16%;
-        }
-
-        .drawback-page .drawback-arrow-two {
-            bottom: 17%;
-            left: 15%;
-        }
-
-        .drawback-page .check-card,
-        .drawback-page .value-card,
-        .drawback-page .role-card {
-            height: 100%;
-            border: 0;
-            box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
-        }
-
-        .drawback-page .check-icon,
-        .drawback-page .value-icon {
-            color: var(--samaritanDarkGreen);
-            font-size: 1.7rem;
-        }
-
-        .drawback-page .role-section .section-kicker {
-            color: var(--samaritanDarkBlue);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .drawback-page .value-section {
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-        }
-
-
-
-        .drawback-page .process-intro {
-            max-width: 42rem;
-            margin: 0 auto 2.5rem;
-            text-align: center;
-        }
-
-        .drawback-page .process-intro h3 {
-            color: var(--darkSamaritan);
-        }
-
-        .drawback-page .process-intro p {
-            color: var(--samaritan);
-            margin-bottom: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
         }
 
         .drawback-page .onboarding-grid {
@@ -741,29 +130,23 @@
         .drawback-page .onboarding-card {
             position: relative;
             display: grid;
-            grid-template-columns: 4.5rem 1fr;
+            grid-template-columns: 4.5rem minmax(0, 1fr);
             min-height: 12rem;
             overflow: hidden;
             background: #fff;
             border: 1px solid rgba(28, 43, 58, 0.1);
-            border-left: 0.35rem solid var(--samaritanDarkYellow);
-            border-radius: 0.35rem;
+            border-left: 0.35rem solid var(--drawback-us-copper);
+            border-radius: 0.75rem;
             box-shadow: 0 0.75rem 1.5rem rgba(28, 43, 58, 0.1);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .drawback-page .onboarding-card:hover,
-        .drawback-page .onboarding-card:focus-within {
-            transform: translateY(-5px);
-            box-shadow: 0 1rem 2rem rgba(28, 43, 58, 0.16);
         }
 
         .drawback-page .onboarding-marker {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--samaritanDarkYellow);
-            color: var(--darkSamaritan);
+            background: var(--drawback-us-copper);
+            color: var(--drawback-us-ink);
             font-size: 2rem;
         }
 
@@ -774,22 +157,23 @@
         .drawback-page .onboarding-step {
             display: block;
             margin-bottom: 0.45rem;
-            color: var(--samaritanDarkYellow);
+            color: var(--drawback-us-copper);
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
-        .drawback-page .onboarding-card h4 {
+        .drawback-page .onboarding-card h4,
+        .drawback-page .flow-card h3 {
             color: var(--darkSamaritan);
-            font-size: 1.2rem;
         }
 
-        .drawback-page .onboarding-card p {
+        .drawback-page .onboarding-card p,
+        .drawback-page .flow-card p,
+        .drawback-page .flow-intro p {
             color: var(--samaritan);
             margin-bottom: 0;
-            font-size: 0.95rem;
         }
 
         .drawback-page .flow-section {
@@ -800,15 +184,6 @@
             max-width: 44rem;
             margin: 0 auto 3rem;
             text-align: center;
-        }
-
-        .drawback-page .flow-intro h2 {
-            color: var(--darkSamaritan);
-        }
-
-        .drawback-page .flow-intro p {
-            color: var(--samaritan);
-            margin-bottom: 0;
         }
 
         .drawback-page .flow-list {
@@ -822,18 +197,17 @@
         }
 
         .drawback-page .flow-step {
-            min-width: 0;
             position: relative;
-            z-index: 1;
+            min-width: 0;
         }
 
         .drawback-page .flow-step::after {
             content: "\2192";
             position: absolute;
-            top: 0.55rem;
-            right: -1rem;
-            color: var(--samaritanDarkRed);
-            font-size: 1.25rem;
+            top: 0.7rem;
+            right: -0.85rem;
+            color: var(--drawback-us-blue);
+            font-size: 1.3rem;
             font-weight: 700;
         }
 
@@ -845,17 +219,11 @@
         .drawback-page .flow-card {
             height: 100%;
             padding: 2.25rem 1.25rem 1.35rem;
-            background: #F7F9FA;
+            background: #f7f9fa;
             border: 1px solid rgba(28, 43, 58, 0.1);
             border-radius: 1rem;
             box-shadow: 0 0.5rem 1.25rem rgba(28, 43, 58, 0.08);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .drawback-page .flow-card:hover,
-        .drawback-page .flow-card:focus-within {
-            transform: translateY(-5px);
-            box-shadow: 0 1rem 1.75rem rgba(28, 43, 58, 0.14);
         }
 
         .drawback-page .flow-number {
@@ -869,8 +237,8 @@
             justify-content: center;
             border: 5px solid #fff;
             border-radius: 50%;
-            background: var(--samaritanRed);
-            color: white;
+            background: var(--samaritanDarkRed);
+            color: #fff;
             font-weight: 700;
             transform: translateY(-50%);
         }
@@ -878,40 +246,29 @@
         .drawback-page .flow-actor {
             display: block;
             margin-bottom: 0.55rem;
-            color: var(--samaritanDarkRed);
+            color: var(--drawback-us-blue);
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
-        .drawback-page .flow-card h3 {
-            margin-bottom: 0.5rem;
-            color: var(--darkSamaritan);
+        .drawback-page .us-process-cta {
+            padding: 76px 0 88px;
+            text-align: center;
+            background: var(--drawback-us-ink);
+        }
+
+        .drawback-page .us-process-cta h2 {
+            margin: 0 0 0.75rem;
+            color: #fff;
+            font-size: 2.35rem;
+        }
+
+        .drawback-page .us-process-cta p {
+            margin: 0 auto 1.5rem;
+            color: rgba(255,255,255,0.78);
             font-size: 1.05rem;
-        }
-
-        .drawback-page .flow-card p {
-            margin-bottom: 0;
-            color: var(--samaritan);
-            font-size: 0.94rem;
-        }
-
-        .drawback-page .section-kicker {
-            color: var(--samaritanDarkGreen);
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        @keyframes drawback-wave-scale {
-            from {
-                transform: translateY(-50%) scale(1);
-            }
-
-            to {
-                transform: translateY(-50%) scale(1.1);
-            }
         }
 
         @keyframes drawback-rise-in {
@@ -926,195 +283,31 @@
             }
         }
 
-        @keyframes drawback-drift {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(-2deg);
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(2deg);
-            }
-        }
-
-        @keyframes drawback-orbit {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes drawback-orbit-reverse {
-            from {
-                transform: rotate(360deg);
-            }
-
-            to {
-                transform: rotate(0deg);
-            }
-        }
-
-        .drawback-page .drawback-hero .section-kicker,
-        .drawback-page .drawback-hero h1,
-        .drawback-page .drawback-hero p,
-        .drawback-page .drawback-hero .btn {
-            opacity: 0;
-            animation: drawback-rise-in 0.7s ease-out forwards;
-        }
-
-        .drawback-page .drawback-hero h1 {
-            animation-delay: 0.12s;
-        }
-
-        .drawback-page .drawback-hero p {
-            animation-delay: 0.24s;
-        }
-
-        .drawback-page .drawback-hero .btn {
-            animation-delay: 0.36s;
-        }
-
-        .drawback-page .drawback-visual::before {
-            animation: drawback-orbit 24s linear infinite;
-        }
-
-        .drawback-page .drawback-visual::after {
-            animation: drawback-orbit-reverse 18s linear infinite;
-        }
-
-        .drawback-page .drawback-parcel {
-            animation: drawback-drift 4s ease-in-out infinite;
-        }
-
-        .drawback-page .drawback-arrow-one {
-            animation: drawback-drift 4s ease-in-out 0.4s infinite;
-        }
-
-        .drawback-page .drawback-arrow-two {
-            animation: drawback-drift 4s ease-in-out 1.2s infinite reverse;
-        }
-
-        .drawback-page .check-card,
-        .drawback-page .value-card,
-        .drawback-page .role-card {
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
         @media (prefers-reduced-motion: reduce) {
-
             .drawback-page *,
             .drawback-page *::before,
             .drawback-page *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
                 transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
-
-            .drawback-page .drawback-hero .section-kicker,
-            .drawback-page .drawback-hero h1,
-            .drawback-page .drawback-hero p,
-            .drawback-page .drawback-hero .btn,
-            .drawback-page .check-card,
-            .drawback-page .value-card,
-            .drawback-page .process-panel {
-                opacity: 1;
-            }
-
         }
 
         @media (max-width: 767.98px) {
-            .drawback-page .drawback-visual {
-                min-height: 240px;
-            }
-
-            .drawback-page .drawback-visual::before {
-                width: 220px;
-                height: 220px;
-            }
-
-            .drawback-page .drawback-visual::after {
-                width: 150px;
-                height: 150px;
-            }
-
-            .drawback-page .drawback-wave-bg>div {
-                right: -14rem;
-            }
-
-            .drawback-page .onboarding-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
+            .drawback-page .onboarding-grid,
             .drawback-page .flow-list {
                 grid-template-columns: 1fr;
                 gap: 1rem;
-                padding-left: 1.25rem;
-            }
-
-            .drawback-page .flow-list::before {
-                top: 1.25rem;
-                bottom: 1.25rem;
-                left: 1.25rem;
-                right: auto;
-                border-top: 0;
-                border-left: 2px solid rgba(250, 103, 129, 0.45);
-            }
-
-            .drawback-page .flow-step {
-                margin-left: 1.25rem;
             }
 
             .drawback-page .flow-step::after {
                 content: "\2193";
                 top: auto;
                 right: auto;
-                bottom: -0.85rem;
-                left: -1.05rem;
-                font-size: 1.1rem;
+                bottom: -0.9rem;
+                left: 1rem;
             }
-
-            .drawback-page .flow-step:nth-child(4)::after {
-                display: block;
-            }
-
-            .drawback-page .flow-step:last-child::after {
-                display: none;
-            }
-        }
-
-        .eu-process-cta {
-            padding: 76px 0 88px;
-            text-align: center;
-        }
-
-        .eu-process-cta h2 {
-            margin: 0 0 12px;
-            color: var(--ancillary-ink);
-            font-size: 2.35rem;
-        }
-
-        .eu-process-cta p {
-            margin: 0 auto 26px;
-            color: var(--ancillary-muted);
-            font-size: 1.05rem;
-        }
-
-        .eu-process-cta .button {
-            padding: 14px 24px;
-            color: #fff;
-            background: var(--ancillary-blue);
-            font-weight: 700;
-        }
-
-        .eu-process-cta .button:hover {
-            color: #fff;
-            background: var(--ancillary-ink);
         }
     </style>
 </head>
@@ -1283,7 +476,7 @@
                 <div class="container">
                     <div class="flow-intro">
                         <p class="section-kicker mb-2">From import to refund</p>
-                        <h2 id="flow-title" class="display-5 fw-bold">The <span class="text-samaritanDarkRed">end-to-end
+                        <h2 id="flow-title" class="display-5 fw-bold text-darkSamaritan">The <span class="text-samaritanDarkRed">end-to-end
                                 flow</span></h2>
                         <p>Every eligible order is coordinated from the initial shipment through the final customs
                             refund.</p>
