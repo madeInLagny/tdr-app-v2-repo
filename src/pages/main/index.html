@@ -211,25 +211,57 @@
   @@include('src/blocks/linkedInInsideTag.html')
 
   <!-- Canvas Scripts -->
-  <script src="js/plugins.min.js"></script>
-  <script src="js/functions.bundle.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
   <script>
-    VANTA.GLOBE({
-      el: "#slider",
-      mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  color: 0xfda4b2,
-  color2: 0xb1c0cd,
-  backgroundColor: 0x3b6281
-    });
+    function loadScript(src) {
+      return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    function loadHeroBackground() {
+      Promise.resolve()
+        .then(function () {
+          return loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js');
+        })
+        .then(function () {
+          return loadScript('https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js');
+        })
+        .then(function () {
+          if (window.VANTA) {
+            VANTA.GLOBE({
+              el: '#slider',
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200,
+              minWidth: 200,
+              scale: 1,
+              scaleMobile: 1,
+              color: 0xfda4b2,
+              color2: 0xb1c0cd,
+              backgroundColor: 0x3b6281
+            });
+          }
+        })
+        .catch(function (error) {
+          console.warn('Hero background unavailable:', error);
+        });
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadHeroBackground, { timeout: 2000 });
+    } else {
+      window.setTimeout(loadHeroBackground, 500);
+    }
   </script>
+
+  <script src="js/plugins.min.js" defer></script>
+  <script src="js/functions.bundle.js" defer></script>
 
   <!-- Floating geo flag button -->
   <script>
