@@ -142,12 +142,12 @@
       font-size: 1.7rem;
     }
 
-    #regional-solutions {
+   /*  #regional-solutions {
       background: var(--lightSamaritan);
-    }
+    } */
 
     #regional-solutions .section-kicker {
-      color: var(--samaritanDarkGreen);
+      color: var(--darkSamaritan);
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -174,6 +174,38 @@
     #regional-solution-cards .card-link {
       color: inherit;
       text-decoration: none;
+    }
+
+    #regional-solution-cards .card h3 {
+      color: var(--darkSamaritan);
+    }
+
+    .btn-outline-darkSamaritan {
+      color: var(--darkSamaritan);
+      border: 1px solid var(--darkSamaritan);
+      background-color: transparent;
+    }
+
+    .btn-outline-darkSamaritan:hover,
+    .btn-outline-darkSamaritan:focus-visible {
+      color: #fff !important;
+      border-color: var(--darkSamaritan);
+      background-color: var(--darkSamaritan);
+    }
+
+    #shippingModal .list-group-item {
+      color: var(--darkSamaritan);
+      /* background-color: var(--lightSamaritan); */
+      border-color: var(--darkSamaritan);
+      transition: color .2s ease, background-color .2s ease, padding-left .2s ease;
+    }
+
+    #shippingModal .list-group-item:hover,
+    #shippingModal .list-group-item:focus-visible {
+      color: #fff;
+      background-color: var(--darkSamaritan);
+      border-color: var(--darkSamaritan);
+      padding-left: 1.25rem;
     }
 
     @media (min-width: 768px) {
@@ -665,7 +697,7 @@
 </header>
     <!-- end of header -->
 
-    <section id="slider" class="slider-element min-vh-100 dark include-header">
+    <section id="slider" class="slider-element min-vh-75 dark include-header">
       <div class="slider-inner">
         <div class="container">
           <div class="slider-caption slider-caption-center gap-3">
@@ -677,7 +709,7 @@
       </div>
     </section>
 
-    <section id="regional-solutions" class="section py-5" aria-labelledby="regional-solutions-title">
+    <section id="regional-solutions" class="section mt-0 py-6 layered-background" aria-labelledby="regional-solutions-title">
       <div class="container">
         <div class="row justify-content-center text-center mb-4">
           <div class="col-lg-8">
@@ -688,8 +720,33 @@
           </div>
         </div>
         <div id="regional-solution-cards" class="row g-4" aria-live="polite"></div>
+        <div class="text-center mt-5">
+          <button class="btn btn-outline-darkSamaritan" data-bs-toggle="modal" data-bs-target="#shippingModal">
+            Shipping from somewhere else?
+          </button>
+        </div>
       </div>
     </section>
+
+    <div class="modal fade text-start" id="shippingModal" tabindex="-1" aria-labelledby="shippingModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title h5 text-darkSamaritan" id="shippingModalTitle">Choose your market</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="list-group">
+              <a href="solutions-for-us-shippers.html" class="list-group-item list-group-item-action ">US shippers</a>
+              <a href="solutions-for-uk-shippers.html" class="list-group-item list-group-item-action ">UK shippers</a>
+              <a href="solutions-for-eu-shippers.html" class="list-group-item list-group-item-action ">EU shippers</a>
+              <a href="solutions-for-all-shippers.html" class="list-group-item list-group-item-action ">Global shippers</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <style>
@@ -1024,42 +1081,38 @@
           heading: '4 Ways to Save on Customs Duties',
           intro: 'Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.',
           cards: [
-            ['bi-box2', 'Buy and Sell Abroad, Transit in the US', 'Store goods in the US without paying duties or reclaim duties on goods that are re-exported'],
-            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the EU & UK'],
-            ['bi-shield-check', 'Bring Returned Goods Back to the US Duty free', 'Bring goods back to the US free of duties.'],
-            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs']
-          ],
-          href: 'solutions-for-us-shippers.html'
+            ['bi-box2', 'Buy and Sell Abroad, Transit in the US', 'Store goods in the US without paying duties or reclaim duties on goods that are re-exported', 'TDR-Duty-Drawback-in-the-US.html'],
+            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the EU & UK', 'TDR-Duty-Drawback-in-the-US.html'],
+            ['bi-shield-check', 'Bring Returned Goods Back to the US Duty free', 'Bring goods back to the US free of duties.', 'TDR-american-goods-returned-AGR.html'],
+            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs', 'consulting.html']
+          ]
         },
         UK: {
           heading: '4 Ways to Save on Customs Duties',
           intro: 'Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.',
           cards: [
-            ['bi-box2', 'Buy and Sell Abroad, Transit in the UK', 'Store goods in the UK without paying duties or reclaim duties on goods that are re-exported'],
-            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the EU & US'],
-            ['bi-shield-check', 'Bring Returned Goods Back to the UK Duty and VAT free', 'Bring goods back to the UK free of duties and taxes'],
-            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs']
-          ],
-          href: 'solutions-for-uk-shippers.html'
+            ['bi-box2', 'Buy and Sell Abroad, Transit in the UK', 'Store goods in the UK without paying duties or reclaim duties on goods that are re-exported', 'TDR-Duty-Drawback-in-the-UK.html'],
+            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the EU & US', 'TDR-Duty-Drawback-in-the-UK.html'],
+            ['bi-shield-check', 'Bring Returned Goods Back to the UK Duty and VAT free', 'Bring goods back to the UK free of duties and taxes', 'TDR-returned-goods-relief-in-the-UK.html'],
+            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs', 'consulting.html']
+          ]
         },
         EU: {
           heading: 'End-to-End Duty Refund Solution for EU Shippers',
           intro: 'Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.',
           cards: [
-            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the UK & US'],
-            ['bi-shield-check', 'Bring Returned Goods Back to the EU Duty and VAT free', 'Bring goods back to the EU free of duties and taxes'],
-            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs']
-          ],
-          href: 'solutions-for-eu-shippers.html'
+            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the UK & US', 'TDR-Duty-Drawback-in-the-EU.html'],
+            ['bi-shield-check', 'Bring Returned Goods Back to the EU Duty and VAT free', 'Bring goods back to the EU free of duties and taxes', 'TDR-returned-goods-relief-in-the-EU.html'],
+            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs', 'consulting.html']
+          ]
         },
         ALL: {
           heading: '2 Ways to Save on Customs Duties',
           intro: 'Unlock hidden savings in your international eCommerce supply chain with our specialized duty and tax recovery services.',
           cards: [
-            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the EU,the US or the UK'],
-            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs']
-          ],
-          href: 'solutions-for-all-shippers.html'
+            ['bi-arrow-return-left', 'Sell Abroad, Return Goods and Recover Duties', 'Recover duties on returned goods from the EU,the US or the UK', 'TDR-Duty-Drawback-in-the-US.html'],
+            ['bi-graph-up', 'Trade Compliantly and Optimise Your Supply Chain', 'Strategic analysis to minimise customs costs', 'consulting.html']
+          ]
         }
       };
 
@@ -1080,7 +1133,7 @@
 
           var link = document.createElement('a');
           link.className = 'card card-link text-darkSamaritan';
-          link.href = solutions.href;
+          link.href = card[3];
 
           var body = document.createElement('div');
           body.className = 'card-body p-4';
