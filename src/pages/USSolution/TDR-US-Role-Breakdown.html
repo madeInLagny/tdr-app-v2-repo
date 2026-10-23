@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html dir="ltr" lang="en" xmlns:og="http://opengraphprotocol.org/schema/">
 
 <head>
@@ -18,50 +18,69 @@
   @@include('src/blocks/head/cssImports.html')
   <style>
     :root {
-      --cu: #C0527A;
-      --gg: #16A34A;
-      --td: #3B6281;
-      --cb: #475569;
-      --ink: #0F172A;
-      --mute: #64748B;
-      --bg: #EEF2F6;
+      --cu: #1f76b8;
+      --gg: #23866b;
+      --td: #102b46;
+      --cb: #5e7180;
+      --ink: #102b46;
+      --mute: #5e7180;
       --card: #fff;
-      --alt: #F8FAFC;
-      --line: #E2E8F0;
-      --amber: #FEF3C7;
-      --amberline: #F59E0B
+      --alt: #f4f9fc;
+      --line: #d8e6ee;
+      --amber: #fff4d7;
+      --amberline: #f2b544;
     }
 
-    @media (prefers-color-scheme:dark) {
-      :root {
-        --ink: #F1F5F9;
-        --mute: #94A3B8;
-        --bg: #0F172A;
-        --card: #1E293B;
-        --alt: #243247;
-        --line: #334155;
-        --amber: #4A3B12
-      }
+    .role-breakdown-page {
+      color: var(--ink);
+      background: #eaf5fb;
     }
 
-    .card {
+    .role-breakdown-hero {
+      padding: 96px 24px 58px;
+      color: #fff;
+      background: linear-gradient(120deg, #102b46 0%, #174d76 62%, #1f76b8 100%);
+    }
+
+    .role-breakdown-heading {
       max-width: 1040px;
       margin: 0 auto;
-      background: var(--card);
-      border-radius: 12px;
+    }
+
+    .role-breakdown-kicker {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #f8cf72;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .role-breakdown-heading h1 {
+      max-width: 760px;
+      margin: 0 0 16px;
+      color: #fff;
+      font-size: clamp(2.7rem, 6vw, 5.25rem);
+      font-weight: 700;
+      line-height: 1.02;
+    }
+
+    .role-breakdown-heading p {
+      max-width: 660px;
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .role-breakdown-page .card {
+      max-width: 1040px;
+      margin: 48px auto 72px;
       padding: 28px;
-      box-shadow: 0 2px 12px rgba(15, 23, 42, .1)
-    }
-
-    h1 {
-      margin: 0 0 4px;
-      font-size: 24px
-    }
-
-    p.sub {
-      margin: 0 0 20px;
-      color: var(--mute);
-      font-size: 13px
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: 0 8px 24px rgba(16, 43, 70, .08);
     }
 
     .wrap {
@@ -77,7 +96,10 @@
     th {
       padding: 10px 8px;
       color: #fff;
-      font-size: 14px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
       width: 100px
     }
 
@@ -101,16 +123,18 @@
       background: var(--alt);
       color: var(--ink);
       text-align: left;
-      padding-left: 12px
+      padding-left: 12px;
+      letter-spacing: .7px
     }
 
     th.num {
       background: var(--alt);
+      color: var(--mute);
       width: 40px
     }
 
     td {
-      padding: 8px;
+      padding: 10px 8px;
       text-align: center;
       border-bottom: 1px solid var(--line)
     }
@@ -126,14 +150,15 @@
     }
 
     td.n {
-      font-size: 11px;
+      font-size: .75rem;
       font-weight: 700;
       color: var(--mute)
     }
 
     td.t {
       text-align: left;
-      padding-left: 12px
+      padding-left: 12px;
+      color: var(--mute);
     }
 
     .tl {
@@ -144,20 +169,21 @@
     }
 
     td.t b {
-      font-size: 14px
+      font-size: .95rem;
+      font-weight: 700
     }
 
     td.t small {
       display: block;
       color: var(--mute);
-      font-size: 11px;
+      font-size: .78rem;
       margin-top: 2px
     }
 
     .tag {
       background: var(--amberline);
-      color: #fff;
-      font-size: 10px;
+      color: var(--ink);
+      font-size: .68rem;
       font-weight: 700;
       letter-spacing: .04em;
       text-transform: uppercase;
@@ -216,7 +242,8 @@
       background: var(--alt);
       border: 1px solid var(--line);
       border-radius: 8px;
-      font-size: 12px
+      color: var(--ink);
+      font-size: .82rem
     }
 
     .legend span.i {
@@ -241,8 +268,23 @@
 
     @media print {
 
-      .card {
+      .role-breakdown-page .card {
         box-shadow: none
+      }
+    }
+
+    @media (max-width: 767px) {
+      .role-breakdown-hero {
+        padding: 76px 20px 46px;
+      }
+
+      .role-breakdown-heading h1 {
+        font-size: 3rem;
+      }
+
+      .role-breakdown-page .card {
+        margin: 32px 16px 48px;
+        padding: 18px;
       }
     }
   </style>
@@ -252,195 +294,205 @@
 <body class="stretched samaritan-bg">
   <div id="wrapper">
 
-    <h1>Duty Drawback Partnership: Who Does What</h1>
-    <p class="sub">Task split between Customer, GGG, TDR and CBP, with Customs Brokerage activities highlighted</p>
-
-
-    <div class="card">
-      <div class="wrap">
-        <table>
-          <thead>
-            <tr>
-              <th class="num">#</th>
-              <th class="task">Task</th>
-              <th class="cu">Customer</th>
-              <th class="gg">GGG</th>
-              <th class="td">TDR</th>
-              <th class="cb">CBP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="">
-              <td class="n">1</td>
-              <td class="t">
-                <div class="tl"><b>Marketing and Sales activities</b></div>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">2</td>
-              <td class="t">
-                <div class="tl"><b>Customer initial qualification</b></div><small>Identification of need for 3PL
-                  services</small>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">3</td>
-              <td class="t">
-                <div class="tl"><b>Support with ACE setup</b></div>
-              </td>
-              <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">4</td>
-              <td class="t">
-                <div class="tl"><b>Drawback eligibility assessment</b></div>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">5</td>
-              <td class="t">
-                <div class="tl"><b>1st POA validation</b></div>
-              </td>
-              <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="td"></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">6</td>
-              <td class="t">
-                <div class="tl"><b>2nd POA validation</b></div>
-              </td>
-              <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">7</td>
-              <td class="t">
-                <div class="tl"><b>Drawback set-up</b></div>
-              </td>
-              <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">8</td>
-              <td class="t">
-                <div class="tl"><b>Privileges application and follow-up</b></div><small>Led by TDR in coordination with
-                  GGG</small>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"><span class="m s" role="img" aria-label="Supports"></span></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">9</td>
-              <td class="t">
-                <div class="tl"><b>Desk review test</b></div>
-              </td>
-              <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">10</td>
-              <td class="t">
-                <div class="tl"><b>Claims preparation</b></div>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="customs">
-              <td class="n">11</td>
-              <td class="t">
-                <div class="tl"><b>Claims submission</b><span class="tag">Customs Brokerage</span></div><small>Filed
-                  with CBP</small>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="td"></td>
-              <td class="cb"><span class="m d" role="img" aria-label="Authority counterpart"></span></td>
-            </tr>
-            <tr class="customs">
-              <td class="n">12</td>
-              <td class="t">
-                <div class="tl"><b>Respond to CBP requests and desk review</b><span class="tag">Customs Brokerage</span>
-                </div><small>Direct interaction with CBP</small>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="td"></td>
-              <td class="cb"><span class="m d" role="img" aria-label="Authority counterpart"></span></td>
-            </tr>
-            <tr class="">
-              <td class="n">13</td>
-              <td class="t">
-                <div class="tl"><b>Desk review documentation preparation</b></div><small>TDR with Customer</small>
-              </td>
-              <td class="cu"><span class="m s" role="img" aria-label="Supports"></span></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">14</td>
-              <td class="t">
-                <div class="tl"><b>GGG invoicing to TDR</b></div>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="td"></td>
-              <td class="cb"></td>
-            </tr>
-            <tr class="">
-              <td class="n">15</td>
-              <td class="t">
-                <div class="tl"><b>TDR invoicing to Customer</b></div>
-              </td>
-              <td class="cu"></td>
-              <td class="gg"></td>
-              <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
-              <td class="cb"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="legend"><b>Legend</b>
-        <span class="i"><span class="m f"></span>Performs / leads the task</span>
-        <span class="i"><span class="m s"></span>Supports / coordinates</span>
-        <span class="i"><span class="m d"></span>Authority counterpart (CBP)</span>
-        <span class="i"><span class="sw"></span>Customs Brokerage activity (GGG)</span>
-      </div>
-    </div>
-
-
-
-
 
     @@include('src/blocks/header.html', {"text-color":"white", "header-bg":"var(--samaritan)",
     "submenu-bg":"var(--darkSamaritan)", "menu-text-hover":"white"})
+
+
+    <main class="role-breakdown-page">
+      <section class="role-breakdown-hero">
+        <div class="role-breakdown-heading">
+          <span class="role-breakdown-kicker">US Duty Drawback</span>
+          <h1>Duty Drawback Partnership: Who Does What</h1>
+          <p>Task split between Customer, GGG, TDR and CBP, with Customs Brokerage activities highlighted.</p>
+        </div>
+      </section>
+
+      <div class="card">
+        <div class="wrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="num">#</th>
+                <th class="task">Task</th>
+                <th class="cu">Customer</th>
+                <th class="gg">GGG</th>
+                <th class="td">TDR</th>
+                <th class="cb">CBP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="">
+                <td class="n">1</td>
+                <td class="t">
+                  <div class="tl"><b>Marketing and Sales activities</b></div>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">2</td>
+                <td class="t">
+                  <div class="tl"><b>Customer initial qualification</b></div><small>Identification of need for 3PL
+                    services</small>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">3</td>
+                <td class="t">
+                  <div class="tl"><b>Support with ACE setup</b></div>
+                </td>
+                <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">4</td>
+                <td class="t">
+                  <div class="tl"><b>Drawback eligibility assessment</b></div>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">5</td>
+                <td class="t">
+                  <div class="tl"><b>1st POA validation</b></div>
+                </td>
+                <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="td"></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">6</td>
+                <td class="t">
+                  <div class="tl"><b>2nd POA validation</b></div>
+                </td>
+                <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">7</td>
+                <td class="t">
+                  <div class="tl"><b>Drawback set-up</b></div>
+                </td>
+                <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">8</td>
+                <td class="t">
+                  <div class="tl"><b>Privileges application and follow-up</b></div><small>Led by TDR in coordination
+                    with
+                    GGG</small>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"><span class="m s" role="img" aria-label="Supports"></span></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">9</td>
+                <td class="t">
+                  <div class="tl"><b>Desk review test</b></div>
+                </td>
+                <td class="cu"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">10</td>
+                <td class="t">
+                  <div class="tl"><b>Claims preparation</b></div>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="customs">
+                <td class="n">11</td>
+                <td class="t">
+                  <div class="tl"><b>Claims submission</b><span class="tag">Customs Brokerage</span></div><small>Filed
+                    with CBP</small>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="td"></td>
+                <td class="cb"><span class="m d" role="img" aria-label="Authority counterpart"></span></td>
+              </tr>
+              <tr class="customs">
+                <td class="n">12</td>
+                <td class="t">
+                  <div class="tl"><b>Respond to CBP requests and desk review</b><span class="tag">Customs
+                      Brokerage</span>
+                  </div><small>Direct interaction with CBP</small>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="td"></td>
+                <td class="cb"><span class="m d" role="img" aria-label="Authority counterpart"></span></td>
+              </tr>
+              <tr class="">
+                <td class="n">13</td>
+                <td class="t">
+                  <div class="tl"><b>Desk review documentation preparation</b></div><small>TDR with Customer</small>
+                </td>
+                <td class="cu"><span class="m s" role="img" aria-label="Supports"></span></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">14</td>
+                <td class="t">
+                  <div class="tl"><b>GGG invoicing to TDR</b></div>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="td"></td>
+                <td class="cb"></td>
+              </tr>
+              <tr class="">
+                <td class="n">15</td>
+                <td class="t">
+                  <div class="tl"><b>TDR invoicing to Customer</b></div>
+                </td>
+                <td class="cu"></td>
+                <td class="gg"></td>
+                <td class="td"><span class="m f" role="img" aria-label="Performs"></span></td>
+                <td class="cb"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="legend"><b>Legend</b>
+          <span class="i"><span class="m f"></span>Performs / leads the task</span>
+          <span class="i"><span class="m s"></span>Supports / coordinates</span>
+          <span class="i"><span class="m d"></span>Authority counterpart (CBP)</span>
+          <span class="i"><span class="sw"></span>Customs Brokerage activity (GGG)</span>
+        </div>
+      </div>
+    </main>
+
+
+
+
 
 
     @@include('src/blocks/footer.html', {"bg-color":"var(--samaritan)", "text-color":"var(--lightSamaritan)"})
