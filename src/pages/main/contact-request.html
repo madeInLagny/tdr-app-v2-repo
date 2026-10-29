@@ -96,7 +96,11 @@
 
                 <div class="col-md-6 form-group">
                   <label for="email">${{contact-request.form-email-label}}$</label>
-                  <input type="email" id="email" name="email" class="form-control" required>
+                  <input type="email" id="email" name="email" class="form-control" aria-describedby="email-help"
+                    required>
+                  <small class="form-text text-lightSamaritan" id="email-help">
+                    ${{contact-request.form-email-help}}$
+                  </small>
                 </div>
 
                 <div class="col-md-6 form-group">
