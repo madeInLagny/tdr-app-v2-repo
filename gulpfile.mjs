@@ -8,7 +8,6 @@ import sitemap from "gulp-sitemap";
 import entities from "gulp-html-entities";
 import flatten from "gulp-flatten";
 
-
 /* eBooks and downloads removed from delete/copy methods as these assets are static */
 const paths = {
   specificHtml: ["src/pages/**/*.html", "!src/pages/pagesInDev/*.html"],
@@ -26,7 +25,7 @@ const paths = {
 // Function to dynamically determine available locales
 const getLocales = () => {
   const locales = readdirSync(path.join("src", "i18n")).filter((file) =>
-    statSync(path.join("src", "i18n", file)).isDirectory()
+    statSync(path.join("src", "i18n", file)).isDirectory(),
   );
   return locales;
 };
@@ -39,7 +38,7 @@ const cleandist = () => {
     "dist/tdr-app-v2-en/*.md",
     "dist/tdr-app-v2-en/css",
     "dist/tdr-app-v2-en/js",
-    "dist/tdr-app-v2-en/images"
+    "dist/tdr-app-v2-en/images",
     // here we use a globbing pattern to match everything inside the `mobile` folder
     // we don't want to clean this file though so we negate the pattern
     /* "!dist/mobile/deploy.json", */
@@ -55,14 +54,14 @@ export const buildSpecificHtml = () => {
       fileInclude({
         prefix: "@@",
         basepath: "@root",
-      })
+      }),
     )
     .pipe(
       i18n({
         locales: locales,
         localeDir: path.resolve("src", "i18n"),
         schema: "",
-      })
+      }),
     )
     .pipe(entities("decode"))
     .pipe(flatten())
@@ -112,23 +111,49 @@ export const watchSpecificFiles = () => {
       `${paths.blocks}**/*.html`,
       `${paths.i18n}**/*.json`,
     ],
-    buildSpecificHtml
+    buildSpecificHtml,
   );
   gulp.watch(paths.assets.css, copyCss);
   gulp.watch(paths.assets.js, copyJs);
   gulp.watch(paths.assets.images, copyImages);
 };
 
-// Task to create a site map from every html file in the src directory
+// Task to create a site map from the html files in the dist directory,
+// excluding thank-you pages, redirect stubs and non-final URLs
 export const createSiteMap = () => {
   return gulp
-    .src("dist/tdr-app-v2-en/*.html", {
-      read: false,
-    })
+    .src(
+      [
+        "dist/tdr-app-v2-en/*.html",
+
+        // Thank-you / confirmation pages (also add noindex in their <head>)
+        "!dist/tdr-app-v2-en/contact-confirmation.html",
+        "!dist/tdr-app-v2-en/duty-refund-questionnaire-completed.html",
+        "!dist/tdr-app-v2-en/make-an-appointment-confirmation.html",
+
+        // Redirect stubs and pages being redirected
+        "!dist/tdr-app-v2-en/TDR-Duty-Drawback-in-Europe.html",
+        "!dist/tdr-app-v2-en/TDR-Duty-Free-Returns-to-Europe.html",
+        "!dist/tdr-app-v2-en/what-is-the-first-sale-rule-in-us-customs.html",
+        "!dist/tdr-app-v2-en/TDR-EU-Drawback-Process.html",
+        "!dist/tdr-app-v2-en/get-started-with-US-Duty-Drawback.html",
+        "!dist/tdr-app-v2-en/self-filling-us-duty-drawback-the-smart-cost-effective-solution.html",
+        "!dist/tdr-app-v2-en/us-customs-brokers-ready-software-solution.html",
+        "!dist/tdr-app-v2-en/TDR-US-ancillary-services.html",
+        "!dist/tdr-app-v2-en/TDR-US-Drawback-Process.html",
+        "!dist/tdr-app-v2-en/TDR-US-Role-Breakdown.html",
+
+        // Technical pages
+        "!dist/tdr-app-v2-en/404.html",
+      ],
+      {
+        read: false,
+      },
+    )
     .pipe(
       sitemap({
         siteUrl: "https://tradedutyrefund.com",
-      })
+      }),
     )
     .pipe(gulp.dest(paths.dist));
 };
@@ -136,13 +161,7 @@ export const createSiteMap = () => {
 // Default task to build and watch all assets and files
 export default gulp.series(
   cleandist,
-  gulp.parallel(
-    buildSpecificHtml,
-    copyCss,
-    copyJs,
-    copyImages,
-    copyInclude
-  ),
+  gulp.parallel(buildSpecificHtml, copyCss, copyJs, copyImages, copyInclude),
   createSiteMap,
-  watchSpecificFiles
+  watchSpecificFiles,
 );
