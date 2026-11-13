@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="${{ index.language }}$" xmlns:og="http://opengraphprotocol.org/schema/">
+
+<head>
+  @@include('src/blocks/head/cookieConsent/headScript.html')
+
+  @@include('src/blocks/head/metatags.html', {"OGImage":"https://tradedutyrefund.com/images/OGImages/index.jpg",
+  "description": "${{make-an-appointment-confirmation.description}}$",
+  "title": "${{make-an-appointment-confirmation.title}}$",
+  "path": "${{make-an-appointment-confirmation.path}}$",
+  "noindex":"true"
+  })
+
+  @@include('src/blocks/head/cssImports.html')
+  <link rel="stylesheet" href="./css/custom/samaritan.css">
+</head>
+
+<body class="stretched samaritan-bg" data-ga4-conversion="appointment">
+  <div id="wrapper">
+    @@include('src/blocks/header.html',{"text-color":"white",
+    "header-bg":"var(--samaritan)",
+    "submenu-bg":"var(--darkSamaritan)",
+    "menu-text-hover":"white"
+    })
+
+    <section id="content">
+      <div class="content-wrap">
+        <div class="container">
+          <div class="promo shadow-sm text-center p-4 p-md-5 border rounded-5">
+            <i class="bi-check-circle-fill" style="font-size: 3rem;" aria-hidden="true"></i>
+            <h1 class="h2 mt-3 mb-2">${{make-an-appointment-confirmation.thank-you}}$</h1>
+            <p class="mb-4">${{make-an-appointment-confirmation.confirmation-message}}$</p>
+            <a class="button button-rounded" href="./">${{make-an-appointment-confirmation.button-label}}$</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    @@include('src/blocks/footer.html',{
+    "bg-color":"var(--samaritan)","text-color":"var(--lightSamaritan)"
+    })
+  </div>
+
+  @@include('src/blocks/head/cookieConsent/cookieConsentScript.html')
+  <script src="js/plugins.min.js"></script>
+  <script src="js/functions.bundle.js"></script>
+</body>
+
+</html>

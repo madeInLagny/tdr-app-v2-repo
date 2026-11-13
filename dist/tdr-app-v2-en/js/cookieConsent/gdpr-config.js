@@ -3,6 +3,12 @@
 document.documentElement.classList.add("cc--darkmode");
 
 CookieConsent.run({
+  onConsent: function () {
+    window.dispatchEvent(new Event("tdr:analytics-consent-change"));
+  },
+  onChange: function () {
+    window.dispatchEvent(new Event("tdr:analytics-consent-change"));
+  },
   guiOptions: {
     autoShow: false,
     consentModal: {

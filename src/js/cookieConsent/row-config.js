@@ -5,3 +5,4 @@ document.documentElement.classList.add("cc--darkmode");
 
 CookieConsent.hide();
 CookieConsent.acceptCategory("all");
+window.dispatchEvent(new Event("tdr:analytics-consent-change"));
