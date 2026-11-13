@@ -6,6 +6,10 @@ The shared tracking script sends `cta_click`, `generate_lead` (contact form), an
 `appointment_booked` (confirmed appointment) events. Each includes the `source_page`
 path. Contact conversions are sent from `contact-confirmation.html`.
 
+The main site accepts a single validated `source_page` path from incoming links,
+stores it in `sessionStorage`, and uses it as the attribution source for CTA and
+conversion events during that browser session.
+
 In Zcal, set the successful-booking redirect URL to
 `https://tradedutyrefund.com/make-an-appointment-confirmation.html` so the
 appointment conversion fires only after a booking is confirmed. Register

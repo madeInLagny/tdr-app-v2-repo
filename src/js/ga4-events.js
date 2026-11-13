@@ -9,10 +9,44 @@
     contact: "tdr_ga4_contact_pending",
     appointment: "tdr_ga4_appointment_pending",
   };
+  const sessionSourceKey = "tdr_ga4_source_page";
   const currentPath = getPagePath(window.location);
 
   function getPagePath(url) {
     return url.pathname;
+  }
+
+  function getEventSource(fallback) {
+    return getValue(sessionSourceKey) || fallback || "(direct)";
+  }
+
+  function validateSourcePage(value) {
+    if (
+      typeof value !== "string" ||
+      value.length > 2048 ||
+      !value.startsWith("/") ||
+      value.startsWith("//") ||
+      value.includes("\\") ||
+      /[?#\u0000-\u001f\u007f]/.test(value)
+    ) {
+      return null;
+    }
+
+    try {
+      const sourceUrl = new URL(value, "https://blog.tradedutyrefund.com");
+      if (
+        sourceUrl.origin !== "https://blog.tradedutyrefund.com" ||
+        sourceUrl.pathname !== value ||
+        sourceUrl.search ||
+        sourceUrl.hash
+      ) {
+        return null;
+      }
+
+      return sourceUrl.pathname;
+    } catch (error) {
+      return null;
+    }
   }
 
   function isProductionSite() {
@@ -112,6 +146,14 @@
       : "(external)";
   }
 
+  const incomingSourcePages = new URLSearchParams(window.location.search).getAll("source_page");
+  if (incomingSourcePages.length === 1) {
+    const sourcePage = validateSourcePage(incomingSourcePages[0]);
+    if (sourcePage) {
+      saveValue(sessionSourceKey, sourcePage);
+    }
+  }
+
   function handleConsentChange() {
     if (!canTrack()) {
       return;
@@ -133,7 +175,7 @@
     }
 
     const link = cta.closest("a");
-    const sourcePage = getPagePath(window.location);
+    const sourcePage = getEventSource(getPagePath(window.location));
     const targetUrl = link ? new URL(link.href, window.location.href) : null;
     const ctaText = (cta.getAttribute("aria-label") || cta.textContent || "")
       .trim()
@@ -168,14 +210,14 @@
     }
 
     if (!getValue(sourceKeys.contact)) {
-      saveValue(sourceKeys.contact, getReferrerSource());
+      saveValue(sourceKeys.contact, getEventSource(getReferrerSource()));
     }
     saveValue(pendingKeys.contact, "true");
   });
 
   if (currentPath.endsWith(appointmentPath)) {
     if (!getValue(sourceKeys.appointment)) {
-      saveValue(sourceKeys.appointment, getReferrerSource());
+      saveValue(sourceKeys.appointment, getEventSource(getReferrerSource()));
     }
     saveValue(pendingKeys.appointment, "true");
   }
