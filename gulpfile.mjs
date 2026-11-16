@@ -142,6 +142,7 @@ export const createSiteMap = () => {
         "!dist/tdr-app-v2-en/TDR-US-ancillary-services.html",
         "!dist/tdr-app-v2-en/TDR-US-Drawback-Process.html",
         "!dist/tdr-app-v2-en/TDR-US-Role-Breakdown.html",
+        "!dist/tdr-app-v2-en/TDR-Duty-Free-Returns-to-the-US.html",
 
         // Technical pages
         "!dist/tdr-app-v2-en/404.html",
