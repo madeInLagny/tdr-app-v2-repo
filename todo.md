@@ -1,0 +1,1 @@
+EU and US pages: the inner `<div id="faqs">` duplicates the section id `faqs` (left untouched because CSS/JS may depend on it)
