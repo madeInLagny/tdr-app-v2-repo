@@ -306,6 +306,11 @@
 			border-bottom-color: rgba(91, 176, 0, 0.9);
 		}
 
+		.table{
+			--bs-table-bg:transparent;
+			--bs-table-color:white;
+		}
+
 		@keyframes conclusionReveal {
 			0% {
 				opacity: 0;
@@ -418,6 +423,23 @@
 		============================================= -->
 		<section id="content">
 			<div class="content-wrap pt-0">
+				<div id="summary" class="page-section py-5 py-lg-6 bg-white">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-9">
+								<h2 class="display-5 fw-bolder ls-n-2 text-darkSamaritan mb-3">${{TDR-Duty-Drawback-in-the-EU.summary_title}}$</h2>
+								<p class="lead text-samaritan">${{TDR-Duty-Drawback-in-the-EU.summary_intro}}$</p>
+								<ul class="text-samaritan fs-5 ps-4">
+									<li class="mb-2">${{TDR-Duty-Drawback-in-the-EU.summary_point_1}}$</li>
+									<li class="mb-2">${{TDR-Duty-Drawback-in-the-EU.summary_point_2}}$</li>
+									<li class="mb-2">${{TDR-Duty-Drawback-in-the-EU.summary_point_3}}$</li>
+								</ul>
+								<a href="duty-refund-questionnaire-EU.html" class="btn samaritanDarkGreen-bg text-white fw-bold mt-2 rounded-pill text-smaller">${{TDR-Duty-Drawback-in-the-EU.eligibility_button}}$<i class="bi-arrow-right ms-2" aria-hidden="true"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div id="overpaying" class="page-section py-5 py-lg-6 shiny-samaritan-bg">
 					<h2 class="display-4 fw-bolder ls-n-2 text-center text-lightSamaritan" data-animate="fadeIn">
 						${{TDR-Duty-Drawback-in-the-EU.overpaying_title}}$<br><span
@@ -769,7 +791,7 @@
 				<!-- Divider -->
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100">
 					<g fill="white">
-						<rect fill="var(--lightSamaritan)" width="100%" height="100%" />
+						<rect fill="#174566" width="100%" height="100%" />
 						<path d="M0 0v100l500-48 500 48V0H0z" opacity=".5"></path>
 						<path d="M0 0h1000v52H0z" opacity=".5"></path>
 						<path d="M0 0v4l500 48 500-48V0H0z" opacity=".5"></path>
@@ -778,6 +800,39 @@
 				</svg>
 
 				<!-- FAQs -->
+				<div id="which-route" class="page-section py-5 py-lg-6">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-9">
+								<h2 class="display-5 fw-bolder ls-n-2 mb-3">${{TDR-Duty-Drawback-in-the-EU.route_title}}$</h2>
+								<p class="lead text-white">${{TDR-Duty-Drawback-in-the-EU.route_intro}}$</p>
+								<div class="table-responsive">
+									<table class="table table-bordered">
+										<thead>
+											<tr><th scope="col"></th><th scope="col">${{TDR-Duty-Drawback-in-the-EU.route_col1}}$</th><th scope="col">${{TDR-Duty-Drawback-in-the-EU.route_col2}}$</th></tr>
+										</thead>
+										<tbody>
+											<tr><th scope="row">${{TDR-Duty-Drawback-in-the-EU.route_row1_label}}$</th><td>${{TDR-Duty-Drawback-in-the-EU.route_row1_c1}}$</td><td>${{TDR-Duty-Drawback-in-the-EU.route_row1_c2}}$</td></tr>
+											<tr><th scope="row">${{TDR-Duty-Drawback-in-the-EU.route_row2_label}}$</th><td>${{TDR-Duty-Drawback-in-the-EU.route_row2_c1}}$</td><td>${{TDR-Duty-Drawback-in-the-EU.route_row2_c2}}$</td></tr>
+											<tr><th scope="row">${{TDR-Duty-Drawback-in-the-EU.route_row3_label}}$</th><td>${{TDR-Duty-Drawback-in-the-EU.route_row3_c1}}$</td><td>${{TDR-Duty-Drawback-in-the-EU.route_row3_c2}}$</td></tr>
+											<tr><th scope="row">${{TDR-Duty-Drawback-in-the-EU.route_row4_label}}$</th><td>${{TDR-Duty-Drawback-in-the-EU.route_row4_c1}}$</td><td><a href="TDR-returned-goods-relief-in-the-EU.html">${{TDR-Duty-Drawback-in-the-EU.route_row4_c2}}$</a></td></tr>
+										</tbody>
+									</table>
+								</div>
+								<h3 class="h4 mt-4 text-white">${{TDR-Duty-Drawback-in-the-EU.route_reading_title}}$</h3>
+								<ul class="fs-5 ps-4">
+									<li class="mb-2"><a href="https://blog.tradedutyrefund.com/how-to-calculate-customs-duty-refunds-in-the-eu-a-practical-guide/">${{TDR-Duty-Drawback-in-the-EU.route_link1}}$</a></li>
+									<li class="mb-2"><a href="https://blog.tradedutyrefund.com/how-retailers-can-recover-duty-on-eu-returned-goods-in-2026/">${{TDR-Duty-Drawback-in-the-EU.route_link2}}$</a></li>
+									<li class="mb-2"><a href="https://blog.tradedutyrefund.com/understanding-duty-drawback-a-guide-to-customs-duties-refund-calculation/">${{TDR-Duty-Drawback-in-the-EU.route_link3}}$</a></li>
+									<li class="mb-2"><a href="https://blog.tradedutyrefund.com/ask-the-experts-rgr-with-elke-rodel-what-is-returned-goods-relief-and-who-can-benefit/">${{TDR-Duty-Drawback-in-the-EU.route_link4}}$</a></li>
+									<li class="mb-2"><a href="TDR-Duty-Drawback-in-the-UK.html">${{TDR-Duty-Drawback-in-the-EU.route_link5}}$</a></li>
+									<li class="mb-2"><a href="TDR-Duty-Drawback-in-the-US.html">${{TDR-Duty-Drawback-in-the-EU.route_link6}}$</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div id="faqs" class="page-section py-5 py-lg-6 layered-background">
 
 					<div class="container">
@@ -791,7 +846,7 @@
 						</div>
 
 						<div class="mx-md-auto col-md-6">
-							<div class="faqs">
+							<div id="faqs" class="faqs">
 
 								<div class="toggle faq pb-3 mb-3 faq-duty-drawback faq-finance">
 									<div class="toggle-header">
@@ -1000,7 +1055,7 @@
 								<h2 class="text-white fw-bold display-3" style="letter-spacing: -1px;">
 									${{TDR-Duty-Drawback-in-the-EU.cta_title}}$</h2>
 
-								<p class="lead"></p>${{TDR-Duty-Drawback-in-the-EU.cta_suffix}}$</p>
+								<p class="lead">${{TDR-Duty-Drawback-in-the-EU.cta_suffix}}$</p>
 
 								@@include("src/blocks/contactOptions.html")
 							</div>
