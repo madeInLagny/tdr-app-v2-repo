@@ -73,7 +73,7 @@
   "faq_10_answer": "Yes, in certain circumstances. HTSUS 9801.00.10 was amended to allow products other than products of the United States to qualify when returned within three years after exportation from the United States, provided they were not advanced in value or improved in condition abroad and the applicable documentary requirements are satisfied.",
   "contact-kicker": "Make every return work harder for your business.",
   "contact-title": "Understand your American Goods Returned opportunity.",
-  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-US.html&quot; class=&quot;text-decoration-underline&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your returned goods may qualify for duty-free treatment.",
+  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-US.html&quot; class=&quot;text-decoration-underline&quot; data-ga4-cta aria-label=&quot;Questionnaire US&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your returned goods may qualify for duty-free treatment.",
   "contact-label": "Start the questionnaire",
   "card-subtitle": "Bring Qualifying Goods Back To The United States Duty Free."
 }

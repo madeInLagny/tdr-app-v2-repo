@@ -70,7 +70,7 @@
   "FAQ-title": "Cross-Border Returns Questions",
   "contact-kicker": "Make every return work harder for your business.",
   "contact-title": "Understand what your cross-border returns cost you.",
-  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-US.html&quot; class=&quot;text-decoration-underline&quot;&gt;US&lt;/a&gt;, &lt;a href=&quot;duty-refund-questionnaire-EU.html&quot; class=&quot;text-decoration-underline&quot;&gt;EU&lt;/a&gt; or &lt;a href=&quot;duty-refund-questionnaire-UK.html&quot; class=&quot;text-decoration-underline&quot;&gt;UK&lt;/a&gt;: complete the questionnaire or speak to our customs experts to see whether your returns may qualify.",
+  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-US.html&quot; class=&quot;text-decoration-underline&quot; data-ga4-cta aria-label=&quot;Questionnaire US&quot;&gt;US&lt;/a&gt;, &lt;a href=&quot;duty-refund-questionnaire-EU.html&quot; class=&quot;text-decoration-underline&quot; data-ga4-cta aria-label=&quot;Questionnaire EU&quot;&gt;EU&lt;/a&gt; or &lt;a href=&quot;duty-refund-questionnaire-UK.html&quot; class=&quot;text-decoration-underline&quot; data-ga4-cta aria-label=&quot;Questionnaire UK&quot;&gt;UK&lt;/a&gt;: complete the questionnaire or speak to our customs experts to see whether your returns may qualify.",
   "contact-label": "Start the questionnaire",
   "card-subtitle": "Recover Duty On Cross-Border eCommerce Returns.",
   "compare-row1-label": "Goods imported, then sent back abroad",

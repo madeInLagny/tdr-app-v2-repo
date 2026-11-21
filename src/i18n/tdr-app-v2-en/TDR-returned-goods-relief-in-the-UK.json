@@ -57,7 +57,7 @@
   "faq_5_answer": "No. Relief from excise duty is not available under Returned Goods Relief.",
   "contact-kicker": "Make every return work harder for your business.",
   "contact-title": "Understand your Returned Goods Relief opportunity.",
-  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-UK.html&quot; class=&quot;text-decoration-underline&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your goods qualify for RGR.",
+  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-UK.html&quot; class=&quot;text-decoration-underline&quot; data-ga4-cta aria-label=&quot;Questionnaire UK&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your goods qualify for RGR.",
   "contact-label": "Start the questionnaire",
   "card-subtitle": "Bring Goods Back Home With Duty And VAT Relief.",
   "faq_6_question": "What documentation and evidence is needed to claim RGR?",

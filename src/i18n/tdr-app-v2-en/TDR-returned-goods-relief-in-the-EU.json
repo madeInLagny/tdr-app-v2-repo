@@ -67,7 +67,7 @@
   "faq_10_answer": "Yes, in certain circumstances. UCC Article 203 applies to goods that were exported as Union goods, which can include goods of non-EU origin that had been released for free circulation in the EU, provided they come back within three years in the state in which they were exported and the documentary requirements are met.",
   "contact-kicker": "Make every return work harder for your business.",
   "contact-title": "Understand your Returned Goods Relief opportunity.",
-  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-EU.html&quot; class=&quot;text-decoration-underline&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your returned goods may qualify for relief from import duty and, where applicable, VAT.",
+  "contact-description": "&lt;a href=&quot;duty-refund-questionnaire-EU.html&quot; class=&quot;text-decoration-underline&quot; data-ga4-cta aria-label=&quot;Questionnaire EU&quot;&gt;Complete the questionnaire&lt;/a&gt; or speak to our customs experts to see if your returned goods may qualify for relief from import duty and, where applicable, VAT.",
   "contact-label": "Start the questionnaire",
   "card-subtitle": "Bring Qualifying Goods Back To The European Union With Import Duty Relief.",
   "faq_11_question": "What if I already paid duty on returned goods?",
