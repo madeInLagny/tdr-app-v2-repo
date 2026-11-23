@@ -93,22 +93,6 @@
 								<div class="contact-form-overlay p-4">
 									<form id="euCustomsForm" class="eu-customs-form">
 
-										<!-- Import Country -->
-										<div class="form-group mb-4">
-											<label for="importCountry" class="form-label fw-semibold">
-												${{eu-2026-import-regulations-cost-impact-tool.importCountry}}$ <span
-													class="text-danger">*</span>
-											</label>
-											<select class="form-select form-control" id="importCountry" required>
-												<option value="">
-													${{eu-2026-import-regulations-cost-impact-tool.selectCountry}}$
-												</option>
-												@@include('src/blocks/euCountriesOptions.html')
-											</select>
-											<small
-												class="form-text text-lightSamaritan">${{eu-2026-import-regulations-cost-impact-tool.importCountryHint}}$</small>
-										</div>
-
 										<!-- Average Order Value -->
 										<label class="form-label fw-semibold">
 											${{eu-2026-import-regulations-cost-impact-tool.orderValue}}$ <span
@@ -129,19 +113,6 @@
 													${{eu-2026-import-regulations-cost-impact-tool.no}}$
 												</label>
 											</div>
-										</div>
-
-										<!-- Number of Packages -->
-										<div class="form-group mb-4">
-											<label for="packageCount" class="form-label fw-semibold">
-												${{eu-2026-import-regulations-cost-impact-tool.packageCount}}$ <span
-													class="text-danger">*</span>
-											</label>
-											<input type="number" class="form-control" id="packageCount"
-												placeholder="${{eu-2026-import-regulations-cost-impact-tool.packageCountPlaceholder}}$"
-												min="1" step="1" required>
-											<small
-												class="form-text text-lightSamaritan">${{eu-2026-import-regulations-cost-impact-tool.packageCountHint}}$</small>
 										</div>
 
 										<!-- Number of HS Codes -->
@@ -196,32 +167,21 @@
 										<h3 class="card-title mb-4">
 											${{eu-2026-import-regulations-cost-impact-tool.results}}$</h3>
 
+										<!-- Total -->
+										<div class="heading-block fancy-title border-bottom-0 title-top-border">
+											<h4>${{eu-2026-import-regulations-cost-impact-tool.totalTitle}}$</h4>
+										</div>
+										<div class="mb-4" id="totalComment"></div>
+
 										<!-- Handling Fee -->
 										<div class="heading-block fancy-title border-bottom-0 title-top-border">
-											<h4>National Handling Fees</h4>
+											<h4>${{eu-2026-import-regulations-cost-impact-tool.handlingFeeTitle}}$</h4>
 										</div>
 										<div class="mb-4" id="handlingFeeComment"></div>
 
-										<div id="handlingSurchargePromo" class="container" style="display: none;">
-											<div
-												class="promo shadow-sm text-center lightSamaritan-bg p-2 border rounded-5 my-5">
-												<span class="text-darkSamaritan">
-													<h3 class="text-darkSamaritan"><i class="bi-lightbulb-fill"
-															style="color: #2e2af36b;"></i>
-														${{eu-2026-import-regulations-cost-impact-tool.handlingFeePromoTitle}}$
-													</h3>
-													<p>${{eu-2026-import-regulations-cost-impact-tool.handlingFeePromoDescription}}$
-													</p>
-													<a class="button button-rounded"
-														href="${{get-started-with-TDR-in-the-EU.path}}$">${{eu-2026-import-regulations-cost-impact-tool.handlingFeePromoButtonLabel}}$</a>
-												</span>
-
-											</div>
-										</div>
-
 										<!-- Duties -->
 										<div class="heading-block fancy-title border-bottom-0 title-top-border">
-											<h4>Customs Import Duties</h4>
+											<h4>${{eu-2026-import-regulations-cost-impact-tool.dutyTitle}}$</h4>
 										</div>
 										<div id="dutyComment"></div>
 
