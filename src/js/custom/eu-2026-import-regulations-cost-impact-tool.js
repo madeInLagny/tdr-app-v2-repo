@@ -163,7 +163,10 @@
           eur(r.duty + r.handling) +
           "</div><div>" +
           parts.join("<br>") +
-          "</div><div class='mt-2'><small>Before import VAT on the goods and before any normal customs duty. " +
+          "</div><div class='mt-2'><small>" +
+          (r.dutyApplies
+            ? "Before import VAT on the goods. "
+            : "Before import VAT on the goods and before the normal customs duty, which varies with the products. ") +
           SAME_ITEM_NOTE +
           "</small></div>";
       } else {
