@@ -84,7 +84,8 @@
     }
 
     .wrap {
-      overflow-x: auto
+      max-height: 70vh;
+      overflow: auto;
     }
 
     table {
@@ -102,6 +103,48 @@
       text-transform: uppercase;
       width: 100px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th:first-child,
+    td:first-child {
+      position: sticky;
+      left: 0;
+      width: 40px;
+      min-width: 40px;
+      max-width: 40px;
+      z-index: 2;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      position: sticky;
+      left: 40px;
+      width: 280px;
+      min-width: 280px;
+      z-index: 2;
+    }
+
+    thead th:first-child,
+    thead th:nth-child(2) {
+      z-index: 3;
+    }
+
+    tbody td:first-child,
+    tbody td:nth-child(2) {
+      background: var(--card);
+    }
+
+    tbody tr:nth-child(even) td:first-child,
+    tbody tr:nth-child(even) td:nth-child(2) {
+      background: var(--alt);
+    }
+
+    tbody tr.customs td:first-child,
+    tbody tr.customs td:nth-child(2) {
+      background: var(--amber);
     }
 
     th.cu {
@@ -287,6 +330,12 @@
       .role-breakdown-page .card {
         margin: 32px 16px 48px;
         padding: 18px;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 200px;
+        min-width: 200px;
       }
     }
   </style>
